@@ -1,18 +1,3 @@
-/* Variables de marca — La Curaduría */
-:root {
-  --coral:   #FF736C;
-  --bg:      #171C14;
-  --cream:   #FFFFF6;
-  --green:   #006F4D;
-  --green-l: #00AA74;
-  --yellow:  #FFC335;
-  --cyan:    #75E6F9;
-  --surface: #1E2419;
-  --border:  #2E3828;
-  --t2:      #7A9070;
-  --t3:      #3D5035;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -24,10 +9,8 @@ html {
 }
 
 body {
-  background: var(--bg);
-  color: var(--cream);
+  background: #171C14;
+  color: #FFFFF6;
   font-family: 'Barlow', sans-serif;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }

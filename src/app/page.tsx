@@ -1,9 +1,5 @@
-import { useEffect } from 'react'
+import { redirect } from 'next/navigation'
 
-export const metadata = {
-  title: 'La Curaduría · Investor Teaser 2026',
-}
-
-export default function InvestorPage() {
-  return <div>Investor Hub</div>
+export default function Home() {
+  redirect('/investor')
 }

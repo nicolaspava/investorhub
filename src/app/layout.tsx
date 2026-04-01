@@ -1,16 +1,9 @@
 import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'La Curaduría · Guía cultural de Bogotá',
-  description: 'Una guía cultural abierta que articula un mapa, un catálogo y un marketplace para conectar públicos, creadores y gestores culturales.',
-  openGraph: {
-    title: 'La Curaduría',
-    description: 'Guía cultural abierta de música, arte y cultura · Bogotá',
-    url: 'https://lacuraduria.net',
-    siteName: 'La Curaduría',
-    locale: 'es_CO',
-    type: 'website',
-  },
+  title: 'La Curaduría · Investor Hub',
+  description: 'Guía cultural abierta de música, arte y cultura. Ronda pre-semilla 2026.',
 }
 
 export default function RootLayout({

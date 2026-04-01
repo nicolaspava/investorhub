@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Curaduría · Generador de Contrato</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --coral:#FF736C;--bg:#171C14;--cream:#FFFFF6;
+  --green:#00AA74;--yellow:#FFC335;--cyan:#75E6F9;
+  --surf:#1E2419;--bord:#2E3828;--t2:#8FAF82;--t3:#5A7A50;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--cream);font-family:'Barlow',sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;}
+
+.wrap{max-width:640px;width:100%;}
+
+.header{text-align:center;margin-bottom:40px;}
+.logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:24px;}
+.logo svg{width:36px;height:36px;}
+.logo-word{font-size:13px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;}
+.logo-word b{color:var(--coral);}
+.eye{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:12px;}
+h1{font-size:clamp(28px,4vw,42px);font-weight:900;line-height:1.05;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:12px;}
+h1 em{color:var(--coral);font-style:normal;}
+.subtitle{font-size:15px;font-weight:300;color:var(--t2);line-height:1.75;}
+
+.form-card{background:var(--surf);border:1px solid var(--bord);border-radius:12px;padding:40px;}
+
+.section-label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--bord);}
+
+.field{margin-bottom:18px;}
+.field label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);display:block;margin-bottom:7px;}
+.field input,.field select{
+  width:100%;background:var(--bg);border:1px solid var(--bord);border-radius:6px;
+  padding:13px 16px;font-family:'Barlow',sans-serif;font-size:15px;font-weight:300;
+  color:var(--cream);outline:none;transition:border-color .2s;
+}
+.field input:focus,.field select:focus{border-color:var(--coral);box-shadow:0 0 0 2px rgba(255,115,108,.08);}
+.field input::placeholder{color:var(--t3);}
+.field select{appearance:none;cursor:pointer;}
+.field select option{background:var(--bg);}
+
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+
+.divider{height:1px;background:var(--bord);margin:28px 0;}
+
+.terms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;}
+.term-box{background:var(--bg);border:1px solid var(--bord);border-radius:8px;padding:16px 14px;}
+.term-lbl{font-family:'DM Mono',monospace;font-size:11px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;}
+.term-val{font-size:18px;font-weight:900;letter-spacing:-.01em;}
+
+.preview{background:var(--bg);border:1px solid var(--bord);border-left:3px solid var(--coral);border-radius:0 8px 8px 0;padding:18px 20px;margin-bottom:28px;font-size:14px;font-weight:300;color:var(--t2);line-height:1.8;}
+.preview b{color:var(--cream);font-weight:600;}
+.preview span{color:var(--coral);font-weight:600;}
+
+.btn{
+  width:100%;background:var(--coral);color:var(--bg);
+  border:none;border-radius:6px;
+  font-family:'DM Mono',monospace;font-size:13px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:18px;cursor:pointer;
+  transition:opacity .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.btn:hover{opacity:.9;transform:translateY(-1px);}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
+
+.disclaimer{margin-top:20px;font-family:'DM Mono',monospace;font-size:11px;color:var(--t3);text-align:center;line-height:1.7;letter-spacing:.04em;}
+
+@media(max-width:600px){
+  .field-row{grid-template-columns:1fr;}
+  .terms-grid{grid-template-columns:1fr;}
+  .form-card{padding:28px 20px;}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="header">
+    <div class="logo">
+      <svg viewBox="0 0 507 506" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M180.672 84.3927L159.121 93.714L137.57 103.035L128.253 81.4749L118.935 59.9146L109.618 38.3543L131.169 29.0331L140.487 50.5934L149.804 72.1537L171.355 62.8324L192.906 53.5112L214.457 44.19C219.604 56.0858 214.127 69.9224 202.223 75.0715L180.672 84.3927Z" fill="#FFFFF6"/>
+        <path d="M302.087 2.65383L325.447 5.01714L323.084 28.3862L320.722 51.7553L318.36 75.1244L295 72.7611L297.363 49.392C296.056 62.3044 284.548 71.7048 271.641 70.3978L248.282 68.0344L224.923 65.6711L227.285 42.3021C229.898 16.4376 252.98 -2.36326 278.781 0.237705L302.14 2.60102L302.074 2.65383H302.087ZM297.416 49.392L299.778 26.0229L276.419 23.6596C263.512 22.3525 252.004 31.753 250.697 44.6654L274.056 47.0287L297.416 49.392Z" fill="#FFFFF6"/>
+        <path d="M366.516 80.0226L386.101 92.9615L405.686 105.9L392.753 125.493L373.168 112.555L353.583 99.6157C331.94 85.317 325.974 56.1387 340.267 34.486C347.433 23.6332 361.977 20.7022 372.785 27.8317L392.37 40.7705L411.955 53.7093L431.539 66.6481C424.373 77.5009 409.83 80.4319 399.021 73.3024L379.437 60.3636L359.852 47.4248V47.4908C352.712 58.3435 355.721 72.8799 366.516 80.0226Z" fill="#FFFFF6"/>
+        <path d="M63.8764 107.709L49.1614 127.87L37.5214 143.832C35.8322 146.156 36.3337 149.417 38.6564 151.107L54.6119 162.752L66.4235 146.565C68.0335 144.36 71.1085 143.885 73.3125 145.496L89.4923 157.312L74.7774 177.473C66.6478 188.616 51.0354 191.046 39.9101 182.913L19.7579 168.191C8.61938 160.058 6.19108 144.439 14.3206 133.309L29.0356 113.149L43.7505 92.9878C51.8801 81.8578 67.4925 79.4153 78.6178 87.5482L78.5914 87.5878L63.9028 107.709H63.8764ZM78.565 87.6671L78.631 87.5746L98.7832 102.296C90.6537 113.426 93.0952 129.058 104.22 137.178L89.5055 157.339L89.4791 157.378C67.2153 141.125 62.3587 109.953 78.565 87.6538V87.6671Z" fill="#FF736C"/>
+        <path d="M116.652 130.907C124.109 130.907 130.153 124.859 130.153 117.4C130.153 109.941 124.109 103.893 116.652 103.893C109.196 103.893 103.152 109.941 103.152 117.4C103.152 124.859 109.196 130.907 116.652 130.907Z" fill="#FF736C"/>
+      </svg>
+      <div class="logo-word">La <b>Cu</b>raduría</div>
+    </div>
+    <div class="eye">Nota Convertible · Generador de Contrato</div>
+    <h1>Genera tu <em>contrato</em></h1>
+    <p class="subtitle">Completa los datos y descarga tu contrato de nota convertible prellenado, listo para revisión legal.</p>
+  </div>
+
+  <div class="form-card">
+
+    <!-- DATOS INVERSIONISTA -->
+    <div class="section-label">01 · Datos del inversionista</div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Nombre</label>
+        <input type="text" id="f-nombre" placeholder="Nombre" oninput="updatePreview()">
+      </div>
+      <div class="field">
+        <label>Apellido</label>
+        <input type="text" id="f-apellido" placeholder="Apellido" oninput="updatePreview()">
+      </div>
+    </div>
+    <div class="field">
+      <label>Documento de identidad (CC / NIT / Pasaporte)</label>
+      <input type="text" id="f-doc" placeholder="Ej: 1.234.567.890" oninput="updatePreview()">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Correo electrónico</label>
+        <input type="email" id="f-email" placeholder="tu@email.com" oninput="updatePreview()">
+      </div>
+      <div class="field">
+        <label>Teléfono / WhatsApp</label>
+        <input type="tel" id="f-tel" placeholder="+57 300 000 0000" oninput="updatePreview()">
+      </div>
+    </div>
+    <div class="field">
+      <label>Ciudad y país de residencia</label>
+      <input type="text" id="f-ciudad" placeholder="Bogotá, Colombia" oninput="updatePreview()">
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- TÉRMINOS INVERSIÓN -->
+    <div class="section-label">02 · Términos de inversión</div>
+
+    <div class="field">
+      <label>Monto a invertir (COP)</label>
+      <select id="f-monto" onchange="updatePreview()">
+        <option value="">Selecciona un monto</option>
+        <option value="2000000">$2.000.000 COP</option>
+        <option value="5000000">$5.000.000 COP</option>
+        <option value="10000000">$10.000.000 COP</option>
+        <option value="15000000">$15.000.000 COP</option>
+        <option value="20000000">$20.000.000 COP</option>
+        <option value="30000000">$30.000.000 COP</option>
+        <option value="50000000">$50.000.000 COP</option>
+        <option value="otro">Otro monto (especificar)</option>
+      </select>
+    </div>
+    <div class="field" id="monto-otro-wrap" style="display:none;">
+      <label>Especifica el monto (COP)</label>
+      <input type="number" id="f-monto-otro" placeholder="Ej: 7500000" oninput="updatePreview()">
+    </div>
+
+    <!-- TÉRMINOS FIJOS -->
+    <div class="terms-grid">
+      <div class="term-box">
+        <div class="term-lbl">Tipo</div>
+        <div class="term-val" style="font-size:14px;color:var(--coral);">Nota convertible</div>
+      </div>
+      <div class="term-box">
+        <div class="term-lbl">Descuento</div>
+        <div class="term-val" style="color:var(--yellow);">20%</div>
+      </div>
+      <div class="term-box">
+        <div class="term-lbl">Techo valoración</div>
+        <div class="term-val" style="font-size:13px;color:var(--cyan);">$2.000M COP</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- PREVIEW -->
+    <div class="section-label">03 · Vista previa del contrato</div>
+    <div class="preview" id="preview">
+      Completa los campos para ver la vista previa del contrato.
+    </div>
+
+    <button class="btn" id="btn-gen" onclick="generatePDF()" disabled>
+      Descargar contrato PDF →
+    </button>
+
+  </div>
+
+  <div class="disclaimer">
+    Este documento es un borrador de referencia para revisión legal.<br>
+    No constituye un contrato vinculante hasta ser firmado por ambas partes.<br>
+    La Curaduría · lacuraduria.net · Bogotá, Colombia · 2026
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+(function() {
+
+  var montoSelect = document.getElementById('f-monto');
+  var montoOtroWrap = document.getElementById('monto-otro-wrap');
+
+  montoSelect.addEventListener('change', function() {
+    montoOtroWrap.style.display = this.value === 'otro' ? 'block' : 'none';
+    updatePreview();
+  });
+
+  function getValues() {
+    var nombre   = (document.getElementById('f-nombre').value.trim() + ' ' + document.getElementById('f-apellido').value.trim()).trim();
+    var doc      = document.getElementById('f-doc').value.trim();
+    var email    = document.getElementById('f-email').value.trim();
+    var tel      = document.getElementById('f-tel').value.trim();
+    var ciudad   = document.getElementById('f-ciudad').value.trim();
+    var montoVal = montoSelect.value;
+    var monto    = 0;
+    var montoStr = '';
+    if (montoVal === 'otro') {
+      monto = parseInt(document.getElementById('f-monto-otro').value) || 0;
+      montoStr = monto > 0 ? '$' + monto.toLocaleString('es-CO') + ' COP' : '';
+    } else if (montoVal) {
+      monto = parseInt(montoVal);
+      montoStr = '$' + monto.toLocaleString('es-CO') + ' COP';
+    }
+    var today = new Date();
+    var fecha = today.getDate() + ' de ' + ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'][today.getMonth()] + ' de ' + today.getFullYear();
+    return { nombre, doc, email, tel, ciudad, monto, montoStr, fecha };
+  }
+
+  function isValid(v) {
+    return v.nombre.length > 1 && v.doc && v.email && v.monto > 0;
+  }
+
+  window.updatePreview = function() {
+    var v = getValues();
+    var btn = document.getElementById('btn-gen');
+    if (!isValid(v)) {
+      document.getElementById('preview').innerHTML = 'Completa los campos para ver la vista previa del contrato.';
+      btn.disabled = true;
+      return;
+    }
+    btn.disabled = false;
+    document.getElementById('preview').innerHTML =
+      'El día <b>' + v.fecha + '</b>, <b>' + v.nombre + '</b> ' +
+      '(C.C. / Doc. <b>' + v.doc + '</b>), residente en <b>' + (v.ciudad || '—') + '</b>, ' +
+      'invierte la suma de <span>' + v.montoStr + '</span> en <b>La Curaduría S.A.S.</b> ' +
+      'mediante nota convertible con descuento del <span>20%</span> y techo de valoración de ' +
+      '<span>$2.000.000.000 COP</span>. ' +
+      'Esta inversión podrá convertirse en participación accionaria en la siguiente ronda de financiación ' +
+      'de La Curaduría, con prioridad y descuento garantizados para el inversionista.';
+  };
+
+  window.generatePDF = function() {
+    var v = getValues();
+    if (!isValid(v)) return;
+
+    var btn = document.getElementById('btn-gen');
+    btn.disabled = true;
+    btn.textContent = 'Generando PDF...';
+
+    var { jsPDF } = window.jspdf;
+    var doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+    var W = 210, ml = 20, mr = 20, cw = W - ml - mr;
+    var y = 20;
+
+    function addLine(h) { y += h; }
+    function checkPage(need) {
+      if (y + need > 270) { doc.addPage(); y = 20; }
+    }
+
+    // ── HEADER ──
+    doc.setFillColor(23, 28, 20);
+    doc.rect(0, 0, 210, 42, 'F');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(18);
+    doc.setTextColor(255, 255, 246);
+    doc.text('LA CURADURÍA', ml, 18);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.setTextColor(143, 175, 130);
+    doc.text('CONTRATO DE NOTA CONVERTIBLE · BORRADOR', ml, 26);
+    doc.text('lacuraduria.net · Bogotá, Colombia · 2026', ml, 32);
+
+    // coral accent line
+    doc.setFillColor(255, 115, 108);
+    doc.rect(0, 42, 210, 1.5, 'F');
+
+    y = 56;
+
+    // ── TITLE ──
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(14);
+    doc.setTextColor(23, 28, 20);
+    doc.text('ACUERDO DE NOTA CONVERTIBLE', ml, y);
+    addLine(7);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    doc.setTextColor(90, 90, 90);
+    doc.text('Bogotá, Colombia, ' + v.fecha, ml, y);
+    addLine(10);
+
+    // ── SECTION: PARTES ──
+    function sectionTitle(txt) {
+      checkPage(16);
+      doc.setFillColor(245, 242, 236);
+      doc.rect(ml, y - 4, cw, 10, 'F');
+      doc.setDrawColor(221, 217, 208);
+      doc.rect(ml, y - 4, cw, 10, 'S');
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(9);
+      doc.setTextColor(232, 71, 63);
+      doc.text(txt.toUpperCase(), ml + 4, y + 2);
+      addLine(12);
+    }
+
+    function bodyText(txt, indent) {
+      var x = ml + (indent || 0);
+      var lines = doc.splitTextToSize(txt, cw - (indent || 0));
+      checkPage(lines.length * 5.5 + 4);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(10);
+      doc.setTextColor(30, 30, 30);
+      doc.text(lines, x, y);
+      addLine(lines.length * 5.5 + 3);
+    }
+
+    function keyVal(key, val) {
+      checkPage(10);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(10);
+      doc.setTextColor(30, 30, 30);
+      doc.text(key + ':', ml, y);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(50, 50, 50);
+      doc.text(val, ml + 45, y);
+      addLine(7);
+    }
+
+    function highlight(txt) {
+      checkPage(14);
+      doc.setFillColor(255, 115, 108, 0.08);
+      doc.setDrawColor(255, 115, 108);
+      doc.setLineWidth(0.4);
+      doc.roundedRect(ml, y - 3, cw, 10, 1, 1, 'FD');
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(10);
+      doc.setTextColor(200, 50, 40);
+      doc.text(txt, ml + 4, y + 3.5);
+      addLine(14);
+    }
+
+    // 1. PARTES
+    sectionTitle('1. Las Partes');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.setTextColor(30,30,30);
+    doc.text('EMISOR:', ml, y);
+    addLine(6);
+    keyVal('Razón social', 'La Curaduría S.A.S.');
+    keyVal('NIT', 'En trámite de constitución');
+    keyVal('Representante', 'Nicolás Pava');
+    keyVal('Correo', 'nicolas.pava@lacuraduria.net');
+    keyVal('Teléfono', '+57 304 413 8497');
+    keyVal('Ciudad', 'Bogotá, Colombia');
+    addLine(4);
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.setTextColor(30,30,30);
+    doc.text('INVERSIONISTA:', ml, y);
+    addLine(6);
+    keyVal('Nombre completo', v.nombre);
+    keyVal('Documento', v.doc);
+    keyVal('Correo', v.email);
+    if (v.tel) keyVal('Teléfono', v.tel);
+    if (v.ciudad) keyVal('Ciudad', v.ciudad);
+    addLine(4);
+
+    // 2. OBJETO
+    sectionTitle('2. Objeto del Contrato');
+    bodyText(
+      'Mediante el presente instrumento, el Inversionista otorga al Emisor un préstamo en la suma indicada en la Sección 3, ' +
+      'bajo la modalidad de Nota Convertible. Dicho préstamo podrá convertirse en participación accionaria de La Curaduría S.A.S. ' +
+      'en los términos y condiciones establecidos en este acuerdo.'
+    );
+
+    // 3. TÉRMINOS
+    sectionTitle('3. Términos Financieros');
+    highlight('Monto de la inversión: ' + v.montoStr);
+    keyVal('Tipo de instrumento', 'Nota Convertible (SAFE adaptado)');
+    keyVal('Techo de valoración', '$2.000.000.000 COP (Dos mil millones de pesos)');
+    keyVal('Descuento en conversión', '20% sobre el precio por acción de la siguiente ronda');
+    keyVal('Vencimiento', '36 meses desde la fecha de firma, o conversión anticipada');
+    keyVal('Interés', 'No genera intereses durante el período de vigencia');
+    addLine(4);
+
+    // 4. CONVERSIÓN
+    sectionTitle('4. Mecanismo de Conversión');
+    bodyText(
+      '4.1. CONVERSIÓN AUTOMÁTICA: La Nota se convertirá automáticamente en acciones de La Curaduría S.A.S. ' +
+      'al momento en que la empresa cierre una ronda de financiación calificada igual o superior a ' +
+      '$100.000.000 COP (cien millones de pesos colombianos).'
+    );
+    addLine(2);
+    bodyText(
+      '4.2. PRECIO DE CONVERSIÓN: El precio por acción al que se convertirá la Nota será el menor entre: ' +
+      '(a) el precio por acción de la ronda calificada multiplicado por 0.80 (aplicando el 20% de descuento), ' +
+      'y (b) el precio resultante de dividir el Techo de Valoración ($2.000.000.000 COP) entre el número ' +
+      'de acciones totales en circulación inmediatamente antes de la ronda calificada.'
+    );
+    addLine(2);
+    bodyText(
+      '4.3. CONVERSIÓN OPCIONAL: El Inversionista podrá solicitar la conversión voluntaria de la Nota ' +
+      'en cualquier momento con previo aviso de treinta (30) días calendario al Emisor.'
+    );
+    addLine(4);
+
+    // 5. DERECHOS
+    sectionTitle('5. Derechos del Inversionista');
+    var derechos = [
+      '• Acceso a informes financieros trimestrales de La Curaduría.',
+      '• Derecho preferencial de participación en futuras rondas de inversión (pro-rata).',
+      '• Notificación anticipada de eventos de liquidez, fusión o adquisición.',
+      '• Participación en sesiones de actualización del proyecto (mínimo una vez por trimestre).',
+    ];
+    derechos.forEach(function(d) { bodyText(d, 4); });
+    addLine(2);
+
+    // 6. CONFIDENCIALIDAD
+    sectionTitle('6. Confidencialidad');
+    bodyText(
+      'Toda la información compartida entre las Partes en el marco de este acuerdo — incluyendo ' +
+      'proyecciones financieras, estrategia de negocio, código fuente y datos de usuarios — ' +
+      'se considera estrictamente confidencial. El Inversionista se compromete a no divulgarla ' +
+      'a terceros sin autorización escrita del Emisor. Esta obligación se extiende por cinco (5) años ' +
+      'contados desde la fecha de firma del presente documento.'
+    );
+    addLine(4);
+
+    // 7. REPRESENTACIONES
+    sectionTitle('7. Declaraciones y Representaciones');
+    bodyText(
+      '7.1. El Emisor declara que la información proporcionada al Inversionista es veraz y que ' +
+      'cuenta con las autorizaciones necesarias para celebrar este acuerdo.'
+    );
+    addLine(2);
+    bodyText(
+      '7.2. El Inversionista declara que: (a) comprende los riesgos inherentes a la inversión en ' +
+      'startups en etapa temprana, incluyendo el riesgo de pérdida total del capital; (b) los fondos ' +
+      'invertidos provienen de fuentes lícitas; (c) ha tenido la oportunidad de consultar con ' +
+      'asesores legales y financieros de su elección antes de suscribir este acuerdo.'
+    );
+    addLine(4);
+
+    // 8. RIESGOS
+    sectionTitle('8. Factores de Riesgo');
+    bodyText(
+      'La inversión en La Curaduría implica riesgos significativos, incluyendo pero no limitados a: ' +
+      'pérdida total del capital invertido, imposibilidad de liquidez en el corto plazo, cambios ' +
+      'regulatorios, competencia en el mercado digital y cultural, y riesgos operativos propios ' +
+      'de una empresa en etapa temprana. Los retornos proyectados son estimaciones ilustrativas ' +
+      'y no constituyen garantía de resultados.'
+    );
+    addLine(4);
+
+    // 9. LEY APLICABLE
+    sectionTitle('9. Ley Aplicable y Jurisdicción');
+    bodyText(
+      'Este acuerdo se rige por las leyes de la República de Colombia. Cualquier controversia ' +
+      'que surja en relación con el presente instrumento será resuelta primero mediante negociación ' +
+      'directa entre las Partes y, de no llegarse a un acuerdo en un plazo de treinta (30) días, ' +
+      'mediante arbitraje ante la Cámara de Comercio de Bogotá, cuyo laudo será definitivo y obligatorio.'
+    );
+    addLine(8);
+
+    // ── FIRMAS ──
+    checkPage(60);
+    doc.setFillColor(245, 242, 236);
+    doc.rect(ml, y, cw, 55, 'F');
+    doc.setDrawColor(221, 217, 208);
+    doc.rect(ml, y, cw, 55, 'S');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.setTextColor(232, 71, 63);
+    doc.text('FIRMAS', ml + 4, y + 8);
+    addLine(14);
+
+    // Emisor firma
+    doc.setDrawColor(150, 150, 150);
+    doc.setLineWidth(0.3);
+    doc.line(ml + 4, y + 12, ml + 75, y + 12);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.setTextColor(30, 30, 30);
+    doc.text('Nicolás Pava', ml + 4, y + 17);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(90, 90, 90);
+    doc.text('Representante Legal · La Curaduría S.A.S.', ml + 4, y + 22);
+    doc.text('C.C. _________________________', ml + 4, y + 27);
+
+    // Inversionista firma
+    doc.line(ml + 95, y + 12, ml + cw - 4, y + 12);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.setTextColor(30, 30, 30);
+    doc.text(v.nombre || 'Inversionista', ml + 95, y + 17);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(90, 90, 90);
+    doc.text('Inversionista', ml + 95, y + 22);
+    doc.text('Doc: ' + (v.doc || '_________________________'), ml + 95, y + 27);
+
+    addLine(38);
+
+    // ── FOOTER ──
+    var totalPages = doc.internal.getNumberOfPages();
+    for (var i = 1; i <= totalPages; i++) {
+      doc.setPage(i);
+      doc.setFillColor(23, 28, 20);
+      doc.rect(0, 285, 210, 12, 'F');
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8);
+      doc.setTextColor(143, 175, 130);
+      doc.text('La Curaduría S.A.S. · Nota Convertible · Borrador · ' + v.fecha, ml, 292);
+      doc.text('Página ' + i + ' de ' + totalPages, 190, 292, { align: 'right' });
+    }
+
+    // ── WATERMARK ──
+    for (var p = 1; p <= totalPages; p++) {
+      doc.setPage(p);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(48);
+      doc.setTextColor(255, 115, 108);
+      doc.setGState(new doc.GState({ opacity: 0.04 }));
+      doc.text('BORRADOR', 105, 160, { align: 'center', angle: 45 });
+      doc.setGState(new doc.GState({ opacity: 1 }));
+    }
+
+    var filename = 'LaCuraduria_NotaConvertible_' + v.nombre.replace(/\s+/g, '_') + '_' + new Date().getFullYear() + '.pdf';
+    doc.save(filename);
+
+    btn.disabled = false;
+    btn.textContent = 'Descargar contrato PDF →';
+  };
+
+})();
+</script>
+</body>
+</html>
