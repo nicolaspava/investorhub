@@ -606,6 +606,116 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
+function sfmt(n){return'$'+Math.round(n).toLocaleString('es-CO')+' COP';}
+
+var BREVO_KEY='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';
+function brevoAddContact(nombre,apellido,email,listId,extra){
+  fetch('https://api.brevo.com/v3/contacts',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','api-key':BREVO_KEY},
+    body:JSON.stringify({email:email,firstName:nombre,lastName:apellido||'',listIds:[listId],attributes:extra||{},updateEnabled:true})
+  }).catch(function(e){console.warn('Brevo contact:',e);});
+}
+function brevoNotify(asunto,html){
+  fetch('https://api.brevo.com/v3/smtp/email',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','api-key':BREVO_KEY},
+    body:JSON.stringify({sender:{name:'La Curaduria Hub',email:'nicolas.pava@lacuraduria.net'},to:[{email:'nicolas.pava@lacuraduria.net',name:'Nicolas Pava'}],subject:asunto,htmlContent:html})
+  }).catch(function(e){console.warn('Brevo notify:',e);});
+}
+
+function updSim(){
+  var inv=parseInt(document.getElementById('sl').value);
+  document.getElementById('sv').textContent=sfmt(inv);
+  document.getElementById('sr3').textContent=sfmt(inv*3);
+  document.getElementById('sr5').textContent=sfmt(inv*5);
+  document.getElementById('sr10').textContent=sfmt(inv*10);
+  document.getElementById('spart').textContent=(inv/2000000000*100).toFixed(2)+'%';
+  var el=document.getElementById('sfrase');
+  if(el) el.innerHTML='Con <strong style="color:var(--cream)">'+sfmt(inv)+'</strong> hoy, en el escenario base tendrias <strong style="color:var(--coral)">'+sfmt(inv*5)+'</strong> en 2030, y hasta <strong style="color:var(--cyan)">'+sfmt(inv*10)+'</strong> en el optimista.';
+}
+var sl=document.getElementById('sl');
+if(sl){sl.addEventListener('input',updSim);updSim();}
+
+var fbtn=document.getElementById('f-btn');
+if(fbtn){
+  fbtn.addEventListener('click',function(){
+    var n=document.getElementById('f-nombre').value.trim();
+    var e=document.getElementById('f-email').value.trim();
+    var m=document.getElementById('f-monto').value;
+    if(!n||!e){alert('Por favor completa nombre y email.');return;}
+    if(!m){alert('Por favor selecciona un rango de inversion.');return;}
+    var ap=document.getElementById('f-apellido').value.trim();
+    var tel=document.getElementById('f-tel').value.trim();
+    var msg=document.getElementById('f-msg').value.trim();
+    document.getElementById('ffields').style.display='none';
+    document.getElementById('fsuccess').style.display='block';
+    brevoAddContact(n,ap,e,4,{TELEFONO:tel,MONTO_INTERES:m,MENSAJE:msg,FECHA:new Date().toLocaleDateString('es-CO')});
+    brevoNotify('Nuevo interesado en invertir '+n+' '+ap,'<h2>Nuevo interesado</h2><p><b>Nombre:</b> '+n+' '+ap+'</p><p><b>Email:</b> '+e+'</p><p><b>Telefono:</b> '+(tel||'s/d')+'</p><p><b>Monto:</b> '+m+'</p><p><b>Mensaje:</b> '+(msg||'sin mensaje')+'</p>');
+    var sub=encodeURIComponent('Interes en invertir');
+    var body=encodeURIComponent('Nombre: '+n+' '+ap+'\nEmail: '+e+'\nTelefono: '+tel+'\nMonto: '+m+'\n\n'+msg);
+    setTimeout(function(){window.location.href='mailto:nicolas.pava@lacuraduria.net?subject='+sub+'&body='+body;},1200);
+  });
+}
+
+function updC(){
+  var n=(document.getElementById('c-n').value.trim()+' '+document.getElementById('c-a').value.trim()).trim();
+  var d=document.getElementById('c-d').value.trim(),e=document.getElementById('c-e').value.trim(),ms=document.getElementById('c-m').value;
+  var mstr=ms?'$'+parseInt(ms).toLocaleString('es-CO')+' COP':'___';
+  var hoy=new Date(),meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  var fecha=hoy.getDate()+' de '+meses[hoy.getMonth()]+' de '+hoy.getFullYear();
+  if(!n&&!d&&!e){document.getElementById('cprev').innerHTML='Completa los campos para ver la vista previa.';return;}
+  document.getElementById('cprev').innerHTML='El dia <b>'+fecha+'</b>, <b>'+(n||'___')+'</b> (Doc. <b>'+(d||'___')+'</b>) invierte <span>'+mstr+'</span> en <b>La Curaduria S.A.S.</b> mediante nota convertible con <span>20%</span> de descuento y techo de <span>$2.000.000.000 COP</span>.';
+}
+
+function genPDF(){
+  var n=(document.getElementById('c-n').value.trim()+' '+document.getElementById('c-a').value.trim()).trim();
+  var d=document.getElementById('c-d').value.trim(),e=document.getElementById('c-e').value.trim(),ms=document.getElementById('c-m').value;
+  if(!n||!d||!e||!ms){alert('Completa nombre, documento, email y monto.');return;}
+  var monto=parseInt(ms),mstr='$'+monto.toLocaleString('es-CO')+' COP';
+  var tel=document.getElementById('c-t').value,ciudad=document.getElementById('c-c').value||'Bogota, Colombia';
+  var hoy=new Date(),meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  var fecha=hoy.getDate()+' de '+meses[hoy.getMonth()]+' de '+hoy.getFullYear();
+  var jsPDF=window.jspdf.jsPDF,doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  var ml=20,cw=170,y=20;
+  function nl(h){y+=h;}
+  function chk(need){if(y+need>270){doc.addPage();y=20;}}
+  doc.setFillColor(15,18,16);doc.rect(0,0,210,40,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(16);doc.setTextColor(255,255,246);doc.text('LA CURADURIA',ml,16);
+  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(143,175,130);doc.text('CONTRATO DE NOTA CONVERTIBLE · BORRADOR',ml,24);doc.text('lacuraduria.net · Bogota, Colombia · 2026',ml,30);
+  doc.setFillColor(255,115,108);doc.rect(0,40,210,1.5,'F');y=52;
+  doc.setFont('helvetica','bold');doc.setFontSize(13);doc.setTextColor(30,30,30);doc.text('ACUERDO DE NOTA CONVERTIBLE',ml,y);nl(7);
+  doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(90,90,90);doc.text('Bogota, Colombia, '+fecha,ml,y);nl(12);
+  function sec(t){chk(16);doc.setFillColor(245,242,236);doc.rect(ml,y-4,cw,10,'F');doc.setDrawColor(221,217,208);doc.rect(ml,y-4,cw,10,'S');doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(232,71,63);doc.text(t.toUpperCase(),ml+4,y+2);nl(12);}
+  function bod(t){var li=doc.splitTextToSize(t,cw);chk(li.length*5.5+4);doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(30,30,30);doc.text(li,ml,y);nl(li.length*5.5+3);}
+  function kv(k,v){chk(10);doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30,30,30);doc.text(k+':',ml,y);doc.setFont('helvetica','normal');doc.setTextColor(50,50,50);doc.text(v,ml+50,y);nl(7);}
+  function hi(t){chk(14);doc.setFillColor(255,245,244);doc.setDrawColor(255,115,108);doc.setLineWidth(.4);doc.roundedRect(ml,y-3,cw,10,1,1,'FD');doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(200,50,40);doc.text(t,ml+4,y+3.5);nl(14);}
+  sec('1. Las Partes');doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30,30,30);doc.text('EMISOR:',ml,y);nl(6);kv('Razon social','La Curaduria S.A.S.');kv('Representante','Nicolas Pava');kv('Correo','nicolas.pava@lacuraduria.net');kv('Telefono','+57 304 413 8497');nl(4);
+  doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30,30,30);doc.text('INVERSIONISTA:',ml,y);nl(6);kv('Nombre',n);kv('Documento',d);kv('Correo',e);if(tel)kv('Telefono',tel);kv('Ciudad',ciudad);nl(4);
+  sec('2. Objeto');bod('El Inversionista otorga al Emisor un prestamo bajo la modalidad de Nota Convertible que podra convertirse en participacion accionaria de La Curaduria S.A.S.');nl(2);
+  sec('3. Terminos Financieros');hi('Monto de la inversion: '+mstr);kv('Instrumento','Nota Convertible');kv('Techo de valoracion','$2.000.000.000 COP');kv('Interes anual','8%');kv('Descuento de conversion','20% sobre el precio de la siguiente ronda');kv('Vencimiento','24 meses desde la fecha de firma');nl(4);
+  sec('4. Conversion');bod('La Nota se convertira automaticamente en acciones al ocurrir una ronda calificada o valoracion formal. Precio: el menor entre (a) precio ronda x 0.80 y (b) Cap de valoracion dividido acciones totales.');nl(4);
+  sec('5. Liquidacion Preferente');bod('En caso de liquidacion, el Inversionista tendra derecho a recuperar primero su capital antes de cualquier distribucion a los accionistas ordinarios.');nl(4);
+  sec('6. Derechos del Inversionista');bod('Informes financieros trimestrales. Derecho preferencial en futuras rondas. Notificacion de eventos de liquidez. Participacion en sesiones de actualizacion.');nl(4);
+  sec('7. Confidencialidad');bod('Toda la informacion compartida es estrictamente confidencial por cinco (5) anos desde la fecha de firma.');nl(4);
+  sec('8. Ley Aplicable');bod('Este acuerdo se rige por las leyes de Colombia. Controversias: arbitraje ante la Camara de Comercio de Bogota.');nl(10);
+  chk(60);doc.setFillColor(245,242,236);doc.rect(ml,y,cw,55,'F');doc.setDrawColor(221,217,208);doc.rect(ml,y,cw,55,'S');doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(232,71,63);doc.text('FIRMAS',ml+4,y+8);nl(14);
+  doc.setDrawColor(150,150,150);doc.setLineWidth(.3);doc.line(ml+4,y+12,ml+75,y+12);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(30,30,30);doc.text('Nicolas Pava',ml+4,y+17);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(90,90,90);doc.text('Representante Legal',ml+4,y+22);
+  doc.line(ml+95,y+12,ml+cw-4,y+12);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(30,30,30);doc.text(n,ml+95,y+17);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(90,90,90);doc.text('Doc: '+d,ml+95,y+22);nl(38);
+  var tp=doc.internal.getNumberOfPages();
+  for(var i=1;i<=tp;i++){doc.setPage(i);doc.setFillColor(15,18,16);doc.rect(0,285,210,12,'F');doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(143,175,130);doc.text('La Curaduria · Nota Convertible · BORRADOR · '+fecha,ml,292);doc.text('Pag. '+i+'/'+tp,190,292,{align:'right'});}
+  for(var p=1;p<=tp;p++){doc.setPage(p);doc.setFont('helvetica','bold');doc.setFontSize(52);doc.setTextColor(255,115,108);doc.setGState(new doc.GState({opacity:.04}));doc.text('BORRADOR',105,160,{align:'center',angle:45});doc.setGState(new doc.GState({opacity:1}));}
+  doc.save('LaCuraduria_NotaConvertible_'+n.replace(/\s+/g,'_')+'_'+hoy.getFullYear()+'.pdf');
+}
+
+var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('on');});},{threshold:0,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+
+var secs2=Array.from(document.querySelectorAll('section[id]'));
+var navlinks=Array.from(document.querySelectorAll('.na'));
+window.addEventListener('scroll',function(){var y2=window.scrollY+80,a='';secs2.forEach(function(s){if(s.offsetTop<=y2)a=s.id;});navlinks.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')=='#'+a);});},{passive:true});
+</script>
+<script>
 // SIMULADOR
 function sfmt(n){return'$'+Math.round(n).toLocaleString('es-CO')+' COP';}
 
