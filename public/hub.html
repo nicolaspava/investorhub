@@ -222,6 +222,9 @@ footer{padding:22px 40px;border-top:1px solid var(--bord);display:flex;justify-c
 .rv{opacity:1;transform:none;}
 .d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.26s;}
 @media(max-width:860px){
+  .prob-grid{grid-template-columns:1fr !important;}
+  .sheader{grid-template-columns:1fr !important;}
+
   nav{padding:0 16px;}.nlinks{display:none;}
   .sec,#hero,footer{padding-left:18px;padding-right:18px;}
   #hero{padding-top:80px;}
@@ -260,11 +263,6 @@ document.addEventListener('DOMContentLoaded',function(){
     if(fn)fn.value=n;if(fa)fa.value=a;if(fe)fe.value=e;
     fetch(SURL+'/rest/v1/nda_firmados',{method:'POST',headers:{'Content-Type':'application/json','apikey':SKEY,'Authorization':'Bearer '+SKEY,'Prefer':'return=minimal'},body:JSON.stringify({nombre:n,apellido:a,email:e,fecha:new Date().toISOString(),fuente:'investor-hub'})}).catch(function(){});
     // Brevo: agregar a lista NDA Firmados (list 2) y notificar
-    brevoAddContact(n, a, e, {listId: 3, extra: {FUENTE: 'NDA Investor Hub', FECHA: new Date().toLocaleDateString('es-CO')}});
-    brevoNotify(
-      '🔐 Nuevo NDA firmado — ' + n + ' ' + a,
-      '<h2>Nuevo NDA firmado</h2><p><b>Nombre:</b> ' + n + ' ' + a + '</p><p><b>Email:</b> ' + e + '</p><p><b>Fecha:</b> ' + new Date().toLocaleString('es-CO') + '</p><p><b>Fuente:</b> Investor Hub · lacuraduria.net/hub</p>'
-    );
   });
 });
 </script>
@@ -311,17 +309,18 @@ document.addEventListener('DOMContentLoaded',function(){
 <section id="hero" class="sec">
   <div class="hbg"></div><div class="hgrid"></div>
   <div class="hinner">
-    <div class="hroute rv"><span>→ Ruta del proyecto</span><span class="sep">·</span><span>Startup × La Curaduría</span><span class="sep">·</span><span>Ronda pre-semilla 2026</span></div>
+    <div class="hroute rv"><span>Startup × La Curaduría</span><span class="sep">·</span><span>Ronda pre-semilla 2026</span></div>
 
     <h1 class="rv on" style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(64px,10vw,130px);font-weight:900;line-height:.88;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:28px;">
       <span style="display:block;color:var(--cream);">La próxima</span>
-      <span style="display:block;color:var(--coral);">plataforma</span>
-      <span style="display:block;color:transparent;-webkit-text-stroke:1.5px var(--t3);">cultural</span>
+      <span style="display:block;color:var(--coral);">interfaz para</span>
+      <span style="display:block;color:var(--cream);">la <span style="color:var(--cream);">música</span>, el arte</span>
+      <span style="display:block;color:transparent;-webkit-text-stroke:1.5px rgba(117,230,249,.6);">y la cultura</span>
     </h1>
 
-    <p class="rv on" style="font-size:17px;font-weight:300;color:var(--t2);line-height:1.8;max-width:560px;margin-bottom:28px;">Una <b style="color:var(--cream);font-weight:600;">guía cultural abierta</b> que articula un mapa, un catálogo y un marketplace para conectar públicos, creadores y gestores en Bogotá — y Latinoamérica.</p>
+    <p class="rv on" style="font-size:17px;font-weight:300;color:var(--t2);line-height:1.8;max-width:560px;margin-bottom:28px;">Una <b style="color:var(--cream);font-weight:600;">guía inteligente</b> que organiza la oferta cultural en <b style="color:var(--cream);font-weight:600;">un mapa interactivo</b> para conectar públicos, creadores y gestores.</p>
 
-    <p class="rv on" style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:40px;">Simplificamos el acceso a la cultura</p>
+    <p class="rv on" style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:40px;"></p>
 
   </div>
 </section>
@@ -333,19 +332,22 @@ document.addEventListener('DOMContentLoaded',function(){
   <!-- PROBLEMA -->
   <div class="eye rv">01 · El problema</div>
   <div class="rv d1" style="margin-bottom:40px;">
-    <p style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(22px,2.8vw,34px);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;color:var(--cream);line-height:1.05;margin-bottom:24px;">La información sobre la oferta cultural<br>está fragmentada</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bord);border:1px solid var(--bord);border-radius:8px;overflow:hidden;">
-      <div style="background:var(--surf);padding:20px 18px;">
-        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--coral);margin-bottom:10px;letter-spacing:.1em;">01</div>
-        <p style="font-size:14px;color:var(--t2);line-height:1.7;">Los <b style="color:var(--cream);">usuarios</b> saltan entre diferentes plataformas para saber qué hacer con su tiempo. Es ineficiente y hermético.</p>
+    <p style="font-size:clamp(17px,2vw,22px);font-weight:400;color:var(--t2);line-height:1.6;max-width:700px;margin-bottom:36px;border-left:3px solid var(--coral);padding-left:20px;">La oferta cultural está fragmentada entre canales ineficientes y experiencias de búsqueda limitadas.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;" class="prob-grid">
+      <div style="background:rgba(255,115,108,.07);border:1px solid rgba(255,115,108,.25);border-top:3px solid var(--coral);border-radius:8px;padding:24px 20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--coral);letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;">01 · Usuarios</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;color:var(--cream);line-height:1;margin-bottom:10px;">Les cuesta<br>descubrir.</div>
+        <p style="font-size:14px;color:var(--t2);line-height:1.7;">No saben qué vale la pena ni dónde encontrarlo.</p>
       </div>
-      <div style="background:var(--surf);padding:20px 18px;border-left:1px solid var(--bord);">
-        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--coral);margin-bottom:10px;letter-spacing:.1em;">02</div>
-        <p style="font-size:14px;color:var(--t2);line-height:1.7;">Los <b style="color:var(--cream);">gestores</b> culturales carecen de puntos de contacto para proponer eventos y actividades.</p>
+      <div style="background:rgba(117,230,249,.05);border:1px solid rgba(117,230,249,.2);border-top:3px solid var(--cyan);border-radius:8px;padding:24px 20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;">02 · Gestores</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;color:var(--cream);line-height:1;margin-bottom:10px;">Les cuesta<br>conectar.</div>
+        <p style="font-size:14px;color:var(--t2);line-height:1.7;">Canales ineficientes para mover su oferta y su labor.</p>
       </div>
-      <div style="background:var(--surf);padding:20px 18px;border-left:1px solid var(--bord);">
-        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--coral);margin-bottom:10px;letter-spacing:.1em;">03</div>
-        <p style="font-size:14px;color:var(--t2);line-height:1.7;">Los <b style="color:var(--cream);">creadores</b> deben adaptarse a las lógicas de redes sociales y comprometer su formato editorial.</p>
+      <div style="background:rgba(0,170,116,.05);border:1px solid rgba(0,170,116,.2);border-top:3px solid var(--green);border-radius:8px;padding:24px 20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--green);letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;">03 · Creadores</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;color:var(--cream);line-height:1;margin-bottom:10px;">Les cuesta<br>crecer.</div>
+        <p style="font-size:14px;color:var(--t2);line-height:1.7;">Sin visibilidad ni acceso a nuevas oportunidades.</p>
       </div>
     </div>
   </div>
@@ -353,8 +355,8 @@ document.addEventListener('DOMContentLoaded',function(){
   <!-- INVESTIGACION -->
   <div style="height:1px;background:var(--bord);margin-bottom:36px;" class="rv"></div>
   <div class="eye rv">Investigación · Maestría en Gestión de la Cultura · U. EAN · 2025</div>
-  <div style="display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:start;margin-bottom:40px;" class="rv d1">
-    <div style="background:var(--coral);border-radius:8px;padding:20px 18px;">
+  <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;margin-bottom:40px;" class="rv d1">
+    <div style="background:var(--coral);border-radius:8px;padding:20px 18px;flex-shrink:0;min-width:160px;">
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;color:#0F1210;line-height:1;margin-bottom:6px;">75%</div>
       <p style="font-size:13px;color:#0F1210;font-weight:600;line-height:1.4;">de las personas encuestadas no está satisfecha con la oferta de plataformas disponibles.</p>
     </div>
@@ -376,16 +378,20 @@ document.addEventListener('DOMContentLoaded',function(){
   <!-- SOLUCION -->
   <div class="eyec rv" style="margin-bottom:10px;">La solución</div>
   <div class="sheader rv d1">
-    <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(20px,2.5vw,32px);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:1.05;">Una guía cultural que articule un mapa y un catálogo cultural con un marketplace</h3>
+    <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(20px,2.5vw,32px);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:1.05;">Una interfaz para ordenar, descubrir y activar la oferta cultural</h3>
     <div>
       <div style="display:inline-block;background:var(--coral);color:#0F1210;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:3px;margin-bottom:12px;">Un TripAdvisor de la cultura local</div>
-      <p style="font-size:15px;font-weight:300;color:var(--t2);line-height:1.8;">Un sistema abierto donde públicos, creadores y gestores se encuentran, se descubren y transaccionan en un mismo ecosistema cultural digital.</p>
+      <p style="font-size:15px;font-weight:300;color:var(--t2);line-height:1.8;">Un sistema abierto donde públicos, creadores y gestores se encuentran en un mismo ecosistema cultural.</p>
     </div>
   </div>
   <div class="scards rv d2">
     <div class="scard2"><div class="scard2-n" style="color:var(--coral)">01 · Mapa</div><div class="scard2-h" style="color:var(--cream)">Mapa en tiempo real</div><div class="scard2-b">Oferta cultural georreferenciada — eventos, espacios, artistas y estudios de la ciudad.</div><span class="tag" style="color:var(--coral);border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.06)">Discovery</span></div>
     <div class="scard2"><div class="scard2-n" style="color:var(--cyan)">02 · Catálogo</div><div class="scard2-h" style="color:var(--cream)">Perfiles, espacios y eventos</div><div class="scard2-b">Catálogo de perfiles, espacios culturales, eventos y contenidos con recomendaciones.</div><span class="tag" style="color:var(--cyan);border-color:rgba(117,230,249,.3);background:rgba(117,230,249,.06)">Conexión</span></div>
     <div class="scard2"><div class="scard2-n" style="color:var(--t2)">03 · Marketplace</div><div class="scard2-h" style="color:var(--cream)">Mercado cultural digital</div><div class="scard2-b">Compra de entradas, arte y merch + contratación de talento y proveedores.</div><span class="tag" style="color:var(--t2);border-color:rgba(168,192,160,.3);background:rgba(168,192,160,.06)">Transacciones</span></div>
+  </div>
+
+  <div class="rv d2" style="margin-bottom:36px;padding:20px 24px;border-left:3px solid var(--cyan);background:rgba(117,230,249,.04);border-radius:0 6px 6px 0;">
+    <p style="font-size:15px;font-weight:300;color:var(--t2);line-height:1.8;">Facilitamos el acceso a la cultura por medio de una plataforma abierta, intuitiva y accesible para <b style="color:var(--cream);font-weight:600;">dinamizar las industrias culturales y creativas</b>.</p>
   </div>
 
   <div class="eye rv" style="margin-bottom:16px;">Tamaño de mercado · Montos anuales</div>
@@ -605,248 +611,5 @@ document.addEventListener('DOMContentLoaded',function(){
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script>
-function sfmt(n){return'$'+Math.round(n).toLocaleString('es-CO')+' COP';}
-
-var BREVO_KEY='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';
-function brevoAddContact(nombre,apellido,email,listId,extra){
-  fetch('https://api.brevo.com/v3/contacts',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','api-key':BREVO_KEY},
-    body:JSON.stringify({email:email,firstName:nombre,lastName:apellido||'',listIds:[listId],attributes:extra||{},updateEnabled:true})
-  }).catch(function(e){console.warn('Brevo contact:',e);});
-}
-function brevoNotify(asunto,html){
-  fetch('https://api.brevo.com/v3/smtp/email',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','api-key':BREVO_KEY},
-    body:JSON.stringify({sender:{name:'La Curaduria Hub',email:'nicolas.pava@lacuraduria.net'},to:[{email:'nicolas.pava@lacuraduria.net',name:'Nicolas Pava'}],subject:asunto,htmlContent:html})
-  }).catch(function(e){console.warn('Brevo notify:',e);});
-}
-
-function updSim(){
-  var inv=parseInt(document.getElementById('sl').value);
-  document.getElementById('sv').textContent=sfmt(inv);
-  document.getElementById('sr3').textContent=sfmt(inv*3);
-  document.getElementById('sr5').textContent=sfmt(inv*5);
-  document.getElementById('sr10').textContent=sfmt(inv*10);
-  document.getElementById('spart').textContent=(inv/2000000000*100).toFixed(2)+'%';
-  var el=document.getElementById('sfrase');
-  if(el) el.innerHTML='Con <strong style="color:var(--cream)">'+sfmt(inv)+'</strong> hoy, en el escenario base tendrias <strong style="color:var(--coral)">'+sfmt(inv*5)+'</strong> en 2030, y hasta <strong style="color:var(--cyan)">'+sfmt(inv*10)+'</strong> en el optimista.';
-}
-var sl=document.getElementById('sl');
-if(sl){sl.addEventListener('input',updSim);updSim();}
-
-var fbtn=document.getElementById('f-btn');
-if(fbtn){
-  fbtn.addEventListener('click',function(){
-    var n=document.getElementById('f-nombre').value.trim();
-    var e=document.getElementById('f-email').value.trim();
-    var m=document.getElementById('f-monto').value;
-    if(!n||!e){alert('Por favor completa nombre y email.');return;}
-    if(!m){alert('Por favor selecciona un rango de inversion.');return;}
-    var ap=document.getElementById('f-apellido').value.trim();
-    var tel=document.getElementById('f-tel').value.trim();
-    var msg=document.getElementById('f-msg').value.trim();
-    document.getElementById('ffields').style.display='none';
-    document.getElementById('fsuccess').style.display='block';
-    brevoAddContact(n,ap,e,4,{TELEFONO:tel,MONTO_INTERES:m,MENSAJE:msg,FECHA:new Date().toLocaleDateString('es-CO')});
-    brevoNotify('Nuevo interesado en invertir '+n+' '+ap,'<h2>Nuevo interesado</h2><p><b>Nombre:</b> '+n+' '+ap+'</p><p><b>Email:</b> '+e+'</p><p><b>Telefono:</b> '+(tel||'s/d')+'</p><p><b>Monto:</b> '+m+'</p><p><b>Mensaje:</b> '+(msg||'sin mensaje')+'</p>');
-    var sub=encodeURIComponent('Interes en invertir');
-    var body=encodeURIComponent('Nombre: '+n+' '+ap+'\nEmail: '+e+'\nTelefono: '+tel+'\nMonto: '+m+'\n\n'+msg);
-    setTimeout(function(){window.location.href='mailto:nicolas.pava@lacuraduria.net?subject='+sub+'&body='+body;},1200);
-  });
-}
-
-function updC(){
-  var n=(document.getElementById('c-n').value.trim()+' '+document.getElementById('c-a').value.trim()).trim();
-  var d=document.getElementById('c-d').value.trim(),e=document.getElementById('c-e').value.trim(),ms=document.getElementById('c-m').value;
-  var mstr=ms?'$'+parseInt(ms).toLocaleString('es-CO')+' COP':'___';
-  var hoy=new Date(),meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-  var fecha=hoy.getDate()+' de '+meses[hoy.getMonth()]+' de '+hoy.getFullYear();
-  if(!n&&!d&&!e){document.getElementById('cprev').innerHTML='Completa los campos para ver la vista previa.';return;}
-  document.getElementById('cprev').innerHTML='El dia <b>'+fecha+'</b>, <b>'+(n||'___')+'</b> (Doc. <b>'+(d||'___')+'</b>) invierte <span>'+mstr+'</span> en <b>La Curaduria S.A.S.</b> mediante nota convertible con <span>20%</span> de descuento y techo de <span>$2.000.000.000 COP</span>.';
-}
-
-function genPDF(){
-  var n=(document.getElementById('c-n').value.trim()+' '+document.getElementById('c-a').value.trim()).trim();
-  var d=document.getElementById('c-d').value.trim(),e=document.getElementById('c-e').value.trim(),ms=document.getElementById('c-m').value;
-  if(!n||!d||!e||!ms){alert('Completa nombre, documento, email y monto.');return;}
-  var monto=parseInt(ms),mstr='$'+monto.toLocaleString('es-CO')+' COP';
-  var tel=document.getElementById('c-t').value,ciudad=document.getElementById('c-c').value||'Bogota, Colombia';
-  var hoy=new Date(),meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-  var fecha=hoy.getDate()+' de '+meses[hoy.getMonth()]+' de '+hoy.getFullYear();
-  var jsPDF=window.jspdf.jsPDF,doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
-  var ml=20,cw=170,y=20;
-  function nl(h){y+=h;}
-  function chk(need){if(y+need>270){doc.addPage();y=20;}}
-  doc.setFillColor(15,18,16);doc.rect(0,0,210,40,'F');
-  doc.setFont('helvetica','bold');doc.setFontSize(16);doc.setTextColor(255,255,246);doc.text('LA CURADURIA',ml,16);
-  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(143,175,130);doc.text('CONTRATO DE NOTA CONVERTIBLE · BORRADOR',ml,24);doc.text('lacuraduria.net · Bogota, Colombia · 2026',ml,30);
-  doc.setFillColor(255,115,108);doc.rect(0,40,210,1.5,'F');y=52;
-  doc.setFont('helvetica','bold');doc.setFontSize(13);doc.setTextColor(30,30,30);doc.text('ACUERDO DE NOTA CONVERTIBLE',ml,y);nl(7);
-  doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(90,90,90);doc.text('Bogota, Colombia, '+fecha,ml,y);nl(12);
-  function sec(t){chk(16);doc.setFillColor(245,242,236);doc.rect(ml,y-4,cw,10,'F');doc.setDrawColor(221,217,208);doc.rect(ml,y-4,cw,10,'S');doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(232,71,63);doc.text(t.toUpperCase(),ml+4,y+2);nl(12);}
-  function bod(t){var li=doc.splitTextToSize(t,cw);chk(li.length*5.5+4);doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(30,30,30);doc.text(li,ml,y);nl(li.length*5.5+3);}
-  function kv(k,v){chk(10);doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30,30,30);doc.text(k+':',ml,y);doc.setFont('helvetica','normal');doc.setTextColor(50,50,50);doc.text(v,ml+50,y);nl(7);}
-  function hi(t){chk(14);doc.setFillColor(255,245,244);doc.setDrawColor(255,115,108);doc.setLineWidth(.4);doc.roundedRect(ml,y-3,cw,10,1,1,'FD');doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(200,50,40);doc.text(t,ml+4,y+3.5);nl(14);}
-  sec('1. Las Partes');doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30,30,30);doc.text('EMISOR:',ml,y);nl(6);kv('Razon social','La Curaduria S.A.S.');kv('Representante','Nicolas Pava');kv('Correo','nicolas.pava@lacuraduria.net');kv('Telefono','+57 304 413 8497');nl(4);
-  doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30,30,30);doc.text('INVERSIONISTA:',ml,y);nl(6);kv('Nombre',n);kv('Documento',d);kv('Correo',e);if(tel)kv('Telefono',tel);kv('Ciudad',ciudad);nl(4);
-  sec('2. Objeto');bod('El Inversionista otorga al Emisor un prestamo bajo la modalidad de Nota Convertible que podra convertirse en participacion accionaria de La Curaduria S.A.S.');nl(2);
-  sec('3. Terminos Financieros');hi('Monto de la inversion: '+mstr);kv('Instrumento','Nota Convertible');kv('Techo de valoracion','$2.000.000.000 COP');kv('Interes anual','8%');kv('Descuento de conversion','20% sobre el precio de la siguiente ronda');kv('Vencimiento','24 meses desde la fecha de firma');nl(4);
-  sec('4. Conversion');bod('La Nota se convertira automaticamente en acciones al ocurrir una ronda calificada o valoracion formal. Precio: el menor entre (a) precio ronda x 0.80 y (b) Cap de valoracion dividido acciones totales.');nl(4);
-  sec('5. Liquidacion Preferente');bod('En caso de liquidacion, el Inversionista tendra derecho a recuperar primero su capital antes de cualquier distribucion a los accionistas ordinarios.');nl(4);
-  sec('6. Derechos del Inversionista');bod('Informes financieros trimestrales. Derecho preferencial en futuras rondas. Notificacion de eventos de liquidez. Participacion en sesiones de actualizacion.');nl(4);
-  sec('7. Confidencialidad');bod('Toda la informacion compartida es estrictamente confidencial por cinco (5) anos desde la fecha de firma.');nl(4);
-  sec('8. Ley Aplicable');bod('Este acuerdo se rige por las leyes de Colombia. Controversias: arbitraje ante la Camara de Comercio de Bogota.');nl(10);
-  chk(60);doc.setFillColor(245,242,236);doc.rect(ml,y,cw,55,'F');doc.setDrawColor(221,217,208);doc.rect(ml,y,cw,55,'S');doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(232,71,63);doc.text('FIRMAS',ml+4,y+8);nl(14);
-  doc.setDrawColor(150,150,150);doc.setLineWidth(.3);doc.line(ml+4,y+12,ml+75,y+12);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(30,30,30);doc.text('Nicolas Pava',ml+4,y+17);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(90,90,90);doc.text('Representante Legal',ml+4,y+22);
-  doc.line(ml+95,y+12,ml+cw-4,y+12);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(30,30,30);doc.text(n,ml+95,y+17);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(90,90,90);doc.text('Doc: '+d,ml+95,y+22);nl(38);
-  var tp=doc.internal.getNumberOfPages();
-  for(var i=1;i<=tp;i++){doc.setPage(i);doc.setFillColor(15,18,16);doc.rect(0,285,210,12,'F');doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(143,175,130);doc.text('La Curaduria · Nota Convertible · BORRADOR · '+fecha,ml,292);doc.text('Pag. '+i+'/'+tp,190,292,{align:'right'});}
-  for(var p=1;p<=tp;p++){doc.setPage(p);doc.setFont('helvetica','bold');doc.setFontSize(52);doc.setTextColor(255,115,108);doc.setGState(new doc.GState({opacity:.04}));doc.text('BORRADOR',105,160,{align:'center',angle:45});doc.setGState(new doc.GState({opacity:1}));}
-  doc.save('LaCuraduria_NotaConvertible_'+n.replace(/\s+/g,'_')+'_'+hoy.getFullYear()+'.pdf');
-}
-
-var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('on');});},{threshold:0,rootMargin:'0px 0px -20px 0px'});
-document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
-
-var secs2=Array.from(document.querySelectorAll('section[id]'));
-var navlinks=Array.from(document.querySelectorAll('.na'));
-window.addEventListener('scroll',function(){var y2=window.scrollY+80,a='';secs2.forEach(function(s){if(s.offsetTop<=y2)a=s.id;});navlinks.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')=='#'+a);});},{passive:true});
-</script>
-<script>
-// SIMULADOR
-function sfmt(n){return'$'+Math.round(n).toLocaleString('es-CO')+' COP';}
-
-// ── BREVO ──
-var BREVO_KEY='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';
-
-async function brevoAddContact(nombre, apellido, email, atributos){
-  try {
-    await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': BREVO_KEY
-      },
-      body: JSON.stringify({
-        email: email,
-        firstName: nombre,
-        lastName: apellido || '',
-        listIds: [atributos.listId],
-        attributes: atributos.extra || {},
-        updateEnabled: true
-      })
-    });
-  } catch(e){ console.warn('Brevo contact:', e); }
-}
-
-async function brevoNotify(asunto, html){
-  try {
-    await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': BREVO_KEY
-      },
-      body: JSON.stringify({
-        sender: { name: 'La Curaduría Hub', email: 'nicolas.pava@lacuraduria.net' },
-        to: [{ email: 'nicolas.pava@lacuraduria.net', name: 'Nicolás Pava' }],
-        subject: asunto,
-        htmlContent: html
-      })
-    });
-  } catch(e){ console.warn('Brevo notify:', e); }
-}
-function updSim(){
-  var inv=parseInt(document.getElementById('sl').value);
-  document.getElementById('sv').textContent=sfmt(inv);
-  document.getElementById('sr3').textContent=sfmt(inv*3);
-  document.getElementById('sr5').textContent=sfmt(inv*5);
-  document.getElementById('sr10').textContent=sfmt(inv*10);
-  document.getElementById('spart').textContent=(inv/2000000000*100).toFixed(2)+'%';
-  document.getElementById('sfrase').innerHTML='Con <strong style="color:var(--cream)">'+sfmt(inv)+'</strong> hoy, en el escenario base tendrías <strong style="color:var(--coral)">'+sfmt(inv*5)+'</strong> en 2030 — y hasta <strong style="color:var(--cyan)">'+sfmt(inv*10)+'</strong> en el escenario optimista.';
-}
-document.getElementById('sl').addEventListener('input',updSim);
-updSim();
-
-// FORMULARIO
-document.getElementById('f-btn').addEventListener('click',function(){
-  var n=document.getElementById('f-nombre').value.trim();
-  var e=document.getElementById('f-email').value.trim();
-  var m=document.getElementById('f-monto').value;
-  if(!n||!e){alert('Por favor completa nombre y email.');return;}
-  if(!m){alert('Por favor selecciona un rango de inversión.');return;}
-  var ap=document.getElementById('f-apellido').value,tel=document.getElementById('f-tel').value,msg=document.getElementById('f-msg').value;
-  document.getElementById('ffields').style.display='none';
-  document.getElementById('fsuccess').style.display='block';
-  // Brevo: agregar a lista Interesados en Invertir (list 3) y notificar
-  brevoAddContact(n, ap, e, {listId: 4, extra: {TELEFONO: tel, MONTO_INTERES: m, MENSAJE: msg, FECHA: new Date().toLocaleDateString('es-CO')}});
-  brevoNotify(
-    '💰 Nuevo interesado en invertir — ' + n + ' ' + ap,
-    '<h2>Nuevo interesado en invertir</h2><p><b>Nombre:</b> ' + n + ' ' + ap + '</p><p><b>Email:</b> ' + e + '</p><p><b>Teléfono:</b> ' + tel + '</p><p><b>Monto de interés:</b> ' + m + '</p><p><b>Mensaje:</b> ' + (msg||'—') + '</p><p><b>Fecha:</b> ' + new Date().toLocaleString('es-CO') + '</p><p><b>Fuente:</b> Investor Hub · lacuraduria.net/hub</p>'
-  );
-  var sub=encodeURIComponent('Interés en invertir — La Curaduría');
-  var body=encodeURIComponent('Nombre: '+n+' '+ap+'\nEmail: '+e+'\nTeléfono: '+tel+'\nMonto: '+m+'\n\n'+msg+'\n\n--- NDA firmado al ingresar ---');
-  setTimeout(function(){window.location.href='mailto:nicolas.pava@lacuraduria.net?subject='+sub+'&body='+body;},800);
-});
-
-// CONTRATO
-function updC(){
-  var n=(document.getElementById('c-n').value.trim()+' '+document.getElementById('c-a').value.trim()).trim();
-  var d=document.getElementById('c-d').value.trim(),e=document.getElementById('c-e').value.trim(),ms=document.getElementById('c-m').value;
-  var mstr=ms?'$'+parseInt(ms).toLocaleString('es-CO')+' COP':'___';
-  var hoy=new Date(),meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-  var fecha=hoy.getDate()+' de '+meses[hoy.getMonth()]+' de '+hoy.getFullYear();
-  if(!n&&!d&&!e){document.getElementById('cprev').innerHTML='Completa los campos para ver la vista previa.';return;}
-  document.getElementById('cprev').innerHTML='El día <b>'+fecha+'</b>, <b>'+(n||'___')+'</b> (Doc. <b>'+(d||'___')+'</b>) invierte <span>'+mstr+'</span> en <b>La Curaduría S.A.S.</b> mediante nota convertible con <span>20%</span> de descuento y techo de <span>$2.000.000.000 COP</span>.';
-}
-
-function genPDF(){
-  var n=(document.getElementById('c-n').value.trim()+' '+document.getElementById('c-a').value.trim()).trim();
-  var d=document.getElementById('c-d').value.trim(),e=document.getElementById('c-e').value.trim(),ms=document.getElementById('c-m').value;
-  if(!n||!d||!e||!ms){alert('Completa nombre, documento, email y monto.');return;}
-  var monto=parseInt(ms),mstr='$'+monto.toLocaleString('es-CO')+' COP';
-  var tel=document.getElementById('c-t').value,ciudad=document.getElementById('c-c').value||'Bogotá, Colombia';
-  var hoy=new Date(),meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-  var fecha=hoy.getDate()+' de '+meses[hoy.getMonth()]+' de '+hoy.getFullYear();
-  var jsPDF=window.jspdf.jsPDF,doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
-  var ml=20,cw=170,y=20;
-  function nl(h){y+=h;}function chk(need){if(y+need>270){doc.addPage();y=20;}}
-  doc.setFillColor(15,18,16);doc.rect(0,0,210,40,'F');
-  doc.setFont('helvetica','bold');doc.setFontSize(16);doc.setTextColor(255,255,246);doc.text('LA CURADURÍA',ml,16);
-  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(143,175,130);doc.text('CONTRATO DE NOTA CONVERTIBLE · BORRADOR',ml,24);doc.text('lacuraduria.net · Bogotá, Colombia · 2026',ml,30);
-  doc.setFillColor(255,115,108);doc.rect(0,40,210,1.5,'F');y=52;
-  doc.setFont('helvetica','bold');doc.setFontSize(13);doc.setTextColor(30,30,30);doc.text('ACUERDO DE NOTA CONVERTIBLE',ml,y);nl(7);
-  doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(90,90,90);doc.text('Bogotá, Colombia, '+fecha,ml,y);nl(12);
-  function sec(t){chk(16);doc.setFillColor(245,242,236);doc.rect(ml,y-4,cw,10,'F');doc.setDrawColor(221,217,208);doc.rect(ml,y-4,cw,10,'S');doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(232,71,63);doc.text(t.toUpperCase(),ml+4,y+2);nl(12);}
-  function bod(t){var li=doc.splitTextToSize(t,cw);chk(li.length*5.5+4);doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(30,30,30);doc.text(li,ml,y);nl(li.length*5.5+3);}
-  function kv(k,v){chk(10);doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30,30,30);doc.text(k+':',ml,y);doc.setFont('helvetica','normal');doc.setTextColor(50,50,50);doc.text(v,ml+45,y);nl(7);}
-  function hi(t){chk(14);doc.setFillColor(255,245,244);doc.setDrawColor(255,115,108);doc.setLineWidth(.4);doc.roundedRect(ml,y-3,cw,10,1,1,'FD');doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(200,50,40);doc.text(t,ml+4,y+3.5);nl(14);}
-  sec('1. Las Partes');doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30,30,30);doc.text('EMISOR:',ml,y);nl(6);kv('Razón social','La Curaduría S.A.S.');kv('Representante','Nicolás Pava');kv('Correo','nicolas.pava@lacuraduria.net');kv('Teléfono','+57 304 413 8497');nl(4);
-  doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30,30,30);doc.text('INVERSIONISTA:',ml,y);nl(6);kv('Nombre',n);kv('Documento',d);kv('Correo',e);if(tel)kv('Teléfono',tel);kv('Ciudad',ciudad);nl(4);
-  sec('2. Objeto');bod('El Inversionista otorga al Emisor un préstamo bajo la modalidad de Nota Convertible que podrá convertirse en participación accionaria de La Curaduría S.A.S.');nl(2);
-  sec('3. Términos Financieros');hi('Monto de la inversión: '+mstr);kv('Instrumento','Nota Convertible (SAFE adaptado)');kv('Techo de valoración','$2.000.000.000 COP');kv('Descuento','20% sobre el precio de la siguiente ronda');kv('Vencimiento','36 meses desde la fecha de firma');kv('Interés','No genera intereses');nl(4);
-  sec('4. Mecanismo de Conversión');bod('La Nota se convertirá automáticamente en acciones al cerrar una ronda calificada. Precio: el menor entre (a) precio ronda × 0.80, y (b) Techo ÷ acciones totales.');nl(4);
-  sec('5. Derechos del Inversionista');bod('· Informes financieros trimestrales\n· Derecho preferencial en futuras rondas\n· Notificación de eventos de liquidez\n· Participación en sesiones de actualización');nl(4);
-  sec('6. Confidencialidad');bod('Toda la información compartida es estrictamente confidencial por cinco (5) años desde la fecha de firma.');nl(4);
-  sec('7. Factores de Riesgo');bod('La inversión implica riesgo de pérdida total del capital e imposibilidad de liquidez en el corto plazo. Los retornos proyectados son ilustrativos.');nl(4);
-  sec('8. Ley Aplicable');bod('Este acuerdo se rige por las leyes de Colombia. Controversias: arbitraje ante la Cámara de Comercio de Bogotá.');nl(10);
-  chk(60);doc.setFillColor(245,242,236);doc.rect(ml,y,cw,55,'F');doc.setDrawColor(221,217,208);doc.rect(ml,y,cw,55,'S');doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(232,71,63);doc.text('FIRMAS',ml+4,y+8);nl(14);
-  doc.setDrawColor(150,150,150);doc.setLineWidth(.3);doc.line(ml+4,y+12,ml+75,y+12);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(30,30,30);doc.text('Nicolás Pava',ml+4,y+17);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(90,90,90);doc.text('Representante Legal · La Curaduría S.A.S.',ml+4,y+22);
-  doc.line(ml+95,y+12,ml+cw-4,y+12);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(30,30,30);doc.text(n,ml+95,y+17);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(90,90,90);doc.text('Doc: '+d,ml+95,y+22);nl(38);
-  var tp=doc.internal.getNumberOfPages();
-  for(var i=1;i<=tp;i++){doc.setPage(i);doc.setFillColor(15,18,16);doc.rect(0,285,210,12,'F');doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(143,175,130);doc.text('La Curaduría · Nota Convertible · BORRADOR · '+fecha,ml,292);doc.text('Pág. '+i+'/'+tp,190,292,{align:'right'});}
-  for(var p=1;p<=tp;p++){doc.setPage(p);doc.setFont('helvetica','bold');doc.setFontSize(52);doc.setTextColor(255,115,108);doc.setGState(new doc.GState({opacity:.04}));doc.text('BORRADOR',105,160,{align:'center',angle:45});doc.setGState(new doc.GState({opacity:1}));}
-  doc.save('LaCuraduria_NotaConvertible_'+n.replace(/\s+/g,'_')+'_'+hoy.getFullYear()+'.pdf');
-}
-
-// REVEAL
-var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('on');});},{threshold:0,rootMargin:"0px 0px -20px 0px"});
-document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
-
-// NAV ACTIVE
-var secs=Array.from(document.querySelectorAll('section[id]'));
-var navlinks=Array.from(document.querySelectorAll('.na'));
-window.add
+</body>
+</html>
