@@ -808,9 +808,9 @@ function genPDF(){
   kv('Nombre',n);kv('Documento',d);kv('Correo',e);if(tel)kv('Telefono',tel);nl(4);
   sec('2. OBJETO');bod('El Inversionista otorga al Emisor un prestamo bajo la modalidad de Nota Convertible que podra convertirse en participacion accionaria de La Curaduria S.A.S.');nl(2);
   sec('3. TERMINOS');kv('Instrumento','Nota Convertible');kv('Inversion minima','$2.000.000 COP');kv('Cap de valoracion','$2.000.000.000 COP');kv('Interes anual','8%');kv('Descuento','20%');kv('Vencimiento','24 meses');nl(4);
-  sec('4. CONVERSION');bod('La Nota se convertira automaticamente en acciones al ocurrir una ronda calificada o valoracion formal.');nl(4);
-  sec('5. LIQUIDACION');bod('En caso de liquidacion, el Inversionista recupera su capital antes de cualquier distribucion a accionistas ordinarios.');nl(10);
-  chk(50);doc.setFillColor(245,242,236);doc.rect(ml,y,cw,44,'F');
+  sec('4. CONVERSION');bod('La Nota se convertira automaticamente en acciones al ser registrada en la cámara de comercio.');nl(4);
+  sec('5. LIQUIDACION');bod('En caso de liquidación, disolución o cierre de la Sociedad, y una vez pagadas las obligaciones legales y los acreedores con prelación superior, el Inversionista tendrá derecho a recuperar, hasta donde alcancen los recursos disponibles, el capital efectivamente invertido antes de cualquier distribución a los accionistas ordinarios.');nl(6);
+  chk(60);doc.setFillColor(245,242,236);doc.rect(ml,y,cw,44,'F');
   doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(232,71,63);doc.text('FIRMAS',ml+4,y+8);nl(14);
   doc.line(ml+4,y+10,ml+72,y+10);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(30,30,30);doc.text('Nicolas Pava',ml+4,y+15);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(90,90,90);doc.text('Representante Legal',ml+4,y+21);
   doc.line(ml+92,y+10,ml+cw-4,y+10);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(30,30,30);doc.text(n,ml+92,y+15);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(90,90,90);doc.text('Doc: '+d,ml+92,y+21);
