@@ -1,8 +1,5 @@
 {
   "rewrites": [
-    { "source": "/hub", "destination": "/hub.html" },
-    { "source": "/terminos", "destination": "/terminos.html" },
-    { "source": "/privacidad", "destination": "/privacidad.html" },
-    { "source": "/contrato", "destination": "/contrato.html" }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
