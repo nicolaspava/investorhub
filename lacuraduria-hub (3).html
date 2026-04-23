@@ -4,1093 +4,702 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Curaduría · Investor Hub</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;600;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --coral:#FF736C;--bg:#171C14;--cream:#FFFFF6;
-  --green:#00AA74;--yellow:#FFC335;--cyan:#75E6F9;
-  --surf:#1E2419;--bord:#2E3828;--t2:#8FAF82;--t3:#5A7A50;
+  --coral:#FF736C;--bg:#0F1210;--bg2:#141814;--cream:#FFFFF6;
+  --cyan:#75E6F9;--green:#00AA74;--surf:#1A1E19;--surf2:#202520;
+  --bord:#252C24;--bord2:#2E3630;--t1:#FFFFF6;--t2:#A8C0A0;--t3:#607860;--t4:#384838;
 }
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--cream);font-family:'Barlow',sans-serif;overflow-x:hidden;}
-
-/* ── NDA GATE ── */
-#gate{
-  position:fixed;inset:0;z-index:9000;
-  background:rgba(10,12,10,.88);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  display:flex;align-items:center;justify-content:center;
-  padding:24px;
-  transition:opacity .5s ease, visibility .5s ease;
-}
-#gate.hidden{opacity:0;visibility:hidden;pointer-events:none;}
-
-.gate-box{
-  max-width:540px;width:100%;
-  background:#130D0D;
-  border:1px solid #3A1F1F;
-  border-top:3px solid var(--coral);
-  border-radius:12px;
-  padding:28px 36px;
-  max-height:95vh;
-  overflow-y:auto;
-}
-.gate-logo{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
-.gate-logo svg{width:32px;height:32px;}
-.gate-wordmark{font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;}
-.gate-wordmark b{color:var(--coral);}
-
-.gate-eye{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:8px;}
-.gate-title{font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.05;margin-bottom:14px;color:#FFFFF6;}
-.gate-title em{color:var(--coral);font-style:normal;}
-.gate-body{font-size:16px;font-weight:400;color:#C8CFC8;line-height:1.75;margin-bottom:24px;}
-.gate-body b{color:var(--cream);font-weight:600;}
-
-.gate-nda{
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,115,108,.15);
-  border-left:3px solid rgba(255,115,108,.5);
-  border-radius:0 8px 8px 0;
-  padding:13px 16px;margin-bottom:18px;
-}
-.gate-nda-title{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;}
-.gate-nda-text{font-size:13px;font-weight:400;color:#C8CFC8;line-height:1.7;}
-
-.gate-check{display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;cursor:pointer;}
-.gate-check input{width:18px;height:18px;accent-color:var(--coral);cursor:pointer;flex-shrink:0;margin-top:2px;}
-.gate-check-label{font-size:13px;font-weight:400;color:#C8CFC8;line-height:1.65;cursor:pointer;}
-.gate-check-label b{color:var(--cream);font-weight:600;}
-
-.gate-btn{
-  width:100%;background:var(--coral);color:var(--bg);
-  border:none;border-radius:6px;
-  font-family:'DM Mono',monospace;font-size:11px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
-  padding:13px;cursor:pointer;
-  transition:background .2s,opacity .2s,transform .15s;
-  opacity:.4;pointer-events:none;
-}
-.gate-btn.active{opacity:1;pointer-events:all;}
-.gate-btn.active:hover{transform:translateY(-1px);opacity:.9;}
-.gate-btn.loading{background:var(--cyan) !important;color:#0D100B !important;opacity:1 !important;pointer-events:none;}
-
-.gate-name-row{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
-.gate-field{flex:1;}
-.gate-field label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9CA3AF;display:block;margin-bottom:5px;}
-.gate-field input{
-  width:100%;background:#130D0D;border:1px solid #3A1F1F;border-radius:6px;
-  padding:10px 12px;font-family:'Barlow',sans-serif;font-size:14px;font-weight:400;
-  color:#FFFFF6;outline:none;transition:border-color .2s;
-}
-.gate-field input:focus{border-color:var(--coral);}
-.gate-field input::placeholder{color:#4A5245;}
-
-/* ── HUB NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:999;height:60px;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 48px;
-  background:rgba(23,28,20,.96);border-bottom:1px solid var(--bord);
-}
+body{background:var(--bg);color:var(--t1);font-family:'Barlow',sans-serif;overflow-x:hidden;font-size:16px;}
+#gate{position:fixed;inset:0;z-index:9000;background:rgba(5,8,5,.96);display:flex;align-items:center;justify-content:center;padding:16px;}
+.gbox{width:100%;max-width:500px;background:#130D0D;border:1px solid #3A1F1F;border-top:3px solid var(--coral);border-radius:10px;padding:28px 32px;max-height:95vh;overflow-y:auto;}
+.glogo{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+.gbrand{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);}
+.gbrand b{color:var(--coral);}
+.geye{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:8px;}
+.gtitle{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;color:var(--cream);margin-bottom:12px;}
+.gnda{background:rgba(255,115,108,.05);border-left:3px solid rgba(255,115,108,.5);border-radius:0 6px 6px 0;padding:12px 14px;margin-bottom:16px;}
+.gnda p{font-size:13px;color:#C8CFC8;line-height:1.7;}
+.grow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.gfield label{display:block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#9CA3AF;margin-bottom:4px;}
+.gfield input{width:100%;background:#0D0D0D;border:1px solid #3A1F1F;border-radius:5px;padding:9px 11px;font-size:14px;color:var(--cream);outline:none;font-family:'Barlow',sans-serif;transition:border-color .2s;}
+.gfield input:focus{border-color:var(--coral);}
+.gfield input::placeholder{color:#4A3030;}
+.gemail{margin-bottom:12px;}
+.gcheck{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;cursor:pointer;}
+.gcheck input[type=checkbox]{width:17px;height:17px;accent-color:var(--coral);flex-shrink:0;margin-top:2px;cursor:pointer;}
+.gcheck span{font-size:13px;color:#C8CFC8;line-height:1.6;}
+.gerr{display:none;font-size:11px;color:var(--coral);background:rgba(255,115,108,.08);border:1px solid rgba(255,115,108,.2);border-radius:4px;padding:7px 10px;margin-bottom:10px;font-family:'DM Mono',monospace;}
+.gbtn{display:block;width:100%;background:var(--coral);color:#0F1210;border:none;border-radius:5px;font-family:'DM Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:13px;cursor:pointer;transition:opacity .15s;}
+.gbtn:hover{opacity:.9;}
+.gbtn:disabled{opacity:.35;cursor:not-allowed;}
+.glegal{font-family:'DM Mono',monospace;font-size:10px;color:#404040;text-align:center;margin-top:10px;line-height:1.7;}
+.glegal a{color:#606060;text-decoration:underline;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:54px;display:flex;align-items:center;justify-content:center;background:rgba(15,18,16,.96);border-bottom:1px solid var(--bord);}
+.nav-inner{width:100%;max-width:1400px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;}
 .nl{display:flex;align-items:center;gap:10px;}
-.nl svg{width:28px;height:28px;}
-.nw{font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;}
-.nw b{color:var(--coral);}
-.nc{display:flex;gap:2px;}
-.na{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);text-decoration:none;padding:5px 10px;border-radius:3px;transition:color .15s;}
+.nsep{width:1px;height:16px;background:var(--bord2);}
+.n-hub-badge{display:flex;align-items:center;gap:6px;background:rgba(255,115,108,.07);border:1px solid rgba(255,115,108,.22);border-radius:3px;padding:4px 10px;}
+.n-hub-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--coral);flex-shrink:0;animation:hubpulse 2.4s ease-in-out infinite;}
+@keyframes hubpulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,115,108,.5);}50%{opacity:.7;box-shadow:0 0 0 4px rgba(255,115,108,0);}}
+.n-hub-badge-txt{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);}
+.nlinks{display:flex;}
+.na{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--t4);text-decoration:none;padding:5px 10px;border-radius:3px;transition:color .15s;}
 .na:hover,.na.on{color:var(--coral);}
-.nb{font-family:'DM Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--coral);color:var(--bg);padding:9px 18px;border-radius:4px;text-decoration:none;}
-.nb:hover{opacity:.85;}
-
-/* ── SHARED ── */
-.sec{padding:96px 48px;border-top:1px solid var(--bord);}
-.eye{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);margin-bottom:12px;}
-h2{font-size:clamp(26px,3.5vw,48px);font-weight:900;line-height:1.03;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:14px;}
-h2 em{color:var(--coral);font-style:normal;}
-.lead{font-size:17px;font-weight:300;color:var(--t2);line-height:1.8;max-width:600px;margin-bottom:48px;}
-.lead b{color:var(--cream);font-weight:600;}
-.chip{display:inline-block;font-family:'DM Mono',monospace;font-size:12px;padding:4px 9px;border-radius:3px;border:1px solid;text-transform:uppercase;letter-spacing:.07em;}
-
-/* ── HERO ── */
-#hero{
-  min-height:100vh;padding:100px 48px 72px;
-  display:flex;flex-direction:column;justify-content:center;
-  position:relative;overflow:hidden;border-top:none;
-}
-.hgrid{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 47px,rgba(46,56,40,.18) 47px,rgba(46,56,40,.18) 48px),repeating-linear-gradient(90deg,transparent,transparent 47px,rgba(46,56,40,.18) 47px,rgba(46,56,40,.18) 48px);}
-.hglow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,115,108,.07) 0%,transparent 70%);top:-150px;right:-100px;pointer-events:none;}
-.hero-inner{position:relative;z-index:1;max-width:820px;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,115,108,.1);border:1px solid rgba(255,115,108,.25);border-radius:4px;padding:6px 12px;margin-bottom:28px;}
-.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--coral);animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
-.hero-badge-txt{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);}
-.h1{font-size:clamp(44px,6vw,90px);font-weight:900;line-height:.93;letter-spacing:-.03em;text-transform:uppercase;}
-.h1 .cr{color:var(--coral);}
-.h1 .ol{-webkit-text-stroke:2px var(--cream);color:transparent;}
-.hero-sub{font-size:18px;font-weight:300;color:var(--t2);line-height:1.75;max-width:540px;margin-top:28px;}
-.hero-sub b{color:var(--cream);font-weight:600;}
-.hero-stats{display:flex;gap:40px;margin-top:44px;flex-wrap:wrap;}
-.hstat{display:flex;flex-direction:column;gap:4px;}
-.hstat-n{font-size:32px;font-weight:900;letter-spacing:-.02em;line-height:1;}
-.hstat-l{font-family:'DM Mono',monospace;font-size:14px;color:var(--t3);letter-spacing:.12em;text-transform:uppercase;}
-
-/* ── INFOGRAFÍA ── */
-.info-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--bord);border:1px solid var(--bord);border-radius:12px;overflow:hidden;margin-bottom:40px;}
-.info-card{background:var(--surf);padding:36px 28px;display:flex;flex-direction:column;gap:12px;transition:background .15s;}
-.info-card:hover{background:#212A1C;}
-.info-num{font-family:'DM Mono',monospace;font-size:14px;color:var(--t3);letter-spacing:.16em;text-transform:uppercase;}
-.info-head{font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1.3;}
-.info-body{font-size:15px;font-weight:300;color:var(--t2);line-height:1.7;flex:1;}
-.info-bar{height:2px;border-radius:1px;margin-top:6px;}
-
-.stat-75{background:var(--coral);border-radius:10px;padding:36px 44px;display:flex;align-items:flex-start;gap:36px;margin-bottom:40px;}
-.stat-75-n{font-size:80px;font-weight:900;letter-spacing:-.04em;color:var(--bg);line-height:1;flex-shrink:0;}
-.stat-75-txt{font-size:17px;font-weight:600;color:var(--bg);line-height:1.5;padding-top:8px;margin-bottom:8px;}
-.stat-75-src{font-family:'DM Mono',monospace;font-size:12px;color:rgba(23,28,20,.5);letter-spacing:.06em;text-transform:uppercase;line-height:1.6;}
-
-/* market */
-.mkt-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;}
-.mkt-card{background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:28px 24px;display:flex;flex-direction:column;gap:8px;}
-.mkt-tag{font-family:'DM Mono',monospace;font-size:13px;color:var(--t3);letter-spacing:.14em;text-transform:uppercase;}
-.mkt-badge{font-family:'DM Mono',monospace;font-size:11px;padding:2px 8px;border-radius:3px;border:1px solid;text-transform:uppercase;letter-spacing:.07em;width:fit-content;margin-top:2px;}
-.mkt-val{font-size:32px;font-weight:900;letter-spacing:-.02em;line-height:1;}
-.mkt-desc{font-size:14px;font-weight:300;color:var(--t2);line-height:1.6;}
-.mkt-note{font-family:'DM Mono',monospace;font-size:13px;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;}
-
-/* sol */
-.sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-.sol-card{background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:30px 24px;display:flex;flex-direction:column;gap:10px;transition:transform .15s,border-color .2s;}
-.sol-card:hover{transform:translateY(-3px);}
-.sol-n{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.13em;text-transform:uppercase;}
-.sol-h{font-size:20px;font-weight:900;text-transform:uppercase;}
-.sol-b{font-size:15px;font-weight:300;color:var(--t2);line-height:1.7;flex:1;}
-
-/* mono */
-.mono-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:32px;}
-.mono-card{background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:28px 22px;display:flex;flex-direction:column;gap:10px;transition:transform .15s;}
-.mono-card:hover{transform:translateY(-3px);}
-.mono-h{font-size:17px;font-weight:900;text-transform:uppercase;}
-.mono-b{font-size:15px;font-weight:300;color:var(--t2);line-height:1.65;flex:1;}
-
-/* ── PROTOTIPO ── */
-.proto-wrap{border:1px solid var(--bord);border-radius:12px;overflow:hidden;background:var(--surf);}
-.proto-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--bord);}
-.proto-dots{display:flex;gap:6px;}
-.proto-dot{width:10px;height:10px;border-radius:50%;}
-.proto-label{font-family:'DM Mono',monospace;font-size:14px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;}
-.proto-frame{width:100%;height:700px;border:none;display:block;}
-
-/* ── NOTA CONVERTIBLE ── */
-.nc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px;}
-.nc-card{background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:28px 24px;}
-.nc-card.accent{border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.04);}
-.nc-card-eye{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3);margin-bottom:10px;}
-.nc-card-title{font-size:18px;font-weight:900;text-transform:uppercase;margin-bottom:10px;}
-.nc-card-body{font-size:15px;font-weight:300;color:var(--t2);line-height:1.75;}
-.nc-card-body b{color:var(--cream);font-weight:600;}
-
-.nc-steps{display:flex;flex-direction:column;gap:0;}
-.nc-step{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--bord);}
-.nc-step:last-child{border-bottom:none;}
-.nc-step-n{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;color:var(--coral);flex-shrink:0;width:24px;margin-top:2px;}
-.nc-step-head{font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;margin-bottom:6px;}
-.nc-step-body{font-size:15px;font-weight:300;color:var(--t2);line-height:1.7;}
-.nc-step-body b{color:var(--cream);font-weight:600;}
-
-.nc-terms{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px;}
-.nc-term{background:var(--surf);border:1px solid var(--bord);border-radius:8px;padding:20px 18px;}
-.nc-term-lbl{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:8px;}
-.nc-term-val{font-size:22px;font-weight:900;letter-spacing:-.01em;margin-bottom:4px;}
-.nc-term-desc{font-size:14px;font-weight:300;color:var(--t2);line-height:1.6;}
-
-/* ── FORMULARIO ── */
-.form-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
-.form-left{}
-.form-right{}
-
-.form-box{background:var(--surf);border:1px solid var(--bord);border-radius:12px;padding:40px 36px;}
-.form-box-title{font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:8px;}
-.form-box-sub{font-size:15px;font-weight:300;color:var(--t2);line-height:1.7;margin-bottom:28px;}
-
-.field{margin-bottom:18px;}
-.field label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);display:block;margin-bottom:6px;}
-.field input,.field select,.field textarea{
-  width:100%;background:var(--bg);border:1px solid var(--bord);border-radius:6px;
-  padding:12px 16px;font-family:'Barlow',sans-serif;font-size:14px;font-weight:300;
-  color:var(--cream);outline:none;transition:border-color .2s;
-}
+.ncta{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--coral);color:var(--bg);padding:8px 16px;border-radius:3px;text-decoration:none;}
+.ncta:hover{opacity:.85;}
+@media(max-width:860px){.nav-inner{padding:0 16px;}.nlinks{display:none;}}
+.sec{padding:80px 0;border-top:1px solid var(--bord);}
+.sec-inner{max-width:1400px;margin:0 auto;padding:0 40px;}
+.eye{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;}
+.eyec{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
+.h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(28px,3.5vw,48px);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:28px;}
+.h2 em{color:var(--coral);font-style:normal;}
+#hero{min-height:100vh;padding:120px 0 80px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;border-top:none;}
+.hbg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 80% 20%,rgba(255,115,108,.06) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 10% 80%,rgba(117,230,249,.03) 0%,transparent 60%);}
+.hgrid{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(37,44,36,.4) 59px,rgba(37,44,36,.4) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(37,44,36,.4) 59px,rgba(37,44,36,.4) 60px);}
+.hinner{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 40px;width:100%;}
+.seg-title br{display:none;}@keyframes logspin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.hroute{display:inline-flex;align-items:center;gap:6px;background:rgba(255,115,108,.08);border:1px solid rgba(255,115,108,.2);border-radius:3px;padding:5px 12px;margin-bottom:28px;}
+.hroute span{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);}
+.hroute .sep{color:rgba(255,115,108,.35);}
+.hdesc{font-size:17px;font-weight:300;color:var(--t2);line-height:1.8;max-width:560px;margin-bottom:12px;}
+.hdesc b{color:var(--cream);font-weight:600;}
+.htagline{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--t3);}
+.htagline span{color:var(--cream);}
+#resumen{background:var(--bg2);}
+.rgrid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--bord);border-radius:10px;overflow:hidden;margin-bottom:40px;}
+.rcol{padding:30px;}
+.rcol+.rcol{border-left:1px solid var(--bord);}
+.rcol-title{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--t3);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--bord);}
+.stat75{background:var(--coral);border-radius:8px;padding:18px 20px;margin-bottom:10px;display:flex;align-items:flex-start;gap:12px;}
+.stat75-n{font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;color:#0F1210;line-height:1;flex-shrink:0;}
+.stat75-t{font-size:13px;font-weight:600;color:#0F1210;line-height:1.5;padding-top:4px;}
+.scard{background:var(--surf);border:1px solid var(--bord2);border-radius:6px;padding:12px 14px;margin-bottom:8px;}
+.scard p{font-size:13px;color:var(--t2);line-height:1.65;}
+.scard p b{color:var(--cream);font-weight:600;}
+.pitem{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--bord);align-items:flex-start;}
+.pitem:last-child{border-bottom:none;padding-bottom:0;}
+.pn{font-family:'DM Mono',monospace;font-size:10px;color:var(--coral);flex-shrink:0;margin-top:2px;}
+.ptxt{font-size:13px;color:var(--t2);line-height:1.65;}
+.ptxt b{color:var(--cream);font-weight:600;}
+.sheader{display:grid;grid-template-columns:1fr 2fr;gap:40px;align-items:start;margin-bottom:24px;}
+.scards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bord);border:1px solid var(--bord);border-radius:10px;overflow:hidden;margin-bottom:28px;}
+.scard2{background:var(--surf);padding:24px 20px;display:flex;flex-direction:column;gap:10px;transition:background .2s;}
+.scard2:hover{background:var(--surf2);}
+.scard2-n{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;}
+.scard2-h{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:700;text-transform:uppercase;}
+.scard2-b{font-size:13px;color:var(--t2);line-height:1.65;flex:1;}
+.tag{font-family:'DM Mono',monospace;font-size:9px;padding:3px 8px;border-radius:2px;border:1px solid;text-transform:uppercase;letter-spacing:.08em;width:fit-content;}
+.mkt3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;}
+.mkt3-card{background:var(--surf);border:1px solid var(--bord);border-radius:8px;padding:20px 18px;}
+.mkt3-lbl{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.mkt3-val{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;margin-bottom:4px;}
+.mkt3-desc{font-size:12px;color:var(--t3);line-height:1.5;}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.mcard{background:var(--surf);border:1px solid var(--bord);border-radius:8px;padding:20px 18px;display:flex;flex-direction:column;gap:8px;transition:transform .15s;}
+.mcard:hover{transform:translateY(-3px);}
+.mcard-h{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;}
+.mcard-b{font-size:13px;color:var(--t2);line-height:1.65;flex:1;}
+.pcard{background:var(--surf);border:1px solid var(--bord);border-radius:10px;overflow:hidden;}
+.pbar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--bord);}
+.pdots{display:flex;gap:5px;}
+.pdot{width:9px;height:9px;border-radius:50%;}
+.pbody{padding:48px 40px;text-align:center;background:linear-gradient(135deg,#161A15 0%,#0F1210 100%);}
+.pphone{display:inline-block;background:#0A0D0A;border:1.5px solid var(--bord2);border-radius:28px;padding:10px;margin-bottom:24px;}
+.pscreen{width:180px;height:320px;background:linear-gradient(160deg,#1A201A 0%,#141814 100%);border-radius:20px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.pstop{height:48px;background:rgba(255,115,108,.06);border-bottom:1px solid rgba(255,115,108,.12);display:flex;align-items:center;justify-content:center;}
+.pstop span{font-family:'DM Mono',monospace;font-size:9px;color:var(--coral);letter-spacing:.1em;text-transform:uppercase;}
+.psbody{flex:1;padding:12px;display:flex;flex-direction:column;gap:6px;}
+.psline{height:6px;background:var(--bord2);border-radius:3px;}
+.psblock{height:52px;background:var(--surf);border:1px solid var(--bord2);border-radius:6px;}
+.psnav{height:40px;background:var(--surf);border-top:1px solid var(--bord2);display:flex;align-items:center;justify-content:space-around;padding:0 16px;}
+.pnavdot{width:14px;height:14px;border-radius:50%;background:var(--bord2);}
+.pnavdot.on{background:rgba(255,115,108,.5);}
+.pcta{display:inline-block;background:var(--coral);color:var(--bg);font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:13px 30px;border-radius:4px;text-decoration:none;}
+.pcta:hover{opacity:.9;}
+.simwrap{max-width:600px;}
+.simlbl{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.simlbl-txt{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:.12em;text-transform:uppercase;}
+.simval{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;}
+input[type=range]{width:100%;accent-color:var(--coral);height:4px;cursor:pointer;}
+.simrange{display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:9px;color:var(--t4);margin-top:4px;margin-bottom:20px;}
+.simcards{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.simcard{background:var(--surf);border:1px solid var(--bord);border-radius:6px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;}
+.simcard.feat{border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.04);}
+.simcard-lbl{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;}
+.simcard-sub{font-family:'DM Mono',monospace;font-size:9px;color:var(--t4);letter-spacing:.06em;margin-top:2px;}
+.simcard-val{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;}
+.simmeta{background:var(--surf2);border:1px solid var(--bord);border-radius:6px;padding:12px 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+.simmeta-lbl{font-family:'DM Mono',monospace;font-size:9px;color:var(--t4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;}
+.simmeta-val{font-size:15px;font-weight:700;}
+.simfrase{background:rgba(255,115,108,.05);border-left:2px solid var(--coral);padding:12px 14px;border-radius:0 5px 5px 0;font-size:13px;color:var(--t2);line-height:1.7;}
+#oportunidad{background:var(--bg2);}
+.ronda-big{background:var(--coral);border-radius:10px;padding:26px 30px;margin-bottom:16px;}
+.ronda-lbl{font-family:'DM Mono',monospace;font-size:10px;color:rgba(15,18,16,.6);letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px;}
+.ronda-n{font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;color:#0F1210;line-height:1;margin-bottom:6px;}
+.ronda-sub{font-size:14px;font-weight:600;color:rgba(15,18,16,.7);}
+.distcard{background:var(--surf);border:1px solid var(--bord);border-radius:8px;padding:18px;margin-bottom:28px;}
+.distrow{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.distrow:last-child{margin-bottom:0;}
+.distn{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;width:44px;}
+.distbar{flex:1;height:4px;background:var(--bord2);border-radius:2px;overflow:hidden;}
+.distfill{height:100%;border-radius:2px;}
+.distlbl{font-size:12px;color:var(--t3);}
+.nclayout{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.ncterms{border:1px solid var(--bord);border-radius:8px;overflow:hidden;}
+.ncterm{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-bottom:1px solid var(--bord);transition:background .15s;}
+.ncterm:last-child{border-bottom:none;}
+.ncterm:hover{background:var(--surf2);}
+.ncterm-lbl{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;}
+.ncterm-val{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;}
+.acc{border:1px solid var(--bord);border-radius:8px;overflow:hidden;margin-top:14px;}
+.acc-item{border-bottom:1px solid var(--bord);}
+.acc-item:last-child{border-bottom:none;}
+.acc-head{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;cursor:pointer;user-select:none;transition:background .15s;}
+.acc-head:hover{background:var(--surf2);}
+.acc-head-txt{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;}
+.acc-arrow{font-family:'DM Mono',monospace;font-size:14px;color:var(--coral);transition:transform .2s;}
+.acc-item.open .acc-arrow{transform:rotate(45deg);}
+.acc-body{display:none;padding:0 18px 14px;font-size:13px;color:var(--t2);line-height:1.75;}
+.acc-item.open .acc-body{display:block;}
+.acc-body ul{list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:8px;}
+.acc-body li{padding-left:12px;position:relative;}
+.acc-body li::before{content:'—';position:absolute;left:0;color:var(--coral);}
+.ncret{display:flex;flex-direction:column;gap:8px;}
+.ncret-card{border:1px solid var(--bord);border-radius:7px;padding:14px 16px;}
+.ncret-n{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;line-height:1;}
+.ncret-l{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;}
+.ncret-d{font-size:12px;color:var(--t3);margin-top:3px;}
+.clayout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+.fbox{background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:26px;}
+.ftitle{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:.02em;margin-bottom:5px;}
+.fsub{font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:18px;}
+.field{margin-bottom:12px;}
+.field label{display:block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:4px;}
+.field input,.field select,.field textarea{width:100%;background:var(--bg);border:1px solid var(--bord2);border-radius:5px;padding:10px 12px;font-family:'Barlow',sans-serif;font-size:14px;color:var(--cream);outline:none;transition:border-color .2s;}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--coral);}
-.field input::placeholder,.field textarea::placeholder{color:var(--t3);}
+.field input::placeholder,.field textarea::placeholder{color:var(--t4);}
 .field select{appearance:none;cursor:pointer;}
-.field textarea{resize:vertical;min-height:100px;}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-
-.nda-check{display:flex;align-items:flex-start;gap:12px;margin-bottom:24px;padding:16px 18px;background:rgba(255,115,108,.04);border:1px solid rgba(255,115,108,.2);border-radius:8px;}
-.nda-check input{width:17px;height:17px;accent-color:var(--coral);cursor:pointer;flex-shrink:0;margin-top:2px;}
-.nda-check-label{font-size:14px;font-weight:300;color:var(--t2);line-height:1.65;cursor:pointer;}
-.nda-check-label b{color:var(--cream);font-weight:600;}
-
-.submit-btn{
-  width:100%;background:var(--coral);color:var(--bg);
-  border:none;border-radius:6px;
-  font-family:'DM Mono',monospace;font-size:11px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
-  padding:16px;cursor:pointer;
-  transition:opacity .2s,transform .15s;
-}
-.submit-btn:hover{opacity:.9;transform:translateY(-1px);}
-
-.form-success{
-  display:none;text-align:center;padding:40px 20px;
-}
-.form-success-icon{font-size:40px;margin-bottom:16px;}
-.form-success-title{font-size:20px;font-weight:900;text-transform:uppercase;margin-bottom:10px;}
-.form-success-body{font-size:14px;font-weight:300;color:var(--t2);line-height:1.7;}
-
-/* contact aside */
-.contact-aside{display:flex;flex-direction:column;gap:16px;}
-.contact-block{background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:24px 22px;}
-.contact-block-eye{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:10px;}
-.contact-block-name{font-size:16px;font-weight:700;text-transform:uppercase;margin-bottom:4px;}
-.contact-block-role{font-family:'DM Mono',monospace;font-size:14px;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;}
-.contact-link{display:block;font-size:15px;color:var(--t2);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--bord);transition:color .15s;}
-.contact-link:last-child{border-bottom:none;}
-.contact-link:hover{color:var(--cream);}
-.contact-link span{font-family:'DM Mono',monospace;font-size:14px;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:2px;}
-
-.cal-btn{
-  display:block;text-align:center;
-  background:var(--bg);border:1px solid var(--bord);border-radius:8px;
-  font-family:'DM Mono',monospace;font-size:12px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--cream);
-  padding:14px;text-decoration:none;transition:border-color .2s,background .2s;
-}
-.cal-btn:hover{border-color:var(--coral);background:rgba(255,115,108,.06);}
-
-/* ── FOOTER ── */
-footer{padding:28px 48px;border-top:1px solid var(--bord);display:flex;justify-content:space-between;align-items:center;}
-.fl{display:flex;align-items:center;gap:8px;}
-.fl svg{width:22px;height:22px;opacity:.4;}
-.fw{font-family:'DM Mono',monospace;font-size:14px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;}
-.fw b{color:var(--coral);font-weight:400;}
-.fr{font-family:'DM Mono',monospace;font-size:14px;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;}
-
-/* ── REVEAL ── */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
-.rv.on{opacity:1;transform:none;}
-.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.32s;}
-
+.field textarea{resize:vertical;min-height:80px;line-height:1.6;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ndabadge{display:flex;align-items:center;gap:8px;background:rgba(0,170,116,.06);border:1px solid rgba(0,170,116,.2);border-radius:5px;padding:9px 12px;margin-bottom:12px;}
+.ndabadge-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;}
+.ndabadge-txt{font-family:'DM Mono',monospace;font-size:10px;color:var(--green);letter-spacing:.1em;text-transform:uppercase;}
+.sbtn{width:100%;background:var(--coral);color:var(--bg);border:none;border-radius:5px;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:13px;cursor:pointer;}
+.sbtn:hover{opacity:.9;}
+.fsuccess{display:none;text-align:center;padding:28px 16px;}
+.fsuccess-icon{font-size:28px;margin-bottom:8px;}
+.fsuccess-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;margin-bottom:6px;}
+.fsuccess-body{font-size:13px;color:var(--t2);line-height:1.7;}
+.caside{display:flex;flex-direction:column;gap:10px;}
+.ccard{background:var(--surf);border:1px solid var(--bord);border-radius:8px;padding:18px;}
+.ccard-eye{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:8px;}
+.ccard-name{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;margin-bottom:2px;}
+.ccard-role{font-family:'DM Mono',monospace;font-size:10px;color:var(--t4);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;}
+.clink{display:block;text-decoration:none;padding:8px 0;border-bottom:1px solid var(--bord);}
+.clink:last-child{border-bottom:none;}
+.clink:hover .clink-val{color:var(--cream);}
+.clink-lbl{font-family:'DM Mono',monospace;font-size:9px;color:var(--t4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px;}
+.clink-val{font-size:13px;color:var(--t2);}
+.calbtn{display:block;text-align:center;background:rgba(117,230,249,.06);border:1px solid rgba(117,230,249,.25);border-radius:6px;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);padding:12px;text-decoration:none;}
+.calbtn:hover{background:rgba(117,230,249,.1);}
+.trow{display:flex;justify-content:space-between;align-items:center;padding-bottom:7px;border-bottom:1px solid var(--bord);margin-bottom:7px;}
+.trow:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+#contrato{background:var(--bg2);}
+.contlayout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+.contbox{background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:26px;}
+.cprev{background:var(--bg);border:1px solid var(--bord);border-left:2px solid var(--coral);border-radius:0 5px 5px 0;padding:12px 14px;font-size:13px;color:var(--t2);line-height:1.75;margin-bottom:12px;min-height:60px;}
+.cprev b{color:var(--cream);font-weight:600;}
+.cprev span{color:var(--coral);font-weight:600;}
+.dlbtn{width:100%;background:var(--surf2);border:1px solid var(--bord2);border-radius:5px;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);padding:13px;cursor:pointer;transition:background .2s,border-color .2s;}
+.dlbtn:hover{background:var(--coral);border-color:var(--coral);color:var(--bg);}
+.cinfo{display:flex;flex-direction:column;gap:10px;}
+.cinfocard{background:var(--surf);border:1px solid var(--bord);border-radius:8px;padding:18px;}
+.cinfocard-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;margin-bottom:10px;}
+.clause{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--t2);margin-bottom:5px;}
+.clause::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--coral);flex-shrink:0;}
+footer{padding:22px 0;border-top:1px solid var(--bord);display:flex;justify-content:center;}
+.footer-inner{width:100%;max-width:1400px;padding:0 40px;display:flex;justify-content:space-between;align-items:center;}
+.fbrand{font-family:'DM Mono',monospace;font-size:10px;color:var(--t4);letter-spacing:.1em;text-transform:uppercase;}
+.fbrand b{color:var(--coral);font-weight:400;}
+.rv{opacity:1;transform:none;}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.26s;}
 @media(max-width:860px){
-  nav{padding:0 18px;}.nc{display:none;}
-  .sec,#hero,footer{padding-left:18px;padding-right:18px;}
+  .prob-grid{grid-template-columns:1fr !important;} .seg-title br{display:inline;}
+  [style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr 1fr !important;}
+  [style*="grid-template-columns:repeat(4"] > div{border-right:none !important;border-bottom:1px solid var(--bord);}
+  .sheader{grid-template-columns:1fr !important;}
+
+  nav{padding:0 16px;}.nlinks{display:none;}
+  .sec-inner,.footer-inner,.hinner{padding-left:18px;padding-right:18px;}
   #hero{padding-top:80px;}
-  .info-grid,.mkt-row,.sol-grid,.mono-grid,.nc-grid,.nc-terms,.form-wrap{grid-template-columns:1fr;}
-  .stat-75{flex-direction:column;gap:16px;}
-  footer{flex-direction:column;gap:10px;text-align:center;}
-  .gate-box{padding:20px 18px;}
-  .gate-name-row{flex-direction:column;} .gate-field{min-width:100%;}
+  .rgrid,.sheader,.nclayout,.clayout,.contlayout{grid-template-columns:1fr;}
+  .scards,.mgrid,.mkt3{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:8px;text-align:center;}
+  .footer-inner{flex-direction:column;gap:8px;text-align:center;}
+  .gbox{padding:22px 18px;}.grow{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
 
-<!-- SVG LOGO -->
-<svg style="display:none">
-<symbol id="L" viewBox="0 0 507 506">
-<path d="M180.672 84.3927L159.121 93.714L137.57 103.035L128.253 81.4749L118.935 59.9146L109.618 38.3543L131.169 29.0331L140.487 50.5934L149.804 72.1537L171.355 62.8324L192.906 53.5112L214.457 44.19C219.604 56.0858 214.127 69.9224 202.223 75.0715L180.672 84.3927Z" fill="#FFFFF6"/>
-<path d="M302.087 2.65383L325.447 5.01714L323.084 28.3862L320.722 51.7553L318.36 75.1244L295 72.7611L297.363 49.392C296.056 62.3044 284.548 71.7048 271.641 70.3978L248.282 68.0344L224.923 65.6711L227.285 42.3021C229.898 16.4376 252.98 -2.36326 278.781 0.237705L302.14 2.60102L302.074 2.65383H302.087ZM297.416 49.392L299.778 26.0229L276.419 23.6596C263.512 22.3525 252.004 31.753 250.697 44.6654L274.056 47.0287L297.416 49.392Z" fill="#FFFFF6"/>
-<path d="M366.516 80.0226L386.101 92.9615L405.686 105.9L392.753 125.493L373.168 112.555L353.583 99.6157C331.94 85.317 325.974 56.1387 340.267 34.486C347.433 23.6332 361.977 20.7022 372.785 27.8317L392.37 40.7705L411.955 53.7093L431.539 66.6481C424.373 77.5009 409.83 80.4319 399.021 73.3024L379.437 60.3636L359.852 47.4248V47.4908C352.712 58.3435 355.721 72.8799 366.516 80.0226Z" fill="#FFFFF6"/>
-<path d="M430.959 99.5892L451.48 88.1687L462.896 108.699L442.374 120.12C431.038 126.431 426.96 140.729 433.268 152.071L444.684 172.601L465.206 161.181L485.727 149.76L497.143 170.291L476.621 181.711L456.099 193.132L435.578 204.552L424.162 184.022L412.746 163.491L412.72 163.57C400.103 140.888 408.233 112.251 430.945 99.6024L430.959 99.5892Z" fill="#FFFFF6"/>
-<path d="M434.601 302.9L435.076 279.425L458.541 279.901C458.277 292.892 447.548 303.151 434.601 302.887V302.9ZM506.474 233.876L505.999 257.35L505.523 280.825C505.259 293.817 494.53 304.075 481.584 303.811C468.597 303.547 458.343 292.813 458.594 279.861L459.069 256.386C459.333 243.395 449.026 232.701 436.092 232.436L436.568 208.962C462.5 209.49 483.114 230.971 482.587 256.901L483.062 233.427L483.537 209.952L507.002 210.427L506.949 210.374L506.474 233.849V233.876Z" fill="#FFFFF6"/>
-<path d="M453.605 408.246L440.949 428.024L421.179 415.362L401.41 402.701L381.64 390.039L394.297 370.261L414.066 382.923C403.139 375.925 399.958 361.402 406.953 350.483L419.609 330.706L432.265 310.928L452.035 323.589C473.929 337.611 480.264 366.697 466.288 388.56L453.632 408.338V408.259L453.605 408.246ZM414.027 382.976L433.796 395.637L446.452 375.859C453.447 364.927 450.266 350.404 439.339 343.42L426.683 363.198L414.027 382.976Z" fill="#FFFFF6"/>
-<path d="M387.447 467.949L366.477 478.485C343.289 490.13 315.047 480.756 303.407 457.559C297.574 445.94 302.285 431.853 313.859 426.043L334.83 415.508L355.8 404.972L376.771 394.436L387.302 415.415L397.833 436.395L408.365 457.374L408.431 457.4L387.46 467.936L387.447 467.949ZM376.876 446.983L366.345 426.004L345.374 436.54L324.404 447.076C330.237 458.694 344.332 463.342 355.906 457.532L376.876 446.996V446.983Z" fill="#FFFFF6"/>
-<path d="M297.983 482.512L297.6 506L274.122 505.617L274.505 482.129C274.716 469.151 264.383 458.47 251.41 458.258L227.932 457.876L227.549 481.363L227.166 504.851L203.688 504.468L204.071 480.981L204.454 457.493L204.836 434.005L228.314 434.388L251.792 434.771L251.74 434.718C277.672 435.14 298.405 456.502 297.983 482.499V482.512Z" fill="#FFFFF6"/>
-<path d="M141.925 480.743L121.865 468.557L101.805 456.37C90.7065 449.624 87.2092 435.18 93.9266 424.116C100.67 413.012 115.108 409.513 126.168 416.234L146.227 428.42C157.326 435.167 171.751 431.615 178.468 420.538L198.528 432.724C185.067 454.905 156.152 461.968 133.98 448.488L154.04 460.675L174.1 472.861L161.919 492.929H161.985L141.925 480.73V480.743ZM118.289 383.913L138.349 396.099L126.168 416.168C115.069 409.421 111.571 394.977 118.289 383.913Z" fill="#FFFFF6"/>
-<path d="M103.798 359.937L115.016 380.56L94.4017 391.782L83.184 371.159L71.9663 350.536L51.3521 361.759L62.5698 382.382C68.7593 393.762 64.589 408.008 53.1734 414.227L30.7248 372.941L19.5071 352.319L40.1212 341.096L60.7354 329.874L49.5177 309.251L70.1319 298.028L103.798 359.937Z" fill="#FFFFF6"/>
-<path d="M0.437086 225.307L0.819808 201.819L24.2978 202.202L47.7757 202.585L71.2537 202.968L70.871 226.456L47.393 226.073C60.3659 226.284 70.6994 236.965 70.4883 249.93L70.1055 273.418L69.7228 296.906L46.2449 296.523C20.2594 296.101-0.40754 274.686 0.00157609 248.742L0.384297 225.254L0.437086 225.307ZM47.393 226.007L23.9151 225.624L23.5323 249.112C23.3212 262.09 33.6546 272.771 46.6276 272.983L47.0103 249.495L47.393 226.007Z" fill="#FFFFF6"/>
-<path d="M63.8764 107.709L49.1614 127.87L37.5214 143.832C35.8322 146.156 36.3337 149.417 38.6564 151.107L54.6119 162.752L66.4235 146.565C68.0335 144.36 71.1085 143.885 73.3125 145.496L89.4923 157.312L74.7774 177.473C66.6478 188.616 51.0354 191.046 39.9101 182.913L19.7579 168.191C8.61938 160.058 6.19108 144.439 14.3206 133.309L29.0356 113.149L43.7505 92.9878C51.8801 81.8578 67.4925 79.4153 78.6178 87.5482L78.5914 87.5878L63.9028 107.709H63.8764ZM78.565 87.6671L78.631 87.5746L98.7832 102.296C90.6537 113.426 93.0952 129.058 104.22 137.178L89.5055 157.339L89.4791 157.378C67.2153 141.125 62.3587 109.953 78.565 87.6538V87.6671Z" fill="#FF736C"/>
-<path d="M116.652 130.907C124.109 130.907 130.153 124.859 130.153 117.4C130.153 109.941 124.109 103.893 116.652 103.893C109.196 103.893 103.152 109.941 103.152 117.4C103.152 124.859 109.196 130.907 116.652 130.907Z" fill="#FF736C"/>
-</symbol>
-</svg>
+<!-- GATE JS -->
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var SKEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxYWt5cWp2aWJib3pob3BubHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUwMjEwMTEsImV4cCI6MjA3MDU5NzAxMX0.jm8d8AMxzurBKDteGoDHnrla8Xm8P_xrNIkY5kLHVu4';
+  var SURL='https://dqakyqjvibbozhopnlyw.supabase.co';
+  function check(){
+    var n=document.getElementById('g-nombre').value.trim();
+    var e=document.getElementById('g-email').value.trim();
+    var cb=document.getElementById('g-cb').checked;
+    var btn=document.getElementById('g-btn');
+    var ok=n.length>0&&e.length>0&&cb;
+    btn.disabled=!ok;
+    btn.style.opacity=ok?'1':'0.35';
+  }
+  ['g-nombre','g-apellido','g-email'].forEach(function(id){document.getElementById(id).addEventListener('input',check);});
+  document.getElementById('g-cb').addEventListener('change',check);
+  document.getElementById('g-btn').addEventListener('click',function(){
+    var n=document.getElementById('g-nombre').value.trim();
+    var a=document.getElementById('g-apellido').value.trim();
+    var e=document.getElementById('g-email').value.trim();
+    if(!n||!e){document.getElementById('g-err').style.display='block';document.getElementById('g-err').textContent='Completa nombre y correo.';return;}
+    document.getElementById('gate').style.display='none';
+    var fn=document.getElementById('f-nombre'),fa=document.getElementById('f-apellido'),fe=document.getElementById('f-email');
+    if(fn)fn.value=n;if(fa)fa.value=a;if(fe)fe.value=e;
+    fetch(SURL+'/rest/v1/nda_firmados',{method:'POST',headers:{'Content-Type':'application/json','apikey':SKEY,'Authorization':'Bearer '+SKEY,'Prefer':'return=minimal'},body:JSON.stringify({nombre:n,apellido:a,email:e,fecha:new Date().toISOString(),fuente:'investor-hub'})}).catch(function(){});
+    // Brevo: agregar a lista NDA Firmados (list 2) y notificar
+  });
+});
+</script>
 
-<!-- ══ NDA GATE ══ -->
+<!-- GATE -->
 <div id="gate">
-  <div class="gate-box">
-
-    <div class="gate-logo">
-      <svg viewBox="0 0 507 506"><use href="#L"/></svg>
-      <div class="gate-wordmark">La <b>Cu</b>raduría</div>
+  <div class="gbox">
+    <div class="glogo">
+      <svg width="40" height="40" viewBox="0 0 507 506" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M180.672 84.3927L159.121 93.714L137.57 103.035L128.253 81.4749L118.935 59.9146L109.618 38.3543L131.169 29.0331L140.487 50.5934L149.804 72.1537L171.355 62.8324L192.906 53.5112L214.457 44.19C219.604 56.0858 214.127 69.9224 202.223 75.0715L180.672 84.3927Z" fill="#FFFFF6"/><path d="M302.087 2.65383L325.447 5.01714L323.084 28.3862L320.722 51.7553L318.36 75.1244L295 72.7611L297.363 49.392C296.056 62.3044 284.548 71.7048 271.641 70.3978L248.282 68.0344L224.923 65.6711L227.285 42.3021C229.898 16.4376 252.98 -2.36326 278.781 0.237705L302.14 2.60102L302.074 2.65383H302.087ZM297.416 49.392L299.778 26.0229L276.419 23.6596C263.512 22.3525 252.004 31.753 250.697 44.6654L274.056 47.0287L297.416 49.392Z" fill="#FFFFF6"/><path d="M366.516 80.0226L386.101 92.9615L405.686 105.9L392.753 125.493L373.168 112.555L353.583 99.6157C331.94 85.317 325.974 56.1387 340.267 34.486C347.433 23.6332 361.977 20.7022 372.785 27.8317L392.37 40.7705L411.955 53.7093L431.539 66.6481C424.373 77.5009 409.83 80.4319 399.021 73.3024L379.437 60.3636L359.852 47.4248V47.4908C352.712 58.3435 355.721 72.8799 366.516 80.0226Z" fill="#FFFFF6"/><path d="M430.959 99.5892L451.48 88.1687L462.896 108.699L442.374 120.12C431.038 126.431 426.96 140.729 433.268 152.071L444.684 172.601L465.206 161.181L485.727 149.76L497.143 170.291L476.621 181.711L456.099 193.132L435.578 204.552L424.162 184.022L412.746 163.491L412.72 163.57C400.103 140.888 408.233 112.251 430.945 99.6024L430.959 99.5892Z" fill="#FFFFF6"/><path d="M434.601 302.9L435.076 279.425L458.541 279.901C458.277 292.892 447.548 303.151 434.601 302.887V302.9ZM506.474 233.876L505.999 257.35L505.523 280.825C505.259 293.817 494.53 304.075 481.584 303.811C468.597 303.547 458.343 292.813 458.594 279.861L459.069 256.386C459.333 243.395 449.026 232.701 436.092 232.436L436.568 208.962C462.5 209.49 483.114 230.971 482.587 256.901L483.062 233.427L483.537 209.952L507.002 210.427L506.949 210.374L506.474 233.849V233.876Z" fill="#FFFFF6"/><path d="M453.605 408.246L440.949 428.024L421.179 415.362L401.41 402.701L381.64 390.039L394.297 370.261L414.066 382.923C403.139 375.925 399.958 361.402 406.953 350.483L419.609 330.706L432.265 310.928L452.035 323.589C473.929 337.611 480.264 366.697 466.288 388.56L453.632 408.338V408.259L453.605 408.246ZM414.027 382.976L433.796 395.637L446.452 375.859C453.447 364.927 450.266 350.404 439.339 343.42L426.683 363.198L414.027 382.976Z" fill="#FFFFF6"/><path d="M387.447 467.949L366.477 478.485C343.289 490.13 315.047 480.756 303.407 457.559C297.574 445.94 302.285 431.853 313.859 426.043L334.83 415.508L355.8 404.972L376.771 394.436L387.302 415.415L397.833 436.395L408.365 457.374L408.431 457.4L387.46 467.936L387.447 467.949ZM376.876 446.983L366.345 426.004L345.374 436.54L324.404 447.076C330.237 458.694 344.332 463.342 355.906 457.532L376.876 446.996V446.983Z" fill="#FFFFF6"/><path d="M297.983 482.512L297.6 506L274.122 505.617L274.505 482.129C274.716 469.151 264.383 458.47 251.41 458.258L227.932 457.876L227.549 481.363L227.166 504.851L203.688 504.468L204.071 480.981L204.454 457.493L204.836 434.005L228.314 434.388L251.792 434.771L251.74 434.718C277.672 435.14 298.405 456.502 297.983 482.499V482.512Z" fill="#FFFFF6"/><path d="M141.925 480.743L121.865 468.557L101.805 456.37C90.7065 449.624 87.2092 435.18 93.9266 424.116C100.67 413.012 115.108 409.513 126.168 416.234L146.227 428.42C157.326 435.167 171.751 431.615 178.468 420.538L198.528 432.724C185.067 454.905 156.152 461.968 133.98 448.488L154.04 460.675L174.1 472.861L161.919 492.929H161.985L141.925 480.73V480.743ZM118.289 383.913L138.349 396.099L126.168 416.168C115.069 409.421 111.571 394.977 118.289 383.913Z" fill="#FFFFF6"/><path d="M103.798 359.937L115.016 380.56L94.4017 391.782L83.184 371.159L71.9663 350.536L51.3521 361.759L62.5698 382.382C68.7593 393.762 64.589 408.008 53.1734 414.227L30.7248 372.941L19.5071 352.319L40.1212 341.096L60.7354 329.874L49.5177 309.251L70.1319 298.028L103.798 359.937Z" fill="#FFFFF6"/><path d="M0.437086 225.307L0.819808 201.819L24.2978 202.202L47.7757 202.585L71.2537 202.968L70.871 226.456L47.393 226.073C60.3659 226.284 70.6994 236.965 70.4883 249.93L70.1055 273.418L69.7228 296.906L46.2449 296.523C20.2594 296.101 -0.40754 274.686 0.00157609 248.742L0.384297 225.254L0.437086 225.307ZM47.393 226.007L23.9151 225.624L23.5323 249.112C23.3212 262.09 33.6546 272.771 46.6276 272.983L47.0103 249.495L47.393 226.007Z" fill="#FFFFF6"/><path d="M63.8764 107.709L49.1614 127.87L37.5214 143.832C35.8322 146.156 36.3337 149.417 38.6564 151.107L54.6119 162.752L66.4235 146.565C68.0335 144.36 71.1085 143.885 73.3125 145.496L89.4923 157.312L74.7774 177.473C66.6478 188.616 51.0354 191.046 39.9101 182.913L19.7579 168.191C8.61938 160.058 6.19108 144.439 14.3206 133.309L29.0356 113.149L43.7505 92.9878C51.8801 81.8578 67.4925 79.4153 78.6178 87.5482L78.5914 87.5878L63.9028 107.709H63.8764ZM78.565 87.6671L78.631 87.5746L98.7832 102.296C90.6537 113.426 93.0952 129.058 104.22 137.178L89.5055 157.339L89.4791 157.378C67.2153 141.125 62.3587 109.953 78.565 87.6538V87.6671Z" fill="#FF736C"/><path d="M116.652 130.907C124.109 130.907 130.153 124.859 130.153 117.4C130.153 109.941 124.109 103.893 116.652 103.893C109.196 103.893 103.152 109.941 103.152 117.4C103.152 124.859 109.196 130.907 116.652 130.907Z" fill="#FF736C"/></svg>
+      <div class="gbrand">La <b>Cu</b>raduría</div>
     </div>
-
-    <div class="gate-eye">Investor Hub · Acceso confidencial</div>
-    <h3 class="gate-title">Acuerdo de <em>Confidencialidad</em></h3>
-
-    <div class="gate-nda">
-      <div class="gate-nda-text">Al continuar, aceptas que toda la información, materiales y datos contenidos en este hub — incluyendo proyecciones financieras, estrategia de negocio, prototipo y términos de inversión — son estrictamente confidenciales y propiedad de La Curaduría.<br><br>Te comprometes a no reproducir, distribuir, compartir ni utilizar este material sin autorización previa y por escrito de La Curaduría.</div>
+    <div class="geye">Investor Hub · Acceso confidencial</div>
+    <h3 class="gtitle">Acuerdo de Confidencialidad</h3>
+    <div class="gnda"><p>Al continuar, aceptas que toda la información, materiales y datos contenidos en este hub — incluyendo proyecciones financieras, estrategia de negocio, prototipo y términos de inversión — son estrictamente confidenciales y propiedad de La Curaduría. Te comprometes a no reproducir, distribuir, compartir ni utilizar este material sin autorización previa y por escrito de La Curaduría. Esta obligación se mantiene vigente independientemente de si decides invertir o no.</p></div>
+    <div class="grow">
+      <div class="gfield"><label>Nombre</label><input type="text" id="g-nombre" placeholder="Tu nombre"></div>
+      <div class="gfield"><label>Apellido</label><input type="text" id="g-apellido" placeholder="Tu apellido"></div>
     </div>
-
-    <div class="gate-name-row">
-      <div class="gate-field">
-        <label>Nombre</label>
-        <input type="text" id="gate-nombre" placeholder="Tu nombre" />
-      </div>
-      <div class="gate-field">
-        <label>Apellido</label>
-        <input type="text" id="gate-apellido" placeholder="Tu apellido" />
-      </div>
-    </div>
-    <div class="gate-field" style="margin-bottom:14px;">
-      <label>Correo electrónico</label>
-      <input type="email" id="gate-email" placeholder="tu@email.com" />
-    </div>
-
-    <label class="gate-check">
-      <input type="checkbox" id="gate-cb">
-      <span class="gate-check-label">He leído y acepto el acuerdo de confidencialidad. Entiendo que este material es estrictamente confidencial y me comprometo a no reproducirlo, distribuirlo ni compartirlo.</span>
-    </label>
-
-    <div id="gate-error" style="display:none;font-family:'DM Mono',monospace;font-size:11px;color:#FF736C;margin-bottom:12px;padding:10px 14px;background:rgba(255,115,108,.08);border-radius:5px;border:1px solid rgba(255,115,108,.2);"></div>
-
-    <button class="gate-btn" id="gate-btn">
-      Acepto — Acceder al Investor Hub →
-    </button>
-
-    <p style="font-family:'DM Mono',monospace;font-size:11px;color:#6B7280;text-align:center;margin-top:12px;line-height:1.75;letter-spacing:.03em;">
-      Al continuar aceptas nuestros
-      <a href="/terminos" target="_blank" style="color:#9CA3AF;text-decoration:underline;text-decoration-color:rgba(117,230,249,.4);">Términos y Condiciones</a>
-      y nuestra
-      <a href="/privacidad" target="_blank" style="color:#9CA3AF;text-decoration:underline;text-decoration-color:rgba(117,230,249,.4);">Política de Tratamiento de Datos</a>.
-    </p>
+    <div class="gfield gemail"><label>Correo electrónico</label><input type="email" id="g-email" placeholder="tu@email.com"></div>
+    <label class="gcheck"><input type="checkbox" id="g-cb"><span>He leído y acepto el acuerdo de confidencialidad. Entiendo que este material es estrictamente confidencial y me comprometo a no reproducirlo, distribuirlo ni compartirlo.</span></label>
+    <div class="gerr" id="g-err"></div>
+    <button class="gbtn" id="g-btn" disabled>Acepto — Acceder al Investor Hub →</button>
+    <p class="glegal">Al continuar aceptas nuestros <a href="/terminos" target="_blank">Términos y Condiciones</a> y nuestra <a href="/privacidad" target="_blank">Política de Tratamiento de Datos</a>.</p>
   </div>
 </div>
 
-
-<!-- ══ NAV ══ -->
+<!-- NAV -->
 <nav>
+  <div class="nav-inner">
   <div class="nl">
-    <svg viewBox="0 0 507 506"><use href="#L"/></svg>
-    <div class="nw">La <b>Cu</b>raduría</div>
+    <svg height="32" viewBox="0 0 1795 244" fill="none" style="width:auto;display:block" xmlns="http://www.w3.org/2000/svg"><path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="#FF736C"/><path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="#FF736C"/><path d="M427.103 115.917H350.58V1.36438H388.842V77.7438H503.626C503.626 98.8361 486.497 115.934 465.365 115.934H427.103V115.917Z" fill="#FFFFF6"/><path d="M627.503 1.36443H665.765V115.934H627.503V77.7439C627.503 98.8362 610.373 115.934 589.241 115.934H512.718V77.7439C512.718 35.4606 547.06 1.28223 589.324 1.28223H627.585L627.503 1.38087V1.36443ZM627.602 77.7439V39.5542H589.34C568.208 39.5542 551.079 56.6516 551.079 77.7439H627.602Z" fill="#FFFFF6"/><path d="M427.153 204.446H503.626V242.619H427.153C384.889 242.619 350.58 208.391 350.58 166.19C350.58 145.065 367.726 128.017 388.825 128.017H503.544C503.544 149.142 486.398 166.19 465.299 166.19H388.825L388.908 166.272C388.908 187.398 406.054 204.446 427.153 204.446Z" fill="#FFFFF6"/><path d="M512.735 166.24V128.05H550.996V166.24C550.996 187.332 568.126 204.429 589.258 204.429H627.52V128.05H665.781V242.619H589.258L589.357 242.718C547.093 242.718 512.751 208.539 512.751 166.256L512.735 166.24Z" fill="#FFFFF6"/><path d="M713.283 128.116H789.756C810.921 128.116 828.001 145.229 828.001 166.289C828.001 187.348 810.855 204.462 789.756 204.462H751.511C730.346 204.462 713.266 221.576 713.266 242.635H675.021C675.021 200.451 709.313 166.207 751.594 166.207H675.12V128.033L675.037 128.116H713.283ZM828.067 242.701H789.822V204.528C810.987 204.528 828.067 221.642 828.067 242.701Z" fill="#FFFFF6"/><path d="M951.96 128.05H990.222V242.619H951.96V204.429C951.96 225.522 934.831 242.619 913.699 242.619H837.176V204.429C837.176 162.146 871.517 127.968 913.781 127.968H952.043L951.96 128.066V128.05ZM952.043 204.429V166.24H913.781C892.649 166.24 875.52 183.337 875.52 204.429H952.043Z" fill="#FFFFF6"/><path d="M1037.59 128.033H1075.84C1118.12 128.033 1152.41 162.245 1152.41 204.462C1152.41 225.604 1135.26 242.635 1114.16 242.635H999.429V128.116L999.347 128.033H1037.59ZM1037.66 166.207V204.38H1114.13C1114.13 183.238 1097 166.207 1075.89 166.207H1037.64H1037.66Z" fill="#FFFFF6"/><path d="M1155.37 166.24V128.05H1193.64V166.24C1193.64 187.332 1210.77 204.429 1231.9 204.429H1270.16V128.05H1308.42V242.619H1231.9L1232 242.718C1189.73 242.718 1155.39 208.539 1155.39 166.256L1155.37 166.24Z" fill="#FFFFF6"/><path d="M1355.76 128.116H1432.23C1453.4 128.116 1470.48 145.229 1470.48 166.289C1470.48 187.348 1453.33 204.462 1432.23 204.462H1393.99C1372.82 204.462 1355.74 221.576 1355.74 242.635H1317.5C1317.5 200.451 1351.79 166.207 1394.07 166.207H1317.59V128.033L1317.51 128.116H1355.76ZM1470.56 242.701H1432.31V204.528C1453.48 204.528 1470.56 221.642 1470.56 242.701Z" fill="#FFFFF6"/><path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/><path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/></svg>
   </div>
-  <div class="nc">
-    <a class="na on" href="#proyecto">Proyecto</a>
+  <div class="nlinks">
+    <a class="na on" href="#resumen">Resumen</a>
     <a class="na" href="#prototipo">Prototipo</a>
     <a class="na" href="#oportunidad">Oportunidad</a>
-    <a class="na" href="#simulador">Simulador</a>
-    <a class="na" href="#inversion">Inversión</a>
     <a class="na" href="#contacto">Contacto</a>
   </div>
-  <a class="nb" href="#contacto">Quiero invertir</a>
+  <a class="ncta" href="#contacto">Invertir</a>
+  </div>
 </nav>
 
-<!-- ══ HERO ══ -->
-<section id="hero" class="sec" style="border-top:none;">
-  <div class="hgrid"></div>
-  <div class="hglow"></div>
-  <div class="hero-inner">
-    <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
-      <span class="hero-badge-txt">Ronda seed abierta · 2026</span>
-    </div>
-    <h1 class="h1">
-      <span style="display:block">La próxima</span>
-      <span class="cr" style="display:block">plataforma</span>
-      <span class="ol" style="display:block">cultural</span>
+<!-- HERO -->
+<section id="hero" class="sec">
+  <div class="hbg"></div><div class="hgrid"></div>
+  <div class="hinner" style="display:grid;grid-template-columns:1fr 260px;gap:48px;align-items:flex-end;">
+    <div>
+    <div class="hroute rv"><span>Investor Hub</span><span class="sep">×</span><span>Proyecto Startup 2026</span></div>
+
+    <h1 class="rv on" style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(42px,6vw,80px);font-weight:900;line-height:.9;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:28px;">
+      <span style="display:block;color:var(--cream);">La próxima interfaz</span>
+      <span style="display:block;color:var(--cream);">para navegar</span>
+      <span style="display:block;color:var(--cream);">la cultura</span>
     </h1>
-    <p class="hero-sub" style="margin-top:28px;">Una <b>guía cultural abierta</b> que articula un mapa, un catálogo y un marketplace para conectar públicos, creadores y gestores en Bogotá — y Latinoamérica.</p>
-    <div class="hero-stats">
-      <div class="hstat"><div class="hstat-n" style="color:var(--coral)">$90B USD</div><div class="hstat-l">Mercado global (TAM)</div></div>
-      <div class="hstat"><div class="hstat-n" style="color:var(--cyan)">$9B USD</div><div class="hstat-l">Mercado LATAM (SAM)</div></div>
-      <div class="hstat"><div class="hstat-n" style="color:var(--yellow)">x10</div><div class="hstat-l">Retorno proyectado · 5 años</div></div>
-      <div class="hstat"><div class="hstat-n" style="color:var(--coral)">$50K USD</div><div class="hstat-l">Ronda actual</div></div>
+
+    <p class="rv on" style="font-size:17px;font-weight:300;color:var(--t2);line-height:1.8;max-width:560px;margin-bottom:36px;">Estamos construyendo una <b style="color:var(--cream);font-weight:600;">guía interactiva</b> para descubrir, conocer y activar la oferta cultural.</p>
+
+    <div class="rv on" style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="https://noise-blues-61589015.figma.site" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(117,230,249,.08);color:var(--cyan);border:1px solid rgba(117,230,249,.35);font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:12px 22px;border-radius:5px;text-decoration:none;transition:.2s;">Ver prototipo →</a>
+      <a href="#contacto" style="display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#0F1210;border:1px solid var(--coral);font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:12px 22px;border-radius:5px;text-decoration:none;transition:.2s;">Cómo invertir →</a>
     </div>
+
+    <p class="rv on" style="margin-top:0;"></p>
+    </div>
+
+    <!-- Phone mockup -->
+    <div style="display:flex;align-items:flex-end;justify-content:center;">
+      <div style="width:200px;background:#0A0D0A;border:2px solid var(--bord2);border-radius:28px;padding:10px;box-shadow:0 0 60px rgba(255,115,108,.08);">
+        <div style="width:44px;height:5px;background:var(--bord2);border-radius:3px;margin:0 auto 8px;"></div>
+        <div style="background:#0F1210;border-radius:20px;overflow:hidden;aspect-ratio:9/19;position:relative;">
+          <div style="position:absolute;inset:0;background:#0F1210;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;">
+            <svg width="64" height="64" viewBox="0 0 507 506" fill="none" style="animation:logspin 8s linear infinite;">
+              <path d="M180.672 84.3927L159.121 93.714L137.57 103.035L128.253 81.4749L118.935 59.9146L109.618 38.3543L131.169 29.0331L140.487 50.5934L149.804 72.1537L171.355 62.8324L192.906 53.5112L214.457 44.19C219.604 56.0858 214.127 69.9224 202.223 75.0715L180.672 84.3927Z" fill="#FFFFF6"/><path d="M302.087 2.65383L325.447 5.01714L323.084 28.3862L320.722 51.7553L318.36 75.1244L295 72.7611L297.363 49.392C296.056 62.3044 284.548 71.7048 271.641 70.3978L248.282 68.0344L224.923 65.6711L227.285 42.3021C229.898 16.4376 252.98 -2.36326 278.781 0.237705L302.14 2.60102L302.074 2.65383H302.087Z" fill="#FFFFF6"/><path d="M366.516 80.0226L386.101 92.9615L405.686 105.9L392.753 125.493L373.168 112.555L353.583 99.6157C331.94 85.317 325.974 56.1387 340.267 34.486C347.433 23.6332 361.977 20.7022 372.785 27.8317L392.37 40.7705L411.955 53.7093L431.539 66.6481C424.373 77.5009 409.83 80.4319 399.021 73.3024L379.437 60.3636L359.852 47.4248V47.4908C352.712 58.3435 355.721 72.8799 366.516 80.0226Z" fill="#FFFFF6"/><path d="M430.959 99.5892L451.48 88.1687L462.896 108.699L442.374 120.12C431.038 126.431 426.96 140.729 433.268 152.071L444.684 172.601L465.206 161.181L485.727 149.76L497.143 170.291L476.621 181.711L456.099 193.132L435.578 204.552L424.162 184.022L412.746 163.491L412.72 163.57C400.103 140.888 408.233 112.251 430.945 99.6024L430.959 99.5892Z" fill="#FFFFF6"/><path d="M434.601 302.9L435.076 279.425L458.541 279.901C458.277 292.892 447.548 303.151 434.601 302.887V302.9ZM506.474 233.876L505.999 257.35L505.523 280.825C505.259 293.817 494.53 304.075 481.584 303.811C468.597 303.547 458.343 292.813 458.594 279.861L459.069 256.386C459.333 243.395 449.026 232.701 436.092 232.436L436.568 208.962C462.5 209.49 483.114 230.971 482.587 256.901L483.062 233.427L483.537 209.952L507.002 210.427L506.949 210.374L506.474 233.849V233.876Z" fill="#FFFFF6"/><path d="M453.605 408.246L440.949 428.024L421.179 415.362L401.41 402.701L381.64 390.039L394.297 370.261L414.066 382.923C403.139 375.925 399.958 361.402 406.953 350.483L419.609 330.706L432.265 310.928L452.035 323.589C473.929 337.611 480.264 366.697 466.288 388.56L453.632 408.338V408.259L453.605 408.246ZM414.027 382.976L433.796 395.637L446.452 375.859C453.447 364.927 450.266 350.404 439.339 343.42L426.683 363.198L414.027 382.976Z" fill="#FFFFF6"/><path d="M387.447 467.949L366.477 478.485C343.289 490.13 315.047 480.756 303.407 457.559C297.574 445.94 302.285 431.853 313.859 426.043L334.83 415.508L355.8 404.972L376.771 394.436L387.302 415.415L397.833 436.395L408.365 457.374L408.431 457.4L387.46 467.936L387.447 467.949ZM376.876 446.983L366.345 426.004L345.374 436.54L324.404 447.076C330.237 458.694 344.332 463.342 355.906 457.532L376.876 446.996V446.983Z" fill="#FFFFF6"/><path d="M297.983 482.512L297.6 506L274.122 505.617L274.505 482.129C274.716 469.151 264.383 458.47 251.41 458.258L227.932 457.876L227.549 481.363L227.166 504.851L203.688 504.468L204.071 480.981L204.454 457.493L204.836 434.005L228.314 434.388L251.792 434.771L251.74 434.718C277.672 435.14 298.405 456.502 297.983 482.499V482.512Z" fill="#FFFFF6"/><path d="M141.925 480.743L121.865 468.557L101.805 456.37C90.7065 449.624 87.2092 435.18 93.9266 424.116C100.67 413.012 115.108 409.513 126.168 416.234L146.227 428.42C157.326 435.167 171.751 431.615 178.468 420.538L198.528 432.724C185.067 454.905 156.152 461.968 133.98 448.488L154.04 460.675L174.1 472.861L161.919 492.929H161.985L141.925 480.73V480.743ZM118.289 383.913L138.349 396.099L126.168 416.168C115.069 409.421 111.571 394.977 118.289 383.913Z" fill="#FFFFF6"/><path d="M103.798 359.937L115.016 380.56L94.4017 391.782L83.184 371.159L71.9663 350.536L51.3521 361.759L62.5698 382.382C68.7593 393.762 64.589 408.008 53.1734 414.227L30.7248 372.941L19.5071 352.319L40.1212 341.096L60.7354 329.874L49.5177 309.251L70.1319 298.028L103.798 359.937Z" fill="#FFFFF6"/><path d="M0.437086 225.307L0.819808 201.819L24.2978 202.202L47.7757 202.585L71.2537 202.968L70.871 226.456L47.393 226.073C60.3659 226.284 70.6994 236.965 70.4883 249.93L70.1055 273.418L69.7228 296.906L46.2449 296.523C20.2594 296.101 -0.40754 274.686 0.00157609 248.742L0.384297 225.254L0.437086 225.307ZM47.393 226.007L23.9151 225.624L23.5323 249.112C23.3212 262.09 33.6546 272.771 46.6276 272.983L47.0103 249.495L47.393 226.007Z" fill="#FFFFF6"/><path d="M63.8764 107.709L49.1614 127.87L37.5214 143.832C35.8322 146.156 36.3337 149.417 38.6564 151.107L54.6119 162.752L66.4235 146.565C68.0335 144.36 71.1085 143.885 73.3125 145.496L89.4923 157.312L74.7774 177.473C66.6478 188.616 51.0354 191.046 39.9101 182.913L19.7579 168.191C8.61938 160.058 6.19108 144.439 14.3206 133.309L29.0356 113.149L43.7505 92.9878C51.8801 81.8578 67.4925 79.4153 78.6178 87.5482L63.9028 107.709H63.8764Z" fill="#FF736C"/><path d="M116.652 130.907C124.109 130.907 130.153 124.859 130.153 117.4C130.153 109.941 124.109 103.893 116.652 103.893C109.196 103.893 103.152 109.941 103.152 117.4C103.152 124.859 109.196 130.907 116.652 130.907Z" fill="#FF736C"/>
+            </svg>
+            <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--t4);">lacuraduria.net</div>
+            <a href="https://lacuraduria.net" target="_blank" style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FF736C;border:1.5px solid rgba(255,115,108,.6);background:rgba(255,115,108,.08);padding:9px 0;border-radius:4px;display:block;width:76%;text-align:center;text-decoration:none;margin-top:4px;backdrop-filter:blur(8px);">Ingresar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ══ INFOGRAFÍA ══ -->
-<section class="sec" id="proyecto">
-  <div class="eye rv">01 · El Proyecto</div>
-  <h2 class="rv d1">Infografía del <em>ecosistema</em></h2>
-  <p class="lead rv d2">Todo lo que necesitas saber sobre La Curaduría — el problema, la solución y el mercado.</p>
+
+<!-- RESUMEN -->
+<section id="resumen" class="sec" style="background:var(--bg2);">
+<div class="sec-inner">
 
   <!-- PROBLEMA -->
-  <div class="eye rv" style="margin-bottom:16px;">El problema</div>
-  <div class="stat-75 rv d1">
-    <div class="stat-75-n">75%</div>
+  <div class="eye rv">01 · El problema que identificamos</div>
+  <div class="rv d1" style="margin-bottom:40px;">
+    <p style="font-size:clamp(20px,2.4vw,28px);font-weight:300;color:var(--cream);line-height:1.6;max-width:700px;margin-bottom:36px;border-left:3px solid var(--coral);padding-left:20px;">La oferta cultural está diluida en redes sociales saturadas.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;" class="prob-grid">
+      <div style="background:rgba(255,115,108,.07);border:1px solid rgba(255,115,108,.25);border-top:3px solid var(--coral);border-radius:8px;padding:24px 20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--coral);letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;">01 · Público</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;color:var(--cream);line-height:1;margin-bottom:10px;" class="seg-title"><span style="display:block;">Difícil</span><span style="display:block;">descubrir.</span></div>
+        <p style="font-size:14px;color:var(--t2);line-height:1.7;">Entre tanto ruido, cuesta ver qué está pasando y qué realmente vale la pena.</p>
+      </div>
+      <div style="background:rgba(117,230,249,.05);border:1px solid rgba(117,230,249,.2);border-top:3px solid var(--cyan);border-radius:8px;padding:24px 20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;">02 · Gestores</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;color:var(--cream);line-height:1;margin-bottom:10px;" class="seg-title"><span style="display:block;">Difícil</span><span style="display:block;">conectar.</span></div>
+        <p style="font-size:14px;color:var(--t2);line-height:1.7;">Su oferta compite en canales sobre estimulados que no ayudan a llegar mejor ni a convertir.</p>
+      </div>
+      <div style="background:rgba(0,170,116,.05);border:1px solid rgba(0,170,116,.2);border-top:3px solid var(--green);border-radius:8px;padding:24px 20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--green);letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;">03 · Creadores</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;color:var(--cream);line-height:1;margin-bottom:10px;" class="seg-title"><span style="display:block;">Difícil</span><span style="display:block;">crecer.</span></div>
+        <p style="font-size:14px;color:var(--t2);line-height:1.7;">Su trabajo se pierde en plataformas ineficientes con pocas rutas para abrir oportunidades.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVESTIGACION -->
+  <div style="height:1px;background:var(--bord);margin-bottom:36px;" class="rv"></div>
+  <div class="eye rv">Investigación · 2025</div>
+
+  <!-- Cita origen -->
+  <div class="rv d1" style="border-left:3px solid var(--coral);padding-left:20px;margin-bottom:32px;max-width:680px;">
+    <p style="font-size:16px;font-weight:300;color:var(--t2);line-height:1.8;">Este proyecto es producto de un trabajo de grado en la Maestría de Gestión de la Cultura en la <b style="color:var(--cream);font-weight:600;">Universidad EAN de Bogotá</b>.</p>
+  </div>
+
+  <!-- Stat + viñetas -->
+  <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;margin-bottom:40px;" class="rv d2">
+    <div style="background:var(--coral);border-radius:8px;padding:20px 18px;flex-shrink:0;min-width:160px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;color:#0F1210;line-height:1;margin-bottom:6px;">75%</div>
+      <p style="font-size:13px;color:#0F1210;font-weight:600;line-height:1.4;">de las personas encuestadas manifestó no estar satisfecha con la oferta de plataformas para explorar la oferta cultural.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0;flex:1;min-width:260px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--bord);">
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--coral);flex-shrink:0;margin-top:7px;"></div>
+        <p style="font-size:15px;color:var(--t2);line-height:1.7;">La plataforma más utilizada para explorar arte y cultura es <b style="color:var(--cream);">Instagram</b> — aunque es imposible buscar, genera distracción y no tiene funciones para eventos.</p>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;">
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--coral);flex-shrink:0;margin-top:7px;"></div>
+        <p style="font-size:15px;color:var(--t2);line-height:1.7;">Hay una sensación de que hay que buscar en demasiados lugares para saber qué está pasando — uno se entera tarde, hay muy poca información organizada.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEPARADOR -->
+  <div style="height:1px;background:var(--bord);margin-bottom:36px;" class="rv"></div>
+
+  <!-- SOLUCION -->
+  <div class="eyec rv" style="margin-bottom:10px;">La solución</div>
+  <div class="sheader rv d1">
+    <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(20px,2.5vw,32px);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:1.05;">Una guía interactiva con funciones especializadas.</h3>
     <div>
-      <div class="stat-75-txt">no está satisfecho con las plataformas disponibles para descubrir y explorar la oferta cultural.</div>
-      <div class="stat-75-src">Encuesta · Maestría en Gestión de la Cultura · Bogotá · 2025</div>
+      <div style="display:inline-block;background:var(--coral);color:#0F1210;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:3px;margin-bottom:12px;">Un TripAdvisor de la cultura</div>
+      <p style="font-size:15px;font-weight:300;color:var(--t2);line-height:1.8;">Sistema abierto donde públicos, creadores y gestores aportan contenido para crear una red de música, arte y cultura.</p>
     </div>
   </div>
-  <div class="info-grid rv d2">
-    <div class="info-card">
-      <div class="info-num">Público</div>
-      <div class="info-head">No hay catálogo unificado</div>
-      <div class="info-body">No existe un lugar donde descubrir fácilmente qué hacer, qué escuchar y qué ver en la ciudad.</div>
-      <div class="info-bar" style="background:var(--coral)"></div>
-    </div>
-    <div class="info-card">
-      <div class="info-num">Creadores</div>
-      <div class="info-head">Los canales no tienen funciones especializadas</div>
-      <div class="info-body">Las herramientas actuales no fueron diseñadas para la gestión cultural ni para conectar artistas con audiencias.</div>
-      <div class="info-bar" style="background:var(--cyan)"></div>
-    </div>
-    <div class="info-card">
-      <div class="info-num">Gestores</div>
-      <div class="info-head">Las plataformas están saturadas</div>
-      <div class="info-body">El ruido de las redes sociales no permite una comunicación cultural efectiva ni una experiencia enriquecedora.</div>
-      <div class="info-bar" style="background:var(--yellow)"></div>
-    </div>
+  <div class="eye rv d1" style="margin-bottom:16px;">Funciones</div>
+  <div class="scards rv d2">
+    <div class="scard2"><div class="scard2-n" style="color:var(--coral)">01 · Catálogo</div><div class="scard2-h" style="color:var(--cream)">Catálogo</div><div class="scard2-b">Explora la oferta cultural de eventos, perfiles y contenidos conectados.</div><span class="tag" style="color:var(--coral);border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.06)">Conexión</span></div>
+    <div class="scard2"><div class="scard2-n" style="color:var(--cyan)">02 · Marketplace</div><div class="scard2-h" style="color:var(--cream)">Marketplace</div><div class="scard2-b">Compra entradas, contrata talento y proveedores del sector.</div><span class="tag" style="color:var(--cyan);border-color:rgba(117,230,249,.3);background:rgba(117,230,249,.06)">Transacciones</span></div>
+    <div class="scard2"><div class="scard2-n" style="color:var(--green)">03 · Gestor</div><div class="scard2-h" style="color:var(--cream)">Gestor</div><div class="scard2-b">Sube y administra eventos, perfiles y contenidos.</div><span class="tag" style="color:var(--green);border-color:rgba(0,170,116,.3);background:rgba(0,170,116,.06)">Administración</span></div>
   </div>
 
-  <!-- SOLUCIÓN -->
-  <div class="eye rv" style="margin-bottom:16px;margin-top:48px;">La solución</div>
-  <div class="sol-grid rv d2" style="margin-bottom:48px;">
-    <div class="sol-card" style="border-color:rgba(255,115,108,.2);">
-      <div class="sol-n" style="color:var(--coral)">01</div>
-      <div class="sol-h">Mapa</div>
-      <div class="sol-b">Un mapa en tiempo real de la oferta cultural. Ubicaciones georreferenciadas de eventos, espacios, artistas y estudios.</div>
-      <span class="chip" style="color:var(--coral);border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.07)">Discovery</span>
-    </div>
-    <div class="sol-card" style="border-color:rgba(117,230,249,.2);">
-      <div class="sol-n" style="color:var(--cyan)">02</div>
-      <div class="sol-h">Catálogo</div>
-      <div class="sol-b">Un catálogo articulado entre perfiles, espacios, eventos y contenidos — con funciones para seguir, guardar, conectar y recomendaciones personalizadas.</div>
-      <span class="chip" style="color:var(--cyan);border-color:rgba(117,230,249,.3);background:rgba(117,230,249,.07)">Conexión</span>
-    </div>
-    <div class="sol-card" style="border-color:rgba(255,195,53,.2);">
-      <div class="sol-n" style="color:var(--yellow)">03</div>
-      <div class="sol-h">Marketplace</div>
-      <div class="sol-b">Compra de entradas, contratación de talento, venta de arte y merch. Monetización directa del ecosistema cultural.</div>
-      <span class="chip" style="color:var(--yellow);border-color:rgba(255,195,53,.3);background:rgba(255,195,53,.07)">Transacciones</span>
-    </div>
-  </div>
-
-  <!-- MERCADO -->
-  <div class="eye rv" style="margin-bottom:16px;">Tamaño de mercado · Montos anuales</div>
-  <div class="mkt-row rv d2">
-    <div class="mkt-card">
-      <div class="mkt-tag">TAM · Total Available Market</div>
-      <span class="mkt-badge" style="color:var(--coral);border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.07)">Global</span>
-      <div class="mkt-val" style="color:var(--coral)">$90B USD</div>
-      <div class="mkt-desc">Plataformas que intermedian eventos, experiencias culturales y monetización creativa.</div>
-      <div class="mkt-note">Anual</div>
-    </div>
-    <div class="mkt-card">
-      <div class="mkt-tag">SAM · Serviceable Available Market</div>
-      <span class="mkt-badge" style="color:var(--cyan);border-color:rgba(117,230,249,.3);background:rgba(117,230,249,.07)">LATAM</span>
-      <div class="mkt-val" style="color:var(--cyan)">$9B USD</div>
-      <div class="mkt-desc">Mercado latinoamericano de eventos urbanos, ticketing digital y plataformas culturales.</div>
-      <div class="mkt-note">Anual</div>
-    </div>
-    <div class="mkt-card">
-      <div class="mkt-tag">SOM · Serviceable Obtainable Market</div>
-      <span class="mkt-badge" style="color:var(--yellow);border-color:rgba(255,195,53,.3);background:rgba(255,195,53,.07)">Bogotá</span>
-      <div class="mkt-val" style="color:var(--yellow)">$15M USD</div>
-      <div class="mkt-desc">Mercado cultural independiente de Bogotá con capacidad real de intermediación digital.</div>
-      <div class="mkt-note">Anual</div>
-    </div>
-  </div>
-
-  <!-- MODELO -->
-  <div class="eye rv" style="margin-bottom:16px;margin-top:48px;">Modelo de negocio</div>
-  <div class="mono-grid rv d2">
-    <div class="mono-card">
-      <div class="mono-h">Suscripción</div>
-      <div class="mono-b">Planes con funcionalidades exclusivas para usuarios, creadores y gestores. Genera MRR predecible.</div>
-      <span class="chip" style="color:var(--coral);border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.07)">MRR</span>
-    </div>
-    <div class="mono-card">
-      <div class="mono-h">Comisión</div>
-      <div class="mono-b">Por venta de entradas, reservas y contratación de talento. Modelo transaccional directo.</div>
-      <span class="chip" style="color:var(--cyan);border-color:rgba(117,230,249,.3);background:rgba(117,230,249,.07)">Transaccional</span>
-    </div>
-    <div class="mono-card">
-      <div class="mono-h">Pauta</div>
-      <div class="mono-b">Promoción de eventos, marcas y proyectos a audiencias culturales segmentadas.</div>
-      <span class="chip" style="color:var(--yellow);border-color:rgba(255,195,53,.3);background:rgba(255,195,53,.07)">Advertising</span>
-    </div>
-  </div>
+</div>
 </section>
 
-<!-- ══ PROTOTIPO ══ -->
-<section class="sec" id="prototipo">
-  <div class="eye rv">02 · Demo</div>
-  <h2 class="rv d1">Prototipo <em>funcional</em></h2>
-  <p class="lead rv d2">Explora el prototipo de la app directamente — navega las pantallas y descubre la experiencia que estamos construyendo.</p>
-    <div class="rv d2">
-
-    <!-- PREVIEW CARD -->
-    <div style="background:var(--surf);border:1px solid var(--bord);border-radius:12px;overflow:hidden;">
-
-      <!-- Bar -->
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--bord);">
-        <div style="display:flex;gap:6px;">
-          <div style="width:10px;height:10px;border-radius:50%;background:#FF736C;"></div>
-          <div style="width:10px;height:10px;border-radius:50%;background:#FFC335;"></div>
-          <div style="width:10px;height:10px;border-radius:50%;background:#00AA74;"></div>
-        </div>
-        <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;">La Curaduría · App Prototype</div>
-        <div style="width:80px;"></div>
-      </div>
-
-      <!-- Content -->
-      <div style="padding:48px 40px;text-align:center;background:linear-gradient(135deg,#1A2018 0%,#171C14 100%);">
-
-        <!-- Phone mockup -->
-        <div style="display:inline-block;background:#0D100B;border:2px solid #2E3828;border-radius:32px;padding:12px;margin-bottom:36px;box-shadow:0 24px 64px rgba(0,0,0,.5);">
-          <div style="width:200px;height:360px;background:linear-gradient(160deg,#1E2419 0%,#171C14 100%);border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;position:relative;overflow:hidden;">
-            <div style="position:absolute;top:0;left:0;right:0;height:60px;background:rgba(255,115,108,.06);border-bottom:1px solid rgba(255,115,108,.15);display:flex;align-items:center;justify-content:center;">
-              <span style="font-family:'DM Mono',monospace;font-size:10px;color:#FF736C;letter-spacing:.1em;text-transform:uppercase;">La Curaduría</span>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:8px;padding:0 16px;margin-top:20px;">
-              <div style="height:8px;background:#2E3828;border-radius:4px;width:160px;"></div>
-              <div style="height:8px;background:#2E3828;border-radius:4px;width:120px;"></div>
-              <div style="height:60px;background:#1E2419;border:1px solid #2E3828;border-radius:8px;width:160px;margin-top:4px;"></div>
-              <div style="height:60px;background:#1E2419;border:1px solid #2E3828;border-radius:8px;width:160px;"></div>
-              <div style="height:60px;background:#1E2419;border:1px solid rgba(255,115,108,.2);border-radius:8px;width:160px;"></div>
-            </div>
-            <div style="position:absolute;bottom:0;left:0;right:0;height:48px;background:#1E2419;border-top:1px solid #2E3828;display:flex;align-items:center;justify-content:space-around;padding:0 20px;">
-              <div style="width:18px;height:18px;border-radius:50%;background:#2E3828;"></div>
-              <div style="width:18px;height:18px;border-radius:3px;background:#FF736C;opacity:.6;"></div>
-              <div style="width:18px;height:18px;border-radius:50%;background:#2E3828;"></div>
-              <div style="width:18px;height:18px;border-radius:50%;background:#2E3828;"></div>
-            </div>
-          </div>
-        </div>
-
-        <h3 style="font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:10px;">Explora el prototipo funcional</h3>
-        <p style="font-size:15px;font-weight:300;color:var(--t2);line-height:1.7;max-width:440px;margin:0 auto 28px;">Navega las pantallas de La Curaduría — el mapa, el catálogo y el marketplace — en el prototipo interactivo completo.</p>
-
-        <a href="https://noise-blues-61589015.figma.site" target="_blank" rel="noreferrer"
-           style="display:inline-block;background:var(--coral);color:var(--bg);font-family:'DM Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:16px 36px;border-radius:5px;text-decoration:none;transition:opacity .15s,transform .15s;">
-          Ver prototipo de la app →
-        </a>
-
-        <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;margin-top:14px;">Abre en pantalla completa · Sin instalación</p>
-
-      </div>
+<!-- PROTOTIPO -->
+<section id="prototipo" class="sec" style="background:var(--bg2);">
+<div class="sec-inner">
+  <div class="eyec rv">02 · Demo</div>
+  <h2 class="h2 rv d1">Prototipo de <em>la app</em></h2>
+  <p style="font-size:15px;font-weight:300;color:var(--t2);margin-bottom:24px;max-width:500px;" class="rv d2">Navega el mapa, el catálogo y el marketplace en el prototipo interactivo.</p>
+  <div class="pcard rv d2">
+    <div class="pbar"><div class="pdots"><div class="pdot" style="background:var(--coral)"></div><div class="pdot" style="background:var(--bord2)"></div><div class="pdot" style="background:var(--bord2)"></div></div><div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;">La Curaduría · Figma</div><div style="width:60px;"></div></div>
+    <div class="pbody">
+      <div class="pphone"><div class="pscreen"><div class="pstop"><span>La Curaduría</span></div><div class="psbody"><div class="psline" style="width:70%"></div><div class="psline" style="width:45%"></div><div class="psblock"></div><div class="psblock"></div><div class="psblock" style="border-color:rgba(255,115,108,.2)"></div></div><div class="psnav"><div class="pnavdot"></div><div class="pnavdot on"></div><div class="pnavdot"></div><div class="pnavdot"></div></div></div></div>
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;text-transform:uppercase;margin-bottom:8px;">Explora el prototipo de la app</h3>
+      <p style="font-size:13px;font-weight:300;color:var(--t2);line-height:1.7;max-width:360px;margin:0 auto 20px;">Navega todas las pantallas en el prototipo interactivo de La Curaduría.</p>
+      <a class="pcta" href="https://noise-blues-61589015.figma.site" target="_blank" rel="noreferrer">Ver prototipo →</a>
+      <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t4);letter-spacing:.08em;text-transform:uppercase;margin-top:10px;">Abre en pantalla completa · Sin instalación</p>
     </div>
-
   </div>
+</div>
 </section>
 
-<!-- ══ NOTA CONVERTIBLE ══ -->
-<section class="sec" id="oportunidad">
-  <div class="eye rv">03 · La Oportunidad</div>
-  <h2 class="rv d1">¿Qué es una <em>nota convertible</em>?</h2>
-  <p class="lead rv d2">La forma más eficiente y protegida de invertir en una startup en etapa temprana.</p>
-
-  <div class="nc-grid rv d2">
-    <div class="nc-card accent">
-      <div class="nc-card-eye">En resumen</div>
-      <div class="nc-card-title">Un préstamo que se convierte en acciones</div>
-      <div class="nc-card-body">Hoy nos prestas dinero. Cuando La Curaduría levante su primera ronda grande, ese préstamo se convierte automáticamente en participación accionaria — con un <b>descuento del 20%</b> sobre el precio que paguen los demás inversionistas.</div>
-    </div>
-    <div class="nc-card">
-      <div class="nc-card-eye">¿Por qué es bueno para el inversionista?</div>
-      <div class="nc-card-title">Entras antes, pagas menos</div>
-      <div class="nc-card-body">Al invertir hoy, cuando la empresa vale poco, obtienes más acciones por el mismo dinero. El <b>techo de valoración de $2.000.000.000 COP</b> garantiza que tus acciones se calcularán como si hubieras invertido con esa valoración máxima — aunque la empresa crezca mucho más.</div>
-    </div>
+<!-- MODELO DE NEGOCIO -->
+<section class="sec" style="background:var(--bg2);">
+<div class="sec-inner">
+  <div class="eye rv" style="margin-bottom:12px;">Modelo de negocio</div>
+  <div class="mgrid rv d2">
+    <div class="mcard" style="border-color:rgba(255,115,108,.15)"><div class="mcard-h" style="color:var(--coral)">Suscripción</div><div class="mcard-b">Planes con beneficios y funcionalidades exclusivas para usuarios, creadores y gestores.</div><span class="tag" style="color:var(--coral);border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.06)">MRR</span></div>
+    <div class="mcard" style="border-color:rgba(117,230,249,.15)"><div class="mcard-h" style="color:var(--cyan)">Comisión</div><div class="mcard-b">Por venta de entradas, reservas y contratación de talento. Modelo transaccional directo.</div><span class="tag" style="color:var(--cyan);border-color:rgba(117,230,249,.3);background:rgba(117,230,249,.06)">Transaccional</span></div>
+    <div class="mcard" style="border-color:rgba(0,170,116,.15)"><div class="mcard-h" style="color:var(--green)">Pauta</div><div class="mcard-b">Promoción de eventos y marcas a audiencias culturales segmentadas.</div><span class="tag" style="color:var(--green);border-color:rgba(0,170,116,.3);background:rgba(0,170,116,.06)">Advertising</span></div>
   </div>
-
-  <div class="nc-steps rv d3">
-    <div class="nc-step">
-      <div class="nc-step-n">01</div>
-      <div>
-        <div class="nc-step-head">Haces la inversión</div>
-        <div class="nc-step-body">Inviertes <b>desde $2.000.000 COP</b> en La Curaduría. El dinero va directo al desarrollo del producto y al crecimiento.</div>
-      </div>
-    </div>
-    <div class="nc-step">
-      <div class="nc-step-n">02</div>
-      <div>
-        <div class="nc-step-head">La empresa crece</div>
-        <div class="nc-step-body">Usamos el capital para construir la plataforma, adquirir usuarios y posicionarnos en el mercado cultural de Bogotá.</div>
-      </div>
-    </div>
-    <div class="nc-step">
-      <div class="nc-step-n">03</div>
-      <div>
-        <div class="nc-step-head">Primera ronda grande</div>
-        <div class="nc-step-body">Cuando La Curaduría levante su Serie A o reciba valoración formal, tu nota se convierte en <b>acciones con 20% de descuento</b> sobre el precio de esa ronda.</div>
-      </div>
-    </div>
-    <div class="nc-step">
-      <div class="nc-step-n">04</div>
-      <div>
-        <div class="nc-step-head">Tu retorno</div>
-        <div class="nc-step-body">Con las proyecciones actuales: <b>x5 USD en 3 años</b> y <b>x10 USD en 5 años</b>. Eres parte del ecosistema cultural más importante de Colombia.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="nc-terms rv d3">
-    <div class="nc-term">
-      <div class="nc-term-lbl">Inversión mínima</div>
-      <div class="nc-term-val" style="color:var(--coral)">$2M COP</div>
-      <div class="nc-term-desc">Cualquier persona puede entrar desde este monto</div>
-    </div>
-    <div class="nc-term">
-      <div class="nc-term-lbl">Descuento en conversión</div>
-      <div class="nc-term-val" style="color:var(--yellow)">20%</div>
-      <div class="nc-term-desc">Sobre el precio de la próxima ronda de inversión</div>
-    </div>
-    <div class="nc-term">
-      <div class="nc-term-lbl">Techo de valoración</div>
-      <div class="nc-term-val" style="color:var(--cyan)">$2.000M COP</div>
-      <div class="nc-term-desc">Precio máximo al que se calcula tu conversión en acciones</div>
-    </div>
-  </div>
+</div>
 </section>
 
-<!-- ══ SIMULADOR ══ -->
-<section class="sec" id="simulador">
-  <div class="eye rv">04 · Simulador</div>
-  <h2 class="rv d1">Simula tu <em>retorno</em></h2>
-  <p class="lead rv d2">Mueve el slider y ve cuánto podrías ganar con tu inversión según tres escenarios de crecimiento.</p>
+<!-- OPORTUNIDAD -->
+<section id="oportunidad" class="sec" style="background:var(--bg2);">
+<div class="sec-inner">
+  <div class="eye rv">04 · La oportunidad</div>
+  <h2 class="h2 rv d1">Ronda de inversión <em>pre-semilla</em></h2>
 
-  <div class="rv d2">
-
-    <!-- SLIDER -->
-    <div style="margin-bottom:32px;">
-      <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">
-        <span style="font-family:'DM Mono',monospace;font-size:14px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;">Monto a invertir</span>
-        <input type="range" id="sim-slider" min="2000000" max="50000000" step="500000" value="5000000"
-          style="flex:1;accent-color:var(--coral);height:4px;cursor:pointer;">
-        <span id="sim-val" style="font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--cream);min-width:160px;text-align:right;">$5.000.000 COP</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:14px;color:var(--t3);letter-spacing:.06em;">
-        <span>$2.000.000 COP</span><span>$50.000.000 COP</span>
-      </div>
-    </div>
-
-    <!-- TRES CARDS -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px;">
-      <div style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:24px 20px;">
-        <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--t3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;">Conservador · x3 · 3 años</div>
-        <div id="sim-r3" style="font-size:20px;font-weight:900;letter-spacing:-.01em;margin-bottom:6px;">$15.000.000</div>
-        <div style="font-family:'DM Mono',monospace;font-size:14px;color:var(--t3);line-height:1.5;">0.1% del SAM · Bogotá consolidada</div>
-      </div>
-      <div style="background:rgba(255,115,108,.06);border:2px solid rgba(255,115,108,.35);border-radius:10px;padding:24px 20px;">
-        <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
-          <span style="font-family:'DM Mono',monospace;font-size:13px;color:var(--t3);letter-spacing:.12em;text-transform:uppercase;">Base · x5 · 5 años</span>
-          <span style="font-family:'DM Mono',monospace;font-size:11px;background:rgba(255,115,108,.15);color:var(--coral);padding:2px 7px;border-radius:3px;letter-spacing:.06em;text-transform:uppercase;">Proyectado</span>
-        </div>
-        <div id="sim-r5" style="font-size:20px;font-weight:900;letter-spacing:-.01em;color:var(--coral);margin-bottom:6px;">$25.000.000</div>
-        <div style="font-family:'DM Mono',monospace;font-size:14px;color:var(--t3);line-height:1.5;">0.3% del SAM · Expansión LATAM</div>
-      </div>
-      <div style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:24px 20px;">
-        <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--t3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;">Optimista · x10 · 5 años</div>
-        <div id="sim-r10" style="font-size:20px;font-weight:900;letter-spacing:-.01em;margin-bottom:6px;">$50.000.000</div>
-        <div style="font-family:'DM Mono',monospace;font-size:14px;color:var(--t3);line-height:1.5;">3 ciudades LATAM · Marketplace activo</div>
+  <!-- Compact grid: ronda + distribución + términos + retorno -->
+  <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px;">
+    <!-- Ronda -->
+    <div style="background:var(--surf);border:1px solid var(--bord);border-radius:8px;padding:20px;">
+      <div class="eye" style="margin-bottom:8px;">Objetivo de ronda</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:var(--coral);line-height:1;">$200M</div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--t3);margin-top:4px;letter-spacing:.06em;">COP · Runway 1 año</div>
+      <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;align-items:center;gap:8px;"><div style="width:3px;height:32px;background:var(--coral);border-radius:2px;"></div><div><div style="font-size:12px;font-weight:600;color:var(--cream);">50% Producto</div><div class="distbar" style="margin-top:3px;"><div class="distfill" style="width:50%;background:var(--coral)"></div></div></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div style="width:3px;height:32px;background:var(--cyan);border-radius:2px;"></div><div><div style="font-size:12px;font-weight:600;color:var(--cream);">25% Operativos</div><div class="distbar" style="margin-top:3px;"><div class="distfill" style="width:25%;background:var(--cyan)"></div></div></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div style="width:3px;height:32px;background:var(--green);border-radius:2px;"></div><div><div style="font-size:12px;font-weight:600;color:var(--cream);">25% Mercadeo</div><div class="distbar" style="margin-top:3px;"><div class="distfill" style="width:25%;background:var(--green)"></div></div></div></div>
       </div>
     </div>
-
-    <!-- META CARD -->
-    <div style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:20px 24px;margin-bottom:28px;">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
-        <div>
-          <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--t3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;">Tu participación</div>
-          <div id="sim-part" style="font-size:16px;font-weight:900;margin-bottom:2px;">0.50%</div>
-          <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--t3);">sobre techo $2.000M COP</div>
-        </div>
-        <div>
-          <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--t3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;">Valoración al entrar</div>
-          <div style="font-size:16px;font-weight:900;margin-bottom:2px;">$2.000.000.000 COP</div>
-          <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--t3);">techo nota convertible</div>
-        </div>
-        <div>
-          <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--t3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;">Descuento conversión</div>
-          <div style="font-size:16px;font-weight:900;margin-bottom:2px;">20%</div>
-          <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--t3);">sobre precio próxima ronda</div>
-        </div>
+    <!-- Términos -->
+    <div style="background:var(--surf);border:1px solid var(--bord);border-radius:8px;padding:20px;">
+      <div class="eye" style="margin-bottom:8px;">Instrumento</div>
+      <div class="ncterms" style="border:none;border-radius:0;">
+        <div class="ncterm" style="padding:8px 0;"><div class="ncterm-lbl">Instrumento</div><div class="ncterm-val" style="color:var(--coral);font-size:14px;">Nota convertible</div></div>
+        <div class="ncterm" style="padding:8px 0;"><div class="ncterm-lbl">Mínimo</div><div class="ncterm-val" style="color:var(--green);font-size:14px;">$2.000.000 COP</div></div>
+        <div class="ncterm" style="padding:8px 0;"><div class="ncterm-lbl">Interés</div><div class="ncterm-val" style="color:var(--cyan);font-size:14px;">8% anual</div></div>
+        <div class="ncterm" style="padding:8px 0;"><div class="ncterm-lbl">Descuento</div><div class="ncterm-val" style="color:var(--cyan);font-size:14px;">20%</div></div>
+        <div class="ncterm" style="padding:8px 0;"><div class="ncterm-lbl">Cap</div><div class="ncterm-val" style="font-size:14px;">$2.000M COP</div></div>
+        <div class="ncterm" style="padding:8px 0;border-bottom:none;"><div class="ncterm-lbl">Vencimiento</div><div class="ncterm-val" style="font-size:14px;">24 meses</div></div>
       </div>
     </div>
-
-    <!-- GRÁFICA -->
-    <div style="position:relative;width:100%;height:260px;margin-bottom:16px;">
-      <canvas id="sim-chart"></canvas>
-    </div>
-    <div style="display:flex;gap:16px;margin-bottom:28px;flex-wrap:wrap;">
-      <span style="display:flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:14px;color:var(--t2);letter-spacing:.06em;"><span style="width:10px;height:10px;border-radius:2px;background:#3D5035;flex-shrink:0;"></span>Inversión</span>
-      <span style="display:flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:14px;color:var(--t2);letter-spacing:.06em;"><span style="width:10px;height:10px;border-radius:2px;background:#00AA74;flex-shrink:0;"></span>Conservador x3</span>
-      <span style="display:flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:14px;color:var(--t2);letter-spacing:.06em;"><span style="width:10px;height:10px;border-radius:2px;background:#75E6F9;flex-shrink:0;"></span>Base x5</span>
-      <span style="display:flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:14px;color:var(--t2);letter-spacing:.06em;"><span style="width:10px;height:10px;border-radius:2px;background:#FFC335;flex-shrink:0;"></span>Optimista x10</span>
-    </div>
-
-    <!-- FRASE -->
-    <div id="sim-frase" style="background:rgba(255,115,108,.05);border-left:3px solid var(--coral);border-radius:0 8px 8px 0;padding:16px 20px;font-size:14px;font-weight:300;color:var(--t2);line-height:1.75;margin-bottom:20px;"></div>
-
-    <!-- UNICORNIO -->
-    <div style="border:1px solid var(--bord);border-radius:10px;padding:24px;margin-bottom:16px;">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-        <span style="font-size:13px;font-weight:600;color:var(--t2);">Y si La Curaduría se convierte en unicornio...</span>
-        <div style="height:1px;flex:1;background:var(--bord);"></div>
-        <span style="font-family:'DM Mono',monospace;font-size:11px;background:rgba(255,195,53,.12);color:var(--yellow);padding:3px 9px;border-radius:3px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;border:1px solid rgba(255,195,53,.25);">Fantasía · x100</span>
+    <!-- Retorno -->
+    <div style="background:var(--surf);border:1px solid var(--bord);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:10px;">
+      <div class="eye" style="margin-bottom:4px;">Retorno proyectado</div>
+      <div style="background:rgba(255,115,108,.05);border:1px solid rgba(255,115,108,.2);border-radius:6px;padding:14px;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;color:var(--coral);line-height:1;">x5</div>
+        <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--coral);letter-spacing:.08em;margin-top:3px;">EN 3 AÑOS</div>
+        <div style="font-size:12px;color:var(--t3);margin-top:5px;">Proyección conservadora</div>
       </div>
-      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;">
-        <div id="sim-r100" style="font-size:28px;font-weight:900;letter-spacing:-.02em;color:var(--yellow);">$500.000.000</div>
-        <div style="font-family:'DM Mono',monospace;font-size:14px;color:var(--t3);">COP en ~7 años</div>
+      <div style="background:rgba(117,230,249,.04);border:1px solid rgba(117,230,249,.2);border-radius:6px;padding:14px;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;color:var(--cyan);line-height:1;">x10</div>
+        <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--cyan);letter-spacing:.08em;margin-top:3px;">EN 5 AÑOS</div>
+        <div style="font-size:12px;color:var(--t3);margin-top:5px;">Consolidación LATAM</div>
       </div>
-      <p style="font-size:15px;font-weight:300;color:var(--t2);line-height:1.75;margin:0;">Si La Curaduría dominara el mercado cultural de Latinoamérica y alcanzara una valoración de $1B USD — el estatus de unicornio — tu inversión podría multiplicarse x100. Es un escenario especulativo, no una proyección. Está aquí para que veas el techo de lo posible.</p>
     </div>
-
-    <!-- DISCLAIMER -->
-    <div style="background:var(--surf);border-radius:8px;padding:14px 18px;font-family:'DM Mono',monospace;font-size:14px;color:var(--t3);line-height:1.65;letter-spacing:.04em;">
-      Los escenarios son proyecciones ilustrativas basadas en benchmarks de plataformas culturales y digitales en LATAM. No constituyen garantía de retorno. La inversión implica riesgo de pérdida total del capital.
-    </div>
-
   </div>
+
+  <!-- FAQ compact -->
+  <div class="acc rv d2" style="margin-bottom:0;">
+    <div class="acc-item"><div class="acc-head" onclick="this.parentElement.classList.toggle('open')"><span class="acc-head-txt">¿Qué es una nota convertible?</span><span class="acc-arrow">+</span></div><div class="acc-body">Un préstamo que se convierte en participación accionaria. Cuando La Curaduría levante su primera ronda grande, tu inversión se convierte en acciones con un <b>20% de descuento</b> sobre el precio que paguen los demás inversionistas.</div></div>
+    <div class="acc-item"><div class="acc-head" onclick="this.parentElement.classList.toggle('open')"><span class="acc-head-txt">Derechos del inversionista</span><span class="acc-arrow">+</span></div><div class="acc-body"><ul><li>Informes financieros trimestrales</li><li>Derecho preferencial en futuras rondas (pro-rata)</li><li>Notificación de eventos de liquidez o adquisición</li></ul></div></div>
+    <div class="acc-item"><div class="acc-head" onclick="this.parentElement.classList.toggle('open')"><span class="acc-head-txt">Factores de riesgo</span><span class="acc-arrow">+</span></div><div class="acc-body">La inversión en startups en etapa temprana implica riesgo de pérdida total del capital e imposibilidad de liquidez en el corto plazo. Los retornos proyectados son ilustrativos.</div></div>
+  </div>
+
+  <!-- CTA row: Simular + Contrato -->
+  <div class="rv d3" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;">
+    <div onclick="openModal('sim')" style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:24px 28px;cursor:pointer;transition:border-color .2s;display:flex;align-items:center;justify-content:space-between;gap:16px;" onmouseover="this.style.borderColor='rgba(117,230,249,.4)'" onmouseout="this.style.borderColor='var(--bord)'">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:6px;">Herramienta</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;color:var(--cream);margin-bottom:4px;">Simula tu inversión</div>
+        <div style="font-size:13px;color:var(--t3);">Calcula retornos según monto y escenario.</div>
+      </div>
+      <div style="width:40px;height:40px;border-radius:8px;background:rgba(117,230,249,.1);border:1px solid rgba(117,230,249,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+    </div>
+    <div onclick="openModal('con')" style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:24px 28px;cursor:pointer;transition:border-color .2s;display:flex;align-items:center;justify-content:space-between;gap:16px;" onmouseover="this.style.borderColor='rgba(255,115,108,.4)'" onmouseout="this.style.borderColor='var(--bord)'">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:6px;">Documento</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;color:var(--cream);margin-bottom:4px;">Genera tu contrato</div>
+        <div style="font-size:13px;color:var(--t3);">Nota convertible prellenada en PDF.</div>
+      </div>
+      <div style="width:40px;height:40px;border-radius:8px;background:rgba(255,115,108,.1);border:1px solid rgba(255,115,108,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+    </div>
+  </div>
+</div>
 </section>
 
-<!-- ══ FORMULARIO ══ -->
-<section class="sec" id="inversion">
-  <div class="eye rv">05 · Inversión</div>
-  <h2 class="rv d1">Quiero <em>invertir</em></h2>
-  <p class="lead rv d2">Completa el formulario y nos ponemos en contacto en menos de 48 horas. Al enviar confirmas tu acuerdo de confidencialidad.</p>
 
-  <div class="form-wrap">
-    <div class="form-left rv d2">
-      <div class="form-box" id="form-box">
-        <div class="form-success" id="form-success">
-          <div class="form-success-icon">✓</div>
-          <div class="form-success-title">¡Recibido!</div>
-          <div class="form-success-body">Gracias por tu interés en La Curaduría. Nicolás se pondrá en contacto contigo en menos de 48 horas para dar el siguiente paso.</div>
-        </div>
-        <div id="form-fields">
-          <div class="form-box-title">Registra tu interés</div>
-          <div class="form-box-sub">Al enviar este formulario confirmas que has leído y aceptas el acuerdo de confidencialidad.</div>
-          <div class="field-row">
-            <div class="field"><label>Nombre</label><input type="text" id="f-nombre" placeholder="Tu nombre" required></div>
-            <div class="field"><label>Apellido</label><input type="text" id="f-apellido" placeholder="Tu apellido" required></div>
-          </div>
-          <div class="field"><label>Correo electrónico</label><input type="email" id="f-email" placeholder="tu@email.com" required></div>
+<!-- CONTACTO -->
+<!-- CONTACTO -->
+<section id="contacto" class="sec">
+<div class="sec-inner">
+  <div class="eye rv">05 · Inversión y contacto</div>
+  <h2 class="h2 rv d1">Quiero <em>invertir</em></h2>
+  <div class="clayout">
+    <div class="rv d1">
+      <div class="fbox">
+        <div id="fsuccess" class="fsuccess"><div class="fsuccess-icon">✓</div><div class="fsuccess-title">¡Recibido!</div><div class="fsuccess-body">Nicolás se pondrá en contacto en menos de 48 horas.</div></div>
+        <div id="ffields">
+          <div class="ftitle">Registra tu interés</div>
+          <div class="fsub">Completa el formulario y te contactamos pronto.</div>
+          <div class="frow"><div class="field"><label>Nombre</label><input type="text" id="f-nombre" placeholder="Tu nombre"></div><div class="field"><label>Apellido</label><input type="text" id="f-apellido" placeholder="Tu apellido"></div></div>
+          <div class="field"><label>Correo</label><input type="email" id="f-email" placeholder="tu@email.com"></div>
           <div class="field"><label>Teléfono / WhatsApp</label><input type="tel" id="f-tel" placeholder="+57 300 000 0000"></div>
-          <div class="field">
-            <label>Monto de interés</label>
-            <select id="f-monto">
-              <option value="">Selecciona un rango</option>
-              <option>$2.000.000 – $5.000.000 COP</option>
-              <option>$5.000.000 – $15.000.000 COP</option>
-              <option>$15.000.000 – $50.000.000 COP</option>
-              <option>Más de $50.000.000 COP</option>
-              <option>Prefiero discutirlo en la llamada</option>
-            </select>
-          </div>
-          <div class="field"><label>¿Algo que quieras saber o comentar?</label><textarea id="f-msg" placeholder="Preguntas, contexto, o cómo conociste La Curaduría..."></textarea></div>
-          <!-- NDA ya fue aceptado al ingresar al hub -->
-          <div style="background:rgba(0,170,116,0.06);border:1px solid rgba(0,170,116,0.2);border-radius:8px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:center;gap:10px;">
-            <div style="width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;"></div>
-            <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--green);letter-spacing:0.1em;text-transform:uppercase;">NDA firmado al ingresar al hub</span>
-          </div>
-          <button class="submit-btn" id="submit-btn">Enviar — Quiero invertir →</button>
+          <div class="field"><label>Monto de interés</label><select id="f-monto"><option value="">Selecciona un rango</option><option>$2.000.000 – $5.000.000 COP</option><option>$5.000.000 – $15.000.000 COP</option><option>$15.000.000 – $50.000.000 COP</option><option>Más de $50.000.000 COP</option><option>Prefiero discutirlo en la llamada</option></select></div>
+          <div class="field"><label>Mensaje (opcional)</label><textarea id="f-msg" placeholder="Preguntas o contexto..."></textarea></div>
+          <div class="ndabadge"><div class="ndabadge-dot"></div><span class="ndabadge-txt">NDA firmado al ingresar al hub</span></div>
+          <button class="sbtn" id="f-btn" onclick="hubContactSubmit()">Enviar →</button>
         </div>
       </div>
     </div>
-
-    <div class="contact-aside rv d3" id="contacto">
-      <div class="contact-block">
-        <div class="contact-block-eye">Contacto directo</div>
-        <div class="contact-block-name">Nicolás Pava</div>
-        <div class="contact-block-role">Founder · La Curaduría</div>
-        <a class="contact-link" href="/cdn-cgi/l/email-protection#7c12151f13101d0f520c1d0a1d3c101d1f090e1d18090e151d52121908">
-          <span>Email</span>
-          <span class="__cf_email__" data-cfemail="7917101a1615180a5709180f183915181a0c0b181d0c0b101857171c0d">[email&#160;protected]</span>
-        </a>
-        <a class="contact-link" href="tel:+573044138497">
-          <span>Teléfono / WhatsApp</span>
-          +57 304 413 8497
-        </a>
-        <a class="contact-link" href="https://lacuraduria.net" target="_blank">
-          <span>Web</span>
-          lacuraduria.net
-        </a>
+    <div class="caside rv d2">
+      <div class="ccard">
+        <div class="ccard-eye">Contacto directo</div>
+        <div class="ccard-name">Nicolás Pava</div>
+        <div class="ccard-role">Founder · La Curaduría</div>
+        <a class="clink" href="mailto:nicolas.pava@lacuraduria.net"><div class="clink-lbl">Email</div><div class="clink-val">nicolas.pava@lacuraduria.net</div></a>
+        <a class="clink" href="tel:+573044138497"><div class="clink-lbl">WhatsApp</div><div class="clink-val">+57 304 413 8497</div></a>
+        <a class="clink" href="https://lacuraduria.net" target="_blank"><div class="clink-lbl">Web</div><div class="clink-val">lacuraduria.net</div></a>
       </div>
-
-      <a class="cal-btn" href="https://calendly.com/nicolas-pava-lacuraduria/30min" target="_blank">
-        Agendar llamada en Google Calendar →
-      </a>
-
-      <div class="contact-block">
-        <div class="contact-block-eye">Términos de la ronda</div>
-        <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid var(--bord);">
-            <span style="font-size:15px;font-weight:300;color:var(--t2);">Estructura</span>
-            <span class="chip" style="color:var(--coral);border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.07)">Nota convertible</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid var(--bord);">
-            <span style="font-size:15px;font-weight:300;color:var(--t2);">Objetivo de ronda</span>
-            <span style="font-size:14px;font-weight:700;color:var(--cream);">$50K USD</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid var(--bord);">
-            <span style="font-size:15px;font-weight:300;color:var(--t2);">Descuento</span>
-            <span style="font-size:14px;font-weight:700;color:var(--yellow);">20%</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid var(--bord);">
-            <span style="font-size:15px;font-weight:300;color:var(--t2);">Techo de valoración</span>
-            <span style="font-size:14px;font-weight:700;color:var(--cyan);">$2.000M COP</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-size:15px;font-weight:300;color:var(--t2);">Mínimo</span>
-            <span style="font-size:14px;font-weight:700;color:var(--green);">$2M COP</span>
-          </div>
-        </div>
+      <a class="calbtn" href="https://calendar.app.google/Hhjph73MSCFFJxW28" target="_blank">Agendar llamada →</a>
+      <div class="ccard">
+        <div class="ccard-eye">Términos de la ronda</div>
+        <div class="trow"><span style="font-size:13px;color:var(--t2)">Instrumento</span><span class="tag" style="color:var(--coral);border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.06)">Nota convertible</span></div>
+        <div class="trow"><span style="font-size:13px;color:var(--t2)">Objetivo</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700">$200M COP</span></div>
+        <div class="trow"><span style="font-size:13px;color:var(--t2)">Descuento</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:var(--cyan)">20%</span></div>
+        <div class="trow"><span style="font-size:13px;color:var(--t2)">Mínimo</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:var(--green)">$2M COP</span></div>
       </div>
     </div>
   </div>
+</div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="fl"><svg viewBox="0 0 507 506"><use href="#L"/></svg><div class="fw">La <b>Cu</b>raduría · lacuraduria.net</div></div>
-  <div class="fr">Investor Hub · Confidencial · 2026 · Speedlylab</div>
-</footer>
+<!-- MODAL: SIMULADOR -->
+<div id="modal-sim" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(10,13,10,.92);backdrop-filter:blur(16px);align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closeModal('sim')">
+  <div style="width:100%;max-width:620px;background:var(--bg2);border:1px solid var(--bord);border-radius:12px;overflow:hidden;">
+    <div style="padding:20px 24px;border-bottom:1px solid var(--bord);display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:3px;">Herramienta</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;color:var(--cream);">Simula tu inversión</div>
+      </div>
+      <button onclick="closeModal('sim')" style="width:32px;height:32px;border-radius:50%;background:var(--surf);border:1px solid var(--bord);color:var(--t2);font-size:16px;cursor:pointer;">×</button>
+    </div>
+    <div style="padding:24px;">
+      <label style="display:block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:6px;">Monto a invertir (COP)</label>
+      <input type="range" id="m-sim-range" min="2000000" max="50000000" step="1000000" value="10000000" oninput="updateModalSim(this.value)" style="width:100%;accent-color:var(--cyan);margin-bottom:8px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;color:var(--cyan);line-height:1;margin-bottom:20px;" id="m-sim-amount">$10.000.000</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+        <div style="background:var(--surf);border:1px solid var(--bord);border-radius:8px;padding:16px;text-align:center;">
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);margin-bottom:6px;">Conservador · x5</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:var(--coral);" id="m-sc-cons">$50M</div>
+          <div style="font-size:11px;color:var(--t4);margin-top:3px;">En 3 años</div>
+        </div>
+        <div style="background:rgba(117,230,249,.04);border:1px solid rgba(117,230,249,.2);border-radius:8px;padding:16px;text-align:center;">
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:6px;">Base · x8</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:var(--cyan);" id="m-sc-base">$80M</div>
+          <div style="font-size:11px;color:var(--t4);margin-top:3px;">En 4 años</div>
+        </div>
+        <div style="background:rgba(0,170,116,.04);border:1px solid rgba(0,170,116,.2);border-radius:8px;padding:16px;text-align:center;">
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px;">Optimista · x15</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:var(--green);" id="m-sc-opt">$150M</div>
+          <div style="font-size:11px;color:var(--t4);margin-top:3px;">En 5 años</div>
+        </div>
+      </div>
+      <div style="margin-top:14px;padding:12px;background:rgba(117,230,249,.04);border:1px solid rgba(117,230,249,.1);border-radius:6px;font-size:12px;color:var(--t3);line-height:1.6;">Los retornos son proyecciones ilustrativas basadas en escenarios de crecimiento. No garantizan resultados. La inversión mínima es <b style="color:var(--cream)">$2.000.000 COP</b>.</div>
+    </div>
+  </div>
+</div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-(function() {
+<!-- MODAL: CONTRATO -->
+<div id="modal-con" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(10,13,10,.92);backdrop-filter:blur(16px);align-items:center;justify-content:center;padding:20px;overflow-y:auto;" onclick="if(event.target===this)closeModal('con')">
+  <div style="width:100%;max-width:680px;background:var(--bg2);border:1px solid var(--bord);border-radius:12px;overflow:hidden;margin:auto;">
+    <div style="padding:20px 24px;border-bottom:1px solid var(--bord);display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:3px;">Documento legal</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;color:var(--cream);">Genera tu contrato</div>
+      </div>
+      <button onclick="closeModal('con')" style="width:32px;height:32px;border-radius:50%;background:var(--surf);border:1px solid var(--bord);color:var(--t2);font-size:16px;cursor:pointer;">×</button>
+    </div>
+    <div style="padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div>
+        <div class="frow"><div class="field"><label>Nombre</label><input type="text" id="c-n" placeholder="Tu nombre" oninput="updC()"></div><div class="field"><label>Apellido</label><input type="text" id="c-a" placeholder="Tu apellido" oninput="updC()"></div></div>
+        <div class="field"><label>Documento (CC / NIT)</label><input type="text" id="c-d" placeholder="1.234.567.890" oninput="updC()"></div>
+        <div class="frow"><div class="field"><label>Correo</label><input type="email" id="c-e" placeholder="tu@email.com" oninput="updC()"></div><div class="field"><label>Teléfono</label><input type="tel" id="c-t" placeholder="+57 300 000 0000"></div></div>
+        <div class="field"><label>Ciudad y país</label><input type="text" id="c-c" placeholder="Bogotá, Colombia"></div>
+        <div class="field"><label>Monto a invertir</label><select id="c-m" onchange="updC()"><option value="">Selecciona</option><option value="2000000">$2.000.000 COP</option><option value="5000000">$5.000.000 COP</option><option value="10000000">$10.000.000 COP</option><option value="15000000">$15.000.000 COP</option><option value="20000000">$20.000.000 COP</option><option value="30000000">$30.000.000 COP</option><option value="50000000">$50.000.000 COP</option></select></div>
+        <div class="cprev" id="cprev" style="margin-bottom:12px;">Completa los campos para ver la vista previa.</div>
+        <button class="dlbtn" onclick="genPDF()" style="width:100%;">Descargar contrato PDF →</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="cinfocard"><div class="cinfocard-title">El contrato incluye</div><div class="clause">Las partes</div><div class="clause">Objeto del contrato</div><div class="clause">Términos financieros</div><div class="clause">Mecanismo de conversión</div><div class="clause">Derechos del inversionista</div><div class="clause">Confidencialidad</div><div class="clause">Ley aplicable (Colombia)</div><div class="clause">Espacio para firmas</div></div>
+        <div class="cinfocard" style="border-color:rgba(255,115,108,.15)"><div class="cinfocard-title">Importante</div><p style="font-size:12px;color:var(--t2);line-height:1.65;">Borrador de referencia. No constituye contrato vinculante hasta ser firmado por ambas partes.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  // ── SUPABASE CONFIG ──
-  var SUPA_URL = 'https://dqakyqjvibbozhopnlyw.supabase.co';
-  var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxYWt5cWp2aWJib3pob3BubHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUwMjEwMTEsImV4cCI6MjA3MDU5NzAxMX0.jm8d8AMxzurBKDteGoDHnrla8Xm8P_xrNIkY5kLHVu4';
-
-  async function saveNDAToSupabase(nombre, apellido, email) {
-    try {
-      var res = await fetch(SUPA_URL + '/rest/v1/nda_firmados', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPA_KEY,
-          'Authorization': 'Bearer ' + SUPA_KEY,
-          'Prefer': 'return=minimal'
-        },
-        body: JSON.stringify({
-          nombre: nombre,
-          apellido: apellido,
-          email: email,
-          fecha: new Date().toISOString(),
-          fuente: 'investor-hub'
-        })
-      });
-      if (!res.ok) {
-        var err = await res.text();
-        console.warn('Supabase error:', res.status, err);
-        return false;
-      }
-      return true;
-    } catch(e) {
-      console.warn('Supabase fetch error:', e);
-      return false;
-    }
-  }
-
-  // ── GATE ──
-  function checkGate() {
-    var cb     = document.getElementById('gate-cb');
-    var nombre = document.getElementById('gate-nombre').value.trim();
-    var email  = document.getElementById('gate-email').value.trim();
-    var btn    = document.getElementById('gate-btn');
-    if (cb && btn) {
-      var ok = cb.checked && nombre.length > 0 && email.length > 0;
-      btn.classList.toggle('active', ok);
-    }
-  }
-
-  async function enterHub() {
-    var nombre   = document.getElementById('gate-nombre').value.trim();
-    var apellido = document.getElementById('gate-apellido').value.trim();
-    var email    = document.getElementById('gate-email').value.trim();
-    var errorEl  = document.getElementById('gate-error');
-    var btn      = document.getElementById('gate-btn');
-
-    if (!nombre || !email) return;
-
-    btn.textContent = 'Guardando...';
-    btn.classList.remove('active');
-    btn.classList.add('loading');
-
-    var saved = await saveNDAToSupabase(nombre, apellido, email);
-
-    if (!saved) {
-      if (errorEl) {
-        errorEl.style.display = 'block';
-        errorEl.textContent = 'Hubo un problema al guardar. Por favor intenta de nuevo.';
-      }
-      btn.textContent = 'Acepto — Acceder al Investor Hub →';
-      btn.classList.remove('loading');
-      btn.classList.add('active');
-      return;
-    }
-
-    // Pre-fill form
-    var fn = document.getElementById('f-nombre');
-    var fa = document.getElementById('f-apellido');
-    var fe = document.getElementById('f-email');
-    if (fn) fn.value = nombre;
-    if (fa) fa.value = apellido;
-    if (fe) fe.value = email;
-
-    var gate = document.getElementById('gate');
-    if (gate) gate.classList.add('hidden');
-  }
-
-  var gateCb = document.getElementById('gate-cb');
-  if (gateCb) gateCb.addEventListener('change', checkGate);
-
-  ['gate-nombre','gate-apellido','gate-email'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) el.addEventListener('input', checkGate);
+<script>
+function openModal(id) {
+  var m = document.getElementById('modal-'+id);
+  m.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  if(id==='sim') updateModalSim(document.getElementById('m-sim-range').value);
+}
+function closeModal(id) {
+  document.getElementById('modal-'+id).style.display = 'none';
+  document.body.style.overflow = '';
+}
+function updateModalSim(val) {
+  var v = parseInt(val);
+  var fmt = function(n){ return '$'+Math.round(n/1000000)+'M'; };
+  document.getElementById('m-sim-amount').textContent = '$'+v.toLocaleString('es-CO');
+  document.getElementById('m-sc-cons').textContent = fmt(v*5);
+  document.getElementById('m-sc-base').textContent = fmt(v*8);
+  document.getElementById('m-sc-opt').textContent = fmt(v*15);
+}
+function hubContactSubmit() {
+  var SUPA_URL='https://dqakyqjvibbozhopnlyw.supabase.co';
+  var SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxYWt5cWp2aWJib3pob3BubHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUwMjEwMTEsImV4cCI6MjA3MDU5NzAxMX0.jm8d8AMxzurBKDteGoDHnrla8Xm8P_xrNIkY5kLHVu4';
+  var n = document.getElementById('f-nombre');
+  var e = document.getElementById('f-email');
+  if(!n||!n.value.trim()||!e||!e.value.includes('@')) { alert('Por favor completa nombre y correo.'); return; }
+  var btn = document.getElementById('f-btn');
+  if(btn){btn.textContent='Enviando...';btn.disabled=true;}
+  var data = {
+    nombre: n.value.trim()+' '+(document.getElementById('f-apellido')?document.getElementById('f-apellido').value.trim():''),
+    email: e.value.trim(),
+    telefono: document.getElementById('f-tel')?document.getElementById('f-tel').value:'',
+    monto: document.getElementById('f-monto')?document.getElementById('f-monto').value:'',
+    mensaje: document.getElementById('f-msg')?document.getElementById('f-msg').value:'',
+    fecha: new Date().toISOString()
+  };
+  fetch(SUPA_URL+'/rest/v1/inversores_interesados',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Prefer':'return=minimal'},body:JSON.stringify(data)})
+  .catch(function(){})
+  .finally(function(){
+    document.getElementById('ffields').style.display='none';
+    document.getElementById('fsuccess').style.display='block';
   });
+}
+// close on ESC
+document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModal('sim');closeModal('con');} });
+</script>
 
-  var gateBtn = document.getElementById('gate-btn');
-  if (gateBtn) gateBtn.addEventListener('click', enterHub);
-
-  // ── FORM ──
-  function submitForm() {
-    var nombre = document.getElementById('f-nombre').value.trim();
-    var email  = document.getElementById('f-email').value.trim();
-    var monto  = document.getElementById('f-monto').value;
-    if (!nombre || !email) { alert('Por favor completa nombre y email.'); return; }
-    if (!monto) { alert('Por favor selecciona un rango de inversión.'); return; }
-    var fields  = document.getElementById('form-fields');
-    var success = document.getElementById('form-success');
-    if (fields)  fields.style.display  = 'none';
-    if (success) success.style.display = 'block';
-    var tel = document.getElementById('f-tel').value;
-    var msg = document.getElementById('f-msg').value;
-    var ap  = document.getElementById('f-apellido').value;
-    var subject = encodeURIComponent('Interés en invertir — La Curaduría');
-    var body = encodeURIComponent(
-      'Nombre: ' + nombre + ' ' + ap + '\n' +
-      'Email: ' + email + '\n' +
-      'Teléfono: ' + tel + '\n' +
-      'Monto de interés: ' + monto + '\n\n' +
-      'Mensaje: ' + msg + '\n\n' +
-      '--- NDA firmado al ingresar al Investor Hub ---'
-    );
-    setTimeout(function() {
-      window.location.href = 'mailto:nicolas.pava@lacuraduria.net?subject=' + subject + '&body=' + body;
-    }, 800);
-  }
-
-  var submitBtn = document.getElementById('submit-btn');
-  if (submitBtn) submitBtn.addEventListener('click', submitForm);
-
-  // ── REVEAL ──
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('on'); });
-  }, { threshold: 0.07 });
-  document.querySelectorAll('.rv').forEach(function(el) { io.observe(el); });
-
-  // ── SIMULADOR ──
-  var TRM = 4200;
-  var CAP_COP = 2000000000;
-
-  function simFmt(n) {
-    return '$' + Math.round(n).toLocaleString('es-CO') + ' COP';
-  }
-  function simFmtUni(n) {
-    if (n >= 1000000000) return '$' + (n/1000000000).toFixed(2) + 'B COP';
-    return '$' + Math.round(n).toLocaleString('es-CO') + ' COP';
-  }
-  function simPct(n) { return (n * 100).toFixed(2) + '%'; }
-
-  var simChart = null;
-
-  function initSimulator() {
-    var ctx = document.getElementById('sim-chart');
-    if (!ctx) return;
-    simChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Hoy','Año 1','Año 2','Año 3','Año 4','Año 5'],
-        datasets: [
-          { label: 'Inversión',      data: Array(6).fill(null), backgroundColor: '#3D5035' },
-          { label: 'Conservador x3', data: Array(6).fill(null), backgroundColor: '#00AA74' },
-          { label: 'Base x5',        data: Array(6).fill(null), backgroundColor: '#75E6F9' },
-          { label: 'Optimista x10',  data: Array(6).fill(null), backgroundColor: '#FFC335' }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: {
-          x: { ticks: { color: '#7A9070', font: { size: 12 }, autoSkip: false } },
-          y: {
-            ticks: {
-              color: '#7A9070',
-              font: { size: 12 },
-              callback: function(v) {
-                if (v >= 1000000) return '$' + (v/1000000).toFixed(0) + 'M';
-                return '$' + v;
-              }
-            },
-            grid: { color: 'rgba(46,56,40,0.5)' }
-          }
-        }
-      }
-    });
-    updateSimulator();
-  }
-
-  function updateSimulator() {
-    if (!simChart) return;
-    var slider = document.getElementById('sim-slider');
-    if (!slider) return;
-    var inv = parseInt(slider.value);
-    var participation = inv / CAP_COP;
-
-    var elVal  = document.getElementById('sim-val');
-    var elR3   = document.getElementById('sim-r3');
-    var elR5   = document.getElementById('sim-r5');
-    var elR10  = document.getElementById('sim-r10');
-    var elR100 = document.getElementById('sim-r100');
-    var elPart = document.getElementById('sim-part');
-    var elFrase= document.getElementById('sim-frase');
-
-    if (elVal)  elVal.textContent  = simFmt(inv);
-    if (elR3)   elR3.textContent   = simFmt(inv * 3);
-    if (elR5)   elR5.textContent   = simFmt(inv * 5);
-    if (elR10)  elR10.textContent  = simFmt(inv * 10);
-    if (elR100) elR100.textContent = simFmtUni(inv * 100);
-    if (elPart) elPart.textContent = simPct(participation);
-
-    simChart.data.datasets[0].data = [inv, null, null, null, null, null];
-    simChart.data.datasets[1].data = [null,
-      inv + inv*2*1/3, inv + inv*2*2/3, inv*3, inv*3, inv*3];
-    simChart.data.datasets[2].data = [null,
-      inv + inv*4*1/5, inv + inv*4*2/5, inv + inv*4*3/5, inv + inv*4*4/5, inv*5];
-    simChart.data.datasets[3].data = [null,
-      inv + inv*9*1/5, inv + inv*9*2/5, inv + inv*9*3/5, inv + inv*9*4/5, inv*10];
-    simChart.update('none');
-
-    if (elFrase) {
-      elFrase.innerHTML = 'Con <strong>' + simFmt(inv) + '</strong> hoy, en el escenario base tendrías <strong>' +
-        simFmt(inv*5) + '</strong> en 2030 — y hasta <strong>' + simFmt(inv*10) +
-        '</strong> en el escenario optimista. Entras con un 20% de descuento sobre el precio de la próxima ronda.';
-    }
-  }
-
-  var simSlider = document.getElementById('sim-slider');
-  if (simSlider) simSlider.addEventListener('input', updateSimulator);
-
-  // Load Chart.js then init
-  var chartScript = document.createElement('script');
-  chartScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js';
-  chartScript.onload = initSimulator;
-  document.head.appendChild(chartScript);
-
-  // ── NAV ACTIVE ──
-  var secs  = Array.from(document.querySelectorAll('section[id]'));
-  var links = Array.from(document.querySelectorAll('.na'));
-  window.addEventListener('scroll', function() {
-    var y = window.scrollY + 80, a = '';
-    secs.forEach(function(s) { if (s.offsetTop <= y) a = s.id; });
-    links.forEach(function(l) { l.classList.toggle('on', l.getAttribute('href') === '#' + a); });
-  }, { passive: true });
-
-})();
-</script></body>
+</body>
 </html>
