@@ -428,7 +428,7 @@ document.addEventListener('DOMContentLoaded',function(){
   <div class="scards rv d2">
     <div class="scard2"><div class="scard2-n" style="color:var(--coral)">01 · Catálogo</div><div class="scard2-h" style="color:var(--cream)">Catálogo</div><div class="scard2-b">Explora la oferta cultural de eventos, perfiles y contenidos conectados.</div><span class="tag" style="color:var(--coral);border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.06)">Conexión</span></div>
     <div class="scard2"><div class="scard2-n" style="color:var(--cyan)">02 · Marketplace</div><div class="scard2-h" style="color:var(--cream)">Marketplace</div><div class="scard2-b">Compra entradas, contrata talento y proveedores del sector.</div><span class="tag" style="color:var(--cyan);border-color:rgba(117,230,249,.3);background:rgba(117,230,249,.06)">Transacciones</span></div>
-    <div class="scard2"><div class="scard2-n" style="color:var(--green)">03 · Gestor</div><div class="scard2-h" style="color:var(--cream)">Gestor</div><div class="scard2-b">Sube y administra eventos, perfiles y contenidos.</div><span class="tag" style="color:var(--green);border-color:rgba(0,170,116,.3);background:rgba(0,170,116,.06)">Administración</span></div>
+    <div class="scard2"><div class="scard2-n" style="color:var(--green)">03 · Panel de Gestión</div><div class="scard2-h" style="color:var(--cream)">Panel de Gestión</div><div class="scard2-b">Sube y administra eventos, perfiles y contenidos.</div><span class="tag" style="color:var(--green);border-color:rgba(0,170,116,.3);background:rgba(0,170,116,.06)">Administración</span></div>
   </div>
 
 </div>
@@ -683,18 +683,33 @@ function hubContactSubmit() {
   var btn = document.getElementById('f-btn');
   if(btn){btn.textContent='Enviando...';btn.disabled=true;}
   var data = {
-    nombre: n.value.trim()+' '+(document.getElementById('f-apellido')?document.getElementById('f-apellido').value.trim():''),
+    nombre: n.value.trim(),
+    apellido: document.getElementById('f-apellido')?document.getElementById('f-apellido').value.trim():'',
     email: e.value.trim(),
-    telefono: document.getElementById('f-tel')?document.getElementById('f-tel').value:'',
     monto: document.getElementById('f-monto')?document.getElementById('f-monto').value:'',
-    mensaje: document.getElementById('f-msg')?document.getElementById('f-msg').value:'',
-    fecha: new Date().toISOString()
+    mensaje: document.getElementById('f-msg')?document.getElementById('f-msg').value:''
   };
-  fetch(SUPA_URL+'/rest/v1/inversores_interesados',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Prefer':'return=minimal'},body:JSON.stringify(data)})
-  .catch(function(){})
-  .finally(function(){
+  fetch(SUPA_URL+'/rest/v1/inversores_interesados',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'apikey':SUPA_KEY,
+      'Authorization':'Bearer '+SUPA_KEY,
+      'Prefer':'return=minimal'
+    },
+    body:JSON.stringify(data)
+  })
+  .then(function(res){
+    if(!res.ok){
+      return res.text().then(function(t){ throw new Error(t); });
+    }
     document.getElementById('ffields').style.display='none';
     document.getElementById('fsuccess').style.display='block';
+  })
+  .catch(function(err){
+    console.error('Error Supabase:', err);
+    if(btn){btn.textContent='Enviar →';btn.disabled=false;}
+    alert('Hubo un error al enviar. Por favor intenta de nuevo.');
   });
 }
 // close on ESC
