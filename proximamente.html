@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Curaduría · En camino</title>
+  <meta name="description" content="La plataforma cultural está en camino. Disponible desde mayo 4 de 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{
+      --bg:#0F1210;
+      --cream:#FFFFF6;
+      --cyan:#75E6F9;
+      --coral:#FF736C;
+      --t2:rgba(255,255,246,.65);
+      --t3:rgba(255,255,246,.38);
+      --t4:rgba(255,255,246,.22);
+      --bord:rgba(168,192,160,.12);
+    }
+    html,body{
+      width:100%;height:100%;
+      background:var(--bg);
+      color:var(--cream);
+      font-family:'DM Mono',monospace;
+      overflow:hidden;
+    }
+    /* Full screen overlay — bloquea todo */
+    #overlay{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      background:var(--bg);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+    }
+    /* Grid de fondo */
+    #overlay::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(var(--bord) 1px,transparent 1px),
+        linear-gradient(90deg,var(--bord) 1px,transparent 1px);
+      background-size:80px 80px;
+      opacity:.2;
+      pointer-events:none;
+    }
+    /* Radial glow */
+    #overlay::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(117,230,249,.04),transparent);
+      pointer-events:none;
+    }
+    .inner{
+      max-width:520px;
+      width:100%;
+      text-align:center;
+      position:relative;
+      z-index:1;
+    }
+    .logo-spin{
+      display:inline-block;
+      margin-bottom:36px;
+      animation:spin 12s linear infinite;
+    }
+    @keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+    .date{
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--cyan);
+      margin-bottom:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+    .date::before,.date::after{
+      content:'';
+      width:32px;
+      height:1px;
+      background:rgba(117,230,249,.3);
+    }
+    h1{
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:clamp(36px,8vw,72px);
+      font-weight:900;
+      text-transform:uppercase;
+      line-height:.9;
+      letter-spacing:-.02em;
+      color:var(--cream);
+      margin-bottom:18px;
+    }
+    h1 span{color:var(--cyan);}
+    p{
+      font-size:15px;
+      font-weight:400;
+      color:var(--t2);
+      line-height:1.8;
+      margin-bottom:36px;
+    }
+    p b{color:var(--cream);font-weight:500;}
+    .btns{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-bottom:36px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-family:'DM Mono',monospace;
+      font-size:10px;
+      font-weight:500;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      text-decoration:none;
+      padding:12px 22px;
+      border-radius:4px;
+      cursor:pointer;
+      transition:opacity .2s;
+      border:none;
+    }
+    .btn:hover{opacity:.85;}
+    .btn-outline{
+      background:transparent;
+      color:var(--cream);
+      border:1px solid rgba(255,255,246,.2);
+    }
+    .btn-coral{
+      background:var(--coral);
+      color:#0F1210;
+    }
+    .footer-note{
+      font-size:9px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--t4);
+    }
+    .footer-note a{
+      color:var(--t3);
+      text-decoration:none;
+    }
+    .footer-note a:hover{color:var(--cream);}
+  </style>
+</head>
+<body>
+<div id="overlay">
+  <div class="inner">
+
+    <!-- Logo giratorio -->
+    <div class="logo-spin">
+      <svg width="80" height="80" viewBox="0 0 507 506" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M180.672 84.3927L159.121 93.714L137.57 103.035L128.253 81.4749L118.935 59.9146L109.618 38.3543L131.169 29.0331L140.487 50.5934L149.804 72.1537L171.355 62.8324L192.906 53.5112L214.457 44.19C219.604 56.0858 214.127 69.9224 202.223 75.0715L180.672 84.3927Z" fill="#FFFFF6"/><path d="M302.087 2.65383L325.447 5.01714L323.084 28.3862L320.722 51.7553L318.36 75.1244L295 72.7611L297.363 49.392C296.056 62.3044 284.548 71.7048 271.641 70.3978L248.282 68.0344L224.923 65.6711L227.285 42.3021C229.898 16.4376 252.98 -2.36326 278.781 0.237705L302.14 2.60102L302.074 2.65383H302.087ZM297.416 49.392L299.778 26.0229L276.419 23.6596C263.512 22.3525 252.004 31.753 250.697 44.6654L274.056 47.0287L297.416 49.392Z" fill="#FFFFF6"/><path d="M366.516 80.0226L386.101 92.9615L405.686 105.9L392.753 125.493L373.168 112.555L353.583 99.6157C331.94 85.317 325.974 56.1387 340.267 34.486C347.433 23.6332 361.977 20.7022 372.785 27.8317L392.37 40.7705L411.955 53.7093L431.539 66.6481C424.373 77.5009 409.83 80.4319 399.021 73.3024L379.437 60.3636L359.852 47.4248V47.4908C352.712 58.3435 355.721 72.8799 366.516 80.0226Z" fill="#FFFFF6"/><path d="M430.959 99.5892L451.48 88.1687L462.896 108.699L442.374 120.12C431.038 126.431 426.96 140.729 433.268 152.071L444.684 172.601L465.206 161.181L485.727 149.76L497.143 170.291L476.621 181.711L456.099 193.132L435.578 204.552L424.162 184.022L412.746 163.491L412.72 163.57C400.103 140.888 408.233 112.251 430.945 99.6024L430.959 99.5892Z" fill="#FFFFF6"/><path d="M434.601 302.9L435.076 279.425L458.541 279.901C458.277 292.892 447.548 303.151 434.601 302.887V302.9ZM506.474 233.876L505.999 257.35L505.523 280.825C505.259 293.817 494.53 304.075 481.584 303.811C468.597 303.547 458.343 292.813 458.594 279.861L459.069 256.386C459.333 243.395 449.026 232.701 436.092 232.436L436.568 208.962C462.5 209.49 483.114 230.971 482.587 256.901L483.062 233.427L483.537 209.952L507.002 210.427L506.949 210.374L506.474 233.849V233.876Z" fill="#FFFFF6"/><path d="M453.605 408.246L440.949 428.024L421.179 415.362L401.41 402.701L381.64 390.039L394.297 370.261L414.066 382.923C403.139 375.925 399.958 361.402 406.953 350.483L419.609 330.706L432.265 310.928L452.035 323.589C473.929 337.611 480.264 366.697 466.288 388.56L453.632 408.338V408.259L453.605 408.246ZM414.027 382.976L433.796 395.637L446.452 375.859C453.447 364.927 450.266 350.404 439.339 343.42L426.683 363.198L414.027 382.976Z" fill="#FFFFF6"/><path d="M387.447 467.949L366.477 478.485C343.289 490.13 315.047 480.756 303.407 457.559C297.574 445.94 302.285 431.853 313.859 426.043L334.83 415.508L355.8 404.972L376.771 394.436L387.302 415.415L397.833 436.395L408.365 457.374L408.431 457.4L387.46 467.936L387.447 467.949ZM376.876 446.983L366.345 426.004L345.374 436.54L324.404 447.076C330.237 458.694 344.332 463.342 355.906 457.532L376.876 446.996V446.983Z" fill="#FFFFF6"/><path d="M297.983 482.512L297.6 506L274.122 505.617L274.505 482.129C274.716 469.151 264.383 458.47 251.41 458.258L227.932 457.876L227.549 481.363L227.166 504.851L203.688 504.468L204.071 480.981L204.454 457.493L204.836 434.005L228.314 434.388L251.792 434.771L251.74 434.718C277.672 435.14 298.405 456.502 297.983 482.499V482.512Z" fill="#FFFFF6"/><path d="M141.925 480.743L121.865 468.557L101.805 456.37C90.7065 449.624 87.2092 435.18 93.9266 424.116C100.67 413.012 115.108 409.513 126.168 416.234L146.227 428.42C157.326 435.167 171.751 431.615 178.468 420.538L198.528 432.724C185.067 454.905 156.152 461.968 133.98 448.488L154.04 460.675L174.1 472.861L161.919 492.929H161.985L141.925 480.73V480.743ZM118.289 383.913L138.349 396.099L126.168 416.168C115.069 409.421 111.571 394.977 118.289 383.913Z" fill="#FFFFF6"/><path d="M103.798 359.937L115.016 380.56L94.4017 391.782L83.184 371.159L71.9663 350.536L51.3521 361.759L62.5698 382.382C68.7593 393.762 64.589 408.008 53.1734 414.227L30.7248 372.941L19.5071 352.319L40.1212 341.096L60.7354 329.874L49.5177 309.251L70.1319 298.028L103.798 359.937Z" fill="#FFFFF6"/><path d="M0.437086 225.307L0.819808 201.819L24.2978 202.202L47.7757 202.585L71.2537 202.968L70.871 226.456L47.393 226.073C60.3659 226.284 70.6994 236.965 70.4883 249.93L70.1055 273.418L69.7228 296.906L46.2449 296.523C20.2594 296.101 -0.40754 274.686 0.00157609 248.742L0.384297 225.254L0.437086 225.307ZM47.393 226.007L23.9151 225.624L23.5323 249.112C23.3212 262.09 33.6546 272.771 46.6276 272.983L47.0103 249.495L47.393 226.007Z" fill="#FFFFF6"/><path d="M63.8764 107.709L49.1614 127.87L37.5214 143.832C35.8322 146.156 36.3337 149.417 38.6564 151.107L54.6119 162.752L66.4235 146.565C68.0335 144.36 71.1085 143.885 73.3125 145.496L89.4923 157.312L74.7774 177.473C66.6478 188.616 51.0354 191.046 39.9101 182.913L19.7579 168.191C8.61938 160.058 6.19108 144.439 14.3206 133.309L29.0356 113.149L43.7505 92.9878C51.8801 81.8578 67.4925 79.4153 78.6178 87.5482L78.5914 87.5878L63.9028 107.709H63.8764ZM78.565 87.6671L78.631 87.5746L98.7832 102.296C90.6537 113.426 93.0952 129.058 104.22 137.178L89.5055 157.339L89.4791 157.378C67.2153 141.125 62.3587 109.953 78.565 87.6538V87.6671Z" fill="#FF736C"/><path d="M116.652 130.907C124.109 130.907 130.153 124.859 130.153 117.4C130.153 109.941 124.109 103.893 116.652 103.893C109.196 103.893 103.152 109.941 103.152 117.4C103.152 124.859 109.196 130.907 116.652 130.907Z" fill="#FF736C"/>
+      </svg>
+    </div>
+
+    <div class="date">Mayo 4, 2026</div>
+
+    <h1>lacuraduria<span>.net</span><br>está en camino</h1>
+
+    <p>La plataforma estará disponible desde el <b>4 de mayo</b>.<br>Regístrate y asegura tu acceso desde el primer día.</p>
+
+    <div class="btns">
+      <a href="https://lacuraduria.com/#preventa" class="btn btn-outline">Registrarme gratis →</a>
+      <a href="https://lacuraduria.com/#preventa" class="btn btn-coral">Unirme a la preventa →</a>
+    </div>
+
+    <div class="footer-note">
+      <a href="https://lacuraduria.com">lacuraduria.com</a>
+      &nbsp;·&nbsp; Bogotá, 2026
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
