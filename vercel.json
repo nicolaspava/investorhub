@@ -1,10 +1,4 @@
 {
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "destination": "/proximamente.html",
-      "permanent": false
-    }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
