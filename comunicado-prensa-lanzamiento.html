@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comunicado de Prensa — La Curaduría</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #FF736C;
+    --coral-deep: #FF472C;
+    --negro: #0e1109;
+    --negro2: #141810;
+    --crema: #FFFFF6;
+    --cyan: #75E6F9;
+    --amarillo: #FFD335;
+    --verde: #006F4D;
+    --pink: #FF7D98;
+    --border: rgba(255,255,246,0.08);
+    --muted: rgba(255,255,246,0.45);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--negro);
+    color: var(--crema);
+    font-family: 'Barlow', sans-serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── VISOR CORNERS ── */
+  .visor {
+    position: relative;
+  }
+  .visor::before, .visor::after,
+  .visor .vc-br, .visor .vc-bl {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .visor::before { top: 0; left: 0; border-top: 1.5px solid var(--coral); border-left: 1.5px solid var(--coral); }
+  .visor::after  { top: 0; right: 0; border-top: 1.5px solid var(--coral); border-right: 1.5px solid var(--coral); }
+  .visor .vc-br  { bottom: 0; right: 0; border-bottom: 1.5px solid var(--coral); border-right: 1.5px solid var(--coral); }
+  .visor .vc-bl  { bottom: 0; left: 0; border-bottom: 1.5px solid var(--coral); border-left: 1.5px solid var(--coral); }
+
+  /* ── SCANLINE texture ── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── WRAPPER ── */
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding: 0 2px;
+  }
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .topbar-logo {
+    height: 22px;
+    width: auto;
+  }
+  .topbar-sep {
+    width: 1px;
+    height: 16px;
+    background: var(--border);
+  }
+  .topbar-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .topbar-right {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── HERO BLOCK ── */
+  .hero {
+    background: var(--negro2);
+    border: 0.5px solid var(--border);
+    padding: 40px 36px 36px;
+    margin-bottom: 3px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before,
+  .hero::after,
+  .hero .vc-br,
+  .hero .vc-bl {
+    width: 18px;
+    height: 18px;
+  }
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .hero-eyebrow-line {
+    width: 28px;
+    height: 1px;
+    background: var(--coral);
+  }
+  .hero-eyebrow-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--coral);
+  }
+  .hero-eyebrow-badge-blue {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(117,230,249,0.08);
+    border: 0.5px solid rgba(117,230,249,0.25);
+    color: var(--cyan);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+  }
+  .hero-eyebrow-badge-blue::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--cyan);
+  }
+  .hero-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(44px, 8vw, 68px);
+    line-height: .95;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--crema);
+    margin-bottom: 6px;
+  }
+  .hero-headline .accent {
+    color: var(--coral);
+  }
+  .hero-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 14px;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+  .hero-sub strong { color: var(--crema); font-weight: 600; }
+  .hero-meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 0.5px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .hero-meta-item strong {
+    color: var(--crema);
+    display: block;
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+  .hero-deco {
+    position: absolute;
+    right: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  /* ── TABS ── */
+  .tabs-row {
+    display: flex;
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs-row::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 14px 20px 12px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    border-bottom: 1.5px solid transparent;
+    margin-bottom: -0.5px;
+    white-space: nowrap;
+    transition: color .15s, border-color .15s;
+  }
+  .tab-btn:hover { color: rgba(255,255,246,0.7); }
+  .tab-btn.active { color: var(--coral); border-bottom-color: var(--coral); }
+
+  /* ── SECTIONS ── */
+  .section { display: none; }
+  .section.active { display: block; }
+  .section-inner {
+    background: var(--negro2);
+    border: 0.5px solid var(--border);
+    border-top: none;
+    padding: 32px 36px;
+  }
+
+  /* ── COMUNICADO ── */
+  .release-date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,211,53,0.08);
+    border: 0.5px solid rgba(255,211,53,0.2);
+    color: var(--amarillo);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 22px;
+  }
+  .release-date-badge::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--amarillo);
+  }
+  .release-date-badge-blue {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(117,230,249,0.08);
+    border: 0.5px solid rgba(117,230,249,0.25);
+    color: var(--cyan);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 22px;
+  }
+  .release-date-badge-blue::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--cyan);
+  }
+  .release-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.1;
+    color: var(--crema);
+    letter-spacing: -.3px;
+    margin-bottom: 20px;
+  }
+  .release-body p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: rgba(255,255,246,0.72);
+    margin-bottom: 14px;
+  }
+  .release-body p strong { color: var(--crema); }
+  .release-body blockquote {
+    border-left: 2px solid var(--coral);
+    padding: 10px 20px;
+    margin: 22px 0;
+    background: rgba(255,115,108,0.05);
+  }
+  .release-body blockquote p {
+    font-style: italic;
+    color: var(--crema);
+    font-size: 15px;
+    margin: 0;
+  }
+  .release-body blockquote cite {
+    display: block;
+    font-size: 11px;
+    font-style: normal;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: .08em;
+    margin-top: 8px;
+  }
+  .divider { height: 0.5px; background: var(--border); margin: 24px 0; }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,246,0.25);
+    margin-bottom: 10px;
+  }
+  .boilerplate {
+    font-size: 12px;
+    color: rgba(255,255,246,0.4);
+    line-height: 1.65;
+  }
+  .note-embargo {
+    font-size: 11px;
+    color: rgba(255,255,246,0.3);
+    font-style: italic;
+    padding-top: 16px;
+    margin-top: 16px;
+    border-top: 0.5px solid var(--border);
+    line-height: 1.6;
+  }
+
+  /* ── COPY BUTTON ── */
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: none;
+    border: 0.5px solid rgba(255,255,246,0.15);
+    color: rgba(255,255,246,0.5);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all .15s;
+    margin-top: 20px;
+  }
+  .copy-btn:hover { border-color: var(--coral); color: var(--coral); }
+  .copy-btn.ok { border-color: #5DCAA5; color: #5DCAA5; }
+  .copy-btn svg { width: 12px; height: 12px; }
+
+  /* ── REDES ── */
+  .redes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .red-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,246,0.03);
+    border: 0.5px solid var(--border);
+    padding: 14px 16px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color .15s, background .15s;
+  }
+  .red-card:hover { border-color: rgba(255,255,246,0.18); background: rgba(255,255,246,0.05); }
+  .red-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: .05em;
+    flex-shrink: 0;
+  }
+  .red-meta-plat {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .red-meta-handle {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--crema);
+    letter-spacing: .02em;
+  }
+  .red-meta-desc {
+    font-size: 11px;
+    color: rgba(255,255,246,0.3);
+    margin-top: 1px;
+  }
+  .red-arrow {
+    margin-left: auto;
+    color: rgba(255,255,246,0.2);
+    font-size: 14px;
+  }
+  .hashtags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .hashtag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    background: rgba(117,230,249,0.06);
+    color: var(--cyan);
+    padding: 5px 12px;
+    border: 0.5px solid rgba(117,230,249,0.15);
+    cursor: pointer;
+    letter-spacing: .05em;
+    transition: background .15s;
+  }
+  .hashtag:hover { background: rgba(117,230,249,0.12); }
+  .caption-box {
+    background: rgba(255,255,246,0.03);
+    border: 0.5px solid var(--border);
+    border-left: 2px solid rgba(117,230,249,0.4);
+    padding: 14px 18px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgba(255,255,246,0.65);
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  /* ── RECURSOS ── */
+  .drive-main {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255,211,53,0.05);
+    border: 0.5px solid rgba(255,211,53,0.2);
+    padding: 18px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color .15s;
+    margin-bottom: 20px;
+  }
+  .drive-main:hover { border-color: rgba(255,211,53,0.4); }
+  .drive-main-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,211,53,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .drive-main-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--crema);
+    letter-spacing: .03em;
+    margin-bottom: 3px;
+  }
+  .drive-main-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .12em;
+    color: rgba(255,211,53,0.55);
+    text-transform: uppercase;
+  }
+  .drive-main-arrow { margin-left: auto; color: var(--amarillo); font-size: 18px; }
+  .recursos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .recurso-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,246,0.03);
+    border: 0.5px solid var(--border);
+    padding: 12px 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color .15s;
+  }
+  .recurso-card:hover { border-color: rgba(255,255,246,0.18); }
+  .recurso-icon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .recurso-nombre {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--crema);
+    margin-bottom: 2px;
+  }
+  .recurso-desc {
+    font-size: 11px;
+    color: rgba(255,255,246,0.35);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: .04em;
+  }
+
+  /* ── CONTACTO ── */
+  .contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .contacto-card {
+    background: rgba(255,255,246,0.03);
+    border: 0.5px solid var(--border);
+    padding: 16px 18px;
+  }
+  .contacto-nombre {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--crema);
+    margin-bottom: 2px;
+    letter-spacing: .02em;
+  }
+  .contacto-cargo {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .contacto-link {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--cyan);
+    text-decoration: none;
+    margin-bottom: 4px;
+    letter-spacing: .03em;
+    transition: color .15s;
+  }
+  .contacto-link:hover { color: var(--crema); }
+  .disponibilidad {
+    background: rgba(0,111,77,0.08);
+    border: 0.5px solid rgba(0,111,77,0.25);
+    padding: 16px 18px;
+    margin-bottom: 20px;
+  }
+  .disp-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #5DCAA5;
+    margin-bottom: 6px;
+  }
+  .disp-text {
+    font-size: 13px;
+    color: rgba(255,255,246,0.6);
+    line-height: 1.6;
+  }
+  .embargo-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-top: 0.5px solid var(--border);
+  }
+  .embargo-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .embargo-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--crema);
+    letter-spacing: .05em;
+  }
+
+  /* ── RECURSOS LISTA ── */
+  .recursos-lista {
+    list-style: none;
+    border-top: 0.5px solid var(--border);
+  }
+  .recursos-lista li {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 13px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .rl-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: rgba(255,255,246,0.2);
+    letter-spacing: .1em;
+    flex-shrink: 0;
+    width: 18px;
+  }
+  .rl-nombre {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--crema);
+    flex: 1;
+  }
+  .rl-desc {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,246,0.3);
+    letter-spacing: .06em;
+    text-align: right;
+  }
+
+  /* ── FOOTER ── */
+  .kit-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 0.5px solid var(--border);
+  }
+  .kit-footer-left {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .12em;
+    color: rgba(255,255,246,0.2);
+    text-transform: uppercase;
+  }
+  .kit-footer-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .powered-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--coral);
+  }
+  .powered-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .1em;
+    color: rgba(255,255,246,0.2);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 540px) {
+    .section-inner { padding: 24px 20px; }
+    .hero { padding: 28px 20px 24px; }
+    .redes-grid, .recursos-grid, .contacto-grid { grid-template-columns: 1fr; }
+    .hero-headline { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <svg class="topbar-logo" viewBox="0 0 1795 244" fill="none" xmlns="http://www.w3.org/2000/svg" height="20" style="height:20px;width:auto;flex-shrink:0;">
+        <path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="#FF736C"/>
+        <path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="#FF736C"/>
+        <path d="M427.103 115.917H350.58V1.36438H388.842V77.7438H503.626C503.626 98.8361 486.497 115.934 465.365 115.934H427.103V115.917Z" fill="#FFFFF6"/>
+        <path d="M627.503 1.36443H665.765V115.934H627.503V77.7439C627.503 98.8362 610.373 115.934 589.241 115.934H512.718V77.7439C512.718 35.4606 547.06 1.28223 589.324 1.28223H627.585L627.503 1.38087V1.36443ZM627.602 77.7439V39.5542H589.34C568.208 39.5542 551.079 56.6516 551.079 77.7439H627.602Z" fill="#FFFFF6"/>
+        <path d="M427.153 204.446H503.626V242.619H427.153C384.889 242.619 350.58 208.391 350.58 166.19C350.58 145.065 367.726 128.017 388.825 128.017H503.544C503.544 149.142 486.398 166.19 465.299 166.19H388.825L388.908 166.272C388.908 187.398 406.054 204.446 427.153 204.446Z" fill="#FFFFF6"/>
+        <path d="M512.735 166.24V128.05H550.996V166.24C550.996 187.332 568.126 204.429 589.258 204.429H627.52V128.05H665.781V242.619H589.258L589.357 242.718C547.093 242.718 512.751 208.539 512.751 166.256L512.735 166.24Z" fill="#FFFFF6"/>
+        <path d="M713.283 128.116H789.756C810.921 128.116 828.001 145.229 828.001 166.289C828.001 187.348 810.855 204.462 789.756 204.462H751.511C730.346 204.462 713.266 221.576 713.266 242.635H675.021C675.021 200.451 709.313 166.207 751.594 166.207H675.12V128.033L675.037 128.116H713.283ZM828.067 242.701H789.822V204.528C810.987 204.528 828.067 221.642 828.067 242.701Z" fill="#FFFFF6"/>
+        <path d="M951.96 128.05H990.222V242.619H951.96V204.429C951.96 225.522 934.831 242.619 913.699 242.619H837.176V204.429C837.176 162.146 871.517 127.968 913.781 127.968H952.043L951.96 128.066V128.05ZM952.043 204.429V166.24H913.781C892.649 166.24 875.52 183.337 875.52 204.429H952.043Z" fill="#FFFFF6"/>
+        <path d="M1037.59 128.033H1075.84C1118.12 128.033 1152.41 162.245 1152.41 204.462C1152.41 225.604 1135.26 242.635 1114.16 242.635H999.429V128.116L999.347 128.033H1037.59ZM1037.66 166.207V204.38H1114.13C1114.13 183.238 1097 166.207 1075.89 166.207H1037.64H1037.66Z" fill="#FFFFF6"/>
+        <path d="M1155.37 166.24V128.05H1193.64V166.24C1193.64 187.332 1210.77 204.429 1231.9 204.429H1270.16V128.05H1308.42V242.619H1231.9L1232 242.718C1189.73 242.718 1155.39 208.539 1155.39 166.256L1155.37 166.24Z" fill="#FFFFF6"/>
+        <path d="M1355.76 128.116H1432.23C1453.4 128.116 1470.48 145.229 1470.48 166.289C1470.48 187.348 1453.33 204.462 1432.23 204.462H1393.99C1372.82 204.462 1355.74 221.576 1355.74 242.635H1317.5C1317.5 200.451 1351.79 166.207 1394.07 166.207H1317.59V128.033L1317.51 128.116H1355.76ZM1470.56 242.701H1432.31V204.528C1453.48 204.528 1470.56 221.642 1470.56 242.701Z" fill="#FFFFF6"/>
+        <path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/>
+        <path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/>
+      </svg>
+      <div class="topbar-sep"></div>
+      <div class="topbar-label">Comunicado de prensa · Lanzamiento beta</div>
+    </div>
+    <div class="topbar-right">Bogotá · 2026</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero visor">
+    <div class="vc-br"></div><div class="vc-bl"></div>
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-badge-blue">30 de abril · 2026</div>
+    </div>
+    <div class="hero-headline">
+      VUELVE<br>LACURADURIA<span class="accent">.NET</span>
+    </div>
+    <div class="hero-sub">La plataforma <strong>[beta]</strong> estará disponible desde el <strong>4 de mayo de 2026</strong>. La próxima interfaz para la cultura en Bogotá.</div>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>Bogotá, Colombia</strong>30 de abril de 2026</div>
+      <div class="hero-meta-item"><strong>lacuraduria.com</strong>Web</div>
+      <div class="hero-meta-item"><strong>@lacuraduria__</strong>RRSS</div>
+    </div>
+    <!-- deco Q symbol -->
+    <div class="hero-deco">
+      <svg width="180" height="140" viewBox="0 0 315 244" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="#FFFFF6"/>
+        <path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="#FFFFF6"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs-row">
+    <button class="tab-btn active" onclick="showTab('comunicado', this)">Comunicado</button>
+    <button class="tab-btn" onclick="showTab('trayectoria', this)">Trayectoria</button>
+    <button class="tab-btn" onclick="showTab('redes', this)">Redes sociales</button>
+    <button class="tab-btn" onclick="showTab('recursos', this)">Recursos</button>
+    <button class="tab-btn" onclick="showTab('contacto', this)">Contacto</button>
+  </div>
+
+  <!-- COMUNICADO -->
+  <div id="tab-comunicado" class="section active">
+    <div class="section-inner">
+      <div class="release-title">La Curaduría presenta su interfaz para explorar arte y cultura</div>
+      <div class="release-body" id="release-text">
+        <p>Este <strong>4 de mayo</strong>, La Curaduría lanza la <strong>versión beta de su plataforma web</strong>: una enciclopedia digital que conecta eventos, perfiles y contenidos en una interfaz para explorar a fondo la oferta cultural.</p>
+        <p>En los últimos años, <strong>Instagram</strong> ha sido la plataforma predilecta de las industrias culturales para mover su portafolio, dar anuncios y generar conexiones. Sin embargo, su experiencia de usuario suele llevar a la distracción y a la <strong>dilución de la información cultural</strong> en un mar de contenido que satura y desplaza información valiosa.</p>
+        <p>Hubo una época en la que la navegación en Internet era activa, saltando entre vínculos de Wikipedia, YouTube e incluso Facebook. Ahora, <strong>la navegación está a disposición del algoritmo</strong>, que tiene unos claros intereses. Con esta interfaz queremos volver a hacer de la exploración una actividad, brindando herramientas intuitivas y ágiles para <strong>conocer, guardar, comprar y crear comunidades</strong> que construyen escenas sostenibles.</p>
+        <p><strong>La Curaduría se lanza como startup</strong>, como una empresa de base tecnológica que busca solucionar problemas del sector cultural relacionados con el <strong>periodismo, la promoción y la conversión</strong>. Dentro de la plataforma existirán funciones para construir mejores flujos de booking, de prensa y de venta de entradas. Así, buscamos generar un software que innove en las formas de <strong>relacionamiento y colaboración de las industrias culturales</strong>.</p>
+      </div>
+      <button class="copy-btn" id="copy-release" onclick="copiarTexto('release-text', 'copy-release')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="1"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        Copiar comunicado
+      </button>
+    </div>
+  </div>
+
+  <!-- TRAYECTORIA -->
+  <div id="tab-trayectoria" class="section">
+    <div class="section-inner">
+      <div class="release-title" style="margin-bottom:20px;">Trayectoria</div>
+      <div class="release-body">
+        <p>La Curaduría comenzó en el <strong>2016</strong> como un <strong>programa de música en español en Superestación</strong>. Cuando Superestación cierra su proyecto 23 en el 2017, Nicolás Pava, ingeniero de la emisora, habla con Pedro Vergara para continuar con el proyecto mutando su forma. Un tiempo después, nos contratan para hacer un evento de final de semestre en una bodega, una fiesta icónica que se volvió la bandera del proyecto: <strong>La Bodegarza</strong>.</p>
+        <p>Los siguientes años, La Curaduría construyó un público alrededor de la <strong>música independiente</strong>, las fiestas de música crossover y los precios accesibles para universitarios. Así, se llegó a realizar una <strong>gira por Colombia</strong> haciendo un documental y teniendo residencias en varios clubes icónicos como El Chamán, Boogaloop y Video Club.</p>
+        <p>Con el tiempo, La Curaduría sintió la necesidad de volver a ser un <strong>proyecto de comunicación</strong>. En el <strong>2020</strong>, durante la pandemia, hicimos una <strong>radio en línea</strong> con más de 10 colaboradores, entre ellos proyectos como In-Correcto, El Enemigo, Ahora, Intruso, Jasonacas y muchos más.</p>
+        <p>En los últimos años, La Curaduría se replegó para construir su <strong>plataforma web</strong> con toda la tecnología disponible. Este ejercicio se ha realizado como <strong>trabajo de grado en la Maestría en Gestión de la Cultura de la Universidad EAN</strong>, trabajo de grado que será sustentado el próximo <strong>20 de mayo</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- REDES -->
+  <div id="tab-redes" class="section">
+    <div class="section-inner">
+      <div class="section-label">Perfiles oficiales</div>
+      <div class="redes-grid">
+        <a class="red-card" href="https://www.instagram.com/lacuraduria__/" target="_blank">
+          <div class="red-icon" style="background:rgba(255,115,108,0.1); color:var(--coral);">IG</div>
+          <div>
+            <div class="red-meta-plat">Instagram</div>
+            <div class="red-meta-handle">@lacuraduria__</div>
+            <div class="red-meta-desc">Canal principal</div>
+          </div>
+          <div class="red-arrow">→</div>
+        </a>
+        <a class="red-card" href="https://x.com/la_curaduria_" target="_blank">
+          <div class="red-icon" style="background:rgba(255,255,246,0.05); color:rgba(255,255,246,0.6);">X</div>
+          <div>
+            <div class="red-meta-plat">X / Twitter</div>
+            <div class="red-meta-handle">@la_curaduria_</div>
+            <div class="red-meta-desc">Noticias y updates</div>
+          </div>
+          <div class="red-arrow">→</div>
+        </a>
+        <a class="red-card" href="https://www.linkedin.com/company/la-curaduria/?viewAsMember=true" target="_blank">
+          <div class="red-icon" style="background:rgba(117,230,249,0.1); color:var(--cyan);">in</div>
+          <div>
+            <div class="red-meta-plat">LinkedIn</div>
+            <div class="red-meta-handle">La Curaduría</div>
+            <div class="red-meta-desc">Empresa</div>
+          </div>
+          <div class="red-arrow">→</div>
+        </a>
+        <a class="red-card" href="https://lacuraduria.com" target="_blank">
+          <div class="red-icon" style="background:rgba(0,111,77,0.15); color:#5DCAA5;">WEB</div>
+          <div>
+            <div class="red-meta-plat">Website</div>
+            <div class="red-meta-handle">lacuraduria.com</div>
+            <div class="red-meta-desc">Landing page</div>
+          </div>
+          <div class="red-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECURSOS -->
+  <div id="tab-recursos" class="section">
+    <div class="section-inner">
+      <div class="section-label">Carpeta de recursos</div>
+      <a class="drive-main" href="#" target="_blank">
+        <div class="drive-main-icon">📁</div>
+        <div>
+          <div class="drive-main-name">Kit de Prensa · La Curaduría</div>
+          <div class="drive-main-meta">Google Drive · Acceso público</div>
+        </div>
+        <div class="drive-main-arrow">→</div>
+      </a>
+      <div class="section-label">Encontrarás</div>
+      <ul class="recursos-lista">
+        <li><span class="rl-num">01</span><span class="rl-nombre">Manual de marca</span><span class="rl-desc">Identidad visual · PDF</span></li>
+        <li><span class="rl-num">02</span><span class="rl-nombre">Comunicado</span><span class="rl-desc">Versión imprimible · PDF</span></li>
+        <li><span class="rl-num">03</span><span class="rl-nombre">Logos</span><span class="rl-desc">PNG + SVG · Todas las versiones</span></li>
+        <li><span class="rl-num">04</span><span class="rl-nombre">Capturas</span><span class="rl-desc">Pantallas de la plataforma</span></li>
+        <li><span class="rl-num">05</span><span class="rl-nombre">Teaser editorial</span><span class="rl-desc">Video de lanzamiento</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CONTACTO -->
+  <div id="tab-contacto" class="section">
+    <div class="section-inner">
+      <div class="section-label">Contacto de prensa</div>
+      <div class="contacto-card" style="margin-bottom:12px;">
+        <div class="contacto-nombre">Nicolás Pava</div>
+        <div class="contacto-cargo">La Curaduría</div>
+        <a class="contacto-link" href="mailto:nicolas.pava@lacuraduria.net">nicolas.pava@lacuraduria.net</a>
+        <a class="contacto-link" href="tel:+573044138497">+57 304 413 8497</a>
+      </div>
+      <div class="disponibilidad">
+        <div class="disp-title">✓ Disponible para entrevistas</div>
+        <div class="disp-text">
+          BIME · 5 al 7 de mayo de 2026<br>
+          StartUp Village · 11:00 am – 5:00 pm<br>
+          <span style="color:rgba(255,255,246,0.4)">Contactar con anticipación para agendar espacio.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="kit-footer">
+    <div class="kit-footer-left">lacuraduria.net · Kit digital de prensa · 2026</div>
+    <div class="kit-footer-right">
+      <div class="powered-dot"></div>
+      <div class="powered-text">La próxima interfaz para la cultura</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(name, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+function copiarTexto(elId, btnId) {
+  var text = document.getElementById(elId).innerText;
+  var btn = document.getElementById(btnId);
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function() {
+      btn.classList.add('ok');
+      btn.innerHTML = btn.innerHTML.replace(/Copiar.*/, 'Copiado ✓');
+      setTimeout(function() {
+        btn.classList.remove('ok');
+        btn.innerHTML = btn.innerHTML.replace(/Copiado.*/, elId === 'release-text' ? 'Copiar comunicado' : 'Copiar caption');
+      }, 2200);
+    });
+  }
+}
+
+function copiarHashtag(el) {
+  var text = el.textContent;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function() {
+      var orig = el.textContent;
+      el.textContent = '✓ copiado';
+      el.style.color = '#5DCAA5';
+      el.style.borderColor = 'rgba(93,202,165,0.3)';
+      setTimeout(function() {
+        el.textContent = orig;
+        el.style.color = '';
+        el.style.borderColor = '';
+      }, 1500);
+    });
+  }
+}
+</script>
+</body>
+</html>
