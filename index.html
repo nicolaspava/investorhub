@@ -4268,9 +4268,9 @@ window.addEventListener('hashchange', routeFromHash);
 triggerReveal();
 </script>
 <script id="form-js">
-// ═══════════════════════════════════════════════
+// -----------------------------------------------
 // HELPERS
-// ═══════════════════════════════════════════════
+// -----------------------------------------------
 function fShow(id){var el=document.getElementById(id);if(el)el.style.display='block';}
 function fHide(id){var el=document.getElementById(id);if(el)el.style.display='none';}
 function fShowFlex(id){var el=document.getElementById(id);if(el)el.style.display='flex';}
@@ -4344,7 +4344,7 @@ function fAddChip(inputId, chipsId, hiddenId){
   var chip=document.createElement('div');
   chip.className='fchip';
   chip.dataset.val=val;
-  chip.innerHTML=val+'<button onclick="fRemoveChip(\''+chipsId+'\',\''+hiddenId+'\',\''+val.replace(/'/g,"\\'")+'\')" type="button">×</button>';
+  chip.innerHTML=val+'<button onclick="fRemoveChip(\''+chipsId+'\',\''+hiddenId+'\',\''+val.replace(/'/g,"\\'")+'\')" type="button">-</button>';
   chips.appendChild(chip);
   inp.value='';
 }
@@ -4368,7 +4368,7 @@ function fAddRel(containerItemsId, inputId, type){
   var item=document.createElement('div');
   item.className='frel-item';
   item.dataset.val=val;
-  item.innerHTML='<div class="frel-info"><div class="frel-name">'+val+'</div><div class="frel-type">'+type+'</div></div><button class="frel-rm" onclick="fRelRemove(this,\''+containerItemsId+'\')" type="button">×</button>';
+  item.innerHTML='<div class="frel-info"><div class="frel-name">'+val+'</div><div class="frel-type">'+type+'</div></div><button class="frel-rm" onclick="fRelRemove(this,\''+containerItemsId+'\')" type="button">-</button>';
   container.appendChild(item);
   inp.value='';
   fRelSync(containerItemsId);
@@ -4400,9 +4400,9 @@ function fTogglePill(el, hiddenId, single){
   if(hidden)hidden.value=el.textContent.trim();
 }
 
-// ═══════════════════════════════════════════════
+// -----------------------------------------------
 // FORM EVENTO (fev)
-// ═══════════════════════════════════════════════
+// -----------------------------------------------
 var fevEntryMethod='';
 function fevEntry(method,el){
   fevEntryMethod=method;
@@ -4568,9 +4568,9 @@ function fevReset(){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ═══════════════════════════════════════════════
+// -----------------------------------------------
 // FORM PERFIL (fpf)
-// ═══════════════════════════════════════════════
+// -----------------------------------------------
 function fpfSelectType(tipo,el){
   document.querySelectorAll('#fpf-type .fpill').forEach(function(p){p.classList.remove('on');});
   el.classList.add('on');
@@ -4683,7 +4683,7 @@ function pfRenderTimeline(arr){
     html+='<div style="font-size:14px;color:var(--cream);font-weight:500;">'+item.evento+'</div>';
     if(item.lugar)html+='<div style="font-size:12px;color:var(--t4);margin-top:1px;">'+item.lugar+'</div>';
     html+='</div>';
-    html+='<button onclick="pfRemoveTray('+i+')" style="background:none;border:none;color:var(--t4);cursor:pointer;font-size:15px;padding:0;flex-shrink:0;margin-top:2px;" type="button">×</button>';
+    html+='<button onclick="pfRemoveTray('+i+')" style="background:none;border:none;color:var(--t4);cursor:pointer;font-size:15px;padding:0;flex-shrink:0;margin-top:2px;" type="button">-</button>';
     html+='</div></div>';
   });
   html+='</div>';
@@ -4756,9 +4756,9 @@ function fpfReset(){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ═══════════════════════════════════════════════
+// -----------------------------------------------
 // FORM CONTENIDO (fct)
-// ═══════════════════════════════════════════════
+// -----------------------------------------------
 function fctSelectType(tipo,el){
   document.querySelectorAll('#fct-type-pills .fpill').forEach(function(p){p.classList.remove('on');});
   el.classList.add('on');
