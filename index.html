@@ -3214,6 +3214,25 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
 .fbtn-next:hover,.fbtn-pub:hover{opacity:.85;}
 
 /* ── Success ── */
+
+/* ── Upload imagen en formularios ── */
+.fimg-upload-zone{display:flex;flex-direction:column;gap:10px;background:rgba(255,255,246,.02);border:1px solid var(--bord);border-radius:8px;padding:14px 16px;margin-top:8px;}
+.fimg-dz{position:relative;border:2px dashed;border-radius:8px;padding:18px 16px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;}
+.fimg-dz input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.fimg-dz:hover{background:rgba(255,255,246,.03);}
+.fimg-dz-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin:0 auto 7px;}
+.fimg-dz-title{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px;}
+.fimg-dz-sub{font-size:11px;color:var(--t4);}
+.fimg-prog-wrap{display:none;margin-top:4px;}
+.fimg-prog-bar{height:3px;background:var(--bord);border-radius:2px;overflow:hidden;}
+.fimg-prog-fill{height:100%;border-radius:2px;transition:width .2s;width:0%;}
+.fimg-preview{display:none;width:100%;height:88px;border-radius:6px;overflow:hidden;background:var(--surf2);border:1px solid var(--bord);align-items:center;justify-content:center;position:relative;}
+.fimg-preview img{width:100%;height:100%;object-fit:cover;display:none;}
+.fimg-preview-ph{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--t4);}
+.fimg-preview-del{position:absolute;top:5px;right:5px;width:20px;height:20px;border-radius:4px;background:rgba(7,9,8,.7);border:1px solid var(--bord);cursor:pointer;color:var(--t3);font-size:11px;display:flex;align-items:center;justify-content:center;}
+.fimg-or{display:flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);}
+.fimg-or::before,.fimg-or::after{content:'';flex:1;height:1px;background:var(--bord);}
+
 .fsuccess{display:none;text-align:center;padding:72px 20px;}
 .fsuccess.on{display:block;}
 .fsucc-ico{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 28px;}
@@ -3258,67 +3277,59 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
       <div class="fstep-sub">Pega un link o flyer y llenamos los campos por ti — solo revisas. O completa los datos directamente.</div>
     </div>
 
+  <!-- Campo: Pegar link para importar -->
+  <div class="ff" style="margin-bottom:8px;">
+    <label style="color:var(--coral)">Pegar link <span class="ff-opt">Instagram, RA, Spotify, YouTube...</span></label>
+    <div style="display:flex;gap:8px;">
+      <input type="url" id="fev-link-field" placeholder="https://instagram.com/p/... o https://ra.co/events/..."
+        style="flex:1;background:var(--surf);border:1px solid var(--bord);border-radius:6px;padding:9px 12px;font-family:'Barlow',sans-serif;font-size:13px;color:var(--cream);outline:none;transition:border-color .2s;"
+        onfocus="this.style.borderColor='var(--coral)'" onblur="this.style.borderColor=''"
+        onkeydown="if(event.key==='Enter'){event.preventDefault();scrapeUrl('ev',this.value);}">
+      <button id="ev-scrape-btn" onclick="scrapeUrl('ev',document.getElementById('fev-link-field').value)"
+        style="background:rgba(var(--ac-rgb),.12);color:var(--ac);border:1px solid rgba(var(--ac-rgb),.25);border-radius:6px;padding:0 16px;font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;white-space:nowrap;"
+        type="button">Importar →</button>
+    </div>
+    <div style="font-size:11px;color:var(--t4);margin-top:4px;">Pega el link y prellenamos los campos automáticamente con IA.</div>
+  </div>
+
+
     <!-- MÉTODOS -->
-    <div class="fmethods">
-      <div class="fmethod soon" onclick="fevEntry('link',this)">
-        <div class="fmethod-icon" style="background:rgba(255,115,108,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
-        <div class="fmethod-name">Pegar link</div>
-        <div class="fmethod-desc">Instagram, Ra.co, tiquetera. Extraemos la info automáticamente.</div>
-        <div class="fmethod-tag" style="color:var(--t3);border-color:var(--bord);background:rgba(255,255,246,.04)">Proximamente</div>
-      </div>
-      <div class="fmethod soon" onclick="fevEntry('flyer',this)">
-        <div class="fmethod-icon" style="background:rgba(255,115,108,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <div class="fmethod-name">Subir flyer</div>
-        <div class="fmethod-desc">La IA lee la imagen y extrae fecha, lugar y artistas.</div>
-        <div class="fmethod-tag" style="color:var(--t3);border-color:var(--bord);background:rgba(255,255,246,.04)">Proximamente</div>
-      </div>
-      <div class="fmethod soon" onclick="fevEntry('doc',this)">
-        <div class="fmethod-icon" style="background:rgba(255,115,108,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-        <div class="fmethod-name">Subir documento</div>
-        <div class="fmethod-desc">PDF, Word o texto con la información del evento.</div>
-      </div>
-      <div class="fmethod selected" onclick="fevEntry('manual',this)">
-        <div class="fmethod-icon" style="background:rgba(255,115,108,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-        <div class="fmethod-name">Llenar manualmente</div>
-        <div class="fmethod-desc">Completa los datos directamente.</div>
-        <div class="fmethod-tag" style="color:var(--coral);border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.07)">Disponible</div>
-      </div>
-    </div>
-      <div class="fmethods-soon" id="fev-soon" style="--ac:var(--coral)"><b>El importador automatico estara disponible proximamente.</b> Por ahora completa los campos manualmente abajo y sigue al paso 02.</div>
-
+      
     <!-- INPUT: link -->
-    <div class="fimport" id="fev-import">
-      <div class="fimport-label" style="color:var(--coral)">Pega el link del evento</div>
-      <div class="fimport-row">
-        <input type="url" id="fev-link-val" placeholder="https://instagram.com/p/... o https://ra.co/events/..." style="background:var(--surf);border:1px solid var(--bord);border-radius:6px;padding:11px 14px;font-family:'Barlow',sans-serif;font-size:14px;color:var(--cream);outline:none;width:100%;">
-        <button class="fimport-btn" onclick="fevScrape()" style="background:var(--coral);">Importar →</button>
-      </div>
-      <div class="fimport-notice" id="fev-import-notice">
-        <b>Encontramos esta información.</b> Revísala antes de continuar. Nada queda publicado hasta que lo confirmes.
-      </div>
-      <div class="fimport-platforms"><span class="fimp-tag">Instagram</span><span class="fimp-tag">Ra.co</span><span class="fimp-tag">Ticketmaster</span><span class="fimp-tag">Eventbrite</span><span class="fimp-tag">Tu sitio web</span></div>
-    </div>
-
+    
     <!-- DROPZONE: flyer o documento -->
-    <div class="fdropzone" id="fev-dropzone"
-      ondragover="event.preventDefault();this.classList.add('dragover')"
-      ondragleave="this.classList.remove('dragover')"
-      ondrop="fevDropFile(event)">
-      <input type="file" id="fev-file-input" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.txt" onchange="fevFileSelected(this)">
-      <div class="fdz-icon" style="--ac-rgb:255,115,108">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <!-- File selected confirmation -->
+    
+
+      <!-- Campo de imagen -->
+      <div class="ff ff-full">
+        <label>Imagen / Flyer del evento <span class="ff-opt">opcional</span></label>
+        <div class="fimg-upload-zone">
+          <div class="fimg-dz" id="ev-img-dz" style="border-color:rgba(255,115,108,.2)"
+            ondragover="event.preventDefault();this.style.borderColor='var(--coral)'"
+            ondragleave="this.style.borderColor='rgba(255,115,108,.2)'"
+            ondrop="(async function(e){e.preventDefault();if(e.dataTransfer.files[0])await uploadImgForm('ev',e.dataTransfer.files[0]);})(event)">
+            <input type="file" id="ev-img-file-input" accept="image/*"
+              onchange="(async function(i){if(!i.files[0])return;await uploadImgForm('ev',i.files[0]);if(['image/jpeg','image/png','image/webp'].includes(i.files[0].type))await scrapeFlyerImagen('ev',i.files[0]);})(this)">
+            <div class="fimg-dz-icon" style="background:rgba(255,115,108,.1)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <div class="fimg-dz-title" style="color:var(--coral)">Subir imagen</div>
+            <div class="fimg-dz-sub">JPG, PNG, WebP · máx 8MB · o arrastra</div>
+          </div>
+          <div class="fimg-prog-wrap" id="ev-img-prog-wrap"><div class="fimg-prog-bar"><div class="fimg-prog-fill" id="ev-img-prog" style="background:var(--coral)"></div></div></div>
+          <div class="fimg-preview" id="ev-img-preview">
+            <img id="ev-img-preview-img" src="" alt="">
+            <span class="fimg-preview-ph" id="ev-img-preview-ph">Sin imagen</span>
+            <button class="fimg-preview-del" onclick="clearImgForm('ev')" type="button">✕</button>
+          </div>
+          <div class="fimg-or">o pega una URL</div>
+          <input type="url" id="ev-imagen-url-text" placeholder="https://... (link de imagen)"
+            style="background:var(--surf);border:1px solid var(--bord);border-radius:6px;padding:9px 12px;font-family:'Barlow',sans-serif;font-size:13px;color:var(--cream);outline:none;width:100%;transition:border-color .2s;"
+            oninput="(function(v){var h=document.getElementById('ev-imagen-url');if(h)h.value=v;imgFormPreview('ev',v);})(this.value)">
+        </div>
+        <input type="hidden" id="ev-imagen-url" value="">
       </div>
-      <div class="fdz-title">Arrastra aquí o haz clic para elegir</div>
-      <div class="fdz-sub" id="fev-dz-sub">Flyer del evento — JPG, PNG o PDF</div>
-      <div class="fdz-types"><span class="fimp-tag">JPG</span><span class="fimp-tag">PNG</span><span class="fimp-tag">PDF</span><span class="fimp-tag">DOC</span><span class="fimp-tag">TXT</span></div>
-    </div>
-    <!-- File selected confirmation -->
-    <div class="fdz-file-ok" id="fev-file-ok">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-      <div class="fdz-fname" id="fev-fname"></div>
-      <div class="fdz-fsize" id="fev-fsize"></div>
-      <button class="fdz-rm" onclick="fevClearFile()" type="button">×</button>
-    </div>
 
     <div class="fstep-divider"></div>
 
@@ -3532,6 +3543,22 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
       <div class="fstep-sub">El formulario se adapta según tu tipo de proyecto. Si pegas un link o subes tu EPK, prellenamos los campos — tú solo revisas.</div>
     </div>
 
+  <!-- Campo: Pegar link para importar -->
+  <div class="ff" style="margin-bottom:8px;">
+    <label style="color:var(--cyan)">Pegar link <span class="ff-opt">Instagram, RA, Spotify, YouTube...</span></label>
+    <div style="display:flex;gap:8px;">
+      <input type="url" id="fpf-link-field" placeholder="https://instagram.com/... o https://soundcloud.com/..."
+        style="flex:1;background:var(--surf);border:1px solid var(--bord);border-radius:6px;padding:9px 12px;font-family:'Barlow',sans-serif;font-size:13px;color:var(--cream);outline:none;transition:border-color .2s;"
+        onfocus="this.style.borderColor='var(--cyan)'" onblur="this.style.borderColor=''"
+        onkeydown="if(event.key==='Enter'){event.preventDefault();scrapeUrl('pf',this.value);}">
+      <button id="pf-scrape-btn" onclick="scrapeUrl('pf',document.getElementById('fpf-link-field').value)"
+        style="background:rgba(var(--ac-rgb),.12);color:var(--ac);border:1px solid rgba(var(--ac-rgb),.25);border-radius:6px;padding:0 16px;font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;white-space:nowrap;"
+        type="button">Importar →</button>
+    </div>
+    <div style="font-size:11px;color:var(--t4);margin-top:4px;">Pega el link y prellenamos los campos automáticamente con IA.</div>
+  </div>
+
+
     <!-- TIPO DE PERFIL: pills compactos con "Otro + texto" -->
     <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);margin-bottom:10px;">Tipo de perfil *</div>
     <div class="fpills" id="fpf-type-pills" style="margin-bottom:12px;">
@@ -3554,70 +3581,46 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
     </div>
     <input type="hidden" id="fpf-tipo" value="">
 
+
+      <!-- Campo de imagen -->
+      <div class="ff ff-full">
+        <label>Imagen de perfil / foto de prensa <span class="ff-opt">opcional</span></label>
+        <div class="fimg-upload-zone">
+          <div class="fimg-dz" id="pf-img-dz" style="border-color:rgba(117,230,249,.2)"
+            ondragover="event.preventDefault();this.style.borderColor='var(--cyan)'"
+            ondragleave="this.style.borderColor='rgba(117,230,249,.2)'"
+            ondrop="(async function(e){e.preventDefault();if(e.dataTransfer.files[0])await uploadImgForm('pf',e.dataTransfer.files[0]);})(event)">
+            <input type="file" id="pf-img-file-input" accept="image/*"
+              onchange="(async function(i){if(!i.files[0])return;await uploadImgForm('pf',i.files[0]);if(['image/jpeg','image/png','image/webp'].includes(i.files[0].type))await scrapeFlyerImagen('pf',i.files[0]);})(this)">
+            <div class="fimg-dz-icon" style="background:rgba(117,230,249,.1)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <div class="fimg-dz-title" style="color:var(--cyan)">Subir imagen</div>
+            <div class="fimg-dz-sub">JPG, PNG, WebP · máx 8MB · o arrastra</div>
+          </div>
+          <div class="fimg-prog-wrap" id="pf-img-prog-wrap"><div class="fimg-prog-bar"><div class="fimg-prog-fill" id="pf-img-prog" style="background:var(--cyan)"></div></div></div>
+          <div class="fimg-preview" id="pf-img-preview">
+            <img id="pf-img-preview-img" src="" alt="">
+            <span class="fimg-preview-ph" id="pf-img-preview-ph">Sin imagen</span>
+            <button class="fimg-preview-del" onclick="clearImgForm('pf')" type="button">✕</button>
+          </div>
+          <div class="fimg-or">o pega una URL</div>
+          <input type="url" id="pf-imagen-url-text" placeholder="https://... (link de imagen)"
+            style="background:var(--surf);border:1px solid var(--bord);border-radius:6px;padding:9px 12px;font-family:'Barlow',sans-serif;font-size:13px;color:var(--cream);outline:none;width:100%;transition:border-color .2s;"
+            oninput="(function(v){var h=document.getElementById('pf-imagen-url');if(h)h.value=v;imgFormPreview('pf',v);})(this.value)">
+        </div>
+        <input type="hidden" id="pf-imagen-url" value="">
+      </div>
+
     <div class="fstep-divider"></div>
 
     <!-- MÉTODO ENTRADA -->
-    <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);margin-bottom:10px;">¿Cómo quieres agregar la información?</div>
-    <div class="fmethods">
-      <div class="fmethod soon" onclick="fpfEntry('link',this)">
-        <div class="fmethod-icon" style="background:rgba(117,230,249,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
-        <div class="fmethod-name">Pegar link</div>
-        <div class="fmethod-desc">Spotify, Instagram, SoundCloud, RA. Extraemos la info.</div>
-        <div class="fmethod-tag" style="color:var(--t3);border-color:var(--bord);background:rgba(255,255,246,.04)">Proximamente</div>
-      </div>
-      <div class="fmethod soon" onclick="fpfEntry('epk',this)">
-        <div class="fmethod-icon" style="background:rgba(117,230,249,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-        <div class="fmethod-name">Subir EPK</div>
-        <div class="fmethod-desc">PDF o documento. Extraemos bio, links y fotos.</div>
-        <div class="fmethod-tag" style="color:var(--t3);border-color:var(--bord);background:rgba(255,255,246,.04)">Proximamente</div>
-      </div>
-      <div class="fmethod soon" onclick="fpfEntry('doc',this)">
-        <div class="fmethod-icon" style="background:rgba(117,230,249,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-        <div class="fmethod-name">Subir documento</div>
-        <div class="fmethod-desc">Word, PDF o texto con los datos del perfil.</div>
-      </div>
-      <div class="fmethod selected" onclick="fpfEntry('manual',this)">
-        <div class="fmethod-icon" style="background:rgba(117,230,249,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-        <div class="fmethod-name">Llenar manualmente</div>
-        <div class="fmethod-desc">Completa los datos directamente.</div>
-        <div class="fmethod-tag" style="color:var(--cyan);border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.07)">Disponible</div>
-      </div>
-    </div>
-      <div class="fmethods-soon" id="fpf-soon" style="--ac:var(--cyan)"><b>El importador automatico estara disponible proximamente.</b> Por ahora completa los campos manualmente abajo y sigue al paso 02.</div>
 
+      
     <!-- INPUT: link -->
-    <div class="fimport" id="fpf-import">
-      <div class="fimport-label" style="color:var(--cyan)">Pega el link de tu perfil</div>
-      <div class="fimport-row">
-        <input type="url" id="fpf-link-val" placeholder="https://instagram.com/... o https://soundcloud.com/...">
-        <button class="fimport-btn" onclick="fpfScrape()" style="background:var(--cyan);">Importar →</button>
-      </div>
-      <div class="fimport-notice" id="fpf-import-notice">
-        <b>Encontramos información en tu perfil.</b> Revísala antes de continuar. Nada queda publicado hasta que lo confirmes.
-      </div>
-      <div class="fimport-platforms"><span class="fimp-tag">Spotify</span><span class="fimp-tag">SoundCloud</span><span class="fimp-tag">Instagram</span><span class="fimp-tag">RA</span><span class="fimp-tag">YouTube</span><span class="fimp-tag">Bandcamp</span></div>
-    </div>
-
+    
     <!-- DROPZONE: EPK o documento -->
-    <div class="fdropzone" id="fpf-dropzone"
-      ondragover="event.preventDefault();this.classList.add('dragover')"
-      ondragleave="this.classList.remove('dragover')"
-      ondrop="fpfDropFile(event)">
-      <input type="file" id="fpf-file-input" accept=".pdf,.doc,.docx,.txt,.jpg,.png" onchange="fpfFileSelected(this)">
-      <div class="fdz-icon" style="--ac-rgb:117,230,249">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-      </div>
-      <div class="fdz-title">Arrastra aquí o haz clic para elegir</div>
-      <div class="fdz-sub" id="fpf-dz-sub">Tu EPK o documento — PDF, Word o imagen</div>
-      <div class="fdz-types"><span class="fimp-tag">PDF</span><span class="fimp-tag">DOC</span><span class="fimp-tag">DOCX</span><span class="fimp-tag">TXT</span><span class="fimp-tag">JPG</span><span class="fimp-tag">PNG</span></div>
-    </div>
-    <div class="fdz-file-ok" id="fpf-file-ok">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-      <div class="fdz-fname" id="fpf-fname"></div>
-      <div class="fdz-fsize" id="fpf-fsize"></div>
-      <button class="fdz-rm" onclick="fpfClearFile()" type="button">×</button>
-    </div>
-
+        
     <div class="fstep-divider"></div>
 
     <!-- CAMPOS BASE -->
@@ -3814,6 +3817,22 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
       <div class="fstep-sub">Pega un link o sube un documento y prellenamos los campos — tú revisas. O completa directamente.</div>
     </div>
 
+  <!-- Campo: Pegar link para importar -->
+  <div class="ff" style="margin-bottom:8px;">
+    <label style="color:var(--green)">Pegar link <span class="ff-opt">Instagram, RA, Spotify, YouTube...</span></label>
+    <div style="display:flex;gap:8px;">
+      <input type="url" id="fct-link-field" placeholder="https://substack.com/... o https://youtube.com/..."
+        style="flex:1;background:var(--surf);border:1px solid var(--bord);border-radius:6px;padding:9px 12px;font-family:'Barlow',sans-serif;font-size:13px;color:var(--cream);outline:none;transition:border-color .2s;"
+        onfocus="this.style.borderColor='var(--green)'" onblur="this.style.borderColor=''"
+        onkeydown="if(event.key==='Enter'){event.preventDefault();scrapeUrl('ct',this.value);}">
+      <button id="ct-scrape-btn" onclick="scrapeUrl('ct',document.getElementById('fct-link-field').value)"
+        style="background:rgba(var(--ac-rgb),.12);color:var(--ac);border:1px solid rgba(var(--ac-rgb),.25);border-radius:6px;padding:0 16px;font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;white-space:nowrap;"
+        type="button">Importar →</button>
+    </div>
+    <div style="font-size:11px;color:var(--t4);margin-top:4px;">Pega el link y prellenamos los campos automáticamente con IA.</div>
+  </div>
+
+
     <!-- TIPO DE CONTENIDO -->
     <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);margin-bottom:10px;">Tipo de contenido *</div>
     <div class="fpills" id="fct-type-pills" style="margin-bottom:20px;">
@@ -3834,69 +3853,46 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
     </div>
     <input type="hidden" id="fct-tipo" value="">
 
+
+      <!-- Campo de imagen -->
+      <div class="ff ff-full">
+        <label>Imagen de portada <span class="ff-opt">opcional</span></label>
+        <div class="fimg-upload-zone">
+          <div class="fimg-dz" id="ct-img-dz" style="border-color:rgba(0,170,116,.2)"
+            ondragover="event.preventDefault();this.style.borderColor='var(--green)'"
+            ondragleave="this.style.borderColor='rgba(0,170,116,.2)'"
+            ondrop="(async function(e){e.preventDefault();if(e.dataTransfer.files[0])await uploadImgForm('ct',e.dataTransfer.files[0]);})(event)">
+            <input type="file" id="ct-img-file-input" accept="image/*"
+              onchange="(async function(i){if(!i.files[0])return;await uploadImgForm('ct',i.files[0]);if(['image/jpeg','image/png','image/webp'].includes(i.files[0].type))await scrapeFlyerImagen('ct',i.files[0]);})(this)">
+            <div class="fimg-dz-icon" style="background:rgba(0,170,116,.1)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <div class="fimg-dz-title" style="color:var(--green)">Subir imagen</div>
+            <div class="fimg-dz-sub">JPG, PNG, WebP · máx 8MB · o arrastra</div>
+          </div>
+          <div class="fimg-prog-wrap" id="ct-img-prog-wrap"><div class="fimg-prog-bar"><div class="fimg-prog-fill" id="ct-img-prog" style="background:var(--green)"></div></div></div>
+          <div class="fimg-preview" id="ct-img-preview">
+            <img id="ct-img-preview-img" src="" alt="">
+            <span class="fimg-preview-ph" id="ct-img-preview-ph">Sin imagen</span>
+            <button class="fimg-preview-del" onclick="clearImgForm('ct')" type="button">✕</button>
+          </div>
+          <div class="fimg-or">o pega una URL</div>
+          <input type="url" id="ct-imagen-url-text" placeholder="https://... (link de imagen)"
+            style="background:var(--surf);border:1px solid var(--bord);border-radius:6px;padding:9px 12px;font-family:'Barlow',sans-serif;font-size:13px;color:var(--cream);outline:none;width:100%;transition:border-color .2s;"
+            oninput="(function(v){var h=document.getElementById('ct-imagen-url');if(h)h.value=v;imgFormPreview('ct',v);})(this.value)">
+        </div>
+        <input type="hidden" id="ct-imagen-url" value="">
+      </div>
+
     <div class="fstep-divider"></div>
 
     <!-- MÉTODO ENTRADA -->
-    <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);margin-bottom:10px;">¿Cómo quieres agregar la información?</div>
-    <div class="fmethods">
-      <div class="fmethod soon" onclick="fctEntry('link',this)">
-        <div class="fmethod-icon" style="background:rgba(0,170,116,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
-        <div class="fmethod-name">Pegar link</div>
-        <div class="fmethod-desc">Substack, Medium, YouTube, Spotify, SoundCloud.</div>
-        <div class="fmethod-tag" style="color:var(--t3);border-color:var(--bord);background:rgba(255,255,246,.04)">Proximamente</div>
-      </div>
-      <div class="fmethod soon" onclick="fctEntry('doc',this)">
-        <div class="fmethod-icon" style="background:rgba(0,170,116,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-        <div class="fmethod-name">Subir documento</div>
-        <div class="fmethod-desc">PDF, Word o texto con el artículo completo.</div>
-      </div>
-      <div class="fmethod soon" onclick="fctEntry('img',this)">
-        <div class="fmethod-icon" style="background:rgba(0,170,116,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <div class="fmethod-name">Subir imágenes</div>
-        <div class="fmethod-desc">Galería fotográfica o material visual.</div>
-      </div>
-      <div class="fmethod selected" onclick="fctEntry('manual',this)">
-        <div class="fmethod-icon" style="background:rgba(0,170,116,.1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-        <div class="fmethod-name">Llenar manualmente</div>
-        <div class="fmethod-desc">Empieza desde cero.</div>
-        <div class="fmethod-tag" style="color:var(--green);border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.07)">Disponible</div>
-      </div>
-    </div>
-      <div class="fmethods-soon" id="fct-soon" style="--ac:var(--green)"><b>El importador automatico estara disponible proximamente.</b> Por ahora completa los campos manualmente abajo y sigue al paso 02.</div>
 
+      
     <!-- INPUT: link -->
-    <div class="fimport" id="fct-import">
-      <div class="fimport-label" style="color:var(--green)">Pega el link del contenido</div>
-      <div class="fimport-row">
-        <input type="url" id="fct-link-val" placeholder="https://substack.com/... o https://youtube.com/...">
-        <button class="fimport-btn" onclick="fctScrape()" style="background:var(--green);">Importar →</button>
-      </div>
-      <div class="fimport-notice" id="fct-import-notice">
-        <b>Encontramos esta información.</b> Revísala antes de continuar. Nada queda publicado hasta que lo confirmes.
-      </div>
-      <div class="fimport-platforms"><span class="fimp-tag">Substack</span><span class="fimp-tag">Medium</span><span class="fimp-tag">YouTube</span><span class="fimp-tag">Spotify</span><span class="fimp-tag">SoundCloud</span><span class="fimp-tag">Mixcloud</span><span class="fimp-tag">Vimeo</span></div>
-    </div>
-
+    
     <!-- DROPZONE: documento o imágenes -->
-    <div class="fdropzone" id="fct-dropzone"
-      ondragover="event.preventDefault();this.classList.add('dragover')"
-      ondragleave="this.classList.remove('dragover')"
-      ondrop="fctDropFile(event)">
-      <input type="file" id="fct-file-input" accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png,.gif" multiple onchange="fctFileSelected(this)">
-      <div class="fdz-icon" style="--ac-rgb:0,170,116">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-      </div>
-      <div class="fdz-title">Arrastra aquí o haz clic para elegir</div>
-      <div class="fdz-sub" id="fct-dz-sub">Documento o imágenes</div>
-      <div class="fdz-types"><span class="fimp-tag">PDF</span><span class="fimp-tag">DOC</span><span class="fimp-tag">TXT</span><span class="fimp-tag">JPG</span><span class="fimp-tag">PNG</span></div>
-    </div>
-    <div class="fdz-file-ok" id="fct-file-ok">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-      <div class="fdz-fname" id="fct-fname"></div>
-      <div class="fdz-fsize" id="fct-fsize"></div>
-      <button class="fdz-rm" onclick="fctClearFile()" type="button">×</button>
-    </div>
-
+        
     <div class="fstep-divider"></div>
 
     <!-- CAMPOS BASE -->
@@ -4414,63 +4410,6 @@ function fTogglePill(el, hiddenId, single){
 // -----------------------------------------------
 // FORM EVENTO (fev)
 // -----------------------------------------------
-var fevEntryMethod='manual';
-function fevEntry(method,el){
-  var soon=document.getElementById('fev-soon');
-  fHide('fev-import'); fHide('fev-dropzone');
-  if(method!=='manual'){
-    if(soon)soon.classList.add('on');
-    document.querySelectorAll('#pg-form-evento .fmethod').forEach(function(m){m.classList.remove('selected');});
-    var manual=document.querySelector('#pg-form-evento .fmethod[onclick*=\'manual\']');
-    if(manual)manual.classList.add('selected');
-    fevEntryMethod='manual';
-    return;
-  }
-  if(soon)soon.classList.remove('on');
-  fevEntryMethod='manual';
-  document.querySelectorAll('#pg-form-evento .fmethod').forEach(function(m){m.classList.remove('selected');});
-  el.classList.add('selected');
-}
-function fevScrape(){
-  var notice=document.getElementById('fev-import-notice');
-  if(notice){notice.style.display='block';}
-  var v=fVal('fev-link-val');
-  if(v){
-    var n=document.getElementById('fev-nombre');
-    if(n&&!n.value)n.value='(Prellenado desde '+v.substring(0,30)+'...)';
-  }
-}
-function fevFileSelected(input){
-  if(!input.files||!input.files[0])return;
-  var f=input.files[0];
-  var ok=document.getElementById('fev-file-ok');
-  var fn=document.getElementById('fev-fname');
-  var fs=document.getElementById('fev-fsize');
-  if(fn)fn.textContent=f.name;
-  if(fs)fs.textContent=Math.round(f.size/1024)+'KB';
-  if(ok){ok.style.display='flex';}
-  document.getElementById('fev-dropzone').style.display='none';
-}
-function fevDropFile(e){
-  e.preventDefault();
-  document.getElementById('fev-dropzone').classList.remove('dragover');
-  var f=e.dataTransfer.files[0];
-  if(!f)return;
-  var ok=document.getElementById('fev-file-ok');
-  var fn=document.getElementById('fev-fname');
-  var fs=document.getElementById('fev-fsize');
-  if(fn)fn.textContent=f.name;
-  if(fs)fs.textContent=Math.round(f.size/1024)+'KB';
-  if(ok){ok.style.display='flex';}
-  document.getElementById('fev-dropzone').style.display='none';
-}
-function fevClearFile(){
-  var ok=document.getElementById('fev-file-ok');
-  if(ok)ok.style.display='none';
-  fShow('fev-dropzone');
-  var fi=document.getElementById('fev-file-input');
-  if(fi)fi.value='';
-}
 function fevStartForm(){}
 function fevToggleCat(el){
   el.classList.toggle('on');
@@ -4539,8 +4478,7 @@ function fevPublish(){
     precio: fVal('fev-precio'),
     boleteria: fVal('fev-boleteria'),
     ig_evento: fVal('fev-ig-ev'),
-    metodo_entrada: fevEntryMethod,
-    link_importado: fVal('fev-link-val'),
+    imagen_url: document.getElementById('ev-imagen-url')?document.getElementById('ev-imagen-url').value||null:null,
     estado: 'pendiente'
   };
 
@@ -4594,63 +4532,6 @@ function fpfSelectType(tipo,el){
   var ew=document.getElementById('fpf-entry-wrap');
   if(ew)ew.style.display='block';
   window.scrollTo({top:document.getElementById('fpf-entry-wrap').offsetTop-80,behavior:'smooth'});
-}
-var fpfEntryMethod='manual';
-function fpfEntry(method,el){
-  var soon=document.getElementById('fpf-soon');
-  fHide('fpf-import'); fHide('fpf-dropzone');
-  if(method!=='manual'){
-    if(soon)soon.classList.add('on');
-    document.querySelectorAll('#pg-form-perfil .fmethod').forEach(function(m){m.classList.remove('selected');});
-    var manual=document.querySelector('#pg-form-perfil .fmethod[onclick*=\'manual\']');
-    if(manual)manual.classList.add('selected');
-    fpfEntryMethod='manual';
-    return;
-  }
-  if(soon)soon.classList.remove('on');
-  fpfEntryMethod='manual';
-  document.querySelectorAll('#pg-form-perfil .fmethod').forEach(function(m){m.classList.remove('selected');});
-  el.classList.add('selected');
-}
-function fpfScrape(){
-  var notice=document.getElementById('fpf-import-notice');
-  if(notice)notice.style.display='block';
-  var v=fVal('fpf-link-val');
-  if(v){
-    var n=document.getElementById('fpf-nombre');
-    if(n&&!n.value)n.value='(Prellenado desde '+v.substring(0,30)+'...)';
-  }
-}
-function fpfFileSelected(input){
-  if(!input.files||!input.files[0])return;
-  var f=input.files[0];
-  var ok=document.getElementById('fpf-file-ok');
-  var fn=document.getElementById('fpf-fname');
-  var fs=document.getElementById('fpf-fsize');
-  if(fn)fn.textContent=f.name;
-  if(fs)fs.textContent=Math.round(f.size/1024)+'KB';
-  if(ok)ok.style.display='flex';
-  document.getElementById('fpf-dropzone').style.display='none';
-}
-function fpfDropFile(e){
-  e.preventDefault();
-  document.getElementById('fpf-dropzone').classList.remove('dragover');
-  var f=e.dataTransfer.files[0];
-  if(!f)return;
-  var ok=document.getElementById('fpf-file-ok');
-  var fn=document.getElementById('fpf-fname');
-  var fs=document.getElementById('fpf-fsize');
-  if(fn)fn.textContent=f.name;
-  if(fs)fs.textContent=Math.round(f.size/1024)+'KB';
-  if(ok)ok.style.display='flex';
-  document.getElementById('fpf-dropzone').style.display='none';
-}
-function fpfClearFile(){
-  var ok=document.getElementById('fpf-file-ok');
-  if(ok)ok.style.display='none';
-  fShow('fpf-dropzone');
-  var fi=document.getElementById('fpf-file-input');
-  if(fi)fi.value='';
 }
 function fpfStartForm(){}
 function fpfSelectType(tipo,el){
@@ -4734,8 +4615,7 @@ function fpfPublish(){
     youtube: fVal('fpf-youtube'),
     ra: fVal('fpf-ra'),
     email: fVal('fpf-email-book'),
-    metodo_entrada: fpfEntryMethod,
-    link_importado: fVal('fpf-link-val'),
+    imagen_url: document.getElementById('pf-imagen-url')?document.getElementById('pf-imagen-url').value||null:null,
     estado: 'pendiente'
   };
 
@@ -4790,65 +4670,6 @@ function fctSelectType(tipo,el){
   if(ew)ew.style.display='block';
   window.scrollTo({top:document.getElementById('fct-entry-wrap').offsetTop-80,behavior:'smooth'});
 }
-var fctEntryMethod='manual';
-function fctEntry(method,el){
-  var soon=document.getElementById('fct-soon');
-  fHide('fct-import'); fHide('fct-dropzone');
-  if(method!=='manual'){
-    if(soon)soon.classList.add('on');
-    document.querySelectorAll('#pg-form-contenido .fmethod').forEach(function(m){m.classList.remove('selected');});
-    var manual=document.querySelector('#pg-form-contenido .fmethod[onclick*=\'manual\']');
-    if(manual)manual.classList.add('selected');
-    fctEntryMethod='manual';
-    return;
-  }
-  if(soon)soon.classList.remove('on');
-  fctEntryMethod='manual';
-  document.querySelectorAll('#pg-form-contenido .fmethod').forEach(function(m){m.classList.remove('selected');});
-  el.classList.add('selected');
-}
-function fctScrape(){
-  var notice=document.getElementById('fct-import-notice');
-  if(notice)notice.style.display='block';
-  var v=fVal('fct-link-val');
-  if(v){
-    var t=document.getElementById('fct-titulo');
-    if(t&&!t.value)t.value='(Prellenado desde '+v.substring(0,30)+'...)';
-  }
-}
-function fctFileSelected(input){
-  if(!input.files||!input.files.length)return;
-  var count=input.files.length;
-  var f=input.files[0];
-  var ok=document.getElementById('fct-file-ok');
-  var fn=document.getElementById('fct-fname');
-  var fs=document.getElementById('fct-fsize');
-  if(fn)fn.textContent=count>1?f.name+' + '+(count-1)+' más':f.name;
-  if(fs)fs.textContent=Math.round(f.size/1024)+'KB';
-  if(ok)ok.style.display='flex';
-  document.getElementById('fct-dropzone').style.display='none';
-}
-function fctDropFile(e){
-  e.preventDefault();
-  document.getElementById('fct-dropzone').classList.remove('dragover');
-  var files=e.dataTransfer.files;
-  if(!files||!files.length)return;
-  var f=files[0];
-  var ok=document.getElementById('fct-file-ok');
-  var fn=document.getElementById('fct-fname');
-  var fs=document.getElementById('fct-fsize');
-  if(fn)fn.textContent=files.length>1?f.name+' + '+(files.length-1)+' más':f.name;
-  if(fs)fs.textContent=Math.round(f.size/1024)+'KB';
-  if(ok)ok.style.display='flex';
-  document.getElementById('fct-dropzone').style.display='none';
-}
-function fctClearFile(){
-  var ok=document.getElementById('fct-file-ok');
-  if(ok)ok.style.display='none';
-  fShow('fct-dropzone');
-  var fi=document.getElementById('fct-file-input');
-  if(fi)fi.value='';
-}
 function fctStartForm(){}
 function fctSelectType(tipo,el){
   document.querySelectorAll('#fct-type-pills .fpill').forEach(function(p){p.classList.remove('on');});
@@ -4894,8 +4715,7 @@ function fctPublish(){
     email: fVal('fct-email'),
     permisos: fVal('fct-permisos'),
     estado_pub: fVal('fct-estado-pub'),
-    metodo_entrada: fctEntryMethod,
-    link_importado: fVal('fct-link-val'),
+    imagen_url: document.getElementById('ct-imagen-url')?document.getElementById('ct-imagen-url').value||null:null,
     estado: 'pendiente'
   };
 
@@ -4929,6 +4749,228 @@ function agToggle(id){
   fSetProg('fpf',1,4);
   fSetProg('fct',1,4);
 })();
+
+
+// ════ SUPABASE STORAGE — Upload imágenes desde formularios ════
+var SUPA_URL_ST='https://dqakyqjvibbozhopnlyw.supabase.co';
+var SUPA_KEY_ST='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxYWt5cWp2aWJib3pob3BubHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUwMjEwMTEsImV4cCI6MjA3MDU5NzAxMX0.jm8d8AMxzurBKDteGoDHnrla8Xm8P_xrNIkY5kLHVu4';
+var IMG_BUCKET='imagenes';
+
+async function uploadImgForm(prefix, file) {
+  if (!file) return null;
+  var ext = file.name.split('.').pop().toLowerCase();
+  var allowed = ['jpg','jpeg','png','webp','gif'];
+  if (!allowed.includes(ext)) { alert('Solo JPG, PNG o WebP'); return null; }
+  if (file.size > 8*1024*1024) { alert('Máximo 8MB'); return null; }
+  var progBar = document.getElementById(prefix+'-img-prog');
+  var progWrap = document.getElementById(prefix+'-img-prog-wrap');
+  if(progWrap) progWrap.style.display='block';
+  if(progBar) progBar.style.width='25%';
+  var fname = prefix+'-'+Date.now()+'.'+ext;
+  try {
+    var r = await fetch(SUPA_URL_ST+'/storage/v1/object/'+IMG_BUCKET+'/'+fname, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPA_KEY_ST,
+        'Authorization': 'Bearer '+SUPA_KEY_ST,
+        'Content-Type': file.type,
+        'x-upsert': 'true'
+      },
+      body: file
+    });
+    if(progBar) progBar.style.width='100%';
+    setTimeout(function(){ if(progWrap) progWrap.style.display='none'; if(progBar) progBar.style.width='0%'; }, 800);
+    if (!r.ok) { var err = await r.text(); alert('Error subiendo imagen: '+err); return null; }
+    var publicUrl = SUPA_URL_ST+'/storage/v1/object/public/'+IMG_BUCKET+'/'+fname;
+    imgFormPreview(prefix, publicUrl);
+    var hidden = document.getElementById(prefix+'-imagen-url');
+    if(hidden) hidden.value = publicUrl;
+    var textField = document.getElementById(prefix+'-imagen-url-text');
+    if(textField) textField.value = publicUrl;
+    return publicUrl;
+  } catch(e) {
+    if(progWrap) progWrap.style.display='none';
+    alert('Error de conexión: '+e.message);
+    return null;
+  }
+}
+
+function imgFormPreview(prefix, url) {
+  var img = document.getElementById(prefix+'-img-preview-img');
+  var ph = document.getElementById(prefix+'-img-preview-ph');
+  var prev = document.getElementById(prefix+'-img-preview');
+  if(url) {
+    if(img){ img.src=url; img.style.display='block'; }
+    if(ph) ph.style.display='none';
+    if(prev) prev.style.display='flex';
+  } else {
+    if(img){ img.src=''; img.style.display='none'; }
+    if(ph) ph.style.display='';
+    if(prev) prev.style.display='none';
+  }
+}
+
+function clearImgForm(prefix) {
+  var hidden = document.getElementById(prefix+'-imagen-url');
+  var textField = document.getElementById(prefix+'-imagen-url-text');
+  var fileInput = document.getElementById(prefix+'-img-file-input');
+  if(hidden) hidden.value='';
+  if(textField) textField.value='';
+  if(fileInput) fileInput.value='';
+  imgFormPreview(prefix, '');
+}
+
+
+// ════ SCRAPING CON CLAUDE API ════
+
+async function scrapeFlyerImagen(prefix, file) {
+  // Convert file to base64 and call scrape API
+  var endpoint = prefix === 'ev' ? '/api/scrape-evento' : prefix === 'pf' ? '/api/scrape-perfil' : '/api/scrape-contenido';
+  
+  return new Promise(function(resolve) {
+    var reader = new FileReader();
+    reader.onload = async function(e) {
+      var base64 = e.target.result.split(',')[1];
+      var mtype = file.type || 'image/jpeg';
+      try {
+        var r = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ imageBase64: base64, imageType: mtype })
+        });
+        var json = await r.json();
+        if (json.ok && json.data) {
+          fillFormFromScrape(prefix, json.data);
+          resolve(json.data);
+        } else {
+          resolve(null);
+        }
+      } catch(e) { resolve(null); }
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+async function scrapeUrl(prefix, url) {
+  if (!url || !url.startsWith('http')) return;
+  var endpoint = prefix === 'ev' ? '/api/scrape-evento' : prefix === 'pf' ? '/api/scrape-perfil' : '/api/scrape-contenido';
+  var btn = document.getElementById(prefix + '-scrape-btn');
+  if (btn) { btn.textContent = 'Analizando...'; btn.disabled = true; }
+  try {
+    var r = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url: url })
+    });
+    var json = await r.json();
+    if (json.ok && json.data) {
+      fillFormFromScrape(prefix, json.data);
+      if (btn) { btn.textContent = 'Prellenado ✓'; setTimeout(function(){ btn.textContent = 'Importar →'; btn.disabled = false; }, 2000); }
+    } else {
+      if (btn) { btn.textContent = 'Importar →'; btn.disabled = false; }
+    }
+  } catch(e) {
+    if (btn) { btn.textContent = 'Importar →'; btn.disabled = false; }
+  }
+}
+
+function fillFormFromScrape(prefix, data) {
+  // Map scraped data to form fields by prefix
+  var map = {
+    ev: {
+      nombre: 'fev-nombre', fecha: 'fev-fecha', hora_ini: 'fev-hora-ini', hora_fin: 'fev-hora-fin',
+      lugar: 'fev-lugar', ciudad: 'fev-ciudad', direccion: 'fev-direccion',
+      descripcion: 'fev-desc-short', precio: 'fev-precio', boleteria: 'fev-boleteria', ig_evento: 'fev-ig-ev'
+    },
+    pf: {
+      nombre: 'fpf-nombre', ciudad: 'fpf-ciudad', pais: 'fpf-pais', bio: 'fpf-bio-short',
+      ig: 'fpf-ig', spotify: 'fpf-spotify', soundcloud: 'fpf-soundcloud', youtube: null, ra: 'fpf-ra'
+    },
+    ct: {
+      titulo: 'fct-titulo', autor: 'fct-autor', medio: 'fct-medio', descripcion: 'fct-bajada',
+      cuerpo: 'fct-cuerpo', link_original: 'fct-link-orig', ig_autor: 'fct-ig-autor'
+    }
+  };
+  var m = map[prefix] || {};
+  Object.keys(m).forEach(function(key) {
+    if (!m[key] || !data[key]) return;
+    var el = document.getElementById(m[key]);
+    if (el && !el.value) el.value = data[key];
+  });
+  
+  // Special: ciudad select
+  if (prefix === 'ev' && data.ciudad) {
+    var sel = document.getElementById('fev-ciudad');
+    if (sel) {
+      var opts = Array.from(sel.options).map(function(o){ return o.value; });
+      if (opts.indexOf(data.ciudad) > -1) sel.value = data.ciudad;
+    }
+  }
+  
+  // Chips: géneros
+  if (data.generos && data.generos.length) {
+    data.generos.forEach(function(g) {
+      if (g) {
+        var inId = prefix + '-gen-in';
+        var el = document.getElementById(inId);
+        if (el) { el.value = g; }
+        if (prefix === 'ev') fevAddChip('gen');
+        else if (prefix === 'pf') fpfAddChip('gen');
+        else fctAddChip('gen');
+      }
+    });
+  }
+  
+  // Artistas (eventos)
+  if (prefix === 'ev' && data.artistas && data.artistas.length) {
+    data.artistas.forEach(function(a) {
+      if (!a) return;
+      var el = document.getElementById('fev-art-in');
+      if (el) { el.value = a; fevAddRel('artistas','fev-art-in'); }
+    });
+  }
+  
+  // Tipo (perfiles)
+  if (prefix === 'pf' && data.tipo) {
+    document.querySelectorAll('#fpf-type-pills .fpill').forEach(function(p) {
+      if (p.textContent.trim() === data.tipo) {
+        fpfSelectType(data.tipo, p);
+      }
+    });
+  }
+  
+  // Tipo (contenidos)
+  if (prefix === 'ct' && data.tipo) {
+    document.querySelectorAll('#fct-type-pills .fpill').forEach(function(p) {
+      if (p.textContent.trim() === data.tipo) {
+        fctSelectType(data.tipo, p);
+      }
+    });
+  }
+  
+  // Trayectoria (perfiles)
+  if (prefix === 'pf' && data.trayectoria && data.trayectoria.length) {
+    data.trayectoria.forEach(function(t) {
+      if (!t.evento || !t.year) return;
+      var yr = document.getElementById('fpf-tray-yr');
+      var ev = document.getElementById('fpf-tray-ev');
+      var nota = document.getElementById('fpf-tray-nota');
+      if (yr) yr.value = t.year;
+      if (ev) ev.value = t.evento;
+      if (nota) nota.value = t.lugar || '';
+      fpfAddTray();
+    });
+  }
+  
+  // Show success toast
+  var note = data._nota || 'Campos prellenados. Revisa y completa lo que falte.';
+  if (document.getElementById('toast')) {
+    document.getElementById('toast-msg').textContent = note;
+    var t = document.getElementById('toast');
+    t.style.display = 'block';
+    setTimeout(function(){ t.style.display = 'none'; }, 4000);
+  }
+}
 
 function fctReset(){
   document.getElementById('fct-success').style.display='none';
