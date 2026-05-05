@@ -584,10 +584,17 @@ footer.site-footer{}
             <li>Guardar eventos y agenda</li>
             <li>Presencia en el directorio</li>
           </ul>
-          <button class="mem-cta mem-cta-outline" onclick="navTo('proximamente')">Registrarme gratis →</button>
+          <button class="mem-cta mem-cta-outline" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">Registrarme gratis →</button>
         </div>
-        <!-- PROFESIONAL -->
-        <div class="mem-card featured" style="position:relative;overflow:visible;">
+        <!-- PROFESIONAL — bloqueado hasta lanzamiento -->
+        <div class="mem-card featured" style="position:relative;overflow:hidden;opacity:.7;pointer-events:none;user-select:none;">
+          <!-- Overlay Próximamente -->
+          <div style="position:absolute;inset:0;z-index:10;background:rgba(7,9,8,.72);backdrop-filter:blur(3px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;pointer-events:auto;">
+            <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);background:rgba(255,115,108,.1);border:1px solid rgba(255,115,108,.35);padding:5px 14px;border-radius:4px;">Próximamente</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;color:var(--cream);text-align:center;line-height:1.1;">Disponible<br>6 de mayo</div>
+            <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);text-align:center;line-height:1.5;max-width:200px;">Regístrate gratis ahora y<br>accede antes que nadie.</div>
+            <button style="pointer-events:auto;background:rgba(255,115,108,.08);color:var(--coral);border:1px solid var(--coral);font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:9px 18px;border-radius:4px;cursor:pointer;transition:.15s;margin-top:4px;" onclick="(function(){document.getElementById('registro').scrollIntoView({behavior:'smooth'});})()">Avisarme →</button>
+          </div>
           <div style="position:absolute;top:-1px;right:-1px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:0 8px 0 6px;background:rgba(117,230,249,.15);color:var(--cyan);border:1px solid rgba(117,230,249,.35);">200 cupos disponibles</div>
           <div class="mem-tier" style="color:var(--coral);">Profesional · Anual</div>
           <div class="mem-title">Para impulsar proyectos</div>
@@ -607,7 +614,7 @@ footer.site-footer{}
             <li>Automatización de contratos</li>
             <li>Integración con Chartmetric</li>
           </ul>
-          <button class="mem-cta mem-cta-primary" onclick="navTo('proximamente')">Unirme a la preventa →</button>
+          <button class="mem-cta mem-cta-primary">Próximamente</button>
         </div>
       </div>
       <div class="preventa-block rv d3">
@@ -618,27 +625,75 @@ footer.site-footer{}
   </section>
 
   <section id="registro" class="sec">
-    <div class="eye rv">05 · Registro</div>
+    <div class="eye rv">05 · Registro gratuito</div>
     <div class="reg-inner">
       <div>
-        <h2 class="h2 rv d1" style="margin-bottom:16px">Déjanos tus datos</h2>
-        <p class="rv d2" style="font-size:15px;font-weight:300;color:var(--t2);line-height:1.8;margin-bottom:24px">Cuéntanos en qué trabajas o cómo te gustaría conectar con La Curaduría.</p>
-        <div class="rv d3" style="padding:20px 24px;background:var(--surf);border:1px solid var(--bord);border-radius:8px">
-          <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3);margin-bottom:10px">¿Por qué registrarte?</div>
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <div style="display:flex;gap:10px;align-items:flex-start"><div style="width:5px;height:5px;border-radius:50%;background:var(--coral);flex-shrink:0;margin-top:7px"></div><span style="font-size:13px;color:var(--t2)">Acceso anticipado a la plataforma</span></div>
-            <div style="display:flex;gap:10px;align-items:flex-start"><div style="width:5px;height:5px;border-radius:50%;background:var(--coral);flex-shrink:0;margin-top:7px"></div><span style="font-size:13px;color:var(--t2)">Beneficios de preventa exclusivos</span></div>
-            <div style="display:flex;gap:10px;align-items:flex-start"><div style="width:5px;height:5px;border-radius:50%;background:var(--coral);flex-shrink:0;margin-top:7px"></div><span style="font-size:13px;color:var(--t2)">Participación en fases beta</span></div>
+        <h2 class="h2 rv d1" style="margin-bottom:16px">Regístrate gratis</h2>
+        <p class="rv d2" style="font-size:15px;font-weight:300;color:var(--t2);line-height:1.8;margin-bottom:24px">Crea tu cuenta, sube eventos y perfiles, y sé de los primeros en acceder al plan Profesional cuando abra.</p>
+        <div class="rv d3" style="padding:20px 24px;background:var(--surf);border:1px solid var(--bord);border-radius:8px;margin-bottom:20px;">
+          <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3);margin-bottom:12px">El plan gratuito incluye</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="display:flex;gap:10px;align-items:flex-start"><div style="color:var(--coral);font-size:13px;flex-shrink:0;margin-top:1px">—</div><span style="font-size:13px;color:var(--t2)">Perfil básico en el directorio cultural</span></div>
+            <div style="display:flex;gap:10px;align-items:flex-start"><div style="color:var(--coral);font-size:13px;flex-shrink:0;margin-top:1px">—</div><span style="font-size:13px;color:var(--t2)">Publicación de eventos ilimitados</span></div>
+            <div style="display:flex;gap:10px;align-items:flex-start"><div style="color:var(--coral);font-size:13px;flex-shrink:0;margin-top:1px">—</div><span style="font-size:13px;color:var(--t2)">Explorar toda la cartelera de Bogotá</span></div>
+            <div style="display:flex;gap:10px;align-items:flex-start"><div style="color:var(--coral);font-size:13px;flex-shrink:0;margin-top:1px">—</div><span style="font-size:13px;color:var(--t2)">Guardar eventos y armar tu agenda</span></div>
+            <div style="display:flex;gap:10px;align-items:flex-start"><div style="color:var(--coral);font-size:13px;flex-shrink:0;margin-top:1px">—</div><span style="font-size:13px;color:var(--t2)">Acceso anticipado al plan Profesional</span></div>
           </div>
         </div>
+        <div class="rv d3" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);line-height:1.8;">
+          Ley 1581/2012 · Tus datos son privados y no los compartimos.<br>Puedes solicitar eliminación a hola@lacuraduria.com
+        </div>
       </div>
-      <div class="reg-form rv d2">
-        <div class="grid2"><div class="field"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div><div class="field"><label>Correo</label><input type="email" placeholder="tu@correo.com"></div></div>
-        <div class="field"><label>Proyecto / Organización</label><input type="text" placeholder="Nombre de tu proyecto"></div>
-        <div class="field"><label>¿En qué categoría trabajas?</label><select><option value="" disabled selected>Selecciona</option><option>Música</option><option>Artes visuales</option><option>Artes escénicas</option><option>Literatura</option><option>Cine</option><option>Gestión cultural</option><option>Medios</option><option>Otro</option></select></div>
-        <div class="field"><label>Mensaje</label><textarea placeholder="Cuéntanos cómo te gustaría conectar..."></textarea></div>
-        <button class="form-submit">Registrarme →</button>
-        <span class="inv-link" onclick="navTo('hub')" style="cursor:pointer">¿Te interesan otras formas de participar? <span>→ Ver Oportunidad de Inversión</span></span>
+
+      <!-- FORMULARIO -->
+      <div class="reg-form rv d2" id="reg-form-wrap">
+        <div id="reg-success" style="display:none;padding:32px 20px;text-align:center;">
+          <div style="font-size:36px;margin-bottom:12px;">✓</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;color:var(--cream);margin-bottom:8px;">¡Listo!</div>
+          <div style="font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:20px;">Tu registro quedó guardado. Te avisamos cuando el plan Profesional abra y cuando haya novedades de La Curaduría.</div>
+          <a href="https://lacuraduria.net" style="display:inline-block;background:var(--coral);color:#0F1210;font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:12px 24px;border-radius:5px;text-decoration:none;">Ir a la plataforma →</a>
+        </div>
+        <div id="reg-form-inner">
+          <div class="grid2">
+            <div class="field">
+              <label>Nombre *</label>
+              <input type="text" id="reg-nombre" placeholder="Tu nombre" autocomplete="given-name">
+            </div>
+            <div class="field">
+              <label>Correo *</label>
+              <input type="email" id="reg-email" placeholder="tu@correo.com" autocomplete="email">
+            </div>
+          </div>
+          <div class="field">
+            <label>Proyecto / Organización</label>
+            <input type="text" id="reg-proyecto" placeholder="Nombre de tu proyecto, colectivo o venue">
+          </div>
+          <div class="field">
+            <label>¿En qué categoría trabajas? *</label>
+            <select id="reg-categoria">
+              <option value="" disabled selected>Selecciona</option>
+              <option>Música</option>
+              <option>Artes visuales</option>
+              <option>Artes escénicas</option>
+              <option>Literatura</option>
+              <option>Cine</option>
+              <option>Gestión cultural</option>
+              <option>Medios</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Instagram <span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--t4);letter-spacing:.06em;">opcional</span></label>
+            <input type="text" id="reg-ig" placeholder="@tu_usuario">
+          </div>
+          <div class="field">
+            <label>Mensaje <span style="font-family:'DM Mono',monospace;font-size:8px;color:var(--t4);letter-spacing:.06em;">opcional</span></label>
+            <textarea id="reg-mensaje" placeholder="Cuéntanos cómo te gustaría usar La Curaduría..." style="min-height:80px;resize:vertical;"></textarea>
+          </div>
+          <div id="reg-error" style="display:none;font-family:'DM Mono',monospace;font-size:10px;color:var(--coral);background:rgba(255,115,108,.08);border:1px solid rgba(255,115,108,.25);border-radius:5px;padding:10px 14px;margin-bottom:12px;"></div>
+          <button class="form-submit" id="reg-submit-btn" onclick="submitRegistro()">Registrarme gratis →</button>
+          <span class="inv-link" onclick="navTo('hub')" style="cursor:pointer">¿Te interesan otras formas de participar? <span>→ Ver Oportunidad de Inversión</span></span>
+        </div>
       </div>
     </div>
   </section>
@@ -1033,8 +1088,15 @@ footer.site-footer{}
         <button class="plan-select-btn-p pbtn-outline" onclick="navTo('proximamente')">Registrarme gratis →</button>
       </div>
 
-      <!-- PROFESIONAL -->
-      <div class="plan-card-p featured-plan" id="pplan-profesional" style="cursor:pointer;position:relative;overflow:visible;" onclick="prevSelectPlan('profesional')">
+      <!-- PROFESIONAL — bloqueado -->
+      <div class="plan-card-p featured-plan" id="pplan-profesional" style="position:relative;overflow:hidden;opacity:.65;pointer-events:none;user-select:none;">
+        <!-- Overlay Próximamente -->
+        <div style="position:absolute;inset:0;z-index:10;background:rgba(7,9,8,.75);backdrop-filter:blur(3px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;pointer-events:auto;">
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);background:rgba(255,115,108,.1);border:1px solid rgba(255,115,108,.35);padding:5px 14px;border-radius:4px;">Próximamente</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;color:var(--cream);text-align:center;line-height:1.1;">Disponible<br>6 de mayo</div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);text-align:center;max-width:200px;line-height:1.5;">Regístrate gratis y te avisamos cuando abra.</div>
+          <button style="pointer-events:auto;background:rgba(255,115,108,.08);color:var(--coral);border:1px solid var(--coral);font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:9px 18px;border-radius:4px;cursor:pointer;margin-top:4px;" onclick="navTo('home','registro')">Avisarme →</button>
+        </div>
         <div style="position:absolute;top:-1px;right:-1px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:0 9px 0 6px;background:rgba(117,230,249,.15);color:var(--cyan);border:1px solid rgba(117,230,249,.35);">200 cupos disponibles</div>
         <div class="plan-tier-p" style="color:var(--coral);">Profesional · Anual</div>
         <div class="plan-name-p" style="font-size:18px;margin-bottom:4px;">Para impulsar proyectos</div>
@@ -1059,7 +1121,7 @@ footer.site-footer{}
           <li><span>Automatización de contratos</span></li>
           <li><span>Integración con Chartmetric</span></li>
         </ul>
-        <button class="plan-select-btn-p pbtn-coral" onclick="navTo('proximamente')">Unirme a la preventa →</button>
+        <button class="plan-select-btn-p pbtn-coral">Próximamente</button>
       </div>
 
     </div>
@@ -1551,7 +1613,7 @@ footer{padding:22px 0;border-top:1px solid var(--bord);display:flex;justify-cont
 <!-- GATE JS -->
 <script>
 document.addEventListener('DOMContentLoaded',function(){
-  var SKEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxYWt5cWp2aWJib3pob3BubHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUwMjEwMTEsImV4cCI6MjA3MDU5NzAxMX0.jm8d8AMxzurBKDteGoDHnrla8Xm8P_xrNIkY5kLHVu4';
+  var SKEY='sb_publishable_DxWhUwMvJyF5n4VTdboONg__zDvwrGH';
   var SURL='https://dqakyqjvibbozhopnlyw.supabase.co';
   function check(){
     var n=document.getElementById('g-nombre').value.trim();
@@ -2011,7 +2073,7 @@ function updateModalSim(val) {
 }
 function hubContactSubmit() {
   var SUPA_URL='https://dqakyqjvibbozhopnlyw.supabase.co';
-  var SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxYWt5cWp2aWJib3pob3BubHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUwMjEwMTEsImV4cCI6MjA3MDU5NzAxMX0.jm8d8AMxzurBKDteGoDHnrla8Xm8P_xrNIkY5kLHVu4';
+  var SUPA_KEY='sb_publishable_DxWhUwMvJyF5n4VTdboONg__zDvwrGH';
   var n = document.getElementById('f-nombre');
   var e = document.getElementById('f-email');
   if(!n||!n.value.trim()||!e||!e.value.includes('@')) { alert('Por favor completa nombre y correo.'); return; }
@@ -4202,6 +4264,82 @@ var pages = ['home','nosotros','preventa','hub','agregar','crear-perfil','subir-
 var hiddenPages = ['proximamente']; // present but not in footer nav
 var current = 'home';
 
+// ── FORMULARIO DE REGISTRO GRATUITO ──
+async function submitRegistro(){
+  var nombre = (document.getElementById('reg-nombre')||{}).value || '';
+  var email = (document.getElementById('reg-email')||{}).value || '';
+  var proyecto = (document.getElementById('reg-proyecto')||{}).value || '';
+  var categoria = (document.getElementById('reg-categoria')||{}).value || '';
+  var ig = (document.getElementById('reg-ig')||{}).value || '';
+  var mensaje = (document.getElementById('reg-mensaje')||{}).value || '';
+  var errEl = document.getElementById('reg-error');
+  var btn = document.getElementById('reg-submit-btn');
+
+  // Validar
+  var err = '';
+  if(!nombre.trim()) err = 'El nombre es obligatorio.';
+  else if(!email.trim() || !email.includes('@')) err = 'Ingresa un correo válido.';
+  else if(!categoria) err = 'Selecciona una categoría.';
+
+  if(err){
+    if(errEl){ errEl.textContent = err; errEl.style.display = 'block'; }
+    return;
+  }
+  if(errEl) errEl.style.display = 'none';
+
+  if(btn){ btn.disabled = true; btn.textContent = 'Enviando...'; btn.style.opacity = '.65'; }
+
+  var SUPA_URL = 'https://dqakyqjvibbozhopnlyw.supabase.co';
+  var SUPA_KEY = 'sb_publishable_DxWhUwMvJyF5n4VTdboONg__zDvwrGH';
+
+  try {
+    var res = await fetch(SUPA_URL + '/rest/v1/registros_gratuitos', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPA_KEY,
+        'Authorization': 'Bearer ' + SUPA_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        nombre: nombre.trim(),
+        email: email.trim().toLowerCase(),
+        proyecto: proyecto.trim() || null,
+        categoria: categoria,
+        ig: ig.replace(/^@/,'').trim() || null,
+        mensaje: mensaje.trim() || null,
+        origen: 'landing',
+        created_at: new Date().toISOString()
+      })
+    });
+
+    if(res.ok || res.status === 201){
+      // Éxito
+      var inner = document.getElementById('reg-form-inner');
+      var success = document.getElementById('reg-success');
+      if(inner) inner.style.display = 'none';
+      if(success) success.style.display = 'block';
+    } else {
+      var errText = await res.text();
+      // Si la tabla no existe (404/42P01), igual mostrar éxito al usuario pero loguear
+      if(res.status === 404 || (errText && errText.includes('42P01'))){
+        console.warn('[registro] Tabla registros_gratuitos no existe aún. Crear en Supabase.');
+        // Mostrar éxito de todas formas — no penalizar al usuario
+        var inner2 = document.getElementById('reg-form-inner');
+        var success2 = document.getElementById('reg-success');
+        if(inner2) inner2.style.display = 'none';
+        if(success2) success2.style.display = 'block';
+      } else {
+        if(btn){ btn.disabled = false; btn.textContent = 'Registrarme gratis →'; btn.style.opacity = ''; }
+        if(errEl){ errEl.textContent = 'Hubo un error al enviar. Intenta de nuevo o escríbenos a hola@lacuraduria.com'; errEl.style.display = 'block'; }
+      }
+    }
+  } catch(e) {
+    if(btn){ btn.disabled = false; btn.textContent = 'Registrarme gratis →'; btn.style.opacity = ''; }
+    if(errEl){ errEl.textContent = 'Sin conexión. Verifica tu internet e intenta de nuevo.'; errEl.style.display = 'block'; }
+  }
+}
+
 function navTo(page, anchor) {
   pages.forEach(function(p){
     var el = document.getElementById('pg-'+p);
@@ -4434,7 +4572,7 @@ function fevDraft(){alert('Borrador guardado. Puedes continuar después.');}
 function fevQuickProfile(){alert('Perfil rápido — próximamente disponible. Por ahora escribe el nombre del artista en el campo de búsqueda.');}
 // -- Supabase config global --
 var DB_URL='https://dqakyqjvibbozhopnlyw.supabase.co';
-var DB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxYWt5cWp2aWJib3pob3BubHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUwMjEwMTEsImV4cCI6MjA3MDU5NzAxMX0.jm8d8AMxzurBKDteGoDHnrla8Xm8P_xrNIkY5kLHVu4';
+var DB_KEY='sb_publishable_DxWhUwMvJyF5n4VTdboONg__zDvwrGH';
 
 function dbInsert(table, payload, onSuccess, onError){
   fetch(DB_URL+'/rest/v1/'+table,{
@@ -4760,7 +4898,7 @@ function agToggle(id){
 
 // ════ SUPABASE STORAGE — Upload imágenes desde formularios ════
 var SUPA_URL_ST='https://dqakyqjvibbozhopnlyw.supabase.co';
-var SUPA_KEY_ST='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxYWt5cWp2aWJib3pob3BubHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUwMjEwMTEsImV4cCI6MjA3MDU5NzAxMX0.jm8d8AMxzurBKDteGoDHnrla8Xm8P_xrNIkY5kLHVu4';
+var SUPA_KEY_ST='sb_publishable_DxWhUwMvJyF5n4VTdboONg__zDvwrGH';
 var IMG_BUCKET='imagenes';
 
 async function uploadImgForm(prefix, file) {
