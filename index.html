@@ -1222,139 +1222,339 @@ footer.site-footer{}
   </div>
 </div>
 <!-- MODAL -->
+<style>
+/* ── MODAL PREVENTA BRAND ── */
+.modal-overlay-p{
+  position:fixed;inset:0;
+  background:rgba(10,13,10,.92);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  z-index:200;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease;
+}
+.modal-overlay-p.open{opacity:1;pointer-events:all;}
+
+.modal-p{
+  background:#171C14;
+  border:1px solid #252C24;
+  border-top:2px solid #FF736C;
+  border-radius:12px;
+  width:100%;max-width:460px;
+  max-height:92vh;overflow-y:auto;
+  position:relative;
+  box-shadow:0 32px 64px rgba(0,0,0,.6),0 0 0 1px rgba(255,115,108,.06);
+  animation:modal-in .3s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes modal-in{
+  from{opacity:0;transform:translateY(16px) scale(.98);}
+  to{opacity:1;transform:translateY(0) scale(1);}
+}
+.mprev-header{
+  padding:28px 28px 22px;
+  border-bottom:1px solid #252C24;
+  position:relative;
+}
+.mprev-close{
+  position:absolute;top:18px;right:18px;
+  background:#1E241C;border:1px solid #2E3630;
+  color:#607860;width:30px;height:30px;
+  border-radius:50%;cursor:pointer;font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  transition:color .15s,border-color .15s;
+}
+.mprev-close:hover{color:#FFFFF6;border-color:#607860;}
+.mprev-eyebrow{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,115,108,.08);
+  border:1px solid rgba(255,115,108,.2);
+  border-radius:3px;padding:5px 12px;
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  color:#FF736C;margin-bottom:14px;
+}
+.mprev-eyebrow-dot{
+  width:5px;height:5px;border-radius:50%;background:#FF736C;
+  animation:pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:.25;}}
+.mprev-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:36px;font-weight:900;text-transform:uppercase;
+  letter-spacing:-.02em;line-height:.88;
+  color:#FFFFF6;margin-bottom:6px;
+}
+.mprev-price-row{
+  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  margin-top:12px;
+}
+.mprev-price-main{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:28px;font-weight:900;color:#FF736C;
+}
+.mprev-price-period{
+  font-family:'DM Mono',monospace;
+  font-size:10px;color:#607860;letter-spacing:.08em;
+}
+.mprev-price-before{
+  font-family:'DM Mono',monospace;
+  font-size:10px;color:#384838;text-decoration:line-through;
+}
+.mprev-badge{
+  font-family:'DM Mono',monospace;
+  font-size:8px;letter-spacing:.12em;text-transform:uppercase;
+  padding:3px 8px;border-radius:3px;
+  background:rgba(255,115,108,.1);
+  border:1px solid rgba(255,115,108,.25);
+  color:#FF736C;
+}
+.mprev-body{padding:24px 28px 28px;}
+.mprev-summary{
+  background:#1A1E19;
+  border:1px solid #252C24;
+  border-left:2px solid #FF736C;
+  border-radius:0 6px 6px 0;
+  padding:12px 16px;margin-bottom:22px;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+}
+.mprev-summary-text{font-size:13px;color:#A8C0A0;line-height:1.5;}
+.mprev-summary-text b{color:#FFFFF6;font-weight:600;}
+.mprev-summary-amount{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:22px;font-weight:900;color:#FF736C;
+  white-space:nowrap;flex-shrink:0;
+}
+.mprev-field{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.mprev-label{
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#607860;
+}
+.mprev-input{
+  background:#1A1E19;border:1px solid #252C24;border-radius:5px;
+  padding:12px 14px;font-family:'Barlow',sans-serif;
+  font-size:14px;color:#FFFFF6;outline:none;
+  transition:border-color .2s;width:100%;
+}
+.mprev-input:focus{border-color:#FF736C;}
+.mprev-input::placeholder{color:#384838;}
+.mprev-input.error{border-color:rgba(255,115,108,.6);}
+.mprev-ferror{
+  font-family:'DM Mono',monospace;
+  font-size:10px;color:#FF736C;display:none;margin-top:2px;
+}
+.mprev-ferror.show{display:block;}
+.mprev-btn-pay{
+  width:100%;padding:14px;
+  background:#FF736C;color:#0F1210;
+  border:none;border-radius:5px;
+  font-family:'DM Mono',monospace;
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  cursor:pointer;transition:opacity .15s,transform .1s;
+  margin-top:4px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.mprev-btn-pay:hover{opacity:.9;transform:translateY(-1px);}
+.mprev-btn-pay:active{transform:translateY(0);}
+.mprev-secure{
+  display:flex;align-items:center;gap:8px;
+  font-family:'DM Mono',monospace;
+  font-size:9px;color:#384838;letter-spacing:.04em;margin-top:14px;
+}
+.mprev-loading{display:none;text-align:center;padding:40px 0;}
+.mprev-spinner{
+  width:36px;height:36px;
+  border:2px solid #252C24;border-top-color:#FF736C;
+  border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 16px;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+.mprev-loading-text{
+  font-family:'DM Mono',monospace;
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#607860;
+}
+.mprev-loading-sub{font-size:12px;color:#384838;margin-top:6px;line-height:1.5;}
+.mprev-error-view{display:none;text-align:center;padding:32px 0;}
+.mprev-error-icon{
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(255,115,108,.08);border:1px solid rgba(255,115,108,.2);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
+}
+.mprev-error-msg{font-size:13px;color:#A8C0A0;margin-bottom:20px;line-height:1.6;}
+.mprev-btn-retry{
+  background:#1A1E19;border:1px solid #2E3630;color:#A8C0A0;border-radius:5px;
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  padding:11px 20px;cursor:pointer;transition:border-color .15s,color .15s;
+}
+.mprev-btn-retry:hover{border-color:#607860;color:#FFFFF6;}
+@media(max-width:500px){
+  .mprev-header,.mprev-body{padding-left:20px;padding-right:20px;}
+  .mprev-title{font-size:28px;}
+}
+</style>
+
 <div class="modal-overlay-p" id="prev-modal">
   <div class="modal-p">
-    <div class="modal-header-p">
-      <button class="modal-close-p" onclick="prevCloseModal()">×</button>
-      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px;" id="prev-modal-tag">Plan Avanzado</div>
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-transform:uppercase;color:var(--cream);" id="prev-modal-title">Únete a la preventa</div>
-      <div style="font-size:13px;color:var(--t3);margin-top:4px;" id="prev-modal-price">$180.000 COP / año · 20% descuento</div>
+
+    <div class="mprev-header">
+      <button class="mprev-close" onclick="prevCloseModal()">×</button>
+      <div class="mprev-eyebrow">
+        <div class="mprev-eyebrow-dot"></div>
+        <span>Solo 200 cupos · Preventa 2026</span>
+      </div>
+      <div class="mprev-title">Asegura<br>tu lugar</div>
+      <div class="mprev-price-row">
+        <div class="mprev-price-main">$230.000</div>
+        <div class="mprev-price-period">COP / año</div>
+        <div class="mprev-price-before">$330.000</div>
+        <div class="mprev-badge">−30%</div>
+      </div>
     </div>
-    <div class="modal-body-p">
-      <div class="steps-p" id="prev-steps">
-        <div class="step-tab-p active" id="prev-step-tab-1">01 · Cuenta</div>
-        <div class="step-tab-p" id="prev-step-tab-2">02 · Pago</div>
-        <div class="step-tab-p" id="prev-step-tab-3">03 · Listo</div>
-      </div>
-      <!-- STEP 1 -->
-      <div class="step-panel-p active" id="prev-step-1">
-        <div style="margin-bottom:20px;"><div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:6px;">Crea tu cuenta</div><p style="font-size:13px;color:var(--t2);line-height:1.6;">Primero creamos tu cuenta en La Curaduría. Cuando lancemos, solo haces login.</p></div>
-        <div class="form-group-p"><label class="form-label-p">Nombre completo</label><input type="text" class="form-input-p" id="preg-nombre" placeholder="Tu nombre"><div class="form-error-p" id="perr-nombre">Por favor ingresa tu nombre.</div></div>
-        <div class="form-group-p"><label class="form-label-p">Correo electrónico</label><input type="email" class="form-input-p" id="preg-email" placeholder="tu@correo.com"><div class="form-error-p" id="perr-email">Por favor ingresa un correo válido.</div></div>
-        <div class="form-group-p"><label class="form-label-p">Contraseña</label><input type="password" class="form-input-p" id="preg-pass" placeholder="Mínimo 8 caracteres"><div class="form-error-p" id="perr-pass">La contraseña debe tener al menos 8 caracteres.</div></div>
-        <div class="form-group-p"><label class="form-label-p">¿En qué categoría trabajas?</label><select class="form-input-p" id="preg-cat"><option value="" disabled selected>Selecciona</option><option>Música</option><option>Artes visuales</option><option>Artes escénicas</option><option>Literatura</option><option>Cine y audiovisual</option><option>Gestión cultural</option><option>Medios</option><option>Explorador / público general</option><option>Otro</option></select></div>
-        <button class="btn-full-p pbtn-coral" onclick="prevGoStep2()" style="margin-top:6px;">Continuar →</button>
-        <div style="font-size:12px;color:var(--t4);text-align:center;margin-top:10px;line-height:1.5;">Al registrarte aceptas nuestros términos y política de privacidad.</div>
-      </div>
-      <!-- STEP 2 -->
-      <div class="step-panel-p" id="prev-step-2">
-        <div style="margin-bottom:20px;"><div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:6px;">Resumen de compra</div></div>
-        <div style="background:var(--surf);border:1px solid var(--bord);border-radius:8px;padding:16px 18px;margin-bottom:18px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:13px;color:var(--t2);" id="prev-resumen-name">Plan Avanzado · 1 año</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--coral);" id="prev-resumen-precio">$180.000</span></div>
-          <div style="height:1px;background:var(--bord);margin-bottom:8px;"></div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--t3);margin-bottom:4px;"><span>Precio regular</span><span id="prev-resumen-original">$225.000 COP</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--coral);"><span>Descuento preventa (20%)</span><span id="prev-resumen-ahorro">-$45.000 COP</span></div>
-        </div>
-        <div style="background:var(--surf);border:1px solid var(--bord);border-radius:8px;padding:20px;margin-bottom:16px;">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;"><div style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--cream);background:var(--surf2);padding:4px 10px;border-radius:4px;border:1px solid var(--bord2);">Wompi</div><span style="font-size:12px;color:var(--t3);">Pago seguro</span></div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--cream);margin-bottom:2px;" id="prev-wompi-amount">$180.000 COP</div>
-          <div style="font-size:12px;color:var(--t3);" id="prev-wompi-desc">La Curaduría · Plan Avanzado · Preventa 2026</div>
-          <div style="margin-top:14px;padding:14px;background:var(--surf2);border:1px dashed var(--bord2);border-radius:6px;text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;">Botón de pago Wompi</div>
-            <div style="font-size:12px;color:var(--t4);line-height:1.6;">Reemplaza <code style="color:var(--coral)">pub_test_REEMPLAZAR</code> con tu llave real de Wompi para activar el pago.</div>
+
+    <div class="mprev-body">
+
+      <div id="mprev-form-view">
+        <div class="mprev-summary">
+          <div class="mprev-summary-text">
+            <b>Plan Profesional · 1 año</b><br>
+            Herramientas profesionales para gestión y promoción
           </div>
-          <div style="display:flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:9px;color:var(--t4);margin-top:10px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Pago cifrado y seguro · No guardamos datos de tarjeta</div>
+          <div class="mprev-summary-amount">$230k</div>
         </div>
-        <div style="display:flex;gap:10px;"><button class="btn-full-p pbtn-outline" onclick="prevGoStep1()" style="flex:0 0 auto;width:auto;padding:13px 20px;">← Atrás</button></div>
-      </div>
-      <!-- STEP 3 -->
-      <div class="step-panel-p" id="prev-step-3">
-        <div class="success-screen-p">
-          <div class="success-icon-p"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00AA74" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;color:var(--cream);margin-bottom:8px;">¡Bienvenido a<br>La Curaduría!</div>
-          <div style="font-size:14px;color:var(--t2);line-height:1.75;margin-bottom:24px;" id="prev-success-msg">Tu cuenta ha sido creada. Te avisamos cuando la beta esté lista en agosto de 2026.</div>
-          <button class="btn-full-p pbtn-coral" onclick="prevCloseModal();navTo('home')">Volver al inicio →</button>
+
+        <div class="mprev-field">
+          <label class="mprev-label">Nombre completo</label>
+          <input type="text" class="mprev-input" id="preg-nombre" placeholder="Tu nombre" autocomplete="name">
+          <div class="mprev-ferror" id="perr-nombre">Ingresa tu nombre.</div>
+        </div>
+
+        <div class="mprev-field">
+          <label class="mprev-label">Correo electrónico</label>
+          <input type="email" class="mprev-input" id="preg-email" placeholder="tu@correo.com" autocomplete="email">
+          <div class="mprev-ferror" id="perr-email">Ingresa un correo válido.</div>
+        </div>
+
+        <button class="mprev-btn-pay" onclick="prevIniciarPago()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          Ir a pagar · $230.000 COP →
+        </button>
+
+        <div class="mprev-secure">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Pago seguro con Mercado Pago · Sin renovación automática · Un cobro único
         </div>
       </div>
+
+      <div class="mprev-loading" id="mprev-loading-view">
+        <div class="mprev-spinner"></div>
+        <div class="mprev-loading-text">Preparando el pago</div>
+        <div class="mprev-loading-sub">Te redirigimos a Mercado Pago en un momento...</div>
+      </div>
+
+      <div class="mprev-error-view" id="mprev-error-view">
+        <div class="mprev-error-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF736C" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        </div>
+        <div class="mprev-error-msg" id="mprev-error-msg">
+          No pudimos conectar con el sistema de pago.<br>Intenta de nuevo.
+        </div>
+        <button class="mprev-btn-retry" onclick="prevResetModal()">← Volver a intentar</button>
+      </div>
+
     </div>
   </div>
 </div>
 
 <script>
-var prevCurrentPlan = 'avanzado';
-var prevPlans = {
-  basico:      {name:'Básico',      price:0,       original:0,       tag:'Plan Básico · Gratis',           priceLabel:'Gratis'},
-  avanzado:    {name:'Avanzado',    price:180000,  original:225000,  tag:'Plan Avanzado · Preventa',        priceLabel:'$180.000 COP / año · 20% descuento'},
-  profesional: {name:'Profesional', price:260000,  original:325000,  tag:'Plan Profesional · Preventa',     priceLabel:'$260.000 COP / año · 20% descuento'},
-};
-var prevAhorros = {avanzado:45000,profesional:65000};
-
-function prevSelectPlan(plan){
-  prevCurrentPlan = plan;
-  var p = prevPlans[plan];
-  document.getElementById('prev-modal-tag').textContent = p.tag;
-  document.getElementById('prev-modal-tag').style.color = plan==='profesional'?'var(--cyan)':plan==='avanzado'?'var(--coral)':'var(--t3)';
-  document.getElementById('prev-modal-title').textContent = plan==='basico'?'Crear cuenta gratis':'Unirme a la preventa';
-  document.getElementById('prev-modal-price').textContent = p.priceLabel;
-  if(plan!=='basico'){
-    document.getElementById('prev-resumen-name').textContent = 'Plan '+p.name+' · 1 año';
-    document.getElementById('prev-resumen-precio').textContent = '$'+p.price.toLocaleString('es-CO');
-    document.getElementById('prev-resumen-precio').style.color = plan==='profesional'?'var(--cyan)':'var(--coral)';
-    document.getElementById('prev-resumen-original').textContent = '$'+p.original.toLocaleString('es-CO')+' COP';
-    document.getElementById('prev-resumen-ahorro').textContent = '-$'+prevAhorros[plan].toLocaleString('es-CO')+' COP';
-    document.getElementById('prev-wompi-amount').textContent = '$'+p.price.toLocaleString('es-CO')+' COP';
-    document.getElementById('prev-wompi-desc').textContent = 'La Curaduría · Plan '+p.name+' · Preventa 2026';
-  }
-  document.getElementById('prev-step-tab-2').style.display = plan==='basico'?'none':'flex';
-  prevGoStep1();
+function prevSelectPlan(plan) {
+  if (plan === 'basico') { navTo('proximamente'); return; }
+  prevResetModal();
   document.getElementById('prev-modal').classList.add('open');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 }
-function prevCloseModal(){
+function prevCloseModal() {
   document.getElementById('prev-modal').classList.remove('open');
-  document.body.style.overflow='';
+  document.body.style.overflow = '';
 }
-document.getElementById('prev-modal').addEventListener('click',function(e){if(e.target===this)prevCloseModal();});
-function prevShowStep(n){
-  [1,2,3].forEach(function(i){
-    document.getElementById('prev-step-'+i).classList.toggle('active',i===n);
-    var t=document.getElementById('prev-step-tab-'+i);
-    if(t){t.classList.toggle('active',i===n);t.classList.toggle('done',i<n);}
-  });
+document.getElementById('prev-modal').addEventListener('click', function(e) {
+  if (e.target === this) prevCloseModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') prevCloseModal();
+});
+function prevResetModal() {
+  document.getElementById('mprev-form-view').style.display    = 'block';
+  document.getElementById('mprev-loading-view').style.display = 'none';
+  document.getElementById('mprev-error-view').style.display   = 'none';
 }
-function prevGoStep1(){prevShowStep(1);}
-function prevGoStep2(){
-  var n=document.getElementById('preg-nombre').value.trim();
-  var e=document.getElementById('preg-email').value.trim();
-  var pass=document.getElementById('preg-pass').value;
-  var valid=true;
-  if(!n){document.getElementById('perr-nombre').classList.add('show');document.getElementById('preg-nombre').classList.add('error');valid=false;}
-  else{document.getElementById('perr-nombre').classList.remove('show');document.getElementById('preg-nombre').classList.remove('error');}
-  if(!e||!e.includes('@')){document.getElementById('perr-email').classList.add('show');document.getElementById('preg-email').classList.add('error');valid=false;}
-  else{document.getElementById('perr-email').classList.remove('show');document.getElementById('preg-email').classList.remove('error');}
-  if(pass.length<8){document.getElementById('perr-pass').classList.add('show');document.getElementById('preg-pass').classList.add('error');valid=false;}
-  else{document.getElementById('perr-pass').classList.remove('show');document.getElementById('preg-pass').classList.remove('error');}
-  if(!valid)return;
-  if(prevCurrentPlan==='basico'){
-    document.getElementById('prev-success-msg').textContent='¡Tu cuenta está lista! Te avisamos cuando la beta esté disponible en agosto de 2026.';
-    prevShowStep(3);
-  } else {prevShowStep(2);}
+async function prevIniciarPago() {
+  var nombre = document.getElementById('preg-nombre').value.trim();
+  var email  = document.getElementById('preg-email').value.trim();
+  var valid  = true;
+  if (!nombre) {
+    document.getElementById('perr-nombre').classList.add('show');
+    document.getElementById('preg-nombre').classList.add('error');
+    valid = false;
+  } else {
+    document.getElementById('perr-nombre').classList.remove('show');
+    document.getElementById('preg-nombre').classList.remove('error');
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('perr-email').classList.add('show');
+    document.getElementById('preg-email').classList.add('error');
+    valid = false;
+  } else {
+    document.getElementById('perr-email').classList.remove('show');
+    document.getElementById('preg-email').classList.remove('error');
+  }
+  if (!valid) return;
+  document.getElementById('mprev-form-view').style.display    = 'none';
+  document.getElementById('mprev-loading-view').style.display = 'block';
+  try {
+    var res  = await fetch('/api/crear-preferencia', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nombre: nombre, email: email }),
+    });
+    var data = await res.json();
+    if (!res.ok || !data.checkout_url) throw new Error(data.error || 'Error');
+    window.location.href = data.checkout_url;
+  } catch (err) {
+    document.getElementById('mprev-loading-view').style.display = 'none';
+    document.getElementById('mprev-error-view').style.display   = 'block';
+    document.getElementById('mprev-error-msg').innerHTML =
+      'No pudimos conectar con el sistema de pago.<br>Intenta de nuevo o escríbenos a hola@lacuraduria.com';
+    console.error(err);
+  }
 }
-function prevToggleFaq(el){
-  var item=el.parentElement;
-  var wasOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item-p').forEach(function(i){i.classList.remove('open');});
-  if(!wasOpen)item.classList.add('open');
+function prevToggleFaq(el) {
+  var item = el.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item-p').forEach(function(i) { i.classList.remove('open'); });
+  if (!wasOpen) item.classList.add('open');
 }
-// Reveal for preventa page
-function prevTriggerReveal(){
-  var io2=new IntersectionObserver(function(entries){entries.forEach(function(x){if(x.isIntersecting)x.target.classList.add('on');});},{threshold:0,rootMargin:'0px 0px -20px 0px'});
-  document.querySelectorAll('#pg-preventa .rv').forEach(function(el){io2.observe(el);});
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var pago = params.get('pago');
+  if (!pago) return;
+  setTimeout(function() {
+    navTo('preventa');
+    var isOk = pago === 'ok';
+    var banner = document.createElement('div');
+    banner.style.cssText = 'position:fixed;top:72px;left:50%;transform:translateX(-50%);background:' + (isOk ? '#006F4D' : '#2A1A1A') + ';border:1px solid ' + (isOk ? 'rgba(0,111,77,.4)' : 'rgba(255,115,108,.3)') + ';color:' + (isOk ? '#FFFFF6' : '#FF736C') + ';font-family:DM Mono,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:12px 24px;border-radius:5px;z-index:999;font-weight:700;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.4);';
+    banner.textContent = isOk ? 'Pago recibido — bienvenido a La Curaduría' : pago === 'pendiente' ? 'Pago en proceso — te avisamos cuando se confirme' : 'Pago no procesado — puedes intentarlo de nuevo';
+    document.body.appendChild(banner);
+    setTimeout(function() { banner.style.transition = 'opacity .4s'; banner.style.opacity = '0'; setTimeout(function() { banner.remove(); }, 400); }, 6000);
+  }, 300);
+})();
+function prevTriggerReveal() {
+  var io2 = new IntersectionObserver(function(entries) {
+    entries.forEach(function(x) { if (x.isIntersecting) x.target.classList.add('on'); });
+  }, { threshold: 0, rootMargin: '0px 0px -20px 0px' });
+  document.querySelectorAll('#pg-preventa .rv').forEach(function(el) { io2.observe(el); });
 }
-// Auto-trigger on page load if preventa is active
-if(document.getElementById('pg-preventa').classList.contains('active')){prevTriggerReveal();}
+if (document.getElementById('pg-preventa').classList.contains('active')) { prevTriggerReveal(); }
 </script>
-
 </div><!-- end pg-preventa -->
 
 <!-- ══════════════════════════════════════════ -->
