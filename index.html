@@ -1088,19 +1088,12 @@ footer.site-footer{}
         <button class="plan-select-btn-p pbtn-outline" onclick="navTo('proximamente')">Registrarme gratis →</button>
       </div>
 
-      <!-- PROFESIONAL — bloqueado -->
-      <div class="plan-card-p featured-plan" id="pplan-profesional" style="position:relative;overflow:hidden;opacity:.65;pointer-events:none;user-select:none;">
-        <!-- Overlay Próximamente -->
-        <div style="position:absolute;inset:0;z-index:10;background:rgba(7,9,8,.75);backdrop-filter:blur(3px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;pointer-events:auto;">
-          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);background:rgba(255,115,108,.1);border:1px solid rgba(255,115,108,.35);padding:5px 14px;border-radius:4px;">Próximamente</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;color:var(--cream);text-align:center;line-height:1.1;">Disponible<br>6 de mayo</div>
-          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);text-align:center;max-width:200px;line-height:1.5;">Regístrate gratis y te avisamos cuando abra.</div>
-          <button style="pointer-events:auto;background:rgba(255,115,108,.08);color:var(--coral);border:1px solid var(--coral);font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:9px 18px;border-radius:4px;cursor:pointer;margin-top:4px;" onclick="navTo('home','registro')">Avisarme →</button>
-        </div>
+   <!-- PROFESIONAL -->
+      <div class="plan-card-p featured-plan" id="pplan-profesional" onclick="prevSelectPlan('profesional')" style="cursor:pointer;">
         <div style="position:absolute;top:-1px;right:-1px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:0 9px 0 6px;background:rgba(117,230,249,.15);color:var(--cyan);border:1px solid rgba(117,230,249,.35);">200 cupos disponibles</div>
         <div class="plan-tier-p" style="color:var(--coral);">Profesional · Anual</div>
         <div class="plan-name-p" style="font-size:18px;margin-bottom:4px;">Para impulsar proyectos</div>
-        <div class="plan-tagline-p" style="font-size:12px;margin-bottom:16px;">Hasta tres perfiles profesionales con visibilidad, difusión y herramientas para operar en la industria cultural.</div>
+        <div class="plan-tagline-p" style="font-size:12px;margin-bottom:16px;">Herramientas profesionales para gestión y promoción en la industria cultural.</div>
         <div class="plan-divider-p" style="background:rgba(255,115,108,.2);"></div>
         <div style="margin-bottom:18px;">
           <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t4);text-decoration:line-through;margin-bottom:3px;">$330.000 COP / año</div>
@@ -1112,7 +1105,6 @@ footer.site-footer{}
           <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--t4);margin-top:4px;letter-spacing:.08em;">$19.167 / mes</div>
         </div>
         <ul class="plan-list-p" style="margin-bottom:20px;gap:6px;">
-          <li style="color:var(--cream)"><span><b>Hasta 3 perfiles profesionales</b></span></li>
           <li><span>Perfil verificado</span></li>
           <li><span>Presskit y perfil ampliado</span></li>
           <li><span>Listas de prensa</span></li>
@@ -1121,9 +1113,8 @@ footer.site-footer{}
           <li><span>Automatización de contratos</span></li>
           <li><span>Integración con Chartmetric</span></li>
         </ul>
-        <button class="plan-select-btn-p pbtn-coral">Próximamente</button>
+        <button class="plan-select-btn-p pbtn-coral">Unirme por $230.000 →</button>
       </div>
-
     </div>
 
     <!-- Cupos bar -->
