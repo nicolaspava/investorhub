@@ -586,15 +586,8 @@ footer.site-footer{}
           </ul>
           <button class="mem-cta mem-cta-outline" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">Registrarme gratis →</button>
         </div>
-        <!-- PROFESIONAL — bloqueado hasta lanzamiento -->
-        <div class="mem-card featured" style="position:relative;overflow:hidden;opacity:.7;pointer-events:none;user-select:none;">
-          <!-- Overlay Próximamente -->
-          <div style="position:absolute;inset:0;z-index:10;background:rgba(7,9,8,.72);backdrop-filter:blur(3px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;pointer-events:auto;">
-            <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);background:rgba(255,115,108,.1);border:1px solid rgba(255,115,108,.35);padding:5px 14px;border-radius:4px;">Próximamente</div>
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;color:var(--cream);text-align:center;line-height:1.1;">Disponible<br>6 de mayo</div>
-            <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);text-align:center;line-height:1.5;max-width:200px;">Regístrate gratis ahora y<br>accede antes que nadie.</div>
-            <button style="pointer-events:auto;background:rgba(255,115,108,.08);color:var(--coral);border:1px solid var(--coral);font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:9px 18px;border-radius:4px;cursor:pointer;transition:.15s;margin-top:4px;" onclick="(function(){document.getElementById('registro').scrollIntoView({behavior:'smooth'});})()">Avisarme →</button>
-          </div>
+        <!-- PROFESIONAL -->
+        <div class="mem-card featured" style="position:relative;overflow:hidden;cursor:pointer;" onclick="prevSelectPlan('profesional')"
           <div style="position:absolute;top:-1px;right:-1px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:0 8px 0 6px;background:rgba(117,230,249,.15);color:var(--cyan);border:1px solid rgba(117,230,249,.35);">200 cupos disponibles</div>
           <div class="mem-tier" style="color:var(--coral);">Profesional · Anual</div>
           <div class="mem-title">Para impulsar proyectos</div>
@@ -614,7 +607,7 @@ footer.site-footer{}
             <li>Automatización de contratos</li>
             <li>Integración con Chartmetric</li>
           </ul>
-          <button class="mem-cta mem-cta-primary">Próximamente</button>
+          <button class="mem-cta mem-cta-primary">Unirme por $230.000 →</button>
         </div>
       </div>
       <div class="preventa-block rv d3">
@@ -1065,21 +1058,25 @@ footer.site-footer{}
     </div>
 
     <!-- Cards -->
-    <div class="pricing-cards-grid rv d1" style="display:grid;grid-template-columns:2fr 3fr;gap:12px;margin-bottom:12px;">
+    <div class="pricing-cards-grid rv d1" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
 
       <!-- GRATIS -->
       <div class="plan-card-p" id="pplan-basico" style="cursor:pointer;" onclick="prevSelectPlan('basico')">
         <div class="plan-tier-p" style="color:var(--t3);">Gratis · Siempre</div>
-        <div class="plan-name-p" style="font-size:16px;margin-bottom:4px;">Para explorar y crear presencia</div>
+        <div class="plan-name-p" style="font-size:18px;margin-bottom:4px;">Para explorar y crear presencia</div>
+        <div class="plan-tagline-p" style="font-size:12px;margin-bottom:16px;">Crea tu perfil, publica eventos y contenidos sin límite, explora la cartelera.</div>
         <div class="plan-divider-p"></div>
-        <div style="margin-bottom:16px;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;line-height:1;color:var(--cream);">Gratis</div>
+        <div style="margin-bottom:18px;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;line-height:1;color:var(--cream);">Gratis</div>
           <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--t4);margin-top:4px;letter-spacing:.1em;">Sin costo · Sin tarjeta</div>
         </div>
-        <ul class="plan-list-p" style="margin-bottom:20px;gap:5px;">
-          <li><span>Un perfil</span></li>
+        <ul class="plan-list-p" style="margin-bottom:20px;gap:6px;">
+          <li><span>Perfil básico</span></li>
           <li><span>Eventos ilimitados</span></li>
           <li><span>Contenidos ilimitados</span></li>
+          <li><span>Explorar cartelera cultural</span></li>
+          <li><span>Guardar eventos y agenda</span></li>
+          <li><span>Presencia en el directorio</span></li>
         </ul>
         <button class="plan-select-btn-p pbtn-outline" onclick="navTo('proximamente')">Registrarme gratis →</button>
       </div>
@@ -1089,7 +1086,7 @@ footer.site-footer{}
         <div style="position:absolute;top:-1px;right:-1px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:0 9px 0 6px;background:rgba(117,230,249,.15);color:var(--cyan);border:1px solid rgba(117,230,249,.35);">200 cupos disponibles</div>
         <div class="plan-tier-p" style="color:var(--coral);">Profesional · Anual</div>
         <div class="plan-name-p" style="font-size:18px;margin-bottom:4px;">Para impulsar proyectos</div>
-        <div class="plan-tagline-p" style="font-size:12px;margin-bottom:16px;">Herramientas profesionales para gestión y promoción en la industria cultural.</div>
+        <div class="plan-tagline-p" style="font-size:12px;margin-bottom:16px;">Hasta tres perfiles profesionales con visibilidad, difusión y herramientas para operar en la industria cultural.</div>
         <div class="plan-divider-p" style="background:rgba(255,115,108,.2);"></div>
         <div style="margin-bottom:18px;">
           <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t4);text-decoration:line-through;margin-bottom:3px;">$330.000 COP / año</div>
@@ -1101,17 +1098,18 @@ footer.site-footer{}
           <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--t4);margin-top:4px;letter-spacing:.08em;">$19.167 / mes</div>
         </div>
         <ul class="plan-list-p" style="margin-bottom:20px;gap:6px;">
-          <li><span>Perfil verificado y ampliado</span></li>
-          <li><span>EPK expandido</span></li>
-          <li><span>Generación de comunicados</span></li>
-          <li><span>Listas de prensa y bookers</span></li>
-          <li><span>Analítica avanzada</span></li>
+          <li style="color:var(--cream)"><span><b>Hasta 3 perfiles profesionales</b></span></li>
+          <li><span>Perfil verificado</span></li>
+          <li><span>Presskit y perfil ampliado</span></li>
+          <li><span>Listas de prensa</span></li>
+          <li><span>Listas de bookers</span></li>
           <li><span>Preventas, invitaciones y descuentos</span></li>
           <li><span>Automatización de contratos</span></li>
           <li><span>Integración con Chartmetric</span></li>
         </ul>
         <button class="plan-select-btn-p pbtn-coral">Unirme por $230.000 →</button>
       </div>
+
     </div>
 
     <!-- Cupos bar -->
