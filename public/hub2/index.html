@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>La Curaduría · Investor Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Mono:wght@400;500&family=Syne+Mono&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --coral:#FF736C;--cyan:#75E6F9;--pink:#FF7D98;--green:#7AD3A0;--yellow:#FFD335;
+  --bg:#0F0F0F;--bord:#181818;--bord2:#222222;--surf:#141414;
+  --cream:#F4F1E8;--t1:#F4F1E8;--t2:#D6D2C5;--t3:#9A9690;--t4:#6B6862;
+  --fd:'Bricolage Grotesque','Inter',system-ui,sans-serif;
+  --fb:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --fm:'DM Mono',ui-monospace,'SF Mono',monospace;
+  --fs:'Syne Mono','DM Mono',monospace;
+}
+html,body{background:var(--bg);color:var(--t1);font-family:var(--fb);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+
+/* GLOW */
+.hero-bg{position:fixed;inset:0;background:radial-gradient(circle at 30% 40%,rgba(117,230,249,.18) 0%,transparent 55%),radial-gradient(circle at 70% 70%,rgba(255,125,152,.14) 0%,transparent 55%);filter:blur(40px);pointer-events:none;z-index:0;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:#0F0F0F;border-bottom:1px solid var(--bord);}
+@media(max-width:600px){nav{padding:0 20px;height:56px;}}
+.nav-wm{height:20px;width:auto;display:block;}
+.nav-wm path[fill="#FFFFF6"],.nav-wm path[fill="white"]{fill:var(--cream);}
+.nav-wm path[fill="#FF736C"]{fill:var(--coral);}
+.nav-r{display:flex;align-items:center;gap:10px;}
+.nav-badge{font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);border:1px solid var(--bord2);border-radius:999px;padding:5px 12px;}
+.nav-cta{background:rgba(214,210,197,.07);color:var(--t2);border:1px solid rgba(214,210,197,.18);font-family:var(--fm);font-size:8px;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;border-radius:999px;cursor:pointer;background:none;transition:all .2s;}
+.nav-cta:hover{color:var(--t1);border-color:rgba(214,210,197,.36);}
+
+/* HERO */
+#hero{padding-top:68px;min-height:100vh;display:flex;align-items:flex-end;position:relative;z-index:1;}
+@media(max-width:600px){#hero{padding-top:56px;}}
+.hero-inner{max-width:1120px;margin:0 auto;padding:0 32px 72px;width:100%;}
+@media(max-width:700px){.hero-inner{padding:0 20px 56px;}}
+.hero-tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.hero-tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);border:1px solid var(--bord);border-radius:999px;padding:6px 14px;}
+.hero-tag .dot{width:5px;height:5px;border-radius:50%;background:var(--coral);flex-shrink:0;}
+.hero-wm{height:clamp(46px,5.5vw,72px);width:auto;display:block;margin-bottom:clamp(18px,3vh,28px);}
+.hero-wm path[fill="#FFFFF6"],.hero-wm path[fill="white"]{fill:var(--cream);}
+.hero-wm path[fill="#FF736C"]{fill:var(--coral);}
+.hero-tagline{font-family:var(--fd);font-weight:800;font-size:clamp(52px,8vw,96px);letter-spacing:-.048em;line-height:.9;color:var(--cream);}
+.hero-tagline em{font-style:normal;color:var(--coral);}
+
+/* PITCH SECTION */
+.pitch-section{position:relative;z-index:1;padding:clamp(40px,7vh,72px) 32px;border-bottom:1px solid var(--bord);}
+@media(max-width:700px){.pitch-section{padding:40px 20px;}}
+.pitch-inner{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:18px;}
+.pitch-eye{font-family:var(--fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:4px;}
+.pitch-p{font-size:clamp(14px,1.6vw,16px);line-height:1.75;color:var(--t2);font-weight:300;}
+.pitch-p strong{color:var(--t1);font-weight:500;}
+.pitch-p.note{color:var(--t3);font-size:14px;}
+
+/* ROUND BAR */
+.round-section{position:relative;z-index:1;padding:clamp(32px,5vh,52px) 32px;}
+@media(max-width:700px){.round-section{padding:32px 20px;}}
+.round-inner{max-width:1120px;margin:0 auto;}
+.round-label{font-family:var(--fm);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--t4);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.round-label::after{content:'';flex:1;height:1px;background:var(--bord);}
+.round-bar{display:flex;flex-direction:column;gap:12px;}
+.rb-header{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.rb-title{font-family:var(--fd);font-weight:800;font-size:clamp(20px,2.8vw,32px);letter-spacing:-.035em;color:var(--t1);}
+.rb-sub{font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);}
+.rb-track{height:3px;background:rgba(255,255,246,.06);border-radius:99px;overflow:hidden;}
+.rb-fill{height:100%;border-radius:99px;background:var(--coral);width:40%;}
+.rb-meta{display:flex;gap:24px;flex-wrap:wrap;}
+.rb-item{display:flex;flex-direction:column;gap:2px;}
+.rb-lbl{font-family:var(--fm);font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);}
+.rb-val{font-family:var(--fd);font-weight:700;font-size:14px;letter-spacing:-.02em;color:var(--t1);}
+
+/* CARDS */
+.cards-section{position:relative;z-index:1;padding:0 32px clamp(48px,8vh,80px);}
+@media(max-width:700px){.cards-section{padding:0 20px 48px;}}
+.cards-wrap{max-width:1120px;margin:0 auto;}
+.sec-label{font-family:var(--fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--t4);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--bord);}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:960px){.cards-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.cards-grid{grid-template-columns:1fr;}}
+.dc{background:var(--surf);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px;cursor:pointer;transition:all .2s;border:none;}
+.dc:hover{background:#181818;transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.4);}
+.dc.soon{opacity:.5;cursor:default;}
+.dc.soon:hover{background:var(--surf);transform:none;box-shadow:none;}
+.dc-num{font-family:var(--fm);font-size:8px;letter-spacing:.12em;color:var(--t4);}
+.dc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+.dc-name{font-family:var(--fd);font-weight:800;letter-spacing:-.03em;font-size:clamp(16px,1.8vw,20px);line-height:1.05;color:var(--t1);}
+.dc-badge{font-family:var(--fm);font-size:7px;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:6px;white-space:nowrap;flex-shrink:0;border:none;}
+.dc.avail .dc-badge{color:#0F0F0F;background:var(--green);}
+.dc.soon .dc-badge{color:var(--t4);background:var(--bord2);}
+.dc-desc{font-size:12px;color:var(--t3);line-height:1.6;border-top:1px solid var(--bord2);padding-top:10px;}
+.dc-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--bord2);padding-top:9px;}
+.dc-cta{font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);transition:color .2s;}
+.dc.avail:hover .dc-cta{color:var(--t1);}
+.dc-type{font-family:var(--fm);font-size:7px;color:var(--t4);}
+
+/* INLINE SECTIONS */
+.inline-sec{display:none;position:relative;z-index:1;padding:0 32px clamp(48px,8vh,80px);}
+@media(max-width:700px){.inline-sec{padding:0 20px 48px;}}
+.inline-sec.open{display:block;}
+.isec-header{max-width:1120px;margin:0 auto 28px;display:flex;align-items:center;justify-content:space-between;}
+.isec-title{font-family:var(--fd);font-weight:800;font-size:clamp(18px,2.4vw,28px);letter-spacing:-.04em;color:var(--t1);}
+.isec-close{font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);background:none;border:1px solid var(--bord2);border-radius:999px;padding:7px 14px;cursor:pointer;transition:all .2s;}
+.isec-close:hover{color:var(--t1);border-color:var(--t3);}
+.isec-inner{max-width:700px;margin:0 auto;}
+
+/* TRACKER compact */
+.tracker{display:flex;flex-direction:column;gap:3px;}
+.tr-total{background:var(--surf);border-radius:14px 14px 4px 4px;padding:18px 20px;}
+.tr-total-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;}
+.tr-total-lbl{font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--t4);}
+.tr-total-nums{display:flex;align-items:baseline;gap:8px;}
+.tr-total-amt{font-family:var(--fd);font-weight:800;font-size:22px;letter-spacing:-.04em;color:var(--coral);}
+.tr-total-of{font-family:var(--fm);font-size:9px;color:var(--t3);}
+.tr-track{height:4px;background:rgba(255,255,246,.06);border-radius:99px;overflow:hidden;margin-bottom:6px;}
+.tr-fill{height:100%;border-radius:99px;background:var(--coral);width:0;transition:width 1.2s cubic-bezier(.25,1,.5,1);}
+.tr-pct{font-family:var(--fm);font-size:8px;color:var(--coral);letter-spacing:.08em;}
+
+/* Phase cards */
+.tr-phase{background:var(--surf);border-radius:4px;overflow:hidden;}
+.tr-phase:last-of-type{border-radius:4px 4px 14px 14px;}
+.tr-phase-head{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:12px;transition:background .2s;}
+.tr-phase-head:hover{background:#181818;}
+.tr-phase-left{display:flex;flex-direction:column;gap:3px;}
+.tr-phase-name{font-family:var(--fd);font-weight:800;font-size:16px;letter-spacing:-.03em;color:var(--t1);}
+.tr-phase-type{font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);}
+.tr-phase-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.tr-phase-pct{font-family:var(--fd);font-weight:800;font-size:15px;letter-spacing:-.02em;}
+.tr-phase-status{font-family:var(--fm);font-size:7px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;}
+.tr-phase-status.on{color:var(--coral);background:rgba(255,115,108,.1);}
+.tr-phase-status.nx{color:var(--cyan);background:rgba(117,230,249,.08);}
+.tr-phase-bar{height:3px;background:rgba(255,255,246,.05);}
+.tr-phase-bar-fill{height:100%;width:0;transition:width 1.4s cubic-bezier(.25,1,.5,1);}
+.tr-phase-body{display:none;padding:0 20px 18px;border-top:1px solid var(--bord2);}
+.tr-phase-body.open{display:block;}
+.tr-terms-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px 0 12px;}
+.tr-term{font-family:var(--fm);font-size:8px;letter-spacing:.07em;color:var(--t3);background:rgba(255,255,246,.04);border-radius:6px;padding:5px 10px;}
+.tr-term b{font-weight:500;color:var(--cream);}
+.tr-funds{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
+.tr-fi{font-family:var(--fm);font-size:8px;color:var(--t3);background:rgba(255,255,246,.03);border-radius:5px;padding:3px 8px;}
+/* Note convertible accordion */
+.nc-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;margin-top:12px;font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);transition:color .2s;}
+.nc-toggle:hover{color:var(--t2);}
+.nc-toggle svg{transition:transform .2s;flex-shrink:0;}
+.nc-body{display:none;margin-top:10px;padding:12px 14px;background:rgba(255,255,246,.02);border-left:2px solid var(--bord2);border-radius:0 6px 6px 0;}
+.nc-body.open{display:block;}
+.nc-body p{font-size:12px;line-height:1.65;color:var(--t3);}
+.nc-body strong{color:var(--t2);}
+.tr-note{font-family:var(--fm);font-size:8px;color:var(--t4);margin-top:8px;line-height:1.5;}
+.tr-x2{display:inline-flex;align-items:center;gap:5px;font-family:var(--fd);font-weight:800;font-size:12px;color:var(--cyan);margin-top:10px;}
+
+/* P&L */
+.pl-scenarios{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;}
+.sc-btn{font-family:var(--fm);font-size:8px;letter-spacing:.12em;text-transform:uppercase;padding:8px 18px;border-radius:999px;border:1px solid var(--bord2);background:none;color:var(--t3);cursor:pointer;transition:all .2s;}
+.sc-btn:hover{color:var(--t1);}
+.sc-btn.active.s0{color:var(--t2);border-color:var(--t4);background:rgba(255,255,246,.04);}
+.sc-btn.active.s1{color:var(--coral);border-color:rgba(255,115,108,.35);background:rgba(255,115,108,.06);}
+.sc-btn.active.s2{color:var(--cyan);border-color:rgba(117,230,249,.35);background:rgba(117,230,249,.06);}
+.sc-btn.active.s3{color:var(--yellow);border-color:rgba(255,211,53,.35);background:rgba(255,211,53,.06);font-weight:700;}
+.pl-chart{margin-bottom:24px;border-radius:16px;padding:20px;background:var(--surf);}
+.pl-chart-label{font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--t4);margin-bottom:16px;}
+.pl-bars{display:flex;gap:8px;align-items:flex-end;height:130px;}
+.pl-bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
+.pl-bar-val{font-family:var(--fd);font-weight:800;font-size:10px;color:var(--t1);white-space:nowrap;}
+.pl-bar-yr{font-family:var(--fm);font-size:8px;color:var(--t4);}
+.pl-table-wrap{border-radius:16px;overflow:hidden;margin-bottom:20px;background:var(--surf);}
+.pl-table{width:100%;border-collapse:collapse;}
+.pl-table th{font-family:var(--fm);font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);padding:10px 14px;border-bottom:1px solid var(--bord2);text-align:right;background:rgba(255,255,246,.01);}
+.pl-table th:first-child{text-align:left;}
+.pl-table td{font-size:12px;color:var(--t2);padding:8px 14px;border-bottom:1px solid rgba(255,255,246,.02);text-align:right;}
+.pl-table td:first-child{text-align:left;color:var(--t3);font-size:11px;font-family:var(--fm);}
+.pl-table tr.sec-h td{font-family:var(--fm);font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--t4);padding-top:12px;background:rgba(255,255,246,.01);}
+.pl-table tr.tot td{font-family:var(--fd);font-weight:800;font-size:12px;color:var(--t1);border-top:1px solid var(--bord2);border-bottom:none;}
+.pl-table tr.ebitda td{font-family:var(--fd);font-weight:800;font-size:12px;border-top:1px solid var(--bord2);border-bottom:none;}
+.pl-return{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;border-radius:16px;padding:16px;background:var(--surf);}
+@media(max-width:600px){.pl-return{grid-template-columns:1fr 1fr;}}
+.pr-item{display:flex;flex-direction:column;gap:3px;}
+.pr-lbl{font-family:var(--fm);font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);}
+.pr-val{font-family:var(--fd);font-weight:800;font-size:15px;letter-spacing:-.03em;}
+.uni-note{margin-top:12px;padding:12px 16px;background:var(--surf);border-radius:12px;font-size:11px;color:var(--t4);text-align:center;}
+
+/* FOOTER */
+.hub-footer{position:relative;z-index:1;border-top:1px solid var(--bord);padding:24px 32px;}
+@media(max-width:700px){.hub-footer{padding:20px;}}
+.hf-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.hf-brand{font-family:var(--fd);font-weight:800;font-size:14px;letter-spacing:-.02em;color:var(--t1);}
+.hf-note{font-family:var(--fm);font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);}
+.hf-r{display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
+.hf-contact{font-family:var(--fm);font-size:9px;color:var(--coral);}
+.hf-phone{font-family:var(--fm);font-size:8px;color:var(--t3);}
+</style>
+</head>
+<body>
+<div class="hero-bg"></div>
+
+<!-- NAV -->
+<nav>
+  <svg class="nav-wm" viewBox="0 0 1795 244" fill="none"><path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="#FF736C"/><path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="#FF736C"/><path d="M427.103 115.917H350.58V1.36438H388.842V77.7438H503.626C503.626 98.8361 486.497 115.934 465.365 115.934H427.103V115.917Z" fill="#FFFFF6"/><path d="M627.503 1.36443H665.765V115.934H627.503V77.7439C627.503 98.8362 610.373 115.934 589.241 115.934H512.718V77.7439C512.718 35.4606 547.06 1.28223 589.324 1.28223H627.585L627.503 1.38087V1.36443ZM627.602 77.7439V39.5542H589.34C568.208 39.5542 551.079 56.6516 551.079 77.7439H627.602Z" fill="#FFFFF6"/><path d="M427.153 204.446H503.626V242.619H427.153C384.889 242.619 350.58 208.391 350.58 166.19C350.58 145.065 367.726 128.017 388.825 128.017H503.544C503.544 149.142 486.398 166.19 465.299 166.19H388.825L388.908 166.272C388.908 187.398 406.054 204.446 427.153 204.446Z" fill="#FFFFF6"/><path d="M512.735 166.24V128.05H550.996V166.24C550.996 187.332 568.126 204.429 589.258 204.429H627.52V128.05H665.781V242.619H589.258L589.357 242.718C547.093 242.718 512.751 208.539 512.751 166.256L512.735 166.24Z" fill="#FFFFF6"/><path d="M713.283 128.116H789.756C810.921 128.116 828.001 145.229 828.001 166.289C828.001 187.348 810.855 204.462 789.756 204.462H751.511C730.346 204.462 713.266 221.576 713.266 242.635H675.021C675.021 200.451 709.313 166.207 751.594 166.207H675.12V128.033L675.037 128.116H713.283ZM828.067 242.701H789.822V204.528C810.987 204.528 828.067 221.642 828.067 242.701Z" fill="#FFFFF6"/><path d="M951.96 128.05H990.222V242.619H951.96V204.429C951.96 225.522 934.831 242.619 913.699 242.619H837.176V204.429C837.176 162.146 871.517 127.968 913.781 127.968H952.043L951.96 128.066V128.05ZM952.043 204.429V166.24H913.781C892.649 166.24 875.52 183.337 875.52 204.429H952.043Z" fill="#FFFFF6"/><path d="M1037.59 128.033H1075.84C1118.12 128.033 1152.41 162.245 1152.41 204.462C1152.41 225.604 1135.26 242.635 1114.16 242.635H999.429V128.116L999.347 128.033H1037.59ZM1037.66 166.207V204.38H1114.13C1114.13 183.238 1097 166.207 1075.89 166.207H1037.64H1037.66Z" fill="#FFFFF6"/><path d="M1155.37 166.24V128.05H1193.64V166.24C1193.64 187.332 1210.77 204.429 1231.9 204.429H1270.16V128.05H1308.42V242.619H1231.9L1232 242.718C1189.73 242.718 1155.39 208.539 1155.39 166.256L1155.37 166.24Z" fill="#FFFFF6"/><path d="M1355.76 128.116H1432.23C1453.4 128.116 1470.48 145.229 1470.48 166.289C1470.48 187.348 1453.33 204.462 1432.23 204.462H1393.99C1372.82 204.462 1355.74 221.576 1355.74 242.635H1317.5C1317.5 200.451 1351.79 166.207 1394.07 166.207H1317.59V128.033L1317.51 128.116H1355.76ZM1470.56 242.701H1432.31V204.528C1453.48 204.528 1470.56 221.642 1470.56 242.701Z" fill="#FFFFF6"/><path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/><path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/></svg>
+  <div class="nav-r">
+    <span class="nav-badge">Investor Hub</span>
+    <button class="nav-cta" onclick="window.open('mailto:nicolas.pava@lacuraduria.net')">Contacto</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag-row">
+      <span class="hero-tag"><span class="dot"></span>Ronda presemilla · 2026 · Bogotá, Colombia</span>
+    </div>
+    <svg class="hero-wm" viewBox="0 0 1795 244" fill="none"><path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="#FF736C"/><path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="#FF736C"/><path d="M427.103 115.917H350.58V1.36438H388.842V77.7438H503.626C503.626 98.8361 486.497 115.934 465.365 115.934H427.103V115.917Z" fill="#FFFFF6"/><path d="M627.503 1.36443H665.765V115.934H627.503V77.7439C627.503 98.8362 610.373 115.934 589.241 115.934H512.718V77.7439C512.718 35.4606 547.06 1.28223 589.324 1.28223H627.585L627.503 1.38087V1.36443ZM627.602 77.7439V39.5542H589.34C568.208 39.5542 551.079 56.6516 551.079 77.7439H627.602Z" fill="#FFFFF6"/><path d="M427.153 204.446H503.626V242.619H427.153C384.889 242.619 350.58 208.391 350.58 166.19C350.58 145.065 367.726 128.017 388.825 128.017H503.544C503.544 149.142 486.398 166.19 465.299 166.19H388.825L388.908 166.272C388.908 187.398 406.054 204.446 427.153 204.446Z" fill="#FFFFF6"/><path d="M512.735 166.24V128.05H550.996V166.24C550.996 187.332 568.126 204.429 589.258 204.429H627.52V128.05H665.781V242.619H589.258L589.357 242.718C547.093 242.718 512.751 208.539 512.751 166.256L512.735 166.24Z" fill="#FFFFF6"/><path d="M713.283 128.116H789.756C810.921 128.116 828.001 145.229 828.001 166.289C828.001 187.348 810.855 204.462 789.756 204.462H751.511C730.346 204.462 713.266 221.576 713.266 242.635H675.021C675.021 200.451 709.313 166.207 751.594 166.207H675.12V128.033L675.037 128.116H713.283ZM828.067 242.701H789.822V204.528C810.987 204.528 828.067 221.642 828.067 242.701Z" fill="#FFFFF6"/><path d="M951.96 128.05H990.222V242.619H951.96V204.429C951.96 225.522 934.831 242.619 913.699 242.619H837.176V204.429C837.176 162.146 871.517 127.968 913.781 127.968H952.043L951.96 128.066V128.05ZM952.043 204.429V166.24H913.781C892.649 166.24 875.52 183.337 875.52 204.429H952.043Z" fill="#FFFFF6"/><path d="M1037.59 128.033H1075.84C1118.12 128.033 1152.41 162.245 1152.41 204.462C1152.41 225.604 1135.26 242.635 1114.16 242.635H999.429V128.116L999.347 128.033H1037.59ZM1037.66 166.207V204.38H1114.13C1114.13 183.238 1097 166.207 1075.89 166.207H1037.64H1037.66Z" fill="#FFFFF6"/><path d="M1155.37 166.24V128.05H1193.64V166.24C1193.64 187.332 1210.77 204.429 1231.9 204.429H1270.16V128.05H1308.42V242.619H1231.9L1232 242.718C1189.73 242.718 1155.39 208.539 1155.39 166.256L1155.37 166.24Z" fill="#FFFFF6"/><path d="M1355.76 128.116H1432.23C1453.4 128.116 1470.48 145.229 1470.48 166.289C1470.48 187.348 1453.33 204.462 1432.23 204.462H1393.99C1372.82 204.462 1355.74 221.576 1355.74 242.635H1317.5C1317.5 200.451 1351.79 166.207 1394.07 166.207H1317.59V128.033L1317.51 128.116H1355.76ZM1470.56 242.701H1432.31V204.528C1453.48 204.528 1470.56 221.642 1470.56 242.701Z" fill="#FFFFF6"/><path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/><path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/></svg>
+    <div class="hero-tagline">Un lente para el <em>arte.</em></div>
+  </div>
+</section>
+
+<!-- PITCH -->
+<section class="pitch-section">
+  <div class="pitch-inner">
+    <span class="pitch-eye">Resumen del proyecto</span>
+    <p class="pitch-p">La Curaduría es una <strong>red social de música, arte y cultura</strong> que conecta creadores, gestores y audiencias en una plataforma para visibilizar proyectos, construir comunidades y abrir nuevos canales de monetización.</p>
+    <p class="pitch-p">Somos una startup que busca poner <strong>herramientas tecnológicas al servicio de los circuitos de arte y cultura</strong> para generar nuevas formas de sostenibilidad.</p>
+    <p class="pitch-p">Estamos en fase de iteración de nuestra versión beta, buscando terminarla para hacer una salida al mercado y comenzar a generar tracción para buscar una ronda semilla a finales de este año.</p>
+    <p class="pitch-p note">Para eso estamos en ronda de levantamiento de capital. Acá está toda la información para su consideración.</p>
+  </div>
+</section>
+
+<!-- ROUND STATUS -->
+<div class="round-section">
+  <div class="round-inner">
+    <div class="round-label">Estado de la ronda</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;">
+      <!-- Fase 1 -->
+      <div class="round-bar">
+        <div class="rb-header">
+          <span class="rb-title" style="color:var(--cyan);">$20M<span style="font-size:.5em;font-weight:500;color:var(--t3);"> / $50M COP</span></span>
+          <span class="rb-sub" style="color:var(--cyan);">Fase 1 · Activa</span>
+        </div>
+        <div class="rb-track"><div class="rb-fill" style="width:40%;background:var(--cyan);"></div></div>
+        <div class="rb-meta">
+          <div class="rb-item"><span class="rb-lbl">Instrumento</span><span class="rb-val" style="font-size:11px;color:var(--t1);">Nota Convertible</span></div>
+          <div class="rb-item"><span class="rb-lbl">Descuento</span><span class="rb-val" style="color:var(--cyan);">30%</span></div>
+          <div class="rb-item"><span class="rb-lbl">Cierre</span><span class="rb-val">1 jul 2026</span></div>
+        </div>
+      </div>
+      <!-- Fase 2 -->
+      <div class="round-bar" style="opacity:.55;">
+        <div class="rb-header">
+          <span class="rb-title" style="color:var(--green);">$150M COP</span>
+          <span class="rb-sub" style="color:var(--green);">Fase 2 · Próxima</span>
+        </div>
+        <div class="rb-track"><div class="rb-fill" style="width:0%;background:var(--green);"></div></div>
+        <div class="rb-meta">
+          <div class="rb-item"><span class="rb-lbl">Instrumento</span><span class="rb-val" style="font-size:11px;color:var(--green);">SAFE</span></div>
+          <div class="rb-item"><span class="rb-lbl">Descuento</span><span class="rb-val" style="color:var(--green);">20%</span></div>
+          <div class="rb-item"><span class="rb-lbl">Apertura</span><span class="rb-val">Ago 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARDS -->
+<section class="cards-section">
+  <div class="cards-wrap">
+    <div class="sec-label">Documentos</div>
+    <div class="cards-grid" style="grid-template-columns:repeat(2,1fr);">
+      <a class="dc avail" href="lacuraduria-teaser.html" target="_blank">
+        <div class="dc-num">01</div>
+        <div class="dc-head"><div class="dc-name">Pitch Teaser</div></div>
+        <div class="dc-desc">Presentación ejecutiva: mercado, problema, solución, modelo y proyecciones.</div>
+        <div class="dc-foot"><span class="dc-cta">Abrir →</span><span class="dc-type">HTML</span></div>
+      </a>
+      <a class="dc avail" href="lacuraduria-onepager.pdf" target="_blank">
+        <div class="dc-num">02</div>
+        <div class="dc-head"><div class="dc-name">One Pager</div></div>
+        <div class="dc-desc">Resumen de la oportunidad en una página. Listo para compartir.</div>
+        <div class="dc-foot"><span class="dc-cta">Abrir →</span><span class="dc-type">PDF</span></div>
+      </a>
+      <div class="dc avail" onclick="toggleSec('tracker')">
+        <div class="dc-num">03</div>
+        <div class="dc-head"><div class="dc-name">Investment Round</div></div>
+        <div class="dc-desc">Tracker de la ronda, términos de inversión y uso de fondos por fase.</div>
+        <div class="dc-foot"><span class="dc-cta">Ver →</span><span class="dc-type">Interactivo</span></div>
+      </div>
+      <div class="dc avail" onclick="toggleSec('pnl')">
+        <div class="dc-num">04</div>
+        <div class="dc-head"><div class="dc-name">Proyecciones · 5 años</div></div>
+        <div class="dc-desc">Simulador de ingresos a 5 años con cuatro escenarios de crecimiento.</div>
+        <div class="dc-foot"><span class="dc-cta">Ver →</span><span class="dc-type">Interactivo</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACKER -->
+<div class="inline-sec" id="sec-tracker">
+  <div class="isec-header">
+    <div class="isec-title">Ronda presemilla · Dos fases</div>
+    <button class="isec-close" onclick="toggleSec('tracker')">Cerrar ×</button>
+  </div>
+  <div class="isec-inner">
+    <div class="tracker">
+
+      <!-- Total -->
+      <div class="tr-total">
+        <div class="tr-total-top">
+          <span class="tr-total-lbl">Objetivo total · Ronda presemilla</span>
+          <div class="tr-total-nums">
+            <span class="tr-total-amt" style="color:var(--coral);">$20M</span>
+            <span class="tr-total-of">recaudados de $200M COP</span>
+          </div>
+        </div>
+        <div class="tr-track"><div class="tr-fill" id="trb0" style="background:var(--coral);"></div></div>
+        <div class="tr-pct" style="color:var(--coral);">10% completado · Dos fases</div>
+      </div>
+
+      <!-- Fase 1 -->
+      <div class="tr-phase">
+        <div class="tr-phase-bar"><div class="tr-phase-bar-fill" id="trb1" style="background:var(--cyan);"></div></div>
+        <div class="tr-phase-head" onclick="togglePhase(1)">
+          <div class="tr-phase-left">
+            <div class="tr-phase-name" style="color:var(--cyan);">Fase 1 · Nota Convertible</div>
+            <div class="tr-phase-type">Constitución y arranque · 30% descuento</div>
+          </div>
+          <div class="tr-phase-right">
+            <span class="tr-phase-pct" style="color:var(--cyan);">$20M / $50M</span>
+            <span class="tr-phase-status on">Activa</span>
+          </div>
+        </div>
+        <div class="tr-phase-body open" id="phase1-body">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;">
+            <span class="tr-term">Descuento <b>30%</b></span>
+            <span class="tr-term">Valuation cap <b>$2.000M COP</b></span>
+            <span class="tr-term">Cierre <b>1 julio 2026</b></span>
+            <span class="tr-term">Liquidación <b>Preferencia B</b></span>
+            <span class="tr-term">Dilución <b>No diluible</b></span>
+          </div>
+          <div class="nc-toggle" onclick="toggleNC(1)">
+            <svg width="12" height="12" viewBox="0 0 12 12" id="nc1-arrow"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+            ¿Qué es una nota convertible?
+          </div>
+          <div class="nc-body" id="nc1-body">
+            <p>Una <strong>nota convertible</strong> es un instrumento de deuda que se convierte en participación accionaria al cumplirse un evento de conversión, en lugar de devolverse en efectivo.</p>
+            <p style="margin-top:8px;">En este caso, el evento de conversión es la <strong>formalización de la empresa</strong>. Al constituirse legalmente, la nota se convierte automáticamente en un SAFE con un valuation cap de <strong>$4.000 millones de pesos</strong>, lo que representa un x2 respecto al cap inicial.</p>
+            <p style="margin-top:8px;">El descuento del 30% significa que los inversionistas de Fase 1 recibirán sus acciones con un 30% de descuento sobre la valoración de la siguiente ronda.</p>
+          </div>
+          <div style="margin-top:12px;">
+            <div class="tr-funds-label" style="font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);margin-bottom:7px;">Uso de fondos</div>
+            <div class="tr-funds">
+              <span class="tr-fi">Constitución legal</span><span class="tr-fi">Software básico</span>
+              <span class="tr-fi">Hardware</span><span class="tr-fi">Registro</span>
+              <span class="tr-fi">Contaduría</span><span class="tr-fi">Asesoría legal y financiera</span>
+            </div>
+          </div>
+          <div class="tr-x2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L8 14M2 8L14 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Al completar Fase 1 el cap de valoración se duplica: $2.000M → $4.000M COP (x2)
+          </div>
+        </div>
+      </div>
+
+      <!-- Fase 2 -->
+      <div class="tr-phase">
+        <div class="tr-phase-bar"><div class="tr-phase-bar-fill" id="trb2" style="background:var(--green);opacity:.5;"></div></div>
+        <div class="tr-phase-head" onclick="togglePhase(2)">
+          <div class="tr-phase-left">
+            <div class="tr-phase-name" style="color:var(--green);opacity:.8;">Fase 2 · SAFE</div>
+            <div class="tr-phase-type">Runway y escala · 20% descuento</div>
+          </div>
+          <div class="tr-phase-right">
+            <span class="tr-phase-pct" style="color:var(--green);opacity:.6;">$0 / $150M</span>
+            <span class="tr-phase-status nx">Próxima</span>
+          </div>
+        </div>
+        <div class="tr-phase-body" id="phase2-body">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;">
+            <span class="tr-term">Instrumento <b>SAFE</b></span>
+            <span class="tr-term">Descuento <b>20%</b></span>
+            <span class="tr-term">Valuation cap <b>$4.000M COP</b></span>
+            <span class="tr-term">Cierre <b>30 sep 2026</b></span>
+            <span class="tr-term">Dilución <b>No diluible</b></span>
+          </div>
+          <div class="nc-toggle" onclick="toggleNC(2)">
+            <svg width="12" height="12" viewBox="0 0 12 12" id="nc2-arrow"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+            Evento de conversión
+          </div>
+          <div class="nc-body" id="nc2-body">
+            <p>El SAFE se convierte en <strong>participación accionaria</strong> cuando se realice la valoración de la empresa en la ronda semilla. La conversión aplica con un <strong>20% de descuento</strong> sobre el precio por acción que se establezca en esa ronda.</p>
+            <p style="margin-top:8px;">Las acciones obtenidas en Fase 2 <strong>no se pueden diluir</strong> en rondas posteriores, garantizando la protección de la participación del inversionista.</p>
+          </div>
+          <div style="margin-top:12px;">
+            <div class="tr-funds-label" style="font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);margin-bottom:7px;">Uso de fondos</div>
+            <div class="tr-funds">
+              <span class="tr-fi">Runway 9 meses</span><span class="tr-fi">3 empleados</span>
+              <span class="tr-fi">Campaña de mercadeo</span><span class="tr-fi">Estudio / Oficina</span>
+              <span class="tr-fi">Gastos administrativos</span><span class="tr-fi">Operaciones</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- P&L -->
+<div class="inline-sec" id="sec-pnl">
+  <div class="isec-header">
+    <div class="isec-title">Simulador de ingresos · 5 años</div>
+    <button class="isec-close" onclick="toggleSec('pnl')">Cerrar ×</button>
+  </div>
+  <div class="isec-inner" style="max-width:900px;">
+    <div class="pl-scenarios">
+      <button class="sc-btn s0" onclick="setSc(0)">Pesimista · x3</button>
+      <button class="sc-btn active s1" onclick="setSc(1)">Probable · x5</button>
+      <button class="sc-btn s2" onclick="setSc(2)">Optimista · x10</button>
+      <button class="sc-btn s3" onclick="setSc(3)">Unicornio · x100</button>
+    </div>
+
+    <!-- Chart -->
+    <div class="pl-chart" id="pl-chart-wrap">
+      <div class="pl-chart-label">Ingresos totales en M COP · 2026 — 2030</div>
+      <div id="plb" style="display:flex;align-items:flex-end;gap:14px;height:180px;padding-top:8px;"></div>
+    </div>
+
+    <!-- Table simple -->
+    <div class="pl-table-wrap" id="pl-table-wrap">
+      <table class="pl-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Fuente</th>
+            <th>2026</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th>
+          </tr>
+        </thead>
+        <tbody id="plt"></tbody>
+      </table>
+    </div>
+
+    <!-- Return box -->
+    <div id="plr" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:var(--surf);border-radius:16px;padding:18px;"></div>
+    <div class="uni-note" id="uninote" style="display:none;margin-top:12px;">Modo fantasía activado. Porque soñar también es parte del plan.</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="hub-footer">
+  <div class="hf-inner">
+    <div><div class="hf-brand">La Curaduría</div><div class="hf-note">Bogotá · Colombia · 2026</div></div>
+    <div class="hf-r"><span class="hf-contact">nicolas.pava@lacuraduria.net</span><span class="hf-phone">3044138497</span></div>
+  </div>
+</footer>
+
+<script>
+// ── Tracker bars ──
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    var b0 = document.getElementById('trb0');
+    var b1 = document.getElementById('trb1');
+    if(b0) b0.style.width = '10%';
+    if(b1) b1.style.width = '40%';
+  }, 400);
+});
+
+function toggleSec(id){
+  var el = document.getElementById('sec-' + id);
+  var isOpen = el.classList.contains('open');
+  document.querySelectorAll('.inline-sec').forEach(function(s){ s.classList.remove('open'); });
+  if(!isOpen){
+    el.classList.add('open');
+    setTimeout(function(){ el.scrollIntoView({behavior:'smooth', block:'start'}); }, 60);
+  }
+}
+
+function togglePhase(n){
+  var body = document.getElementById('phase' + n + '-body');
+  if(body) body.classList.toggle('open');
+}
+
+function toggleNC(n){
+  var body = document.getElementById('nc' + n + '-body');
+  var arrow = document.getElementById('nc' + n + '-arrow');
+  if(body) body.classList.toggle('open');
+  if(arrow) arrow.style.transform = (body && body.classList.contains('open')) ? 'rotate(180deg)' : '';
+}
+
+// ── P&L Simulator ──
+var YEARS = ['2026','2027','2028','2029','2030'];
+
+// Base: Y1 = 400M COP. Revenue split: Sus 40%, Mkt 35%, Pub 25%
+// Multipliers applied to Y1 base to get Y3 target
+var SCENARIOS = {
+  0: { label:'Pesimista · x3', color:'#D6D2C5', rev:[400, 750, 1200, 1600, 2000] },
+  1: { label:'Probable · x5',  color:'#FF736C', rev:[400, 1000, 2000, 3200, 4800] },
+  2: { label:'Optimista · x10',color:'#75E6F9', rev:[400, 1800, 4000, 7500, 12000] },
+  3: { label:'Unicornio · x100',color:'#FFD335',rev:[400, 4000, 20000, 80000, 200000] }
+};
+
+var currentSc = 1;
+
+function fmtM(n){
+  if(n >= 1000) return (n/1000).toFixed(1).replace(/\.0$/,'') + 'B';
+  return n.toFixed(0) + 'M';
+}
+
+function renderPL(){
+  var sc = SCENARIOS[currentSc];
+  var rev = sc.rev;
+  var color = sc.color;
+  var maxRev = Math.max.apply(null, rev);
+
+  // ── Bars ──
+  var barsEl = document.getElementById('plb');
+  barsEl.innerHTML = '';
+
+  rev.forEach(function(r, i){
+    var heightPct = Math.max(4, Math.round((r / maxRev) * 100));
+    var opacity = 0.35 + i * 0.13;
+
+    var col = document.createElement('div');
+    col.style.cssText = 'flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end;';
+
+    var valEl = document.createElement('div');
+    valEl.style.cssText = 'font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:11px;color:#F4F1E8;white-space:nowrap;';
+    valEl.textContent = fmtM(r);
+
+    var barWrap = document.createElement('div');
+    barWrap.style.cssText = 'width:100%;display:flex;align-items:flex-end;flex:1;';
+
+    var bar = document.createElement('div');
+    bar.style.cssText = 'width:100%;border-radius:5px 5px 0 0;background:' + color + ';opacity:' + opacity + ';height:' + heightPct + '%;min-height:4px;transition:height .5s cubic-bezier(.25,1,.5,1);';
+
+    var yrEl = document.createElement('div');
+    yrEl.style.cssText = 'font-family:"DM Mono",monospace;font-size:9px;color:#6B6862;letter-spacing:.06em;';
+    yrEl.textContent = YEARS[i];
+
+    barWrap.appendChild(bar);
+    col.appendChild(valEl);
+    col.appendChild(barWrap);
+    col.appendChild(yrEl);
+    barsEl.appendChild(col);
+  });
+
+  // ── Table ──
+  var tbody = document.getElementById('plt');
+  tbody.innerHTML = '';
+
+  var sources = [
+    { name:'Suscripciones', pct:0.40 },
+    { name:'Marketplace',   pct:0.35 },
+    { name:'Publicidad',    pct:0.25 }
+  ];
+
+  sources.forEach(function(src){
+    var tr = document.createElement('tr');
+    var vals = rev.map(function(r){ return Math.round(r * src.pct); });
+    tr.innerHTML = '<td>' + src.name + '</td>' + vals.map(function(v){ return '<td>' + fmtM(v) + '</td>'; }).join('');
+    tbody.appendChild(tr);
+  });
+
+  // Total row
+  var totRow = document.createElement('tr');
+  totRow.className = 'tot';
+  totRow.innerHTML = '<td>Total ingresos</td>' + rev.map(function(r){ return '<td style="color:' + color + '">' + fmtM(r) + '</td>'; }).join('');
+  tbody.appendChild(totRow);
+
+  // ── Return box ──
+  var y5 = rev[4];
+  var y3 = rev[2];
+  var inv = 200; // M COP
+  var valCap = 2000; // M COP
+  var equity = inv / valCap; // ~10%
+  var y5val = y5 * 5;
+  var retorno = Math.round(y5val * equity / inv);
+
+  var plrEl = document.getElementById('plr');
+  plrEl.innerHTML = [
+    { l:'Ingresos año 3', v: fmtM(y3) + ' COP' },
+    { l:'Ingresos año 5', v: fmtM(y5) + ' COP' },
+    { l:'Retorno estimado', v: 'x' + retorno, c: color }
+  ].map(function(it){
+    return '<div style="display:flex;flex-direction:column;gap:4px;">'
+      + '<span style="font-family:\'DM Mono\',monospace;font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:#6B6862;">' + it.l + '</span>'
+      + '<span style="font-family:\'Bricolage Grotesque\',system-ui;font-weight:800;font-size:18px;letter-spacing:-.03em;color:' + (it.c || '#F4F1E8') + ';">' + it.v + '</span>'
+      + '</div>';
+  }).join('');
+
+  document.getElementById('uninote').style.display = currentSc === 3 ? 'block' : 'none';
+}
+
+function setSc(i){
+  currentSc = i;
+  document.querySelectorAll('.sc-btn').forEach(function(btn, k){
+    btn.classList.toggle('active', k === i);
+  });
+  renderPL();
+}
+
+// Run on load
+renderPL();
+</script>
+</body>
+</html>
