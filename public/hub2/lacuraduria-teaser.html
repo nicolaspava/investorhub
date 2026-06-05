@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>La Curaduría · Teaser</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --coral:#FF736C;--cyan:#75E6F9;--pink:#FF7D98;--green:#7AD3A0;--yellow:#FFD335;
+  --bg:#0F0F0F;--bord:#181818;--bord2:#222222;--surf:rgba(255,255,246,.025);
+  --cream:#F4F1E8;--t1:#F4F1E8;--t2:#D6D2C5;--t3:#9A9690;--t4:#6B6862;
+  --fd:'Bricolage Grotesque',system-ui,sans-serif;
+  --fm:'DM Mono',monospace;
+}
+html,body{background:var(--bg);color:var(--t1);font-family:var(--fd);-webkit-font-smoothing:antialiased;overflow:hidden;height:100%;}
+.glow{position:fixed;inset:0;background:radial-gradient(circle at 25% 35%,rgba(117,230,249,.16),transparent 52%),radial-gradient(circle at 75% 70%,rgba(255,125,152,.12),transparent 52%);filter:blur(40px);pointer-events:none;z-index:0;}
+/* CHROME */
+.chrome-top{position:fixed;top:0;left:0;right:0;z-index:50;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,4vw,52px);background:rgba(15,15,15,.95);border-bottom:1px solid var(--bord);}
+.chrome-bottom{position:fixed;bottom:0;left:0;right:0;z-index:50;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,4vw,52px);border-top:1px solid var(--bord);background:rgba(15,15,15,.92);}
+.nav-wm{height:18px;width:auto;}
+.nav-wm path[fill="#FFFFF6"],.nav-wm path[fill="white"]{fill:var(--cream);}
+.nav-wm path[fill="#FF736C"]{fill:var(--coral);}
+.slide-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);}
+.nav-btn{font-family:var(--fm);font-size:12px;color:var(--t2);background:rgba(244,241,232,.06);border:1px solid var(--bord2);border-radius:999px;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.nav-btn:hover{color:var(--t1);background:rgba(244,241,232,.12);}
+.nav-group{display:flex;gap:8px;}
+/* DECK */
+.deck{position:fixed;inset:60px 0 52px 0;z-index:1;}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,8vh,88px) clamp(24px,6vw,80px);opacity:0;pointer-events:none;transition:opacity .35s;}
+.slide.active{opacity:1;pointer-events:all;}
+.slide .i{width:100%;max-width:1100px;margin:0 auto;}
+/* reveal */
+.slide.active .rv{animation:rise .45s ease both;}
+.slide.active .rv.d1{animation-delay:.04s;}.slide.active .rv.d2{animation-delay:.1s;}.slide.active .rv.d3{animation-delay:.17s;}.slide.active .rv.d4{animation-delay:.24s;}.slide.active .rv.d5{animation-delay:.31s;}
+@keyframes rise{from{opacity:0;transform:translateY(12px);}to{opacity:1;}}
+/* atoms */
+.eye{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:14px;}
+.eye.cn{color:var(--cyan);}.eye.gn{color:var(--green);}
+.h1{font-family:var(--fd);font-weight:800;letter-spacing:-.048em;line-height:.92;color:var(--t1);font-size:clamp(48px,7.5vw,96px);}
+.h2{font-family:var(--fd);font-weight:800;letter-spacing:-.04em;line-height:.95;color:var(--t1);font-size:clamp(32px,5vw,64px);}
+.h1 em,.h2 em{font-style:normal;color:var(--coral);}
+.sub{font-size:clamp(14px,1.6vw,18px);line-height:1.7;color:var(--t2);font-weight:300;max-width:58ch;}
+.pill{display:inline-flex;align-items:center;gap:7px;font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3);border:1px solid var(--bord);border-radius:999px;padding:6px 14px;}
+.pill .dot{width:5px;height:5px;border-radius:50%;background:var(--coral);}
+.chip{font-family:var(--fm);font-size:8px;letter-spacing:.08em;color:var(--t3);background:rgba(244,241,232,.04);border-radius:6px;padding:4px 10px;}
+/* SLIDE-SPECIFIC */
+/* S1 cover */
+.wm-hero{height:clamp(36px,4.5vw,58px);width:auto;display:block;margin-bottom:clamp(18px,3vh,28px);}
+.wm-hero path[fill="#FFFFF6"],.wm-hero path[fill="white"]{fill:var(--cream);}
+.wm-hero path[fill="#FF736C"]{fill:var(--coral);}
+/* S2 problema */
+.frag{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin:18px 0;}
+.fc{background:var(--surf);border:1px solid var(--bord);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;}
+.fc-name{font-weight:700;font-size:clamp(12px,1.4vw,17px);color:var(--t1);}
+.fc-desc{font-size:11px;color:var(--t3);line-height:1.4;}
+.fc-tag{font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;align-self:flex-start;padding:3px 8px;border-radius:4px;}
+/* S3 solución */
+.flow-row{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin:20px 0;}
+.fn{font-family:var(--fm);font-size:9px;letter-spacing:.08em;color:var(--t1);padding:8px 16px;border:1px solid rgba(244,241,232,.12);border-radius:6px;}
+.fn.t{border-color:rgba(255,115,108,.35);color:var(--coral);}
+.fn.e{border-color:rgba(117,230,249,.35);color:var(--cyan);}
+.fa{font-family:var(--fm);font-size:11px;color:var(--coral);padding:0 8px;}
+.fa.loop{color:rgba(255,115,108,.45);}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:16px;}
+.pc{background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:14px 16px;}
+.pc-name{font-weight:800;font-size:clamp(18px,2.4vw,28px);letter-spacing:-.04em;line-height:1;}
+.pc-role{font-family:var(--fm);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--t4);margin:6px 0 8px;}
+.pc-chips{display:flex;flex-wrap:wrap;gap:4px;}
+/* S4 modelo */
+.mod-grid{display:flex;flex-direction:column;gap:0;margin-top:20px;}
+.mg{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--bord);}
+.mg:last-child{border-bottom:none;}
+.mg-bar{width:3px;border-radius:2px;flex-shrink:0;align-self:stretch;}
+.mg-body{flex:1;}
+.mg-name{font-weight:700;font-size:clamp(16px,2vw,22px);letter-spacing:-.03em;color:var(--t1);margin-bottom:4px;}
+.mg-desc{font-size:13px;color:var(--t3);line-height:1.5;}
+/* S5 proyecciones */
+.proj-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;margin-top:20px;}
+.pj{background:var(--surf);border:1px solid var(--bord);border-radius:12px;padding:20px 18px;display:flex;flex-direction:column;gap:8px;}
+.pj.hot{border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.04);}
+.pj.xtra{border-color:rgba(255,211,53,.2);background:rgba(255,211,53,.03);}
+.pj-label{font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--t4);}
+.pj-mult{font-family:var(--fd);font-weight:800;font-size:clamp(36px,5vw,56px);letter-spacing:-.05em;line-height:.9;}
+.pj-usd{font-family:var(--fd);font-weight:800;font-size:clamp(14px,1.8vw,22px);letter-spacing:-.03em;color:var(--t1);margin-top:4px;}
+.pj-note{font-size:12px;color:var(--t3);line-height:1.5;}
+/* S6 ronda */
+.ronda-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:20px;}
+.rk{background:var(--surf);border:1px solid var(--bord);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;}
+.rk.f1{border-color:rgba(117,230,249,.2);background:rgba(117,230,249,.03);}
+.rk.f2{border-color:rgba(122,211,160,.2);background:rgba(122,211,160,.03);}
+.rk-eye{font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:2px;}
+.rk-amt{font-family:var(--fd);font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-.05em;line-height:.9;}
+.rk-terms{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
+.rk-term{font-family:var(--fm);font-size:8px;letter-spacing:.07em;color:var(--t3);background:rgba(244,241,232,.04);border-radius:5px;padding:3px 9px;}
+.rk-term b{font-weight:500;color:var(--t1);}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+
+<!-- TOP CHROME -->
+<div class="chrome-top">
+  <svg class="nav-wm" viewBox="0 0 1795 244" fill="none"><path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="#FF736C"/><path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="#FF736C"/><path d="M427.103 115.917H350.58V1.36438H388.842V77.7438H503.626C503.626 98.8361 486.497 115.934 465.365 115.934H427.103V115.917Z" fill="#FFFFF6"/><path d="M627.503 1.36443H665.765V115.934H627.503V77.7439C627.503 98.8362 610.373 115.934 589.241 115.934H512.718V77.7439C512.718 35.4606 547.06 1.28223 589.324 1.28223H627.585L627.503 1.38087V1.36443ZM627.602 77.7439V39.5542H589.34C568.208 39.5542 551.079 56.6516 551.079 77.7439H627.602Z" fill="#FFFFF6"/><path d="M427.153 204.446H503.626V242.619H427.153C384.889 242.619 350.58 208.391 350.58 166.19C350.58 145.065 367.726 128.017 388.825 128.017H503.544C503.544 149.142 486.398 166.19 465.299 166.19H388.825L388.908 166.272C388.908 187.398 406.054 204.446 427.153 204.446Z" fill="#FFFFF6"/><path d="M512.735 166.24V128.05H550.996V166.24C550.996 187.332 568.126 204.429 589.258 204.429H627.52V128.05H665.781V242.619H589.258L589.357 242.718C547.093 242.718 512.751 208.539 512.751 166.256L512.735 166.24Z" fill="#FFFFF6"/><path d="M713.283 128.116H789.756C810.921 128.116 828.001 145.229 828.001 166.289C828.001 187.348 810.855 204.462 789.756 204.462H751.511C730.346 204.462 713.266 221.576 713.266 242.635H675.021C675.021 200.451 709.313 166.207 751.594 166.207H675.12V128.033L675.037 128.116H713.283ZM828.067 242.701H789.822V204.528C810.987 204.528 828.067 221.642 828.067 242.701Z" fill="#FFFFF6"/><path d="M951.96 128.05H990.222V242.619H951.96V204.429C951.96 225.522 934.831 242.619 913.699 242.619H837.176V204.429C837.176 162.146 871.517 127.968 913.781 127.968H952.043L951.96 128.066V128.05ZM952.043 204.429V166.24H913.781C892.649 166.24 875.52 183.337 875.52 204.429H952.043Z" fill="#FFFFF6"/><path d="M1037.59 128.033H1075.84C1118.12 128.033 1152.41 162.245 1152.41 204.462C1152.41 225.604 1135.26 242.635 1114.16 242.635H999.429V128.116L999.347 128.033H1037.59ZM1037.66 166.207V204.38H1114.13C1114.13 183.238 1097 166.207 1075.89 166.207H1037.64H1037.66Z" fill="#FFFFF6"/><path d="M1155.37 166.24V128.05H1193.64V166.24C1193.64 187.332 1210.77 204.429 1231.9 204.429H1270.16V128.05H1308.42V242.619H1231.9L1232 242.718C1189.73 242.718 1155.39 208.539 1155.39 166.256L1155.37 166.24Z" fill="#FFFFF6"/><path d="M1355.76 128.116H1432.23C1453.4 128.116 1470.48 145.229 1470.48 166.289C1470.48 187.348 1453.33 204.462 1432.23 204.462H1393.99C1372.82 204.462 1355.74 221.576 1355.74 242.635H1317.5C1317.5 200.451 1351.79 166.207 1394.07 166.207H1317.59V128.033L1317.51 128.116H1355.76ZM1470.56 242.701H1432.31V204.528C1453.48 204.528 1470.56 221.642 1470.56 242.701Z" fill="#FFFFF6"/><path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/><path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/></svg>
+  <span class="slide-lbl" id="slide-lbl">Portada</span>
+</div>
+
+<!-- DECK -->
+<div class="deck" id="deck">
+
+<!-- S1 PORTADA -->
+<section class="slide active" id="s1">
+<div class="i">
+  <div class="rv d1" style="margin-bottom:16px;"><span class="pill"><span class="dot"></span>Ronda presemilla · 2026 · Bogotá</span></div>
+  <svg class="wm-hero rv d2" viewBox="0 0 1795 244" fill="none"><path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="#FF736C"/><path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="#FF736C"/><path d="M427.103 115.917H350.58V1.36438H388.842V77.7438H503.626C503.626 98.8361 486.497 115.934 465.365 115.934H427.103V115.917Z" fill="#FFFFF6"/><path d="M627.503 1.36443H665.765V115.934H627.503V77.7439C627.503 98.8362 610.373 115.934 589.241 115.934H512.718V77.7439C512.718 35.4606 547.06 1.28223 589.324 1.28223H627.585L627.503 1.38087V1.36443ZM627.602 77.7439V39.5542H589.34C568.208 39.5542 551.079 56.6516 551.079 77.7439H627.602Z" fill="#FFFFF6"/><path d="M427.153 204.446H503.626V242.619H427.153C384.889 242.619 350.58 208.391 350.58 166.19C350.58 145.065 367.726 128.017 388.825 128.017H503.544C503.544 149.142 486.398 166.19 465.299 166.19H388.825L388.908 166.272C388.908 187.398 406.054 204.446 427.153 204.446Z" fill="#FFFFF6"/><path d="M512.735 166.24V128.05H550.996V166.24C550.996 187.332 568.126 204.429 589.258 204.429H627.52V128.05H665.781V242.619H589.258L589.357 242.718C547.093 242.718 512.751 208.539 512.751 166.256L512.735 166.24Z" fill="#FFFFF6"/><path d="M713.283 128.116H789.756C810.921 128.116 828.001 145.229 828.001 166.289C828.001 187.348 810.855 204.462 789.756 204.462H751.511C730.346 204.462 713.266 221.576 713.266 242.635H675.021C675.021 200.451 709.313 166.207 751.594 166.207H675.12V128.033L675.037 128.116H713.283ZM828.067 242.701H789.822V204.528C810.987 204.528 828.067 221.642 828.067 242.701Z" fill="#FFFFF6"/><path d="M951.96 128.05H990.222V242.619H951.96V204.429C951.96 225.522 934.831 242.619 913.699 242.619H837.176V204.429C837.176 162.146 871.517 127.968 913.781 127.968H952.043L951.96 128.066V128.05ZM952.043 204.429V166.24H913.781C892.649 166.24 875.52 183.337 875.52 204.429H952.043Z" fill="#FFFFF6"/><path d="M1037.59 128.033H1075.84C1118.12 128.033 1152.41 162.245 1152.41 204.462C1152.41 225.604 1135.26 242.635 1114.16 242.635H999.429V128.116L999.347 128.033H1037.59ZM1037.66 166.207V204.38H1114.13C1114.13 183.238 1097 166.207 1075.89 166.207H1037.64H1037.66Z" fill="#FFFFF6"/><path d="M1155.37 166.24V128.05H1193.64V166.24C1193.64 187.332 1210.77 204.429 1231.9 204.429H1270.16V128.05H1308.42V242.619H1231.9L1232 242.718C1189.73 242.718 1155.39 208.539 1155.39 166.256L1155.37 166.24Z" fill="#FFFFF6"/><path d="M1355.76 128.116H1432.23C1453.4 128.116 1470.48 145.229 1470.48 166.289C1470.48 187.348 1453.33 204.462 1432.23 204.462H1393.99C1372.82 204.462 1355.74 221.576 1355.74 242.635H1317.5C1317.5 200.451 1351.79 166.207 1394.07 166.207H1317.59V128.033L1317.51 128.116H1355.76ZM1470.56 242.701H1432.31V204.528C1453.48 204.528 1470.56 221.642 1470.56 242.701Z" fill="#FFFFF6"/><path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/><path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/></svg>
+  <div class="h1 rv d3">Un lente<br>para el <em>arte.</em></div>
+  <div class="sub rv d4" style="margin-top:14px;font-size:clamp(14px,1.6vw,18px);">Red social de música, arte y cultura · Bogotá 2026</div>
+</div>
+</section>
+
+<!-- S2 PROBLEMA -->
+<section class="slide" id="s2">
+<div class="i">
+  <div class="eye rv d1">Problema</div>
+  <div class="h2 rv d2">La oferta cultural está dispersa,<br>por lo que es difícil saber qué <em>vale la pena.</em></div>
+  <div class="frag rv d3">
+    <div class="fc">
+      <div class="fc-name">Instagram</div>
+      <div class="fc-desc">Portafolio artístico perdido en el algoritmo</div>
+      <span class="fc-tag" style="background:rgba(255,115,108,.1);color:var(--coral);">Portafolio</span>
+    </div>
+    <div class="fc">
+      <div class="fc-name">Linktree</div>
+      <div class="fc-desc">Link en bio con pocas funcionalidades</div>
+      <span class="fc-tag" style="background:rgba(122,211,160,.1);color:var(--green);">Hub de links</span>
+    </div>
+    <div class="fc">
+      <div class="fc-name">WhatsApp + Gmail</div>
+      <div class="fc-desc">Gestión informal perdida entre mensajes</div>
+      <span class="fc-tag" style="background:rgba(117,230,249,.1);color:var(--cyan);">Gestión</span>
+    </div>
+    <div class="fc">
+      <div class="fc-name">Google Maps</div>
+      <div class="fc-desc">Descubrimiento sin mucha información</div>
+      <span class="fc-tag" style="background:rgba(255,211,53,.1);color:var(--yellow);">Exploración</span>
+    </div>
+  </div>
+  <div class="rv d4" style="font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,115,108,.5);">sin integración · sin especialización</div>
+</div>
+</section>
+
+<!-- S3 SOLUCIÓN -->
+<section class="slide" id="s3">
+<div class="i">
+  <div class="eye rv d1">Solución</div>
+  <div class="h2 rv d2">Una red social especializada en<br>música, arte y cultura.</div>
+  <div class="sub rv d3" style="margin-top:10px;">La plataforma es un one stop shop donde los proyectos culturales se gestionan, se descubren, se monetizan y se conversan.</div>
+  <div class="flow-row rv d3">
+    <div class="fn t">Terminal</div><span class="fa">→</span>
+    <div class="fn e">Red</div><span class="fa">→</span>
+    <div class="fn">Linq</div><span class="fa">→</span>
+    <div class="fn" style="border-color:rgba(122,211,160,.3);color:var(--green);">Marketplace</div>
+    <span class="fa loop">↺</span>
+  </div>
+  <div class="prod-grid rv d4">
+    <div class="pc">
+      <div class="pc-name" style="color:var(--coral);">Terminal</div>
+      <div class="pc-role">Panel de gestión</div>
+      <div class="pc-chips"><span class="chip">CMS</span><span class="chip">CRM</span><span class="chip">Dashboard</span><span class="chip">Finanzas</span><span class="chip">Campañas</span></div>
+    </div>
+    <div class="pc">
+      <div class="pc-name" style="color:var(--cyan);">Red</div>
+      <div class="pc-role">Guía de exploración</div>
+      <div class="pc-chips"><span class="chip">Mapa</span><span class="chip">Cartelera</span><span class="chip">Perfiles</span><span class="chip">Reseñas</span><span class="chip">Marketplace</span></div>
+    </div>
+    <div class="pc">
+      <div class="pc-name" style="color:var(--green);">Linq</div>
+      <div class="pc-role">Link de conversión</div>
+      <div class="pc-chips"><span class="chip">EPK unificado</span><span class="chip">Portafolio</span><span class="chip">Conectado</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- S4 MODELO -->
+<section class="slide" id="s4">
+<div class="i">
+  <div class="eye rv d1">Modelo de negocio</div>
+  <div class="h2 rv d2">Tres líneas de ingreso.</div>
+  <div class="mod-grid rv d3">
+    <div class="mg">
+      <div class="mg-bar" style="background:var(--coral);"></div>
+      <div class="mg-body">
+        <div class="mg-name">Freemium + Suscripciones</div>
+        <div class="mg-desc">Plan gratuito para entrar al ecosistema. Suscripción de exploración avanzada y suscripción de gestión avanzada.</div>
+      </div>
+    </div>
+    <div class="mg">
+      <div class="mg-bar" style="background:var(--cyan);"></div>
+      <div class="mg-body">
+        <div class="mg-name">Comisión en marketplace</div>
+        <div class="mg-desc">Ingresos por transacciones: entradas, talento, obra, merch, servicios culturales y colaboraciones.</div>
+      </div>
+    </div>
+    <div class="mg">
+      <div class="mg-bar" style="background:var(--pink);"></div>
+      <div class="mg-body">
+        <div class="mg-name">Pauta, marcas y patrocinios</div>
+        <div class="mg-desc">Publicidad, campañas y alianzas con empresas interesadas en conectar con comunidades culturales.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- S5 PROYECCIONES -->
+<section class="slide" id="s5">
+<div class="i">
+  <div class="eye rv d1">Proyecciones financieras</div>
+  <div class="h2 rv d2">El potencial es <em>grande.</em></div>
+  <div class="proj-grid rv d3">
+    <div class="pj">
+      <div class="pj-label">Año 3 · Probable</div>
+      <div class="pj-mult" style="color:var(--t2);">x5</div>
+      <div class="pj-usd">$500K USD</div>
+      <div class="pj-note">Captura inicial realista en Bogotá/Colombia. SOM 2028 basado en suscripciones, marketplace y pauta.</div>
+    </div>
+    <div class="pj hot">
+      <div class="pj-label">Año 5 · Optimista</div>
+      <div class="pj-mult" style="color:var(--coral);">x10</div>
+      <div class="pj-usd">$5M USD</div>
+      <div class="pj-note">Expansión regional Latinoamérica. Escenario de crecimiento sostenido con base de usuarios consolidada.</div>
+    </div>
+    <div class="pj xtra">
+      <div class="pj-label">Más allá · Posible</div>
+      <div class="pj-mult" style="color:var(--yellow);">x∞</div>
+      <div class="pj-usd">$90B USD TAM</div>
+      <div class="pj-note">El mercado global existe. La Curaduría puede ser el estándar de la infraestructura cultural digital.</div>
+    </div>
+  </div>
+  <div class="rv d4" style="margin-top:16px;font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);">TAM Global $90B · SAM Latam $9B · 5 industrias: Ticketing · SaaS · ICC · Booking · Publicidad</div>
+</div>
+</section>
+
+<!-- S6 RONDA -->
+<section class="slide" id="s6">
+<div class="i">
+  <div class="eye rv d1">Ronda presemilla</div>
+  <div class="h2 rv d2">Dos fases. Una oportunidad.</div>
+  <div class="ronda-grid rv d3">
+    <div class="rk f1">
+      <div class="rk-eye" style="color:var(--cyan);">Fase 1 · Activa · Nota Convertible</div>
+      <div class="rk-amt" style="color:var(--cyan);">$50M COP</div>
+      <div class="rk-terms">
+        <span class="rk-term">Recaudado <b style="color:var(--cyan);">$20M</b></span>
+        <span class="rk-term">Descuento <b>30%</b></span>
+        <span class="rk-term">Cap <b>$2.000M</b></span>
+        <span class="rk-term">Cierre <b>1 jul 2026</b></span>
+      </div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.55;margin-top:4px;">Al formalizarse la empresa, la nota se convierte en un SAFE con valuation cap de $4.000M COP (x2). Acciones con preferencia de liquidación B. No diluibles.</div>
+    </div>
+    <div class="rk f2">
+      <div class="rk-eye" style="color:var(--green);">Fase 2 · Próxima · SAFE</div>
+      <div class="rk-amt" style="color:var(--green);">$150M COP</div>
+      <div class="rk-terms">
+        <span class="rk-term">Apertura <b>Ago 2026</b></span>
+        <span class="rk-term">Descuento <b>20%</b></span>
+        <span class="rk-term">Cierre <b>Oct 2026</b></span>
+      </div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.55;margin-top:4px;">SAFE sobre empresa constituida. Se convierte con 20% de descuento en la ronda semilla. Acciones no diluibles.</div>
+    </div>
+  </div>
+  <div class="rv d4" style="margin-top:16px;font-family:var(--fm);font-size:9px;color:var(--t4);">Nicolás Pava · Fundador · nicolas.pava@lacuraduria.net · 3044138497 · lacuraduria.net · Bogotá 2026</div>
+</div>
+</section>
+
+</div>
+
+<!-- BOTTOM CHROME -->
+<div class="chrome-bottom">
+  <span id="cnt" style="font-family:var(--fm);font-size:9px;letter-spacing:.12em;color:var(--t4);">01 / 06</span>
+  <div class="nav-group">
+    <button class="nav-btn" id="prev" onclick="go(-1)">←</button>
+    <button class="nav-btn" id="next" onclick="go(1)">→</button>
+  </div>
+</div>
+
+<script>
+var slides = document.querySelectorAll('.slide');
+var labels = ['Portada','Problema','Solución','Modelo','Proyecciones','Ronda'];
+var cur = 0;
+function show(n){
+  cur = (n + slides.length) % slides.length;
+  slides.forEach(function(s,i){ s.classList.toggle('active', i===cur); });
+  document.getElementById('cnt').textContent = ('0'+(cur+1)).slice(-2) + ' / ' + ('0'+slides.length).slice(-2);
+  document.getElementById('slide-lbl').textContent = labels[cur];
+}
+function go(d){ show(cur+d); }
+document.addEventListener('keydown', function(e){
+  if(e.key==='ArrowRight'||e.key===' ') go(1);
+  if(e.key==='ArrowLeft') go(-1);
+});
+show(0);
+</script>
+</body>
+</html>
