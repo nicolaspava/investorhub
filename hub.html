@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>La Curaduría · Investor Hub</title>
+<title>La Curaduría · Guía Inteligente de Música, Arte y Cultura</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Mono:wght@400;500&family=Syne+Mono&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --coral:#FF736C;--cyan:#75E6F9;--pink:#FF7D98;--green:#7AD3A0;--yellow:#FFD335;
+  --coral:#FF736C;--cyan:#75E6F9;--pink:#FF7D98;--green:#7AD3A0;--yellow:#FFD335;--violet:#A99BE8;
   --bg:#0F0F0F;--bord:#181818;--bord2:#222222;--surf:#141414;
   --cream:#F4F1E8;--t1:#F4F1E8;--t2:#D6D2C5;--t3:#9A9690;--t4:#6B6862;
   --fd:'Bricolage Grotesque','Inter',system-ui,sans-serif;
@@ -25,21 +25,133 @@ a{text-decoration:none;color:inherit;}
 .hero-bg{position:fixed;inset:0;background:radial-gradient(circle at 30% 40%,rgba(117,230,249,.18) 0%,transparent 55%),radial-gradient(circle at 70% 70%,rgba(255,125,152,.14) 0%,transparent 55%);filter:blur(40px);pointer-events:none;z-index:0;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:#0F0F0F;border-bottom:1px solid var(--bord);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:rgba(15,15,15,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--bord);}
 @media(max-width:600px){nav{padding:0 20px;height:56px;}}
 .nav-wm{height:20px;width:auto;display:block;}
 .nav-wm path[fill="#FFFFF6"],.nav-wm path[fill="white"]{fill:var(--cream);}
 .nav-wm path[fill="#FF736C"]{fill:var(--coral);}
 .nav-r{display:flex;align-items:center;gap:10px;}
-.nav-badge{font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);border:1px solid var(--bord2);border-radius:999px;padding:5px 12px;}
-.nav-cta{background:rgba(214,210,197,.07);color:var(--t2);border:1px solid rgba(214,210,197,.18);font-family:var(--fm);font-size:8px;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;border-radius:999px;cursor:pointer;background:none;transition:all .2s;}
+.nav-badge{font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);border:1px solid var(--bord2);border-radius:999px;padding:5px 12px;transition:all .2s;}
+.nav-back{display:none;align-items:center;gap:8px;font-family:var(--fm);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);border:1px solid var(--bord2);border-radius:999px;padding:7px 14px;cursor:pointer;background:none;transition:all .2s;}
+.nav-back:hover{color:var(--t1);border-color:var(--t3);}
+.nav-back svg{flex-shrink:0;}
+.nav-cta{color:var(--t2);border:1px solid rgba(214,210,197,.18);font-family:var(--fm);font-size:8px;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;border-radius:999px;cursor:pointer;background:none;transition:all .2s;}
 .nav-cta:hover{color:var(--t1);border-color:rgba(214,210,197,.36);}
 
+/* DOC FOOTER NAV */
+.doc-footer-nav{width:100%;margin-top:clamp(48px,8vh,80px);border-top:1px solid var(--bord);}
+.dfn-inner{max-width:900px;margin:0 auto;padding:0 32px;}
+@media(max-width:700px){.dfn-inner{padding:0 20px;}}
+.dfn-grid{display:grid;grid-template-columns:repeat(6,1fr);}
+@media(max-width:860px){.dfn-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:560px){.dfn-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:400px){.dfn-grid{grid-template-columns:1fr;}}
+.dfn-item{display:flex;flex-direction:column;gap:8px;padding:24px 20px 28px;cursor:pointer;border-right:1px solid var(--bord);transition:background .2s;background:none;border-top:none;border-bottom:none;border-left:none;text-align:left;}
+.dfn-item:last-child{border-right:none;}
+.dfn-item:hover{background:rgba(255,255,246,.02);}
+.dfn-item.active{background:rgba(255,255,246,.03);}
+.dfn-num{font-family:var(--fm);font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--t4);}
+.dfn-name{font-family:var(--fd);font-weight:700;font-size:clamp(13px,1.3vw,15px);letter-spacing:-.02em;line-height:1.2;}
+.dfn-desc{font-size:11px;color:var(--t4);line-height:1.5;}
+.dfn-arrow{font-family:var(--fm);font-size:9px;margin-top:auto;padding-top:8px;opacity:.5;transition:opacity .2s;}
+.dfn-item:hover .dfn-arrow{opacity:1;}
+.dfn-item.dc-3 .dfn-name{color:var(--green);}
+.dfn-item.dc-3:hover,.dfn-item.dc-3.active{border-top:2px solid var(--green);}
+.dfn-item.dc-4 .dfn-name{color:var(--yellow);}
+.dfn-item.dc-4:hover,.dfn-item.dc-4.active{border-top:2px solid var(--yellow);}
+.dfn-item.dc-5 .dfn-name{color:var(--pink);}
+.dfn-item.dc-5:hover,.dfn-item.dc-5.active{border-top:2px solid var(--pink);}
+.dfn-item.dc-6 .dfn-name{color:var(--violet);}
+.dfn-item.dc-6:hover,.dfn-item.dc-6.active{border-top:2px solid var(--violet);}
+.dfn-back .dfn-name{color:var(--t2);}
+.dfn-back:hover{border-top:2px solid var(--bord2);background:rgba(255,255,246,.02);}
+/* DOC NAV */
+.doc-nav{display:flex;align-items:center;gap:10px;padding:16px 0 32px;flex-wrap:wrap;}
+.doc-nav-back{display:inline-flex;align-items:center;gap:6px;font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);background:none;border:1px solid var(--bord2);border-radius:999px;padding:7px 14px;cursor:pointer;transition:all .2s;flex-shrink:0;}
+.doc-nav-back:hover{color:var(--t1);border-color:var(--t3);}
+.doc-nav-docs{display:flex;gap:6px;flex-wrap:wrap;}
+.doc-nav-item{font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--bord2);border-radius:999px;padding:7px 14px;cursor:pointer;color:var(--t3);transition:all .2s;}
+.doc-nav-item:hover{color:var(--t1);border-color:var(--t3);}
+.doc-nav-item.active{border-color:currentColor;}
+.doc-nav-item.dc-3{color:var(--green);}
+.doc-nav-item.dc-3:hover,.doc-nav-item.dc-3.active{background:rgba(122,211,160,.08);border-color:var(--green);}
+.doc-nav-item.dc-4{color:var(--yellow);}
+.doc-nav-item.dc-4:hover,.doc-nav-item.dc-4.active{background:rgba(255,211,53,.07);border-color:var(--yellow);}
+.doc-nav-item.dc-5{color:var(--pink);}
+.doc-nav-item.dc-5:hover,.doc-nav-item.dc-5.active{background:rgba(255,125,152,.08);border-color:var(--pink);}
+.doc-nav-item.dc-6{color:var(--violet);}
+.doc-nav-item.dc-6:hover,.doc-nav-item.dc-6.active{background:rgba(169,155,232,.08);border-color:var(--violet);}
+
+/* VISTA SISTEMA */
+#hub-main{transition:opacity .25s;}
+#hub-main.hidden{opacity:0;pointer-events:none;position:absolute;}
+.hub-view{display:none;min-height:100vh;padding-top:68px;}
+.hub-view.active{display:block;}
+.view-inner{max-width:900px;margin:0 auto;padding:clamp(40px,6vh,64px) 32px clamp(56px,8vh,80px);}
+@media(max-width:700px){.view-inner{padding:40px 20px 56px;}}
+.view-header{margin-bottom:clamp(28px,4vh,44px);}
+.view-title{font-family:var(--fd);font-weight:800;font-size:clamp(24px,3.5vw,40px);letter-spacing:-.04em;color:var(--t1);line-height:1;}
+.view-num{font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--t4);margin-bottom:8px;}
+
 /* HERO */
-#hero{padding-top:68px;min-height:100vh;display:flex;align-items:flex-end;position:relative;z-index:1;}
+#hero{padding-top:68px;min-height:100vh;display:flex;align-items:center;position:relative;z-index:1;}
 @media(max-width:600px){#hero{padding-top:56px;}}
-.hero-inner{max-width:1120px;margin:0 auto;padding:0 32px 72px;width:100%;}
-@media(max-width:700px){.hero-inner{padding:0 20px 56px;}}
+.hero-inner{max-width:1120px;margin:0 auto;padding:56px 32px 48px;width:100%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:clamp(20px,3vw,40px);align-items:start;}
+@media(max-width:860px){.hero-inner{grid-template-columns:1fr;padding:40px 20px 40px;}}
+.hero-left{display:flex;flex-direction:column;align-items:flex-start;}
+.hero-logo-svg{display:block;margin-bottom:clamp(14px,2vh,24px);}
+.hero-logo-svg svg{width:clamp(160px,24vw,300px);height:auto;display:block;}
+.hero-tagline-txt{font-family:var(--fb);font-weight:300;font-size:clamp(15px,1.4vw,19px);letter-spacing:-.01em;color:var(--t2);margin-bottom:clamp(14px,2vh,24px);}
+.hero-pitch{display:flex;flex-direction:column;gap:9px;}
+.hero-pitch p{font-size:clamp(12px,1.25vw,14px);line-height:1.8;color:var(--t2);font-weight:300;}
+.hero-pitch p strong{color:var(--t1);font-weight:500;}
+.hero-pitch .note{color:var(--t3);font-size:12px;}
+.hero-right{display:flex;flex-direction:column;gap:14px;align-items:center;}
+@media(max-width:860px){.hero-right{display:none;}}
+/* Mockup compacto */
+.hero-mockup{width:190px;background:#1A1A1A;border:1px solid var(--bord2);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 16px 48px rgba(0,0,0,.6);flex-shrink:0;}
+.mk-notch{height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mk-notch-bar{width:52px;height:4px;background:#2A2A2A;border-radius:99px;}
+.mk-frame{position:relative;height:390px;overflow:hidden;background:var(--bg);}
+.mk-frame iframe{position:absolute;inset:0;width:390px;height:844px;border:0;transform:scale(calc(190/390));transform-origin:top left;pointer-events:none;}
+.mk-home{height:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mk-home-bar{width:72px;height:3px;background:#2A2A2A;border-radius:99px;}
+.mk-cta{display:block;text-align:center;font-family:var(--fm);font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);padding:8px;border-top:1px solid var(--bord2);text-decoration:none;background:rgba(255,115,108,.04);transition:background .2s;}
+.mk-cta:hover{background:rgba(255,115,108,.1);}
+.mockup-links{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:190px;}
+.mockup-link{display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:10px 8px;border-radius:8px;color:#0F0F0F;font-weight:700;text-decoration:none;transition:opacity .2s;}
+.mockup-link:hover{opacity:.84;}
+.mockup-link.net{background:var(--cyan);}
+.mockup-link.com{background:var(--coral);}
+/* Tracker inline en hero */
+.hero-tracker{grid-column:1 / -1;background:linear-gradient(160deg,rgba(255,115,108,.1),rgba(255,115,108,.03));border:1px solid rgba(255,115,108,.22);border-radius:14px;padding:16px 20px;display:grid;grid-template-columns:1.2fr .8fr;grid-template-rows:auto auto;gap:10px 20px;}
+@media(max-width:680px){.hero-tracker{grid-template-columns:1fr;}}
+.ht-progress{display:flex;flex-direction:column;gap:6px;}
+.ht-bignum{display:flex;align-items:baseline;gap:6px;margin-top:4px;}
+.ht-pct{font-family:var(--fd);font-weight:800;font-size:clamp(32px,3.5vw,44px);letter-spacing:-.05em;color:var(--coral);line-height:1;}
+.ht-of{font-family:var(--fm);font-size:7px;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);}
+.ht-amounts{font-family:var(--fd);font-weight:600;font-size:12px;color:var(--t1);}
+.ht-amounts span{color:var(--t3);font-weight:400;}
+.ht-bar{height:4px;background:rgba(255,255,246,.07);border-radius:99px;overflow:hidden;margin-top:4px;}
+.ht-bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--coral),#FF9D8C);width:0;transition:width 1.4s cubic-bezier(.25,1,.5,1);box-shadow:0 0 8px rgba(255,115,108,.4);}
+.ht-foot{display:flex;justify-content:space-between;align-items:center;}
+.ht-close{font-family:var(--fm);font-size:7px;color:var(--t4);}
+.ht-specs{display:flex;flex-direction:column;gap:6px;justify-content:center;}
+.ht-spec{display:flex;align-items:center;justify-content:space-between;padding:0;border-bottom:1px solid rgba(255,255,246,.06);}
+.ht-spec:last-child{border-bottom:none;}
+.ht-lbl{font-family:var(--fm);font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);}
+.ht-val{font-family:var(--fd);font-weight:700;font-size:12px;letter-spacing:-.02em;color:var(--t1);}
+.ht-val.cyan{color:var(--cyan);}
+.hero-round{display:none;}
+.hr-top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+.hr-title{font-family:var(--fd);font-weight:800;font-size:clamp(16px,2vw,22px);letter-spacing:-.03em;color:var(--cyan);}
+.hr-sub{font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);}
+.hr-track{height:3px;background:rgba(255,255,246,.06);border-radius:99px;overflow:hidden;margin-bottom:10px;}
+.hr-fill{height:100%;border-radius:99px;background:var(--cyan);width:40%;transition:width 1.2s cubic-bezier(.25,1,.5,1);}
+.hr-meta{display:flex;gap:24px;flex-wrap:wrap;}
+.hr-item{display:flex;flex-direction:column;gap:2px;}
+.hr-lbl{font-family:var(--fm);font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);}
+.hr-val{font-family:var(--fd);font-weight:700;font-size:13px;letter-spacing:-.02em;color:var(--t1);}
 .hero-tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
 .hero-tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);border:1px solid var(--bord);border-radius:999px;padding:6px 14px;}
 .hero-tag .dot{width:5px;height:5px;border-radius:50%;background:var(--coral);flex-shrink:0;}
@@ -76,29 +188,42 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
 .rb-val{font-family:var(--fd);font-weight:700;font-size:14px;letter-spacing:-.02em;color:var(--t1);}
 
 /* CARDS */
-.cards-section{position:relative;z-index:1;padding:0 32px clamp(48px,8vh,80px);}
+.cards-section{position:relative;z-index:1;padding:clamp(40px,6vh,64px) 32px clamp(48px,8vh,80px);border-top:1px solid var(--bord);}
 @media(max-width:700px){.cards-section{padding:0 20px 48px;}}
 .cards-wrap{max-width:1120px;margin:0 auto;}
 .sec-label{font-family:var(--fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--t4);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
-.sec-label::after{content:'';flex:1;height:1px;background:var(--bord);}
 .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
 @media(max-width:960px){.cards-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){.cards-grid{grid-template-columns:1fr;}}
-.dc{background:var(--surf);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px;cursor:pointer;transition:all .2s;border:none;}
-.dc:hover{background:#181818;transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.4);}
-.dc.soon{opacity:.5;cursor:default;}
-.dc.soon:hover{background:var(--surf);transform:none;box-shadow:none;}
-.dc-num{font-family:var(--fm);font-size:8px;letter-spacing:.12em;color:var(--t4);}
-.dc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
-.dc-name{font-family:var(--fd);font-weight:800;letter-spacing:-.03em;font-size:clamp(16px,1.8vw,20px);line-height:1.05;color:var(--t1);}
-.dc-badge{font-family:var(--fm);font-size:7px;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:6px;white-space:nowrap;flex-shrink:0;border:none;}
-.dc.avail .dc-badge{color:#0F0F0F;background:var(--green);}
-.dc.soon .dc-badge{color:var(--t4);background:var(--bord2);}
-.dc-desc{font-size:12px;color:var(--t3);line-height:1.6;border-top:1px solid var(--bord2);padding-top:10px;}
-.dc-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--bord2);padding-top:9px;}
-.dc-cta{font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);transition:color .2s;}
-.dc.avail:hover .dc-cta{color:var(--t1);}
+.dc{border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px;cursor:pointer;transition:all .22s;border:1px solid transparent;position:relative;overflow:hidden;text-decoration:none;}
+.dc:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.5);}
+.dc-accent{width:3px;height:28px;border-radius:2px;flex-shrink:0;margin-bottom:2px;}
+.dc-num{font-family:var(--fm);font-size:7px;letter-spacing:.14em;color:var(--t4);}
+.dc-name{font-family:var(--fd);font-weight:800;letter-spacing:-.03em;font-size:clamp(15px,1.6vw,19px);line-height:1.1;}
+.dc-desc{font-size:12px;color:var(--t3);line-height:1.65;flex:1;}
+.dc-foot{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid rgba(255,255,246,.06);}
+.dc-cta{font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;transition:opacity .2s;opacity:.6;}
+.dc:hover .dc-cta{opacity:1;}
 .dc-type{font-family:var(--fm);font-size:7px;color:var(--t4);}
+.dc-1{background:rgba(255,115,108,.07);border-color:rgba(255,115,108,.18);}
+.dc-1 .dc-accent{background:var(--coral);}
+.dc-1 .dc-name,.dc-1 .dc-cta{color:var(--coral);}
+.dc-2{background:rgba(117,230,249,.06);border-color:rgba(117,230,249,.16);}
+.dc-2 .dc-accent{background:var(--cyan);}
+.dc-2 .dc-name,.dc-2 .dc-cta{color:var(--cyan);}
+.dc-3{background:rgba(122,211,160,.06);border-color:rgba(122,211,160,.16);}
+.dc-3 .dc-accent{background:var(--green);}
+.dc-3 .dc-name,.dc-3 .dc-cta{color:var(--green);}
+.dc-4{background:rgba(255,211,53,.05);border-color:rgba(255,211,53,.14);}
+.dc-4 .dc-accent{background:var(--yellow);}
+.dc-4 .dc-name,.dc-4 .dc-cta{color:var(--yellow);}
+.dc-5{background:rgba(255,125,152,.06);border-color:rgba(255,125,152,.16);}
+.dc-5 .dc-accent{background:var(--pink);}
+.dc-5 .dc-name,.dc-5 .dc-cta{color:var(--pink);}
+.dc-6{background:rgba(169,155,232,.06);border-color:rgba(169,155,232,.18);}
+.dc-6 .dc-accent{background:var(--violet);}
+.dc-6 .dc-name,.dc-6 .dc-cta{color:var(--violet);}
+
 
 /* INLINE SECTIONS */
 .inline-sec{display:none;position:relative;z-index:1;padding:0 32px clamp(48px,8vh,80px);}
@@ -110,50 +235,107 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
 .isec-close:hover{color:var(--t1);border-color:var(--t3);}
 .isec-inner{max-width:700px;margin:0 auto;}
 
-/* TRACKER compact */
-.tracker{display:flex;flex-direction:column;gap:3px;}
-.tr-total{background:var(--surf);border-radius:14px 14px 4px 4px;padding:18px 20px;}
-.tr-total-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;}
-.tr-total-lbl{font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--t4);}
-.tr-total-nums{display:flex;align-items:baseline;gap:8px;}
-.tr-total-amt{font-family:var(--fd);font-weight:800;font-size:22px;letter-spacing:-.04em;color:var(--coral);}
-.tr-total-of{font-family:var(--fm);font-size:9px;color:var(--t3);}
-.tr-track{height:4px;background:rgba(255,255,246,.06);border-radius:99px;overflow:hidden;margin-bottom:6px;}
-.tr-fill{height:100%;border-radius:99px;background:var(--coral);width:0;transition:width 1.2s cubic-bezier(.25,1,.5,1);}
-.tr-pct{font-family:var(--fm);font-size:8px;color:var(--coral);letter-spacing:.08em;}
+/* HUB BADGE */
+.hub-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--t4);margin-bottom:clamp(16px,2.5vh,24px);}
+.hub-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--coral);flex-shrink:0;}
 
-/* Phase cards */
-.tr-phase{background:var(--surf);border-radius:4px;overflow:hidden;}
-.tr-phase:last-of-type{border-radius:4px 4px 14px 14px;}
-.tr-phase-head{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:12px;transition:background .2s;}
-.tr-phase-head:hover{background:#181818;}
-.tr-phase-left{display:flex;flex-direction:column;gap:3px;}
-.tr-phase-name{font-family:var(--fd);font-weight:800;font-size:16px;letter-spacing:-.03em;color:var(--t1);}
-.tr-phase-type{font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);}
-.tr-phase-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
-.tr-phase-pct{font-family:var(--fd);font-weight:800;font-size:15px;letter-spacing:-.02em;}
-.tr-phase-status{font-family:var(--fm);font-size:7px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;}
-.tr-phase-status.on{color:var(--coral);background:rgba(255,115,108,.1);}
-.tr-phase-status.nx{color:var(--cyan);background:rgba(117,230,249,.08);}
-.tr-phase-bar{height:3px;background:rgba(255,255,246,.05);}
-.tr-phase-bar-fill{height:100%;width:0;transition:width 1.4s cubic-bezier(.25,1,.5,1);}
-.tr-phase-body{display:none;padding:0 20px 18px;border-top:1px solid var(--bord2);}
-.tr-phase-body.open{display:block;}
-.tr-terms-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px 0 12px;}
-.tr-term{font-family:var(--fm);font-size:8px;letter-spacing:.07em;color:var(--t3);background:rgba(255,255,246,.04);border-radius:6px;padding:5px 10px;}
-.tr-term b{font-weight:500;color:var(--cream);}
-.tr-funds{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
-.tr-fi{font-family:var(--fm);font-size:8px;color:var(--t3);background:rgba(255,255,246,.03);border-radius:5px;padding:3px 8px;}
-/* Note convertible accordion */
-.nc-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;margin-top:12px;font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);transition:color .2s;}
-.nc-toggle:hover{color:var(--t2);}
-.nc-toggle svg{transition:transform .2s;flex-shrink:0;}
-.nc-body{display:none;margin-top:10px;padding:12px 14px;background:rgba(255,255,246,.02);border-left:2px solid var(--bord2);border-radius:0 6px 6px 0;}
-.nc-body.open{display:block;}
-.nc-body p{font-size:12px;line-height:1.65;color:var(--t3);}
-.nc-body strong{color:var(--t2);}
-.tr-note{font-family:var(--fm);font-size:8px;color:var(--t4);margin-top:8px;line-height:1.5;}
-.tr-x2{display:inline-flex;align-items:center;gap:5px;font-family:var(--fd);font-weight:800;font-size:12px;color:var(--cyan);margin-top:10px;}
+/* TRACKER nuevo */
+.tracker{display:grid;grid-template-columns:1.2fr .8fr;gap:12px;}
+@media(max-width:680px){.tracker{grid-template-columns:1fr;}}
+.tr-left{background:linear-gradient(160deg,rgba(255,115,108,.11),rgba(255,115,108,.03));border:1px solid rgba(255,115,108,.24);border-radius:16px;padding:22px;display:flex;flex-direction:column;}
+.tr-phase-tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:16px;}
+.tr-phase-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--coral);}
+.tr-bignum{display:flex;align-items:baseline;gap:8px;margin-bottom:4px;}
+.tr-pct-big{font-family:var(--fd);font-weight:800;font-size:clamp(44px,5.5vw,60px);letter-spacing:-.05em;color:var(--coral);line-height:.9;}
+.tr-pct-lbl{font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);line-height:1.4;}
+.tr-amounts{font-family:var(--fd);font-weight:600;font-size:14px;color:var(--t1);margin-bottom:18px;}
+.tr-amounts span{color:var(--t3);font-weight:400;}
+.tr-bar{height:5px;background:rgba(255,255,246,.07);border-radius:99px;overflow:hidden;margin-bottom:8px;}
+.tr-bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--coral),#FF9D8C);width:0;transition:width 1.4s cubic-bezier(.25,1,.5,1);box-shadow:0 0 10px rgba(255,115,108,.35);}
+.tr-bar-meta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,115,108,.14);}
+.tr-status{font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);display:inline-flex;align-items:center;gap:6px;}
+.tr-status .pulse{width:6px;height:6px;border-radius:50%;background:var(--coral);animation:trpulse 2s infinite;}
+@keyframes trpulse{0%{box-shadow:0 0 0 0 rgba(255,115,108,.5);}70%{box-shadow:0 0 0 7px rgba(255,115,108,0);}100%{box-shadow:0 0 0 0 rgba(255,115,108,0);}}
+.tr-close{font-family:var(--fm);font-size:8px;color:var(--t4);}
+.tr-right{display:flex;flex-direction:column;gap:1px;background:var(--bord2);border:1px solid var(--bord2);border-radius:16px;overflow:hidden;}
+.tr-spec{background:var(--surf);padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex:1;min-height:48px;}
+.tr-spec-lbl{font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);}
+.tr-spec-val{font-family:var(--fd);font-weight:700;font-size:14px;letter-spacing:-.02em;color:var(--t1);text-align:right;}
+.tr-spec-val.cyan{color:var(--cyan);}
+.tr-funds-block{grid-column:1/-1;background:var(--surf);border:1px solid var(--bord2);border-radius:14px;padding:16px 20px;}
+.tr-funds-lbl{font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);margin-bottom:10px;display:block;}
+.tr-funds{display:flex;flex-wrap:wrap;gap:7px;}
+.tr-fi{font-family:var(--fm);font-size:10px;color:var(--t3);background:rgba(255,255,246,.03);border:1px solid var(--bord2);border-radius:6px;padding:5px 10px;}
+.tr-note{grid-column:1/-1;font-size:12px;color:var(--t4);line-height:1.65;display:flex;gap:8px;align-items:flex-start;}
+.tr-note svg{flex-shrink:0;margin-top:2px;}
+.tr-note b{color:var(--cyan);font-weight:600;}
+
+/* ROADMAP */
+.roadmap-section{position:relative;z-index:1;padding:clamp(40px,7vh,72px) 32px;}
+@media(max-width:700px){.roadmap-section{padding:40px 20px;}}
+.roadmap-wrap{max-width:1120px;margin:0 auto;}
+.rm-track{position:relative;margin-top:8px;}
+.rm-line{position:absolute;left:0;top:11px;width:100%;height:2px;background:linear-gradient(90deg,var(--coral),var(--cyan));opacity:.3;}
+@media(max-width:760px){.rm-line{left:11px;top:0;width:2px;height:100%;background:linear-gradient(180deg,var(--coral),var(--cyan));}}
+.rm-items{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;position:relative;}
+@media(max-width:760px){.rm-items{grid-template-columns:1fr;gap:0;}}
+.rm-item{position:relative;padding-top:32px;}
+@media(max-width:760px){.rm-item{padding:0 0 24px 36px;}}
+.rm-dot{position:absolute;top:4px;left:0;width:16px;height:16px;border-radius:50%;border:2px solid var(--bg);z-index:2;}
+@media(max-width:760px){.rm-dot{top:2px;}}
+.rm-date{font-family:var(--fm);font-size:8px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;font-weight:600;}
+.rm-card{background:var(--surf);border:1px solid var(--bord2);border-radius:11px;padding:14px;display:flex;flex-direction:column;gap:8px;height:100%;}
+.rm-milestone{font-family:var(--fd);font-weight:700;font-size:12px;letter-spacing:-.01em;color:var(--t1);line-height:1.25;}
+.rm-detail{font-size:10.5px;color:var(--t3);line-height:1.55;}
+.rm-tags{display:flex;flex-direction:column;gap:4px;margin-top:2px;}
+.rm-tag{font-family:var(--fm);font-size:8.5px;letter-spacing:.02em;color:var(--t3);display:flex;align-items:center;gap:6px;line-height:1.4;}
+.rm-tag::before{content:'';width:3px;height:3px;border-radius:50%;flex-shrink:0;}
+.rm-item .rm-tag::before{background:currentColor;opacity:.6;}
+.rm-now{display:inline-block;font-family:var(--fm);font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:#0F0F0F;background:var(--coral);border-radius:4px;padding:2px 6px;margin-top:2px;width:fit-content;}
+/* COMO FUNCIONA */
+.steps-section{position:relative;z-index:1;padding:0 32px clamp(48px,8vh,80px);}
+@media(max-width:700px){.steps-section{padding:0 20px 48px;}}
+.steps-wrap{max-width:1120px;margin:0 auto;}
+.steps-flow{display:grid;grid-template-columns:repeat(5,1fr);align-items:start;gap:0;}
+@media(max-width:900px){.steps-flow{grid-template-columns:1fr 1fr;gap:12px;}}
+@media(max-width:500px){.steps-flow{grid-template-columns:1fr;}}
+.step-col{display:flex;flex-direction:row;align-items:flex-start;}
+.step{display:flex;flex-direction:column;gap:9px;padding:4px 16px 4px 0;flex:1;position:relative;}
+@media(max-width:900px){.step{padding:4px 0;}}
+.step-arrow{display:flex;align-items:flex-start;padding-top:8px;color:var(--t4);flex-shrink:0;width:24px;justify-content:center;}
+@media(max-width:900px){.step-arrow{display:none;}}
+.step-num{font-family:var(--fm);font-size:7px;letter-spacing:.16em;text-transform:uppercase;}
+.step-dot{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:2px;flex-shrink:0;}
+.step-dot svg{width:16px;height:16px;}
+.step-title{font-family:var(--fd);font-weight:700;font-size:clamp(13px,1.2vw,14px);letter-spacing:-.01em;color:var(--t1);line-height:1.25;}
+.step-desc{font-size:11px;color:var(--t3);line-height:1.7;}
+/* step color variants */
+.step-1 .step-num{color:var(--coral);} .step-1 .step-dot{background:rgba(255,115,108,.12);}
+.step-2 .step-num{color:var(--cyan);} .step-2 .step-dot{background:rgba(117,230,249,.1);}
+.step-3 .step-num{color:var(--green);} .step-3 .step-dot{background:rgba(122,211,160,.1);}
+.step-4 .step-num{color:var(--yellow);} .step-4 .step-dot{background:rgba(255,211,53,.08);}
+.step-5 .step-num{color:var(--pink);} .step-5 .step-dot{background:rgba(255,125,152,.1);}
+
+/* CONTACTO */
+.contact-section{position:relative;z-index:1;padding:0 32px clamp(56px,9vh,96px);}
+@media(max-width:700px){.contact-section{padding:0 20px 64px;}}
+.contact-wrap{max-width:1120px;margin:0 auto;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:640px){.contact-grid{grid-template-columns:1fr;}}
+.contact-main{background:var(--surf);border:1px solid rgba(255,115,108,.2);border-radius:16px;padding:28px 28px 24px;}
+.contact-sup{background:var(--surf);border:1px solid var(--bord2);border-radius:16px;padding:28px 28px 24px;display:flex;flex-direction:column;gap:16px;}
+.contact-eye{font-family:var(--fm);font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:var(--t4);margin-bottom:4px;}
+.contact-name{font-family:var(--fd);font-weight:800;font-size:clamp(22px,2.8vw,32px);letter-spacing:-.04em;color:var(--t1);line-height:1;margin-bottom:2px;}
+.contact-role{font-family:var(--fm);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);margin-bottom:16px;}
+.contact-links{display:flex;flex-direction:column;gap:8px;margin-top:auto;}
+.contact-link{display:flex;align-items:center;gap:10px;font-family:var(--fm);font-size:11px;color:var(--t2);text-decoration:none;padding:10px 12px;background:rgba(255,255,246,.03);border:1px solid var(--bord2);border-radius:8px;transition:all .2s;}
+.contact-link:hover{color:var(--t1);border-color:rgba(255,115,108,.3);background:rgba(255,115,108,.04);}
+.contact-link-icon{width:16px;height:16px;color:var(--coral);flex-shrink:0;}
+.contact-item{display:flex;flex-direction:column;gap:3px;}
+.contact-item-lbl{font-family:var(--fm);font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);}
+.contact-item-val{font-family:var(--fd);font-weight:600;font-size:14px;color:var(--t1);}
+.contact-cta{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#0F0F0F;font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:12px 20px;border-radius:8px;text-decoration:none;margin-top:16px;transition:opacity .2s;width:fit-content;}
+.contact-cta:hover{opacity:.88;}
 
 /* P&L */
 .pl-scenarios{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;}
@@ -194,16 +376,138 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
 .hf-r{display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
 .hf-contact{font-family:var(--fm);font-size:9px;color:var(--coral);}
 .hf-phone{font-family:var(--fm);font-size:8px;color:var(--t3);}
+
+/* ── TEASER ── */
+#view-teaser{position:fixed;inset:0;z-index:150;background:var(--bg);overflow:hidden;}
+#view-teaser .ts-glow{position:absolute;inset:0;pointer-events:none;z-index:0;}
+#view-teaser .ts-glow-1{position:absolute;width:60vw;height:60vw;border-radius:50%;filter:blur(80px);top:-10%;left:-10%;background:radial-gradient(circle,rgba(255,115,108,.18),transparent 70%);transition:background .6s;}
+#view-teaser .ts-glow-2{position:absolute;width:50vw;height:50vw;border-radius:50%;filter:blur(80px);bottom:-10%;right:-10%;background:radial-gradient(circle,rgba(117,230,249,.12),transparent 70%);}
+#view-teaser .ts-top{position:absolute;top:0;left:0;right:0;z-index:50;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,52px);background:rgba(15,15,15,.92);border-bottom:1px solid var(--bord);backdrop-filter:blur(12px);}
+#view-teaser .ts-bot{position:absolute;bottom:0;left:0;right:0;z-index:50;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,52px);border-top:1px solid var(--bord);background:rgba(15,15,15,.92);backdrop-filter:blur(12px);}
+#view-teaser .ts-prog{position:absolute;top:60px;left:0;height:2px;background:var(--coral);transition:width .4s cubic-bezier(.25,1,.5,1);z-index:60;width:14.28%;}
+#view-teaser .ts-wrap{position:absolute;inset:0;}
+#view-teaser .ts-slide{position:absolute;inset:0;padding:60px 0 52px;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s,transform .4s;transform:translateX(40px);}
+#view-teaser .ts-slide.active{opacity:1;pointer-events:all;transform:translateX(0);}
+#view-teaser .ts-slide.prev{transform:translateX(-40px);}
+#view-teaser .ts-inner{width:100%;max-width:900px;padding:0 clamp(20px,5vw,60px);}
+#view-teaser .ts-counter{font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:var(--t4);}
+#view-teaser .ts-lbl{font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);}
+#view-teaser .ts-dots{display:flex;gap:6px;align-items:center;}
+#view-teaser .ts-dot{width:5px;height:5px;border-radius:50%;background:var(--bord2);cursor:pointer;transition:all .25s;}
+#view-teaser .ts-dot.active{background:var(--coral);width:18px;border-radius:99px;}
+#view-teaser .ts-btns{display:flex;gap:8px;}
+#view-teaser .ts-btn{font-family:var(--fm);font-size:13px;color:var(--t2);background:rgba(244,241,232,.06);border:1px solid var(--bord2);border-radius:999px;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+#view-teaser .ts-btn:hover{color:var(--t1);background:rgba(244,241,232,.12);}
+#view-teaser .ts-btn:disabled{opacity:.3;cursor:default;}
+#view-teaser .ts-back{font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);background:none;border:1px solid var(--bord2);border-radius:999px;padding:6px 14px;cursor:pointer;transition:all .2s;}
+#view-teaser .ts-back:hover{color:var(--t1);}
+#view-teaser .ts-eyebrow{font-family:var(--fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--t4);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+#view-teaser .ts-eyebrow::before{content:'';width:24px;height:1px;background:var(--coral);}
+#view-teaser .ts-logo{width:clamp(160px,22vw,260px);margin-bottom:14px;}
+#view-teaser .ts-logo svg{width:100%;height:auto;display:block;}
+#view-teaser .ts-headline{font-family:var(--fb);font-weight:300;font-size:clamp(16px,2vw,26px);color:var(--t1);line-height:1.1;margin-bottom:clamp(14px,2vh,24px);}
+#view-teaser .ts-sub{font-family:var(--fb);font-weight:300;font-size:clamp(13px,1.4vw,17px);color:var(--t3);line-height:1.6;max-width:480px;margin-bottom:clamp(18px,3vh,32px);}
+#view-teaser .ts-meta{display:flex;gap:clamp(14px,2.5vw,32px);flex-wrap:wrap;}
+#view-teaser .ts-ml{font-family:var(--fm);font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--t4);}
+#view-teaser .ts-mv{font-family:var(--fd);font-weight:700;font-size:13px;color:var(--t1);}
+#view-teaser .ts-tag{font-family:var(--fm);font-size:8px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px;}
+#view-teaser .ts-intro{font-family:var(--fb);font-weight:300;font-size:clamp(17px,2.3vw,28px);color:var(--t1);line-height:1.4;max-width:620px;margin-bottom:12px;}
+#view-teaser .ts-psub{font-size:clamp(12px,1.2vw,14px);color:var(--t3);line-height:1.7;max-width:560px;margin-bottom:clamp(14px,2.5vh,24px);}
+#view-teaser .ts-actors{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+#view-teaser .ts-actor{background:var(--surf);border:1px solid var(--bord2);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:7px;}
+#view-teaser .ts-aname{font-family:var(--fd);font-weight:700;font-size:13px;}
+#view-teaser .ts-adesc{font-size:11px;color:var(--t3);line-height:1.6;}
+#view-teaser .ts-sh{font-family:var(--fb);font-weight:300;font-size:clamp(15px,2vw,26px);color:var(--t1);line-height:1.35;max-width:640px;margin-bottom:10px;}
+#view-teaser .ts-ss{font-size:clamp(12px,1.2vw,14px);color:var(--t3);line-height:1.7;max-width:560px;margin-bottom:clamp(14px,2.5vh,24px);}
+#view-teaser .ts-feats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+#view-teaser .ts-feat{background:var(--surf);border:1px solid var(--bord2);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:5px;}
+#view-teaser .ts-fi{font-size:16px;line-height:1;}
+#view-teaser .ts-fn{font-family:var(--fd);font-weight:700;font-size:12px;color:var(--t1);}
+#view-teaser .ts-fd2{font-size:10px;color:var(--t4);line-height:1.5;}
+#view-teaser .ts-mkt{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+#view-teaser .ts-mi{border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:5px;}
+#view-teaser .ts-mi.tam{background:linear-gradient(160deg,rgba(255,115,108,.1),rgba(255,115,108,.03));border:1px solid rgba(255,115,108,.2);}
+#view-teaser .ts-mi.sam{background:linear-gradient(160deg,rgba(255,211,53,.08),rgba(255,211,53,.02));border:1px solid rgba(255,211,53,.18);}
+#view-teaser .ts-mi.som{background:linear-gradient(160deg,rgba(122,211,160,.08),rgba(122,211,160,.02));border:1px solid rgba(122,211,160,.18);}
+#view-teaser .ts-ml2{font-family:var(--fm);font-size:7px;letter-spacing:.16em;text-transform:uppercase;}
+#view-teaser .ts-mi.tam .ts-ml2{color:var(--coral);}
+#view-teaser .ts-mi.sam .ts-ml2{color:var(--yellow);}
+#view-teaser .ts-mi.som .ts-ml2{color:var(--green);}
+#view-teaser .ts-mv2{font-family:var(--fd);font-weight:800;font-size:clamp(24px,3.5vw,40px);letter-spacing:-.05em;color:var(--t1);line-height:1;}
+#view-teaser .ts-md{font-size:11px;color:var(--t3);line-height:1.5;}
+#view-teaser .ts-mnote{font-size:11px;color:var(--t4);line-height:1.6;max-width:560px;}
+#view-teaser .ts-mgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+#view-teaser .ts-mitem{background:var(--surf);border:1px solid var(--bord2);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:7px;}
+#view-teaser .ts-mname{font-family:var(--fd);font-weight:700;font-size:13px;color:var(--t1);}
+#view-teaser .ts-mdesc{font-size:11px;color:var(--t3);line-height:1.6;}
+#view-teaser .ts-mbadge{font-family:var(--fm);font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);background:rgba(255,255,246,.04);border:1px solid var(--bord2);border-radius:5px;padding:3px 8px;width:fit-content;}
+#view-teaser .ts-irow{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+#view-teaser .ts-ilbl{font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);}
+#view-teaser .ts-iinput{font-family:var(--fd);font-weight:700;font-size:16px;color:var(--t1);background:var(--surf);border:1px solid var(--bord2);border-radius:8px;padding:6px 12px;width:140px;outline:none;}
+#view-teaser .ts-iinput:focus{border-color:var(--cyan);}
+#view-teaser .ts-stabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
+#view-teaser .ts-stab{font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px;border:1px solid var(--bord2);cursor:pointer;color:var(--t3);background:none;transition:all .2s;}
+#view-teaser .ts-stab.ap{background:var(--t3);border-color:var(--t3);color:#0F0F0F;font-weight:600;}
+#view-teaser .ts-stab.apr{background:var(--cyan);border-color:var(--cyan);color:#0F0F0F;font-weight:600;}
+#view-teaser .ts-stab.ao{background:var(--green);border-color:var(--green);color:#0F0F0F;font-weight:600;}
+#view-teaser .ts-stab.au{background:var(--coral);border-color:var(--coral);color:#0F0F0F;font-weight:600;}
+#view-teaser .ts-panel{display:none;}
+#view-teaser .ts-panel.active{display:block;}
+#view-teaser .ts-rgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+#view-teaser .ts-rcard{border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:7px;}
+#view-teaser .ts-rlbl{font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);}
+#view-teaser .ts-rmult{font-family:var(--fd);font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-.05em;line-height:1;}
+#view-teaser .ts-rsub{font-size:11px;color:var(--t3);}
+#view-teaser .ts-rnote{font-size:11px;color:var(--t4);line-height:1.6;max-width:560px;}
+#view-teaser .ts-ronda-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:10px;}
+#view-teaser .ts-rleft{background:linear-gradient(160deg,rgba(255,115,108,.1),rgba(255,115,108,.03));border:1px solid rgba(255,115,108,.22);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px;}
+#view-teaser .ts-rphase{font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);display:flex;align-items:center;gap:7px;}
+#view-teaser .ts-rphase::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--coral);}
+#view-teaser .ts-ramt{font-family:var(--fd);font-weight:800;font-size:clamp(24px,3.5vw,36px);letter-spacing:-.05em;color:var(--coral);line-height:1;}
+#view-teaser .ts-rof{font-family:var(--fd);font-size:12px;color:var(--t3);}
+#view-teaser .ts-rbar{height:4px;background:rgba(255,255,246,.07);border-radius:99px;overflow:hidden;}
+#view-teaser .ts-rfill{height:100%;width:40%;background:linear-gradient(90deg,var(--coral),#FF9D8C);border-radius:99px;}
+#view-teaser .ts-rfoot{display:flex;justify-content:space-between;align-items:center;}
+#view-teaser .ts-rstatus{font-family:var(--fm);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);display:flex;align-items:center;gap:6px;}
+#view-teaser .ts-rcierre{font-family:var(--fm);font-size:8px;color:var(--t4);}
+#view-teaser .ts-rspecs{display:flex;flex-direction:column;gap:1px;background:var(--bord2);border-radius:12px;overflow:hidden;}
+#view-teaser .ts-rspec{background:var(--surf);padding:0 14px;display:flex;align-items:center;justify-content:space-between;min-height:42px;}
+#view-teaser .ts-rsl{font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);}
+#view-teaser .ts-rsv{font-family:var(--fd);font-weight:700;font-size:12px;color:var(--t1);}
+#view-teaser .ts-rsv.c{color:var(--cyan);}
+#view-teaser .ts-fondos{margin-top:8px;}
+#view-teaser .ts-flbl{font-family:var(--fm);font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);margin-bottom:6px;}
+#view-teaser .ts-ftags{display:flex;flex-wrap:wrap;gap:5px;}
+#view-teaser .ts-ftag{font-family:var(--fm);font-size:9px;color:var(--t3);background:rgba(255,255,246,.03);border:1px solid var(--bord2);border-radius:5px;padding:4px 8px;}
+#view-teaser .ts-objetivo{background:rgba(255,255,246,.03);border:1px solid rgba(255,115,108,.15);border-radius:8px;padding:10px 12px;margin-bottom:8px;}
+#view-teaser .ts-obj-lbl{font-family:var(--fm);font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:4px;}
+#view-teaser .ts-obj-txt{font-size:11px;color:var(--t2);line-height:1.65;}
+
+
+/* Q&A */
+.qna-item{border-bottom:1px solid var(--bord2);}
+.qna-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:var(--fd);font-weight:600;font-size:clamp(13px,1.3vw,15px);color:var(--t1);background:none;border:none;cursor:pointer;padding:18px 0;text-align:left;transition:color .2s;}
+.qna-q:hover{color:var(--coral);}
+.qna-q svg{flex-shrink:0;color:var(--t4);transition:transform .25s;}
+.qna-q.open svg{transform:rotate(180deg);}
+.qna-q.open{color:var(--coral);}
+.qna-a{display:none;font-size:clamp(12px,1.2vw,14px);color:var(--t3);line-height:1.75;padding-bottom:18px;max-width:640px;}
+.qna-a.open{display:block;}
 </style>
 </head>
 <body>
+<div id="hub-main">
 <div class="hero-bg"></div>
 
 <!-- NAV -->
 <nav>
-  <svg class="nav-wm" viewBox="0 0 1795 244" fill="none"><path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="#FF736C"/><path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="#FF736C"/><path d="M427.103 115.917H350.58V1.36438H388.842V77.7438H503.626C503.626 98.8361 486.497 115.934 465.365 115.934H427.103V115.917Z" fill="#FFFFF6"/><path d="M627.503 1.36443H665.765V115.934H627.503V77.7439C627.503 98.8362 610.373 115.934 589.241 115.934H512.718V77.7439C512.718 35.4606 547.06 1.28223 589.324 1.28223H627.585L627.503 1.38087V1.36443ZM627.602 77.7439V39.5542H589.34C568.208 39.5542 551.079 56.6516 551.079 77.7439H627.602Z" fill="#FFFFF6"/><path d="M427.153 204.446H503.626V242.619H427.153C384.889 242.619 350.58 208.391 350.58 166.19C350.58 145.065 367.726 128.017 388.825 128.017H503.544C503.544 149.142 486.398 166.19 465.299 166.19H388.825L388.908 166.272C388.908 187.398 406.054 204.446 427.153 204.446Z" fill="#FFFFF6"/><path d="M512.735 166.24V128.05H550.996V166.24C550.996 187.332 568.126 204.429 589.258 204.429H627.52V128.05H665.781V242.619H589.258L589.357 242.718C547.093 242.718 512.751 208.539 512.751 166.256L512.735 166.24Z" fill="#FFFFF6"/><path d="M713.283 128.116H789.756C810.921 128.116 828.001 145.229 828.001 166.289C828.001 187.348 810.855 204.462 789.756 204.462H751.511C730.346 204.462 713.266 221.576 713.266 242.635H675.021C675.021 200.451 709.313 166.207 751.594 166.207H675.12V128.033L675.037 128.116H713.283ZM828.067 242.701H789.822V204.528C810.987 204.528 828.067 221.642 828.067 242.701Z" fill="#FFFFF6"/><path d="M951.96 128.05H990.222V242.619H951.96V204.429C951.96 225.522 934.831 242.619 913.699 242.619H837.176V204.429C837.176 162.146 871.517 127.968 913.781 127.968H952.043L951.96 128.066V128.05ZM952.043 204.429V166.24H913.781C892.649 166.24 875.52 183.337 875.52 204.429H952.043Z" fill="#FFFFF6"/><path d="M1037.59 128.033H1075.84C1118.12 128.033 1152.41 162.245 1152.41 204.462C1152.41 225.604 1135.26 242.635 1114.16 242.635H999.429V128.116L999.347 128.033H1037.59ZM1037.66 166.207V204.38H1114.13C1114.13 183.238 1097 166.207 1075.89 166.207H1037.64H1037.66Z" fill="#FFFFF6"/><path d="M1155.37 166.24V128.05H1193.64V166.24C1193.64 187.332 1210.77 204.429 1231.9 204.429H1270.16V128.05H1308.42V242.619H1231.9L1232 242.718C1189.73 242.718 1155.39 208.539 1155.39 166.256L1155.37 166.24Z" fill="#FFFFF6"/><path d="M1355.76 128.116H1432.23C1453.4 128.116 1470.48 145.229 1470.48 166.289C1470.48 187.348 1453.33 204.462 1432.23 204.462H1393.99C1372.82 204.462 1355.74 221.576 1355.74 242.635H1317.5C1317.5 200.451 1351.79 166.207 1394.07 166.207H1317.59V128.033L1317.51 128.116H1355.76ZM1470.56 242.701H1432.31V204.528C1453.48 204.528 1470.56 221.642 1470.56 242.701Z" fill="#FFFFF6"/><path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/><path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/></svg>
+  <svg class="nav-wm" height="32" viewBox="0 0 315 244" fill="none"><defs><linearGradient id="nav-q-grad" x1="157" y1="0" x2="157" y2="244" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FF5A52"/><stop offset="100%" stop-color="#FF9D8C"/></linearGradient><radialGradient id="nav-dot-grad" cx="50%" cy="30%" r="60%"><stop offset="0%" stop-color="#75E6F9"/><stop offset="100%" stop-color="#3BBFD4"/></radialGradient></defs><path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="url(#nav-q-grad)"/><path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="url(#nav-dot-grad)"/></svg>
   <div class="nav-r">
-    <span class="nav-badge">Investor Hub</span>
+    <button class="nav-back" id="nav-back" onclick="goBack()">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6L8 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Volver
+    </button>
+    <span class="nav-badge" id="nav-badge">Investor Hub</span>
     <button class="nav-cta" onclick="window.open('mailto:nicolas.pava@lacuraduria.net')">Contacto</button>
   </div>
 </nav>
@@ -211,242 +515,316 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
 <!-- HERO -->
 <section id="hero">
   <div class="hero-inner">
-    <div class="hero-tag-row">
-      <span class="hero-tag"><span class="dot"></span>Ronda presemilla · 2026 · Bogotá, Colombia</span>
-    </div>
-    <svg class="hero-wm" viewBox="0 0 1795 244" fill="none"><path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="#FF736C"/><path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="#FF736C"/><path d="M427.103 115.917H350.58V1.36438H388.842V77.7438H503.626C503.626 98.8361 486.497 115.934 465.365 115.934H427.103V115.917Z" fill="#FFFFF6"/><path d="M627.503 1.36443H665.765V115.934H627.503V77.7439C627.503 98.8362 610.373 115.934 589.241 115.934H512.718V77.7439C512.718 35.4606 547.06 1.28223 589.324 1.28223H627.585L627.503 1.38087V1.36443ZM627.602 77.7439V39.5542H589.34C568.208 39.5542 551.079 56.6516 551.079 77.7439H627.602Z" fill="#FFFFF6"/><path d="M427.153 204.446H503.626V242.619H427.153C384.889 242.619 350.58 208.391 350.58 166.19C350.58 145.065 367.726 128.017 388.825 128.017H503.544C503.544 149.142 486.398 166.19 465.299 166.19H388.825L388.908 166.272C388.908 187.398 406.054 204.446 427.153 204.446Z" fill="#FFFFF6"/><path d="M512.735 166.24V128.05H550.996V166.24C550.996 187.332 568.126 204.429 589.258 204.429H627.52V128.05H665.781V242.619H589.258L589.357 242.718C547.093 242.718 512.751 208.539 512.751 166.256L512.735 166.24Z" fill="#FFFFF6"/><path d="M713.283 128.116H789.756C810.921 128.116 828.001 145.229 828.001 166.289C828.001 187.348 810.855 204.462 789.756 204.462H751.511C730.346 204.462 713.266 221.576 713.266 242.635H675.021C675.021 200.451 709.313 166.207 751.594 166.207H675.12V128.033L675.037 128.116H713.283ZM828.067 242.701H789.822V204.528C810.987 204.528 828.067 221.642 828.067 242.701Z" fill="#FFFFF6"/><path d="M951.96 128.05H990.222V242.619H951.96V204.429C951.96 225.522 934.831 242.619 913.699 242.619H837.176V204.429C837.176 162.146 871.517 127.968 913.781 127.968H952.043L951.96 128.066V128.05ZM952.043 204.429V166.24H913.781C892.649 166.24 875.52 183.337 875.52 204.429H952.043Z" fill="#FFFFF6"/><path d="M1037.59 128.033H1075.84C1118.12 128.033 1152.41 162.245 1152.41 204.462C1152.41 225.604 1135.26 242.635 1114.16 242.635H999.429V128.116L999.347 128.033H1037.59ZM1037.66 166.207V204.38H1114.13C1114.13 183.238 1097 166.207 1075.89 166.207H1037.64H1037.66Z" fill="#FFFFF6"/><path d="M1155.37 166.24V128.05H1193.64V166.24C1193.64 187.332 1210.77 204.429 1231.9 204.429H1270.16V128.05H1308.42V242.619H1231.9L1232 242.718C1189.73 242.718 1155.39 208.539 1155.39 166.256L1155.37 166.24Z" fill="#FFFFF6"/><path d="M1355.76 128.116H1432.23C1453.4 128.116 1470.48 145.229 1470.48 166.289C1470.48 187.348 1453.33 204.462 1432.23 204.462H1393.99C1372.82 204.462 1355.74 221.576 1355.74 242.635H1317.5C1317.5 200.451 1351.79 166.207 1394.07 166.207H1317.59V128.033L1317.51 128.116H1355.76ZM1470.56 242.701H1432.31V204.528C1453.48 204.528 1470.56 221.642 1470.56 242.701Z" fill="#FFFFF6"/><path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/><path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/></svg>
-    <div class="hero-tagline">Un lente para el <em>arte.</em></div>
-  </div>
-</section>
 
-<!-- PITCH -->
-<section class="pitch-section">
-  <div class="pitch-inner">
-    <span class="pitch-eye">Resumen del proyecto</span>
-    <p class="pitch-p">La Curaduría es una <strong>red social de música, arte y cultura</strong> que conecta creadores, gestores y audiencias en una plataforma para visibilizar proyectos, construir comunidades y abrir nuevos canales de monetización.</p>
-    <p class="pitch-p">Somos una startup que busca poner <strong>herramientas tecnológicas al servicio de los circuitos de arte y cultura</strong> para generar nuevas formas de sostenibilidad.</p>
-    <p class="pitch-p">Estamos en fase de iteración de nuestra versión beta, buscando terminarla para hacer una salida al mercado y comenzar a generar tracción para buscar una ronda semilla a finales de este año.</p>
-    <p class="pitch-p note">Para eso estamos en ronda de levantamiento de capital. Acá está toda la información para su consideración.</p>
-  </div>
-</section>
-
-<!-- ROUND STATUS -->
-<div class="round-section">
-  <div class="round-inner">
-    <div class="round-label">Estado de la ronda</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;">
-      <!-- Fase 1 -->
-      <div class="round-bar">
-        <div class="rb-header">
-          <span class="rb-title" style="color:var(--cyan);">$20M<span style="font-size:.5em;font-weight:500;color:var(--t3);"> / $50M COP</span></span>
-          <span class="rb-sub" style="color:var(--cyan);">Fase 1 · Activa</span>
-        </div>
-        <div class="rb-track"><div class="rb-fill" style="width:40%;background:var(--cyan);"></div></div>
-        <div class="rb-meta">
-          <div class="rb-item"><span class="rb-lbl">Instrumento</span><span class="rb-val" style="font-size:11px;color:var(--t1);">Nota Convertible</span></div>
-          <div class="rb-item"><span class="rb-lbl">Descuento</span><span class="rb-val" style="color:var(--cyan);">30%</span></div>
-          <div class="rb-item"><span class="rb-lbl">Cierre</span><span class="rb-val">1 jul 2026</span></div>
-        </div>
-      </div>
-      <!-- Fase 2 -->
-      <div class="round-bar" style="opacity:.55;">
-        <div class="rb-header">
-          <span class="rb-title" style="color:var(--green);">$150M COP</span>
-          <span class="rb-sub" style="color:var(--green);">Fase 2 · Próxima</span>
-        </div>
-        <div class="rb-track"><div class="rb-fill" style="width:0%;background:var(--green);"></div></div>
-        <div class="rb-meta">
-          <div class="rb-item"><span class="rb-lbl">Instrumento</span><span class="rb-val" style="font-size:11px;color:var(--green);">SAFE</span></div>
-          <div class="rb-item"><span class="rb-lbl">Descuento</span><span class="rb-val" style="color:var(--green);">20%</span></div>
-          <div class="rb-item"><span class="rb-lbl">Apertura</span><span class="rb-val">Ago 2026</span></div>
-        </div>
+    <!-- Columna izquierda: pitch -->
+    <div class="hero-left">
+      <div class="hub-badge"><span class="hub-badge-dot"></span>Hub de Inversionistas</div>
+      <div class="hero-logo-svg"><svg viewBox="0 0 1795 244" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hero-q-grad" x1="157" y1="0" x2="157" y2="244" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FF5A52"/><stop offset="100%" stop-color="#FF9D8C"/></linearGradient><radialGradient id="hero-dot-grad" cx="50%" cy="30%" r="60%"><stop offset="0%" stop-color="#75E6F9"/><stop offset="100%" stop-color="#3BBFD4"/></radialGradient></defs>
+<g clip-path="url(#clip0_180_1007)">
+<path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="url(#hero-q-grad)"/>
+<path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="url(#hero-dot-grad)"/>
+<path d="M427.103 115.917H350.58V1.36438H388.842V77.7438H503.626C503.626 98.8361 486.497 115.934 465.365 115.934H427.103V115.917Z" fill="#FFFFF6"/>
+<path d="M627.503 1.36443H665.765V115.934H627.503V77.7439C627.503 98.8362 610.373 115.934 589.241 115.934H512.718V77.7439C512.718 35.4606 547.06 1.28223 589.324 1.28223H627.585L627.503 1.38087V1.36443ZM627.602 77.7439V39.5542H589.34C568.208 39.5542 551.079 56.6516 551.079 77.7439H627.602Z" fill="#FFFFF6"/>
+<path d="M427.153 204.446H503.626V242.619H427.153C384.889 242.619 350.58 208.391 350.58 166.19C350.58 145.065 367.726 128.017 388.825 128.017H503.544C503.544 149.142 486.398 166.19 465.299 166.19H388.825L388.908 166.272C388.908 187.398 406.054 204.446 427.153 204.446Z" fill="#FFFFF6"/>
+<path d="M512.735 166.24V128.05H550.996V166.24C550.996 187.332 568.126 204.429 589.258 204.429H627.52V128.05H665.781V242.619H589.258L589.357 242.718C547.093 242.718 512.751 208.539 512.751 166.256L512.735 166.24Z" fill="#FFFFF6"/>
+<path d="M713.283 128.116H789.756C810.921 128.116 828.001 145.229 828.001 166.289C828.001 187.348 810.855 204.462 789.756 204.462H751.511C730.346 204.462 713.266 221.576 713.266 242.635H675.021C675.021 200.451 709.313 166.207 751.594 166.207H675.12V128.033L675.037 128.116H713.283ZM828.067 242.701H789.822V204.528C810.987 204.528 828.067 221.642 828.067 242.701Z" fill="#FFFFF6"/>
+<path d="M951.96 128.05H990.222V242.619H951.96V204.429C951.96 225.522 934.831 242.619 913.699 242.619H837.176V204.429C837.176 162.146 871.517 127.968 913.781 127.968H952.043L951.96 128.066V128.05ZM952.043 204.429V166.24H913.781C892.649 166.24 875.52 183.337 875.52 204.429H952.043Z" fill="#FFFFF6"/>
+<path d="M1037.59 128.033H1075.84C1118.12 128.033 1152.41 162.245 1152.41 204.462C1152.41 225.604 1135.26 242.635 1114.16 242.635H999.429V128.116L999.347 128.033H1037.59ZM1037.66 166.207V204.38H1114.13C1114.13 183.238 1097 166.207 1075.89 166.207H1037.64H1037.66Z" fill="#FFFFF6"/>
+<path d="M1155.37 166.24V128.05H1193.64V166.24C1193.64 187.332 1210.77 204.429 1231.9 204.429H1270.16V128.05H1308.42V242.619H1231.9L1232 242.718C1189.73 242.718 1155.39 208.539 1155.39 166.256L1155.37 166.24Z" fill="#FFFFF6"/>
+<path d="M1355.76 128.116H1432.23C1453.4 128.116 1470.48 145.229 1470.48 166.289C1470.48 187.348 1453.33 204.462 1432.23 204.462H1393.99C1372.82 204.462 1355.74 221.576 1355.74 242.635H1317.5C1317.5 200.451 1351.79 166.207 1394.07 166.207H1317.59V128.033L1317.51 128.116H1355.76ZM1470.56 242.701H1432.31V204.528C1453.48 204.528 1470.56 221.642 1470.56 242.701Z" fill="#FFFFF6"/>
+<path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/>
+<path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/>
+</g>
+<defs>
+<clipPath id="clip0_180_1007">
+<rect width="1795" height="244" fill="white"/>
+</clipPath>
+</defs>
+</svg></div>
+      <div class="hero-tagline-txt">Un lente para el arte</div>
+      <div class="hero-pitch">
+        <span class="pitch-eye">Resumen del proyecto</span>
+        <p>El arte tiene el poder de transformar la sociedad.</p>
+        <p>En la era digital, la conexión de las personas con la cultura depende cada vez más de plataformas algorítmicas que priorizan la retención de usuarios por encima del encuentro con su entorno. En medio de redes sociales saturadas de contenido, la oferta cultural se dispersa, los proyectos pierden visibilidad y muchas audiencias no logran descubrir lo que está pasando a su alrededor.</p>
+        <p>La Curaduría nace para resolver esa desconexión. Somos una startup que desarrolla una guía inteligente de música, arte y cultura para organizar la oferta cultural, crecer audiencias y conectar a las personas con artistas, espacios, eventos, contenidos y experiencias de su entorno.</p>
+        <p>Nuestro propósito es potenciar la sostenibilidad de los proyectos culturales, convirtiendo la visibilidad en comunidad, la comunidad en participación y la participación en nuevas oportunidades de monetización para el ecosistema.</p>
+        <p class="note">Esta página reúne la información clave del proyecto, su visión, su modelo de crecimiento y las oportunidades de inversión para llevar La Curaduría al siguiente nivel: convertirnos en la plataforma líder de exploración cultural de Latinoamérica.</p>
       </div>
     </div>
+
+    <!-- Columna derecha: teléfono + botones -->
+    <div class="hero-right">
+      <div class="hero-mockup">
+        <div class="mk-notch"><div class="mk-notch-bar"></div></div>
+        <div class="mk-frame">
+          <iframe src="https://lacuraduria.net" title="lacuraduria.net" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>
+        <div class="mk-home"><div class="mk-home-bar"></div></div>
+      </div>
+      <div class="mockup-links">
+        <a class="mockup-link net" href="https://lacuraduria.net" target="_blank">.net</a>
+        <a class="mockup-link com" href="https://lacuraduria.com" target="_blank">.com</a>
+      </div>
+    </div>
+
+    <!-- Tracker: todo el ancho -->
+    <!-- Tracker: todo el ancho -->
+    <div class="hero-tracker">
+      <div class="ht-progress">
+        <span class="tr-phase-tag">Fase 1 · Familia y Amigos</span>
+        <div class="ht-bignum">
+          <span class="ht-pct">40%</span>
+          <span class="ht-of">de la fase</span>
+        </div>
+        <div class="ht-amounts">$20M <span>de $50M COP recaudados</span></div>
+        <div class="ht-bar"><div class="ht-bar-fill" id="ht-bar"></div></div>
+        <div class="ht-foot">
+          <span class="tr-status"><span class="pulse"></span>Activa</span>
+          <span class="ht-close">Cierre · 1 jul 2026</span>
+        </div>
+      </div>
+      <div class="ht-specs">
+        <div class="ht-spec"><span class="ht-lbl">Tipo</span><span class="ht-val">Acción tipo A2</span></div>
+        <div class="ht-spec"><span class="ht-lbl">Descuento</span><span class="ht-val cyan">30%</span></div>
+        <div class="ht-spec"><span class="ht-lbl">Dilución</span><span class="ht-val">No diluible</span></div>
+        <div class="ht-spec"><span class="ht-lbl">Liquidación</span><span class="ht-val">Preferencia 1x</span></div>
+      </div>
+    </div>
+
   </div>
-</div>
+</section>
 
 <!-- CARDS -->
 <section class="cards-section">
   <div class="cards-wrap">
     <div class="sec-label">Documentos</div>
-    <div class="cards-grid" style="grid-template-columns:repeat(2,1fr);">
-      <a class="dc avail" href="lacuraduria-teaser.html" target="_blank">
+    <div class="cards-grid">
+      <div class="dc dc-1" onclick="navigate('teaser')" style="cursor:pointer;">
+        <div class="dc-accent"></div>
         <div class="dc-num">01</div>
-        <div class="dc-head"><div class="dc-name">Pitch Teaser</div></div>
+        <div class="dc-name">Teaser del proyecto</div>
         <div class="dc-desc">Presentación ejecutiva: mercado, problema, solución, modelo y proyecciones.</div>
-        <div class="dc-foot"><span class="dc-cta">Abrir →</span><span class="dc-type">HTML</span></div>
-      </a>
-      <a class="dc avail" href="lacuraduria-onepager.pdf" target="_blank">
+        <div class="dc-foot"><span class="dc-cta">Ver →</span><span class="dc-type">Interactivo</span></div>
+      </div>
+      <a class="dc dc-2" href="lacuraduria-onepager.pdf" target="_blank">
+        <div class="dc-accent"></div>
         <div class="dc-num">02</div>
-        <div class="dc-head"><div class="dc-name">One Pager</div></div>
+        <div class="dc-name">One Pager</div>
         <div class="dc-desc">Resumen de la oportunidad en una página. Listo para compartir.</div>
         <div class="dc-foot"><span class="dc-cta">Abrir →</span><span class="dc-type">PDF</span></div>
       </a>
-      <div class="dc avail" onclick="toggleSec('tracker')">
+      <div class="dc dc-3" onclick="navigate('tracker')">
+        <div class="dc-accent"></div>
         <div class="dc-num">03</div>
-        <div class="dc-head"><div class="dc-name">Investment Round</div></div>
-        <div class="dc-desc">Tracker de la ronda, términos de inversión y uso de fondos por fase.</div>
+        <div class="dc-name">Ronda de Inversión</div>
+        <div class="dc-desc">Tracker de la ronda, términos de inversión y uso de fondos.</div>
         <div class="dc-foot"><span class="dc-cta">Ver →</span><span class="dc-type">Interactivo</span></div>
       </div>
-      <div class="dc avail" onclick="toggleSec('pnl')">
+      <div class="dc dc-4" onclick="navigate('pnl')">
+        <div class="dc-accent"></div>
         <div class="dc-num">04</div>
-        <div class="dc-head"><div class="dc-name">Proyecciones · 5 años</div></div>
+        <div class="dc-name">Proyecciones · 5 años</div>
         <div class="dc-desc">Simulador de ingresos a 5 años con cuatro escenarios de crecimiento.</div>
+        <div class="dc-foot"><span class="dc-cta">Ver →</span><span class="dc-type">Interactivo</span></div>
+      </div>
+      <div class="dc dc-5" onclick="navigate('gtm')">
+        <div class="dc-accent"></div>
+        <div class="dc-num">05</div>
+        <div class="dc-name">Go to Market</div>
+        <div class="dc-desc">Estrategia de salida al mercado, canales de adquisición y primeras métricas objetivo.</div>
+        <div class="dc-foot"><span class="dc-cta">Ver →</span><span class="dc-type">Interactivo</span></div>
+      </div>
+      <div class="dc dc-6" onclick="navigate('equipo')">
+        <div class="dc-accent"></div>
+        <div class="dc-num">06</div>
+        <div class="dc-name">Equipo</div>
+        <div class="dc-desc">Quiénes están detrás del proyecto, roles y trayectoria.</div>
         <div class="dc-foot"><span class="dc-cta">Ver →</span><span class="dc-type">Interactivo</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TRACKER -->
-<div class="inline-sec" id="sec-tracker">
-  <div class="isec-header">
-    <div class="isec-title">Ronda presemilla · Dos fases</div>
-    <button class="isec-close" onclick="toggleSec('tracker')">Cerrar ×</button>
-  </div>
-  <div class="isec-inner">
-    <div class="tracker">
 
-      <!-- Total -->
-      <div class="tr-total">
-        <div class="tr-total-top">
-          <span class="tr-total-lbl">Objetivo total · Ronda presemilla</span>
-          <div class="tr-total-nums">
-            <span class="tr-total-amt" style="color:var(--coral);">$20M</span>
-            <span class="tr-total-of">recaudados de $200M COP</span>
+<!-- ROADMAP -->
+<section class="roadmap-section">
+  <div class="roadmap-wrap">
+    <div class="sec-label">Roadmap · Recorrido del proyecto</div>
+    <div class="rm-track">
+      <div class="rm-line"></div>
+      <div class="rm-items">
+
+        <div class="rm-item">
+          <div class="rm-dot" style="background:var(--coral);"></div>
+          <div class="rm-date" style="color:var(--coral);">2025</div>
+          <div class="rm-card">
+            <div class="rm-milestone">Origen del proyecto</div>
+            <div class="rm-detail">Tesis de maestría en Gestión de la Cultura, modalidad creación de empresa.</div>
           </div>
         </div>
-        <div class="tr-track"><div class="tr-fill" id="trb0" style="background:var(--coral);"></div></div>
-        <div class="tr-pct" style="color:var(--coral);">10% completado · Dos fases</div>
-      </div>
 
-      <!-- Fase 1 -->
-      <div class="tr-phase">
-        <div class="tr-phase-bar"><div class="tr-phase-bar-fill" id="trb1" style="background:var(--cyan);"></div></div>
-        <div class="tr-phase-head" onclick="togglePhase(1)">
-          <div class="tr-phase-left">
-            <div class="tr-phase-name" style="color:var(--cyan);">Fase 1 · Nota Convertible</div>
-            <div class="tr-phase-type">Constitución y arranque · 30% descuento</div>
-          </div>
-          <div class="tr-phase-right">
-            <span class="tr-phase-pct" style="color:var(--cyan);">$20M / $50M</span>
-            <span class="tr-phase-status on">Activa</span>
+        <div class="rm-item">
+          <div class="rm-dot" style="background:var(--pink);"></div>
+          <div class="rm-date" style="color:var(--pink);">Marzo 2025</div>
+          <div class="rm-card">
+            <div class="rm-milestone">Incubadora Cámara de Comercio</div>
+            <div class="rm-detail">Ganador de pitch e invitación a Go Fest.</div>
           </div>
         </div>
-        <div class="tr-phase-body open" id="phase1-body">
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;">
-            <span class="tr-term">Descuento <b>30%</b></span>
-            <span class="tr-term">Valuation cap <b>$2.000M COP</b></span>
-            <span class="tr-term">Cierre <b>1 julio 2026</b></span>
-            <span class="tr-term">Liquidación <b>Preferencia B</b></span>
-            <span class="tr-term">Dilución <b>No diluible</b></span>
+
+        <div class="rm-item">
+          <div class="rm-dot" style="background:var(--yellow);"></div>
+          <div class="rm-date" style="color:var(--yellow);">Agosto 2025</div>
+          <div class="rm-card">
+            <div class="rm-milestone">Go Fest</div>
+            <div class="rm-detail">Lanzamiento del primer MVP e investigación durante el proyecto de grado.</div>
           </div>
-          <div class="nc-toggle" onclick="toggleNC(1)">
-            <svg width="12" height="12" viewBox="0 0 12 12" id="nc1-arrow"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
-            ¿Qué es una nota convertible?
-          </div>
-          <div class="nc-body" id="nc1-body">
-            <p>Una <strong>nota convertible</strong> es un instrumento de deuda que se convierte en participación accionaria al cumplirse un evento de conversión, en lugar de devolverse en efectivo.</p>
-            <p style="margin-top:8px;">En este caso, el evento de conversión es la <strong>formalización de la empresa</strong>. Al constituirse legalmente, la nota se convierte automáticamente en un SAFE con un valuation cap de <strong>$4.000 millones de pesos</strong>, lo que representa un x2 respecto al cap inicial.</p>
-            <p style="margin-top:8px;">El descuento del 30% significa que los inversionistas de Fase 1 recibirán sus acciones con un 30% de descuento sobre la valoración de la siguiente ronda.</p>
-          </div>
-          <div style="margin-top:12px;">
-            <div class="tr-funds-label" style="font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);margin-bottom:7px;">Uso de fondos</div>
-            <div class="tr-funds">
-              <span class="tr-fi">Constitución legal</span><span class="tr-fi">Software básico</span>
-              <span class="tr-fi">Hardware</span><span class="tr-fi">Registro</span>
-              <span class="tr-fi">Contaduría</span><span class="tr-fi">Asesoría legal y financiera</span>
+        </div>
+
+        <div class="rm-item">
+          <div class="rm-dot" style="background:var(--green);"></div>
+          <div class="rm-date" style="color:var(--green);">Mayo–Junio 2026</div>
+          <div class="rm-card">
+            <div class="rm-milestone">Culminación de tesis y MVP 2.0</div>
+            <div class="rm-tags">
+              <span class="rm-tag" style="color:var(--t2);"><span style="--d:1;"></span>Lanzamiento del MVP 2.0</span>
+              <span class="rm-tag"><span></span>Aceleración Cámara de Comercio</span>
+              <span class="rm-tag"><span></span>Ronda FFF · Familia y Amigos</span>
+              <span class="rm-tag"><span></span>$20M de $50M recaudados</span>
             </div>
-          </div>
-          <div class="tr-x2">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L8 14M2 8L14 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            Al completar Fase 1 el cap de valoración se duplica: $2.000M → $4.000M COP (x2)
+            <span class="rm-now">Estás aquí</span>
           </div>
         </div>
-      </div>
 
-      <!-- Fase 2 -->
-      <div class="tr-phase">
-        <div class="tr-phase-bar"><div class="tr-phase-bar-fill" id="trb2" style="background:var(--green);opacity:.5;"></div></div>
-        <div class="tr-phase-head" onclick="togglePhase(2)">
-          <div class="tr-phase-left">
-            <div class="tr-phase-name" style="color:var(--green);opacity:.8;">Fase 2 · SAFE</div>
-            <div class="tr-phase-type">Runway y escala · 20% descuento</div>
-          </div>
-          <div class="tr-phase-right">
-            <span class="tr-phase-pct" style="color:var(--green);opacity:.6;">$0 / $150M</span>
-            <span class="tr-phase-status nx">Próxima</span>
-          </div>
-        </div>
-        <div class="tr-phase-body" id="phase2-body">
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;">
-            <span class="tr-term">Instrumento <b>SAFE</b></span>
-            <span class="tr-term">Descuento <b>20%</b></span>
-            <span class="tr-term">Valuation cap <b>$4.000M COP</b></span>
-            <span class="tr-term">Cierre <b>30 sep 2026</b></span>
-            <span class="tr-term">Dilución <b>No diluible</b></span>
-          </div>
-          <div class="nc-toggle" onclick="toggleNC(2)">
-            <svg width="12" height="12" viewBox="0 0 12 12" id="nc2-arrow"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
-            Evento de conversión
-          </div>
-          <div class="nc-body" id="nc2-body">
-            <p>El SAFE se convierte en <strong>participación accionaria</strong> cuando se realice la valoración de la empresa en la ronda semilla. La conversión aplica con un <strong>20% de descuento</strong> sobre el precio por acción que se establezca en esa ronda.</p>
-            <p style="margin-top:8px;">Las acciones obtenidas en Fase 2 <strong>no se pueden diluir</strong> en rondas posteriores, garantizando la protección de la participación del inversionista.</p>
-          </div>
-          <div style="margin-top:12px;">
-            <div class="tr-funds-label" style="font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);margin-bottom:7px;">Uso de fondos</div>
-            <div class="tr-funds">
-              <span class="tr-fi">Runway 9 meses</span><span class="tr-fi">3 empleados</span>
-              <span class="tr-fi">Campaña de mercadeo</span><span class="tr-fi">Estudio / Oficina</span>
-              <span class="tr-fi">Gastos administrativos</span><span class="tr-fi">Operaciones</span>
+        <div class="rm-item">
+          <div class="rm-dot" style="background:var(--cyan);"></div>
+          <div class="rm-date" style="color:var(--cyan);">Ago–Sep 2026</div>
+          <div class="rm-card">
+            <div class="rm-milestone">Constitución y ronda presemilla</div>
+            <div class="rm-tags">
+              <span class="rm-tag"><span></span>Registro de la empresa</span>
+              <span class="rm-tag"><span></span>Registro de la marca</span>
+              <span class="rm-tag"><span></span>Ronda presemilla en ToCrea · $200M COP</span>
             </div>
           </div>
         </div>
+
+        <div class="rm-item">
+          <div class="rm-dot" style="background:var(--coral);box-shadow:0 0 0 3px rgba(255,115,108,.18);"></div>
+          <div class="rm-date" style="color:var(--coral);">Abril 2027</div>
+          <div class="rm-card">
+            <div class="rm-milestone">Ronda semilla</div>
+            <div class="rm-detail">Apertura de la ronda semilla de $2.000M COP para escalar la plataforma.</div>
+          </div>
+        </div>
+
       </div>
-
     </div>
   </div>
-</div>
+</section>
 
-<!-- P&L -->
-<div class="inline-sec" id="sec-pnl">
-  <div class="isec-header">
-    <div class="isec-title">Simulador de ingresos · 5 años</div>
-    <button class="isec-close" onclick="toggleSec('pnl')">Cerrar ×</button>
+<!-- COMO FUNCIONA -->
+<section class="steps-section">
+  <div class="steps-wrap">
+    <div class="sec-label">Cómo funciona</div>
+    <div class="steps-flow">
+      <div class="step-col">
+        <div class="step step-1">
+          <span class="step-num">01</span>
+          <div class="step-dot"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5" stroke="#FF736C" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="#FF736C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="step-title">Reunión de pitch</div>
+          <p class="step-desc">Agendamos una llamada o reunión presencial para presentar el proyecto, resolver dudas y evaluar el encaje con el perfil del inversionista.</p>
+        </div>
+        <div class="step-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="step-col">
+        <div class="step step-2">
+          <span class="step-num">02</span>
+          <div class="step-dot"><svg viewBox="0 0 16 16" fill="none"><rect x="3" y="2" width="10" height="12" rx="2" stroke="#75E6F9" stroke-width="1.5"/><path d="M5.5 6h5M5.5 9h3" stroke="#75E6F9" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <div class="step-title">Creación del term sheet</div>
+          <p class="step-desc">Con interés confirmado, preparamos el term sheet con los términos de la inversión: monto, instrumento, descuento y cap.</p>
+        </div>
+        <div class="step-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="step-col">
+        <div class="step step-3">
+          <span class="step-num">03</span>
+          <div class="step-dot"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l2.5 5h-5L8 3z" stroke="#7AD3A0" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 11h6" stroke="#7AD3A0" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+          <div class="step-title">Desembolso</div>
+          <p class="step-desc">Se transfiere el capital acordado a la cuenta del proyecto. El proceso es directo, sin intermediarios ni comisiones adicionales.</p>
+        </div>
+        <div class="step-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="step-col">
+        <div class="step step-4">
+          <span class="step-num">04</span>
+          <div class="step-dot"><svg viewBox="0 0 16 16" fill="none"><path d="M4 8l3 3 5-5" stroke="#FFD335" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="2" width="12" height="12" rx="3" stroke="#FFD335" stroke-width="1.3"/></svg></div>
+          <div class="step-title">Entrega de la nota convertible</div>
+          <p class="step-desc">Se firma el documento legal que certifica la inversión y el mecanismo de conversión a participación accionaria.</p>
+        </div>
+        <div class="step-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="step-col">
+        <div class="step step-5">
+          <span class="step-num">05</span>
+          <div class="step-dot"><svg viewBox="0 0 16 16" fill="none"><path d="M3 10l3-3 2 2 3-4 2 2" stroke="#FF7D98" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="2" width="12" height="12" rx="3" stroke="#FF7D98" stroke-width="1.3"/></svg></div>
+          <div class="step-title">Seguimiento de la inversión</div>
+          <p class="step-desc">Acceso permanente a este hub con actualizaciones del estado de la ronda, avances del producto e hitos del proyecto.</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="isec-inner" style="max-width:900px;">
-    <div class="pl-scenarios">
-      <button class="sc-btn s0" onclick="setSc(0)">Pesimista · x3</button>
-      <button class="sc-btn active s1" onclick="setSc(1)">Probable · x5</button>
-      <button class="sc-btn s2" onclick="setSc(2)">Optimista · x10</button>
-      <button class="sc-btn s3" onclick="setSc(3)">Unicornio · x100</button>
-    </div>
+</section>
 
-    <!-- Chart -->
-    <div class="pl-chart" id="pl-chart-wrap">
-      <div class="pl-chart-label">Ingresos totales en M COP · 2026 — 2030</div>
-      <div id="plb" style="display:flex;align-items:flex-end;gap:14px;height:180px;padding-top:8px;"></div>
-    </div>
+<!-- CONTACTO -->
+<section class="contact-section">
+  <div class="contact-wrap">
+    <div class="sec-label">Contacto</div>
+    <div class="contact-grid">
+      <div class="contact-main">
+        <div class="contact-eye">Fundador</div>
+        <div class="contact-name">Nicolás Pava</div>
+        <div class="contact-role">CEO · La Curaduría</div>
+        <p style="font-size:13px;color:var(--t3);line-height:1.75;margin-bottom:20px;">Para cualquier pregunta sobre la ronda, los términos de inversión o el proyecto, escribí directamente. La respuesta llega en menos de 48 horas.</p>
+        <div class="contact-links">          <a class="contact-link" href="mailto:nicolas.pava@lacuraduria.net">
+            <svg class="contact-link-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M2 5l6 4.5L14 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            nicolas.pava@lacuraduria.net
+          </a>
+          <a class="contact-link" href="tel:+573044138497">
+            <svg class="contact-link-icon" viewBox="0 0 16 16" fill="none"><path d="M5.5 2.5C5.5 2.5 4 5 4 8s1.5 5.5 1.5 5.5l1.5-1.5S6 10.5 6 8s1-4 1-4L5.5 2.5z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M2.5 5.5C2.5 5.5 2 6.7 2 8s.5 2.5.5 2.5M13.5 5.5C13.5 5.5 14 6.7 14 8s-.5 2.5-.5 2.5M5.5 2.5L4 1M10.5 2.5L12 1M5.5 13.5L4 15M10.5 13.5L12 15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            +57 304 413 8497
+          </a>
+          <a class="contact-link" href="https://lacuraduria.com" target="_blank">
+            <svg class="contact-link-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M8 2.5C8 2.5 6 5 6 8s2 5.5 2 5.5M8 2.5C8 2.5 10 5 10 8s-2 5.5-2 5.5M2.5 8h11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            lacuraduria.com
+          </a>
+        </div>
 
-    <!-- Table simple -->
-    <div class="pl-table-wrap" id="pl-table-wrap">
-      <table class="pl-table">
-        <thead>
-          <tr>
-            <th style="text-align:left;">Fuente</th>
-            <th>2026</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th>
-          </tr>
-        </thead>
-        <tbody id="plt"></tbody>
-      </table>
+      </div>
+      <div class="contact-sup">
+        <div class="contact-item">
+          <span class="contact-item-lbl">Ciudad</span>
+          <span class="contact-item-val">Bogotá, Colombia</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-lbl">Estado de la ronda</span>
+          <span class="contact-item-val" style="color:var(--coral);">Fase 1 activa · Cierre 1 jul 2026</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-lbl">Mínimo de inversión</span>
+          <span class="contact-item-val">$2.000.000 COP</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-lbl">Instrumento</span>
+          <span class="contact-item-val">Nota Convertible · 30% descuento</span>
+        </div>
+        <div style="margin-top:auto;padding-top:16px;border-top:1px solid var(--bord2);">
+          <p style="font-size:11px;color:var(--t4);line-height:1.7;">Toda la información de este hub es estrictamente confidencial. Al haberla recibido aceptaste el acuerdo de no divulgación.</p>
+        </div>
+      </div>
     </div>
-
-    <!-- Return box -->
-    <div id="plr" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:var(--surf);border-radius:16px;padding:18px;"></div>
-    <div class="uni-note" id="uninote" style="display:none;margin-top:12px;">Modo fantasía activado. Porque soñar también es parte del plan.</div>
   </div>
-</div>
+</section>
 
 <!-- FOOTER -->
 <footer class="hub-footer">
@@ -516,6 +894,9 @@ function renderPL(){
 
   // ── Bars ──
   var barsEl = document.getElementById('plb');
+  var tbody = document.getElementById('plt');
+  var plrEl = document.getElementById('plr');
+  if(!barsEl || !tbody || !plrEl) return;
   barsEl.innerHTML = '';
 
   rev.forEach(function(r, i){
@@ -547,7 +928,6 @@ function renderPL(){
   });
 
   // ── Table ──
-  var tbody = document.getElementById('plt');
   tbody.innerHTML = '';
 
   var sources = [
@@ -578,7 +958,6 @@ function renderPL(){
   var y5val = y5 * 5;
   var retorno = Math.round(y5val * equity / inv);
 
-  var plrEl = document.getElementById('plr');
   plrEl.innerHTML = [
     { l:'Ingresos año 3', v: fmtM(y3) + ' COP' },
     { l:'Ingresos año 5', v: fmtM(y5) + ' COP' },
@@ -601,8 +980,599 @@ function setSc(i){
   renderPL();
 }
 
-// Run on load
-renderPL();
+// ── Q&A ──
+function toggleQ(btn){
+  btn.classList.toggle('open');
+  var a = btn.nextElementSibling;
+  a.classList.toggle('open');
+}
+
+// ── Navegación SPA ──
+function navigate(key) {
+  // Ocultar hub principal
+  document.getElementById('hub-main').classList.add('hidden');
+  // Ocultar todas las vistas
+  document.querySelectorAll('.hub-view').forEach(function(v){ v.classList.remove('active'); });
+  // Mostrar la vista correcta
+  var view = document.getElementById('view-' + key);
+  if(view){ view.classList.add('active'); }
+  // Marcar item activo en doc-nav
+  document.querySelectorAll('.doc-nav-item').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('onclick') === "navigate('" + key + "')");
+  });
+  // Nav: ocultar badge (el volver está en doc-nav ahora)
+  document.getElementById('nav-back').style.display = 'none';
+  document.getElementById('nav-badge').style.display = 'none';
+  // Scroll al top
+  window.scrollTo(0, 0);
+  // Animar barra del tracker si aplica
+  if(key === 'tracker'){
+    setTimeout(function(){
+      var b = document.getElementById('trb1');
+      if(b) b.style.width = '40%';
+    }, 200);
+  }
+}
+
+function goBack() {
+  document.getElementById('hub-main').classList.remove('hidden');
+  document.querySelectorAll('.hub-view').forEach(function(v){ v.classList.remove('active'); });
+  document.querySelectorAll('.doc-nav-item').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('nav-back').style.display = 'none';
+  document.getElementById('nav-badge').style.display = '';
+  window.scrollTo(0, 0);
+}
+
+// Run after all SPA views are available
+window.addEventListener('load', renderPL);
+
+// ── Barras del tracker ──
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    var ht = document.getElementById('ht-bar');
+    var t1 = document.getElementById('trb1');
+    if(ht) ht.style.width = '40%';
+    if(t1) t1.style.width = '40%';
+  }, 400);
+});
 </script>
+
+</div><!-- /hub-main -->
+
+<!-- VISTAS SPA -->
+<div class="hub-view" id="view-teaser">
+  <div class="ts-glow"><div class="ts-glow-1" id="ts-glow1"></div><div class="ts-glow-2"></div></div>
+  <div class="ts-prog" id="ts-prog"></div>
+  <div class="ts-top">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <svg height="18" viewBox="0 0 315 244" fill="none"><defs><linearGradient id="nq3" x1="157" y1="0" x2="157" y2="244" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FF5A52"/><stop offset="100%" stop-color="#FF9D8C"/></linearGradient><radialGradient id="nd3" cx="50%" cy="30%" r="60%"><stop offset="0%" stop-color="#75E6F9"/><stop offset="100%" stop-color="#3BBFD4"/></radialGradient></defs><path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="url(#nq3)"/><path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="url(#nd3)"/></svg>
+      <button class="ts-back" onclick="goBack()">← Hub</button>
+    </div>
+    <span class="ts-counter" id="ts-counter">01 / 07</span>
+  </div>
+  <div class="ts-wrap">
+    <div class="ts-slide active" data-glow="rgba(255,115,108,.18)"><div class="ts-inner">
+      <div class="ts-eyebrow">Teaser del proyecto · 2026</div>
+      <div class="ts-logo"><svg viewBox="0 0 1795 244" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ts-q" x1="157" y1="0" x2="157" y2="244" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FF5A52"/><stop offset="100%" stop-color="#FF9D8C"/></linearGradient><radialGradient id="ts-d" cx="50%" cy="30%" r="60%"><stop offset="0%" stop-color="#75E6F9"/><stop offset="100%" stop-color="#3BBFD4"/></radialGradient></defs>
+<g clip-path="url(#clip0_180_1007)">
+<path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="url(#ts-q)"/>
+<path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="url(#ts-d)"/>
+<path d="M427.103 115.917H350.58V1.36438H388.842V77.7438H503.626C503.626 98.8361 486.497 115.934 465.365 115.934H427.103V115.917Z" fill="#FFFFF6"/>
+<path d="M627.503 1.36443H665.765V115.934H627.503V77.7439C627.503 98.8362 610.373 115.934 589.241 115.934H512.718V77.7439C512.718 35.4606 547.06 1.28223 589.324 1.28223H627.585L627.503 1.38087V1.36443ZM627.602 77.7439V39.5542H589.34C568.208 39.5542 551.079 56.6516 551.079 77.7439H627.602Z" fill="#FFFFF6"/>
+<path d="M427.153 204.446H503.626V242.619H427.153C384.889 242.619 350.58 208.391 350.58 166.19C350.58 145.065 367.726 128.017 388.825 128.017H503.544C503.544 149.142 486.398 166.19 465.299 166.19H388.825L388.908 166.272C388.908 187.398 406.054 204.446 427.153 204.446Z" fill="#FFFFF6"/>
+<path d="M512.735 166.24V128.05H550.996V166.24C550.996 187.332 568.126 204.429 589.258 204.429H627.52V128.05H665.781V242.619H589.258L589.357 242.718C547.093 242.718 512.751 208.539 512.751 166.256L512.735 166.24Z" fill="#FFFFF6"/>
+<path d="M713.283 128.116H789.756C810.921 128.116 828.001 145.229 828.001 166.289C828.001 187.348 810.855 204.462 789.756 204.462H751.511C730.346 204.462 713.266 221.576 713.266 242.635H675.021C675.021 200.451 709.313 166.207 751.594 166.207H675.12V128.033L675.037 128.116H713.283ZM828.067 242.701H789.822V204.528C810.987 204.528 828.067 221.642 828.067 242.701Z" fill="#FFFFF6"/>
+<path d="M951.96 128.05H990.222V242.619H951.96V204.429C951.96 225.522 934.831 242.619 913.699 242.619H837.176V204.429C837.176 162.146 871.517 127.968 913.781 127.968H952.043L951.96 128.066V128.05ZM952.043 204.429V166.24H913.781C892.649 166.24 875.52 183.337 875.52 204.429H952.043Z" fill="#FFFFF6"/>
+<path d="M1037.59 128.033H1075.84C1118.12 128.033 1152.41 162.245 1152.41 204.462C1152.41 225.604 1135.26 242.635 1114.16 242.635H999.429V128.116L999.347 128.033H1037.59ZM1037.66 166.207V204.38H1114.13C1114.13 183.238 1097 166.207 1075.89 166.207H1037.64H1037.66Z" fill="#FFFFF6"/>
+<path d="M1155.37 166.24V128.05H1193.64V166.24C1193.64 187.332 1210.77 204.429 1231.9 204.429H1270.16V128.05H1308.42V242.619H1231.9L1232 242.718C1189.73 242.718 1155.39 208.539 1155.39 166.256L1155.37 166.24Z" fill="#FFFFF6"/>
+<path d="M1355.76 128.116H1432.23C1453.4 128.116 1470.48 145.229 1470.48 166.289C1470.48 187.348 1453.33 204.462 1432.23 204.462H1393.99C1372.82 204.462 1355.74 221.576 1355.74 242.635H1317.5C1317.5 200.451 1351.79 166.207 1394.07 166.207H1317.59V128.033L1317.51 128.116H1355.76ZM1470.56 242.701H1432.31V204.528C1453.48 204.528 1470.56 221.642 1470.56 242.701Z" fill="#FFFFF6"/>
+<path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/>
+<path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/>
+</g>
+<defs>
+<clipPath id="clip0_180_1007">
+<rect width="1795" height="244" fill="white"/>
+</clipPath>
+</defs>
+</svg></div>
+      <div class="ts-headline">Un lente para el arte</div>
+      <div class="ts-sub">Una guía inteligente de música, arte y cultura que conecta audiencias, artistas y agentes en una sola plataforma.</div>
+      <div class="ts-meta">
+        <div><div class="ts-ml">Ciudad</div><div class="ts-mv">Bogotá, Colombia</div></div>
+        <div><div class="ts-ml">Etapa</div><div class="ts-mv">Beta · 2026</div></div>
+        <div><div class="ts-ml">Ronda</div><div class="ts-mv" style="color:var(--coral);">FFF · Activa</div></div>
+        <div><div class="ts-ml">Producto</div><div class="ts-mv" style="color:var(--cyan);">lacuraduria.net</div></div>
+      </div>
+    </div></div>
+    <div class="ts-slide" data-glow="rgba(255,125,152,.15)"><div class="ts-inner">
+      <div class="ts-tag" style="color:var(--pink);">El problema</div>
+      <div class="ts-intro">La oferta cultural se pierde en el ruido de las redes sociales.</div>
+      <div class="ts-psub">Esto reduce la eficiencia del sector, limita la visibilidad de los proyectos y genera pérdida de valor para artistas, gestores, audiencias, marcas y aliados.</div>
+      <div class="ts-actors">
+        <div class="ts-actor"><div class="ts-aname" style="color:var(--coral);">Audiencias</div><div class="ts-adesc">Se enteran tarde o no se enteran. La información sobre eventos se dispersa entre el contenido de entretenimiento.</div></div>
+        <div class="ts-actor"><div class="ts-aname" style="color:var(--yellow);">Promotores</div><div class="ts-adesc">Viven en incertidumbre sobre sus eventos. Sin herramientas para medir alcance real ni construir audiencias propias.</div></div>
+        <div class="ts-actor"><div class="ts-aname" style="color:var(--cyan);">Artistas</div><div class="ts-adesc">Pierden visibilidad. Sus proyectos no tienen un lugar donde existir de forma permanente y contextualizada.</div></div>
+      </div>
+    </div></div>
+    <div class="ts-slide" data-glow="rgba(117,230,249,.15)"><div class="ts-inner">
+      <div class="ts-tag" style="color:var(--cyan);">La solución</div>
+      <div class="ts-sh">Impulsamos la sostenibilidad del ecosistema cultural por medio de una plataforma que visibiliza circuitos locales, genera comunidad y crea nuevos canales de monetización e impacto.</div>
+      <div class="ts-ss">Una infraestructura para crecer audiencias que hagan posible la sostenibilidad de proyectos culturales.</div>
+      <div class="ts-feats">
+        <div class="ts-feat"><div class="ts-fi" style="color:var(--coral);">◎</div><div class="ts-fn">Cartelera</div><div class="ts-fd2">Eventos de música, arte y cultura en una sola vista.</div></div>
+        <div class="ts-feat"><div class="ts-fi" style="color:var(--cyan);">◈</div><div class="ts-fn">Catálogo</div><div class="ts-fd2">Perfiles conectados como un Wikipedia del arte local.</div></div>
+        <div class="ts-feat"><div class="ts-fi" style="color:var(--green);">◉</div><div class="ts-fn">Red social</div><div class="ts-fd2">Seguir, guardar, comentar y reseñar alrededor del arte.</div></div>
+        <div class="ts-feat"><div class="ts-fi" style="color:var(--yellow);">◆</div><div class="ts-fn">Marketplace</div><div class="ts-fd2">Entradas, obra, merch y contratación de talento.</div></div>
+      </div>
+    </div></div>
+    <div class="ts-slide" data-glow="rgba(255,211,53,.14)"><div class="ts-inner">
+      <div class="ts-tag" style="color:var(--yellow);">Tamaño del mercado</div>
+      <div class="ts-mkt">
+        <div class="ts-mi tam"><span class="ts-ml2">TAM</span><span class="ts-mv2">$90B</span><span class="ts-md">Mercado global de entretenimiento cultural, plataformas de contenido y ticketing.</span></div>
+        <div class="ts-mi sam"><span class="ts-ml2">SAM</span><span class="ts-mv2">$9B</span><span class="ts-md">Mercado direccionable en Latinoamérica — plataformas culturales, eventos y marketplace creativo.</span></div>
+        <div class="ts-mi som"><span class="ts-ml2">SOM</span><span class="ts-mv2">$5M</span><span class="ts-md">Mercado obtenible en Colombia en los primeros tres años de operación.</span></div>
+      </div>
+      <div class="ts-mnote">El mercado cultural latinoamericano crece impulsado por la digitalización del consumo cultural y la consolidación de escenas locales de música independiente, artes visuales y teatro.</div>
+    </div></div>
+    <div class="ts-slide" data-glow="rgba(255,125,152,.14)"><div class="ts-inner">
+      <div class="ts-tag" style="color:var(--pink);">Modelo de negocio</div>
+      <div class="ts-mgrid">
+        <div class="ts-mitem"><div class="ts-mbadge">B2C · Recurrente</div><div class="ts-mname">Suscripciones</div><div class="ts-mdesc">Plan gratuito y plan premium con acceso a contenido exclusivo, agenda avanzada y descuentos.</div></div>
+        <div class="ts-mitem"><div class="ts-mbadge">B2B · Transaccional</div><div class="ts-mname">Comisión por ventas</div><div class="ts-mdesc">Porcentaje sobre la venta de entradas, obra y merch procesada a través del marketplace.</div></div>
+        <div class="ts-mitem"><div class="ts-mbadge">B2B · Recurrente</div><div class="ts-mname">Herramientas para gestores</div><div class="ts-mdesc">Suite de promoción, gestión de eventos y analítica para proyectos culturales y festivales.</div></div>
+        <div class="ts-mitem"><div class="ts-mbadge">B2B · Campaña</div><div class="ts-mname">Alianzas y patrocinios</div><div class="ts-mdesc">Acceso a audiencias culturales segmentadas a través de contenido editorial y presencia en eventos.</div></div>
+      </div>
+    </div></div>
+    <div class="ts-slide" data-glow="rgba(117,230,249,.14)"><div class="ts-inner">
+      <div class="ts-tag" style="color:var(--cyan);">Retorno de la inversión</div>
+      <div class="ts-irow"><span class="ts-ilbl">Inversión</span><input class="ts-iinput" type="number" id="ts-invest" value="5000000" step="500000" min="500000"><span style="font-family:var(--fm);font-size:9px;color:var(--t4);">COP</span></div>
+      <div class="ts-stabs">
+        <button class="ts-stab" onclick="tsS('p')">Pesimista</button>
+        <button class="ts-stab apr" onclick="tsS('pr')">Probable</button>
+        <button class="ts-stab" onclick="tsS('o')">Optimista</button>
+        <button class="ts-stab" onclick="tsS('u')">Unicornio</button>
+      </div>
+      <div class="ts-panel" id="ts-pp"><div class="ts-rgrid"><div class="ts-rcard" style="background:rgba(106,104,98,.08);border:1px solid rgba(106,104,98,.2);"><span class="ts-rlbl">En 3 años</span><span class="ts-rmult" style="color:var(--t2);">×2</span><span class="ts-rsub" id="ts-p3"></span></div><div class="ts-rcard" style="background:rgba(106,104,98,.1);border:1px solid rgba(106,104,98,.22);"><span class="ts-rlbl">En 5 años</span><span class="ts-rmult" style="color:var(--t2);">×5</span><span class="ts-rsub" id="ts-p5"></span></div></div><div class="ts-rnote">Crecimiento lento, mercado más difícil de lo esperado. La plataforma sobrevive y genera tracción modesta.</div></div>
+      <div class="ts-panel active" id="ts-ppr"><div class="ts-rgrid"><div class="ts-rcard" style="background:rgba(117,230,249,.07);border:1px solid rgba(117,230,249,.2);"><span class="ts-rlbl">En 3 años</span><span class="ts-rmult" style="color:var(--cyan);">×5</span><span class="ts-rsub" id="ts-pr3"></span></div><div class="ts-rcard" style="background:rgba(117,230,249,.1);border:1px solid rgba(117,230,249,.25);"><span class="ts-rlbl">En 5 años</span><span class="ts-rmult" style="color:var(--cyan);">×10</span><span class="ts-rsub" id="ts-pr5"></span></div></div><div class="ts-rnote">Crecimiento orgánico con tracción en Bogotá, expansión a dos ciudades y primera ronda semilla cerrada.</div></div>
+      <div class="ts-panel" id="ts-po"><div class="ts-rgrid"><div class="ts-rcard" style="background:rgba(122,211,160,.07);border:1px solid rgba(122,211,160,.2);"><span class="ts-rlbl">En 3 años</span><span class="ts-rmult" style="color:var(--green);">×10</span><span class="ts-rsub" id="ts-o3"></span></div><div class="ts-rcard" style="background:rgba(122,211,160,.1);border:1px solid rgba(122,211,160,.25);"><span class="ts-rlbl">En 5 años</span><span class="ts-rmult" style="color:var(--green);">×20</span><span class="ts-rsub" id="ts-o5"></span></div></div><div class="ts-rnote">Crecimiento acelerado, expansión a tres ciudades y primeros ingresos del marketplace.</div></div>
+      <div class="ts-panel" id="ts-pu"><div class="ts-rgrid"><div class="ts-rcard" style="background:rgba(255,115,108,.08);border:1px solid rgba(255,115,108,.22);"><span class="ts-rlbl">En 3 años</span><span class="ts-rmult" style="color:var(--coral);">×25</span><span class="ts-rsub" id="ts-u3"></span></div><div class="ts-rcard" style="background:rgba(255,115,108,.1);border:1px solid rgba(255,115,108,.26);"><span class="ts-rlbl">En 5 años</span><span class="ts-rmult" style="color:var(--coral);">×50</span><span class="ts-rsub" id="ts-u5"></span></div></div><div class="ts-rnote">Expansión regional a Latinoamérica, rondas de capital internacional y posicionamiento como referente cultural digital.</div></div>
+    </div></div>
+    <div class="ts-slide" data-glow="rgba(255,115,108,.18)"><div class="ts-inner">
+      <div class="ts-tag" style="color:var(--coral);">Ronda FFF · Familia y Amigos</div>
+      <div class="ts-ronda-grid">
+        <div class="ts-rleft">
+          <span class="ts-rphase">Fase 1 · Activa</span>
+          <div class="ts-ramt">$20M <span class="ts-rof">de $50M COP</span></div>
+          <div class="ts-rbar"><div class="ts-rfill"></div></div>
+          <div class="ts-rfoot"><span class="ts-rstatus"><span class="pulse"></span>Activa</span><span class="ts-rcierre">Cierre · 1 jul 2026</span></div>
+          <div class="ts-objetivo"><div class="ts-obj-lbl">Objetivo</div><div class="ts-obj-txt">Adquirir usuarios y generar tracción para validar el proyecto y levantar ronda presemilla con una valoración más alta.</div></div>
+          <div class="ts-fondos"><div class="ts-flbl">Uso de fondos</div><div class="ts-ftags"><span class="ts-ftag">Constitución legal</span><span class="ts-ftag">Software básico</span><span class="ts-ftag">Hardware</span><span class="ts-ftag">Registro de marca</span><span class="ts-ftag">Contaduría</span><span class="ts-ftag">Asesoría legal y financiera</span><span class="ts-ftag">Campaña de mercadeo</span></div></div>
+        </div>
+        <div class="ts-rspecs">
+          <div class="ts-rspec"><span class="ts-rsl">Tipo</span><span class="ts-rsv">Acción tipo A2</span></div>
+          <div class="ts-rspec"><span class="ts-rsl">Descuento</span><span class="ts-rsv c">30%</span></div>
+          <div class="ts-rspec"><span class="ts-rsl">Valuation cap</span><span class="ts-rsv">$2.000M COP</span></div>
+          <div class="ts-rspec"><span class="ts-rsl">Dilución</span><span class="ts-rsv">No diluible</span></div>
+          <div class="ts-rspec"><span class="ts-rsl">Liquidación</span><span class="ts-rsv">Preferencia 1x</span></div>
+          <div class="ts-rspec"><span class="ts-rsl">Cierre</span><span class="ts-rsv">1 jul 2026</span></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+  <div class="ts-bot">
+    <span class="ts-lbl" id="ts-lbl">Portada</span>
+    <div class="ts-dots" id="ts-dots"></div>
+    <div class="ts-btns">
+      <button class="ts-btn" id="ts-prev" onclick="tsGo(-1)" disabled>←</button>
+      <button class="ts-btn" id="ts-next" onclick="tsGo(1)">→</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var slides=document.querySelectorAll('#view-teaser .ts-slide');
+  var labels=['Portada','El problema','La solución','Tamaño del mercado','Modelo de negocio','Retorno de la inversión','Ronda FFF'];
+  var cur=0,total=slides.length;
+  var dotsEl=document.getElementById('ts-dots');
+  for(var i=0;i<total;i++){var d=document.createElement('div');d.className='ts-dot'+(i===0?' active':'');d.setAttribute('data-i',i);d.onclick=function(){tsGoTo(+this.getAttribute('data-i'));};dotsEl.appendChild(d);}
+  window.tsGoTo=function(n){slides[cur].classList.remove('active');slides[cur].classList.add('prev');setTimeout(function(){slides[cur].classList.remove('prev');},400);cur=n;slides[cur].classList.add('active');document.querySelectorAll('#view-teaser .ts-dot').forEach(function(d,i){d.classList.toggle('active',i===cur);});document.getElementById('ts-counter').textContent=String(cur+1).padStart(2,'0')+' / '+String(total).padStart(2,'0');document.getElementById('ts-lbl').textContent=labels[cur];document.getElementById('ts-prev').disabled=cur===0;document.getElementById('ts-next').disabled=cur===total-1;document.getElementById('ts-prog').style.width=((cur+1)/total*100)+'%';var g=slides[cur].getAttribute('data-glow');if(g)document.getElementById('ts-glow1').style.background='radial-gradient(circle,'+g+',transparent 70%)';};
+  window.tsGo=function(dir){var n=Math.max(0,Math.min(total-1,cur+dir));if(n!==cur)tsGoTo(n);};
+  document.addEventListener('keydown',function(e){if(document.getElementById('view-teaser').classList.contains('active')){if(e.key==='ArrowRight'||e.key==='ArrowDown')tsGo(1);if(e.key==='ArrowLeft'||e.key==='ArrowUp')tsGo(-1);}});
+  var sc={p:{m3:2,m5:5},pr:{m3:5,m5:10},o:{m3:10,m5:20},u:{m3:25,m5:50}};
+  function fmt(n){return n.toLocaleString('es-CO');}
+  function upd(){var inv=parseInt(document.getElementById('ts-invest').value)||5000000;Object.keys(sc).forEach(function(k){var d=sc[k];var e3=document.getElementById('ts-'+k+'3');var e5=document.getElementById('ts-'+k+'5');if(e3)e3.textContent='= $'+fmt(inv*d.m3)+' COP';if(e5)e5.textContent='= $'+fmt(inv*d.m5)+' COP';});}
+  window.tsS=function(k){var map={p:'ap',pr:'apr',o:'ao',u:'au'};document.querySelectorAll('#view-teaser .ts-stab').forEach(function(b){b.className='ts-stab';});document.querySelectorAll('#view-teaser .ts-stab')[['p','pr','o','u'].indexOf(k)].classList.add(map[k]);document.querySelectorAll('#view-teaser .ts-panel').forEach(function(p){p.classList.remove('active');});document.getElementById('ts-p'+k).classList.add('active');upd();};
+  document.getElementById('ts-invest').addEventListener('input',upd);upd();
+})();
+</script>
+
+<div class="hub-view" id="view-tracker">
+  <div class="view-inner">
+    
+    <div class="view-header">
+      <div class="view-num">03 / 06</div>
+      <div class="view-title" style="color:var(--green);">Ronda de Inversión</div>
+    </div>
+    
+    <div class="tracker">
+      <div class="tr-left">
+        <span class="tr-phase-tag">Fase 1 · Familia y Amigos</span>
+        <div class="tr-bignum">
+          <span class="tr-pct-big">40%</span>
+          <span class="tr-pct-lbl">de la<br>fase</span>
+        </div>
+        <div class="tr-amounts">$20M <span>de $50M COP recaudados</span></div>
+        <div class="tr-bar"><div class="tr-bar-fill" id="trb1"></div></div>
+        <div class="tr-bar-meta">
+          <span class="tr-status"><span class="pulse"></span>Activa</span>
+          <span class="tr-close">Cierre · 1 jul 2026</span>
+        </div>
+      </div>
+      <div class="tr-right">
+        <div class="tr-spec"><span class="tr-spec-lbl">Tipo</span><span class="tr-spec-val">Acción tipo A2</span></div>
+        <div class="tr-spec"><span class="tr-spec-lbl">Descuento</span><span class="tr-spec-val cyan">30%</span></div>
+        <div class="tr-spec"><span class="tr-spec-lbl">Valuation cap</span><span class="tr-spec-val">$2.000M COP</span></div>
+        <div class="tr-spec"><span class="tr-spec-lbl">Dilución</span><span class="tr-spec-val">No diluible</span></div>
+        <div class="tr-spec"><span class="tr-spec-lbl">Liquidación</span><span class="tr-spec-val">Preferencia 1x</span></div>
+        <div class="tr-spec"><span class="tr-spec-lbl">Cierre</span><span class="tr-spec-val">1 jul 2026</span></div>
+      </div>
+      <div class="tr-funds-block">
+        <span class="tr-funds-lbl">Uso de fondos</span>
+        <div class="tr-funds">
+          <span class="tr-fi">Constitución legal</span>
+          <span class="tr-fi">Software básico</span>
+          <span class="tr-fi">Hardware</span>
+          <span class="tr-fi">Registro de marca</span>
+          <span class="tr-fi">Contaduría</span>
+          <span class="tr-fi">Asesoría legal y financiera</span>
+        </div>
+      </div>
+      <p class="tr-note">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.5 4.5L13 7l-4.5 1.5L7 13l-1.5-4.5L1 7l4.5-1.5L7 1z" fill="#75E6F9" opacity=".7"/></svg>
+        <span>Al completar la Fase 1 el valuation cap se duplica de <b>$2.000M</b> a <b>$4.000M COP</b>, reflejando el mayor valor del proyecto una vez constituido legalmente.</span>
+      </p>
+    </div>
+    
+  
+    <!-- Q&A nota convertible -->
+    <div style="margin-top:clamp(36px,5vh,56px);border-top:1px solid var(--bord);padding-top:clamp(28px,4vh,44px);">
+      <div style="font-family:var(--fm);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--t4);margin-bottom:24px;">Preguntas frecuentes</div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+
+        <div class="qna-item">
+          <button class="qna-q" onclick="toggleQ(this)">
+            ¿Qué es una nota convertible?
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </button>
+          <div class="qna-a">Una nota convertible es un instrumento de inversión que funciona inicialmente como deuda pero está diseñado para convertirse en participación accionaria de la empresa al cumplirse un evento de conversión — generalmente la constitución legal de la empresa o el cierre de una ronda de inversión más grande. En lugar de devolver el dinero en efectivo con intereses, la empresa entrega acciones al inversionista, normalmente con un descuento sobre la valoración que se establezca en el evento de conversión.</div>
+        </div>
+
+        <div class="qna-item">
+          <button class="qna-q" onclick="toggleQ(this)">
+            ¿Cuándo se convierte la nota en acciones?
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </button>
+          <div class="qna-a">El evento de conversión es la constitución legal de La Curaduría como empresa. En ese momento, la nota se convierte automáticamente en acciones tipo A2, con un descuento del 30% sobre la valoración que se establezca en ese momento. El valuation cap de $2.000M COP garantiza que, sin importar a qué valoración se constituya la empresa, la conversión no se hará a un precio por acción mayor al equivalente a esa valoración.</div>
+        </div>
+
+        <div class="qna-item">
+          <button class="qna-q" onclick="toggleQ(this)">
+            ¿Qué significa el descuento del 30%?
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </button>
+          <div class="qna-a">Significa que cuando la nota se convierte en acciones, el precio por acción que paga quien invirtió en esta ronda es un 30% menor al precio que pagarán los inversionistas de la siguiente ronda. Es una forma de compensar el riesgo que asume quien invierte primero, cuando el proyecto aún está en una etapa temprana.</div>
+        </div>
+
+        <div class="qna-item">
+          <button class="qna-q" onclick="toggleQ(this)">
+            ¿Qué es el valuation cap?
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </button>
+          <div class="qna-a">El valuation cap es el tope máximo de valoración que se usa para calcular el precio por acción al momento de la conversión. Si en el evento de conversión la empresa se valora en $3.000M COP, el inversionista de esta ronda recibe acciones calculadas sobre $2.000M COP — lo que le da una participación mayor que si hubiera invertido a la valoración real. Es una protección adicional para quien invierte temprano.</div>
+        </div>
+
+        <div class="qna-item">
+          <button class="qna-q" onclick="toggleQ(this)">
+            ¿Qué significa que las acciones no sean diluibles?
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </button>
+          <div class="qna-a">Que en rondas de inversión posteriores a la conversión, la participación obtenida en esta ronda no se reducirá proporcionalmente cuando se emitan nuevas acciones. Esto protege el porcentaje de participación del inversionista frente al crecimiento futuro de la empresa.</div>
+        </div>
+
+        <div class="qna-item">
+          <button class="qna-q" onclick="toggleQ(this)">
+            ¿Qué es la preferencia de liquidación 1x?
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </button>
+          <div class="qna-a">Significa que en caso de que la empresa se venda o liquide, los inversionistas de esta ronda tienen derecho a recuperar primero el valor de su inversión original (1x) antes de que el resto del capital se distribuya entre los demás accionistas. Es una capa básica de protección ante escenarios adversos.</div>
+        </div>
+
+      </div>
+    </div>
+<div class="doc-footer-nav">
+    <div class="dfn-inner">
+      <div class="dfn-grid">
+      <button class="dfn-item dfn-back" onclick="goBack()">
+        <span class="dfn-num">←</span>
+        <span class="dfn-name">Hub</span>
+        <span class="dfn-desc">Volver al inicio</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-1" onclick="navigate('teaser')" style="--c:var(--coral);">
+        <span class="dfn-num">01</span>
+        <span class="dfn-name" style="color:var(--coral);">Teaser</span>
+        <span class="dfn-desc">Presentación ejecutiva</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-3 active" onclick="navigate('tracker')">
+        <span class="dfn-num">03</span>
+        <span class="dfn-name">Ronda de Inversión</span>
+        <span class="dfn-desc">Tracker de la ronda</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-4" onclick="navigate('pnl')">
+        <span class="dfn-num">04</span>
+        <span class="dfn-name">Proyecciones</span>
+        <span class="dfn-desc">Simulador 5 años</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-5" onclick="navigate('gtm')">
+        <span class="dfn-num">05</span>
+        <span class="dfn-name">Go to Market</span>
+        <span class="dfn-desc">Estrategia de salida</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-6" onclick="navigate('equipo')">
+        <span class="dfn-num">06</span>
+        <span class="dfn-name">Equipo</span>
+        <span class="dfn-desc">El equipo</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<div class="hub-view" id="view-pnl">
+  <div class="view-inner">
+    
+    <div class="view-header">
+      <div class="view-num">04 / 06</div>
+      <div class="view-title" style="color:var(--yellow);">Proyecciones · 5 años</div>
+    </div>
+    
+    <div class="pl-scenarios">
+      <button class="sc-btn s0" onclick="setSc(0)">Pesimista · x3</button>
+      <button class="sc-btn active s1" onclick="setSc(1)">Probable · x5</button>
+      <button class="sc-btn s2" onclick="setSc(2)">Optimista · x10</button>
+      <button class="sc-btn s3" onclick="setSc(3)">Unicornio · x100</button>
+    </div>
+
+    <!-- Chart -->
+    <div class="pl-chart" id="pl-chart-wrap">
+      <div class="pl-chart-label">Ingresos totales en M COP · 2026 — 2030</div>
+      <div id="plb" style="display:flex;align-items:flex-end;gap:14px;height:180px;padding-top:8px;"></div>
+    </div>
+
+    <!-- Table simple -->
+    <div class="pl-table-wrap" id="pl-table-wrap">
+      <table class="pl-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Fuente</th>
+            <th>2026</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th>
+          </tr>
+        </thead>
+        <tbody id="plt"></tbody>
+      </table>
+    </div>
+
+    <!-- Return box -->
+    <div id="plr" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:var(--surf);border-radius:16px;padding:18px;"></div>
+    <div class="uni-note" id="uninote" style="display:none;margin-top:12px;">Modo fantasía activado. Porque soñar también es parte del plan.</div>
+  </div>
+  <div class="doc-footer-nav">
+    <div class="dfn-inner">
+      <div class="dfn-grid">
+      <button class="dfn-item dfn-back" onclick="goBack()">
+        <span class="dfn-num">←</span>
+        <span class="dfn-name">Hub</span>
+        <span class="dfn-desc">Volver al inicio</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-1" onclick="navigate('teaser')" style="--c:var(--coral);">
+        <span class="dfn-num">01</span>
+        <span class="dfn-name" style="color:var(--coral);">Teaser</span>
+        <span class="dfn-desc">Presentación ejecutiva</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-3" onclick="navigate('tracker')">
+        <span class="dfn-num">03</span>
+        <span class="dfn-name">Ronda de Inversión</span>
+        <span class="dfn-desc">Tracker de la ronda</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-4 active" onclick="navigate('pnl')">
+        <span class="dfn-num">04</span>
+        <span class="dfn-name">Proyecciones</span>
+        <span class="dfn-desc">Simulador 5 años</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-5" onclick="navigate('gtm')">
+        <span class="dfn-num">05</span>
+        <span class="dfn-name">Go to Market</span>
+        <span class="dfn-desc">Estrategia de salida</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-6" onclick="navigate('equipo')">
+        <span class="dfn-num">06</span>
+        <span class="dfn-name">Equipo</span>
+        <span class="dfn-desc">El equipo</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="hub-view" id="view-gtm">
+  <div class="view-inner">
+    
+    <div class="view-header">
+      <div class="view-num">05 / 06</div>
+      <div class="view-title" style="color:var(--pink);">Go to Market</div>
+    </div>
+    
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+      <div style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:20px;">
+        <div style="font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:8px;">Fase 0 · Ahora</div>
+        <div style="font-family:var(--fd);font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--t1);margin-bottom:8px;">Beta cerrada</div>
+        <p style="font-size:12px;color:var(--t3);line-height:1.65;">Invitación directa a creadores, gestores y espacios culturales de Bogotá. Foco en iterar el producto con usuarios reales antes de la apertura.</p>
+      </div>
+      <div style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:20px;">
+        <div style="font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;">Fase 1 · Q3 2026</div>
+        <div style="font-family:var(--fd);font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--t1);margin-bottom:8px;">Lanzamiento Bogotá</div>
+        <p style="font-size:12px;color:var(--t3);line-height:1.65;">Apertura pública con campaña en redes sociales, alianzas con espacios culturales y cubrimiento de prensa especializada en arte y cultura.</p>
+      </div>
+      <div style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:20px;">
+        <div style="font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:8px;">Fase 2 · Q1 2027</div>
+        <div style="font-family:var(--fd);font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--t1);margin-bottom:8px;">Expansión nacional</div>
+        <p style="font-size:12px;color:var(--t3);line-height:1.65;">Medellín, Cali y Cartagena. Alianzas con festivales, ferias de arte y circuitos de música independiente en cada ciudad.</p>
+      </div>
+      <div style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:20px;">
+        <div style="font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;">Fase 3 · 2028</div>
+        <div style="font-family:var(--fd);font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--t1);margin-bottom:8px;">Latinoamérica</div>
+        <p style="font-size:12px;color:var(--t3);line-height:1.65;">México, Argentina y Chile como primeros mercados internacionales, apoyados en ronda semilla y en la tracción generada en Colombia.</p>
+      </div>
+    </div>
+    <div style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:20px;">
+      <div style="font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--t4);margin-bottom:14px;">Canales de adquisición</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span style="font-family:var(--fm);font-size:11px;color:var(--t3);background:rgba(255,255,246,.04);border:1px solid var(--bord2);border-radius:6px;padding:6px 12px;">Comunidades en redes sociales</span>
+        <span style="font-family:var(--fm);font-size:11px;color:var(--t3);background:rgba(255,255,246,.04);border:1px solid var(--bord2);border-radius:6px;padding:6px 12px;">Alianzas con espacios culturales</span>
+        <span style="font-family:var(--fm);font-size:11px;color:var(--t3);background:rgba(255,255,246,.04);border:1px solid var(--bord2);border-radius:6px;padding:6px 12px;">Prensa especializada</span>
+        <span style="font-family:var(--fm);font-size:11px;color:var(--t3);background:rgba(255,255,246,.04);border:1px solid var(--bord2);border-radius:6px;padding:6px 12px;">Festivales y ferias de arte</span>
+        <span style="font-family:var(--fm);font-size:11px;color:var(--t3);background:rgba(255,255,246,.04);border:1px solid var(--bord2);border-radius:6px;padding:6px 12px;">Referidos de creadores</span>
+        <span style="font-family:var(--fm);font-size:11px;color:var(--t3);background:rgba(255,255,246,.04);border:1px solid var(--bord2);border-radius:6px;padding:6px 12px;">Pauta digital segmentada</span>
+      </div>
+    </div>
+  
+  <div class="doc-footer-nav">
+    <div class="dfn-inner">
+      <div class="dfn-grid">
+      <button class="dfn-item dfn-back" onclick="goBack()">
+        <span class="dfn-num">←</span>
+        <span class="dfn-name">Hub</span>
+        <span class="dfn-desc">Volver al inicio</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-1" onclick="navigate('teaser')" style="--c:var(--coral);">
+        <span class="dfn-num">01</span>
+        <span class="dfn-name" style="color:var(--coral);">Teaser</span>
+        <span class="dfn-desc">Presentación ejecutiva</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-3" onclick="navigate('tracker')">
+        <span class="dfn-num">03</span>
+        <span class="dfn-name">Ronda de Inversión</span>
+        <span class="dfn-desc">Tracker de la ronda</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-4" onclick="navigate('pnl')">
+        <span class="dfn-num">04</span>
+        <span class="dfn-name">Proyecciones</span>
+        <span class="dfn-desc">Simulador 5 años</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-5 active" onclick="navigate('gtm')">
+        <span class="dfn-num">05</span>
+        <span class="dfn-name">Go to Market</span>
+        <span class="dfn-desc">Estrategia de salida</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-6" onclick="navigate('equipo')">
+        <span class="dfn-num">06</span>
+        <span class="dfn-name">Equipo</span>
+        <span class="dfn-desc">El equipo</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<div class="hub-view" id="view-equipo">
+  <div class="view-inner">
+    <div class="view-header">
+      <div class="view-num">06 / 06</div>
+      <div class="view-title" style="color:var(--violet);">Equipo</div>
+    </div>
+    
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+      <div style="background:linear-gradient(160deg,rgba(169,155,232,.08),rgba(169,155,232,.02));border:1px solid rgba(169,155,232,.22);border-radius:10px;padding:22px;">
+        <div style="font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--violet);margin-bottom:6px;">Fundador</div>
+        <div style="font-family:var(--fd);font-weight:800;font-size:18px;letter-spacing:-.02em;color:var(--t1);margin-bottom:2px;">Nicolás Pava</div>
+        <div style="font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);margin-bottom:12px;">CEO · Producto · Estrategia</div>
+        <p style="font-size:12px;color:var(--t3);line-height:1.7;">Gestor cultural y emprendedor con experiencia en el ecosistema de arte y música de Bogotá. Construyendo La Curaduría desde el conocimiento profundo del sector.</p>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(169,155,232,.18);">
+          <a href="mailto:nicolas.pava@lacuraduria.net" style="font-family:var(--fm);font-size:9px;color:var(--violet);letter-spacing:.08em;">nicolas.pava@lacuraduria.net</a>
+        </div>
+      </div>
+      <div style="background:var(--surf);border:1px solid var(--bord2);border-radius:10px;padding:22px;opacity:.6;">
+        <div style="font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--t4);margin-bottom:6px;">Posición abierta</div>
+        <div style="font-family:var(--fd);font-weight:800;font-size:18px;letter-spacing:-.02em;color:var(--t3);margin-bottom:2px;">CTO</div>
+        <div style="font-family:var(--fm);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);margin-bottom:12px;">Tecnología · Desarrollo</div>
+        <p style="font-size:12px;color:var(--t4);line-height:1.7;">Parte de los fondos de la ronda presemilla están destinados a vincular un perfil técnico que lidere el desarrollo de la plataforma.</p>
+      </div>
+    </div>
+    <div style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:20px;">
+      <div style="font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--t4);margin-bottom:12px;">Asesores y aliados</div>
+      <p style="font-size:12px;color:var(--t3);line-height:1.7;">La Curaduría cuenta con el respaldo de una red de gestores culturales, artistas y profesionales del sector que acompañan el desarrollo del producto y la estrategia de mercado.</p>
+    </div>
+  
+  </div>
+  <div class="doc-footer-nav">
+    <div class="dfn-inner">
+      <div class="dfn-grid">
+      <button class="dfn-item dfn-back" onclick="goBack()">
+        <span class="dfn-num">←</span>
+        <span class="dfn-name">Hub</span>
+        <span class="dfn-desc">Volver al inicio</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-1" onclick="navigate('teaser')" style="--c:var(--coral);">
+        <span class="dfn-num">01</span>
+        <span class="dfn-name" style="color:var(--coral);">Teaser</span>
+        <span class="dfn-desc">Presentación ejecutiva</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-3" onclick="navigate('tracker')">
+        <span class="dfn-num">03</span>
+        <span class="dfn-name">Ronda de Inversión</span>
+        <span class="dfn-desc">Tracker de la ronda</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-4" onclick="navigate('pnl')">
+        <span class="dfn-num">04</span>
+        <span class="dfn-name">Proyecciones</span>
+        <span class="dfn-desc">Simulador 5 años</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-5" onclick="navigate('gtm')">
+        <span class="dfn-num">05</span>
+        <span class="dfn-name">Go to Market</span>
+        <span class="dfn-desc">Estrategia de salida</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      <button class="dfn-item dc-6 active" onclick="navigate('equipo')">
+        <span class="dfn-num">06</span>
+        <span class="dfn-name">Equipo</span>
+        <span class="dfn-desc">El equipo</span>
+        <span class="dfn-arrow">→</span>
+      </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
