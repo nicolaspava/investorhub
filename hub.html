@@ -868,22 +868,52 @@ function toggleNC(n){
 }
 
 // ── P&L Simulator ──
-var YEARS = ['2026','2027','2028','2029','2030'];
+var YEARS = ['2027','2028','2029','2030','2031'];
 
-// Base: Y1 = 400M COP. Revenue split: Sus 40%, Mkt 35%, Pub 25%
-// Multipliers applied to Y1 base to get Y3 target
+// Cifras en millones de COP
+// Metodología: Usuarios registrados × Tasa de conversión × Ticket promedio anual
+// Escenario probable tomado de la tabla de proyecciones oficial del proyecto
+var TABLE_DATA = {
+  users:      [5000,   15000,  40000,   85000,   150000 ],
+  conv_pct:   [0.05,   0.06,   0.07,    0.08,    0.09   ],
+  ticket:     [180000, 185000, 190000,  195000,  200000 ],
+  paying:     [250,    900,    2800,    6800,    13500  ],
+  // Ventas en COP exactas (para mostrar en tabla)
+  ventas_cop: [108600000, 303405000, 848560000, 1982550000, 3925000000]
+};
+
+// rev en millones de COP (redondeados)
 var SCENARIOS = {
-  0: { label:'Pesimista · x3', color:'#D6D2C5', rev:[400, 750, 1200, 1600, 2000] },
-  1: { label:'Probable · x5',  color:'#FF736C', rev:[400, 1000, 2000, 3200, 4800] },
-  2: { label:'Optimista · x10',color:'#75E6F9', rev:[400, 1800, 4000, 7500, 12000] },
-  3: { label:'Unicornio · x100',color:'#FFD335',rev:[400, 4000, 20000, 80000, 200000] }
+  0: { label:'Pesimista',  color:'#D6D2C5',
+       rev:   [65,   182,   509,  1190,  2355],
+       users: [3000, 9000, 24000, 51000, 90000],
+       conv:  [0.04, 0.05,  0.06,  0.07,  0.075] },
+  1: { label:'Probable',   color:'#FF736C',
+       rev:   [109,  303,   849,  1983,  3925],
+       users: TABLE_DATA.users,
+       conv:  TABLE_DATA.conv_pct },
+  2: { label:'Optimista',  color:'#75E6F9',
+       rev:   [163,  545,  1528,  3570,  7065],
+       users: [7500, 22500, 60000, 127500, 225000],
+       conv:  [0.06, 0.07,  0.085, 0.10,  0.11] },
+  3: { label:'Unicornio',  color:'#FFD335',
+       rev:   [218,  910,  2970,  7930, 19625],
+       users: [10000,30000,80000,170000,300000],
+       conv:  [0.07, 0.09,  0.11,  0.135, 0.15] }
 };
 
 var currentSc = 1;
 
+function fmtCOP(n){
+  if(n >= 1000000000) return '$' + (n/1000000000).toFixed(1).replace(/\.0$/,'') + ' mil M';
+  if(n >= 1000000)    return '$' + (n/1000000).toFixed(0) + 'M';
+  return '$' + n.toLocaleString('es-CO');
+}
+
 function fmtM(n){
-  if(n >= 1000) return (n/1000).toFixed(1).replace(/\.0$/,'') + 'B';
-  return n.toFixed(0) + 'M';
+  // n está en millones de COP
+  if(n >= 1000) return '$' + n.toLocaleString('es-CO') + 'M';
+  return '$' + Math.round(n) + 'M';
 }
 
 function renderPL(){
@@ -930,38 +960,36 @@ function renderPL(){
   // ── Table ──
   tbody.innerHTML = '';
 
-  var sources = [
-    { name:'Suscripciones', pct:0.40 },
-    { name:'Marketplace',   pct:0.35 },
-    { name:'Publicidad',    pct:0.25 }
+  var rows = [
+    { name:'Usuarios registrados', vals: sc.users.map(function(u){ return u.toLocaleString('es-CO'); }) },
+    { name:'Usuarios pagos',       vals: sc.users.map(function(u,i){ return Math.round(u * sc.conv[i]).toLocaleString('es-CO'); }) },
+    { name:'Tasa de conversión',   vals: sc.conv.map(function(c){ return (c*100).toFixed(1) + '%'; }) },
+    { name:'Ticket promedio anual',vals: ['$180.000','$185.000','$190.000','$195.000','$200.000'] },
+    { name:'Ventas proyectadas',   vals: rev.map(function(r){ return fmtM(r); }), tot: true }
   ];
 
-  sources.forEach(function(src){
+  rows.forEach(function(row){
     var tr = document.createElement('tr');
-    var vals = rev.map(function(r){ return Math.round(r * src.pct); });
-    tr.innerHTML = '<td>' + src.name + '</td>' + vals.map(function(v){ return '<td>' + fmtM(v) + '</td>'; }).join('');
+    if(row.tot) tr.className = 'tot';
+    tr.innerHTML = '<td>' + row.name + '</td>' + row.vals.map(function(v){
+      return '<td' + (row.tot ? ' style="color:' + color + '"' : '') + '>' + v + '</td>';
+    }).join('');
     tbody.appendChild(tr);
   });
 
-  // Total row
-  var totRow = document.createElement('tr');
-  totRow.className = 'tot';
-  totRow.innerHTML = '<td>Total ingresos</td>' + rev.map(function(r){ return '<td style="color:' + color + '">' + fmtM(r) + '</td>'; }).join('');
-  tbody.appendChild(totRow);
-
   // ── Return box ──
-  var y5 = rev[4];
-  var y3 = rev[2];
-  var inv = 200; // M COP
-  var valCap = 2000; // M COP
-  var equity = inv / valCap; // ~10%
-  var y5val = y5 * 5;
+  var y3 = rev[2]; // 2029
+  var y5 = rev[4]; // 2031
+  var inv = 200;   // M COP inversión referencia
+  var valCap = 2000;
+  var equity = inv / valCap;
+  var y5val = y5 * 4;
   var retorno = Math.round(y5val * equity / inv);
 
   plrEl.innerHTML = [
-    { l:'Ingresos año 3', v: fmtM(y3) + ' COP' },
-    { l:'Ingresos año 5', v: fmtM(y5) + ' COP' },
-    { l:'Retorno estimado', v: 'x' + retorno, c: color }
+    { l:'Ventas 2029 (año 3)', v: fmtM(y3) },
+    { l:'Ventas 2031 (año 5)', v: fmtM(y5) },
+    { l:'Retorno estimado ×' + retorno, v: fmtM(Math.round(y5val * equity)), c: color }
   ].map(function(it){
     return '<div style="display:flex;flex-direction:column;gap:4px;">'
       + '<span style="font-family:\'DM Mono\',monospace;font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:#6B6862;">' + it.l + '</span>'
@@ -1342,15 +1370,15 @@ window.addEventListener('load', function(){
     </div>
     
     <div class="pl-scenarios">
-      <button class="sc-btn s0" onclick="setSc(0)">Pesimista · x3</button>
-      <button class="sc-btn active s1" onclick="setSc(1)">Probable · x5</button>
-      <button class="sc-btn s2" onclick="setSc(2)">Optimista · x10</button>
-      <button class="sc-btn s3" onclick="setSc(3)">Unicornio · x100</button>
+      <button class="sc-btn s0" onclick="setSc(0)">Pesimista</button>
+      <button class="sc-btn active s1" onclick="setSc(1)">Probable</button>
+      <button class="sc-btn s2" onclick="setSc(2)">Optimista</button>
+      <button class="sc-btn s3" onclick="setSc(3)">Unicornio</button>
     </div>
 
     <!-- Chart -->
     <div class="pl-chart" id="pl-chart-wrap">
-      <div class="pl-chart-label">Ingresos totales en M COP · 2026 — 2030</div>
+      <div class="pl-chart-label">Ventas proyectadas en COP · 2027 — 2031</div>
       <div id="plb" style="display:flex;align-items:flex-end;gap:14px;height:180px;padding-top:8px;"></div>
     </div>
 
@@ -1359,8 +1387,8 @@ window.addEventListener('load', function(){
       <table class="pl-table">
         <thead>
           <tr>
-            <th style="text-align:left;">Fuente</th>
-            <th>2026</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th>
+            <th style="text-align:left;">Indicador</th>
+            <th>2027</th><th>2028</th><th>2029</th><th>2030</th><th>2031</th>
           </tr>
         </thead>
         <tbody id="plt"></tbody>
