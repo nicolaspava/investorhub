@@ -103,7 +103,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
 .hero-left{display:flex;flex-direction:column;align-items:flex-start;}
 .hero-logo-svg{display:block;margin-bottom:clamp(14px,2vh,24px);}
 .hero-logo-svg svg{width:clamp(160px,24vw,300px);height:auto;display:block;}
-.hero-tagline-txt{font-family:'Syne Mono',monospace;font-weight:400;font-size:clamp(14px,1.6vw,22px);letter-spacing:-.02em;color:var(--t1);margin-bottom:clamp(14px,2vh,24px);line-height:1.1;}
+.hero-tagline-txt{font-family:var(--fd);font-weight:700;font-size:clamp(15px,1.8vw,24px);letter-spacing:-.03em;color:var(--t1);margin-bottom:clamp(14px,2vh,24px);line-height:1.2;}
 .hero-pitch{display:flex;flex-direction:column;gap:9px;}
 .hero-pitch p{font-size:clamp(12px,1.25vw,14px);line-height:1.8;color:var(--t2);font-weight:300;}
 .hero-pitch p strong{color:var(--t1);font-weight:500;}
@@ -194,9 +194,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
 @media(max-width:700px){.cards-section{padding:0 20px 48px;}}
 .cards-wrap{max-width:1120px;margin:0 auto;}
 .sec-label{font-family:var(--fm);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--t4);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
-.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
 @media(max-width:960px){.cards-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){.cards-grid{grid-template-columns:1fr;}}
+.gtm-phases{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;}
+@media(max-width:760px){.gtm-phases{grid-template-columns:1fr;}}
 .dc{border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px;cursor:pointer;transition:all .22s;border:1px solid transparent;position:relative;overflow:hidden;text-decoration:none;}
 .dc:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.5);}
 .dc-accent{width:3px;height:28px;border-radius:2px;flex-shrink:0;margin-bottom:2px;}
@@ -525,12 +527,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
 </clipPath>
 </defs>
 </svg></div>
-      <div class="hero-tagline-txt">Guia inteligente de musica, arte y cultura</div>
+      <div class="hero-tagline-txt">Guía inteligente de música, arte y entretenimiento</div>
       <div class="hero-pitch">
         <span class="pitch-eye">Proposito</span>
-        <p>Facilitamos el acceso a la cultura para construir una sociedad más sensible a través de una guía inteligente que conecta a las personas con la oferta de música, arte y cultura.</p>
+        <p>Impulsamos la sostenibilidad del ecosistema cultural conectando a las personas con el circuito de música, arte y entretenimiento por medio de una guía inteligente.</p>
         <span class="pitch-eye" style="margin-top:6px;">Resumen del proyecto</span>
-        <p><strong>Un lente para el arte</strong></p>
         <p>La oferta cultural está dispersa entre plataformas fragmentadas, redes distractoras y algoritmos desfavorables.</p>
         <p>La información se pierde, llega tarde o no encuentra a su audiencia. Como resultado, muchos proyectos culturales enfrentan un problema de visibilidad que afecta su alcance, su comunidad y su sostenibilidad.</p>
         <p>La Curaduría es una guía inteligente que organiza la oferta cultural y conecta a las personas con el arte, los eventos, los espacios y los creadores de su ciudad.</p>
@@ -565,14 +566,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
       <div class="ht-progress">
         <span class="tr-phase-tag">Fase 1 · Familia y Amigos</span>
         <div class="ht-bignum">
-          <span class="ht-pct">40%</span>
+          <span class="ht-pct">50%</span>
           <span class="ht-of">de la fase</span>
         </div>
-        <div class="ht-amounts">$20M <span>de $50M COP recaudados</span></div>
+        <div class="ht-amounts">$25M <span>de $50M COP recaudados</span></div>
         <div class="ht-bar"><div class="ht-bar-fill" id="ht-bar"></div></div>
         <div class="ht-foot">
           <span class="tr-status"><span class="pulse"></span>Activa</span>
-          <span class="ht-close">Cierre · 1 jul 2026</span>
+          <span class="ht-close">Cierre · 1 ago 2026</span>
         </div>
       </div>
       <div class="ht-specs">
@@ -603,7 +604,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
         <div class="dc-desc">Resumen de la oportunidad en una página. Listo para compartir.</div>
         <div class="dc-foot"><span class="dc-cta">Abrir →</span><span class="dc-type">PDF</span></div>
       </a>
-      <div class="dc dc-3" onclick="navigate('tracker'">
+      <div class="dc dc-3" onclick="navigate('tracker')">
         <div class="dc-accent"></div>
         <div class="dc-num">03</div>
         <div class="dc-name">Ronda de Inversión</div>
@@ -680,7 +681,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
               <span class="rm-tag" style="color:var(--t2);"><span style="--d:1;"></span>Lanzamiento del MVP 2.0</span>
               <span class="rm-tag"><span></span>Aceleración Cámara de Comercio</span>
               <span class="rm-tag"><span></span>Ronda FFF · Familia y Amigos</span>
-              <span class="rm-tag"><span></span>$20M de $50M recaudados</span>
+              <span class="rm-tag"><span></span>$25M de $50M recaudados</span>
             </div>
             <span class="rm-now">Estás aquí</span>
           </div>
@@ -694,7 +695,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
             <div class="rm-tags">
               <span class="rm-tag"><span></span>Registro de la empresa</span>
               <span class="rm-tag"><span></span>Registro de la marca</span>
-              <span class="rm-tag"><span></span>Ronda presemilla en Co-crea · $250M COP</span>
+              <span class="rm-tag"><span></span>Ronda presemilla · $250M COP</span>
             </div>
           </div>
         </div>
@@ -798,7 +799,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
         </div>
         <div class="contact-item">
           <span class="contact-item-lbl">Estado de la ronda</span>
-          <span class="contact-item-val" style="color:var(--coral);">Fase 1 activa · Cierre 1 jul 2026</span>
+          <span class="contact-item-val" style="color:var(--coral);">Fase 1 activa · Cierre 1 ago 2026</span>
         </div>
         <div class="contact-item">
           <span class="contact-item-lbl">Mínimo de inversión</span>
@@ -831,7 +832,7 @@ window.addEventListener('load', function(){
     var b0 = document.getElementById('trb0');
     var b1 = document.getElementById('trb1');
     if(b0) b0.style.width = '10%';
-    if(b1) b1.style.width = '40%';
+    if(b1) b1.style.width = '50%';
   }, 400);
 });
 
@@ -1027,7 +1028,7 @@ function navigate(key) {
   if(key === 'tracker'){
     setTimeout(function(){
       var b = document.getElementById('trb1');
-      if(b) b.style.width = '40%';
+      if(b) b.style.width = '50%';
     }, 200);
   }
 }
@@ -1049,8 +1050,8 @@ window.addEventListener('load', function(){
   setTimeout(function(){
     var ht = document.getElementById('ht-bar');
     var t1 = document.getElementById('trb1');
-    if(ht) ht.style.width = '40%';
-    if(t1) t1.style.width = '40%';
+    if(ht) ht.style.width = '50%';
+    if(t1) t1.style.width = '50%';
   }, 400);
 });
 </script>
@@ -1198,7 +1199,7 @@ window.addEventListener('load', function(){
               <div class="ts-strat-card">
                 <span class="ts-strat-label">Mínimo de inversión</span>
                 <span class="ts-strat-name">$5.000.000 COP</span>
-                <span class="ts-strat-desc">Ronda abierta para familia, amigos y primeros creyentes del proyecto. Cierre estimado 1 de julio de 2026.</span>
+                <span class="ts-strat-desc">Ronda abierta para familia, amigos y primeros creyentes del proyecto. Cierre estimado 1 de agosto de 2026.</span>
               </div>
               <div class="ts-strat-card" style="border-color:rgba(255,115,108,.2);background:rgba(255,115,108,.04);">
                 <span class="ts-strat-label" style="color:var(--coral);">Evento de conversión</span>
@@ -1330,7 +1331,7 @@ window.addEventListener('load', function(){
         <span class="dfn-desc">Resumen en una página</span>
         <span class="dfn-arrow">↗</span>
       </a>
-      <button class="dfn-item dc-3" onclick="navigate('tracker'">
+      <button class="dfn-item dc-3" onclick="navigate('tracker')">
         <span class="dfn-num">03</span>
         <span class="dfn-name">Ronda de Inversión</span>
         <span class="dfn-desc">Tracker de la ronda</span>
@@ -1411,20 +1412,20 @@ window.addEventListener('load', function(){
       <div class="tr-left">
         <span class="tr-phase-tag">Fase 1 · Familia y Amigos</span>
         <div class="tr-bignum">
-          <span class="tr-pct-big">40%</span>
+          <span class="tr-pct-big">50%</span>
           <span class="tr-pct-lbl">de la<br>fase</span>
         </div>
-        <div class="tr-amounts">$20M <span>de $50M COP recaudados</span></div>
+        <div class="tr-amounts">$25M <span>de $50M COP recaudados</span></div>
         <div class="tr-bar"><div class="tr-bar-fill" id="trb1"></div></div>
         <div class="tr-bar-meta">
           <span class="tr-status"><span class="pulse"></span>Activa</span>
-          <span class="tr-close">Cierre · 1 jul 2026</span>
+          <span class="tr-close">Cierre · 1 ago 2026</span>
         </div>
       </div>
       <div class="tr-right">
         <div class="tr-spec"><span class="tr-spec-lbl">Valuation cap</span><span class="tr-spec-val">$2.000M COP</span></div>
         <div class="tr-spec"><span class="tr-spec-lbl">Descuento</span><span class="tr-spec-val cyan">30%</span></div>
-        <div class="tr-spec"><span class="tr-spec-lbl">Cierre</span><span class="tr-spec-val">1 jul 2026</span></div>
+        <div class="tr-spec"><span class="tr-spec-lbl">Cierre</span><span class="tr-spec-val">1 ago 2026</span></div>
       </div>
       <div class="tr-funds-block">
         <span class="tr-funds-lbl">Uso de fondos</span>
@@ -1442,6 +1443,25 @@ window.addEventListener('load', function(){
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.5 4.5L13 7l-4.5 1.5L7 13l-1.5-4.5L1 7l4.5-1.5L7 1z" fill="#75E6F9" opacity=".7"/></svg>
         <span>Al completar la Fase 1 el valuation cap se duplica de <b>$2.000M</b> a <b>$4.000M COP</b>, reflejando el mayor valor del proyecto una vez constituido legalmente.</span>
       </p>
+    </div>
+
+    <!-- Convocatoria ganada -->
+    <div style="margin-top:clamp(28px,4vh,40px);border-top:1px solid var(--bord);padding-top:clamp(24px,3.5vh,36px);">
+      <div style="font-family:var(--fm);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--t4);margin-bottom:16px;">Convocatoria ganada</div>
+      <div class="tracker">
+        <div class="tr-left">
+          <span class="tr-phase-tag" style="background:rgba(122,211,160,.08);border-color:rgba(122,211,160,.25);color:var(--green);">Evento de socialización</span>
+          <div class="tr-bignum">
+            <span class="tr-pct-big" style="color:var(--green);">$40M</span>
+          </div>
+          <div class="tr-amounts" style="color:var(--t3);">COP</div>
+        </div>
+        <div class="tr-right">
+          <div class="tr-spec"><span class="tr-spec-lbl">Destino</span><span class="tr-spec-val" style="font-size:12px;">Evento de socialización de la app con actores del ecosistema cultural</span></div>
+          <div class="tr-spec"><span class="tr-spec-lbl">Objetivo</span><span class="tr-spec-val" style="font-size:12px;">Alianzas, visibilidad del proyecto y adquisición de usuarios y clientes</span></div>
+          <div class="tr-spec"><span class="tr-spec-lbl">Estado</span><span class="tr-spec-val" style="color:var(--green);">Ganada</span></div>
+        </div>
+      </div>
     </div>
 
     <!-- Presemilla -->
@@ -1638,7 +1658,7 @@ window.addEventListener('load', function(){
         <span class="dfn-desc">Resumen en una página</span>
         <span class="dfn-arrow">↗</span>
       </a>
-      <button class="dfn-item dc-3" onclick="navigate('tracker'">
+      <button class="dfn-item dc-3" onclick="navigate('tracker')">
         <span class="dfn-num">03</span>
         <span class="dfn-name">Ronda de Inversión</span>
         <span class="dfn-desc">Tracker de la ronda</span>
@@ -1678,26 +1698,21 @@ window.addEventListener('load', function(){
       <div class="view-title" style="color:var(--yellow);">Go to Market</div>
     </div>
     
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+    <div class="gtm-phases">
       <div style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:20px;">
-        <div style="font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:8px;">Fase 0 · Ahora</div>
-        <div style="font-family:var(--fd);font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--t1);margin-bottom:8px;">Beta cerrada</div>
-        <p style="font-size:12px;color:var(--t3);line-height:1.65;">Invitación directa a creadores, gestores y espacios culturales de Bogotá. Foco en iterar el producto con usuarios reales antes de la apertura.</p>
+        <div style="font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:8px;">Fase 1 · Ahora</div>
+        <div style="font-family:var(--fd);font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--t1);margin-bottom:8px;">Lanzamiento beta</div>
+        <p style="font-size:12px;color:var(--t3);line-height:1.65;">Lanzamos la versión beta del producto: recibimos feedback, mostramos el proyecto a la comunidad, adquirimos nuestros primeros usuarios y aliados, e hicimos quality assessment para seguir mejorando el producto.</p>
       </div>
       <div style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:20px;">
-        <div style="font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;">Fase 1 · Q3 2026</div>
-        <div style="font-family:var(--fd);font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--t1);margin-bottom:8px;">Lanzamiento Bogotá</div>
-        <p style="font-size:12px;color:var(--t3);line-height:1.65;">Apertura pública con campaña en redes sociales, alianzas con espacios culturales y cubrimiento de prensa especializada en arte y cultura.</p>
+        <div style="font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;">Fase 2 · Ago–Sep 2026</div>
+        <div style="font-family:var(--fd);font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--t1);margin-bottom:8px;">Lanzamiento oficial</div>
+        <p style="font-size:12px;color:var(--t3);line-height:1.65;">Con el presupuesto de la convocatoria Chapinero en Red, ganada ante la Secretaría de Recreación y Deporte: $40M COP para un evento que reúne aliados, usuarios, clientes, artistas, espacios y brokers del ecosistema. Socialización también en GoFest Bogotá y en el BOmm (Bogotá Music Market), en septiembre.</p>
       </div>
       <div style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:20px;">
-        <div style="font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:8px;">Fase 2 · Q1 2027</div>
-        <div style="font-family:var(--fd);font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--t1);margin-bottom:8px;">Expansión nacional</div>
-        <p style="font-size:12px;color:var(--t3);line-height:1.65;">Medellín, Cali y Cartagena. Alianzas con festivales, ferias de arte y circuitos de música independiente en cada ciudad.</p>
-      </div>
-      <div style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:20px;">
-        <div style="font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;">Fase 3 · 2028</div>
-        <div style="font-family:var(--fd);font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--t1);margin-bottom:8px;">Latinoamérica</div>
-        <p style="font-size:12px;color:var(--t3);line-height:1.65;">México, Argentina y Chile como primeros mercados internacionales, apoyados en ronda semilla y en la tracción generada en Colombia.</p>
+        <div style="font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:8px;">Fase 3 · 2027–2028</div>
+        <div style="font-family:var(--fd);font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--t1);margin-bottom:8px;">Expansión nacional y regional</div>
+        <p style="font-size:12px;color:var(--t3);line-height:1.65;">Primer semestre de 2027: lanzamiento oficial de la aplicación y ampliación nacional, con inversión en mercadeo para llegar a más públicos y adquirir una base de usuarios mucho más grande. En 2028, expansión a Latinoamérica.</p>
       </div>
     </div>
     <div style="background:var(--surf);border:1px solid var(--bord);border-radius:10px;padding:20px;">
@@ -1733,7 +1748,7 @@ window.addEventListener('load', function(){
         <span class="dfn-desc">Resumen en una página</span>
         <span class="dfn-arrow">↗</span>
       </a>
-      <button class="dfn-item dc-3" onclick="navigate('tracker'">
+      <button class="dfn-item dc-3" onclick="navigate('tracker')">
         <span class="dfn-num">03</span>
         <span class="dfn-name">Ronda de Inversión</span>
         <span class="dfn-desc">Tracker de la ronda</span>
@@ -1817,7 +1832,7 @@ window.addEventListener('load', function(){
         <span class="dfn-desc">Resumen en una página</span>
         <span class="dfn-arrow">↗</span>
       </a>
-      <button class="dfn-item dc-3" onclick="navigate('tracker'">
+      <button class="dfn-item dc-3" onclick="navigate('tracker')">
         <span class="dfn-num">03</span>
         <span class="dfn-name">Ronda de Inversión</span>
         <span class="dfn-desc">Tracker de la ronda</span>
