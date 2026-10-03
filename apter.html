@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>APTER · Encuentra tu after</title>
+<meta name="description" content="Desliza los afters de esta noche, pide entrada y desbloquea la dirección cuando el anfitrión te apruebe.">
+<meta name="theme-color" content="#ffd23f">
+<meta property="og:title" content="APTER · Encuentra tu after">
+<meta property="og:description" content="Los afters de esta noche. SÍ, NO o QUIZÁ.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23ffd23f' stroke='%23111' stroke-width='8'/><text x='50' y='72' font-size='62' text-anchor='middle' font-family='Arial Black,sans-serif' fill='%23111'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;800&family=Space+Mono:wght@700&display=swap">
+<style>
+/* Neobrutalist: flat loud colors, 3px ink borders, hard offset shadows, one phone-width column. */
+:root{
+  --bg:#f3efe0; --ink:#111; --paper:#fff;
+  --yellow:#ffd23f; --lime:#b8f25c; --pink:#ff7eb6; --red:#ff5a4e; --cyan:#5ce1e6; --violet:#a98bff; --orange:#ff9f1c;
+  --b:3px solid var(--ink); --sh:5px 5px 0 var(--ink); --sh-s:3px 3px 0 var(--ink);
+  --display:"Archivo Black","Arial Black",Impact,sans-serif;
+  --body:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Space Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg);color:var(--ink);margin:0}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{font-family:var(--body);font-size:15px;line-height:1.5;padding-inline:16px;padding-block:0 48px;
+  background-image:radial-gradient(var(--ink) 1px,transparent 1.2px);background-size:22px 22px;background-color:var(--bg)}
+img{max-width:100%}
+[hidden]{display:none!important}
+.wrap{max-width:440px;margin:0 auto}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--violet);outline-offset:3px}
+mark{background:var(--yellow);padding:0 .15em;border:var(--b);box-shadow:var(--sh-s);display:inline-block;transform:rotate(-2deg)}
+
+header.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:14px;background:var(--bg);margin-inline:-16px;padding-inline:16px;border-bottom:var(--b);margin-bottom:14px;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.brand{font-family:var(--display);font-size:20px;letter-spacing:.06em;background:var(--yellow);border:var(--b);box-shadow:var(--sh-s);padding:4px 10px;transform:rotate(-2deg)}
+.nav{display:flex;gap:8px}
+.pill{border:var(--b);background:var(--paper);box-shadow:var(--sh-s);padding:6px 11px;font-size:13px;font-weight:800;display:inline-flex;align-items:center;gap:6px;transition:transform .08s,box-shadow .08s}
+.pill:active,.btn:active,.act:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.pill[aria-current="page"]{background:var(--cyan)}
+.badge{background:var(--ink);color:var(--paper);font-size:11px;padding:0 6px;font-family:var(--mono)}
+
+.hero{padding-block:10px 18px;display:grid;gap:12px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:var(--yellow);justify-self:start;padding:3px 9px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(36px,11vw,50px);line-height:1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.1;margin:0;text-wrap:balance}
+h3{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin:0}
+.lede{margin:0;max-width:60ch;background:var(--paper);border:var(--b);padding:10px 12px;font-weight:600}
+
+/* deck */
+.deck{position:relative;height:430px;margin-top:6px}
+.card{position:absolute;inset:0 6px 6px 0;border:var(--b);box-shadow:var(--sh);touch-action:none;user-select:none;-webkit-user-select:none;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;cursor:grab;overflow:hidden}
+.card.back{transform:rotate(3deg) translate(6px,8px);pointer-events:none}
+.card .emo{position:absolute;top:56px;right:18px;font-size:96px;line-height:1;filter:drop-shadow(4px 4px 0 var(--ink))}
+.card .time{position:absolute;top:16px;left:16px;font-family:var(--mono);font-size:13px;background:var(--paper);border:var(--b);padding:2px 9px}
+.card .name{font-family:var(--display);font-size:32px;line-height:1.02;text-wrap:balance;margin:0}
+.card .zone{font-weight:800;font-size:16px;margin-top:4px}
+.card .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.card .meta span{font-size:12px;font-weight:800;background:var(--paper);border:2px solid var(--ink);padding:2px 8px}
+.card .more{margin-top:12px;font-size:13px;font-weight:800;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.stamp{position:absolute;top:18px;font-family:var(--display);font-size:32px;border:4px solid var(--ink);background:var(--paper);padding:0 12px;opacity:0;box-shadow:var(--sh-s)}
+.stamp.si{right:16px;background:var(--lime);transform:rotate(10deg)} .stamp.no{right:16px;background:var(--red);transform:rotate(10deg)} .stamp.qz{left:50%;top:44%;translate:-50% 0;background:var(--yellow);transform:rotate(-6deg)}
+
+.actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px}
+.act{border:var(--b);box-shadow:var(--sh);padding:14px 6px;font-family:var(--display);font-size:18px;transition:transform .08s,box-shadow .08s}
+.act.no{background:var(--red)} .act.qz{background:var(--yellow)} .act.si{background:var(--lime)}
+.hint{text-align:center;font-family:var(--mono);font-size:11px;margin-top:12px}
+
+.empty{border:var(--b);box-shadow:var(--sh);background:var(--paper);padding:26px 20px;display:grid;gap:12px;text-align:center;justify-items:center}
+.empty .big{font-size:48px}
+.btn{border:var(--b);box-shadow:var(--sh-s);padding:11px 16px;font-weight:800;background:var(--yellow);transition:transform .08s,box-shadow .08s;text-decoration:none;color:var(--ink);display:inline-block;text-align:center}
+.btn.ghost{background:var(--paper)} .btn.go{background:var(--lime)}
+.btn.wide{width:100%}
+.btn[disabled]{opacity:.6}
+.row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.note{font-size:13px;margin:0}
+.err{color:#b3140a;font-weight:800;font-size:13px;margin:0}
+
+.maybe{margin-top:24px;display:grid;gap:8px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:var(--b);background:var(--yellow);box-shadow:var(--sh-s);padding:5px 11px;font-size:13px;font-weight:800}
+
+/* sheets */
+.scrim{position:fixed;inset:0;background:rgba(17,17,17,.55);z-index:20;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--bg);border:var(--b);border-bottom:0;width:100%;max-width:480px;max-height:92%;overflow:auto;padding:18px 16px calc(24px + env(safe-area-inset-bottom,0px));display:grid;gap:16px;animation:up .18s ease-out}
+@keyframes up{from{transform:translateY(40px)}}
+.sheet .x{justify-self:end;background:var(--paper);border:var(--b);box-shadow:var(--sh-s);width:36px;height:36px;font-weight:800;margin-bottom:-46px;position:relative;z-index:1}
+.poster{border:var(--b);box-shadow:var(--sh);padding:16px;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end;position:relative}
+.poster .emo{position:absolute;top:12px;right:14px;font-size:52px;filter:drop-shadow(3px 3px 0 var(--ink))}
+.sec{display:grid;gap:6px}
+.sec p{margin:0;white-space:pre-wrap}
+.lineup{display:flex;flex-wrap:wrap;gap:6px}
+.lineup span{background:var(--paper);border:2px solid var(--ink);padding:2px 9px;font-size:13px;font-weight:800}
+.lock{border:3px dashed var(--ink);background:var(--paper);padding:12px 14px;display:flex;gap:10px;align-items:center}
+.addr{border:var(--b);background:var(--lime);box-shadow:var(--sh-s);padding:12px 14px;display:grid;gap:8px;font-weight:800}
+
+form{display:grid;gap:12px}
+label{display:grid;gap:5px;font-size:13px;font-weight:800}
+input,textarea,select{background:var(--paper);border:var(--b);padding:10px 12px;font-size:16px;width:100%;min-width:0;border-radius:0}
+textarea{min-height:76px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.msgbox{background:var(--paper);border:var(--b);padding:12px;font-family:var(--mono);font-size:12px;white-space:pre-wrap;word-break:break-word;user-select:all;-webkit-user-select:all;max-height:240px;overflow:auto}
+
+.list{display:grid;gap:14px}
+.item{background:var(--paper);border:var(--b);box-shadow:var(--sh);padding:14px;display:grid;gap:10px}
+.item .hd{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.item .t{font-family:var(--display);font-size:17px;line-height:1.15}
+.item .s{font-size:13px}
+.st{font-family:var(--mono);font-size:11px;text-transform:uppercase;border:2px solid var(--ink);padding:1px 7px;white-space:nowrap}
+.st.wait{background:var(--yellow)} .st.ok{background:var(--lime)} .st.off{background:var(--bg)}
+.unlock{display:flex;gap:8px}
+.unlock input{font-family:var(--mono);text-transform:uppercase}
+.unlock .btn{white-space:nowrap}
+.page-h{display:grid;gap:10px;padding-block:8px 18px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));translate:-50% 0;background:var(--ink);color:var(--yellow);border:var(--b);padding:9px 16px;font-weight:800;font-size:14px;z-index:40;max-width:calc(100% - 32px)}
+footer{margin-top:36px;text-align:center;font-family:var(--mono);font-size:11px}
+footer a{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.sheet{animation:none}.card{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+/* ════════════════════════════════════════════════════════════
+   AFTERS DE ESTA NOCHE
+   Para agregar uno: abre /apter#anfitrion, llena el formulario,
+   copia el bloque que te genera y pégalo dentro de esta lista.
+   ════════════════════════════════════════════════════════════ */
+var APTER_AFTERS = [
+];
+</script>
+
+<script>
+(function(){
+var app=document.getElementById('app');
+var AFTERS=Array.isArray(window.APTER_AFTERS)?window.APTER_AFTERS.filter(function(a){return a&&a.id&&a.name}):[];
+var COLORS=['var(--pink)','var(--cyan)','var(--orange)','var(--violet)','var(--lime)','var(--yellow)'];
+
+var LS={get:function(k,d){try{var v=localStorage.getItem('apter:'+k);return v?JSON.parse(v):d}catch(e){return d}},
+        set:function(k,v){try{localStorage.setItem('apter:'+k,JSON.stringify(v))}catch(e){}}};
+var decisions=LS.get('decisions',{}), requests=LS.get('requests',[]), me=LS.get('me',{});
+var view=location.hash==='#anfitrion'?'host':location.hash==='#mias'?'mine':'deck';
+
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function byId(id){for(var i=0;i<AFTERS.length;i++)if(AFTERS[i].id===id)return AFTERS[i];return null}
+function color(a){var h=0;for(var i=0;i<a.id.length;i++)h=(h*31+a.id.charCodeAt(i))>>>0;return 'background:'+(a.color||COLORS[h%COLORS.length])}
+function timeStr(a){return a.start?(a.start+(a.end?' – '+a.end:' en adelante')):'Esta noche'}
+function toast(t){var el=document.createElement('div');el.className='toast';el.setAttribute('role','status');el.textContent=t;document.body.appendChild(el);setTimeout(function(){el.remove()},2400)}
+function live(){return AFTERS.filter(function(a){return a.active!==false})}
+function deckList(){return live().filter(function(a){return !decisions[a.id]})}
+function maybes(){return live().filter(function(a){return decisions[a.id]==='quiza'})}
+function tonight(){try{return new Date().toLocaleDateString('es',{weekday:'short',day:'numeric',month:'short'})}catch(e){return ''}}
+function contactLabel(a){return a.ctype==='ig'?'@'+String(a.contact||'').replace(/^@/,''):a.contact}
+
+/* ---------- crypto: la dirección va cifrada con el código del anfitrión ---------- */
+var te=new TextEncoder(),td=new TextDecoder();
+function norm(c){return String(c||'').trim().toUpperCase().replace(/\s+/g,'')}
+function b64(buf){var b=new Uint8Array(buf),s='';for(var i=0;i<b.length;i++)s+=String.fromCharCode(b[i]);return btoa(s)}
+function ub64(s){return Uint8Array.from(atob(s),function(c){return c.charCodeAt(0)})}
+function deriveKey(code,salt){return crypto.subtle.importKey('raw',te.encode(norm(code)),'PBKDF2',false,['deriveKey']).then(function(base){
+  return crypto.subtle.deriveKey({name:'PBKDF2',salt:salt,iterations:200000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])})}
+function lockAddr(addr,code){var salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12));
+  return deriveKey(code,salt).then(function(k){return crypto.subtle.encrypt({name:'AES-GCM',iv:iv},k,te.encode(addr))}).then(function(c){return{c:b64(c),iv:b64(iv),s:b64(salt)}})}
+function unlockAddr(enc,code){return deriveKey(code,ub64(enc.s)).then(function(k){return crypto.subtle.decrypt({name:'AES-GCM',iv:ub64(enc.iv)},k,ub64(enc.c))}).then(function(p){return td.decode(p)})}
+
+/* ---------- render ---------- */
+function header(){
+  var n=requests.length;
+  return '<header class="top"><button class="brand" data-go="deck" aria-label="Inicio">APTER</button><nav class="nav">'+
+    '<button class="pill" data-go="mine"'+(view==='mine'?' aria-current="page"':'')+'>Mis solicitudes'+(n?' <span class="badge">'+n+'</span>':'')+'</button>'+
+    '</nav></header>';
+}
+function cardHTML(a,back){
+  var meta=[];if(a.cap)meta.push('<span>Cupo '+esc(a.cap)+'</span>');
+  (a.lineup||[]).slice(0,3).forEach(function(x){meta.push('<span>♪ '+esc(x)+'</span>')});
+  return '<div class="card'+(back?' back':'')+'" style="'+color(a)+'"'+(back?'':' data-card="'+esc(a.id)+'" tabindex="0" role="button" aria-label="Ver '+esc(a.name)+'"')+'>'+
+    '<span class="time">'+esc(timeStr(a))+'</span><span class="emo" aria-hidden="true">'+esc(a.emoji||'🏠')+'</span>'+
+    '<span class="stamp si">SÍ</span><span class="stamp no">NO</span><span class="stamp qz">QUIZÁ</span>'+
+    '<p class="name">'+esc(a.name)+'</p>'+(a.zone?'<div class="zone">📍 '+esc(a.zone)+'</div>':'')+
+    (meta.length?'<div class="meta">'+meta.join('')+'</div>':'')+'<div class="more">Toca para ver el plan</div></div>';
+}
+function renderDeck(){
+  var d=deckList(), h='<section class="hero"><div class="eyebrow">Solo esta noche ★ '+esc(tonight())+'</div><h1>Encuentra <mark>tu after</mark>.</h1>'+
+    '<p class="lede">Desliza los afters de esta noche. SÍ para pedir entrada, NO para pasar, QUIZÁ para dejarlo en duda, o abre la tarjeta para saber más. Si el anfitrión te aprueba, la dirección te aparece aquí.</p></section>';
+  if(!live().length){
+    h+='<div class="empty"><div class="big">🌙</div><h2>Todavía no hay afters</h2><p class="note">Los afters de esta noche aparecen aquí apenas un anfitrión los publique. Vuelve en un rato.</p></div>';
+  }else if(!d.length){
+    h+='<div class="empty"><div class="big">🪩</div><h2>Ya los viste todos</h2><p class="note">Revisa tus solicitudes o vuelve a mirar los que pasaste.</p><div class="row">'+
+      '<button class="btn" data-go="mine">Mis solicitudes</button><button class="btn ghost" data-reset>Ver todos otra vez</button></div></div>';
+  }else{
+    h+='<div class="deck">'+(d[1]?cardHTML(d[1],true):'')+cardHTML(d[0])+'</div>'+
+      '<div class="actions"><button class="act no" data-dec="no">NO</button><button class="act qz" data-dec="quiza">QUIZÁ</button><button class="act si" data-dec="si">SÍ</button></div>'+
+      '<div class="hint">→ SÍ · ← NO · ↑ QUIZÁ · '+d.length+' por ver</div>';
+  }
+  var m=maybes();
+  if(m.length)h+='<section class="maybe"><h3>En duda</h3><div class="chips">'+m.map(function(a){return '<button class="chip" data-open="'+esc(a.id)+'">'+esc(a.emoji||'🏠')+' '+esc(a.name)+'</button>'}).join('')+'</div></section>';
+  return h+'<footer>¿Haces un after? <a href="#anfitrion" data-go="host">Publícalo aquí</a></footer>';
+}
+function renderMine(){
+  var h='<section class="page-h"><div class="eyebrow">Esta noche</div><h2>Mis solicitudes</h2><p class="note">Cuando el anfitrión te apruebe, te manda un código. Escríbelo aquí y la dirección aparece.</p></section>';
+  if(!requests.length)return h+'<div class="empty"><div class="big">🎟️</div><p class="note">Aún no has pedido entrada a ningún after.</p><button class="btn" data-go="deck">Ver afters</button></div>';
+  h+='<div class="list">';
+  requests.slice().reverse().forEach(function(r){
+    var a=byId(r.afterId), name=a?a.name:r.afterName;
+    h+='<div class="item"><div class="hd"><div><div class="t">'+esc((a&&a.emoji)||'🏠')+' '+esc(name)+'</div><div class="s">'+esc(a?timeStr(a):'')+' · '+esc(r.count)+' persona'+(r.count==1?'':'s')+'</div></div>'+
+      (r.addr?'<span class="st ok">Aprobada</span>':(a?'<span class="st wait">Esperando</span>':'<span class="st off">Ya no está</span>'))+'</div>';
+    if(r.addr){h+='<div class="addr"><h3>Dirección</h3><div>'+esc(r.addr)+'</div><button class="btn ghost" data-copy="'+esc(r.addr)+'">Copiar dirección</button></div>'}
+    else if(a&&a.enc){h+='<div class="unlock"><input id="code-'+esc(r.id)+'" placeholder="Código" autocomplete="off" aria-label="Código del anfitrión"><button class="btn go" data-unlock="'+esc(r.id)+'">Ver dirección</button></div><p class="err" id="err-'+esc(r.id)+'" hidden></p>'}
+    else if(a){h+='<p class="note">El anfitrión te manda la dirección por mensaje.</p>'}
+    if(a&&!r.addr)h+='<button class="btn ghost" data-resend="'+esc(r.id)+'">Volver a enviar la solicitud</button>';
+    h+='</div>';
+  });
+  return h+'</div>';
+}
+function renderHost(){
+  return '<section class="page-h"><div class="eyebrow">Anfitriones</div><h2>Publica tu after</h2>'+
+    '<p class="note">Llena esto y te generamos tu after. La dirección queda cifrada con tu código: solo la ven las personas a las que tú les mandes el código.</p></section>'+
+    '<div class="item"><form id="hform">'+
+    '<label>Nombre del after<input id="p-name" required maxlength="60" placeholder="After donde Caro"></label>'+
+    '<div class="two"><label>Zona o barrio<input id="p-zone" maxlength="40" placeholder="Chapinero"></label><label>Emoji<input id="p-emoji" maxlength="4" value="🏠"></label></div>'+
+    '<div class="two"><label>Empieza<input id="p-start" type="time"></label><label>Termina<input id="p-end" maxlength="24" placeholder="hasta que salga el sol"></label></div>'+
+    '<label>El plan<textarea id="p-plan" maxlength="500" placeholder="Qué hay, qué traer, el ambiente"></textarea></label>'+
+    '<label>Lineup (separa con comas)<input id="p-lineup" maxlength="200" placeholder="DJ Lu, playlist de reggaetón viejo"></label>'+
+    '<div class="two"><label>Cupo<input id="p-cap" type="number" min="1" max="999"></label><label>Te escriben por<select id="p-ctype"><option value="wa">WhatsApp</option><option value="ig">Instagram</option></select></label></div>'+
+    '<label>Tu WhatsApp (con indicativo) o usuario de Instagram<input id="p-contact" required maxlength="40" placeholder="+57 300 123 4567"></label>'+
+    '<label>Dirección<input id="p-addr" maxlength="200" placeholder="Calle 00 #00-00, apto 000"></label>'+
+    '<label>Código para tus aprobados<input id="p-code" maxlength="30" autocomplete="off" placeholder="Ej: PERREO4AM" style="font-family:var(--mono);text-transform:uppercase"></label>'+
+    '<p class="err" id="p-err" hidden></p>'+
+    '<button class="btn wide" type="submit">Generar mi after</button></form></div>'+
+    '<div id="h-out" class="item" style="margin-top:16px" hidden></div>';
+}
+function render(){
+  app.innerHTML=header()+(view==='mine'?renderMine():view==='host'?renderHost():renderDeck());
+  var top=app.querySelector('[data-card]');if(top)bindDrag(top);
+  var f=document.getElementById('hform');if(f)f.addEventListener('submit',genAfter);
+}
+function go(v){view=v;var hs=v==='host'?'#anfitrion':v==='mine'?'#mias':'';try{history.replaceState(null,'',location.pathname+hs)}catch(e){}render();window.scrollTo(0,0)}
+
+/* ---------- swipe ---------- */
+function bindDrag(el){
+  var sx=0,sy=0,dx=0,dy=0,down=false,moved=false;
+  var si=el.querySelector('.stamp.si'),no=el.querySelector('.stamp.no'),qz=el.querySelector('.stamp.qz');
+  el.addEventListener('pointerdown',function(e){down=true;moved=false;sx=e.clientX;sy=e.clientY;dx=dy=0;el.style.transition='none';try{el.setPointerCapture(e.pointerId)}catch(_){}});
+  el.addEventListener('pointermove',function(e){if(!down)return;dx=e.clientX-sx;dy=e.clientY-sy;if(Math.abs(dx)+Math.abs(dy)>6)moved=true;
+    el.style.transform='translate('+dx+'px,'+dy+'px) rotate('+(dx/18)+'deg)';
+    si.style.opacity=Math.max(0,Math.min(1,dx/90));no.style.opacity=Math.max(0,Math.min(1,-dx/90));qz.style.opacity=Math.max(0,Math.min(1,-dy/90-Math.abs(dx)/120))});
+  function end(){if(!down)return;down=false;
+    if(!moved){el.style.transform='';open(el.getAttribute('data-card'));return}
+    if(dx>100)return fling(el,'si');if(dx<-100)return fling(el,'no');if(dy<-100&&Math.abs(dx)<100)return fling(el,'quiza');
+    el.style.transition='transform .2s';el.style.transform='';si.style.opacity=no.style.opacity=qz.style.opacity=0}
+  el.addEventListener('pointerup',end);el.addEventListener('pointercancel',end);
+  el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(el.getAttribute('data-card'))}
+    else if(e.key==='ArrowRight')fling(el,'si');else if(e.key==='ArrowLeft')fling(el,'no');else if(e.key==='ArrowUp')fling(el,'quiza')});
+}
+function fling(el,kind){
+  var id=el.getAttribute('data-card');
+  var st=el.querySelector(kind==='si'?'.stamp.si':kind==='no'?'.stamp.no':'.stamp.qz');if(st)st.style.opacity=1;
+  el.style.transition='transform .26s ease-in';
+  el.style.transform=kind==='si'?'translate(140%,0) rotate(18deg)':kind==='no'?'translate(-140%,0) rotate(-18deg)':'translate(0,-130%)';
+  setTimeout(function(){decide(id,kind)},230);
+}
+function decide(id,kind){
+  decisions[id]=kind;LS.set('decisions',decisions);closeSheet();render();
+  if(kind==='si'){var a=byId(id);if(a)openRequest(a)}
+}
+
+/* ---------- sheets ---------- */
+var scrim=null;
+function sheet(html){closeSheet();scrim=document.createElement('div');scrim.className='scrim';
+  scrim.innerHTML='<div class="sheet" role="dialog" aria-modal="true"><button class="x" data-close aria-label="Cerrar">✕</button>'+html+'</div>';
+  scrim.addEventListener('click',function(e){if(e.target===scrim)closeSheet()});
+  document.body.appendChild(scrim);}
+function closeSheet(){if(scrim){scrim.remove();scrim=null}}
+function posterHTML(a){return '<div class="poster" style="'+color(a)+'"><span class="emo" aria-hidden="true">'+esc(a.emoji||'🏠')+'</span><div style="font-family:var(--mono);font-size:13px">'+esc(timeStr(a))+'</div><h2>'+esc(a.name)+'</h2>'+(a.zone?'<div style="font-weight:800">📍 '+esc(a.zone)+'</div>':'')+'</div>'}
+function open(id){
+  var a=byId(id);if(!a)return;var mine=requests.filter(function(r){return r.afterId===id&&r.addr})[0];
+  sheet(posterHTML(a)+
+    '<div class="sec"><h3>El plan</h3><p>'+esc(a.plan||'El anfitrión todavía no contó el plan.')+'</p>'+(a.cap?'<p class="note"><b>Cupo:</b> '+esc(a.cap)+' personas</p>':'')+'</div>'+
+    ((a.lineup||[]).length?'<div class="sec"><h3>Lineup</h3><div class="lineup">'+a.lineup.map(function(x){return '<span>♪ '+esc(x)+'</span>'}).join('')+'</div></div>':'')+
+    '<div class="sec"><h3>Dirección</h3>'+(mine?'<div class="addr"><div>'+esc(mine.addr)+'</div></div>':'<div class="lock">🔒 <span><b>'+esc(a.zone||'Por confirmar')+'</b><br>Se revela cuando el anfitrión aprueba tu solicitud.</span></div>')+'</div>'+
+    '<div class="actions" style="margin-top:0"><button class="act no" data-sdec="no" data-id="'+esc(a.id)+'">NO</button><button class="act qz" data-sdec="quiza" data-id="'+esc(a.id)+'">QUIZÁ</button><button class="act si" data-sdec="si" data-id="'+esc(a.id)+'">SÍ</button></div>');
+}
+function openRequest(a){
+  sheet('<h2>Pedir entrada</h2><p class="note">'+esc(a.emoji||'🏠')+' <b>'+esc(a.name)+'</b> · '+esc(timeStr(a))+'</p>'+
+    '<form id="rform"><label>Tu nombre o Instagram<input id="req-name" required maxlength="60" value="'+esc(me.name)+'" placeholder="@tuusuario"></label>'+
+    '<label>¿Cuántos van contigo incluido?<input id="req-count" type="number" min="1" max="20" required value="'+esc(me.count||1)+'"></label>'+
+    '<label>Mensaje para el anfitrión<textarea id="req-msg" maxlength="300" placeholder="Venimos de la fiesta de… llevamos hielo 🧊"></textarea></label>'+
+    '<button class="btn go wide" type="submit">Pedir entrada</button></form>');
+  scrim.querySelector('#rform').addEventListener('submit',function(e){e.preventDefault();
+    var r={id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),afterId:a.id,afterName:a.name,name:document.getElementById('req-name').value.trim(),
+      count:Math.max(1,parseInt(document.getElementById('req-count').value,10)||1),msg:document.getElementById('req-msg').value.trim(),ts:Date.now()};
+    me={name:r.name,count:r.count};LS.set('me',me);
+    requests=requests.filter(function(x){return !(x.afterId===a.id&&!x.addr)});requests.push(r);LS.set('requests',requests);
+    render();sendSheet(a,r,true);
+  });
+}
+function reqText(a,r){return '¡Hola! Quiero entrar a "'+a.name+'" esta noche 🙌\nSoy: '+r.name+'\nVamos: '+r.count+(r.count==1?' persona':' personas')+(r.msg?'\n'+r.msg:'')+'\n(Te escribo desde APTER)'}
+function sendSheet(a,r,fresh){
+  var t=reqText(a,r),link='',label='';
+  if(a.ctype==='ig'){var u=String(a.contact||'').replace(/^@/,'').trim();link='https://ig.me/m/'+encodeURIComponent(u);label='Abrir Instagram de @'+u}
+  else{var d=String(a.contact||'').replace(/\D/g,'');link='https://wa.me/'+d+'?text='+encodeURIComponent(t);label='Enviar por WhatsApp'}
+  sheet('<div style="font-size:48px">'+esc(a.emoji||'🏠')+'</div><h2>¡Solicitud <mark>'+(fresh?'lista':'guardada')+'</mark>!</h2>'+
+    '<p class="note">Falta un paso: mándasela al anfitrión. '+(a.ctype==='ig'?'Copia el mensaje y pégalo en su chat de Instagram.':'El mensaje ya va escrito.')+' Si te aprueba, te responde con un código y la dirección te aparece en Mis solicitudes.</p>'+
+    '<div class="msgbox">'+esc(t)+'</div>'+
+    '<a class="btn go wide" href="'+esc(link)+'" target="_blank" rel="noopener">'+esc(label)+'</a>'+
+    '<button class="btn ghost wide" data-copy="'+esc(t)+'">Copiar mensaje</button>'+
+    '<p class="note">Contacto del anfitrión: <b style="user-select:all">'+esc(contactLabel(a))+'</b></p>'+
+    '<button class="btn ghost wide" data-close>Seguir viendo afters</button>');
+}
+
+/* ---------- anfitrión: genera el bloque del after ---------- */
+function val(id){var el=document.getElementById(id);return el?el.value.trim():''}
+function showErr(t){var el=document.getElementById('p-err');if(el){el.textContent=t;el.hidden=!t}}
+function genAfter(e){
+  e.preventDefault();showErr('');
+  var name=val('p-name'),contact=val('p-contact').replace(/^@/,''),addr=val('p-addr'),code=val('p-code');
+  if(!name)return showErr('Ponle nombre al after.');
+  if(!contact)return showErr('Falta tu WhatsApp o Instagram para que te lleguen las solicitudes.');
+  if(addr&&norm(code).length<6)return showErr('Para cifrar la dirección, escribe un código de al menos 6 caracteres.');
+  if(!addr&&code)return showErr('Escribe también la dirección que este código va a abrir.');
+  var a={id:'a'+Date.now().toString(36),name:name,zone:val('p-zone'),emoji:val('p-emoji')||'🏠',start:val('p-start'),end:val('p-end'),
+    plan:val('p-plan'),lineup:val('p-lineup').split(',').map(function(s){return s.trim()}).filter(Boolean),cap:val('p-cap'),
+    ctype:val('p-ctype')==='ig'?'ig':'wa',contact:contact,active:true,enc:null};
+  (addr?lockAddr(addr,code).then(function(enc){a.enc=enc}):Promise.resolve()).then(function(){
+    var block='  '+JSON.stringify(a)+',';
+    var out=document.getElementById('h-out');out.hidden=false;
+    out.innerHTML='<h2>Listo 🎉</h2><p class="note">Copia este bloque y pégalo en la lista <b>APTER_AFTERS</b> de apter.html (o mándaselo a quien maneja la página).'+
+      (addr?' Tu código es <b style="font-family:var(--mono)">'+esc(norm(code))+'</b>: mándaselo solo a quien apruebes.':'')+'</p>'+
+      '<div class="msgbox">'+esc(block)+'</div><button class="btn wide" data-copy="'+esc(block)+'">Copiar bloque</button>';
+    out.scrollIntoView({block:'start',behavior:'smooth'});
+  }).catch(function(){showErr('Tu navegador no pudo cifrar la dirección. Prueba con Chrome o Safari actualizados.')});
+}
+
+/* ---------- eventos ---------- */
+document.addEventListener('click',function(e){
+  var t=e.target.closest('button,[data-go],[data-open]');if(!t)return;var d=t.dataset;
+  if(d.go){e.preventDefault();return go(d.go)}
+  if(d.close!==undefined)return closeSheet();
+  if(d.dec){var top=app.querySelector('[data-card]');if(top)fling(top,d.dec);return}
+  if(d.sdec)return decide(d.id,d.sdec);
+  if(d.open)return open(d.open);
+  if(d.reset!==undefined){decisions={};LS.set('decisions',decisions);return render()}
+  if(d.copy!==undefined){var txt=d.copy;Promise.resolve().then(function(){return navigator.clipboard.writeText(txt)}).then(function(){toast('Copiado')},function(){toast('Mantén presionado el texto para copiarlo')});return}
+  if(d.resend){var r=requests.filter(function(x){return x.id===d.resend})[0],a=r&&byId(r.afterId);if(a)sendSheet(a,r,false);return}
+  if(d.unlock){var rq=requests.filter(function(x){return x.id===d.unlock})[0],af=rq&&byId(rq.afterId),inp=document.getElementById('code-'+d.unlock),er=document.getElementById('err-'+d.unlock);
+    if(!af||!af.enc||!inp)return;t.disabled=true;
+    unlockAddr(af.enc,inp.value).then(function(addr){rq.addr=addr;LS.set('requests',requests);render();toast('¡Aprobado! Ahí está la dirección')},
+      function(){t.disabled=false;er.textContent='Ese código no abre esta dirección. Revisa que esté bien escrito o pídeselo otra vez al anfitrión.';er.hidden=false});return}
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSheet()});
+window.addEventListener('hashchange',function(){var v=location.hash==='#anfitrion'?'host':location.hash==='#mias'?'mine':'deck';if(v!==view){view=v;render()}});
+render();
+})();
+</script>
+</body>
+</html>
