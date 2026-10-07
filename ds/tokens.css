@@ -1,0 +1,607 @@
+/* ============================================================
+   COPIA del sistema de diseño de la webapp de La Curaduría.
+   Origen: nicolaspava/webapp · design/tokens.css · rama main,
+   commit 1fe2c51 (6 oct 2026). Copiado el 7 oct 2026.
+
+   No se edita aquí. Si el sistema cambia en la webapp, se vuelve
+   a copiar el archivo entero (ver ds/LEEME.md). Lo propio de la
+   landing va en ds/landing.css.
+   ============================================================ */
+
+/* ============================================================
+   FUENTE: entregable de Nicolás Pava, 1 de septiembre de 2026.
+   Este archivo es una COPIA de design/tokens.json, que es la
+   fuente. Si cambia el JSON, se regenera este archivo.
+
+   Documentación completa: design/HANDOFF-TOKENS.md
+   ============================================================ */
+
+/* ============================================================
+   La Curaduría · design tokens · v1 · 2026-09-01
+   Fuente única de verdad para color, tipografía, espaciado y
+   layout. Generado desde tokens.json.
+
+   Reglas de uso:
+   1. Los componentes consumen SOLO variables --lc-* de la capa
+      semántica. Nunca un hex suelto, nunca un primitivo.
+   2. Los primitivos (--p-*) existen para poder cambiar un valor
+      en un solo lugar. No se usan en componentes.
+   3. Los alias legacy del final permiten que el código actual
+      siga corriendo mientras se migra. No usar en código nuevo.
+   ============================================================ */
+
+
+:root {
+
+  /* ── 1. PRIMITIVOS · color ───────────────────────────────── */
+  --p-coral:        #FF736C;
+  --p-coral-deep:   #FF472C;   /* variante print, no usar en pantalla */
+  --p-cream:        #FFFFF6;
+  --p-ink:          #000000;   /* negro puro (sep 2026); antes #171C14, verdoso */
+  --p-ink-300:      #4F564A;   /* texto secundario sobre papel */
+  --p-cream-200:    #EAEAE0;   /* borde y regla sobre papel */
+  --p-cyan:         #75E6F9;
+  --p-green:        #00AA74;
+  --p-green-print:  #006F4D;   /* verde del manual; relleno de Revista */
+  --p-yellow:       #FFC335;
+  --p-pink:         #FF7C98;
+
+  /* ── Neutros ────────────────────────────────────────────────────────────
+     Alineados con producción y con las pantallas de Figma, no al revés.
+
+     La rampa original de este archivo era verdosa (#0F1210, sage) y no
+     coincidía con ninguna de las dos fuentes:
+
+       lacuraduria.net/evento/...   background-color: rgb(10, 10, 10)
+       Figma, todas las pantallas   #0a0a0a, #121212, #161616, #1c1c22
+       este archivo (1 sep)         #0F1210, #141814, #1A1E19, #202520
+
+     Los grises de texto eran lo más visible: los del diseño son cálidos y
+     los de aquí eran verdes, con distancias de 45 a 59 en RGB. Por eso una
+     pantalla podía tener el layout exacto y seguir sin verse igual.
+
+     Dos de tres fuentes decían lo mismo, así que se ajusta esta. Si Nicolás
+     prefiere el verde, se revierte cambiando estos nueve valores y nada más:
+     todo lo demás lee de aquí.
+     ────────────────────────────────────────────────────────────────────── */
+  /* Negro puro y grises neutros, sin tinte verde ni azul (sep 2026). */
+  --p-black-000:    #000000;
+  --p-black-050:    #0A0A0A;
+  --p-black-100:    #111111;
+  --p-black-150:    #181818;
+  --p-black-200:    #242424;
+  --p-black-250:    #303030;
+  --p-sage-300:     #5A5850;
+  --p-sage-500:     #8A8880;
+  --p-sage-700:     #D2CFC6;
+
+  /* ── 2. SEMÁNTICOS · color ───────────────────────────────── */
+  /* TEMA CLARO «La Curaduría Clara» (sep 2026, handoff de Claude Design):
+     papel crema, tinta casi negra, rectangular. Antes el sitio era oscuro
+     (--p-black-*); los primitivos oscuros siguen definidos por si se vuelve. */
+  --p-paper-000:    #FFFFF6;
+  --p-paper-050:    #F5F4F0;
+  --p-paper-100:    #EBE9E3;
+  --p-paper-line:   #DEDBD2;
+  --p-paper-line-2: #C8C4B9;
+  --p-tinta:        #000000;
+  --p-tinta-dim:    #26241F;
+  --p-tinta-mute:   #4A463D;
+  --p-tinta-soft:   #605B50;
+  /* Estalista sobrio (sep 2026, «Ruta Enlace · propuestas»): tarjetas
+     blancas con trazo de tinta de 2px y sombra dura; reglas internas suaves. */
+  --p-blanco:       #FFFFFF;
+  --p-regla:        #E5E3D8;
+  --p-gris:         #6B7268;
+  --p-coral-ink:    #E14E45;
+  --p-cyan-ink:     #0E8A9E;
+  --p-green-ink:    #00875C;
+  --p-yellow-clara: #F5C842;
+
+  --lc-bg:              var(--p-paper-000);
+  --lc-bg-raised:       var(--p-paper-000);
+  --lc-bg-overlay:      rgba(250, 250, 246, .78);
+
+  --lc-surface:         var(--p-blanco);      /* tarjetas y campos: blanco sobre crema */
+  --lc-surface-raised:  var(--p-paper-050);
+
+  --lc-border:          var(--p-regla);       /* reglas internas */
+  --lc-border-strong:   var(--p-ink);         /* el trazo de 2px de cajas y controles */
+
+  --lc-text:            var(--p-ink);
+  --lc-text-secondary:  var(--p-ink-300);
+  --lc-text-tertiary:   var(--p-gris);
+  --lc-text-disabled:   var(--p-tinta-soft);
+  --lc-text-on-accent:  var(--p-tinta);
+
+  --lc-accent:          var(--p-coral);
+  --lc-accent-2:        var(--p-cyan);
+  --lc-success:         var(--p-green);
+  --lc-warning:         var(--p-yellow-clara);
+  --lc-extra:           var(--p-pink);
+
+  /* Tintes de acento para fondos y bordes suaves de tarjeta */
+  --lc-accent-bg:       rgba(255, 115, 108, .06);
+  --lc-accent-border:   rgba(255, 115, 108, .30);
+  --lc-accent-2-bg:     rgba(117, 230, 249, .06);
+  --lc-accent-2-border: rgba(117, 230, 249, .30);
+  --lc-success-bg:      rgba(0, 170, 116, .06);
+  --lc-success-border:  rgba(0, 170, 116, .30);
+
+  /* ── 3. TIPOGRAFÍA ───────────────────────────────────────── */
+  /* Manual de marca 2025. Respaldos: el que autoriza el manual para Avant
+     Garde (Helvetica Neue) y las que ya cargaba la app para Fraktion. */
+  /* Clara: Bricolage Grotesque 800 (títulos), Inter (cuerpo y UI), DM Mono
+     (etiquetas, fechas, botones; mayúscula, tracking .08em). Avant Garde y
+     Fraktion quedan declaradas en globals.css por si se retoman. */
+  --lc-font-display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+  --lc-font-body:    'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --lc-font-mono:    'DM Mono', monospace;
+  /* La del manual de marca, para titulares puntuales (portada de Inicio).
+     Los archivos están en public/fonts/marca y no van a git (licencia). */
+  --lc-font-marca:   'ITC Avant Garde Gothic', 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+
+  --lc-weight-light:     300;
+  --lc-weight-regular:   400;
+  --lc-weight-medium:    500;
+  --lc-weight-semibold:  600;
+  --lc-weight-extrabold: 800;
+
+  --lc-size-10: 10px;
+  --lc-size-11: 11px;
+  --lc-size-13: 13px;
+  --lc-size-15: 15px;
+  --lc-size-17: 17px;
+  --lc-size-20: 20px;
+  --lc-size-28: 28px;
+  --lc-size-40: 40px;
+  --lc-size-56: 56px;
+  --lc-size-72: 72px;
+
+  --lc-leading-tight:   1.05;
+  --lc-leading-snug:    1.2;
+  --lc-leading-normal:  1.6;
+  --lc-leading-relaxed: 1.8;
+
+  --lc-tracking-tight:  -.02em;
+  --lc-tracking-normal: 0;
+  --lc-tracking-wide:   .08em;
+  --lc-tracking-wider:  .12em;
+  --lc-tracking-widest: .14em;
+
+  /* ── 4. ESPACIADO · base 4px ─────────────────────────────── */
+  --lc-space-1:  4px;
+  --lc-space-2:  8px;
+  --lc-space-3:  12px;
+  --lc-space-4:  16px;
+  --lc-space-5:  20px;
+  --lc-space-6:  24px;
+  --lc-space-8:  32px;
+  --lc-space-10: 40px;
+  --lc-space-12: 48px;
+  --lc-space-16: 64px;
+  --lc-space-20: 80px;
+  --lc-space-30: 120px;
+
+  /* ── 5. RADIOS ───────────────────────────────────────────── */
+  /* Estética cuadrada (sep 2026): casi sin curva. Antes 4 / 8 / 16. */
+  /* Clara: 0 estructural, 2px interactivo. */
+  --lc-radius-sm:   2px;   /* botones, tags, chips, campos */
+  --lc-radius-md:   2px;   /* tarjetas */
+  --lc-radius-lg:   2px;   /* contenedores, modales */
+  --lc-radius-tarjeta: 6px; /* imágenes de tarjetas: cuadradas, apenas curvas */
+  --lc-radius-full: 999px; /* avatares, píldoras */
+
+  /* ── 6. LAYOUT ───────────────────────────────────────────── */
+  --lc-container:  1120px;
+  --lc-gutter:     var(--lc-space-8);
+  --lc-section-y:  var(--lc-space-20);
+  --lc-nav-height: 56px;
+
+  /* ── 7. MOVIMIENTO ───────────────────────────────────────── */
+  --lc-duration-fast: 200ms;
+  --lc-duration-slow: 600ms;
+  --lc-ease: cubic-bezier(.4, 0, .2, 1);
+
+  /* ── 8. ELEVACIÓN ────────────────────────────────────────── */
+  /* El sistema no usa sombras. La jerarquía se resuelve con
+     superficie + borde. No reintroducir sombras duras. */
+  /* Sombras duras, sin difuminado, del color del trazo. */
+  --lc-shadow-leve:   2px 2px 0 var(--lc-border-strong);   /* controles, chips */
+  --lc-shadow:        3px 3px 0 var(--lc-border-strong);   /* cajas en reposo */
+  --lc-shadow-raised: 5px 5px 0 var(--lc-border-strong);   /* caja al pasar el cursor */
+  --lc-shadow-float:  5px 5px 0 var(--lc-border-strong);   /* menús y paneles */
+  --lc-trazo:         2px solid var(--lc-border-strong);
+
+  /* ── 2c. VIDRIO Y SUPERFICIES TRANSLÚCIDAS (sep 2026) ────── */
+  --lc-vidrio-bg:                 rgba(255, 255, 255, .08);
+  --lc-vidrio-bg-subtle:          rgba(255, 255, 255, .06);
+  --lc-vidrio-bg-vacio:           rgba(255, 255, 255, .05);
+  --lc-vidrio-bg-hover:           rgba(255, 255, 255, .14);
+  --lc-vidrio-bg-focus:           rgba(255, 255, 255, .09);
+  --lc-vidrio-bg-focus-campo:     rgba(255, 255, 255, .12);
+  --lc-vidrio-bg-chip:            rgba(255, 255, 255, .14);
+  --lc-vidrio-bg-skeleton-dim:    rgba(255, 255, 255, .11);
+  --lc-vidrio-bg-hover-tarjeta:   rgba(255, 255, 255, .10);
+  --lc-vidrio-bg-activo-tarjeta:  rgba(255, 255, 255, .16);
+  --lc-vidrio-bg-primario:        rgba(255, 255, 255, .30);
+  --lc-vidrio-bg-primario-hover:  rgba(255, 255, 255, .38);
+
+  --lc-vidrio-border:             rgba(255, 255, 255, .20);
+  --lc-vidrio-border-subtle:      rgba(255, 255, 255, .14);
+  --lc-vidrio-border-tarjeta:     rgba(255, 255, 255, .13);
+  --lc-vidrio-border-hover:       rgba(255, 255, 255, .30);
+  --lc-vidrio-border-active:      rgba(255, 255, 255, .12);
+  --lc-vidrio-border-focus:       rgba(255, 255, 255, .40);
+  --lc-vidrio-border-focus-campo: rgba(255, 255, 255, .45);
+  --lc-vidrio-border-tarjeta-hover: rgba(255, 255, 255, .22);
+  --lc-vidrio-border-tarjeta-active: rgba(255, 255, 255, .50);
+  --lc-vidrio-border-primario:    rgba(255, 255, 255, .45);
+  --lc-vidrio-border-primario-hover: rgba(255, 255, 255, .55);
+  --lc-vidrio-border-divisor:     rgba(255, 255, 255, .08);
+  --lc-vidrio-border-capsula:     rgba(255, 255, 255, .10);
+
+  --lc-vidrio-filo:               rgba(255, 255, 255, .30);
+  --lc-vidrio-filo-subtle:        rgba(255, 255, 255, .08);
+  --lc-vidrio-filo-tarjeta:       rgba(255, 255, 255, .14);
+  --lc-vidrio-filo-hover:         rgba(255, 255, 255, .40);
+  --lc-vidrio-filo-primario:      rgba(255, 255, 255, .60);
+  --lc-vidrio-sombra:             rgba(0, 0, 0, .35);
+  --lc-vidrio-sombra-hover:       rgba(0, 0, 0, .45);
+  --lc-vidrio-sombra-primario:    rgba(0, 0, 0, .40);
+  --lc-vidrio-sombra-active:      rgba(0, 0, 0, .30);
+  --lc-vidrio-sombra-suave:       rgba(0, 0, 0, .10);
+
+  --lc-cabecera-bajando-bg:       rgba(0, 0, 0, .50);
+  --lc-barra-acciones-bg:         rgba(10, 10, 10, .72);
+  --lc-barra-inferior-bg:         rgba(22, 22, 22, .72);
+  --lc-pestanas-pegadas-bg:       rgba(0, 0, 0, .35);
+  --lc-boton-flotante-bg:         rgba(18, 18, 18, .55);
+  --lc-boton-flotante-hover:      rgba(30, 30, 30, .65);
+  --lc-boton-flotante-activo:     rgba(255, 255, 255, .85);
+  --lc-placeholder-vidrio:        rgba(255, 255, 255, .82);
+  --lc-velo-fondo:                rgba(0, 0, 0, .52);
+
+  --lc-sombra-degrade:            rgba(0, 0, 0, .55);
+  --lc-degrade-feed-1:            rgba(0, 0, 0, .92);
+  --lc-degrade-feed-2:            rgba(0, 0, 0, .55);
+  --lc-degrade-feed-fade:         rgba(0, 0, 0, 0);
+
+  --lc-degrade-hero-top-1:        rgba(0, 0, 0, .92);
+  --lc-degrade-hero-top-2:        rgba(0, 0, 0, .55);
+  --lc-degrade-hero-top-3:        rgba(0, 0, 0, .15);
+  --lc-degrade-hero-right-1:      rgba(0, 0, 0, .70);
+  --lc-degrade-hero-right-fade:   rgba(0, 0, 0, 0);
+
+  --lc-degrade-portada-top-1:     rgba(0, 0, 0, .90);
+  --lc-degrade-portada-top-2:     rgba(0, 0, 0, .40);
+  --lc-degrade-portada-top-3:     rgba(0, 0, 0, .20);
+  --lc-degrade-portada-right-1:   rgba(0, 0, 0, .65);
+
+  --lc-degrade-explora-top-1:     rgba(0, 0, 0, .85);
+  --lc-degrade-explora-top-2:     rgba(0, 0, 0, .45);
+  --lc-degrade-explora-top-3:     rgba(0, 0, 0, .25);
+  --lc-degrade-explora-right-1:   rgba(0, 0, 0, .55);
+
+  --lc-degrade-fondo-sombra:      rgba(0, 0, 0, .25);
+  --lc-aura-coral-fade:           rgba(255, 115, 108, 0);
+  --lc-aura-cyan-fade:            rgba(117, 230, 249, 0);
+  --lc-degrade-rojo-1:            rgba(236, 64, 56, .90);
+  --lc-degrade-rojo-2:            rgba(242, 108, 110, .70);
+  --lc-degrade-cian-1:            rgba(176, 236, 250, .75);
+  --lc-degrade-azul-1:            rgba(120, 190, 245, .60);
+  --lc-degrade-azul-2:            rgba(100, 120, 210, .55);
+
+  --lc-cabecera-clara-bg:         rgba(255, 255, 246, .70);
+  --lc-cabecera-clara-fade:       rgba(255, 255, 246, 0);
+  --lc-vidrio-claro-bg:           rgba(18, 18, 22, .06);
+  --lc-vidrio-claro-border:       rgba(18, 18, 22, .16);
+  --lc-vidrio-claro-activo-bg:    rgba(18, 18, 22, .82);
+  --lc-bg-overlay-papel:          rgba(255, 255, 246, .92);
+
+  /* ── 2d. RADIO FLOTANTE Y STREAM (sep 2026) ──────────────── */
+  --lc-radio-velo:                rgba(0, 0, 0, .55);
+  --lc-radio-sombra-orbe:         rgba(0, 0, 0, .55);
+  --lc-radio-sombra-orbe-flotante: rgba(0, 0, 0, .45);
+  --lc-radio-sombra-barra:        rgba(0, 0, 0, .50);
+  --lc-radio-sombra-tarjeta:      rgba(0, 0, 0, .60);
+  --lc-radio-sombra-tarjeta-profunda: rgba(0, 0, 0, .75);
+  --lc-radio-sombra-play:         rgba(0, 0, 0, .35);
+  --lc-radio-sombra-play-exp:     rgba(0, 0, 0, .45);
+  --lc-radio-vidrio-bg:           rgba(24, 24, 24, .55);
+  --lc-radio-vidrio-claro:        rgba(255, 255, 255, .10);
+  --lc-radio-vidrio-borde:        rgba(255, 255, 255, .18);
+  --lc-radio-vidrio-brillo:       rgba(255, 255, 255, .22);
+  --lc-radio-orbe-hover:          rgba(40, 40, 40, .60);
+  --lc-radio-orbe-pulso:          rgba(255, 255, 255, .45);
+  --lc-radio-borde-hover:         rgba(255, 255, 255, .30);
+  --lc-radio-play-bg:             rgba(255, 255, 255, .28);
+  --lc-radio-play-borde:          rgba(255, 255, 255, .40);
+  --lc-radio-play-hover:          rgba(255, 255, 255, .36);
+  --lc-radio-tarjeta-bg:          rgba(30, 30, 30, .62);
+  --lc-radio-subtitulo:           rgba(255, 255, 255, .70);
+}
+
+/* ── 2b. TEMA OSCURO (el predeterminado) ─────────────────────
+   <html> sale del servidor con data-tema="oscuro": el sitio abre
+   en negro, como la aplicación en producción. Quien apaga «Tema
+   oscuro» en el menú de la cuenta pasa al claro de :root; el
+   script de src/app/layout.tsx lo recuerda antes de pintar. Aquí
+   se redefine la capa semántica. Los alias (--bg, --ink, --line…)
+   viven en el mismo :root, así que se recalculan solos.
+
+   Las variantes «-ink» (coral, cian y verde oscurecidos para leerse
+   sobre papel) vuelven al color de marca: sobre negro el color pleno
+   ya se lee y el oscurecido no.
+   ────────────────────────────────────────────────────────── */
+:root[data-tema="oscuro"] {
+  color-scheme: dark;
+
+  /* Negro puro y grises neutros (sep 2026). */
+  --lc-bg:              var(--p-black-000);   /* #000000 */
+  --lc-bg-raised:       var(--p-black-050);
+  --lc-bg-overlay:      rgba(0, 0, 0, .74);
+
+  --lc-surface:         var(--p-black-100);   /* #111111 */
+  --lc-surface-raised:  var(--p-black-150);   /* #181818 */
+
+  --lc-border:          var(--p-black-200);   /* #242424 */
+  --lc-border-strong:   var(--p-black-250);   /* #303030: trazo discreto */
+
+  --lc-text:            var(--p-cream);
+  --lc-text-secondary:  var(--p-sage-700);
+  --lc-text-tertiary:   var(--p-sage-500);
+  --lc-text-disabled:   var(--p-sage-300);
+  --lc-text-on-accent:  var(--p-tinta);
+
+  --p-coral-ink:  var(--p-coral);
+  --p-cyan-ink:   var(--p-cyan);
+  --p-green-ink:  var(--p-green);
+  --lc-link:      var(--p-cyan);
+  --tipo-resena-texto: var(--p-yellow-clara);
+
+  /* Las sombras duras toman el trazo solas (--lc-border-strong). */
+}
+
+/* ── 8b. SUPERFICIE PAPEL · documentos ──────────────────────
+   b-03 y b-04 de Figma (`231:2`, política de datos y términos)
+   invierten el tema: fondo crema, tinta oscura, pie en negro de
+   marca. No es un descuido del archivo. Cuatro de sus seis
+   colores son primitivos exactos de esta paleta —cream, ink,
+   coral, yellow— y un pie oscuro sobre página clara no se hace
+   sin querer. Es un tratamiento de documento, deliberado.
+
+   Se resuelve redefiniendo la capa semántica dentro de un
+   ámbito, no con hexadecimales sueltos en el componente, que
+   sería la regla 1 al revés.
+
+   OJO con los alias de compatibilidad (--bg, --ink, --line…):
+   NO cambian aquí. Se calculan en :root y las propiedades
+   personalizadas heredan el valor ya sustituido, así que un
+   componente viejo metido dentro de .lc-papel seguiría saliendo
+   oscuro. Dentro de este ámbito se usa --lc-* y solo --lc-*.
+   ────────────────────────────────────────────────────────── */
+
+.lc-papel {
+  --lc-bg:              var(--p-cream);
+  --lc-bg-raised:       var(--p-cream);
+  --lc-bg-overlay:      rgba(255, 255, 246, .92);
+
+  --lc-surface:         var(--p-cream);
+  --lc-surface-raised:  var(--p-cream-200);
+
+  --lc-border:          var(--p-cream-200);
+  --lc-border-strong:   var(--p-cream-200);
+
+  --lc-text:            var(--p-ink);
+  --lc-text-secondary:  var(--p-ink-300);
+  --lc-text-tertiary:   var(--p-ink-300);
+  --lc-text-disabled:   var(--p-ink-300);
+  --lc-text-on-accent:  var(--p-ink);
+}
+
+/* El pie del documento vuelve al tema oscuro dentro de la página
+   clara, tal cual el diseño. Anida dentro de .lc-papel. */
+.lc-papel-inverso {
+  --lc-bg:              var(--p-ink);
+  --lc-surface:         var(--p-ink);
+  --lc-border:          var(--p-cream-200);
+  --lc-text:            var(--p-cream);
+  --lc-text-secondary:  var(--p-cream);
+}
+
+/* ── 9. CLASES TIPOGRÁFICAS ────────────────────────────────── */
+
+.lc-display-2xl,
+.lc-display-xl,
+.lc-display-lg,
+.lc-display-md,
+.lc-display-sm {
+  font-family: var(--lc-font-display);
+  font-weight: var(--lc-weight-extrabold);
+  letter-spacing: var(--lc-tracking-tight);
+}
+.lc-display-2xl { font-size: clamp(40px, 7vw, var(--lc-size-72)); line-height: var(--lc-leading-tight); }
+.lc-display-xl  { font-size: clamp(32px, 5vw, var(--lc-size-56)); line-height: var(--lc-leading-tight); }
+.lc-display-lg  { font-size: clamp(28px, 4vw, var(--lc-size-40)); line-height: var(--lc-leading-tight); }
+.lc-display-md  { font-size: clamp(20px, 2.5vw, var(--lc-size-28)); line-height: var(--lc-leading-snug); }
+.lc-display-sm  { font-size: var(--lc-size-20); line-height: var(--lc-leading-snug); letter-spacing: var(--lc-tracking-normal); }
+
+.lc-body-lg, .lc-body-md, .lc-body-sm { font-family: var(--lc-font-body); }
+.lc-body-lg { font-size: var(--lc-size-17); font-weight: var(--lc-weight-light);   line-height: var(--lc-leading-relaxed); }
+.lc-body-md { font-size: var(--lc-size-15); font-weight: var(--lc-weight-regular); line-height: var(--lc-leading-relaxed); }
+.lc-body-sm { font-size: var(--lc-size-13); font-weight: var(--lc-weight-regular); line-height: var(--lc-leading-normal); }
+
+.lc-label-md, .lc-label-sm { font-family: var(--lc-font-mono); text-transform: uppercase; line-height: var(--lc-leading-snug); }
+.lc-label-md { font-size: var(--lc-size-11); font-weight: var(--lc-weight-medium);  letter-spacing: var(--lc-tracking-wider); }
+.lc-label-sm { font-size: var(--lc-size-10); font-weight: var(--lc-weight-regular); letter-spacing: var(--lc-tracking-widest); }
+
+/* Medida de línea: máximo 70 caracteres en cuerpo de texto */
+.lc-measure { max-width: 62ch; }
+
+/* ── 10. BASE ──────────────────────────────────────────────── */
+
+body {
+  background: var(--lc-bg);
+  color: var(--lc-text);
+  font-family: var(--lc-font-body);
+  font-size: var(--lc-size-15);
+  line-height: var(--lc-leading-normal);
+}
+
+:focus-visible {
+  outline: 2px solid var(--lc-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* ── 11. ALIAS LEGACY · migración ──────────────────────────── */
+/* El landing y el hub usan estos nombres. Quedan mapeados para
+   que nada se rompa. Al terminar la migración se borra este
+   bloque y con él se detecta cualquier uso pendiente. */
+:root {
+  --coral:  var(--lc-accent);
+  --cyan:   var(--lc-accent-2);
+  --green:  var(--lc-success);
+  --yellow: var(--lc-warning);
+  --pink:   var(--lc-extra);
+  --bg:     var(--lc-bg);
+  --bg2:    var(--lc-bg-raised);
+  --surf:   var(--lc-surface);
+  --surf2:  var(--lc-surface-raised);
+  --bord:   var(--lc-border);
+  --bord2:  var(--lc-border-strong);
+  --cream:  var(--lc-text);   /* en el tema oscuro era el texto principal; en Clara es la tinta */
+  --t1:     var(--lc-text);
+  --t2:     var(--lc-text-secondary);
+  --t3:     var(--lc-text-tertiary);
+  --t4:     var(--lc-text-disabled);
+}
+
+/* ── FUENTES ──────────────────────────────────────────────────
+   La @import de Google Fonts del entregable original está
+   quitada a propósito. `next/font/google` en src/app/layout.tsx
+   ya descarga las tres familias en build y las auto-hospeda, que
+   es más rápido y evita una petición a un tercero. La CSP tampoco
+   permite fonts.googleapis.com.
+
+   Las variables --lc-font-* de abajo siguen siendo la fuente de
+   verdad para QUÉ familia usar; solo cambia de dónde se cargan.
+   ──────────────────────────────────────────────────────────── */
+
+/* ============================================================
+   ALIAS DE LA APLICACIÓN · Next.js
+   ============================================================
+
+   El bloque de alias legacy de arriba cubre los nombres del
+   LANDING y del hub (--bg2, --surf, --bord, --t1..t4). La
+   aplicación de Next usa otros: --bg-2, --line, --ink-mute…
+
+   Este bloque los mapea a la capa semántica, para que los ~600
+   usos que hay en src/ sigan funcionando sin tocar un componente.
+
+   El mapeo es por ROL, no por parecido de valor. Ejemplo: --bg-2
+   se usa para tarjetas y paneles, así que apunta a --lc-surface
+   y no a --lc-bg-raised, aunque su valor viejo (#141418) se
+   parezca más al segundo.
+
+   No usar estos nombres en código nuevo. Ver design/HANDOFF-TOKENS.md
+   sección 5 para el orden de migración.
+   ============================================================ */
+
+:root {
+  /* Fondos y superficies */
+  --bg-2: var(--lc-surface);          /* tarjetas, paneles */
+  --bg-3: var(--lc-surface-raised);   /* campos, elementos dentro de tarjeta */
+
+  /* Escala de texto · nuestros cuatro niveles sobre los suyos */
+  --ink:      var(--lc-text);
+  --ink-dim:  var(--lc-text-secondary);
+  --ink-mute: var(--lc-text-tertiary);
+  --ink-soft: var(--lc-text-disabled);
+
+  /* Alias numéricos heredados de index.html. Mismos cuatro niveles. */
+  --ink-2: var(--lc-text-secondary);
+  --ink-3: var(--lc-text-tertiary);
+  --ink-4: var(--lc-text-disabled);
+
+  /* Bordes */
+  --line:   var(--lc-border);
+  --line-2: var(--lc-border-strong);
+
+  /* Acentos que la app usa y el sistema nombra distinto */
+  --coral-hover: var(--lc-accent);
+  --coral-soft:  var(--lc-accent-border);
+  --coral-glow:  var(--lc-accent-border);
+
+  /* Texto sobre fondo de acento. El sistema lo define igual (regla 4). */
+  --ink-on-accent: var(--lc-text-on-accent);
+
+  /* ── Extensiones locales ──────────────────────────────────
+     Estos NO están en el sistema de Nicolás. Se documentan aquí
+     en vez de dejarlos como hex sueltos, y hay que resolverlos
+     con diseño antes de cerrar la v1:
+
+     --red     acción destructiva (cerrar sesión). El sistema no
+               tiene un color destructivo; --lc-warning es ámbar
+               y no comunica lo mismo.
+     --purple  y --rose vienen del index.html viejo. Quedan
+               mapeados a acentos existentes para no perder el
+               dato, pero probablemente sobran.
+     ──────────────────────────────────────────────────────── */
+  --red:    #FF4B4B;
+  --purple: var(--lc-accent-2);
+  --rose:   var(--lc-extra);
+}
+
+
+/* ── 10. ENLACES · azul de hipervínculo por fondo ──────────────
+   El cian de marca sobre papel da 1,45:1 y no se lee como texto.
+   Sobre papel se usa --p-cyan-800 (6,7:1). Ver .lc-enlaces en
+   src/app/globals.css.
+   ────────────────────────────────────────────────────────── */
+:root {
+  --p-cyan-700:  #0A7F99;   /* 4,6:1 sobre papel: pasa, pero justo */
+  --p-cyan-800:  #086478;   /* 6,7:1 sobre papel */
+  --p-coral-700: #B8322B;   /* coral como texto sobre papel, 5,9:1 */
+  --p-pink-700:  #C2355A;   /* rosa como texto sobre papel, 5,3:1 */
+  --lc-link: var(--p-cyan-ink);
+}
+
+/* ── 11. COLOR POR TIPO · sistema de hipervínculos ───────────
+   Las cinco secciones: eventos coral · páginas (artistas, espacios,
+   colectivos) cian · publicaciones verde · radio coral · comunidad y
+   reseñas amarillo. Detalle en src/app/globals.css («COLOR POR TIPO»).
+   Los valores por defecto de --tipo* son neutros, para que un
+   componente fuera de un lc-tipo-* no se quede sin color.
+   ────────────────────────────────────────────────────────── */
+:root {
+  --tipo:       var(--lc-text);
+  --tipo-sobre: var(--lc-bg);
+  --tipo-texto: currentColor;
+}
+:root {
+  --p-coral-700:   #B8322B;   /* coral como texto sobre papel, 5,9:1 */
+  --p-pink-700:    #C2355A;   /* rosa como texto sobre papel, 5,3:1 */
+  --p-yellow-700:  #8F6400;   /* amarillo como texto sobre papel, 5,2:1 */
+
+  --tipo-evento-texto:    var(--p-coral-ink);
+  --tipo-pagina-texto:    var(--p-cyan-ink);
+  --tipo-contenido-texto: var(--p-green-ink);
+  --tipo-radio-texto:     var(--p-coral-ink);
+  --tipo-resena-texto:    var(--p-yellow-700);
+}
+.lc-tipo-evento    { --tipo: var(--p-coral);       --tipo-sobre: var(--p-ink);   --tipo-texto: var(--tipo-evento-texto); }
+.lc-tipo-artista,
+.lc-tipo-espacio,
+.lc-tipo-proyecto  { --tipo: var(--p-cyan);        --tipo-sobre: var(--p-ink);   --tipo-texto: var(--tipo-pagina-texto); }
+.lc-tipo-contenido { --tipo: var(--p-green);       --tipo-sobre: var(--p-tinta); --tipo-texto: var(--tipo-contenido-texto); }
+.lc-tipo-radio     { --tipo: var(--p-coral);       --tipo-sobre: var(--p-ink);   --tipo-texto: var(--tipo-radio-texto); }
+.lc-tipo-resena,
+.lc-tipo-comunidad { --tipo: var(--p-yellow-clara);      --tipo-sobre: var(--p-ink);   --tipo-texto: var(--tipo-resena-texto); }

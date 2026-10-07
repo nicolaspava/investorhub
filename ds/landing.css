@@ -1,0 +1,141 @@
+/* ============================================================
+   La landing sobre el sistema de diseño de la webapp.
+
+   ds/tokens.css y ds/componentes.css son copias y no se tocan.
+   Aquí va solo lo que conecta las clases propias de la landing
+   (.btn-primary, nav, .hero-bg…) con las piezas del sistema.
+
+   Los selectores van con html[data-tema] delante porque los
+   estilos de la landing viven en bloques <style> repartidos por
+   el <body>, que llegan después de esta hoja: sin ese prefijo,
+   el orden les daría la razón a ellos.
+   ============================================================ */
+
+/* ── Nombres de la landing → capa semántica ─────────────────── */
+:root {
+  /* Las tres familias del sistema: Bricolage 800 en títulos, Inter
+     en cuerpo y botones, DM Mono en etiquetas. */
+  --f-display: var(--lc-font-display);
+  --f-body:    var(--lc-font-body);
+  --f-mono:    var(--lc-font-mono);
+
+  /* --t4 en la landing pinta texto que se tiene que leer (pies,
+     notas, metadatos). En el sistema ese nivel es «deshabilitado»
+     y no pasa contraste; la regla de la webapp (INV-DIS-5) manda
+     el texto legible al terciario. */
+  --t4: var(--lc-text-tertiary);
+
+  /* Los cinco públicos de «La solución» tienen color propio. El
+     sistema manda --purple al cian, que repetiría el de curadores;
+     aquí va al cuarto acento, el rosa. */
+  --purple: var(--lc-extra);
+}
+
+/* ── Barra superior: vidrio oscuro, como .lc-cabecera al bajar ── */
+html[data-tema] nav {
+  background: var(--lc-cabecera-bajando-bg);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  backdrop-filter: blur(20px) saturate(170%);
+  border-bottom: 0;
+  box-shadow: inset 0 -1px 0 var(--lc-vidrio-border-divisor);
+}
+/* Enlaces de la barra: Inter, sin mayúsculas, como «Explorar» y
+   «Categorías» en la barra del sitio. */
+html[data-tema] .na {
+  font-family: var(--lc-font-body);
+  font-size: 14px;
+  font-weight: var(--lc-weight-medium);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--lc-text-secondary);
+}
+html[data-tema] :is(.na:hover, .na.on) { color: var(--lc-text); }
+html[data-tema] .nav-links.open {
+  background: var(--lc-bg-overlay);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  backdrop-filter: blur(20px) saturate(170%);
+}
+
+/* ── Botones: el vidrio de .lc-control ──────────────────────────
+   Mismos valores que .lc-control y .lc-control-primario en
+   componentes.css. Píldora, texto en Inter sin mayúsculas, sube
+   al pasar el cursor y se hunde al pulsar. */
+html[data-tema] :is(.btn-primary, .btn-sec, .nav-cta, .nav-cta-outline, .nav-upload-btn,
+                    .mem-cta, .plan-cta, .hacer-card-btn) {
+  font-family: var(--lc-font-body);
+  font-size: 14px;
+  font-weight: var(--lc-weight-medium);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--lc-text);
+  border: 1px solid var(--lc-vidrio-border);
+  border-radius: var(--lc-radius-full);
+  background: var(--lc-vidrio-bg);
+  box-shadow: inset 0 1px 0 var(--lc-vidrio-filo), 0 12px 30px var(--lc-vidrio-sombra);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  backdrop-filter: blur(18px) saturate(170%);
+  opacity: 1;
+  transition: transform 200ms ease, background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+html[data-tema] :is(.btn-primary, .btn-sec, .mem-cta) { padding: 12px 22px; }
+html[data-tema] :is(.nav-cta, .nav-cta-outline, .nav-upload-btn, .hacer-card-btn) { padding: 8px 16px; font-size: 13px; }
+html[data-tema] .plan-cta { padding: 12px; }
+
+/* El principal: .lc-control-primario */
+html[data-tema] :is(.btn-primary, .nav-cta, .mem-cta-primary, .plan-cta-coral) {
+  background: var(--lc-vidrio-bg-primario);
+  border-color: var(--lc-vidrio-border-primario);
+  box-shadow: inset 0 1px 0 var(--lc-vidrio-filo-primario), 0 12px 30px var(--lc-vidrio-sombra-primario);
+}
+
+html[data-tema] :is(.btn-primary, .btn-sec, .nav-cta, .nav-cta-outline, .nav-upload-btn,
+                    .mem-cta, .plan-cta, .hacer-card-btn):hover {
+  transform: scale(1.04);
+  opacity: 1;
+  color: var(--lc-text);
+  background: var(--lc-vidrio-bg-hover);
+  border-color: var(--lc-vidrio-border-hover);
+  box-shadow: inset 0 1px 0 var(--lc-vidrio-filo-hover), 0 14px 34px var(--lc-vidrio-sombra-hover);
+}
+html[data-tema] :is(.btn-primary, .nav-cta, .mem-cta-primary, .plan-cta-coral):hover {
+  background: var(--lc-vidrio-bg-primario-hover);
+  border-color: var(--lc-vidrio-border-primario-hover);
+}
+html[data-tema] :is(.btn-primary, .btn-sec, .nav-cta, .nav-cta-outline, .nav-upload-btn,
+                    .mem-cta, .plan-cta, .hacer-card-btn):active {
+  transform: scale(.96);
+  border-color: var(--lc-vidrio-border-active);
+  box-shadow: inset 0 3px 10px var(--lc-vidrio-sombra), 0 4px 10px var(--lc-vidrio-sombra-active);
+  transition-duration: 80ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-tema] :is(.btn-primary, .btn-sec, .nav-cta, .mem-cta, .plan-cta):is(:hover, :active) { transform: none; }
+}
+
+/* ── Fondo: las auras coral y cian del sistema (.lc-auras) ──────
+   La landing tenía un resplandor fijo cian y rosa con desenfoque.
+   Se queda fijo detrás de todo, pero con los colores y la forma
+   de las auras de Inicio, más suaves porque acompañan la página
+   entera y no solo la cabecera. */
+html[data-tema] :is(.hero-bg, .hbg) {
+  background: none;
+  filter: none;
+  overflow: hidden;
+}
+html[data-tema] :is(.hero-bg, .hbg)::before,
+html[data-tema] :is(.hero-bg, .hbg)::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+html[data-tema] :is(.hero-bg, .hbg)::before {
+  width: 760px; height: 620px; left: -220px; top: -200px;
+  background: radial-gradient(ellipse, var(--p-coral) 0%, var(--lc-aura-coral-fade) 70%);
+  opacity: .32;
+}
+html[data-tema] :is(.hero-bg, .hbg)::after {
+  width: 760px; height: 640px; right: -260px; top: 30%;
+  background: radial-gradient(ellipse, var(--p-cyan) 0%, var(--lc-aura-cyan-fade) 70%);
+  opacity: .2;
+}

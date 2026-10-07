@@ -1,0 +1,433 @@
+/* ============================================================
+   COPIA de los componentes del sistema de diseño de la webapp.
+   Origen: nicolaspava/webapp · src/app/globals.css · rama main,
+   commit 1fe2c51 (6 oct 2026). Copiado el 7 oct 2026.
+
+   Son los bloques de globals.css que sirven fuera de Next, con el
+   texto tal cual. Únicos cambios: se quitaron los envoltorios
+   @layer de Tailwind, la utilidad scrollbar-none pasó a clase
+   normal y var(--font-mono) (variable de Tailwind) pasó a
+   var(--lc-font-mono), que es la misma familia.
+
+   Va después de ds/tokens.css. No se edita aquí: lo propio de la
+   landing va en ds/landing.css.
+   ============================================================ */
+
+  /* Reservar el hueco evita el salto de layout al abrir el menú,
+     que bloquea el scroll del documento. En móvil la barra se
+     superpone y esto no ocupa nada. */
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  @media (max-width: 767px) {
+    html {
+      scroll-padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+    }
+  }
+
+  /* Firefox: no tiene los pseudoelementos, solo estas dos. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--lc-border-strong) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* El borde transparente más `background-clip: content-box` es
+     lo que adelgaza el pulgar sin tocar el ancho de la barra: el
+     área de agarre sigue siendo de 10px, que es lo cómodo, pero
+     se ve un trazo de 4px, que es lo bonito. */
+  *::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    background-clip: content-box;
+    border: 3px solid transparent;
+    border-radius: var(--lc-radius-full);
+    transition: background-color var(--lc-duration-fast) var(--lc-ease);
+  }
+
+  /* En reposo apenas se insinúa; al entrar en la zona, aparece. */
+  *:hover::-webkit-scrollbar-thumb {
+    background-color: var(--lc-border-strong);
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--lc-text-tertiary);
+    border-width: 2px;
+  }
+
+  *::-webkit-scrollbar-thumb:active {
+    background-color: var(--lc-accent);
+    border-width: 2px;
+  }
+
+  /* Donde se cruzan las dos barras no debe quedar un cuadro. */
+  *::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  /* Quien pidió no ver animaciones tampoco ve esta. La barra se
+     queda visible y quieta, que es más accesible que una que
+     aparece y desaparece. */
+  @media (prefers-reduced-motion: reduce) {
+    *::-webkit-scrollbar-thumb {
+      background-color: var(--lc-border-strong);
+      transition: none;
+    }
+  }
+
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
+/* ============================================================
+   HIPERVÍNCULOS
+   ============================================================
+
+   La Curaduría es una red: los enlaces dentro de los textos se
+   tienen que ver como enlaces, en azul y subrayados.
+
+   El azul es el cian de la marca, pero el cian (--p-cyan) sobre
+   papel da 1,45:1 de contraste y no se lee (el mínimo para texto
+   es 4,5:1). Por eso el token cambia según el fondo:
+
+     sobre negro   --p-cyan       13,6:1
+     sobre papel   --p-cyan-800    6,7:1   (misma familia, más tinta)
+
+   Si se quiere más vivo, --p-cyan-700 da 4,6:1: pasa,
+   pero justo, y sobre las superficies grises del papel ya no.
+   ============================================================ */
+/* Enlaces dentro de texto corrido. Los botones y las tarjetas no
+   usan esta clase: esto es sólo para prosa. */
+.lc-enlaces a,
+a.lc-enlace {
+  color: var(--lc-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-thickness 0.15s;
+}
+.lc-enlaces a:hover,
+a.lc-enlace:hover {
+  text-decoration-thickness: 2px;
+}
+
+.lc-vinculo {
+  text-decoration-line: none;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+a:hover .lc-vinculo,
+a.lc-vinculo:hover {
+  text-decoration-line: underline;
+}
+
+/* ============================================================
+   MOVIMIENTO NEOBRUTALISTA SIN MARCOS (sep 2026)
+   ============================================================
+   De la referencia «Ruta Enlace» se queda el movimiento —la pieza sube
+   al pasar el cursor y se hunde al pulsarla, con sombra dura— pero no
+   los marcos grises ni los fondos detrás del texto. Todo cuadrado.
+
+   .lc-caja       superficie lisa para menús, paneles y listas; sin marco.
+   .lc-caja-viva  la caja, si se pulsa: el mismo movimiento que la pieza.
+   .lc-control    botón o campo, relleno y sin marco; sube al pasar el
+                  cursor y se hunde al pulsarlo. Ver «Vidrio de verdad».
+   .lc-chip       etiqueta pequeña en DM Mono sobre fondo liso.
+   .lc-punto      el cuadrito de color que va antes de un título.
+   ============================================================ */
+.lc-caja {
+  border-radius: var(--lc-radius-sm);
+  background: var(--lc-surface);
+}
+.lc-caja-viva {
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.lc-caja-viva:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0 var(--tipo, var(--lc-accent));
+}
+.lc-caja-viva:active {
+  transform: translate(0, 0);
+  box-shadow: none;
+  transition-duration: 60ms;
+}
+/* ============================================================
+   VIDRIO (sep 2026, «Botones flotantes de vidrio» de Claude Design)
+   ============================================================
+   Botones, campos y píldoras de vidrio: blanco al 8 % con desenfoque de
+   lo que hay detrás (18px, saturación 170 %), filo blanco al 20 %, un
+   brillo arriba y una sombra suave abajo. Redondos: píldora con texto,
+   círculo si es solo ícono. Al pasar el cursor el vidrio se aclara y
+   crece un poco; al pulsarlo se hunde.
+
+   .lc-control          el botón de vidrio.
+   .lc-control-primario el principal: vidrio más claro (30 %) y filo al 45 %.
+   .lc-control-activo   encendido (Guardado, Siguiendo, filtro puesto):
+                        como el primario, con el ícono relleno.
+   .lc-campo-vidrio     campo de búsqueda de vidrio.
+   .lc-auras            manchas de color de marca (coral y cian) detrás,
+                        para que el vidrio tenga algo que desenfocar.
+   ============================================================ */
+.lc-control,
+.lc-campo-vidrio {
+  border: 1px solid var(--lc-vidrio-border);
+  border-radius: var(--lc-radius-full);
+  background: var(--lc-vidrio-bg);
+  color: var(--lc-text);
+  box-shadow: inset 0 1px 0 var(--lc-vidrio-filo), 0 12px 30px var(--lc-vidrio-sombra);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  backdrop-filter: blur(18px) saturate(170%);
+}
+.lc-control {
+  transition: transform 200ms ease, background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+.lc-control:hover {
+  transform: scale(1.04);
+  background: var(--lc-vidrio-bg-hover);
+  border-color: var(--lc-vidrio-border-hover);
+  box-shadow: inset 0 1px 0 var(--lc-vidrio-filo-hover), 0 14px 34px var(--lc-vidrio-sombra-hover);
+}
+.lc-control:active {
+  transform: scale(.96);
+  border-color: var(--lc-vidrio-border-active);
+  box-shadow: inset 0 3px 10px var(--lc-vidrio-sombra), 0 4px 10px var(--lc-vidrio-sombra-active);
+  transition-duration: 80ms;
+}
+.lc-control-primario,
+.lc-control-activo {
+  background: var(--lc-vidrio-bg-primario);
+  border-color: var(--lc-vidrio-border-primario);
+  box-shadow: inset 0 1px 0 var(--lc-vidrio-filo-primario), 0 12px 30px var(--lc-vidrio-sombra-primario);
+}
+.lc-control-primario:hover,
+.lc-control-activo:hover {
+  background: var(--lc-vidrio-bg-primario-hover);
+  border-color: var(--lc-vidrio-border-primario-hover);
+}
+.lc-campo-vidrio {
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+.lc-campo-vidrio:focus-within,
+.lc-campo-vidrio:focus {
+  background: var(--lc-vidrio-bg-focus-campo);
+  border-color: var(--lc-vidrio-border-focus);
+}
+/* En el tema claro el vidrio es oscuro: blanco no se vería sobre crema. */
+:root:not([data-tema="oscuro"]) .lc-control,
+:root:not([data-tema="oscuro"]) .lc-campo-vidrio {
+  background: var(--lc-vidrio-claro-bg);
+  border-color: var(--lc-vidrio-claro-border);
+  box-shadow: inset 0 1px 0 var(--lc-vidrio-filo-primario), 0 10px 24px var(--lc-vidrio-sombra-suave);
+}
+:root:not([data-tema="oscuro"]) .lc-control-primario,
+:root:not([data-tema="oscuro"]) .lc-control-activo {
+  background: var(--lc-vidrio-claro-activo-bg);
+  color: var(--p-cream);
+}
+@media (prefers-reduced-motion: reduce) {
+  .lc-control:hover, .lc-control:active { transform: none; }
+}
+/* Auras: la luz de colores de marca detrás del vidrio. Van en un bloque
+   con position:relative e isolate; el contenido va encima. */
+.lc-auras {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  /* Se apaga abajo: sin borde duro donde termina la caja. */
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent);
+  mask-image: linear-gradient(to bottom, black 55%, transparent);
+}
+.lc-auras::before,
+.lc-auras::after,
+.lc-auras > span {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+.lc-auras::before {
+  width: 560px; height: 460px; left: -140px; top: -140px;
+  background: radial-gradient(ellipse, var(--p-coral) 0%, var(--lc-aura-coral-fade) 70%);
+  opacity: .6;
+}
+.lc-auras::after {
+  width: 560px; height: 480px; right: -160px; top: 5%;
+  background: radial-gradient(ellipse, var(--p-cyan) 0%, var(--lc-aura-cyan-fade) 70%);
+  opacity: .4;
+}
+.lc-auras > span {
+  width: 360px; height: 300px; left: 38%; top: -120px;
+  background: radial-gradient(ellipse, var(--p-coral) 0%, var(--lc-aura-coral-fade) 70%);
+  opacity: .25;
+}
+.lc-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--lc-radius-sm);
+  background: var(--lc-bg);
+  color: var(--lc-text);
+  padding: 3px 7px;
+  font-family: var(--lc-font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.lc-punto {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  flex: none;
+  background: var(--tipo, var(--lc-text));
+}
+@media (prefers-reduced-motion: reduce) {
+  .lc-caja-viva:hover { transform: none; }
+}
+
+  button,
+  [role="button"],
+  [role="tab"],
+  [role="switch"],
+  [role="menuitem"],
+  [role="option"],
+  summary,
+  select,
+  label[for],
+  input[type="checkbox"],
+  input[type="radio"],
+  input[type="submit"],
+  input[type="button"] {
+    cursor: pointer;
+  }
+  button:disabled,
+  [aria-disabled="true"],
+  input:disabled,
+  select:disabled {
+    cursor: not-allowed;
+  }
+
+/* ============================================================
+   DEGRADADO DE MARCA (.lc-degrade-marca)
+   ============================================================
+   El fondo del bloque bajo el banner de Inicio, sacado de
+   Logos/PNG/Degradado.png: rojo coral a la izquierda, rosado al
+   centro, cian claro y azul abajo a la derecha, y arriba se apaga
+   en negro. Con el grano fino de la imagen (ruido SVG); arriba se
+   funde con la barra y abajo lo corta el banner.
+   ============================================================ */
+.lc-degrade-marca {
+  background:
+    radial-gradient(75% 130% at 5% 50%, var(--lc-degrade-rojo-1), transparent 72%),
+    radial-gradient(55% 110% at 40% 80%, var(--lc-degrade-rojo-2), transparent 72%),
+    radial-gradient(60% 120% at 92% 85%, var(--lc-degrade-cian-1), transparent 72%),
+    radial-gradient(50% 90% at 70% 110%, var(--lc-degrade-azul-1), transparent 72%),
+    radial-gradient(45% 80% at 20% 115%, var(--lc-degrade-azul-2), transparent 72%),
+    var(--lc-bg);
+}
+.lc-degrade-marca::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .22;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+.lc-degrade-marca::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* Arriba se apaga en negro, como la imagen. Abajo no: el banner, que va
+     justo debajo, corta el color de una vez. */
+  background: linear-gradient(to bottom, var(--lc-sombra-degrade) 0%, transparent 35%);
+}
+
+/* ============================================================
+   BARRA SUPERIOR FLOTANTE (sep 2026)
+   ============================================================
+   La barra flota sobre el contenido. Arriba es transparente; al bajar,
+   vidrio oscuro. <main> reserva su alto (60px) y un hero que quiere ir
+   por debajo de la barra lo recupera con .lc-bajo-barra. */
+.lc-cabecera {
+  background: linear-gradient(to bottom, var(--lc-sombra-degrade), transparent);
+  transition: background-color 250ms ease, box-shadow 250ms ease;
+}
+.lc-cabecera[data-bajando] {
+  background: var(--lc-cabecera-bajando-bg);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  backdrop-filter: blur(20px) saturate(170%);
+  box-shadow: inset 0 -1px 0 var(--lc-vidrio-border-divisor);
+}
+:root:not([data-tema="oscuro"]) .lc-cabecera {
+  background: linear-gradient(to bottom, var(--lc-cabecera-clara-bg), var(--lc-cabecera-clara-fade));
+}
+:root:not([data-tema="oscuro"]) .lc-cabecera[data-bajando] {
+  background: var(--lc-cabecera-clara-bg);
+}
+/* Campos de formulario (sep 2026): vidrio, redondeados, como el buscador.
+   Sirve para input, textarea y select. */
+
+   Sirve para input, textarea y select. */
+.lc-campo-form {
+  border: 1px solid var(--lc-vidrio-border-subtle);
+  border-radius: 18px;
+  background: var(--lc-vidrio-bg-subtle);
+  box-shadow: inset 0 1px 0 var(--lc-vidrio-filo-subtle);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  backdrop-filter: blur(18px) saturate(170%);
+  outline: none;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+.lc-campo-form:hover { background: var(--lc-vidrio-bg); }
+.lc-campo-form:focus,
+.lc-campo-form:focus-within { border-color: var(--lc-vidrio-border-focus-campo); background: var(--lc-vidrio-bg-focus); }
+.lc-campo-form[aria-invalid="true"] { border-color: var(--red); }
+select.lc-campo-form option { background: var(--bg-2); color: var(--ink); }
+
+/* Variantes de las auras para Inicio. */
+/* A lo largo de toda la selección: los puntos se repiten más abajo. */
+.lc-auras-largas { -webkit-mask-image: none; mask-image: none; }
+.lc-auras-largas::before { top: 4%; opacity: .35; }
+.lc-auras-largas::after { top: 38%; opacity: .3; }
+.lc-auras-largas > span { left: 10%; top: auto; bottom: 6%; width: 520px; height: 420px; opacity: .25;
+  background: radial-gradient(ellipse, var(--p-cyan) 0%, var(--lc-aura-cyan-fade) 70%); }
+
+
+/* Los campos de vidrio no llevan el contorno coral global de :focus-visible
+   (tokens.css): el foco se ve en el borde y el fondo, que se aclaran. Va
+   fuera de las capas porque la regla global tampoco está en una. */
+.lc-campo-vidrio:focus-visible,
+.lc-campo-form:focus-visible { outline: none; }
+
+/* El texto de ayuda de los buscadores de vidrio, en blanco: el gris no se
+   leía sobre el vidrio. Fuera de capas para ganarle a placeholder:text-*. */
+.lc-campo-vidrio::placeholder { color: var(--lc-placeholder-vidrio); }
+
+/* Tarjeta de vidrio (sep 2026): opciones y accesos que se eligen o se
+   pulsan (qué publicar, tipo de publicación, categorías del header). La
+   elegida (aria-checked / aria-pressed / .lc-tarjeta-activa) se aclara. */
+.lc-tarjeta-vidrio {
+  border: 1px solid var(--lc-vidrio-border-tarjeta);
+  border-radius: 20px;
+  background: var(--lc-vidrio-bg-subtle);
+  box-shadow: inset 0 1px 0 var(--lc-vidrio-filo-tarjeta), 0 18px 40px var(--lc-vidrio-sombra);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  backdrop-filter: blur(18px) saturate(170%);
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+.lc-tarjeta-vidrio:hover { background: var(--lc-vidrio-bg-hover-tarjeta); border-color: var(--lc-vidrio-border-tarjeta-hover); }
+.lc-tarjeta-vidrio:active { transform: scale(.99); }
+.lc-tarjeta-vidrio[aria-checked="true"],
+.lc-tarjeta-vidrio[aria-pressed="true"],
+.lc-tarjeta-vidrio.lc-tarjeta-activa { background: var(--lc-vidrio-bg-activo-tarjeta); border-color: var(--lc-vidrio-border-tarjeta-active); }
