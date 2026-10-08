@@ -6,7 +6,8 @@ La landing (`index.html`) usa el mismo sistema de diseño que lacuraduria.net. E
 |---|---|---|
 | `tokens.css` | Copia exacta de `design/tokens.css` de la webapp: colores, tipografías, espaciado, radios, vidrio y tema oscuro. | No |
 | `componentes.css` | Las piezas de `src/app/globals.css` de la webapp que sirven fuera de Next: vidrio (`.lc-control`, `.lc-campo-form`, `.lc-tarjeta-vidrio`), auras, chips, degradé de marca, barra flotante, enlaces y barra de desplazamiento. | No |
-| `landing.css` | Lo propio de la landing: conecta sus clases (`.btn-primary`, `nav`, `.hero-bg`…) con las piezas del sistema. | Sí |
+
+En la rama `diseno/taste-skill` la landing no usa `ds/landing.css`: su capa propia es `estilo/landing.css` (ver `estilo/LEEME.md`).
 
 Copiado del commit `1fe2c51` de `main` de la webapp (6 oct 2026).
 
