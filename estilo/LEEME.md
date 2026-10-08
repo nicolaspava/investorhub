@@ -14,7 +14,9 @@ Rediseño de la portada de la landing (`index.html`, pantalla `#pg-home`) hecho 
 
 - **Un tema:** oscuro en toda la página, con fondo casi negro (`#0C0C0B`), no negro puro. La marca abre en oscuro; no hay secciones invertidas.
 - **Un acento:** el coral `#FF736C`. El cian solo vive dentro del logo. Los colores decorativos viejos (`--cyan`, `--purple`…) pasan a neutros.
-- **Formas:** superficies e imágenes rectas; lo que se pulsa (botones, pestañas, campos) en píldora; los teléfonos con su curva de teléfono.
+- **Vidrio (8 oct):** paneles de vidrio esmerilado (desenfoque, filo de luz de 1px, brillo interior y sombra) sobre una capa fija de auras coral con grano. Lo llevan la barra (cápsula flotante), el mosaico, las pestañas y su panel, el chat, los planes, el marco de la captura de artistas, el bisel de los teléfonos y los botones secundarios. El botón principal sigue en coral lleno. Quien tiene activada la opción de reducir transparencias ve paneles sólidos.
+- **Formas:** paneles de vidrio con esquinas de 20px, imágenes dentro a 14px, lo que se pulsa (botones, pestañas, campos) en píldora y los teléfonos con bisel. Las pantallas internas también se suavizan.
+- **Caché:** la hoja y el script llevan `?v=AAAAMMDD` en `index.html`. Al cambiarlos hay que subir ese número, o el navegador sigue mostrando la versión vieja.
 - **Tipografía:** Bricolage 800 en titulares, Geist en texto, Geist Mono solo en etiquetas.
 - **Texto:** sin rayas largas (—). Se dejaron a propósito las del texto de confidencialidad del Investor Hub y las de los valores del formulario de inversión: lo primero es texto legal y lo segundo son datos que el formulario envía.
 

@@ -470,3 +470,154 @@ html[data-tema] :is(.sbtn, .form-submit, .btn-full-p, .mprev-btn-pay, .mprev-btn
   font-size: 15px; font-weight: 500;
   letter-spacing: 0; text-transform: none;
 }
+
+/* ════════════════════════════════════════════════════════════════
+   CAPA DE VIDRIO (8 oct 2026)
+   Vidrio esmerilado: aproximación web con backdrop-filter, no el
+   «Liquid Glass» de Apple, que no existe para la web. Receta:
+   desenfoque + saturación, filo de luz de 1px, brillo interior
+   arriba y sombra larga. Sin transparencias para quien las pidió
+   reducidas.
+
+   El vidrio necesita algo detrás: una capa fija de auras coral
+   (tonos de la marca) y grano fino acompaña toda la página.
+
+   Formas, regla nueva: paneles de vidrio a 20px, imágenes dentro
+   a 14px, lo que se pulsa en píldora, teléfonos con bisel.
+   ════════════════════════════════════════════════════════════════ */
+:root {
+  --g-luz:    linear-gradient(135deg, rgba(255, 255, 255, .10), rgba(255, 255, 255, .025) 55%, rgba(255, 255, 255, .05));
+  --g-tinte:  rgba(20, 20, 18, .42);
+  --g-borde:  rgba(255, 255, 255, .11);
+  --g-borde-2: rgba(255, 255, 255, .22);
+  --g-brillo: inset 0 1px 0 rgba(255, 255, 255, .14);
+  --g-sombra: 0 30px 80px -32px rgba(0, 0, 0, .85);
+  --g-blur:   blur(24px) saturate(165%);
+  --t-radio:  20px;
+  --t-radio-img: 14px;
+  /* las pantallas internas también se suavizan */
+  --lc-radius-sm: 10px; --lc-radius-md: 16px; --lc-radius-lg: 20px; --lc-radius-tarjeta: 14px;
+}
+
+/* ── La luz de fondo ─────────────────────────────────────────── */
+/* El <style> viejo de la página le pone fondo al body después de esta hoja:
+   con html[data-tema] delante gana y deja ver la luz. */
+html[data-tema] body { background: transparent; }
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.05'/%3E%3C/svg%3E"),
+    radial-gradient(42vw 42vw at 8% 6%, rgba(255, 115, 108, .26), rgba(255, 115, 108, 0) 70%),
+    radial-gradient(48vw 48vw at 96% 48%, rgba(255, 124, 152, .16), rgba(255, 124, 152, 0) 70%),
+    radial-gradient(40vw 40vw at 28% 100%, rgba(255, 115, 108, .14), rgba(255, 115, 108, 0) 70%),
+    var(--t-bg);
+}
+.t-hero::before { background: radial-gradient(closest-side, rgba(255, 115, 108, .30), rgba(255, 115, 108, 0)); }
+
+/* ── El material ─────────────────────────────────────────────── */
+.t-celda, .t-panel, .t-plan, .t-proximamente,
+html[data-tema] .guia-chat-wrap,
+html[data-tema] nav,
+html[data-tema] .nav-links.open {
+  background: var(--g-luz), var(--g-tinte);
+  border: 1px solid var(--g-borde);
+  box-shadow: var(--g-brillo), var(--g-sombra);
+  -webkit-backdrop-filter: var(--g-blur);
+  backdrop-filter: var(--g-blur);
+}
+.t-celda, .t-panel, .t-plan, .t-proximamente, html[data-tema] .guia-chat-wrap { border-radius: var(--t-radio); overflow: hidden; }
+
+/* ── Barra: cápsula flotante ─────────────────────────────────── */
+html[data-tema] nav {
+  top: 12px; left: 12px; right: 12px;
+  max-width: var(--t-max); margin-inline: auto;
+  height: 60px; border-radius: 999px; padding: 0 10px 0 24px;
+}
+html[data-tema] .nav-links.open { top: 82px; left: 12px; right: 12px; border-radius: var(--t-radio); }
+.t-hero { padding-top: calc(72px + clamp(24px, 5vh, 56px)); }
+
+/* ── Botones: el secundario es de vidrio, el principal sigue lleno ── */
+.t-btn-sec,
+html[data-tema] :is(.btn-sec, .nav-cta, .nav-cta-outline, .nav-upload-btn, .mem-cta-outline, .plan-cta-outline, .hacer-card-btn) {
+  background: var(--g-luz), rgba(20, 20, 18, .35);
+  border-color: var(--g-borde-2);
+  box-shadow: var(--g-brillo);
+  -webkit-backdrop-filter: var(--g-blur);
+  backdrop-filter: var(--g-blur);
+}
+.t-btn-sec:hover,
+html[data-tema] :is(.btn-sec, .nav-cta, .nav-cta-outline, .nav-upload-btn, .mem-cta-outline, .plan-cta-outline, .hacer-card-btn):hover {
+  background: var(--g-luz), rgba(255, 255, 255, .08);
+  border-color: rgba(255, 255, 255, .34);
+}
+.t-btn-pri,
+html[data-tema] :is(.btn-primary, .mem-cta-primary, .plan-cta-coral) {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .38), 0 14px 34px -12px rgba(255, 115, 108, .55);
+}
+
+/* ── Teléfonos: bisel de vidrio ──────────────────────────────── */
+.t-tel {
+  border: 1px solid var(--g-borde-2); outline: 0; padding: 7px;
+  background: var(--g-luz), rgba(28, 28, 26, .55);
+  -webkit-backdrop-filter: var(--g-blur); backdrop-filter: var(--g-blur);
+  box-shadow: var(--g-brillo), 0 50px 90px -30px rgba(0, 0, 0, .85), 0 20px 50px -20px rgba(255, 115, 108, .25);
+}
+.t-tel img { border-radius: 31px; }
+
+/* ── Mosaico ─────────────────────────────────────────────────── */
+.t-celda-img { border-bottom: 0; margin: 8px 8px 0; border-radius: var(--t-radio-img); }
+.t-celda-ia {
+  background: linear-gradient(135deg, rgba(255, 255, 255, .22), rgba(255, 255, 255, 0) 60%), var(--t-accent);
+  border-color: rgba(255, 255, 255, .28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4), 0 30px 70px -30px rgba(255, 115, 108, .6);
+}
+
+/* ── Pestañas de vidrio ──────────────────────────────────────── */
+.t-pestana {
+  background: var(--g-luz), rgba(20, 20, 18, .35);
+  border-color: var(--g-borde-2);
+  box-shadow: var(--g-brillo);
+  -webkit-backdrop-filter: var(--g-blur); backdrop-filter: var(--g-blur);
+}
+.t-pestana[aria-selected="true"] { background: var(--t-text); color: var(--t-bg); border-color: var(--t-text); box-shadow: 0 10px 30px -12px rgba(245, 243, 236, .4); }
+.t-panel > div + div { background: rgba(255, 255, 255, .03); border-left-color: var(--g-borde); }
+
+/* ── Chat ────────────────────────────────────────────────────── */
+html[data-tema] .guia-chat-header, html[data-tema] .guia-input-bar { border-color: var(--g-borde); }
+html[data-tema] .guia-avatar { border-color: var(--g-borde-2); border-radius: 50%; }
+html[data-tema] .guia-bubble-bot { background: rgba(255, 255, 255, .06); border-color: var(--g-borde); border-radius: 4px 16px 16px 16px; }
+html[data-tema] .guia-bubble-user { border-radius: 16px 4px 16px 16px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35); }
+html[data-tema] .guia-result-card { background: rgba(255, 255, 255, .05); border-color: var(--g-borde); border-radius: 12px; }
+html[data-tema] .guia-input-fake { background: rgba(255, 255, 255, .05); border-color: var(--g-borde); }
+
+/* ── Artistas: la captura en un marco de vidrio ──────────────── */
+.t-banda {
+  max-width: calc(var(--t-max) - 2 * var(--t-pad)); margin-inline: auto;
+  border: 1px solid var(--g-borde); border-radius: 24px; padding: 8px;
+  background: var(--g-luz), var(--g-tinte);
+  box-shadow: var(--g-brillo), var(--g-sombra);
+  -webkit-backdrop-filter: var(--g-blur); backdrop-filter: var(--g-blur);
+}
+.t-banda img { border-radius: 16px; }
+@media (max-width: 900px) { .t-banda { margin-inline: var(--t-pad); max-width: none; } }
+
+/* ── Planes ──────────────────────────────────────────────────── */
+.t-plan-pro {
+  background: linear-gradient(180deg, rgba(255, 115, 108, .18), rgba(255, 115, 108, .04) 55%), var(--g-luz), var(--g-tinte);
+  border-color: rgba(255, 115, 108, .55);
+}
+.t-proximamente { border-style: solid; }
+
+/* ── Sin transparencias si así se pidió ──────────────────────── */
+@media (prefers-reduced-transparency: reduce) {
+  .t-celda, .t-panel, .t-plan, .t-proximamente, .t-banda, .t-tel, .t-pestana, .t-btn-sec,
+  html[data-tema] :is(.guia-chat-wrap, nav, .nav-links.open, .btn-sec, .nav-cta, .mem-cta-outline) {
+    -webkit-backdrop-filter: none; backdrop-filter: none;
+    background: var(--t-surf);
+  }
+  .t-plan-pro { background: var(--t-surf-2); }
+  .t-celda-ia { background: var(--t-accent); }
+}
+
+/* El menú del teléfono va sobre texto: vidrio casi opaco para que se lea. */
+html[data-tema] .nav-links.open { background: var(--g-luz), rgba(14, 14, 13, .9); }
