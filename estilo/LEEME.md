@@ -13,16 +13,27 @@ Rediseño de la portada de la landing (`index.html`, pantalla `#pg-home`) hecho 
 ## Reglas
 
 - **Un tema:** oscuro en toda la página, con fondo casi negro (`#0C0C0B`), no negro puro. La marca abre en oscuro; no hay secciones invertidas.
-- **Un acento:** el coral `#FF736C`. El cian solo vive dentro del logo. Los colores decorativos viejos (`--cyan`, `--purple`…) pasan a neutros.
+- **Acento:** el coral `#FF736C` en botones y acciones. Los demás colores de marca solo para codificar tipos (ver abajo). Los colores decorativos viejos (`--cyan`, `--purple`…) pasan a neutros.
 - **Vidrio (8 oct):** paneles de vidrio esmerilado (desenfoque, filo de luz de 1px, brillo interior y sombra) sobre una capa fija de auras coral con grano. Lo llevan la barra (cápsula flotante), el mosaico, las pestañas y su panel, el chat, los planes, el marco de la captura de artistas, el bisel de los teléfonos y los botones secundarios. El botón principal sigue en coral lleno. Quien tiene activada la opción de reducir transparencias ve paneles sólidos.
 - **Formas:** paneles de vidrio con esquinas de 20px, imágenes dentro a 14px, lo que se pulsa (botones, pestañas, campos) en píldora y los teléfonos con bisel. Las pantallas internas también se suavizan.
 - **Caché:** la hoja y el script llevan `?v=AAAAMMDD` en `index.html`. Al cambiarlos hay que subir ese número, o el navegador sigue mostrando la versión vieja.
 - **Tipografía:** Bricolage 800 en titulares, Geist en texto, Geist Mono solo en etiquetas.
 - **Texto:** sin rayas largas (—). Se dejaron a propósito las del texto de confidencialidad del Investor Hub y las de los valores del formulario de inversión: lo primero es texto legal y lo segundo son datos que el formulario envía.
 
-## Las ocho secciones de la portada
+## La portada (versión del 8 oct)
 
-Hero partido con dos teléfonos · manifiesto con mosaico de tres celdas · índice de verbos · pestañas por público · chat que se escribe solo · banda de pantalla completa para artistas · planes asimétricos · cierre con el tagline. Los `id` de sección se conservan.
+1. **Hero:** el logo es el titular. Debajo, «Una infraestructura de gestión y descubrimiento cultural.», la descripción y dos botones: «Regístrate gratis» y «Ver la cartelera». Dos teléfonos con capturas reales.
+2. **Funciones** (`#cambia-algo`): mosaico de tres celdas: catálogo de eventos, directorio de artistas, y recomendaciones y contenidos.
+3. **Tu ruta cultural** (`#como-funciona`): línea de metro con los colores de la marca (Explora, Descubre, Guarda, Comparte) que se dibuja al entrar en pantalla.
+4. **Para quién** (`#dolor-solucion`): «El ruido de las redes sociales…» y pestañas por público.
+5. **GuÍA** (`#guia`): oculta con `hidden` hasta que exista; el HTML sigue ahí.
+6. **Crea tu perfil** (`#artistas`): usuarios, artistas y gestores.
+7. **Planes** (`#membresias`): ocultos con `hidden` mientras no funcionen.
+8. **Cierre:** «¡Cambia el algoritmo por la curaduría!» y «Regístrate gratis».
+
+En el pie: logo, «Media Tech Cultural» y la frase «Tecnología para la circulación de la cultura».
+
+**Color:** el coral es el acento de las acciones. Los demás colores de la marca solo marcan tipos, como en lacuraduria.net: eventos coral, artistas y espacios cian, publicaciones verde y comunidad amarillo. Se usan en la ruta y en los marcadores de las tarjetas.
 
 ## Para actualizar las capturas
 

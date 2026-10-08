@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Curaduría</title>
-<meta name="description" content="Guía inteligente de música, arte y cultura. Tecnología para la circulación de la cultura.">
+<meta name="description" content="Una infraestructura de gestión y descubrimiento cultural. Tecnología para la circulación de la cultura.">
 <!-- Sistema de diseño de la webapp (copia): ver ds/LEEME.md -->
 <link rel="stylesheet" href="/ds/tokens.css">
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261008">
-<script src="/estilo/landing.js?v=20261008" defer></script>
+<link rel="stylesheet" href="/estilo/landing.css?v=20261008c">
+<script src="/estilo/landing.js?v=20261008b" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 /* La paleta y las familias vienen de ds/tokens.css y ds/landing.css. */
@@ -390,11 +390,11 @@ footer.site-footer{}
 <!-- ══════════════════════════════════════════ -->
 <div class="pg active" id="pg-home">
 
-  <!-- 1 · HERO -->
+  <!-- 1 · HERO: el logo es el titular -->
   <section id="hero" class="t-hero">
     <div class="t-envoltura t-hero-grid">
       <div>
-        <div class="t-hero-marca t-entra" role="img" aria-label="La Curaduría"><svg viewBox="0 0 1795 244" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <h1 class="t-hero-marca t-entra"><span class="t-oculto">La Curaduría</span><svg viewBox="0 0 1795 244" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
             <path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="#FF736C"/>
             <path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="#75E6F9"/>
             <path d="M427.103 115.917H350.58V1.36438H388.842V77.7438H503.626C503.626 98.8361 486.497 115.934 465.365 115.934H427.103V115.917Z" fill="#FFFFF6"/>
@@ -408,12 +408,12 @@ footer.site-footer{}
             <path d="M1355.76 128.116H1432.23C1453.4 128.116 1470.48 145.229 1470.48 166.289C1470.48 187.348 1453.33 204.462 1432.23 204.462H1393.99C1372.82 204.462 1355.74 221.576 1355.74 242.635H1317.5C1317.5 200.451 1351.79 166.207 1394.07 166.207H1317.59V128.033L1317.51 128.116H1355.76ZM1470.56 242.701H1432.31V204.528C1453.48 204.528 1470.56 221.642 1470.56 242.701Z" fill="#FFFFF6"/>
             <path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/>
             <path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/>
-          </svg></div>
-        <h1 class="t-h1 t-entra t-entra-2">Guía inteligente de música, arte y cultura.</h1>
-        <p class="t-lead t-entra t-entra-3">Descubre eventos, conoce artistas y comparte reseñas en una plataforma hecha para explorar y gestionar la cultura.</p>
+          </svg></h1>
+        <p class="t-bajada t-entra t-entra-2">Una infraestructura de gestión y descubrimiento cultural.</p>
+        <p class="t-lead t-entra t-entra-3">Conecta con eventos, artistas y espacios, comparte reseñas y navega en una plataforma que crea comunidades.</p>
         <div class="t-ctas t-entra t-entra-4">
           <a class="t-btn t-btn-pri" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
-          <a class="t-btn t-btn-sec" href="https://lacuraduria.net" target="_blank" rel="noopener">Chatear con la GuÍA</a>
+          <a class="t-btn t-btn-sec" href="https://lacuraduria.net/eventos" target="_blank" rel="noopener">Ver la cartelera</a>
         </div>
       </div>
       <div class="t-hero-media">
@@ -425,45 +425,61 @@ footer.site-footer{}
 
   <section id="eventos-carrusel" style="display:none;"><!-- oculto temporalmente --></section>
 
-  <!-- 2 · MANIFIESTO + MOSAICO -->
+  <!-- 2 · FUNCIONES -->
   <section id="cambia-algo" class="t-bloque">
     <div class="t-envoltura">
-      <h2 class="t-manifiesto t-rv">¡Cambia el algoritmo <span class="t-coral">por la curaduría!</span></h2>
+      <h2 class="t-oculto">Qué hay en La Curaduría</h2>
       <div class="t-mosaico">
-        <article class="t-celda t-celda-catalogo t-rv">
+        <article class="t-celda t-celda-catalogo t-rv" style="--c: var(--p-coral);">
           <figure class="t-celda-img"><img src="/img/producto/cartelera.jpg" width="1600" height="1100" alt="La cartelera de eventos de La Curaduría, con los flyers de la semana" loading="lazy" decoding="async"></figure>
           <div class="t-celda-cuerpo">
-            <h3 class="t-h3">Catálogo</h3>
-            <p class="t-texto">Explora un catálogo cultural con eventos, artistas, espacios y experiencias para comprar, reservar o contactar directamente.</p>
+            <h3 class="t-h3"><span class="t-tipo" aria-hidden="true"></span>Catálogo de eventos</h3>
+            <p class="t-texto">Explora la cartelera de la ciudad: conciertos, fiestas, exposiciones y encuentros, con fecha, lugar y entradas.</p>
           </div>
         </article>
-        <article class="t-celda t-celda-ia t-rv t-rv-2">
-          <svg aria-hidden="true" focusable="false" class="t-icono-grande" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg>
+        <article class="t-celda t-celda-franja t-rv t-rv-2" style="--c: var(--p-cyan);">
+          <figure class="t-celda-img"><img src="/img/producto/directorio.jpg" width="1400" height="498" alt="El directorio de artistas, espacios y colectivos de La Curaduría" loading="lazy" decoding="async"></figure>
           <div class="t-celda-cuerpo">
-            <h3 class="t-h3">IA cultural</h3>
-            <p class="t-texto">Activa tu copiloto cultural para descubrir música, planes, eventos y contenidos según tus gustos.</p>
+            <h3 class="t-h3"><span class="t-tipo" aria-hidden="true"></span>Directorio de artistas</h3>
+            <p class="t-texto">Perfiles verificados de artistas, colectivos y espacios de la escena, con su música y sus redes en un solo lugar.</p>
           </div>
         </article>
-        <article class="t-celda t-celda-comunidad t-rv t-rv-3">
-          <figure class="t-celda-img"><img src="/img/producto/destacado.jpg" width="1600" height="377" alt="Artista destacado en el inicio de La Curaduría" loading="lazy" decoding="async"></figure>
+        <article class="t-celda t-celda-franja t-rv t-rv-3" style="--c: var(--p-green);">
+          <figure class="t-celda-img"><img src="/img/producto/contenidos.jpg" width="1400" height="498" alt="Las publicaciones de La Curaduría: crónicas, entrevistas, reseñas y sets" loading="lazy" decoding="async"></figure>
           <div class="t-celda-cuerpo">
-            <h3 class="t-h3">Comunidad</h3>
-            <p class="t-texto">Reseña y comparte tus experiencias para que la comunidad descubra la cultura desde nuevas miradas.</p>
+            <h3 class="t-h3"><span class="t-tipo" aria-hidden="true"></span>Recomendaciones y contenidos</h3>
+            <p class="t-texto">Descubre sets, historias, sesiones y entrevistas conectadas con los eventos y los artistas protagonistas.</p>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- 3 · CÓMO FUNCIONA -->
+  <!-- 3 · LA RUTA -->
   <section id="como-funciona" class="t-bloque" style="padding-top:0;">
     <div class="t-envoltura">
-      <h2 class="t-oculto">Cómo funciona</h2>
-      <ol class="t-verbos">
-        <li class="t-rv"><span class="t-verbo">Explora</span><p>Chatea con la GuÍA, navega el mapa, la cartelera, el directorio y el repositorio, todo conectado.</p></li>
-        <li class="t-rv"><span class="t-verbo">Descubre</span><p>Encuentra nuevos eventos, artistas, espacios y colectivos que no conocías.</p></li>
-        <li class="t-rv"><span class="t-verbo">Guarda</span><p>Organiza tus favoritos en tu perfil y crea tu propia agenda y tu recorrido cultural.</p></li>
-        <li class="t-rv"><span class="t-verbo">Comparte</span><p>Escribe reseñas, invita amigos y conoce gente con gustos similares.</p></li>
+      <h2 class="t-h2 t-rv">Tu ruta cultural</h2>
+      <ol class="t-estaciones t-rv">
+        <li class="t-estacion" style="--c: var(--p-coral);">
+          <span class="t-parada"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,80,184a8.1,8.1,0,0,0,3.58-.84l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64a8,8,0,0,0-10.74-10.74ZM138,138,97.89,158.11,118,118l40.15-20.07Z"/></svg></span>
+          <h3 class="t-h3">Explora</h3>
+          <p>Navega el mapa, la cartelera, el directorio y los contenidos, todo conectado.</p>
+        </li>
+        <li class="t-estacion" style="--c: var(--p-cyan);">
+          <span class="t-parada"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg></span>
+          <h3 class="t-h3">Descubre</h3>
+          <p>Encuentra nuevos eventos, artistas, espacios y colectivos que no conocías.</p>
+        </li>
+        <li class="t-estacion" style="--c: var(--p-green);">
+          <span class="t-parada"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M184,32H72A16,16,0,0,0,56,48V224a8,8,0,0,0,12.24,6.78L128,193.43l59.77,37.35A8,8,0,0,0,200,224V48A16,16,0,0,0,184,32Zm0,177.57-51.77-32.35a8,8,0,0,0-8.48,0L72,209.57V48H184Z"/></svg></span>
+          <h3 class="t-h3">Guarda</h3>
+          <p>Organiza tus favoritos en tu perfil y arma tu agenda y tu recorrido cultural.</p>
+        </li>
+        <li class="t-estacion" style="--c: var(--p-yellow-clara);">
+          <span class="t-parada"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232.07,186.76a80,80,0,0,0-62.5-114.17A80,80,0,1,0,23.93,138.76l-7.27,24.71a16,16,0,0,0,19.87,19.87l24.71-7.27a80.39,80.39,0,0,0,25.18,7.35,80,80,0,0,0,108.34,40.65l24.71,7.27a16,16,0,0,0,19.87-19.86ZM62,159.5a8.28,8.28,0,0,0-2.26.32L32,168l8.17-27.76a8,8,0,0,0-.63-6,64,64,0,1,1,26.26,26.26A8,8,0,0,0,62,159.5Zm153.79,28.73L224,216l-27.76-8.17a8,8,0,0,0-6,.63,64.05,64.05,0,0,1-85.87-24.88A79.93,79.93,0,0,0,174.7,89.71a64,64,0,0,1,41.75,92.48A8,8,0,0,0,215.82,188.23Z"/></svg></span>
+          <h3 class="t-h3">Comparte</h3>
+          <p>Escribe reseñas, invita amigos y conoce gente con gustos similares.</p>
+        </li>
       </ol>
     </div>
   </section>
@@ -472,7 +488,7 @@ footer.site-footer{}
   <section id="dolor-solucion" class="t-bloque">
     <div class="t-envoltura">
       <div class="t-cabecera">
-        <h2 class="t-h2 t-rv">La oferta cultural se pierde en redes sociales saturadas.</h2>
+        <h2 class="t-h2 t-rv">El ruido de las redes sociales dificulta la conexión entre audiencias y proyectos culturales.</h2>
         <p class="t-lead t-rv t-rv-2">Plataformas fragmentadas, redes distractoras y algoritmos desfavorables. La Curaduría es una guía que centraliza y cura la oferta cultural para cada actor de la escena.</p>
       </div>
       <div class="t-pestanas t-rv" role="tablist" aria-label="Para quién es La Curaduría" data-t-pestanas>
@@ -506,7 +522,7 @@ footer.site-footer{}
   </section>
 
   <!-- 5 · GUÍA -->
-  <section id="guia" class="t-bloque">
+  <section id="guia" class="t-bloque" hidden><!-- oculta hasta que la GuÍA exista -->
     <div class="t-envoltura t-partido">
       <div>
         <span class="t-etiqueta t-rv">GuÍA, copiloto cultural</span>
@@ -606,27 +622,39 @@ footer.site-footer{}
     </div>
   </section>
 
-  <!-- 6 · ARTISTAS -->
+  <!-- 6 · CREA TU PERFIL -->
   <section id="artistas" class="t-bloque">
     <div class="t-envoltura">
-      <h2 class="t-h2 t-rv">Un software de gestión para conseguir bookings y prensa</h2>
-    </div>
-    <figure class="t-banda t-rv"><img src="/img/producto/perfil-escritorio.jpg" width="1800" height="1125" alt="Perfil profesional de La Payara en La Curaduría" loading="lazy" decoding="async"></figure>
-    <div class="t-envoltura t-art-pie">
-      <div class="t-rv">
-        <p class="t-lead">Con un CRM y un CMS integrados para gestionar contactos, propuestas y contenido desde un solo lugar.</p>
-        <button type="button" class="t-btn t-btn-pri" onclick="navTo('preventa')">Conocer la Terminal <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+      <h2 class="t-h2 t-rv">Crea tu perfil</h2>
+      <div class="t-perfiles">
+        <article class="t-perfil-card t-rv" style="--c: var(--p-yellow-clara);">
+          <figure class="t-celda-img"><img src="/img/producto/mapa.jpg" width="1400" height="875" alt="El atlas cultural de La Curaduría, con los lugares de la escena en el mapa de Bogotá" loading="lazy" decoding="async"></figure>
+          <div class="t-celda-cuerpo">
+            <h3 class="t-h3"><span class="t-tipo" aria-hidden="true"></span>Usuarios</h3>
+            <p class="t-texto">Organiza tu ruta cultural: guarda tus eventos, tus contenidos y tus artistas favoritos.</p>
+          </div>
+        </article>
+        <article class="t-perfil-card t-rv t-rv-2" style="--c: var(--p-cyan);">
+          <figure class="t-celda-img"><img src="/img/producto/perfil-escritorio.jpg" width="1800" height="1125" alt="Perfil de la artista La Payara en La Curaduría" loading="lazy" decoding="async" style="object-position:center 62%;"></figure>
+          <div class="t-celda-cuerpo">
+            <h3 class="t-h3"><span class="t-tipo" aria-hidden="true"></span>Artistas</h3>
+            <p class="t-texto">Consigue más oportunidades de booking y de creación de comunidad.</p>
+          </div>
+        </article>
+        <article class="t-perfil-card t-rv t-rv-3" style="--c: var(--p-coral);">
+          <figure class="t-celda-img"><img src="/img/producto/evento.jpg" width="1400" height="875" alt="Ficha del evento El Vuelo Sinfónico en La Curaduría" loading="lazy" decoding="async"></figure>
+          <div class="t-celda-cuerpo">
+            <h3 class="t-h3"><span class="t-tipo" aria-hidden="true"></span>Gestores</h3>
+            <p class="t-texto">Crea eventos, compártelos y agrega contenidos para promocionarlos.</p>
+          </div>
+        </article>
       </div>
-      <dl class="t-funciones t-rv t-rv-2">
-        <div><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M83.19,174.4a8,8,0,0,0,11.21-1.6,52,52,0,0,1,83.2,0,8,8,0,1,0,12.8-9.6A67.88,67.88,0,0,0,163,141.51a40,40,0,1,0-53.94,0A67.88,67.88,0,0,0,81.6,163.2,8,8,0,0,0,83.19,174.4ZM112,112a24,24,0,1,1,24,24A24,24,0,0,1,112,112Zm96-88H64A16,16,0,0,0,48,40V64H32a8,8,0,0,0,0,16H48v40H32a8,8,0,0,0,0,16H48v40H32a8,8,0,0,0,0,16H48v24a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V40A16,16,0,0,0,208,24Zm0,192H64V40H208Z"/></svg><dt>CRM de contactos</dt><dd>Gestiona bookers, prensa y aliados en un solo lugar.</dd></div>
-        <div><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM184,96a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,96Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,128Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,160Z"/></svg><dt>CMS de contenido</dt><dd>Publica y distribuye tu material de prensa y portafolio.</dd></div>
-        <div><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"/></svg><dt>EPK Link</dt><dd>Una URL que reemplaza el PDF. Tu portafolio siempre actualizado.</dd></div>
-      </dl>
+      <a class="t-btn t-btn-pri t-rv" style="margin-top:40px;" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
     </div>
   </section>
 
   <!-- 7 · PLANES -->
-  <section id="membresias" class="t-bloque">
+  <section id="membresias" class="t-bloque" hidden><!-- oculta: los planes todavía no están funcionando -->
     <div class="t-envoltura">
       <h2 class="t-h2 t-rv">Un plan para cada escala</h2>
       <div class="t-planes">
@@ -666,7 +694,7 @@ footer.site-footer{}
   <!-- 8 · CIERRE -->
   <section id="cierre" class="t-bloque t-cierre">
     <div class="t-envoltura">
-      <h2 class="t-cierre-frase t-rv">Tecnología para la circulación de la cultura.</h2>
+      <h2 class="t-cierre-frase t-rv">¡Cambia el algoritmo <span class="t-coral">por la curaduría!</span></h2>
       <a class="t-btn t-btn-pri t-btn-xl t-rv t-rv-2" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
     </div>
   </section>
@@ -690,6 +718,7 @@ footer.site-footer{}
           <path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/>
           <path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/>
         </svg>
+        <p class="sf-media">Media Tech Cultural</p>
         <p class="sf-tagline">Tecnología para la circulación de la cultura.</p>
         <p class="sf-contact">nicolas.pava@lacuraduria.net<br>+57 304 413 8497<br>Bogotá, Colombia</p>
       </div>
@@ -999,6 +1028,7 @@ window.addEventListener('load', function(){
           <path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/>
           <path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/>
         </svg>
+        <p class="sf-media">Media Tech Cultural</p>
         <p class="sf-tagline">Tecnología para la circulación de la cultura.</p>
         <p class="sf-contact">nicolas.pava@lacuraduria.net<br>+57 304 413 8497<br>Bogotá, Colombia</p>
       </div>
@@ -2562,6 +2592,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
           <path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/>
           <path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/>
         </svg>
+        <p class="sf-media">Media Tech Cultural</p>
         <p class="sf-tagline">Tecnología para la circulación de la cultura.</p>
         <p class="sf-contact">nicolas.pava@lacuraduria.net<br>+57 304 413 8497<br>Bogotá, Colombia</p>
       </div>
@@ -2718,6 +2749,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
           <path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/>
           <path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/>
         </svg>
+        <p class="sf-media">Media Tech Cultural</p>
         <p class="sf-tagline">Tecnología para la circulación de la cultura.</p>
         <p class="sf-contact">nicolas.pava@lacuraduria.net<br>+57 304 413 8497<br>Bogotá, Colombia</p>
       </div>
@@ -2936,6 +2968,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
           <path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/>
           <path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/>
         </svg>
+        <p class="sf-media">Media Tech Cultural</p>
         <p class="sf-tagline">Tecnología para la circulación de la cultura.</p>
         <p class="sf-contact">nicolas.pava@lacuraduria.net<br>+57 304 413 8497<br>Bogotá, Colombia</p>
       </div>
@@ -3328,6 +3361,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
           <path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/>
           <path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/>
         </svg>
+        <p class="sf-media">Media Tech Cultural</p>
         <p class="sf-tagline">Tecnología para la circulación de la cultura.</p>
         <p class="sf-contact">nicolas.pava@lacuraduria.net<br>+57 304 413 8497<br>Bogotá, Colombia</p>
       </div>
@@ -4476,6 +4510,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
           <path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/>
           <path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/>
         </svg>
+        <p class="sf-media">Media Tech Cultural</p>
         <p class="sf-tagline">Tecnología para la circulación de la cultura.</p>
         <p class="sf-contact">nicolas.pava@lacuraduria.net<br>+57 304 413 8497<br>Bogotá, Colombia</p>
       </div>
