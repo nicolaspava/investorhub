@@ -942,3 +942,17 @@ html[data-tema] .mprev-btn-pay { border-radius: 999px; }
 @media (prefers-reduced-transparency: reduce) {
   .t-cara, .t-camino { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--t-surf); }
 }
+
+/* La Terminal (#terminal): grupos por estado, lo ya disponible y el registro gratis */
+.t-fun .t-etiqueta { margin-bottom: 10px; }
+.t-fun-grupo { margin: 28px 0 12px; display: flex; align-items: center; gap: 8px; font-family: var(--lc-font-mono); font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: var(--c); }
+.t-fun-grupo::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); box-shadow: 0 0 10px var(--c); }
+.t-fun-ya { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.t-fun-ya-item { display: grid; gap: 6px; padding: 22px 24px; border-radius: var(--t-radio); border: 1px solid rgba(117, 230, 249, .4); background: linear-gradient(160deg, rgba(117, 230, 249, .12), transparent 60%), rgba(255, 255, 255, .03); }
+.t-fun-ya-item b { font-family: var(--lc-font-display); font-weight: 800; font-size: 1.5rem; letter-spacing: -.02em; color: var(--t-text); }
+.t-fun-ya-item span { font-size: 15px; line-height: 1.5; color: var(--t-text-2); }
+.t-fun-despues span { color: var(--t-text-3); }
+.t-fun-gratis { margin: 0; font-size: 14px; color: var(--t-text-3); }
+.t-fun-gratis a { color: var(--p-cyan); text-decoration: underline; text-underline-offset: 3px; }
+.t-fun-cierre .t-btn-sec { margin-left: 8px; }
+@media (max-width: 900px) { .t-fun-ya { grid-template-columns: 1fr; } .t-fun-cierre .t-btn-sec { margin: 10px 0 0; } }

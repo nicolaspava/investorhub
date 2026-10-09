@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261008q">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261008r">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261008n">
 <script src="/estilo/demo.js?v=20261008m" defer></script>
 <script src="/estilo/landing.js?v=20261008b" defer></script>
@@ -391,8 +391,6 @@ footer.site-footer{}
 <!-- ══════════════════════════════════════════ -->
 <!-- PAGE: HOME                                 -->
 <!-- ══════════════════════════════════════════ -->
-<div class="pg active" id="pg-home">
-
 <div class="pg active" id="pg-home">
 
   <!-- 1 · HERO (v4, 8 oct): primero las pantallas, después el logo y el texto.
@@ -1551,26 +1549,27 @@ window.addEventListener('load', function(){
 }
 </style>
 
-<!-- SUSCRIPCIÓN: «Perfil fundador de La Terminal» (8 oct 2026), 9 bloques con una idea cada uno.
+<!-- LA TERMINAL (#terminal; la pantalla sigue siendo pg-preventa): página comercial del software (8 oct 2026).
+     Hero, respaldo, beneficios, módulos con enlace a la demo, cómo entrar, precio y registro, preguntas y cierre.
      Editables: CUPOS_DISPONIBLES (script más abajo), el texto de reembolso (data-editable="reembolso"),
-     el enlace de «Subir mi perfil» (data-subir-perfil, dos lugares), los logos del respaldo (.t-fun-logos)
+     el enlace de «Subir mi perfil» (data-subir-perfil, cuatro lugares), los logos del respaldo (.t-fun-logos)
      y el cobro (api/crear-preferencia.js, Mercado Pago). -->
 <div class="t-fun">
   <!-- 1 · Barra de la página -->
   <div class="t-fun-barra" role="navigation" aria-label="En esta página">
-    <button type="button" class="" data-ir-a="t-fun-recibes">Qué recibes</button><button type="button" class="" data-ir-a="t-fun-terminal">La Terminal</button><button type="button" class="" data-ir-a="t-fun-como">Cómo funciona</button><button type="button" class="" data-ir-a="t-fun-preguntas">Preguntas</button>
+    <button type="button" data-ir-a="t-fun-recibes">Beneficios</button><button type="button" data-ir-a="t-fun-terminal">Módulos</button><button type="button" data-ir-a="t-fun-como">Cómo entrar</button><button type="button" data-ir-a="t-fun-precio">Precio</button><button type="button" data-ir-a="t-fun-preguntas">Preguntas</button>
     <button type="button" class="t-btn t-btn-pri" onclick="prevSelectPlan('fundador')">Reservar cupo</button>
   </div>
 
   <!-- 2 · Hero -->
   <section class="t-fun-hero t-envoltura">
-    <p class="t-sus-cupos"><span aria-hidden="true"></span>Perfil fundador · 30 cupos</p>
+    <p class="t-sus-cupos"><span aria-hidden="true"></span>La Terminal · perfil fundador · 30 cupos</p>
     <h1 class="t-fun-titulo">El centro de operaciones de tu proyecto cultural</h1>
     <p class="t-fun-gancho">¿Sabías que existe un LinkedIn para artistas colombianos?</p>
     <p class="t-lead">La Terminal reúne las herramientas para gestionar, mostrar y hacer crecer tu proyecto. Entra como fundador antes del lanzamiento.</p>
     <div class="t-ctas">
       <button type="button" class="t-btn t-btn-pri t-btn-xl" onclick="prevSelectPlan('fundador')">Reservar cupo <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
-      <button type="button" class="t-btn t-btn-sec t-btn-xl" data-ir-a="t-fun-terminal">Ver qué incluye</button>
+      <button type="button" class="t-btn t-btn-sec t-btn-xl" data-ir-a="t-fun-recibes">Ver qué incluye</button>
     </div>
     <p class="t-fun-contador"><b data-cupos>30</b> de 30 cupos disponibles</p>
   </section>
@@ -1589,20 +1588,27 @@ window.addEventListener('load', function(){
     </div>
   </section>
 
-  <!-- 3 · El problema -->
-  <section class="t-fun-bloque t-envoltura t-fun-problema">
-    <ul>
-      <li>Las redes miden cuánto te retienen.</li>
-      <li>La cultura necesita que la gente salga y asista.</li>
-      <li>Tu proyecto merece ser encontrado.</li>
+  <!-- 3 · Beneficios: lo que recibes desde hoy -->
+  <section class="t-fun-bloque t-envoltura" id="t-fun-recibes">
+    <p class="t-etiqueta">Beneficios</p>
+    <h2 class="t-h2">Lo que recibes desde hoy</h2>
+    <ul class="t-fun-hoy">
+        <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176,160a39.89,39.89,0,0,0-28.62,12.09l-46.1-29.63a39.8,39.8,0,0,0,0-28.92l46.1-29.63a40,40,0,1,0-8.66-13.45l-46.1,29.63a40,40,0,1,0,0,55.82l46.1,29.63A40,40,0,1,0,176,160Zm0-128a24,24,0,1,1-24,24A24,24,0,0,1,176,32ZM64,152a24,24,0,1,1,24-24A24,24,0,0,1,64,152Zm112,72a24,24,0,1,1,24-24A24,24,0,0,1,176,224Z"/></svg></span>Tu perfil, compartido en nuestras redes</li>
+        <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM184,96a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,96Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,128Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,160Z"/></svg></span>Una reseña de tu proyecto en la plataforma, sin estrellas</li>
+        <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,80,184a8.1,8.1,0,0,0,3.58-.84l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64a8,8,0,0,0-10.74-10.74ZM138,138,97.89,158.11,118,118l40.15-20.07Z"/></svg></span>Tu perfil y tu press kit, visibles en La Guía</li>
+            <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M185.33,114.21l29.14-27.42.17-.17a32,32,0,0,0-45.26-45.26c0,.06-.11.11-.17.17L141.79,70.67l-83-30.2a8,8,0,0,0-8.39,1.86l-24,24a8,8,0,0,0,1.22,12.31l63.89,42.59L76.69,136H56a8,8,0,0,0-5.65,2.34l-24,24A8,8,0,0,0,29,175.42l36.82,14.73,14.7,36.75.06.16a8,8,0,0,0,13.18,2.47l23.87-23.88A8,8,0,0,0,120,200V179.31l14.76-14.76,42.59,63.89a8,8,0,0,0,12.31,1.22l24-24a8,8,0,0,0,1.86-8.39Zm-.07,97.23-42.59-63.88A8,8,0,0,0,136.8,144c-.27,0-.53,0-.79,0a8,8,0,0,0-5.66,2.35l-24,24A8,8,0,0,0,104,176v20.69L90.93,209.76,79.43,181A8,8,0,0,0,75,176.57l-28.74-11.5L59.32,152H80a8,8,0,0,0,5.66-2.34l24-24a8,8,0,0,0-1.22-12.32L44.56,70.74l13.5-13.49,83.22,30.26a8,8,0,0,0,8.56-2L180.78,52.6A16,16,0,0,1,203.4,75.23l-32.87,30.93a8,8,0,0,0-2,8.56l30.26,83.22Z"/></svg></span>Tu perfil forma parte del catálogo que presentamos a agentes europeos</li>
     </ul>
-    <p class="t-fun-frase">Cambia el algoritmo <span class="t-coral">por la curaduría.</span></p>
+    <p class="t-fun-insignia"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-52.2,6.84-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Insignia de fundador.</b> Un distintivo en tu perfil, solo eso.</span></p>
   </section>
 
-  <!-- 4 · La Terminal -->
+  <!-- 4 · Módulos: qué ya está, qué llega en febrero y qué viene (con enlace a la demo) -->
   <section class="t-fun-bloque t-envoltura" id="t-fun-terminal">
-    <h2 class="t-h2">La Terminal</h2>
-    <p class="t-lead">Cuatro herramientas para empezar. Toca cada una para ver el detalle.</p>
+    <p class="t-etiqueta" style="--c: var(--p-coral);">Módulos</p>
+    <h2 class="t-h2">Lo que tiene La Terminal</h2>
+    <p class="t-lead">Lo que ya funciona, lo que llega en febrero y lo que viene. Toca cada beta para ver el detalle.</p>
+    <p class="t-fun-grupo" style="--c: var(--p-cyan);">Ya disponible</p>
+    <div class="t-fun-ya"><div class="t-fun-ya-item"><b>Perfil y press kit</b><span>Fotos, bio, editorial, rider y prensa para promotores, bookers y periodistas.</span></div><div class="t-fun-ya-item"><b>Eventos</b><span>Creas el evento una vez y aparece en la cartelera, el mapa y el perfil de los artistas.</span></div></div>
+    <p class="t-fun-grupo" style="--c: var(--p-yellow-clara);">Beta · febrero 2027</p>
     <div class="t-fun-modulos">
         <details class="t-fun-modulo" style="--c: var(--p-coral);">
           <summary><span class="t-fun-beta">Beta · febrero 2027</span><b>Gestor de contenidos</b><span class="t-fun-linea">Publica y administra tu perfil, tus eventos y tus contenidos en un solo panel.</span><span class="t-fun-abrir"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></span></summary>
@@ -1621,24 +1627,14 @@ window.addEventListener('load', function(){
           <p>Un solo lugar para tus relaciones de trabajo, en vez de chats y correos regados.</p>
         </details>
     </div>
-    <p class="t-fun-despues"><span>Después</span>Perfil PRO · Cobro · Analítica</p>
+    <p class="t-fun-despues"><span>Próximamente</span>Convocatorias · Perfil PRO · Cobro · Analítica</p>
+    <button type="button" class="t-btn t-btn-sec" style="margin-top:24px;" onclick="navTo('home','hero')">Pruébala en la demo <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
   </section>
 
-  <!-- 5 · Lo que recibes desde hoy -->
-  <section class="t-fun-bloque t-envoltura" id="t-fun-recibes">
-    <h2 class="t-h2">Lo que recibes desde hoy</h2>
-    <ul class="t-fun-hoy">
-        <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176,160a39.89,39.89,0,0,0-28.62,12.09l-46.1-29.63a39.8,39.8,0,0,0,0-28.92l46.1-29.63a40,40,0,1,0-8.66-13.45l-46.1,29.63a40,40,0,1,0,0,55.82l46.1,29.63A40,40,0,1,0,176,160Zm0-128a24,24,0,1,1-24,24A24,24,0,0,1,176,32ZM64,152a24,24,0,1,1,24-24A24,24,0,0,1,64,152Zm112,72a24,24,0,1,1,24-24A24,24,0,0,1,176,224Z"/></svg></span>Tu perfil, compartido en nuestras redes</li>
-        <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM184,96a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,96Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,128Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,160Z"/></svg></span>Una reseña de tu proyecto en la plataforma, sin estrellas</li>
-        <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,80,184a8.1,8.1,0,0,0,3.58-.84l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64a8,8,0,0,0-10.74-10.74ZM138,138,97.89,158.11,118,118l40.15-20.07Z"/></svg></span>Tu perfil y tu press kit, visibles en La Guía</li>
-            <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M185.33,114.21l29.14-27.42.17-.17a32,32,0,0,0-45.26-45.26c0,.06-.11.11-.17.17L141.79,70.67l-83-30.2a8,8,0,0,0-8.39,1.86l-24,24a8,8,0,0,0,1.22,12.31l63.89,42.59L76.69,136H56a8,8,0,0,0-5.65,2.34l-24,24A8,8,0,0,0,29,175.42l36.82,14.73,14.7,36.75.06.16a8,8,0,0,0,13.18,2.47l23.87-23.88A8,8,0,0,0,120,200V179.31l14.76-14.76,42.59,63.89a8,8,0,0,0,12.31,1.22l24-24a8,8,0,0,0,1.86-8.39Zm-.07,97.23-42.59-63.88A8,8,0,0,0,136.8,144c-.27,0-.53,0-.79,0a8,8,0,0,0-5.66,2.35l-24,24A8,8,0,0,0,104,176v20.69L90.93,209.76,79.43,181A8,8,0,0,0,75,176.57l-28.74-11.5L59.32,152H80a8,8,0,0,0,5.66-2.34l24-24a8,8,0,0,0-1.22-12.32L44.56,70.74l13.5-13.49,83.22,30.26a8,8,0,0,0,8.56-2L180.78,52.6A16,16,0,0,1,203.4,75.23l-32.87,30.93a8,8,0,0,0-2,8.56l30.26,83.22Z"/></svg></span>Tu perfil forma parte del catálogo que presentamos a agentes europeos</li>
-    </ul>
-    <p class="t-fun-insignia"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-52.2,6.84-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Insignia de fundador.</b> Un distintivo en tu perfil, solo eso.</span></p>
-  </section>
-
-  <!-- 6 · Cómo funciona -->
+  <!-- 5 · Cómo entrar -->
   <section class="t-fun-bloque t-envoltura" id="t-fun-como">
-    <h2 class="t-h2">Cómo funciona</h2>
+    <p class="t-etiqueta">Cómo entrar</p>
+    <h2 class="t-h2">Del perfil gratis al año completo</h2>
     <ol class="t-fun-pasos">
         <li style="--c: var(--t-text-2);" class="t-fun-paso0"><span class="t-fun-punto"></span><b>Hoy <em>Gratis</em></b><span>Sube tu perfil al catálogo de La Curaduría.</span><a class="t-btn t-btn-sec" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Subir mi perfil</a></li>
         <li style="--c: var(--p-coral);"><span class="t-fun-punto"></span><b>Siguiente paso</b><span>Reservas tu cupo con el primer pago.</span></li>
@@ -1649,8 +1645,9 @@ window.addEventListener('load', function(){
     <p class="t-texto">El segundo pago lo haces cuando quieras, entre hoy y marzo de 2027.</p>
   </section>
 
-  <!-- 7 · Precio -->
+  <!-- 6 · Precio y registro -->
   <section class="t-fun-bloque t-envoltura" id="t-fun-precio">
+    <p class="t-etiqueta" style="--c: var(--p-coral);">Precio</p>
     <div class="t-fun-precio">
       <p class="t-sus-tier">Perfil fundador</p>
       <p class="t-sus-precio">$200.000 <small>COP</small></p>
@@ -1660,6 +1657,7 @@ window.addEventListener('load', function(){
       </ul>
       <button type="button" class="t-btn t-btn-pri t-btn-xl" onclick="prevSelectPlan('fundador')">Reservar cupo · $100.000 <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
       <p class="t-fun-contador"><b data-cupos>30</b> de 30 cupos disponibles</p>
+      <p class="t-fun-gratis">¿Todavía no? <a data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Empieza gratis: sube tu perfil</a></p>
     </div>
     <!-- Camiseta LC23: ficha de producto. Se elige precio, color y talla; «Comprar» abre WhatsApp con el pedido.
          Stock del primer pedido (20 unidades); se actualiza en CAMISETA_STOCK, más abajo. -->
@@ -1712,7 +1710,7 @@ window.addEventListener('load', function(){
     </div>
   </section>
 
-  <!-- 8 · Preguntas -->
+  <!-- 7 · Preguntas -->
   <section class="t-fun-bloque t-envoltura t-sus-faq" id="t-fun-preguntas">
     <h2 class="t-h2">Preguntas</h2>
     <div class="faq-list-p">
@@ -1751,11 +1749,12 @@ window.addEventListener('load', function(){
     </div>
   </section>
 
-  <!-- 9 · Cierre -->
+  <!-- 8 · Cierre -->
   <section class="t-fun-cierre">
     <div class="t-envoltura">
       <h2 class="t-cierre-frase">Sé de los primeros 30.</h2>
       <button type="button" class="t-btn t-btn-pri t-btn-xl" onclick="prevSelectPlan('fundador')">Reservar cupo <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+      <a class="t-btn t-btn-sec t-btn-xl" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Sube tu perfil gratis</a>
       <p class="t-fun-somos">La Curaduría es un medio de comunicación y monetización para la cultura, hecho en Bogotá. <b>Tecnología para la circulación de la cultura.</b></p>
     </div>
   </section>
@@ -5138,7 +5137,8 @@ function navTo(page, anchor) {
   current = page;
   window.scrollTo({top:0, behavior:'smooth'});
   // Update hash
-  window.location.hash = page === 'home' ? '' : page;
+  // La página de Suscripción se llama La Terminal: su dirección es #terminal.
+  window.location.hash = page === 'home' ? '' : (page === 'preventa' ? 'terminal' : page);
   // Update nav active state
   updateNavActive(page);
   // If anchor on home page
@@ -5163,6 +5163,7 @@ function updateNavActive(page) {
 // Hash routing on load
 function routeFromHash() {
   var hash = window.location.hash.replace('#','');
+  if(hash === 'terminal') hash = 'preventa';
   if(hash && pages.indexOf(hash) > -1) navTo(hash);
   else navTo('home');
 }

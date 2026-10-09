@@ -59,7 +59,16 @@ En el pie: logo, «Media Tech Cultural» y la frase «Tecnología para la circul
 
 Se tomaron con Chrome sin ventana (puppeteer-core) a 390×844 y 1440×900, con pantalla de doble resolución. Si cambia el sitio, se repiten y se optimizan a JPEG con `sips`.
 
-## Suscripción (pantalla `#pg-preventa`): «Perfil fundador de La Terminal»
+## La Terminal (`#terminal`; la pantalla sigue siendo `#pg-preventa`)
+
+Desde el 8 oct es la página comercial del software. `#preventa` sigue funcionando por los enlaces de vuelta de Mercado Pago.
+
+Sus bloques: hero → respaldo → beneficios (lo que recibes desde hoy) → módulos → cómo entrar → precio y registro → preguntas → cierre.
+- **Módulos:** lo ya disponible, las betas de febrero que se abren al tocarlas, lo que viene y el enlace a la demo de la portada.
+- **Cómo entrar:** del perfil gratis al año completo.
+- **Precio y registro:** incluye la camiseta y «Empieza gratis».
+
+### Antes: «Perfil fundador de La Terminal»
 
 Desde el 8 oct es la página de venta de la preventa, en 9 bloques con una idea cada uno:
 1. **Barra de la página:** fija bajo la barra principal. Es un `div`, porque los `<nav>` heredan la barra vieja.
