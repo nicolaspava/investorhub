@@ -25,9 +25,12 @@ Rediseño de la portada de la landing (`index.html`, pantalla `#pg-home`) hecho 
 ## La portada (versión del 8 oct)
 
 1. **Hero:** arriba, el logo como titular y al lado «Una infraestructura de gestión y descubrimiento cultural.», la descripción y dos botones («Regístrate gratis» y «Ver la cartelera»). Debajo, la demo interactiva:
-   - **Computador, La Curaduría Pro:** seis funciones (eventos, convocatorias, producción, perfiles, mensajes y comunicación). Cada una abre una ventana que la explica y propone algo para probar. Se dibuja en un lienzo fijo de 1000 × 640 que `demo.js` escala.
+   - **Computador, La Curaduría Pro:** cuatro funciones. Cada una abre una ventana que la explica, dice si ya funciona y propone algo para probar.
+     - **Ya disponibles:** el perfil como press kit, que va primero, y los eventos. El press kit reúne fotos, bio y editorial, rider y prensa para promotores, bookers y periodistas.
+     - **Próximamente:** convocatorias y mensajes.
+     - Producción y comunicación se quitaron el 8 oct porque todavía no existen. Se dibuja en un lienzo fijo de 1000 × 640 que `demo.js` escala.
    - **Teléfono:** la GuÍA responde a tres sugerencias o a lo que se escriba, y abre el perfil de los artistas.
-   - **Las dos pantallas están conectadas:** publicar el borrador en Pro lo anuncia la GuÍA; la frase del perfil que se edita en Pro cambia en el teléfono; pedir booking desde el perfil llega a Mensajes.
+   - **Las dos pantallas están conectadas:** publicar el borrador en Pro lo anuncia la GuÍA; la frase del perfil que se edita en Pro cambia en el teléfono, donde el perfil muestra su press kit; pedir booking desde el perfil llega a Mensajes.
    - En teléfonos, primero va la GuÍA; Pro se ve en pequeño, con las funciones y su explicación fuera del lienzo.
    - Todo es local: la demo no envía nada.
 2. **Funciones** (`#cambia-algo`): mosaico de tres celdas: catálogo de eventos, directorio de artistas, y recomendaciones y contenidos.

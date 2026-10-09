@@ -29,25 +29,20 @@
   escalar();
 
   /* ── 2. Pro: las vistas y la ventana que explica cada una ─────────── */
+  // «Ya»: funciona hoy en lacuraduria.net. «Pronto»: se muestra como idea, sin fecha.
   var funciones = [
-    { id: 'eventos', titulo: 'Eventos',
+    { id: 'perfiles', titulo: 'Perfil y press kit', estado: 'Ya disponible',
+      texto: 'El artista reúne en su perfil fotos, bio, editorial, rider y prensa. Promotores, bookers y periodistas encuentran ahí todo para programarlo y hacer contenido, sin pedirlo por WhatsApp.',
+      prueba: 'Pruébalo: cambia la frase y toca «Ver en la GuÍA».' },
+    { id: 'eventos', titulo: 'Eventos', estado: 'Ya disponible',
       texto: 'Crea el evento una vez, con fecha, lugar, entradas y artistas. Al publicarlo aparece en la cartelera, en el mapa, en el perfil de los artistas y en la GuÍA.',
       prueba: 'Pruébalo: publica el borrador y mira el teléfono.' },
-    { id: 'convocatorias', titulo: 'Convocatorias',
+    { id: 'convocatorias', titulo: 'Convocatorias', estado: 'Próximamente',
       texto: 'Abre una convocatoria y recibe postulaciones con el perfil completo de cada artista. Seleccionas con tu equipo, sin hojas de cálculo.',
       prueba: 'Pruébalo: selecciona a quien quieras programar.' },
-    { id: 'produccion', titulo: 'Producción',
-      texto: 'La hoja de producción de cada fecha: horario, rider, hospitality, dietas y contactos, compartida con artistas y equipo.',
-      prueba: 'Pruébalo: marca lo que ya está listo en el rider.' },
-    { id: 'perfiles', titulo: 'Perfiles',
-      texto: 'El toolkit del artista: lo que se llena aquí es su perfil público y su kit de booking. Una sola fuente, siempre al día.',
-      prueba: 'Pruébalo: cambia la frase y toca «Ver en la GuÍA».' },
-    { id: 'mensajes', titulo: 'Mensajes',
-      texto: 'Booking, producción y prensa en una sola bandeja, no regados entre WhatsApp y el correo.',
-      prueba: 'Pruébalo: pide booking desde el perfil en el teléfono.' },
-    { id: 'comunicacion', titulo: 'Comunicación',
-      texto: 'Las piezas de difusión del evento (post, historia y afiche) salen de los datos que ya cargaste.',
-      prueba: 'Pruébalo: cambia de formato.' }
+    { id: 'mensajes', titulo: 'Mensajes', estado: 'Próximamente',
+      texto: 'Booking y prensa en una sola bandeja, no regados entre WhatsApp y el correo.',
+      prueba: 'Pruébalo: pide booking desde el perfil en el teléfono.' }
   ];
   var actual = 0, ventanaAbierta = true;
   var ventana = $('[data-ventana]'), punto = $('[data-punto]'), nota = $('[data-nota]');
@@ -62,11 +57,12 @@
       if (es) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
     });
     var f = funciones[i];
-    $('[data-v-paso]').textContent = (i + 1) + ' / ' + funciones.length;
+    $('[data-v-paso]').textContent = (i + 1) + ' / ' + funciones.length + ' · ' + f.estado;
+    ventana.classList.toggle('t-ventana-ya', f.estado === 'Ya disponible');
     $('[data-v-titulo]').textContent = f.titulo;
     $('[data-v-texto]').textContent = f.texto;
     $('[data-v-prueba]').textContent = f.prueba;
-    nota.innerHTML = '<b>' + f.titulo + '.</b> ' + f.texto;
+    nota.innerHTML = '<b>' + f.titulo + ' · ' + f.estado + '.</b> ' + f.texto;
     if (id === 'mensajes') $('[data-cuenta]').hidden = true;
     if (abrirVentana !== false) ventanaAbierta = true;
     ventana.hidden = !ventanaAbierta;
@@ -143,14 +139,13 @@
       avisar('[data-aviso-pc]', accion === 'seleccionar' ? n + (n === 1 ? ' artista seleccionado' : ' artistas seleccionados') + ' para la programación.' : 'Postulación archivada.');
     }
     if (accion === 'ver-perfil') { abrirPerfil('la-payara'); avisar('[data-aviso-movil]', 'Así se ve en la GuÍA.'); }
-    if (accion === 'generar') avisar('[data-aviso-pc]', '3 piezas listas para compartir: post, historia y afiche.');
+    if (accion === 'copiar-kit') avisar('[data-aviso-pc]', 'Enlace copiado: lacuraduria.net/perfil/la-payara');
   });
 
-  // Formatos de las piezas
-  $$('[data-formato]').forEach(function (b) {
+  // Los recursos del press kit
+  $$('[data-recurso]').forEach(function (b) {
     b.addEventListener('click', function () {
-      $$('[data-formato]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-      $('[data-pieza]').setAttribute('data-pieza', b.getAttribute('data-formato'));
+      avisar('[data-aviso-pc]', 'Lo descargan promotores, bookers y periodistas desde el perfil.');
     });
   });
 
@@ -268,6 +263,12 @@
       '<h4 class="t-mp-nombre"><span data-mp-nombre></span>' + ICONOS.verificado + '</h4>' +
       '<p class="t-mp-frase" data-mp-frase></p>' +
       '<div class="t-mp-acc"><button type="button" class="t-mp-btn" data-seguir aria-pressed="false">' + ICONOS.corazon + ' Seguir</button><button type="button" class="t-mp-btn t-mp-btn-pri" data-booking>Pedir booking</button></div>' +
+      '<h5 class="t-mp-sub">Press kit</h5>' +
+      '<div class="t-mp-kit">' +
+        '<span>' + ICONOS.fotos + 'Fotos</span><span>' + ICONOS.bio + 'Bio</span><span>' + ICONOS.rider + 'Rider</span><span>' + ICONOS.prensa + 'Prensa</span>' +
+      '</div>' +
+      '<button type="button" class="t-mp-btn t-mp-descargar" data-descargar>' + ICONOS.descargar + ' Descargar press kit</button>' +
+      '<h5 class="t-mp-sub">Sobre el proyecto</h5>' +
       (a.bio ? '<p class="t-mp-bio" data-mp-bio></p>' : '') +
       '<p class="t-mp-generos">' + a.generos.map(function (g) { return '<i>' + g + '</i>'; }).join('') + '</p>' +
       '</div>';
@@ -281,6 +282,9 @@
       seguir.setAttribute('aria-pressed', si ? 'true' : 'false');
       seguir.lastChild.textContent = si ? ' Siguiendo' : ' Seguir';
       if (si) avisar('[data-aviso-movil]', 'Guardado en tu ruta: te avisamos de sus fechas.');
+    });
+    $('[data-descargar]').addEventListener('click', function () {
+      avisar('[data-aviso-movil]', 'Fotos, bio, rider y prensa, listos para tu nota o tu cartel.');
     });
     $('[data-booking]').addEventListener('click', function (e) {
       var b = e.currentTarget;
@@ -310,11 +314,11 @@
   }
 
   // Los íconos del perfil vienen en <template data-icono> dentro de la demo.
-  var ICONOS = { volver: '', verificado: '', corazon: '' };
+  var ICONOS = {};
   $$('template[data-icono]').forEach(function (t) { ICONOS[t.getAttribute('data-icono')] = t.innerHTML.trim(); });
 
   /* ── 4. Arranque ───────────────────────────────────────────────────── */
-  ir('eventos');
+  ir('perfiles');
   // Cuando la demo está a la vista y nadie la ha tocado, la GuÍA responde sola una vez.
   if (!quieto && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
