@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261008i">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261008k">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261008k">
 <script src="/estilo/demo.js?v=20261008k" defer></script>
 <script src="/estilo/landing.js?v=20261008b" defer></script>
@@ -1409,8 +1409,15 @@ window.addEventListener('load', function(){
          Stock del primer pedido (20 unidades); se actualiza en CAMISETA_STOCK, más abajo. -->
     <div class="t-tienda" id="camiseta" data-tienda>
       <div class="t-tienda-vista" data-color="negra">
-        <span class="t-tienda-prenda"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M247.59,61.22,195.83,33A8,8,0,0,0,192,32H160a8,8,0,0,0-8,8,24,24,0,0,1-48,0,8,8,0,0,0-8-8H64a8,8,0,0,0-3.84,1L8.41,61.22A15.76,15.76,0,0,0,1.82,82.48l19.27,36.81A16.37,16.37,0,0,0,35.67,128H56v80a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V128h20.34a16.37,16.37,0,0,0,14.58-8.71l19.27-36.81A15.76,15.76,0,0,0,247.59,61.22ZM35.67,112a.62.62,0,0,1-.41-.13L16.09,75.26,56,53.48V112Zm185.07-.14a.55.55,0,0,1-.41.14H200V53.48l39.92,21.78Z"/></svg></span>
-        <p>Logo vertical al pecho · diseño editorial a la espalda · estampado a dos tintas</p>
+        <svg class="t-tienda-prenda" viewBox="0 0 256 256" role="img" aria-label="Camiseta LC23" data-prenda>
+          <path class="t-prenda" data-silueta d=""/>
+          <image data-estampa href="" preserveAspectRatio="xMidYMin meet"/>
+        </svg>
+        <div class="t-tienda-lados" role="group" aria-label="Vista">
+          <button type="button" data-lado="frente" aria-pressed="true">Frente</button>
+          <button type="button" data-lado="espalda" aria-pressed="false">Espalda</button>
+        </div>
+        <p data-lado-nota>Logo vertical al pecho · estampado a dos tintas</p>
       </div>
       <div class="t-tienda-info">
         <p class="t-sus-tier">Camiseta LC23</p>
@@ -1849,9 +1856,31 @@ var CAMISETA_WHATSAPP = ''; // número con indicativo, solo dígitos (ej. 57300�
   if (!t) return;
   var vista = t.querySelector('.t-tienda-vista'), btn = t.querySelector('[data-comprar]');
   function valor(n) { var x = t.querySelector('input[name="' + n + '"]:checked'); return x ? x.value : ''; }
+  // La prenda y sus dos estampados (los SVG de las plantillas, en img/camiseta/).
+  var lado = 'frente';
+  var LADOS = {
+    frente: { cuello: 'Q128 62 160 32', estampa: [116, 60, 24, 59], nota: 'Logo vertical al pecho · estampado a dos tintas', img: 'pecho' },
+    espalda: { cuello: 'Q128 42 160 32', estampa: [87, 62, 82, 92], nota: 'Diseño editorial a la espalda · estampado a dos tintas', img: 'espalda' }
+  };
+  function prenda(color) {
+    var l = LADOS[lado], e = t.querySelector('[data-estampa]');
+    t.querySelector('[data-silueta]').setAttribute('d', 'M96 32 ' + l.cuello + ' L214 52 L248 104 L208 128 L196 112 L196 232 L60 232 L60 112 L48 128 L8 104 L42 52 Z');
+    e.setAttribute('href', '/img/camiseta/' + l.img + '-' + color + '.svg');
+    ['x', 'y', 'width', 'height'].forEach(function (k, i) { e.setAttribute(k, l.estampa[i]); });
+    t.querySelector('[data-lado-nota]').textContent = l.nota;
+    t.querySelector('[data-prenda]').setAttribute('aria-label', 'Camiseta LC23 ' + color + ', vista de ' + lado);
+  }
+  t.querySelectorAll('[data-lado]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      lado = b.getAttribute('data-lado');
+      t.querySelectorAll('[data-lado]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      prenda(valor('cam-color'));
+    });
+  });
   function pintar() {
     var color = valor('cam-color'), stock = CAMISETA_STOCK[color];
     vista.setAttribute('data-color', color);
+    prenda(color);
     t.querySelectorAll('input[name="cam-talla"]').forEach(function (r) {
       var n = stock[r.value] || 0;
       r.disabled = n === 0;

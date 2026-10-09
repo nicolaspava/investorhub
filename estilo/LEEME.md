@@ -63,6 +63,8 @@ El botón cobra la primera mitad: `api/crear-preferencia.js` crea la preferencia
 - Se elige el color (blanca o negra) y la talla (M, L o XL).
 - «Comprar por WhatsApp» abre un mensaje con el pedido.
 - El stock está en `CAMISETA_STOCK`, en un `<script>` de `index.html`: 20 unidades del primer pedido. Cuando se vende, se resta ahí; con 0, la talla sale agotada.
+- La vista muestra la prenda con su estampado, de frente (logo vertical al pecho) y de espalda (diseño editorial).
+- Los estampados salen de las plantillas «Mesa de trabajo 1» (espalda) y «2» (pecho) que pasó Nicolás el 8 oct. Están recortados y aligerados en `img/camiseta/`, con una versión `-blanca` (tintas originales) y otra `-negra` (el gris pasa a crema y el coral se mantiene).
 - El número va en `CAMISETA_WHATSAPP`. Mientras esté vacío, el pedido sale por correo.
 
 La política de reembolso todavía no está.
