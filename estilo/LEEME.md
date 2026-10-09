@@ -49,3 +49,13 @@ En el pie: logo, «Media Tech Cultural» y la frase «Tecnología para la circul
 ## Para actualizar las capturas
 
 Se tomaron con Chrome sin ventana (puppeteer-core) a 390×844 y 1440×900, con pantalla de doble resolución. Si cambia el sitio, se repiten y se optimizan a JPEG con `sips`.
+
+## Suscripción (pantalla `#pg-preventa`, 8 oct 2026)
+
+Es la preventa fundadora que se cerró en el chat del pitch:
+- **Oferta:** 30 cupos y $200.000 COP en dos mitades: $100.000 hoy y $100.000 antes de marzo de 2027.
+- **Desde hoy:** perfil y press kit en la guía, difusión en redes, reseña e insignia de fundador.
+- **Desde el lanzamiento (marzo de 2027):** un año con todo lo que se habilite durante ese año, más las betas desde febrero para quien pagó la segunda mitad.
+- **Calendario:** de octubre de 2026 a después del lanzamiento.
+
+El botón cobra la primera mitad: `api/crear-preferencia.js` crea la preferencia de Mercado Pago por $100.000. La camiseta y la política de reembolso todavía no están.

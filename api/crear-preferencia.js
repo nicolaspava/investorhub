@@ -30,8 +30,8 @@ export default async function handler(req, res) {
     body: JSON.stringify({
       nombre,
       email,
-      plan: 'profesional',
-      monto: 230000,
+      plan: 'profesional',   // la columna puede tener una lista cerrada de planes: se deja el valor que ya acepta
+      monto: 100000,         // primera mitad de la suscripción fundadora ($200.000)
       estado: 'pendiente',
     }),
   });
@@ -48,9 +48,9 @@ export default async function handler(req, res) {
   // 2. Crear preferencia en Mercado Pago
   const preferencia = {
     items: [{
-      title: 'La Curaduría · Plan Profesional · Preventa 2026',
+      title: 'La Curaduría · Suscripción fundadora · Primera mitad',
       quantity: 1,
-      unit_price: 230000,
+      unit_price: 100000,
       currency_id: 'COP',
     }],
     payer: {

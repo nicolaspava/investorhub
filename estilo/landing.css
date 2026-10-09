@@ -661,3 +661,61 @@ html[data-tema] .sf-tagline { font-family: var(--lc-font-body); font-weight: 400
 @media (prefers-reduced-transparency: reduce) {
   .t-aliados-modos, .t-aliados-cta { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--t-surf); }
 }
+
+/* ══ SUSCRIPCIÓN: preventa fundadora (pantalla #pg-preventa) ═════ */
+.t-sus { padding: calc(72px + clamp(40px, 7vh, 72px)) 0 clamp(64px, 8vw, 110px); }
+.t-sus-cab { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 72px); align-items: end; margin-bottom: clamp(32px, 4vw, 48px); }
+.t-sus-cupos { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 16px; font-family: var(--lc-font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--t-accent); }
+.t-sus-cupos span { width: 7px; height: 7px; border-radius: 50%; background: var(--t-accent); box-shadow: 0 0 12px var(--t-accent); }
+.t-sus-titulo { margin: 0; font-family: var(--lc-font-display); font-weight: 800; font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1; letter-spacing: -.035em; color: var(--t-text); }
+.t-sus-planes { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 14px; align-items: stretch; }
+.t-sus-plan {
+  display: flex; flex-direction: column; gap: 18px; padding: clamp(24px, 3.2vw, 40px);
+  border-radius: var(--t-radio); border: 1px solid var(--g-borde);
+  background: var(--g-luz), var(--g-tinte); box-shadow: var(--g-brillo), var(--g-sombra);
+  -webkit-backdrop-filter: var(--g-blur); backdrop-filter: var(--g-blur);
+}
+.t-sus-plan > .t-btn { margin-top: auto; align-self: flex-start; }
+.t-sus-fundador { border-color: rgba(255, 115, 108, .55); background: linear-gradient(160deg, rgba(255, 115, 108, .18), rgba(255, 115, 108, .03) 55%), var(--g-luz), var(--g-tinte); }
+.t-sus-tier { margin: 0; font-family: var(--lc-font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--t-text-3); }
+.t-sus-fundador .t-sus-tier { color: var(--t-accent); }
+.t-sus-precio { margin: 0; font-family: var(--lc-font-display); font-weight: 800; font-size: clamp(2.4rem, 4vw, 3.4rem); line-height: 1; letter-spacing: -.03em; color: var(--t-text); }
+.t-sus-precio small { font-family: var(--lc-font-mono); font-weight: 400; font-size: 13px; letter-spacing: 0; color: var(--t-text-3); }
+.t-sus-mitades { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.t-sus-mitades div { display: grid; gap: 4px; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--g-borde); background: rgba(255, 255, 255, .04); }
+.t-sus-mitades div:first-child { border-color: rgba(255, 115, 108, .5); }
+.t-sus-mitades b { font-family: var(--lc-font-display); font-size: 1.4rem; letter-spacing: -.02em; color: var(--t-text); }
+.t-sus-mitades span { font-size: 13.5px; color: var(--t-text-2); }
+.t-sus-listas { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px; }
+.t-sus-sub { margin: 0 0 10px; font-family: var(--lc-font-mono); font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--t-text-3); }
+.t-sus-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.t-sus-lista li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; font-size: 15px; line-height: 1.45; color: var(--t-text-2); }
+.t-sus-lista svg { width: 18px; height: 18px; margin-top: 2px; color: var(--p-green); }
+.t-sus-calendario, .t-sus-faq { margin-top: clamp(56px, 7vw, 96px); }
+.t-sus-calendario ol { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.t-sus-calendario li { display: grid; align-content: start; gap: 6px; padding: 18px 16px; border-radius: 16px; border: 1px solid var(--g-borde); background: rgba(255, 255, 255, .03); border-top: 3px solid var(--c); }
+.t-sus-cuando { font-family: var(--lc-font-mono); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; color: var(--c); }
+.t-sus-calendario b { font-family: var(--lc-font-display); font-size: 1.15rem; letter-spacing: -.015em; color: var(--t-text); }
+.t-sus-calendario li > span:last-child { font-size: 13.5px; line-height: 1.5; color: var(--t-text-2); }
+.t-sus-faq .faq-list-p { margin-top: 24px; border-radius: var(--t-radio); border-color: var(--g-borde); background: rgba(255, 255, 255, .02); }
+html[data-tema] .t-sus-faq .faq-q-p { font-size: 15.5px; padding: 20px 22px; }
+html[data-tema] .t-sus-faq .faq-a-p { font-size: 15px; }
+html[data-tema] .t-sus-faq .faq-item-p.open .faq-a-p { max-height: 260px; padding: 0 22px 20px; }
+.t-sus-pie { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 28px; font-family: var(--lc-font-mono); font-size: 12px; color: var(--t-text-3); }
+.t-sus-pie button { background: none; border: 0; color: var(--t-text-2); font: inherit; cursor: pointer; }
+@media (max-width: 1100px) { .t-sus-calendario ol { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 900px) {
+  .t-sus-cab, .t-sus-planes { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .t-sus-listas, .t-sus-mitades { grid-template-columns: 1fr; }
+  .t-sus-calendario ol { grid-template-columns: 1fr; }
+  .t-sus-plan > .t-btn { align-self: stretch; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .t-sus-plan { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--t-surf); }
+}
+/* La ventana de pago de la suscripción no traía fondo: vidrio casi opaco para que se lea. */
+html[data-tema] .modal-p { background: var(--g-luz), rgba(18, 18, 17, .96); border-radius: var(--t-radio); }
+html[data-tema] .mprev-input { background: rgba(255, 255, 255, .05); }
+html[data-tema] .mprev-btn-pay { border-radius: 999px; }

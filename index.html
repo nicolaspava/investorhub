@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261008e">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261008g">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261008k">
 <script src="/estilo/demo.js?v=20261008k" defer></script>
 <script src="/estilo/landing.js?v=20261008b" defer></script>
@@ -1347,172 +1347,110 @@ window.addEventListener('load', function(){
 }
 </style>
 
-<!-- PRICING -->
-<div class="pricing-wrap" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:100px 32px 80px;">
-  <div style="max-width:960px;margin:0 auto;width:100%;">
-
-    <!-- Header: title left, desc right -->
-    <div class="rv" class="pricing-header-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:44px;">
+<!-- PRICING: preventa fundadora (8 oct 2026). Oferta y calendario cerrados en el chat «pitch agosto 2026». -->
+<section class="t-sus">
+  <div class="t-envoltura">
+    <div class="t-sus-cab">
       <div>
-        <div class="prev-eyebrow" style="margin-bottom:20px;">
-          <div class="prev-eyebrow-dot" style="background:var(--cyan);"></div><span style="color:var(--cyan);">Solo 200 cupos disponibles</span>
-        </div>
-        <h1 style="font-family:var(--f-display);font-size:clamp(36px,5vw,64px);font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:.88;color:var(--cream);margin:0;">Haz parte<br>desde el inicio</h1>
+        <p class="t-sus-cupos"><span aria-hidden="true"></span>30 cupos fundadores</p>
+        <h1 class="t-sus-titulo">Sé perfil fundador</h1>
       </div>
-      <div>
-        <p style="font-size:15px;color:var(--t2);font-weight:300;line-height:1.85;margin:0 0 0 0;">Intégrate a una plataforma para estar dentro del mapa del público, los medios, bookers y otros agentes del ecosistema cultural.</p>
-        <p style="font-size:15px;color:var(--cream);font-weight:500;line-height:1.6;margin:12px 0 0;">Con un booking que consigas, pagas todo el año.</p>
-      </div>
+      <p class="t-lead">Para artistas y proyectos que quieren crecer con La Curaduría desde el inicio. Reservas hoy con la mitad, pagas el resto antes del lanzamiento y tu año empieza en marzo de 2027.</p>
     </div>
 
-    <!-- Cards -->
-    <div class="pricing-cards-grid rv d1" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
-
-      <!-- GRATIS -->
-      <div class="plan-card-p" id="pplan-basico" style="cursor:pointer;" onclick="prevSelectPlan('basico')">
-        <div class="plan-tier-p" style="color:var(--t3);">Gratis · Siempre</div>
-        <div class="plan-name-p" style="font-size:18px;margin-bottom:4px;">Para explorar y crear presencia</div>
-        <div class="plan-tagline-p" style="font-size:12px;margin-bottom:16px;">Crea tu perfil, publica eventos y contenidos sin límite, explora la cartelera.</div>
-        <div class="plan-divider-p"></div>
-        <div style="margin-bottom:18px;">
-          <div style="font-family:var(--f-display);font-size:44px;font-weight:800;line-height:1;color:var(--cream);">Gratis</div>
-          <div style="font-family:var(--f-mono);font-size:9px;color:var(--t4);margin-top:4px;letter-spacing:.1em;">Sin costo · Sin tarjeta</div>
+    <div class="t-sus-planes">
+      <article class="t-sus-plan t-sus-fundador">
+        <p class="t-sus-tier">Suscripción fundadora</p>
+        <p class="t-sus-precio">$200.000 <small>COP · un año</small></p>
+        <div class="t-sus-mitades">
+          <div><b>$100.000</b><span>Hoy, para reservar tu cupo</span></div>
+          <div><b>$100.000</b><span>Antes de marzo de 2027</span></div>
         </div>
-        <ul class="plan-list-p" style="margin-bottom:20px;gap:6px;">
-          <li><span>Perfil básico</span></li>
-          <li><span>Eventos ilimitados</span></li>
-          <li><span>Contenidos ilimitados</span></li>
-          <li><span>Explorar cartelera cultural</span></li>
-          <li><span>Guardar eventos y agenda</span></li>
-          <li><span>Presencia en el directorio</span></li>
-        </ul>
-        <button class="plan-select-btn-p pbtn-outline" onclick="navTo('proximamente')">Regístrate gratis →</button>
-      </div>
-
-   <!-- PROFESIONAL -->
-      <div class="plan-card-p featured-plan" id="pplan-profesional" onclick="prevSelectPlan('profesional')" style="cursor:pointer;">
-        <div style="position:absolute;top:-1px;right:-1px;font-family:var(--f-mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:0 var(--lc-radius-md) 0 var(--lc-radius-md);background:rgba(117,230,249,.15);color:var(--cyan);border:1px solid rgba(117,230,249,.35);">200 cupos disponibles</div>
-        <div class="plan-tier-p" style="color:var(--coral);">Profesional · Anual</div>
-        <div class="plan-name-p" style="font-size:18px;margin-bottom:4px;">Para impulsar proyectos</div>
-        <div class="plan-tagline-p" style="font-size:12px;margin-bottom:16px;">Herramientas profesionales para gestión y promoción en la industria cultural.</div>
-        <div class="plan-divider-p" style="background:rgba(255,115,108,.2);"></div>
-        <div style="margin-bottom:18px;">
-          <div style="font-family:var(--f-mono);font-size:10px;color:var(--t4);text-decoration:line-through;margin-bottom:3px;">$330.000 COP / año</div>
-          <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;">
-            <div style="font-family:var(--f-display);font-size:44px;font-weight:800;line-height:1;color:var(--coral);">$230.000</div>
-            <div style="font-family:var(--f-mono);font-size:10px;color:var(--t3);">COP / año</div>
-            <div style="font-family:var(--f-mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:var(--lc-radius-md);background:rgba(255,115,108,.1);color:var(--coral);border:1px solid rgba(255,115,108,.25);">−30% preventa</div>
+        <div class="t-sus-listas">
+          <div>
+            <h3 class="t-sus-sub">Desde hoy</h3>
+            <ul class="t-sus-lista">
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Tu perfil y tu press kit en la guía, a la vista de público, bookers y prensa</span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Difusión de tu perfil en las redes de La Curaduría</span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Una reseña de tu proyecto en la plataforma</span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Insignia de fundador, para siempre</span></li>
+            </ul>
           </div>
-          <div style="font-family:var(--f-mono);font-size:9px;color:var(--t4);margin-top:4px;letter-spacing:.08em;">$19.167 / mes</div>
+          <div>
+            <h3 class="t-sus-sub">Desde el lanzamiento</h3>
+            <ul class="t-sus-lista">
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Un año de suscripción, contado desde marzo de 2027</span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Todo lo que se habilite durante tu año</span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Las betas desde febrero, si pagas la segunda mitad antes</span></li>
+            </ul>
+          </div>
         </div>
-        <ul class="plan-list-p" style="margin-bottom:20px;gap:6px;">
-          <li><span>Perfil verificado</span></li>
-          <li><span>Presskit y perfil ampliado</span></li>
-          <li><span>Listas de prensa</span></li>
-          <li><span>Listas de bookers</span></li>
-          <li><span>Preventas, invitaciones y descuentos</span></li>
-          <li><span>Automatización de contratos</span></li>
-          <li><span>Integración con Chartmetric</span></li>
+        <button type="button" class="t-btn t-btn-pri t-btn-xl" onclick="prevSelectPlan('fundador')">Reservar mi cupo · $100.000 <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+      </article>
+
+      <article class="t-sus-plan">
+        <p class="t-sus-tier">Gratis, siempre</p>
+        <p class="t-sus-precio">$0</p>
+        <p class="t-texto">Para explorar y tener presencia en la escena.</p>
+        <ul class="t-sus-lista">
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Perfil básico</span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Publicar eventos y contenidos</span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Explorar la cartelera, el mapa y el directorio</span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Guardar eventos en tu agenda</span></li>
         </ul>
-        <button class="plan-select-btn-p pbtn-coral">Unirme por $230.000 →</button>
-      </div>
+        <a class="t-btn t-btn-sec" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis</a>
+      </article>
     </div>
 
-    <!-- Cupos bar -->
-    <div class="rv d2" style="background:var(--surf);border:1px solid var(--bord);border-radius:var(--lc-radius-md);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:12px;">
-      <div style="display:flex;align-items:center;gap:10px;">
-        <div style="width:7px;height:7px;border-radius:50%;background:var(--coral);animation:prevpulse 2s ease-in-out infinite;flex-shrink:0;"></div>
-        <span style="font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);">Solo 200 cupos disponibles</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:12px;">
-        <div style="font-family:var(--f-mono);font-size:9px;color:var(--t4);letter-spacing:.08em;">Precio regular desde agosto: $330.000 COP</div>
-        <div style="width:1px;height:14px;background:var(--bord2);"></div>
-        <div style="font-family:var(--f-mono);font-size:9px;color:var(--t4);letter-spacing:.08em;">Beta: 1 de junio 2026</div>
-      </div>
+    <div class="t-sus-calendario">
+      <h2 class="t-h2">El calendario</h2>
+      <ol>
+          <li style="--c: var(--p-coral);"><span class="t-sus-cuando">Octubre 2026</span><b>Abre la preventa</b><span>Reservas tu cupo y recibes tu insignia de fundador.</span></li>
+          <li style="--c: var(--p-coral);"><span class="t-sus-cuando">Noviembre y diciembre</span><b>Difusión y reseñas</b><span>Publicamos la reseña de cada perfil y lo difundimos en redes. Te mostramos los avances.</span></li>
+          <li style="--c: var(--p-cyan);"><span class="t-sus-cuando">Enero 2027</span><b>Cierra la preventa</b><span>Por cupos llenos o por fecha. Mostramos demostraciones de los módulos que vienen.</span></li>
+          <li style="--c: var(--p-cyan);"><span class="t-sus-cuando">Febrero</span><b>Primeras betas</b><span>Gestor de contenidos, entrenamiento SEO, ENLACE academia y CRM, para quienes ya pagaron la segunda mitad.</span></li>
+          <li style="--c: var(--p-green);"><span class="t-sus-cuando">Marzo</span><b>Lanzamiento</b><span>Empieza tu año de suscripción y cierra el plazo de la segunda mitad.</span></li>
+          <li style="--c: var(--p-yellow-clara);"><span class="t-sus-cuando">Después</span><b>Betas continuas</b><span>Los módulos que falten salen como betas durante tu año.</span></li>
+      </ol>
     </div>
 
-    <!-- Timeline -->
-    <div class="rv d2" style="background:var(--surf);border:1px solid var(--bord);border-radius:var(--lc-radius-md);padding:20px 24px;margin-bottom:16px;">
-      <div style="font-family:var(--f-mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--t4);margin-bottom:18px;">Ruta de lanzamiento</div>
-      <div class="timeline-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;">
-        <!-- connector line -->
-        <div style="position:absolute;top:7px;left:calc(12.5% + 4px);right:calc(12.5% + 4px);height:1px;background:linear-gradient(90deg,var(--coral),var(--cyan),var(--green),var(--t4));opacity:.35;"></div>
-
-        <!-- Step 1 -->
-        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;">
-          <div style="width:14px;height:14px;border-radius:50%;background:var(--coral);box-shadow:0 0 10px rgba(255,115,108,.4);flex-shrink:0;margin-bottom:10px;position:relative;z-index:1;"></div>
-          <div style="font-family:var(--f-mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin-bottom:5px;">Hoy</div>
-          <div style="font-size:12px;font-weight:600;color:var(--cream);line-height:1.3;margin-bottom:4px;">Te registras</div>
-          <div style="font-size:11px;color:var(--t3);line-height:1.5;">Ya puedes agregar eventos y contenidos</div>
-        </div>
-
-        <!-- Step 2 -->
-        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;">
-          <div style="width:14px;height:14px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px rgba(117,230,249,.3);flex-shrink:0;margin-bottom:10px;position:relative;z-index:1;"></div>
-          <div style="font-family:var(--f-mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:5px;">1 jun 2026</div>
-          <div style="font-size:12px;font-weight:600;color:var(--cream);line-height:1.3;margin-bottom:4px;">Beta activa</div>
-          <div style="font-size:11px;color:var(--t3);line-height:1.5;">Recibes tu cuenta con todos los beneficios</div>
-        </div>
-
-        <!-- Step 3 -->
-        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;">
-          <div style="width:14px;height:14px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(122,211,160,.3);flex-shrink:0;margin-bottom:10px;position:relative;z-index:1;"></div>
-          <div style="font-family:var(--f-mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:5px;">3 ago 2026</div>
-          <div style="font-size:12px;font-weight:600;color:var(--cream);line-height:1.3;margin-bottom:4px;">Lanzamiento</div>
-          <div style="font-size:11px;color:var(--t3);line-height:1.5;">Aquí empieza a contar tu año de suscripción</div>
-        </div>
-
-        <!-- Step 4 -->
-        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;">
-          <div style="width:14px;height:14px;border-radius:50%;background:var(--t4);flex-shrink:0;margin-bottom:10px;position:relative;z-index:1;"></div>
-          <div style="font-family:var(--f-mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);margin-bottom:5px;">Ago 2027</div>
-          <div style="font-size:12px;font-weight:600;color:var(--t3);line-height:1.3;margin-bottom:4px;">Renovación</div>
-          <div style="font-size:11px;color:var(--t4);line-height:1.5;">Al precio que elijas. Sin sorpresas</div>
-        </div>
-      </div>
-
-      <!-- Grace note -->
-      <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--bord);display:flex;align-items:flex-start;gap:8px;">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-        <span style="font-size:12px;color:var(--t3);line-height:1.6;">El tiempo en fase beta <b style="color:var(--t2);">es tiempo de gracia</b> y no descuenta de tu año de suscripción. Tu año completo comienza el 3 de agosto de 2026.</span>
-      </div>
-    </div>
-
-    <!-- FAQ -->
-    <div class="rv d3" style="margin-bottom:16px;">
-      <div style="font-family:var(--f-mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--t4);margin-bottom:12px;">Preguntas frecuentes</div>
+    <div class="t-sus-faq">
+      <h2 class="t-h2">Preguntas frecuentes</h2>
       <div class="faq-list-p">
         <div class="faq-item-p">
-          <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Cuándo empieza a correr mi suscripción?<span class="faq-q-icon-p">+</span></div>
-          <div class="faq-a-p">Tu año de suscripción empieza el <b>3 de agosto de 2026</b>, con el lanzamiento oficial. Desde el 1 de junio hasta esa fecha tienes acceso completo a la beta: ese tiempo es de gracia y no descuenta de tu año.</div>
+          <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Cuándo empieza mi año de suscripción?<span class="faq-q-icon-p">+</span></div>
+          <div class="faq-a-p">En el lanzamiento, en marzo de 2027. Lo que recibes desde hoy hasta entonces no descuenta de tu año.</div>
         </div>
         <div class="faq-item-p">
-          <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Qué puedo hacer desde hoy?<span class="faq-q-icon-p">+</span></div>
-          <div class="faq-a-p">Desde que te registras puedes crear tu perfil y empezar a agregar eventos y contenidos. El 1 de junio recibes tu cuenta con todos los beneficios del plan activos.</div>
+          <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Qué recibo desde hoy?<span class="faq-q-icon-p">+</span></div>
+          <div class="faq-a-p">Tu perfil y tu press kit en la guía, la difusión de tu perfil en nuestras redes, una reseña de tu proyecto en la plataforma y la insignia de fundador.</div>
         </div>
         <div class="faq-item-p">
-          <div class="faq-q-p" onclick="prevToggleFaq(this)">¿El 30% de descuento aplica al año completo?<span class="faq-q-icon-p">+</span></div>
-          <div class="faq-a-p">Sí. El descuento es sobre el precio anual del plan Profesional. Pagas $230.000 COP una sola vez por tu primer año, que comienza el 3 de agosto de 2026.</div>
+          <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Qué significa «todo lo que se habilite durante tu año»?<span class="faq-q-icon-p">+</span></div>
+          <div class="faq-a-p">Que tienes acceso a cada módulo y cada beta que salga mientras tu suscripción esté activa. No prometemos funciones con fecha que quizá no lleguen.</div>
         </div>
         <div class="faq-item-p">
-          <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Qué pasa cuando se acaben los 200 cupos?<span class="faq-q-icon-p">+</span></div>
-          <div class="faq-a-p">El precio de preventa ($230.000 COP) solo está disponible para los primeros 200 registros. Una vez agotados, el plan Profesional tendrá su precio regular de $330.000 COP por año.</div>
+          <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Cuándo pago la segunda mitad?<span class="faq-q-icon-p">+</span></div>
+          <div class="faq-a-p">Antes de marzo de 2027. Si la pagas antes de febrero, pruebas las betas desde su primera salida; si la pagas en marzo, entras con el lanzamiento.</div>
+        </div>
+        <div class="faq-item-p">
+          <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Qué pasa cuando se llenan los 30 cupos?<span class="faq-q-icon-p">+</span></div>
+          <div class="faq-a-p">Se cierra la preventa. También se cierra en enero de 2027 si todavía quedan cupos.</div>
         </div>
         <div class="faq-item-p">
           <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Cómo se procesa el pago?<span class="faq-q-icon-p">+</span></div>
-          <div class="faq-a-p">El pago se procesa a través de Wompi. Aceptamos tarjetas de crédito, débito, PSE y Nequi. Es un cobro único por el año completo, sin renovación automática.</div>
+          <div class="faq-a-p">Con Mercado Pago, en pesos colombianos. Es un cobro único por cada mitad, sin renovación automática.</div>
         </div>
       </div>
     </div>
 
-    <!-- Footer -->
-    <div class="rv d3" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:4px;">
-      <span style="font-family:var(--f-mono);font-size:9px;color:var(--t4);letter-spacing:.08em;">Pago anual único · Sin renovación automática</span>
-      <button onclick="navTo('home')" style="background:none;border:none;font-family:var(--f-mono);font-size:9px;color:var(--t3);cursor:pointer;letter-spacing:.1em;text-transform:uppercase;">← Volver</button>
+    <div class="t-sus-pie">
+      <span>Pago con Mercado Pago · Sin renovación automática</span>
+      <button type="button" onclick="navTo('home')">← Volver</button>
     </div>
-
   </div>
-</div>
+</section>
+
 <!-- MODAL -->
 <style>
 /* ── MODAL PREVENTA BRAND ── */
@@ -1692,14 +1630,12 @@ window.addEventListener('load', function(){
       <button class="mprev-close" onclick="prevCloseModal()">×</button>
       <div class="mprev-eyebrow">
         <div class="mprev-eyebrow-dot"></div>
-        <span>Solo 200 cupos · Preventa 2026</span>
+        <span>30 cupos · Preventa fundadora</span>
       </div>
-      <div class="mprev-title">Asegura<br>tu lugar</div>
+      <div class="mprev-title">Reserva<br>tu cupo</div>
       <div class="mprev-price-row">
-        <div class="mprev-price-main">$230.000</div>
-        <div class="mprev-price-period">COP / año</div>
-        <div class="mprev-price-before">$330.000</div>
-        <div class="mprev-badge">−30%</div>
+        <div class="mprev-price-main">$100.000</div>
+        <div class="mprev-price-period">COP hoy · la otra mitad antes de marzo de 2027</div>
       </div>
     </div>
 
@@ -1708,10 +1644,10 @@ window.addEventListener('load', function(){
       <div id="mprev-form-view">
         <div class="mprev-summary">
           <div class="mprev-summary-text">
-            <b>Plan Profesional · 1 año</b><br>
-            Herramientas profesionales para gestión y promoción
+            <b>Suscripción fundadora · primera mitad</b><br>
+            $200.000 COP en total, por un año desde el lanzamiento
           </div>
-          <div class="mprev-summary-amount">$230k</div>
+          <div class="mprev-summary-amount">$100k</div>
         </div>
 
         <div class="mprev-field">
@@ -1728,12 +1664,12 @@ window.addEventListener('load', function(){
 
         <button class="mprev-btn-pay" onclick="prevIniciarPago()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
-          Ir a pagar · $230.000 COP →
+          Ir a pagar · $100.000 COP →
         </button>
 
         <div class="mprev-secure">
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Pago seguro con Mercado Pago · Sin renovación automática · Un cobro único
+          Pago seguro con Mercado Pago · Sin renovación automática
         </div>
       </div>
 
