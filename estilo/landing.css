@@ -956,3 +956,23 @@ html[data-tema] .mprev-btn-pay { border-radius: 999px; }
 .t-fun-gratis a { color: var(--p-cyan); text-decoration: underline; text-underline-offset: 3px; }
 .t-fun-cierre .t-btn-sec { margin-left: 8px; }
 @media (max-width: 900px) { .t-fun-ya { grid-template-columns: 1fr; } .t-fun-cierre .t-btn-sec { margin: 10px 0 0; } }
+
+/* Reconocimientos: línea de tiempo por año */
+.t-recos { margin-top: 32px; display: grid; gap: 28px; }
+.t-reco-anio { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; align-items: start; }
+.t-reco-num { margin: 0; position: sticky; top: 100px; font-family: var(--lc-font-display); font-weight: 800; font-size: clamp(2.2rem, 3.4vw, 3rem); line-height: 1; letter-spacing: -.04em; color: var(--p-cyan); white-space: nowrap; }
+.t-reco-anio ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.t-reco { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; align-items: start; padding: 20px 22px; border-radius: var(--t-radio); border: 1px solid var(--g-borde); background: rgba(255, 255, 255, .03); }
+.t-reco h3 { margin: 2px 0 6px; font-family: var(--lc-font-display); font-weight: 800; font-size: 1.2rem; letter-spacing: -.015em; color: var(--t-text); }
+.t-reco p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--t-text-2); }
+.t-reco-ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; color: var(--p-cyan); background: rgba(117, 230, 249, .12); }
+.t-reco-ic svg { width: 22px; height: 22px; }
+.t-reco-destacado { grid-column: 1 / -1; border-color: rgba(117, 230, 249, .45); background: linear-gradient(135deg, rgba(117, 230, 249, .14), rgba(255, 115, 108, .08) 70%), rgba(255, 255, 255, .03); }
+.t-reco-destacado h3 { font-size: 1.5rem; }
+.t-reco-destacado p { font-size: 16px; color: var(--t-text); max-width: 60ch; }
+.t-fun-respaldo .t-ctas { gap: 10px; }
+@media (max-width: 900px) {
+  .t-reco-anio { grid-template-columns: 1fr; gap: 12px; }
+  .t-reco-num { position: static; }
+  .t-reco-anio ol { grid-template-columns: 1fr; }
+}

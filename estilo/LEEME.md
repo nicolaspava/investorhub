@@ -42,7 +42,11 @@ Desde el 8 oct la portada sigue la arquitectura «una plataforma, dos experienci
 3. **La Guía** (`#la-guia`): «Encuentra algo que valga la pena vivir.» Mosaico con capturas: catálogo, directorio y contenidos.
 4. **La Terminal** (`#la-terminal`): «Tu proyecto cultural, en un solo lugar.» Módulos por estado y «Adquiere la suscripción».
 5. **Cómo funciona** (`#como-funciona`): publica, descubre, conecta, en una línea de metro de tres paradas.
-6. **Visión** (`#vision`): «Menos ruido. Más cultura.» Incluye el respaldo: estímulo, Cámara de Comercio y BIME.
+6. **Visión** (`#vision`): «Menos ruido. Más cultura.»
+6b. **Reconocimientos** (`#reconocimientos`): línea de tiempo.
+   - **2025:** incubación con la Cámara de Comercio y selección para el GoFest.
+   - **2026:** aceleración BIME, Chapinero en Red y la beca de circulación internacional (segundo lugar nacional; Bilbao, con el catálogo de artistas colombianos para agentes de España).
+   - El respaldo salió de la visión. En La Terminal, la franja de respaldo resume esto y enlaza aquí.
 7. **Aliados editoriales** (`#aliados`).
 8. **Tienda** (`#tienda`): solo la camiseta. Es la misma ficha que en Suscripción; `CAMISETA_STOCK` vale para las dos.
 9. **Cierre:** «¡Cambia el algoritmo por la curaduría!» y dos caminos: ¿Buscas cultura? / ¿Haces cultura?
