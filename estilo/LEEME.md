@@ -44,8 +44,8 @@ Desde el 8 oct la portada sigue la arquitectura «una plataforma, dos experienci
 5. **Cómo funciona** (`#como-funciona`): publica, descubre, conecta, en una línea de metro de tres paradas.
 6. **Visión** (`#vision`): «Menos ruido. Más cultura.»
 6b. **Reconocimientos** (`#reconocimientos`): línea de tiempo.
-   - **2025:** incubación con la Cámara de Comercio y selección para el GoFest.
-   - **2026:** aceleración BIME, Chapinero en Red y la beca de circulación internacional (segundo lugar nacional; Bilbao, con el catálogo de artistas colombianos para agentes de España).
+   - **2025:** incubación con la Cámara de Comercio de Bogotá y selección para presentarse en el GoFest con uno de los pitch ganadores (sin cifras).
+   - **2026:** aceleración BIME, Chapinero en Red y la beca de circulación internacional (segundo lugar nacional, 98 puntos; Bilbao, con el catálogo de artistas colombianos para agentes de España).
    - El respaldo salió de la visión. En La Terminal, la franja de respaldo resume esto y enlaza aquí.
 7. **Aliados editoriales** (`#aliados`).
 8. **Tienda** (`#tienda`): solo la camiseta. Es la misma ficha que en Suscripción; `CAMISETA_STOCK` vale para las dos.
