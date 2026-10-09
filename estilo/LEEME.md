@@ -5,6 +5,8 @@ Rediseño de la portada de la landing (`index.html`, pantalla `#pg-home`) hecho 
 | Archivo | Qué es |
 |---|---|
 | `estilo/landing.css` | Toda la dirección: paleta, tipografías, botones, barra y las ocho secciones. También redefine los valores de `ds/tokens.css`, para que las pantallas internas hereden lo mismo sin tocar su HTML. |
+| `estilo/demo.css`, `estilo/demo.js` | La demo del hero (8 oct): Pro en el computador y la GuÍA con un perfil en el teléfono, conectados. |
+| `img/demo/` | Fotos de artistas y flyers de eventos reales de lacuraduria.net que usa la demo. |
 | `estilo/landing.js` | Revelado al entrar en pantalla, logo de la barra y pestañas de «Para quién». No escucha el scroll. |
 | `fuentes/` | Bricolage Grotesque, Geist y Geist Mono (variables, subconjunto latino), alojadas aquí y no en Google Fonts. |
 | `iconos/` | Íconos de Phosphor (regular). Van incrustados en el HTML. |
@@ -22,7 +24,12 @@ Rediseño de la portada de la landing (`index.html`, pantalla `#pg-home`) hecho 
 
 ## La portada (versión del 8 oct)
 
-1. **Hero:** el logo es el titular. Debajo, «Una infraestructura de gestión y descubrimiento cultural.», la descripción y dos botones: «Regístrate gratis» y «Ver la cartelera». Dos teléfonos con capturas reales.
+1. **Hero:** arriba, el logo como titular y al lado «Una infraestructura de gestión y descubrimiento cultural.», la descripción y dos botones («Regístrate gratis» y «Ver la cartelera»). Debajo, la demo interactiva:
+   - **Computador, La Curaduría Pro:** seis funciones (eventos, convocatorias, producción, perfiles, mensajes y comunicación). Cada una abre una ventana que la explica y propone algo para probar. Se dibuja en un lienzo fijo de 1000 × 640 que `demo.js` escala.
+   - **Teléfono:** la GuÍA responde a tres sugerencias o a lo que se escriba, y abre el perfil de los artistas.
+   - **Las dos pantallas están conectadas:** publicar el borrador en Pro lo anuncia la GuÍA; la frase del perfil que se edita en Pro cambia en el teléfono; pedir booking desde el perfil llega a Mensajes.
+   - En teléfonos, primero va la GuÍA; Pro se ve en pequeño, con las funciones y su explicación fuera del lienzo.
+   - Todo es local: la demo no envía nada.
 2. **Funciones** (`#cambia-algo`): mosaico de tres celdas: catálogo de eventos, directorio de artistas, y recomendaciones y contenidos.
 3. **Tu ruta cultural** (`#como-funciona`): línea de metro con los colores de la marca (Explora, Descubre, Guarda, Comparte) que se dibuja al entrar en pantalla.
 4. **Para quién** (`#dolor-solucion`): «El ruido de las redes sociales…» y pestañas por público.
