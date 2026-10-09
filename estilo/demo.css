@@ -54,7 +54,7 @@
 .t-pro-marca b { font-family: var(--lc-font-mono); font-weight: 500; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--t-on-accent); background: var(--t-accent); border-radius: 999px; padding: 2px 7px; vertical-align: 3px; margin-left: 4px; }
 .t-pro-nav { display: flex; flex-direction: column; gap: 2px; }
 .t-pro-nav button {
-  display: flex; align-items: center; gap: 10px; width: 100%;
+  display: flex; align-items: center; gap: 9px; width: 100%;
   padding: 9px 8px; border: 0; border-radius: 10px; background: transparent;
   font: 500 14px/1.2 var(--lc-font-body); color: var(--t-text-2); text-align: left; cursor: pointer;
   transition: background .2s, color .2s;
@@ -132,6 +132,19 @@
 .t-pro-form input:focus { outline: 2px solid var(--t-accent); outline-offset: 1px; border-color: transparent; }
 .t-mp-generos i { font-style: normal; font-size: 12.5px; padding: 4px 11px; border-radius: 999px; border: 1px solid var(--g-borde); background: rgba(255, 255, 255, .04); color: var(--t-text-2); }
 
+/* Convocatorias: me postulo / organizo */
+.t-pro-modo { display: flex; padding: 3px; border-radius: 999px; border: 1px solid var(--g-borde-2); background: rgba(255, 255, 255, .04); }
+.t-pro-modo button { padding: 6px 14px; border: 0; border-radius: 999px; background: transparent; color: var(--t-text-2); font: 500 13px/1.2 var(--lc-font-body); cursor: pointer; }
+.t-pro-modo button[aria-pressed="true"] { background: var(--t-text); color: var(--t-bg); }
+[data-panel][hidden] { display: none; }
+.t-pro-convs { list-style: none; padding: 0; display: grid; gap: 8px; }
+.t-pro-convs li { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto auto; align-items: center; gap: 14px; padding: 10px 12px; border-radius: 14px; border: 1px solid var(--g-borde); background: rgba(255, 255, 255, .04); }
+.t-pro-convs b { display: block; font-size: 14.5px; }
+.t-pro-convs small { font-size: 12.5px; color: var(--t-text-3); }
+.t-pro-conv-ic { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); }
+.t-pro-cierra { font-family: var(--lc-font-mono); font-size: 11.5px; color: var(--t-text-3); }
+:is(.t-pro-modo button):focus-visible { outline: 2px solid var(--t-accent); outline-offset: 2px; }
+
 /* El press kit */
 .t-pro-cab-acc { display: flex; gap: 8px; }
 .t-pro-kit { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -145,7 +158,7 @@
 .t-pro-recurso svg { grid-row: span 2; width: 20px; height: 20px; color: var(--p-cyan); }
 .t-pro-recurso small { font-weight: 400; font-size: 12px; color: var(--t-text-3); }
 /* Ya / Pronto en la barra lateral */
-.t-pro-tag { flex: none; white-space: nowrap; margin-left: auto; font-style: normal; font-family: var(--lc-font-mono); font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; color: var(--t-text-3); border: 1px solid var(--g-borde); }
+.t-pro-tag { flex: none; white-space: nowrap; margin-left: auto; font-style: normal; font-family: var(--lc-font-mono); font-size: 9px; letter-spacing: .04em; text-transform: uppercase; padding: 2px 5px; border-radius: 999px; color: var(--t-text-3); border: 1px solid var(--g-borde); }
 .t-pro-tag-ya { color: var(--p-green); border-color: color-mix(in srgb, var(--p-green) 45%, transparent); }
 .t-pro-cuenta + .t-pro-tag { margin-left: 6px; }
 

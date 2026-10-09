@@ -11,8 +11,8 @@
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/estilo/landing.css?v=20261008d">
-<link rel="stylesheet" href="/estilo/demo.css?v=20261008i">
-<script src="/estilo/demo.js?v=20261008i" defer></script>
+<link rel="stylesheet" href="/estilo/demo.css?v=20261008k">
+<script src="/estilo/demo.js?v=20261008k" defer></script>
 <script src="/estilo/landing.js?v=20261008b" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
@@ -455,14 +455,25 @@ footer.site-footer{}
                   </div>
                 </section>
 
-                <!-- Convocatorias -->
+                <!-- Convocatorias: como artista (postularse) y como organizador -->
                 <section class="t-pro-vista" data-vista="convocatorias" hidden>
-                  <header class="t-pro-cab"><div><p class="t-pro-miga">Convocatorias</p><h3>Noches de electrónica</h3></div><span class="t-pro-estado t-pro-estado-ok">Abierta · cierra el 30 oct</span></header>
-                  <p class="t-pro-sub">3 postulaciones nuevas, cada una con su perfil completo.</p>
+                  <header class="t-pro-cab"><div><p class="t-pro-miga">Convocatorias</p><h3 data-conv-titulo>Convocatorias abiertas</h3></div>
+                    <div class="t-pro-modo" role="group" aria-label="Ver como" data-ancla="convocatorias"><button type="button" data-modo="aplicar" aria-pressed="true">Me postulo</button><button type="button" data-modo="organizar" aria-pressed="false">Organizo</button></div></header>
+                  <div data-panel="aplicar">
+                    <p class="t-pro-sub">Te postulas con tu perfil y tu press kit: no llenas el mismo formulario cada vez.</p>
+                    <ul class="t-pro-convs">
+                      <li><span class="t-pro-conv-ic" style="--c: var(--p-coral);"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M228.54,86.66l-176.06-54A16,16,0,0,0,32,48V192a16,16,0,0,0,16,16,16,16,0,0,0,4.52-.65L136,181.73V192a16,16,0,0,0,16,16h32a16,16,0,0,0,16-16v-29.9l28.54-8.75A16.09,16.09,0,0,0,240,138V102A16.09,16.09,0,0,0,228.54,86.66ZM136,165,48,192V48l88,27Zm48,27H152V176.82L184,167Zm40-54-.11,0L152,160.08V79.92l71.89,22,.11,0v36Z"/></svg></span><div><b>Circuito de bandas emergentes</b><small>Tarima en vivo · Bogotá · con pago</small></div><span class="t-pro-cierra">Cierra 15 nov</span><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="postular">Postularme</button></li>
+                      <li><span class="t-pro-conv-ic" style="--c: var(--p-cyan);"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span><div><b>Residencia de creación sonora</b><small>Un mes en sala de ensayo · Bogotá</small></div><span class="t-pro-cierra">Cierra 22 nov</span><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="postular">Postularme</button></li>
+                      <li><span class="t-pro-conv-ic" style="--c: var(--p-yellow-clara);"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"/></svg></span><div><b>Noches de electrónica</b><small>Tu colectivo · 4 fechas en diciembre</small></div><span class="t-pro-cierra">Cierra 30 oct</span><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="postular">Postularme</button></li>
+                    </ul>
+                  </div>
+                  <div data-panel="organizar" hidden>
+                    <p class="t-pro-sub">3 postulaciones nuevas, cada una con su perfil y su press kit.</p>
                   <div class="t-pro-postulaciones">
-                    <article class="t-pro-post"><img src="/img/demo/veronica-cian.jpg" alt="" width="388" height="560"><div><h4>Verónica Cian</h4><p>Ambient y drone que convierten memoria, bioelectricidad y paisaje en textura.</p><div class="t-pro-post-acc" data-ancla="convocatorias"><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="seleccionar">Seleccionar</button><button type="button" class="t-pro-btn" data-accion="pasar">Pasar</button></div></div></article>
+                    <article class="t-pro-post"><img src="/img/demo/veronica-cian.jpg" alt="" width="388" height="560"><div><h4>Verónica Cian</h4><p>Ambient y drone que convierten memoria, bioelectricidad y paisaje en textura.</p><div class="t-pro-post-acc"><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="seleccionar">Seleccionar</button><button type="button" class="t-pro-btn" data-accion="pasar">Pasar</button></div></div></article>
                     <article class="t-pro-post"><img src="/img/demo/js2600.jpg" alt="" width="560" height="374"><div><h4>JS2600</h4><p>Intersecciones sonoras entre luz y oscuridad.</p><div class="t-pro-post-acc"><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="seleccionar">Seleccionar</button><button type="button" class="t-pro-btn" data-accion="pasar">Pasar</button></div></div></article>
                     <article class="t-pro-post"><img src="/img/demo/cata-p.jpg" alt="" width="560" height="550"><div><h4>Cata P</h4><p>Una deriva hacia el minimal desde el house.</p><div class="t-pro-post-acc"><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="seleccionar">Seleccionar</button><button type="button" class="t-pro-btn" data-accion="pasar">Pasar</button></div></div></article>
+                  </div>
                   </div>
                 </section>
 

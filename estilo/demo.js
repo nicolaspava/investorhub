@@ -38,8 +38,8 @@
       texto: 'Crea el evento una vez, con fecha, lugar, entradas y artistas. Al publicarlo aparece en la cartelera, en el mapa, en el perfil de los artistas y en la GuÍA.',
       prueba: 'Pruébalo: publica el borrador y mira el teléfono.' },
     { id: 'convocatorias', titulo: 'Convocatorias', estado: 'Próximamente',
-      texto: 'Abre una convocatoria y recibe postulaciones con el perfil completo de cada artista. Seleccionas con tu equipo, sin hojas de cálculo.',
-      prueba: 'Pruébalo: selecciona a quien quieras programar.' },
+      texto: 'Si eres artista, ves las convocatorias abiertas y te postulas con tu perfil y tu press kit. Si organizas, abres la tuya y recibes postulaciones con el perfil completo de cada artista.',
+      prueba: 'Pruébalo: postúlate, y luego cambia a «Organizo» para elegir.' },
     { id: 'mensajes', titulo: 'Mensajes', estado: 'Próximamente',
       texto: 'Booking y prensa en una sola bandeja, no regados entre WhatsApp y el correo.',
       prueba: 'Pruébalo: pide booking desde el perfil en el teléfono.' }
@@ -131,6 +131,11 @@
         responder('Nuevo en la cartelera, por si te interesa el rock bogotano:', [EVENTOS.edicion], true);
       }, 600);
     }
+    if (accion === 'postular') {
+      b.disabled = true; b.textContent = 'Postulado';
+      var nombre = b.closest('li').querySelector('b').textContent;
+      avisar('[data-aviso-pc]', 'Te postulaste a «' + nombre + '» con tu perfil y tu press kit.');
+    }
     if (accion === 'seleccionar' || accion === 'pasar') {
       var tarjeta = b.closest('.t-pro-post');
       tarjeta.classList.toggle('t-elegida', accion === 'seleccionar');
@@ -140,6 +145,19 @@
     }
     if (accion === 'ver-perfil') { abrirPerfil('la-payara'); avisar('[data-aviso-movil]', 'Así se ve en la GuÍA.'); }
     if (accion === 'copiar-kit') avisar('[data-aviso-pc]', 'Enlace copiado: lacuraduria.net/perfil/la-payara');
+  });
+
+  // Convocatorias: como artista o como organizador
+  var titulos = { aplicar: 'Convocatorias abiertas', organizar: 'Noches de electrónica' };
+  $$('[data-modo]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var modo = b.getAttribute('data-modo');
+      $$('[data-modo]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      $$('[data-panel]').forEach(function (p) { p.hidden = p.getAttribute('data-panel') !== modo; });
+      $('[data-conv-titulo]').textContent = titulos[modo];
+      // ya siguió la prueba: la ventana se cierra para dejar ver las postulaciones (el punto la reabre)
+      ventanaAbierta = false; ventana.hidden = true;
+    });
   });
 
   // Los recursos del press kit

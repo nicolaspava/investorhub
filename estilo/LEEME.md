@@ -27,7 +27,7 @@ Rediseño de la portada de la landing (`index.html`, pantalla `#pg-home`) hecho 
 1. **Hero:** arriba, el logo como titular y al lado «Una infraestructura de gestión y descubrimiento cultural.», la descripción y dos botones («Regístrate gratis» y «Ver la cartelera»). Debajo, la demo interactiva:
    - **Computador, La Curaduría Pro:** cuatro funciones. Cada una abre una ventana que la explica, dice si ya funciona y propone algo para probar.
      - **Ya disponibles:** el perfil como press kit, que va primero, y los eventos. El press kit reúne fotos, bio y editorial, rider y prensa para promotores, bookers y periodistas.
-     - **Próximamente:** convocatorias y mensajes.
+     - **Próximamente:** convocatorias y mensajes. Convocatorias tiene dos modos: «Me postulo», con convocatorias abiertas para postularse con el perfil y el press kit, y «Organizo», con las postulaciones para seleccionar.
      - Producción y comunicación se quitaron el 8 oct porque todavía no existen. Se dibuja en un lienzo fijo de 1000 × 640 que `demo.js` escala.
    - **Teléfono:** la GuÍA responde a tres sugerencias o a lo que se escriba, y abre el perfil de los artistas.
    - **Las dos pantallas están conectadas:** publicar el borrador en Pro lo anuncia la GuÍA; la frase del perfil que se edita en Pro cambia en el teléfono, donde el perfil muestra su press kit; pedir booking desde el perfil llega a Mensajes.
