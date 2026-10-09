@@ -70,6 +70,13 @@ La acción principal, «Reservar cupo», se repite en la barra, el hero, el prec
 - El texto de reembolso: `data-editable="reembolso"` en las preguntas.
 - El cobro: `api/crear-preferencia.js`, que cobra la primera mitad de $100.000 por Mercado Pago.
 
+**Campaña BIME (8 oct):**
+- **Gancho del hero:** «¿Sabías que existe un LinkedIn para artistas colombianos?».
+- **Bloque «Respaldo»:** estímulo, Cámara de Comercio y BIME de Bilbao. Los logos van en `.t-fun-logos`, hoy oculto: solo los autorizados.
+- **Paso 0 gratis:** «Sube tu perfil», con `data-subir-perfil` → lacuraduria.net/login.
+- **Cuarto beneficio:** tu perfil en el catálogo que se presenta en el BIME, como objetivo y no como garantía.
+- **Dos preguntas nuevas.**
+
 La oferta: $200.000 COP en dos pagos de $100.000. Con la camiseta se paga $180.000 hoy y $100.000 después. No se mencionan «seguir» ni el contacto de bookers, porque todavía no existen.
 
 **Camiseta LC23** (8 oct): es una ficha de producto (`#camiseta`), aparte de Mercado Pago.

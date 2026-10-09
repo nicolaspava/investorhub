@@ -781,7 +781,7 @@ html[data-tema] .mprev-btn-pay { border-radius: 999px; }
 
 .t-fun-hero { position: relative; isolation: isolate; padding-top: clamp(56px, 9vh, 110px); padding-bottom: clamp(48px, 7vw, 96px); }
 .t-fun-hero::before { content: ""; position: absolute; z-index: -1; inset: -10% -20% 0 30%; background: radial-gradient(closest-side, rgba(255, 115, 108, .32), rgba(255, 124, 152, .12) 55%, rgba(117, 230, 249, 0)); pointer-events: none; }
-.t-fun-titulo { margin: 0 0 22px; max-width: 16ch; font-family: var(--lc-font-display); font-weight: 800; font-size: clamp(2.6rem, 6vw, 5.2rem); line-height: .98; letter-spacing: -.04em; color: var(--t-text); text-wrap: balance; }
+.t-fun-titulo { margin: 0 0 16px; max-width: 16ch; font-family: var(--lc-font-display); font-weight: 800; font-size: clamp(2.6rem, 6vw, 5.2rem); line-height: .98; letter-spacing: -.04em; color: var(--t-text); text-wrap: balance; }
 .t-fun-hero .t-lead { margin: 0 0 32px; }
 .t-fun-contador { margin: 20px 0 0; font-family: var(--lc-font-mono); font-size: 13px; letter-spacing: .04em; color: var(--t-text-3); }
 .t-fun-contador b { color: var(--t-accent); font-weight: 500; }
@@ -829,7 +829,7 @@ html[data-tema] .mprev-btn-pay { border-radius: 999px; }
 .t-fun-pasos li { position: relative; display: grid; gap: 6px; padding-top: 34px; }
 .t-fun-punto { position: absolute; top: 0; left: 0; width: 19px; height: 19px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 4px var(--t-bg), 0 0 18px var(--c); }
 .t-fun-pasos b { font-family: var(--lc-font-display); font-weight: 800; font-size: 1.3rem; letter-spacing: -.02em; color: var(--t-text); }
-.t-fun-pasos li > span:last-child { font-size: 15px; line-height: 1.5; color: var(--t-text-2); }
+.t-fun-pasos li > span:not(.t-fun-punto) { font-size: 15px; line-height: 1.5; color: var(--t-text-2); }
 
 .t-fun-precio {
   display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center;
@@ -863,3 +863,21 @@ html[data-tema] .mprev-btn-pay { border-radius: 999px; }
 @media (prefers-reduced-transparency: reduce) {
   .t-fun-barra, .t-fun-modulo, .t-fun-precio { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--t-surf); }
 }
+
+/* Campaña BIME: gancho, respaldo y paso 0 */
+.t-fun-gancho { margin: 0 0 22px; font-family: var(--lc-font-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--p-cyan); }
+.t-fun-respaldo-wrap { padding-top: 0; }
+.t-fun-respaldo { display: grid; gap: 18px; justify-items: start; padding: 26px 28px; border-radius: var(--t-radio); border: 1px solid var(--g-borde); background: rgba(255, 255, 255, .03); }
+.t-fun-respaldo ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 28px; }
+.t-fun-respaldo li { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; color: var(--t-text); }
+.t-fun-respaldo li svg { width: 22px; height: 22px; color: var(--t-accent); flex: none; }
+.t-fun-respaldo > p { margin: 0; font-size: 15px; color: var(--t-text-2); }
+.t-fun-logos[hidden] { display: none; }
+.t-fun-logos img { max-height: 36px; filter: grayscale(1) brightness(1.6); opacity: .85; }
+.t-fun-hoy { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.t-fun-pasos { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.t-fun-paso0 .t-fun-punto { background: var(--t-bg); border: 2px dashed var(--t-text-2); box-shadow: 0 0 0 4px var(--t-bg); }
+.t-fun-pasos b em { font-style: normal; margin-left: 6px; vertical-align: 3px; font-family: var(--lc-font-mono); font-weight: 500; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--p-green); padding: 2px 7px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--p-green) 50%, transparent); }
+.t-fun-paso0 .t-btn { justify-self: start; min-height: 38px; padding: 0 16px; font-size: 14px; margin-top: 6px; }
+@media (max-width: 1100px) { .t-fun-hoy { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 900px) { .t-fun-hoy { grid-template-columns: 1fr; } .t-fun-pasos { grid-template-columns: 1fr; } }
