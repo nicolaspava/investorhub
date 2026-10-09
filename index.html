@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261008p">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261008q">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261008n">
 <script src="/estilo/demo.js?v=20261008m" defer></script>
 <script src="/estilo/landing.js?v=20261008b" defer></script>
@@ -376,10 +376,11 @@ footer.site-footer{}
 </svg>
   </div>
   <div class="nav-links" id="nav-links">
-    <span class="na" onclick="navTo('nosotros')">Equipo</span>
-    <span class="na" onclick="navTo('preventa')">Suscripción</span>
+    <span class="na" onclick="window.open('https://lacuraduria.net','_blank')">Explorar</span>
+    <span class="na" onclick="navTo('preventa')">La Terminal</span>
+    <span class="na" onclick="navTo('home','tienda')">Tienda</span>
+    <span class="na" onclick="navTo('nosotros')">Nosotros</span>
     <span class="na" onclick="navTo('contacto')">Contacto</span>
-    <span class="na" onclick="window.open('https://lacuraduria.net','_blank')">Buscador →</span>
     <button class="nav-cta" onclick="window.open('https://lacuraduria.net/login','_blank')">Ingresar →</button>
   </div>
   <div class="nav-burger" onclick="document.getElementById('nav-links').classList.toggle('open')">
@@ -390,6 +391,8 @@ footer.site-footer{}
 <!-- ══════════════════════════════════════════ -->
 <!-- PAGE: HOME                                 -->
 <!-- ══════════════════════════════════════════ -->
+<div class="pg active" id="pg-home">
+
 <div class="pg active" id="pg-home">
 
   <!-- 1 · HERO (v4, 8 oct): primero las pantallas, después el logo y el texto.
@@ -685,12 +688,39 @@ footer.site-footer{}
     </div>
   </section>
 
-  <section id="eventos-carrusel" style="display:none;"><!-- oculto temporalmente --></section>
-
-  <!-- 2 · FUNCIONES -->
-  <section id="cambia-algo" class="t-bloque">
+  <!-- 2 · QUÉ ES: una plataforma, dos experiencias -->
+  <section id="que-es" class="t-bloque">
     <div class="t-envoltura">
-      <h2 class="t-oculto">Qué hay en La Curaduría</h2>
+      <div class="t-cabecera">
+        <p class="t-etiqueta t-rv">Una plataforma, dos experiencias</p>
+        <h2 class="t-h2 t-rv">La cultura se descubre. La cultura se gestiona.</h2>
+        <p class="t-lead t-rv t-rv-2">La Curaduría es una guía cultural colaborativa, alimentada por La Terminal: un software de gestión especializado en música, arte y entretenimiento.</p>
+      </div>
+      <div class="t-caras">
+        <article class="t-cara t-rv" style="--c: var(--p-cyan);">
+          <p class="t-cara-tag">La Guía</p>
+          <h3 class="t-h3">Para quienes viven la cultura</h3>
+          <p class="t-texto">Descubre eventos, artistas, lugares, música e historias. Crea tu perfil y organiza tu ruta cultural: guarda tus eventos, tus contenidos y tus artistas favoritos.</p>
+          <a class="t-cara-link" href="https://lacuraduria.net" target="_blank" rel="noopener">Explorar la guía <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+        </article>
+        <article class="t-cara t-rv t-rv-2" style="--c: var(--p-coral);">
+          <p class="t-cara-tag">La Terminal</p>
+          <h3 class="t-h3">Para quienes hacen la cultura</h3>
+          <p class="t-texto">Artistas: crea tu perfil y consigue más oportunidades de booking y de creación de comunidad. Gestores: crea eventos, compártelos y agrega contenidos para promocionarlos.</p>
+          <button type="button" class="t-cara-link" onclick="navTo('preventa')">Conoce La Terminal <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · LA GUÍA: descubrir -->
+  <section id="la-guia" class="t-bloque">
+    <div class="t-envoltura">
+      <div class="t-cabecera">
+        <p class="t-etiqueta t-rv" style="--c: var(--p-cyan);">La Guía</p>
+        <h2 class="t-h2 t-rv">Encuentra algo que valga la pena vivir.</h2>
+        <p class="t-lead t-rv t-rv-2">Eventos, artistas, espacios y contenidos editoriales en un solo lugar. Una guía para explorar más allá de lo que aparece en tu feed.</p>
+      </div>
       <div class="t-mosaico">
         <article class="t-celda t-celda-catalogo t-rv" style="--c: var(--p-coral);">
           <figure class="t-celda-img"><img src="/img/producto/cartelera.jpg" width="1600" height="1100" alt="La cartelera de eventos de La Curaduría, con los flyers de la semana" loading="lazy" decoding="async"></figure>
@@ -714,75 +744,204 @@ footer.site-footer{}
           </div>
         </article>
       </div>
+      <a class="t-btn t-btn-sec t-rv" style="margin-top:28px;" href="https://lacuraduria.net" target="_blank" rel="noopener">Explorar La Curaduría <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
     </div>
   </section>
 
-  <!-- 3 · LA RUTA -->
-  <section id="como-funciona" class="t-bloque" style="padding-top:0;">
+  <!-- 4 · LA TERMINAL: gestionar -->
+  <section id="la-terminal" class="t-bloque">
     <div class="t-envoltura">
-      <h2 class="t-h2 t-rv">Tu ruta cultural</h2>
-      <ol class="t-estaciones t-rv">
+      <div class="t-cabecera">
+        <p class="t-etiqueta t-rv" style="--c: var(--p-coral);">La Terminal · para agentes culturales</p>
+        <h2 class="t-h2 t-rv">Tu proyecto cultural, en un solo lugar.</h2>
+        <p class="t-lead t-rv t-rv-2">El software de La Curaduría para organizar tu presencia digital, publicar tu oferta cultural y desarrollar nuevas oportunidades. Lo que publicas ahí es lo que el público descubre en La Guía.</p>
+      </div>
+      <div class="t-term t-rv">
+          <div class="t-term-col" style="--c: var(--p-cyan);">
+            <p>Ya disponible</p>
+            <ul><li>Perfil y press kit</li><li>Eventos</li></ul>
+          </div>
+          <div class="t-term-col" style="--c: var(--p-yellow-clara);">
+            <p>Beta · febrero 2027</p>
+            <ul><li>Gestor de contenidos</li><li>Entrenamiento SEO</li><li>ENLACE academia</li><li>CRM</li></ul>
+          </div>
+          <div class="t-term-col" style="--c: var(--t-text-3);">
+            <p>Próximamente</p>
+            <ul><li>Convocatorias</li><li>Perfil PRO</li><li>Cobro</li><li>Analítica</li></ul>
+          </div>
+      </div>
+      <div class="t-ctas t-rv" style="margin-top:28px;">
+        <button type="button" class="t-btn t-btn-pri" onclick="navTo('preventa')">Adquiere la suscripción <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+        <button type="button" class="t-btn t-btn-sec" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})">Pruébala en la demo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · CÓMO FUNCIONA: publica, descubre, conecta -->
+  <section id="como-funciona" class="t-bloque">
+    <div class="t-envoltura">
+      <p class="t-etiqueta t-rv">Un ecosistema colaborativo</p>
+      <h2 class="t-h2 t-rv">De publicar cultura a generar oportunidades.</h2>
+      <ol class="t-estaciones t-estaciones-3 t-rv">
         <li class="t-estacion" style="--c: var(--p-coral);">
-          <span class="t-parada"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,80,184a8.1,8.1,0,0,0,3.58-.84l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64a8,8,0,0,0-10.74-10.74ZM138,138,97.89,158.11,118,118l40.15-20.07Z"/></svg></span>
-          <h3 class="t-h3">Explora</h3>
-          <p>Navega el mapa, la cartelera, el directorio y los contenidos, todo conectado.</p>
+          <span class="t-parada"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M227.32,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H216a8,8,0,0,0,0-16H115.32l112-112A16,16,0,0,0,227.32,73.37ZM92.69,208H48V163.31l88-88L180.69,120ZM192,108.69,147.32,64l24-24L216,84.69Z"/></svg></span>
+          <h3 class="t-h3">Publica</h3>
+          <p>Los proyectos comparten su oferta desde La Terminal.</p>
         </li>
         <li class="t-estacion" style="--c: var(--p-cyan);">
-          <span class="t-parada"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg></span>
+          <span class="t-parada"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,80,184a8.1,8.1,0,0,0,3.58-.84l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64a8,8,0,0,0-10.74-10.74ZM138,138,97.89,158.11,118,118l40.15-20.07Z"/></svg></span>
           <h3 class="t-h3">Descubre</h3>
-          <p>Encuentra nuevos eventos, artistas, espacios y colectivos que no conocías.</p>
-        </li>
-        <li class="t-estacion" style="--c: var(--p-green);">
-          <span class="t-parada"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M184,32H72A16,16,0,0,0,56,48V224a8,8,0,0,0,12.24,6.78L128,193.43l59.77,37.35A8,8,0,0,0,200,224V48A16,16,0,0,0,184,32Zm0,177.57-51.77-32.35a8,8,0,0,0-8.48,0L72,209.57V48H184Z"/></svg></span>
-          <h3 class="t-h3">Guarda</h3>
-          <p>Organiza tus favoritos en tu perfil y arma tu agenda y tu recorrido cultural.</p>
+          <p>Las personas la exploran en La Curaduría.</p>
         </li>
         <li class="t-estacion" style="--c: var(--p-yellow-clara);">
-          <span class="t-parada"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232.07,186.76a80,80,0,0,0-62.5-114.17A80,80,0,1,0,23.93,138.76l-7.27,24.71a16,16,0,0,0,19.87,19.87l24.71-7.27a80.39,80.39,0,0,0,25.18,7.35,80,80,0,0,0,108.34,40.65l24.71,7.27a16,16,0,0,0,19.87-19.86ZM62,159.5a8.28,8.28,0,0,0-2.26.32L32,168l8.17-27.76a8,8,0,0,0-.63-6,64,64,0,1,1,26.26,26.26A8,8,0,0,0,62,159.5Zm153.79,28.73L224,216l-27.76-8.17a8,8,0,0,0-6,.63,64.05,64.05,0,0,1-85.87-24.88A79.93,79.93,0,0,0,174.7,89.71a64,64,0,0,1,41.75,92.48A8,8,0,0,0,215.82,188.23Z"/></svg></span>
-          <h3 class="t-h3">Comparte</h3>
-          <p>Escribe reseñas, invita amigos y conoce gente con gustos similares.</p>
+          <span class="t-parada"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></svg></span>
+          <h3 class="t-h3">Conecta</h3>
+          <p>El encuentro genera comunidad y oportunidades.</p>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- 4 · PARA QUIÉN -->
-  <section id="dolor-solucion" class="t-bloque">
-    <div class="t-envoltura">
-      <div class="t-cabecera">
-        <h2 class="t-h2 t-rv">El ruido de las redes sociales dificulta la conexión entre audiencias y proyectos culturales.</h2>
-        <p class="t-lead t-rv t-rv-2">Plataformas fragmentadas, redes distractoras y algoritmos desfavorables. La Curaduría es una guía que centraliza y cura la oferta cultural para cada actor de la escena.</p>
+  <!-- 6 · VISIÓN: menos ruido, más cultura, y el respaldo -->
+  <section id="vision" class="t-bloque">
+    <div class="t-envoltura t-vision">
+      <div>
+        <p class="t-etiqueta t-rv">Nuestra visión</p>
+        <h2 class="t-h2 t-rv">Menos ruido. Más cultura.</h2>
       </div>
-      <div class="t-pestanas t-rv" role="tablist" aria-label="Para quién es La Curaduría" data-t-pestanas>
-        <button type="button" class="t-pestana" role="tab" id="t-pestana-audiencias" aria-controls="t-panel-audiencias" aria-selected="true">Audiencias</button>
-        <button type="button" class="t-pestana" role="tab" id="t-pestana-artistas" aria-controls="t-panel-artistas" aria-selected="false" tabindex="-1">Artistas</button>
-        <button type="button" class="t-pestana" role="tab" id="t-pestana-curadores" aria-controls="t-panel-curadores" aria-selected="false" tabindex="-1">Curadores</button>
-        <button type="button" class="t-pestana" role="tab" id="t-pestana-promotores" aria-controls="t-panel-promotores" aria-selected="false" tabindex="-1">Promotores</button>
-        <button type="button" class="t-pestana" role="tab" id="t-pestana-periodistas" aria-controls="t-panel-periodistas" aria-selected="false" tabindex="-1">Periodistas</button>
+      <div class="t-vision-texto t-rv t-rv-2">
+        <p class="t-lead">El ruido de las redes sociales dificulta la conexión entre audiencias y proyectos culturales.</p>
+        <p class="t-texto">Queremos recuperar el valor del descubrimiento, la curaduría y los contenidos de autor, y construir herramientas para que los proyectos culturales sean sostenibles.</p>
       </div>
-      <div class="t-panel" role="tabpanel" id="t-panel-audiencias" aria-labelledby="t-pestana-audiencias">
-        <div><span class="t-etiqueta">Hoy</span><p class="t-panel-antes">No saben qué vale la pena ver. Se pierden en el feed sin encontrar planes culturales reales.</p></div>
-        <div><span class="t-etiqueta t-etiqueta-coral">Con La Curaduría</span><p class="t-panel-despues">Una guía personalizada que filtra lo mejor de la escena según sus gustos y su ciudad.</p></div>
-      </div>
-      <div class="t-panel" role="tabpanel" id="t-panel-artistas" aria-labelledby="t-pestana-artistas" hidden>
-        <div><span class="t-etiqueta">Hoy</span><p class="t-panel-antes">Sin visibilidad, sin pauta y sin herramientas para gestionar bookings, prensa ni contrataciones.</p></div>
-        <div><span class="t-etiqueta t-etiqueta-coral">Con La Curaduría</span><p class="t-panel-despues">Perfil profesional y panel de gestión para escalar el proyecto y conseguir más oportunidades.</p></div>
-      </div>
-      <div class="t-panel" role="tabpanel" id="t-panel-curadores" aria-labelledby="t-pestana-curadores" hidden>
-        <div><span class="t-etiqueta">Hoy</span><p class="t-panel-antes">Sin base de datos centralizada para descubrir talento emergente con contexto y criterio editorial.</p></div>
-        <div><span class="t-etiqueta t-etiqueta-coral">Con La Curaduría</span><p class="t-panel-despues">Directorio editorial con perfiles verificados, filtros avanzados e historial de actividad.</p></div>
-      </div>
-      <div class="t-panel" role="tabpanel" id="t-panel-promotores" aria-labelledby="t-pestana-promotores" hidden>
-        <div><span class="t-etiqueta">Hoy</span><p class="t-panel-antes">Alcance limitado a sus propios seguidores, sin canal especializado en audiencias culturales.</p></div>
-        <div><span class="t-etiqueta t-etiqueta-coral">Con La Curaduría</span><p class="t-panel-despues">Vitrina especializada con audiencias activas que buscan experiencias, no contenido aleatorio.</p></div>
-      </div>
-      <div class="t-panel" role="tabpanel" id="t-panel-periodistas" aria-labelledby="t-pestana-periodistas" hidden>
-        <div><span class="t-etiqueta">Hoy</span><p class="t-panel-antes">Sin directorio actualizado para cubrir la escena, rastrear artistas ni encontrar fuentes.</p></div>
-        <div><span class="t-etiqueta t-etiqueta-coral">Con La Curaduría</span><p class="t-panel-despues">Base de datos actualizada de artistas, colectivos, venues y escenas para investigar con rigor.</p></div>
+      <div class="t-respaldo t-rv">
+        <ul><li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,64H208V48a8,8,0,0,0-8-8H56a8,8,0,0,0-8,8V64H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120A24,24,0,0,1,24,96V80H48v32q0,4,.39,8Zm144-8.9c0,35.52-29,64.64-64,64.9a64,64,0,0,1-64-64V56H192ZM232,96a24,24,0,0,1-24,24h-.5a81.81,81.81,0,0,0,.5-8.9V80h24Z"/></svg><span>Estímulo ganado: segundos a nivel nacional</span></li><li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M240,208H224V96a16,16,0,0,0-16-16H144V32a16,16,0,0,0-24.88-13.32L39.12,72A16,16,0,0,0,32,85.34V208H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM208,96V208H144V96ZM48,85.34,128,32V208H48ZM112,112v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm-32,0v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm0,56v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Zm32,0v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Z"/></svg><span>Con el apoyo de la Cámara de Comercio</span></li><li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M185.33,114.21l29.14-27.42.17-.17a32,32,0,0,0-45.26-45.26c0,.06-.11.11-.17.17L141.79,70.67l-83-30.2a8,8,0,0,0-8.39,1.86l-24,24a8,8,0,0,0,1.22,12.31l63.89,42.59L76.69,136H56a8,8,0,0,0-5.65,2.34l-24,24A8,8,0,0,0,29,175.42l36.82,14.73,14.7,36.75.06.16a8,8,0,0,0,13.18,2.47l23.87-23.88A8,8,0,0,0,120,200V179.31l14.76-14.76,42.59,63.89a8,8,0,0,0,12.31,1.22l24-24a8,8,0,0,0,1.86-8.39Zm-.07,97.23-42.59-63.88A8,8,0,0,0,136.8,144c-.27,0-.53,0-.79,0a8,8,0,0,0-5.66,2.35l-24,24A8,8,0,0,0,104,176v20.69L90.93,209.76,79.43,181A8,8,0,0,0,75,176.57l-28.74-11.5L59.32,152H80a8,8,0,0,0,5.66-2.34l24-24a8,8,0,0,0-1.22-12.32L44.56,70.74l13.5-13.49,83.22,30.26a8,8,0,0,0,8.56-2L180.78,52.6A16,16,0,0,1,203.4,75.23l-32.87,30.93a8,8,0,0,0-2,8.56l30.26,83.22Z"/></svg><span>Rumbo al BIME de Bilbao</span></li></ul>
+        <p>Llevamos el catálogo de artistas de Colombia a la industria europea.</p>
       </div>
     </div>
   </section>
 
+  <!-- 7b · ALIADOS EDITORIALES: socios de contenido, no patrocinio -->
+  <section id="aliados" class="t-bloque">
+    <div class="t-envoltura">
+      <div class="t-cabecera">
+        <h2 class="t-h2 t-rv">Aliados editoriales</h2>
+        <p class="t-lead t-rv t-rv-2">Organizaciones que contribuyen a construir un archivo vivo de la cultura.</p>
+      </div>
+      <!-- Logos: solo aliados confirmados que autorizaron publicar su logo, en monocromo y del mismo tamaño visual.
+           Cuando haya, se quita hidden y se agrega un <li><img></li> por aliado. -->
+      <ul class="t-aliados-logos" hidden></ul>
+      <div class="t-aliados">
+        <div class="t-aliados-modos t-rv">
+          <article class="t-aliado-modo" style="--c: var(--p-green);">
+            <span class="t-aliado-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM184,96a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,96Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,128Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,160Z"/></svg></span>
+            <div>
+              <h3 class="t-h3">Publican directamente</h3>
+              <p class="t-texto">Medios, espacios, festivales y colectivos crean su cuenta y publican sus artículos, eventos, entrevistas y lanzamientos. El contenido llega desde la fuente.</p>
+            </div>
+          </article>
+          <article class="t-aliado-modo" style="--c: var(--p-cyan);">
+            <span class="t-aliado-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M184,32H72A16,16,0,0,0,56,48V224a8,8,0,0,0,12.24,6.78L128,193.43l59.77,37.35A8,8,0,0,0,200,224V48A16,16,0,0,0,184,32Zm0,177.57-51.77-32.35a8,8,0,0,0-8.48,0L72,209.57V48H184Z"/></svg></span>
+            <div>
+              <h3 class="t-h3">Nos autorizan a curar</h3>
+              <p class="t-texto">Seleccionamos, organizamos y publicamos su contenido con atribución, enlace a la fuente y permisos acordados por escrito.</p>
+            </div>
+          </article>
+          <div class="t-aliados-devuelve">
+            <p>Qué reciben</p>
+            <ul>
+              <li>Distribución a públicos interesados</li>
+              <li>Contexto: sus contenidos conectados con artistas, eventos y lugares</li>
+              <li>Permanencia más allá de las redes</li>
+              <li>Tráfico a su sitio y a su boletería</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="t-aliados-cta t-rv t-rv-2">
+          <h3 class="t-bajada">¿Produces contenidos culturales?</h3>
+          <p class="t-texto">Conecta tu organización con La Curaduría. Puedes publicar directamente en la plataforma o explorar un acuerdo para que nuestro equipo seleccione y organice tus contenidos.</p>
+          <a class="t-btn t-btn-pri" href="mailto:nicolas.pava@lacuraduria.net?subject=Quiero%20ser%20aliado%20editorial">Quiero ser aliado editorial <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · TIENDA: solo la camiseta -->
+  <section id="tienda" class="t-bloque">
+    <div class="t-envoltura">
+      <p class="t-etiqueta t-rv">Tienda</p>
+      <h2 class="t-h2 t-rv">Camiseta LC23</h2>
+    <!-- Camiseta LC23: ficha de producto. Se elige precio, color y talla; «Comprar» abre WhatsApp con el pedido.
+         Stock del primer pedido (20 unidades); se actualiza en CAMISETA_STOCK, más abajo. -->
+    <div class="t-tienda" id="camiseta-tienda" data-tienda>
+      <div class="t-tienda-vista" data-color="negra">
+        <svg class="t-tienda-prenda" viewBox="0 0 256 256" role="img" aria-label="Camiseta LC23" data-prenda>
+          <path class="t-prenda" data-silueta d=""/>
+          <image data-estampa href="" preserveAspectRatio="xMidYMin meet"/>
+        </svg>
+        <div class="t-tienda-lados" role="group" aria-label="Vista">
+          <button type="button" data-lado="frente" aria-pressed="true">Frente</button>
+          <button type="button" data-lado="espalda" aria-pressed="false">Espalda</button>
+        </div>
+        <p data-lado-nota>Logo vertical al pecho, centrado · 10 cm de ancho</p>
+      </div>
+      <div class="t-tienda-info">
+        <p class="t-sus-tier">Camiseta LC23</p>
+        <h2 class="t-h3">Lleva la identidad del proyecto puesta</h2>
+        <p class="t-texto">Algodón, en blanca o negra. Primera edición de 20 unidades.</p>
+
+        <fieldset class="t-tienda-grupo">
+          <legend>Precio</legend>
+          <div class="t-tienda-opciones">
+            <label><input type="radio" name="cam-precio-h" value="Con la suscripción fundadora · $80.000" checked><span><b>$80.000</b>Con la suscripción fundadora</span></label>
+            <label><input type="radio" name="cam-precio-h" value="Sola, en Bogotá · $90.000"><span><b>$90.000</b>Sola, en Bogotá</span></label>
+            <label><input type="radio" name="cam-precio-h" value="En Europa · 35 €"><span><b>35 €</b>En Europa</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="t-tienda-grupo">
+          <legend>Color</legend>
+          <div class="t-tienda-opciones t-tienda-colores">
+            <label><input type="radio" name="cam-color-h" value="negra" checked><span><i style="background:#111110;"></i>Negra</span></label>
+            <label><input type="radio" name="cam-color-h" value="blanca"><span><i style="background:#F5F3EC;"></i>Blanca</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="t-tienda-grupo">
+          <legend>Talla</legend>
+          <div class="t-tienda-opciones t-tienda-tallas" data-tallas>
+            <label><input type="radio" name="cam-talla-h" value="M"><span><b>M</b><small data-quedan></small></span></label>
+            <label><input type="radio" name="cam-talla-h" value="L"><span><b>L</b><small data-quedan></small></span></label>
+            <label><input type="radio" name="cam-talla-h" value="XL"><span><b>XL</b><small data-quedan></small></span></label>
+          </div>
+        </fieldset>
+
+        <button type="button" class="t-btn t-btn-pri t-btn-xl" data-comprar disabled><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"/></svg> Elige tu talla</button>
+        <p class="t-tienda-nota">Te escribimos por WhatsApp para coordinar el pago y la entrega.</p>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- 9 · CIERRE: dos caminos -->
+  <section id="cierre" class="t-bloque t-cierre">
+    <div class="t-envoltura">
+      <h2 class="t-cierre-frase t-rv">¡Cambia el algoritmo <span class="t-coral">por la curaduría!</span></h2>
+      <div class="t-caminos t-rv t-rv-2">
+        <div class="t-camino" style="--c: var(--p-cyan);">
+          <h3 class="t-h3">¿Buscas cultura?</h3>
+          <p class="t-texto">Encuentra artistas, eventos, lugares e historias que vale la pena descubrir.</p>
+          <a class="t-btn t-btn-sec" href="https://lacuraduria.net" target="_blank" rel="noopener">Explorar la guía</a>
+        </div>
+        <div class="t-camino" style="--c: var(--p-coral);">
+          <h3 class="t-h3">¿Haces cultura?</h3>
+          <p class="t-texto">Entra como fundador a La Terminal y construye la presencia digital de tu proyecto.</p>
+          <button type="button" class="t-btn t-btn-pri" onclick="navTo('preventa')">Adquiere la suscripción <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guardadas, ocultas: la GuÍA como sección propia y los planes viejos -->
   <!-- 5 · GUÍA -->
   <section id="guia" class="t-bloque" hidden><!-- oculta hasta que la GuÍA exista -->
     <div class="t-envoltura t-partido">
@@ -884,37 +1043,6 @@ footer.site-footer{}
     </div>
   </section>
 
-  <!-- 6 · CREA TU PERFIL -->
-  <section id="artistas" class="t-bloque">
-    <div class="t-envoltura">
-      <h2 class="t-h2 t-rv">Crea tu perfil</h2>
-      <div class="t-perfiles">
-        <article class="t-perfil-card t-rv" style="--c: var(--p-yellow-clara);">
-          <figure class="t-celda-img"><img src="/img/producto/mapa.jpg" width="1400" height="875" alt="El atlas cultural de La Curaduría, con los lugares de la escena en el mapa de Bogotá" loading="lazy" decoding="async"></figure>
-          <div class="t-celda-cuerpo">
-            <h3 class="t-h3"><span class="t-tipo" aria-hidden="true"></span>Usuarios</h3>
-            <p class="t-texto">Organiza tu ruta cultural: guarda tus eventos, tus contenidos y tus artistas favoritos.</p>
-          </div>
-        </article>
-        <article class="t-perfil-card t-rv t-rv-2" style="--c: var(--p-cyan);">
-          <figure class="t-celda-img"><img src="/img/producto/perfil-escritorio.jpg" width="1800" height="1125" alt="Perfil de la artista La Payara en La Curaduría" loading="lazy" decoding="async" style="object-position:center 62%;"></figure>
-          <div class="t-celda-cuerpo">
-            <h3 class="t-h3"><span class="t-tipo" aria-hidden="true"></span>Artistas</h3>
-            <p class="t-texto">Consigue más oportunidades de booking y de creación de comunidad.</p>
-          </div>
-        </article>
-        <article class="t-perfil-card t-rv t-rv-3" style="--c: var(--p-coral);">
-          <figure class="t-celda-img"><img src="/img/producto/evento.jpg" width="1400" height="875" alt="Ficha del evento El Vuelo Sinfónico en La Curaduría" loading="lazy" decoding="async"></figure>
-          <div class="t-celda-cuerpo">
-            <h3 class="t-h3"><span class="t-tipo" aria-hidden="true"></span>Gestores</h3>
-            <p class="t-texto">Crea eventos, compártelos y agrega contenidos para promocionarlos.</p>
-          </div>
-        </article>
-      </div>
-      <a class="t-btn t-btn-pri t-rv" style="margin-top:40px;" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
-    </div>
-  </section>
-
   <!-- 7 · PLANES -->
   <section id="membresias" class="t-bloque" hidden><!-- oculta: los planes todavía no están funcionando -->
     <div class="t-envoltura">
@@ -953,58 +1081,6 @@ footer.site-footer{}
     </div>
   </section>
 
-  <!-- 7b · ALIADOS EDITORIALES: socios de contenido, no patrocinio -->
-  <section id="aliados" class="t-bloque">
-    <div class="t-envoltura">
-      <div class="t-cabecera">
-        <h2 class="t-h2 t-rv">Aliados editoriales</h2>
-        <p class="t-lead t-rv t-rv-2">Organizaciones que contribuyen a construir un archivo vivo de la cultura.</p>
-      </div>
-      <!-- Logos: solo aliados confirmados que autorizaron publicar su logo, en monocromo y del mismo tamaño visual.
-           Cuando haya, se quita hidden y se agrega un <li><img></li> por aliado. -->
-      <ul class="t-aliados-logos" hidden></ul>
-      <div class="t-aliados">
-        <div class="t-aliados-modos t-rv">
-          <article class="t-aliado-modo" style="--c: var(--p-green);">
-            <span class="t-aliado-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM184,96a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,96Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,128Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,160Z"/></svg></span>
-            <div>
-              <h3 class="t-h3">Publican directamente</h3>
-              <p class="t-texto">Medios, espacios, festivales y colectivos crean su cuenta y publican sus artículos, eventos, entrevistas y lanzamientos. El contenido llega desde la fuente.</p>
-            </div>
-          </article>
-          <article class="t-aliado-modo" style="--c: var(--p-cyan);">
-            <span class="t-aliado-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M184,32H72A16,16,0,0,0,56,48V224a8,8,0,0,0,12.24,6.78L128,193.43l59.77,37.35A8,8,0,0,0,200,224V48A16,16,0,0,0,184,32Zm0,177.57-51.77-32.35a8,8,0,0,0-8.48,0L72,209.57V48H184Z"/></svg></span>
-            <div>
-              <h3 class="t-h3">Nos autorizan a curar</h3>
-              <p class="t-texto">Seleccionamos, organizamos y publicamos su contenido con atribución, enlace a la fuente y permisos acordados por escrito.</p>
-            </div>
-          </article>
-          <div class="t-aliados-devuelve">
-            <p>Qué reciben</p>
-            <ul>
-              <li>Distribución a públicos interesados</li>
-              <li>Contexto: sus contenidos conectados con artistas, eventos y lugares</li>
-              <li>Permanencia más allá de las redes</li>
-              <li>Tráfico a su sitio y a su boletería</li>
-            </ul>
-          </div>
-        </div>
-        <aside class="t-aliados-cta t-rv t-rv-2">
-          <h3 class="t-bajada">¿Produces contenidos culturales?</h3>
-          <p class="t-texto">Conecta tu organización con La Curaduría. Puedes publicar directamente en la plataforma o explorar un acuerdo para que nuestro equipo seleccione y organice tus contenidos.</p>
-          <a class="t-btn t-btn-pri" href="mailto:nicolas.pava@lacuraduria.net?subject=Quiero%20ser%20aliado%20editorial">Quiero ser aliado editorial <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8 · CIERRE -->
-  <section id="cierre" class="t-bloque t-cierre">
-    <div class="t-envoltura">
-      <h2 class="t-cierre-frase t-rv">¡Cambia el algoritmo <span class="t-coral">por la curaduría!</span></h2>
-      <a class="t-btn t-btn-pri t-btn-xl t-rv t-rv-2" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
-    </div>
-  </section>
 
 <footer class="site-footer" style="background:var(--lc-bg-raised);border-top:1px solid var(--bord);margin-top:0;">
   <div class="sf-inner">
@@ -1033,7 +1109,7 @@ footer.site-footer{}
         <div class="sf-col">
           <div class="sf-col-title">Plataforma</div>
           <span class="sf-link" onclick="navTo('home')">Inicio</span>
-          <span class="sf-link" onclick="navTo('home','cambia-algo')">El proyecto</span>
+          <span class="sf-link" onclick="navTo('home','la-guia')">El proyecto</span>
           <span class="sf-link" onclick="navTo('home','como-funciona')">Cómo funciona</span>
           <span class="sf-link" onclick="navTo('crear-perfil')">Crear perfil</span>
           <span class="sf-link" onclick="navTo('subir-evento')">Subir evento</span>
@@ -1343,7 +1419,7 @@ window.addEventListener('load', function(){
         <div class="sf-col">
           <div class="sf-col-title">Plataforma</div>
           <span class="sf-link" onclick="navTo('home')">Inicio</span>
-          <span class="sf-link" onclick="navTo('home','cambia-algo')">El proyecto</span>
+          <span class="sf-link" onclick="navTo('home','la-guia')">El proyecto</span>
           <span class="sf-link" onclick="navTo('home','como-funciona')">Cómo funciona</span>
           <span class="sf-link" onclick="navTo('crear-perfil')">Crear perfil</span>
           <span class="sf-link" onclick="navTo('subir-evento')">Subir evento</span>
@@ -1607,26 +1683,26 @@ window.addEventListener('load', function(){
         <fieldset class="t-tienda-grupo">
           <legend>Precio</legend>
           <div class="t-tienda-opciones">
-            <label><input type="radio" name="cam-precio" value="Con la suscripción fundadora · $80.000" checked><span><b>$80.000</b>Con la suscripción fundadora</span></label>
-            <label><input type="radio" name="cam-precio" value="Sola, en Bogotá · $90.000"><span><b>$90.000</b>Sola, en Bogotá</span></label>
-            <label><input type="radio" name="cam-precio" value="En Europa · 35 €"><span><b>35 €</b>En Europa</span></label>
+            <label><input type="radio" name="cam-precio-s" value="Con la suscripción fundadora · $80.000" checked><span><b>$80.000</b>Con la suscripción fundadora</span></label>
+            <label><input type="radio" name="cam-precio-s" value="Sola, en Bogotá · $90.000"><span><b>$90.000</b>Sola, en Bogotá</span></label>
+            <label><input type="radio" name="cam-precio-s" value="En Europa · 35 €"><span><b>35 €</b>En Europa</span></label>
           </div>
         </fieldset>
 
         <fieldset class="t-tienda-grupo">
           <legend>Color</legend>
           <div class="t-tienda-opciones t-tienda-colores">
-            <label><input type="radio" name="cam-color" value="negra" checked><span><i style="background:#111110;"></i>Negra</span></label>
-            <label><input type="radio" name="cam-color" value="blanca"><span><i style="background:#F5F3EC;"></i>Blanca</span></label>
+            <label><input type="radio" name="cam-color-s" value="negra" checked><span><i style="background:#111110;"></i>Negra</span></label>
+            <label><input type="radio" name="cam-color-s" value="blanca"><span><i style="background:#F5F3EC;"></i>Blanca</span></label>
           </div>
         </fieldset>
 
         <fieldset class="t-tienda-grupo">
           <legend>Talla</legend>
           <div class="t-tienda-opciones t-tienda-tallas" data-tallas>
-            <label><input type="radio" name="cam-talla" value="M"><span><b>M</b><small data-quedan></small></span></label>
-            <label><input type="radio" name="cam-talla" value="L"><span><b>L</b><small data-quedan></small></span></label>
-            <label><input type="radio" name="cam-talla" value="XL"><span><b>XL</b><small data-quedan></small></span></label>
+            <label><input type="radio" name="cam-talla-s" value="M"><span><b>M</b><small data-quedan></small></span></label>
+            <label><input type="radio" name="cam-talla-s" value="L"><span><b>L</b><small data-quedan></small></span></label>
+            <label><input type="radio" name="cam-talla-s" value="XL"><span><b>XL</b><small data-quedan></small></span></label>
           </div>
         </fieldset>
 
@@ -2041,11 +2117,10 @@ if (document.getElementById('pg-preventa').classList.contains('active')) { prevT
 // Al vender, se resta aquí. Con 0 la talla se ve agotada.
 var CAMISETA_STOCK = { blanca: { M: 4, L: 3, XL: 3 }, negra: { M: 3, L: 4, XL: 3 } };
 var CAMISETA_WHATSAPP = '573044138497'; // número con indicativo, solo dígitos
-(function () {
-  var t = document.querySelector('[data-tienda]');
-  if (!t) return;
+// Una o varias fichas en la página (portada y Suscripción); cada una con sus propios nombres de opciones.
+document.querySelectorAll('[data-tienda]').forEach(function (t) {
   var vista = t.querySelector('.t-tienda-vista'), btn = t.querySelector('[data-comprar]');
-  function valor(n) { var x = t.querySelector('input[name="' + n + '"]:checked'); return x ? x.value : ''; }
+  function valor(n) { var x = t.querySelector('input[name^="' + n + '-"]:checked'); return x ? x.value : ''; }
   // La prenda y sus dos estampados (los PNG que pasó Nicolás, en img/camiseta/).
   var lado = 'frente';
   var LADOS = {
@@ -2071,7 +2146,7 @@ var CAMISETA_WHATSAPP = '573044138497'; // número con indicativo, solo dígitos
     var color = valor('cam-color'), stock = CAMISETA_STOCK[color];
     vista.setAttribute('data-color', color);
     prenda(color);
-    t.querySelectorAll('input[name="cam-talla"]').forEach(function (r) {
+    t.querySelectorAll('input[name^="cam-talla-"]').forEach(function (r) {
       var n = stock[r.value] || 0;
       r.disabled = n === 0;
       if (r.disabled) r.checked = false;
@@ -2086,12 +2161,12 @@ var CAMISETA_WHATSAPP = '573044138497'; // número con indicativo, solo dígitos
     var color = valor('cam-color');
     var texto = 'Hola, quiero la camiseta LC23.\nColor: ' + (color === 'negra' ? 'Negra' : 'Blanca') +
       '\nTalla: ' + valor('cam-talla') + '\nPrecio: ' + valor('cam-precio');
-    // Sin número todavía, el mismo pedido sale por correo.
+    // Sin número, el mismo pedido sale por correo.
     if (!CAMISETA_WHATSAPP) { location.href = 'mailto:nicolas.pava@lacuraduria.net?subject=' + encodeURIComponent('Camiseta LC23') + '&body=' + encodeURIComponent(texto); return; }
     window.open('https://wa.me/' + CAMISETA_WHATSAPP + '?text=' + encodeURIComponent(texto), '_blank', 'noopener');
   });
   pintar();
-})();
+});
 </script>
 <div class="pg" id="pg-hub">
 
@@ -2411,7 +2486,7 @@ document.addEventListener('DOMContentLoaded',function(){
     </svg>
   </div>
   <div class="nav-links" id="nav-links-hub">
-    <span class="na" onclick="navTo('home','cambia-algo')">Proyecto</span>
+    <span class="na" onclick="navTo('home','la-guia')">Proyecto</span>
     <span class="na" onclick="navTo('preventa')">Membresía</span>
     <span class="na" onclick="navTo('nosotros')" style="display:none;">Quiénes somos</span>
     <button class="nav-upload-btn" onclick="navTo('agregar')">
@@ -3020,7 +3095,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
         <div class="sf-col">
           <div class="sf-col-title">Plataforma</div>
           <span class="sf-link" onclick="navTo('home')">Inicio</span>
-          <span class="sf-link" onclick="navTo('home','cambia-algo')">El proyecto</span>
+          <span class="sf-link" onclick="navTo('home','la-guia')">El proyecto</span>
           <span class="sf-link" onclick="navTo('home','como-funciona')">Cómo funciona</span>
           <span class="sf-link" onclick="navTo('crear-perfil')">Crear perfil</span>
           <span class="sf-link" onclick="navTo('subir-evento')">Subir evento</span>
@@ -3177,7 +3252,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
         <div class="sf-col">
           <div class="sf-col-title">Plataforma</div>
           <span class="sf-link" onclick="navTo('home')">Inicio</span>
-          <span class="sf-link" onclick="navTo('home','cambia-algo')">El proyecto</span>
+          <span class="sf-link" onclick="navTo('home','la-guia')">El proyecto</span>
           <span class="sf-link" onclick="navTo('home','como-funciona')">Cómo funciona</span>
           <span class="sf-link" onclick="navTo('crear-perfil')">Crear perfil</span>
           <span class="sf-link" onclick="navTo('subir-evento')">Subir evento</span>
@@ -3396,7 +3471,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
         <div class="sf-col">
           <div class="sf-col-title">Plataforma</div>
           <span class="sf-link" onclick="navTo('home')">Inicio</span>
-          <span class="sf-link" onclick="navTo('home','cambia-algo')">El proyecto</span>
+          <span class="sf-link" onclick="navTo('home','la-guia')">El proyecto</span>
           <span class="sf-link" onclick="navTo('home','como-funciona')">Cómo funciona</span>
           <span class="sf-link" onclick="navTo('crear-perfil')">Crear perfil</span>
           <span class="sf-link" onclick="navTo('subir-evento')">Subir evento</span>
@@ -3789,7 +3864,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
         <div class="sf-col">
           <div class="sf-col-title">Plataforma</div>
           <span class="sf-link" onclick="navTo('home')">Inicio</span>
-          <span class="sf-link" onclick="navTo('home','cambia-algo')">El proyecto</span>
+          <span class="sf-link" onclick="navTo('home','la-guia')">El proyecto</span>
           <span class="sf-link" onclick="navTo('home','como-funciona')">Cómo funciona</span>
           <span class="sf-link" onclick="navTo('crear-perfil')">Crear perfil</span>
           <span class="sf-link" onclick="navTo('subir-evento')">Subir evento</span>
@@ -4938,7 +5013,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
         <div class="sf-col">
           <div class="sf-col-title">Plataforma</div>
           <span class="sf-link" onclick="navTo('home')">Inicio</span>
-          <span class="sf-link" onclick="navTo('home','cambia-algo')">El proyecto</span>
+          <span class="sf-link" onclick="navTo('home','la-guia')">El proyecto</span>
           <span class="sf-link" onclick="navTo('home','como-funciona')">Cómo funciona</span>
           <span class="sf-link" onclick="navTo('crear-perfil')">Crear perfil</span>
           <span class="sf-link" onclick="navTo('subir-evento')">Subir evento</span>

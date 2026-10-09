@@ -34,14 +34,22 @@ Rediseño de la portada de la landing (`index.html`, pantalla `#pg-home`) hecho 
    - **Conexiones entre las pantallas:** publicar un evento o un contenido cambia La Guía; la frase del perfil se ve en el teléfono; pedir booking llega al CRM.
    - **Colores de estado:** cian para lo disponible (el segundo color de la marca), amarillo para las betas y gris para lo que viene.
    - **Datos reales** de lacuraduria.net en `img/demo/`, incluidos cuatro contenidos (`co-*.jpg`). En Analítica los datos son de ejemplo y la vista lo dice.
-2. **Funciones** (`#cambia-algo`): mosaico de tres celdas: catálogo de eventos, directorio de artistas, y recomendaciones y contenidos.
-3. **Tu ruta cultural** (`#como-funciona`): línea de metro con los colores de la marca (Explora, Descubre, Guarda, Comparte) que se dibuja al entrar en pantalla.
-4. **Para quién** (`#dolor-solucion`): «El ruido de las redes sociales…» y pestañas por público.
-5. **GuÍA** (`#guia`): oculta con `hidden` hasta que exista; el HTML sigue ahí.
-6. **Crea tu perfil** (`#artistas`): usuarios, artistas y gestores.
-6b. **Aliados editoriales** (`#aliados`): socios de contenido, no patrocinadores. Muestra los dos modos (publican directamente o nos autorizan a curar), qué reciben y el botón «Quiero ser aliado editorial», que abre un correo. La lista de logos `.t-aliados-logos` está oculta: solo lleva aliados confirmados que hayan autorizado publicar su logo.
-7. **Planes** (`#membresias`): ocultos con `hidden` mientras no funcionen.
-8. **Cierre:** «¡Cambia el algoritmo por la curaduría!» y «Regístrate gratis».
+Desde el 8 oct la portada sigue la arquitectura «una plataforma, dos experiencias»: La Curaduría es la guía donde se descubre la cultura y La Terminal es el software con que la alimentan quienes la hacen.
+
+2. **Qué es** (`#que-es`): «La cultura se descubre. La cultura se gestiona.» Dos tarjetas:
+   - **La Guía** (cian): para quienes viven la cultura.
+   - **La Terminal** (coral): para quienes hacen la cultura.
+3. **La Guía** (`#la-guia`): «Encuentra algo que valga la pena vivir.» Mosaico con capturas: catálogo, directorio y contenidos.
+4. **La Terminal** (`#la-terminal`): «Tu proyecto cultural, en un solo lugar.» Módulos por estado y «Adquiere la suscripción».
+5. **Cómo funciona** (`#como-funciona`): publica, descubre, conecta, en una línea de metro de tres paradas.
+6. **Visión** (`#vision`): «Menos ruido. Más cultura.» Incluye el respaldo: estímulo, Cámara de Comercio y BIME.
+7. **Aliados editoriales** (`#aliados`).
+8. **Tienda** (`#tienda`): solo la camiseta. Es la misma ficha que en Suscripción; `CAMISETA_STOCK` vale para las dos.
+9. **Cierre:** «¡Cambia el algoritmo por la curaduría!» y dos caminos: ¿Buscas cultura? / ¿Haces cultura?
+
+Ocultas con `hidden`: la GuÍA como sección propia y los planes viejos. «Para quién» (pestañas) y «Crea tu perfil» salieron; sus textos quedaron en las tarjetas de «Qué es».
+
+**Barra principal:** Explorar (lacuraduria.net), La Terminal (Suscripción), Tienda, Nosotros, Contacto e Ingresar.
 
 En el pie: logo, «Media Tech Cultural» y la frase «Tecnología para la circulación de la cultura».
 

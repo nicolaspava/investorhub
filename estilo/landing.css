@@ -881,3 +881,64 @@ html[data-tema] .mprev-btn-pay { border-radius: 999px; }
 .t-fun-paso0 .t-btn { justify-self: start; min-height: 38px; padding: 0 16px; font-size: 14px; margin-top: 6px; }
 @media (max-width: 1100px) { .t-fun-hoy { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 900px) { .t-fun-hoy { grid-template-columns: 1fr; } .t-fun-pasos { grid-template-columns: 1fr; } }
+
+/* ══ PORTADA v5: una plataforma, dos experiencias ═══════════════ */
+.t-etiqueta { margin: 0 0 14px; display: inline-flex; align-items: center; gap: 8px; font-family: var(--lc-font-mono); font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: var(--c, var(--p-cyan)); }
+.t-etiqueta::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c, var(--p-cyan)); box-shadow: 0 0 12px var(--c, var(--p-cyan)); }
+.t-cabecera .t-etiqueta { margin-bottom: -6px; }
+
+/* Las dos caras */
+.t-caras { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.t-cara {
+  display: flex; flex-direction: column; gap: 12px; padding: clamp(24px, 3vw, 36px);
+  border-radius: var(--t-radio); border: 1px solid color-mix(in srgb, var(--c) 40%, transparent);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--c) 16%, transparent), transparent 55%), var(--g-luz), var(--g-tinte);
+  box-shadow: var(--g-brillo), var(--g-sombra); -webkit-backdrop-filter: var(--g-blur); backdrop-filter: var(--g-blur);
+}
+.t-cara-tag { margin: 0; font-family: var(--lc-font-display); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.4rem); letter-spacing: -.03em; color: var(--c); }
+.t-cara .t-h3, .t-cara .t-texto { margin: 0; }
+.t-cara-link { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 0; border: 0; background: none; font: 600 15px/1.2 var(--lc-font-body); color: var(--c); text-decoration: none; cursor: pointer; }
+.t-cara-link svg { width: 18px; height: 18px; transition: transform .2s var(--t-ease); }
+.t-cara-link:hover svg { transform: translateX(3px); }
+
+/* La Terminal: módulos por estado */
+.t-term { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.t-term-col { padding: 22px 24px; border-radius: var(--t-radio); border: 1px solid var(--g-borde); border-top: 3px solid var(--c); background: rgba(255, 255, 255, .03); }
+.t-term-col p { margin: 0 0 14px; font-family: var(--lc-font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--c); }
+.t-term-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.t-term-col li { font-family: var(--lc-font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -.015em; color: var(--t-text); }
+.t-term-col:last-child li { color: var(--t-text-2); }
+
+/* Cómo funciona: tres paradas */
+.t-estaciones-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 32px; }
+.t-estaciones-3::before { left: calc(100% / 6); right: calc(100% / 6); background: linear-gradient(90deg, var(--p-coral), var(--p-cyan), var(--p-yellow-clara)); }
+
+/* Visión y respaldo */
+.t-vision { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(24px, 5vw, 72px); align-items: end; }
+.t-vision .t-h2 { margin: 0; font-size: clamp(2.4rem, 5vw, 4.2rem); }
+.t-vision-texto .t-lead { margin: 0 0 14px; color: var(--t-text); }
+.t-vision-texto .t-texto { margin: 0; }
+.t-respaldo { grid-column: 1 / -1; display: grid; gap: 14px; padding: 24px 28px; border-radius: var(--t-radio); border: 1px solid rgba(117, 230, 249, .3); background: rgba(117, 230, 249, .05); }
+.t-respaldo ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 30px; }
+.t-respaldo li { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; color: var(--t-text); }
+.t-respaldo svg { width: 22px; height: 22px; color: var(--p-cyan); flex: none; }
+.t-respaldo > p { margin: 0; color: var(--t-text-2); font-size: 15px; }
+
+/* Tienda en la portada */
+#tienda .t-h2 { margin: 0 0 8px; }
+
+/* Cierre: dos caminos */
+.t-caminos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 900px; margin: 40px auto 0; text-align: left; }
+.t-camino { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; padding: 28px; border-radius: var(--t-radio); border: 1px solid color-mix(in srgb, var(--c) 40%, transparent); background: var(--g-luz), var(--g-tinte); -webkit-backdrop-filter: var(--g-blur); backdrop-filter: var(--g-blur); }
+.t-camino .t-h3 { margin: 0; color: var(--c); }
+.t-camino .t-texto { margin: 0 0 8px; }
+.t-camino .t-btn { margin-top: auto; }
+
+@media (max-width: 900px) {
+  .t-caras, .t-term, .t-vision, .t-caminos { grid-template-columns: 1fr; }
+  .t-estaciones-3 { grid-template-columns: 1fr; }
+  .t-estaciones-3::before { left: 30px; right: auto; background: linear-gradient(180deg, var(--p-coral), var(--p-cyan), var(--p-yellow-clara)); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .t-cara, .t-camino { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--t-surf); }
+}
