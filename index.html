@@ -1417,7 +1417,7 @@ window.addEventListener('load', function(){
           <button type="button" data-lado="frente" aria-pressed="true">Frente</button>
           <button type="button" data-lado="espalda" aria-pressed="false">Espalda</button>
         </div>
-        <p data-lado-nota>Logo vertical al pecho · estampado a dos tintas</p>
+        <p data-lado-nota>Logo vertical al pecho, centrado · 10 cm de ancho</p>
       </div>
       <div class="t-tienda-info">
         <p class="t-sus-tier">Camiseta LC23</p>
@@ -1856,16 +1856,16 @@ var CAMISETA_WHATSAPP = ''; // número con indicativo, solo dígitos (ej. 57300�
   if (!t) return;
   var vista = t.querySelector('.t-tienda-vista'), btn = t.querySelector('[data-comprar]');
   function valor(n) { var x = t.querySelector('input[name="' + n + '"]:checked'); return x ? x.value : ''; }
-  // La prenda y sus dos estampados (los SVG de las plantillas, en img/camiseta/).
+  // La prenda y sus dos estampados (los PNG que pasó Nicolás, en img/camiseta/).
   var lado = 'frente';
   var LADOS = {
-    frente: { cuello: 'Q128 62 160 32', estampa: [116, 60, 24, 59], nota: 'Logo vertical al pecho · estampado a dos tintas', img: 'pecho' },
-    espalda: { cuello: 'Q128 42 160 32', estampa: [87, 62, 82, 92], nota: 'Diseño editorial a la espalda · estampado a dos tintas', img: 'espalda' }
+    frente: { cuello: 'Q128 62 160 32', estampa: [115, 60, 26, 69], nota: 'Logo vertical al pecho, centrado · 10 cm de ancho', img: 'frente' },
+    espalda: { cuello: 'Q128 42 160 32', estampa: [86, 60, 84, 94], nota: 'Diseño editorial a la espalda · estampado a dos tintas', img: 'espalda' }
   };
   function prenda(color) {
     var l = LADOS[lado], e = t.querySelector('[data-estampa]');
     t.querySelector('[data-silueta]').setAttribute('d', 'M96 32 ' + l.cuello + ' L214 52 L248 104 L208 128 L196 112 L196 232 L60 232 L60 112 L48 128 L8 104 L42 52 Z');
-    e.setAttribute('href', '/img/camiseta/' + l.img + '-' + color + '.svg');
+    e.setAttribute('href', '/img/camiseta/' + l.img + '-' + color + '.png');
     ['x', 'y', 'width', 'height'].forEach(function (k, i) { e.setAttribute(k, l.estampa[i]); });
     t.querySelector('[data-lado-nota]').textContent = l.nota;
     t.querySelector('[data-prenda]').setAttribute('aria-label', 'Camiseta LC23 ' + color + ', vista de ' + lado);
