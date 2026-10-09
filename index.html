@@ -11,8 +11,8 @@
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/estilo/landing.css?v=20261008p">
-<link rel="stylesheet" href="/estilo/demo.css?v=20261008l">
-<script src="/estilo/demo.js?v=20261008l" defer></script>
+<link rel="stylesheet" href="/estilo/demo.css?v=20261008n">
+<script src="/estilo/demo.js?v=20261008m" defer></script>
 <script src="/estilo/landing.js?v=20261008b" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
@@ -392,10 +392,272 @@ footer.site-footer{}
 <!-- ══════════════════════════════════════════ -->
 <div class="pg active" id="pg-home">
 
-  <!-- 1 · HERO: el logo, la frase y la demo (La Terminal en el computador, la GuÍA y un perfil en el teléfono) -->
+  <!-- 1 · HERO (v4, 8 oct): primero las pantallas, después el logo y el texto.
+       Computador: La Terminal con todos sus módulos y su estado (ya, beta, próximamente).
+       Teléfono: La Guía (inicio, eventos, perfiles, contenidos) y la entrada a la GuÍA. -->
   <section id="hero" class="t-hero">
     <div class="t-envoltura">
-      <div class="t-hero-cabeza">
+      <div class="t-demo" data-demo aria-label="Demostración de La Curaduría: La Terminal en el computador y La Guía en el teléfono" role="region">
+
+        <!-- El computador: La Terminal -->
+        <div class="t-pc">
+          <div class="t-pc-barra" aria-hidden="true"><span class="t-pc-luces"><i></i><i></i><i></i></span><span class="t-pc-url">lacuraduria.net/terminal</span></div>
+          <div class="t-pc-marco" data-pc-marco>
+            <div class="t-pc-lienzo" data-pc-lienzo>
+              <aside class="t-pro-lado">
+                <p class="t-pro-marca">La Terminal</p>
+                <div class="t-pro-nav" role="group" aria-label="Módulos de La Terminal">
+                  <p class="t-pro-grupo" style="--c: var(--p-cyan);">Ya disponible</p>
+                  <button type="button" data-ir="perfiles" data-estado="ya" aria-current="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z"/></svg> Perfil y press kit</button>
+                  <button type="button" data-ir="eventos" data-estado="ya"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"/></svg> Eventos</button>
+                  <p class="t-pro-grupo" style="--c: var(--p-yellow-clara);">Beta · feb 2027</p>
+                  <button type="button" data-ir="contenidos" data-estado="beta"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M227.32,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H216a8,8,0,0,0,0-16H115.32l112-112A16,16,0,0,0,227.32,73.37ZM92.69,208H48V163.31l88-88L180.69,120ZM192,108.69,147.32,64l24-24L216,84.69Z"/></svg> Gestor de contenidos</button>
+                  <button type="button" data-ir="seo" data-estado="beta"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg> Entrenamiento SEO</button>
+                  <button type="button" data-ir="enlace" data-estado="beta"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z"/></svg> ENLACE academia</button>
+                  <button type="button" data-ir="crm" data-estado="beta"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M83.19,174.4a8,8,0,0,0,11.21-1.6,52,52,0,0,1,83.2,0,8,8,0,1,0,12.8-9.6A67.88,67.88,0,0,0,163,141.51a40,40,0,1,0-53.94,0A67.88,67.88,0,0,0,81.6,163.2,8,8,0,0,0,83.19,174.4ZM112,112a24,24,0,1,1,24,24A24,24,0,0,1,112,112Zm96-88H64A16,16,0,0,0,48,40V64H32a8,8,0,0,0,0,16H48v40H32a8,8,0,0,0,0,16H48v40H32a8,8,0,0,0,0,16H48v24a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V40A16,16,0,0,0,208,24Zm0,192H64V40H208Z"/></svg> CRM <span class="t-pro-cuenta" data-cuenta hidden>1</span></button>
+                  <p class="t-pro-grupo" style="--c: var(--t-text-3);">Próximamente</p>
+                  <button type="button" data-ir="convocatorias" data-estado="pronto"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,16V152h-28.7A15.86,15.86,0,0,0,168,156.69L148.69,176H107.31L88,156.69A15.86,15.86,0,0,0,76.69,152H48V48Zm0,160H48V168H76.69L96,187.31A15.86,15.86,0,0,0,107.31,192h41.38A15.86,15.86,0,0,0,160,187.31L179.31,168H208v40Z"/></svg> Convocatorias</button>
+                  <button type="button" data-ir="pro" data-estado="pronto"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg> Perfil PRO</button>
+                  <button type="button" data-ir="cobro" data-estado="pronto"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM176,88a48,48,0,0,1-96,0,8,8,0,0,1,16,0,32,32,0,0,0,64,0,8,8,0,0,1,16,0Z"/></svg> Cobro</button>
+                  <button type="button" data-ir="analitica" data-estado="pronto"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"/></svg> Analítica</button>
+                </div>
+                <p class="t-pro-org"><span aria-hidden="true">LP</span>La Payara<small>Artista</small></p>
+              </aside>
+
+              <div class="t-pro-main">
+                <!-- Perfil y press kit (ya) -->
+                <section class="t-pro-vista" data-vista="perfiles">
+                  <header class="t-pro-cab"><div><p class="t-pro-miga">Perfil y press kit</p><h3>La Payara</h3></div><div class="t-pro-cab-acc"><button type="button" class="t-pro-btn" data-accion="copiar-kit"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"/></svg> Copiar enlace</button><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="ver-perfil" data-ancla="perfiles">Ver en La Guía</button></div></header>
+                  <div class="t-pro-dos t-pro-dos-perfil">
+                    <figure class="t-pro-foto"><img src="/img/demo/la-payara.jpg" alt="" width="560" height="300"><figcaption><span class="t-pro-barra" style="--v: 92%;"></span>Press kit completo al 92%</figcaption></figure>
+                    <div class="t-pro-form">
+                      <label>Frase<input type="text" value="Psicodelia amazónica de pulso plurirrítmico." maxlength="70" data-frase></label>
+                      <div class="t-pro-kit">
+                        <span>Recursos para promotores, bookers y prensa</span>
+                        <button type="button" class="t-pro-recurso" data-recurso><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H72A16,16,0,0,0,56,56V72H40A16,16,0,0,0,24,88V200a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V184h16a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM72,56H216v62.75l-10.07-10.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L72,109.37ZM184,200H40V88H56v80a16,16,0,0,0,16,16H184Zm32-32H72V132l36-36,49.66,49.66a8,8,0,0,0,11.31,0L194.63,120,216,141.38V168ZM160,84a12,12,0,1,1,12,12A12,12,0,0,1,160,84Z"/></svg><b>Fotos en alta</b><small>Con crédito</small></button>
+                        <button type="button" class="t-pro-recurso" data-recurso><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM184,96a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,96Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,128Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,160Z"/></svg><b>Bio y editorial</b><small>Textos listos</small></button>
+                        <button type="button" class="t-pro-recurso" data-recurso><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z"/></svg><b>Rider técnico</b><small>Para producción</small></button>
+                        <button type="button" class="t-pro-recurso" data-recurso><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M88,112a8,8,0,0,1,8-8h80a8,8,0,0,1,0,16H96A8,8,0,0,1,88,112Zm8,40h80a8,8,0,0,0,0-16H96a8,8,0,0,0,0,16ZM232,64V184a24,24,0,0,1-24,24H32A24,24,0,0,1,8,184.11V88a8,8,0,0,1,16,0v96a8,8,0,0,0,16,0V64A16,16,0,0,1,56,48H216A16,16,0,0,1,232,64Zm-16,0H56V184a23.84,23.84,0,0,1-1.37,8H208a8,8,0,0,0,8-8Z"/></svg><b>Prensa</b><small>Notas y entrevistas</small></button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Eventos (ya) -->
+                <section class="t-pro-vista" data-vista="eventos" hidden>
+                  <header class="t-pro-cab"><div><p class="t-pro-miga">Eventos</p><h3>Tus fechas</h3></div><button type="button" class="t-pro-btn" data-accion="crear"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg> Crear evento</button></header>
+                  <div class="t-pro-tabla" role="table" aria-label="Eventos">
+                    <div class="t-pro-fila t-pro-fila-cab" role="row"><span role="columnheader">Evento</span><span role="columnheader">Fecha</span><span role="columnheader">Lugar</span><span role="columnheader">Estado</span><span role="columnheader"><span class="t-oculto">Acción</span></span></div>
+                    <div class="t-pro-fila" role="row"><span class="t-pro-ev" role="cell"><img src="/img/demo/ev-vuelo.jpg" alt="" width="319" height="420">El Vuelo Sinfónico</span><span role="cell">Vie 16 oct · 8:00 p.m.</span><span role="cell">Ojo de Tigre</span><span role="cell"><span class="t-pro-estado t-pro-estado-ok">Publicado</span></span><span role="cell"></span></div>
+                    <div class="t-pro-fila" role="row"><span class="t-pro-ev" role="cell"><img src="/img/demo/ev-colmillos.jpg" alt="" width="336" height="420">Colmillos, sangre y sudor</span><span role="cell">Vie 23 oct · 5:00 p.m.</span><span role="cell">A Seis Manos</span><span role="cell"><span class="t-pro-estado t-pro-estado-ok">Publicado</span></span><span role="cell"></span></div>
+                    <div class="t-pro-fila" role="row" data-ev-borrador><span class="t-pro-ev" role="cell"><img src="/img/demo/ev-edicion.jpg" alt="" width="420" height="420">Edición Ltda · lanzamiento EP</span><span role="cell">Sáb 7 nov · 6:30 p.m.</span><span role="cell">Ace of Spades</span><span role="cell"><span class="t-pro-estado" data-estado>Borrador</span></span><span role="cell"><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="publicar" data-ancla="eventos">Publicar</button></span></div>
+                  </div>
+                </section>
+
+                <!-- Gestor de contenidos (beta) -->
+                <section class="t-pro-vista" data-vista="contenidos" hidden>
+                  <header class="t-pro-cab"><div><p class="t-pro-miga">Gestor de contenidos</p><h3>Tus contenidos</h3></div><button type="button" class="t-pro-btn" data-accion="crear-contenido"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg> Nuevo contenido</button></header>
+                  <div class="t-pro-tabla" role="table" aria-label="Contenidos">
+                    <div class="t-pro-fila t-pro-fila-co t-pro-fila-cab" role="row"><span role="columnheader">Contenido</span><span role="columnheader">Tipo</span><span role="columnheader">Conectado con</span><span role="columnheader">Estado</span></div>
+                    <div class="t-pro-fila t-pro-fila-co" role="row"><span class="t-pro-ev" role="cell"><img src="/img/demo/co-vuelo.jpg" alt="" width="364" height="480">El Vuelo Sinfónico</span><span role="cell">Artículo</span><span role="cell"><i class="t-pro-con" style="--c: var(--p-coral);">Evento</i></span><span role="cell"><span class="t-pro-estado t-pro-estado-ok">Publicado</span></span></div>
+                    <div class="t-pro-fila t-pro-fila-co" role="row"><span class="t-pro-ev" role="cell"><img src="/img/demo/co-klande.jpg" alt="" width="457" height="480">Klande Beats: el dancehall como memoria de la pista</span><span role="cell">Crónica sonora</span><span role="cell"><i class="t-pro-con" style="--c: var(--p-cyan);">Artista</i></span><span role="cell"><span class="t-pro-estado t-pro-estado-ok">Publicado</span></span></div>
+                    <div class="t-pro-fila t-pro-fila-co" role="row" data-co-borrador><span class="t-pro-ev" role="cell"><img src="/img/demo/co-tison.jpg" alt="" width="480" height="360">«La muerte» del Grupo TiSón</span><span role="cell">Reseña</span><span role="cell"><i class="t-pro-con" style="--c: var(--p-cyan);">Artista</i></span><span role="cell"><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="publicar-contenido" data-ancla="contenidos">Publicar</button></span></div>
+                  </div>
+                </section>
+
+                <!-- Entrenamiento SEO (beta) -->
+                <section class="t-pro-vista" data-vista="seo" hidden>
+                  <header class="t-pro-cab"><div><p class="t-pro-miga">Entrenamiento SEO</p><h3>Que te encuentren</h3></div><span class="t-pro-fecha" data-seo-cuenta>2 de 5 lecciones</span></header>
+                  <div class="t-pro-dos">
+                    <ol class="t-pro-lecciones" data-ancla="seo">
+                      <li><label><input type="checkbox" checked data-leccion> Cómo te busca la gente</label></li>
+                      <li><label><input type="checkbox" checked data-leccion> Tu nombre y tu bio</label></li>
+                      <li><label><input type="checkbox" data-leccion> Fotos que también se leen</label></li>
+                      <li><label><input type="checkbox" data-leccion> Enlaces que suman</label></li>
+                      <li><label><input type="checkbox" data-leccion> Medir lo que funciona</label></li>
+                    </ol>
+                    <div class="t-pro-google">
+                      <p class="t-pro-sub">Así te ve un buscador</p>
+                      <div class="t-pro-serp">
+                        <small>lacuraduria.net › perfil › la-payara</small>
+                        <b>La Payara · Psicodelia amazónica | La Curaduría</b>
+                        <span>Proyecto de exploración sonora que nace de un viaje antropológico por Colombia. Fechas, música y press kit.</span>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- ENLACE academia (beta) -->
+                <section class="t-pro-vista" data-vista="enlace" hidden>
+                  <header class="t-pro-cab"><div><p class="t-pro-miga">ENLACE academia</p><h3>Gestión cultural</h3></div></header>
+                  <div class="t-pro-cursos" data-ancla="enlace">
+                    <article><span class="t-pro-curso-ic" style="--c: var(--p-coral);"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"/></svg></span><b>Gestión de proyectos culturales</b><span class="t-pro-barra" style="--v: 66%;"></span><small>Lección 4 de 6</small><button type="button" class="t-pro-btn" data-accion="curso">Continuar</button></article>
+                    <article><span class="t-pro-curso-ic" style="--c: var(--p-cyan);"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M83.19,174.4a8,8,0,0,0,11.21-1.6,52,52,0,0,1,83.2,0,8,8,0,1,0,12.8-9.6A67.88,67.88,0,0,0,163,141.51a40,40,0,1,0-53.94,0A67.88,67.88,0,0,0,81.6,163.2,8,8,0,0,0,83.19,174.4ZM112,112a24,24,0,1,1,24,24A24,24,0,0,1,112,112Zm96-88H64A16,16,0,0,0,48,40V64H32a8,8,0,0,0,0,16H48v40H32a8,8,0,0,0,0,16H48v40H32a8,8,0,0,0,0,16H48v24a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V40A16,16,0,0,0,208,24Zm0,192H64V40H208Z"/></svg></span><b>Circulación y booking</b><span class="t-pro-barra" style="--v: 33%;"></span><small>Lección 2 de 6</small><button type="button" class="t-pro-btn" data-accion="curso">Continuar</button></article>
+                    <article><span class="t-pro-curso-ic" style="--c: var(--p-green);"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M88,112a8,8,0,0,1,8-8h80a8,8,0,0,1,0,16H96A8,8,0,0,1,88,112Zm8,40h80a8,8,0,0,0,0-16H96a8,8,0,0,0,0,16ZM232,64V184a24,24,0,0,1-24,24H32A24,24,0,0,1,8,184.11V88a8,8,0,0,1,16,0v96a8,8,0,0,0,16,0V64A16,16,0,0,1,56,48H216A16,16,0,0,1,232,64Zm-16,0H56V184a23.84,23.84,0,0,1-1.37,8H208a8,8,0,0,0,8-8Z"/></svg></span><b>Comunicación y prensa</b><span class="t-pro-barra" style="--v: 0%;"></span><small>Por empezar</small><button type="button" class="t-pro-btn" data-accion="curso">Empezar</button></article>
+                  </div>
+                </section>
+
+                <!-- CRM (beta) -->
+                <section class="t-pro-vista" data-vista="crm" hidden>
+                  <header class="t-pro-cab"><div><p class="t-pro-miga">CRM</p><h3>Tus contactos</h3></div>
+                    <div class="t-pro-modo" role="group" aria-label="Filtrar" data-ancla="crm"><button type="button" data-filtro="todos" aria-pressed="true">Todos</button><button type="button" data-filtro="booker" aria-pressed="false">Bookers</button><button type="button" data-filtro="prensa" aria-pressed="false">Prensa</button></div></header>
+                  <ul class="t-pro-contactos" data-contactos>
+                    <li data-tipo="booker"><b>GATE CLUB</b><i style="--c: var(--p-coral);">Booker</i><span>¿Tienen fecha libre en noviembre?</span><small>Hace 2 días</small></li>
+                    <li data-tipo="prensa"><b>Revista Cartel</b><i style="--c: var(--p-green);">Prensa</i><span>Entrevista antes del lanzamiento del álbum</span><small>Hace 4 días</small></li>
+                    <li data-tipo="booker"><b>Festival Sonidos de Raíz</b><i style="--c: var(--p-coral);">Booker</i><span>Rider recibido, falta confirmar fecha</span><small>Hace 1 semana</small></li>
+                    <li data-tipo="prensa"><b>Radio comunitaria</b><i style="--c: var(--p-green);">Prensa</i><span>Pidió fotos en alta del press kit</span><small>Hace 2 semanas</small></li>
+                  </ul>
+                </section>
+
+                <!-- Convocatorias (próximamente) -->
+                <section class="t-pro-vista" data-vista="convocatorias" hidden>
+                  <header class="t-pro-cab"><div><p class="t-pro-miga">Convocatorias</p><h3 data-conv-titulo>Convocatorias abiertas</h3></div>
+                    <div class="t-pro-modo" role="group" aria-label="Ver como" data-ancla="convocatorias"><button type="button" data-modo="aplicar" aria-pressed="true">Me postulo</button><button type="button" data-modo="organizar" aria-pressed="false">Organizo</button></div></header>
+                  <div data-panel="aplicar">
+                    <ul class="t-pro-convs">
+                      <li><span class="t-pro-conv-ic" style="--c: var(--p-coral);"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M228.54,86.66l-176.06-54A16,16,0,0,0,32,48V192a16,16,0,0,0,16,16,16,16,0,0,0,4.52-.65L136,181.73V192a16,16,0,0,0,16,16h32a16,16,0,0,0,16-16v-29.9l28.54-8.75A16.09,16.09,0,0,0,240,138V102A16.09,16.09,0,0,0,228.54,86.66ZM136,165,48,192V48l88,27Zm48,27H152V176.82L184,167Zm40-54-.11,0L152,160.08V79.92l71.89,22,.11,0v36Z"/></svg></span><div><b>Circuito de bandas emergentes</b><small>Tarima en vivo · Bogotá · con pago</small></div><span class="t-pro-cierra">Cierra 15 nov</span><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="postular">Postularme</button></li>
+                      <li><span class="t-pro-conv-ic" style="--c: var(--p-cyan);"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span><div><b>Residencia de creación sonora</b><small>Un mes en sala de ensayo · Bogotá</small></div><span class="t-pro-cierra">Cierra 22 nov</span><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="postular">Postularme</button></li>
+                      <li><span class="t-pro-conv-ic" style="--c: var(--p-yellow-clara);"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"/></svg></span><div><b>Noches de electrónica</b><small>4 fechas en diciembre</small></div><span class="t-pro-cierra">Cierra 30 oct</span><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="postular">Postularme</button></li>
+                    </ul>
+                  </div>
+                  <div data-panel="organizar" hidden>
+                    <div class="t-pro-postulaciones">
+                      <article class="t-pro-post"><img src="/img/demo/veronica-cian.jpg" alt="" width="388" height="560"><div><h4>Verónica Cian</h4><p>Ambient y drone que convierten memoria, bioelectricidad y paisaje en textura.</p><div class="t-pro-post-acc"><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="seleccionar">Seleccionar</button><button type="button" class="t-pro-btn" data-accion="pasar">Pasar</button></div></div></article>
+                      <article class="t-pro-post"><img src="/img/demo/js2600.jpg" alt="" width="560" height="374"><div><h4>JS2600</h4><p>Intersecciones sonoras entre luz y oscuridad.</p><div class="t-pro-post-acc"><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="seleccionar">Seleccionar</button><button type="button" class="t-pro-btn" data-accion="pasar">Pasar</button></div></div></article>
+                      <article class="t-pro-post"><img src="/img/demo/cata-p.jpg" alt="" width="560" height="550"><div><h4>Cata P</h4><p>Una deriva hacia el minimal desde el house.</p><div class="t-pro-post-acc"><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="seleccionar">Seleccionar</button><button type="button" class="t-pro-btn" data-accion="pasar">Pasar</button></div></div></article>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Perfil PRO (próximamente) -->
+                <section class="t-pro-vista" data-vista="pro" hidden>
+                  <header class="t-pro-cab"><div><p class="t-pro-miga">Perfil PRO</p><h3>Más alcance para tu perfil</h3></div></header>
+                  <div class="t-pro-opciones" data-ancla="pro">
+                    <label><span><b>Impulso de visibilidad</b>Tu perfil entre los destacados de La Guía.</span><input type="checkbox" checked data-interruptor></label>
+                    <label><span><b>Kit de booking</b>Formato, rider y condiciones en un enlace para bookers.</span><input type="checkbox" checked data-interruptor></label>
+                    <label><span><b>Insignia PRO</b>Un distintivo en tu perfil y en las búsquedas.</span><input type="checkbox" data-interruptor></label>
+                  </div>
+                </section>
+
+                <!-- Cobro (próximamente) -->
+                <section class="t-pro-vista" data-vista="cobro" hidden>
+                  <header class="t-pro-cab"><div><p class="t-pro-miga">Cobro</p><h3>Vende desde tu perfil</h3></div><button type="button" class="t-pro-btn" data-accion="crear-producto"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg> Agregar</button></header>
+                  <ul class="t-pro-productos" data-ancla="cobro">
+                    <li><img src="/img/demo/ev-vuelo.jpg" alt="" width="319" height="420"><div><b>Entrada · El Vuelo Sinfónico</b><small>Entradas</small></div><span>$35.000</span></li>
+                    <li><span class="t-pro-prod-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M247.59,61.22,195.83,33A8,8,0,0,0,192,32H160a8,8,0,0,0-8,8,24,24,0,0,1-48,0,8,8,0,0,0-8-8H64a8,8,0,0,0-3.84,1L8.41,61.22A15.76,15.76,0,0,0,1.82,82.48l19.27,36.81A16.37,16.37,0,0,0,35.67,128H56v80a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V128h20.34a16.37,16.37,0,0,0,14.58-8.71l19.27-36.81A15.76,15.76,0,0,0,247.59,61.22ZM35.67,112a.62.62,0,0,1-.41-.13L16.09,75.26,56,53.48V112Zm185.07-.14a.55.55,0,0,1-.41.14H200V53.48l39.92,21.78Z"/></svg></span><div><b>Camiseta LC23</b><small>Productos</small></div><span>$90.000</span></li>
+                    <li><span class="t-pro-prod-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232.4,114.49,88.32,26.35a16,16,0,0,0-16.2-.3A15.86,15.86,0,0,0,64,39.87V216.13A15.94,15.94,0,0,0,80,232a16.07,16.07,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27ZM80,215.94V40l143.83,88Z"/></svg></span><div><b>Set para evento privado</b><small>Servicios</small></div><span>A convenir</span></li>
+                  </ul>
+                </section>
+
+                <!-- Analítica (próximamente) -->
+                <section class="t-pro-vista" data-vista="analitica" hidden>
+                  <header class="t-pro-cab"><div><p class="t-pro-miga">Analítica · datos de ejemplo</p><h3>Tu público</h3></div><span class="t-pro-fecha">Últimos 7 días</span></header>
+                  <div class="t-pro-dos">
+                    <div class="t-pro-barras" data-ancla="analitica" aria-label="Visitas por día (ejemplo)" role="img">
+                      <span style="--v: 35%;"><i>L</i></span><span style="--v: 48%;"><i>M</i></span><span style="--v: 40%;"><i>M</i></span><span style="--v: 62%;"><i>J</i></span><span style="--v: 88%;"><i>V</i></span><span style="--v: 100%;"><i>S</i></span><span style="--v: 54%;"><i>D</i></span>
+                    </div>
+                    <ul class="t-pro-ciudades">
+                      <li><b>Bogotá</b><span class="t-pro-barra" style="--v: 72%;"></span></li>
+                      <li><b>Medellín</b><span class="t-pro-barra" style="--v: 18%;"></span></li>
+                      <li><b>Bilbao</b><span class="t-pro-barra" style="--v: 10%;"></span></li>
+                    </ul>
+                  </div>
+                </section>
+              </div>
+
+              <!-- La ventana que explica cada módulo -->
+              <span class="t-punto" data-punto aria-hidden="true"></span>
+              <div class="t-ventana" data-ventana role="note" aria-live="polite">
+                <p class="t-ventana-paso"><span data-v-estado></span><span data-v-paso>1 / 10</span></p>
+                <h4 data-v-titulo></h4>
+                <p data-v-texto></p>
+                <p class="t-ventana-prueba" data-v-prueba></p>
+                <div class="t-ventana-acc"><button type="button" class="t-pro-btn" data-v-cerrar>Cerrar</button><button type="button" class="t-pro-btn t-pro-btn-pri" data-v-siguiente>Siguiente <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
+              </div>
+              <p class="t-aviso" data-aviso-pc role="status"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- En pantallas pequeñas el lienzo no se lee: los módulos y su explicación van fuera -->
+        <div class="t-demo-funciones" role="group" aria-label="Módulos de La Terminal">
+          <button type="button" data-ir="perfiles" data-estado="ya">Perfil y press kit</button><button type="button" data-ir="eventos" data-estado="ya">Eventos</button><button type="button" data-ir="contenidos" data-estado="beta">Contenidos</button><button type="button" data-ir="seo" data-estado="beta">SEO</button><button type="button" data-ir="enlace" data-estado="beta">ENLACE</button><button type="button" data-ir="crm" data-estado="beta">CRM</button><button type="button" data-ir="convocatorias" data-estado="pronto">Convocatorias</button><button type="button" data-ir="pro" data-estado="pronto">Perfil PRO</button><button type="button" data-ir="cobro" data-estado="pronto">Cobro</button><button type="button" data-ir="analitica" data-estado="pronto">Analítica</button>
+        </div>
+        <p class="t-demo-nota" data-nota></p>
+
+        <!-- El teléfono: La Guía -->
+        <div class="t-movil">
+          <div class="t-movil-pantalla">
+            <header class="t-mv-app"><b>La Curaduría</b><span class="t-mv-chip" data-mv-chip>Ya disponible</span></header>
+
+            <section class="t-mv" data-movil="inicio">
+              <div class="t-mv-scroll">
+                <button type="button" class="t-mv-preguntar" data-abrir-guia><span class="t-mv-avatar"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span><span>Pregúntale a la GuÍA<small>Tu copiloto cultural</small></span><em>Pronto</em></button>
+                <h5 class="t-mv-h">Esta semana</h5>
+                <div class="t-mv-carrusel" data-mv-semana></div>
+                <h5 class="t-mv-h">Artistas para descubrir</h5>
+                <div class="t-mv-avatares" data-mv-avatares></div>
+              </div>
+            </section>
+
+            <section class="t-mv" data-movil="eventos" hidden>
+              <div class="t-mv-scroll">
+                <h5 class="t-mv-titulo">Cartelera</h5>
+                <div class="t-mv-filtros"><span class="t-activo">Todo</span><span>Fin de semana</span><span>Conciertos</span></div>
+                <div class="t-mv-lista" data-mv-eventos></div>
+              </div>
+            </section>
+
+            <section class="t-mv" data-movil="perfiles" hidden>
+              <div class="t-mv-scroll">
+                <h5 class="t-mv-titulo">Directorio</h5>
+                <div class="t-mv-filtros"><span class="t-activo">Artistas</span><span>Espacios</span><span>Colectivos</span></div>
+                <div class="t-mv-rejilla" data-mv-perfiles></div>
+              </div>
+            </section>
+
+            <section class="t-mv" data-movil="contenidos" hidden>
+              <div class="t-mv-scroll">
+                <h5 class="t-mv-titulo">Contenidos</h5>
+                <div class="t-mv-filtros"><span class="t-activo">Todo</span><span>Reseñas</span><span>Audio</span></div>
+                <div class="t-mv-lista" data-mv-contenidos></div>
+              </div>
+            </section>
+
+            <section class="t-mv" data-movil="guia" hidden>
+              <div class="t-mv-cab"><button type="button" class="t-mv-volver" data-mv-ir="inicio" aria-label="Volver al inicio"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></svg></button><span class="t-mv-avatar"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span><div><b>GuÍA</b><small>Tu copiloto cultural</small></div></div>
+              <div class="t-mv-msgs" data-msgs aria-live="polite">
+                <p class="t-mv-burbuja">Hola. Cuéntame qué buscas y te recomiendo eventos, artistas y contenidos de la escena.</p>
+              </div>
+              <div class="t-mv-sug" data-sug>
+                <button type="button" data-preg="finde">¿Qué hay este fin de semana?</button>
+                <button type="button" data-preg="artistas">Recomiéndame artistas</button>
+                <button type="button" data-preg="escuchar">Algo para escuchar</button>
+              </div>
+              <form class="t-mv-form" data-form><label class="t-oculto" for="t-mv-pregunta">Pregúntale a la GuÍA</label><input id="t-mv-pregunta" type="text" placeholder="Pregúntale a la GuÍA" autocomplete="off" maxlength="80"><button type="submit" aria-label="Enviar"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M231.87,114l-168-95.89A16,16,0,0,0,40.92,37.34L71.55,128,40.92,218.67A16,16,0,0,0,56,240a16.15,16.15,0,0,0,7.93-2.1l167.92-96.05a16,16,0,0,0,.05-27.89ZM56,224a.56.56,0,0,0,0-.12L85.74,136H144a8,8,0,0,0,0-16H85.74L56.06,32.16A.46.46,0,0,0,56,32l168,95.83Z"/></svg></button></form>
+            </section>
+
+            <section class="t-mv t-mv-perfil" data-movil="perfil" hidden></section>
+
+            <div class="t-mv-tabs" role="group" aria-label="Secciones de La Guía">
+              <button type="button" data-mv-ir="inicio" aria-current="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8H216a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H48V120l80-80,80,80Z"/></svg><span>Inicio</span></button>
+              <button type="button" data-mv-ir="eventos"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"/></svg><span>Eventos</span></button>
+              <button type="button" data-mv-ir="perfiles"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></svg><span>Perfiles</span></button>
+              <button type="button" data-mv-ir="contenidos"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM184,96a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,96Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,128Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,160Z"/></svg><span>Contenidos</span></button>
+            </div>
+            <p class="t-aviso t-aviso-movil" data-aviso-movil role="status"></p>
+          </div>
+        </div>
+        <template data-icono="volver"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></svg></template><template data-icono="verificado"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-11.55,39.29c-4.79,5-9.75,10.17-12.38,16.52-2.52,6.1-2.63,13.07-2.73,19.82-.1,7-.21,14.33-3.32,17.43s-10.39,3.22-17.43,3.32c-6.75.1-13.72.21-19.82,2.73-6.35,2.63-11.52,7.59-16.52,12.38S132,224,128,224s-9.15-4.92-14.11-9.69-10.17-9.75-16.52-12.38c-6.1-2.52-13.07-2.63-19.82-2.73-7-.1-14.33-.21-17.43-3.32s-3.22-10.39-3.32-17.43c-.1-6.75-.21-13.72-2.73-19.82-2.63-6.35-7.59-11.52-12.38-16.52S32,132,32,128s4.92-9.15,9.69-14.11,9.75-10.17,12.38-16.52c2.52-6.1,2.63-13.07,2.73-19.82.1-7,.21-14.33,3.32-17.43S70.51,56.9,77.55,56.8c6.75-.1,13.72-.21,19.82-2.73,6.35-2.63,11.52-7.59,16.52-12.38S124,32,128,32s9.15,4.92,14.11,9.69,10.17,9.75,16.52,12.38c6.1,2.52,13.07,2.63,19.82,2.73,7,.1,14.33.21,17.43,3.32s3.22,10.39,3.32,17.43c.1,6.75.21,13.72,2.73,19.82,2.63,6.35,7.59,11.52,12.38,16.52S224,124,224,128,219.08,137.15,214.31,142.11ZM173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"/></svg></template><template data-icono="corazon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z"/></svg></template><template data-icono="fotos"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H72A16,16,0,0,0,56,56V72H40A16,16,0,0,0,24,88V200a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V184h16a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM72,56H216v62.75l-10.07-10.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L72,109.37ZM184,200H40V88H56v80a16,16,0,0,0,16,16H184Zm32-32H72V132l36-36,49.66,49.66a8,8,0,0,0,11.31,0L194.63,120,216,141.38V168ZM160,84a12,12,0,1,1,12,12A12,12,0,0,1,160,84Z"/></svg></template><template data-icono="bio"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM184,96a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,96Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,128Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,160Z"/></svg></template><template data-icono="rider"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z"/></svg></template><template data-icono="prensa"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M88,112a8,8,0,0,1,8-8h80a8,8,0,0,1,0,16H96A8,8,0,0,1,88,112Zm8,40h80a8,8,0,0,0,0-16H96a8,8,0,0,0,0,16ZM232,64V184a24,24,0,0,1-24,24H32A24,24,0,0,1,8,184.11V88a8,8,0,0,1,16,0v96a8,8,0,0,0,16,0V64A16,16,0,0,1,56,48H216A16,16,0,0,1,232,64Zm-16,0H56V184a23.84,23.84,0,0,1-1.37,8H208a8,8,0,0,0,8-8Z"/></svg></template><template data-icono="descargar"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg></template><template data-icono="play"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232.4,114.49,88.32,26.35a16,16,0,0,0-16.2-.3A15.86,15.86,0,0,0,64,39.87V216.13A15.94,15.94,0,0,0,80,232a16.07,16.07,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27ZM80,215.94V40l143.83,88Z"/></svg></template>
+      </div>
+
+      <ul class="t-demo-leyenda" aria-label="Qué significa cada estado">
+        <li style="--c: var(--p-cyan);">Ya disponible</li>
+        <li style="--c: var(--p-yellow-clara);">Beta · febrero 2027</li>
+        <li style="--c: var(--t-text-3);">Próximamente</li>
+      </ul>
+
+      <div class="t-hero-pie">
         <h1 class="t-hero-marca t-entra"><span class="t-oculto">La Curaduría</span><svg viewBox="0 0 1795 244" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
             <path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="#FF736C"/>
             <path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="#75E6F9"/>
@@ -413,146 +675,12 @@ footer.site-footer{}
           </svg></h1>
         <div class="t-hero-texto">
           <p class="t-bajada t-entra t-entra-2">Una infraestructura de gestión y descubrimiento cultural.</p>
-          <p class="t-lead t-entra t-entra-3">Conecta con eventos, artistas y espacios, comparte reseñas y navega en una plataforma que crea comunidades.</p>
+          <p class="t-lead t-entra t-entra-3">La Terminal para gestionar tu proyecto. La Guía para que el público lo encuentre.</p>
           <div class="t-ctas t-entra t-entra-4">
-            <a class="t-btn t-btn-pri" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
-            <a class="t-btn t-btn-sec" href="https://lacuraduria.net/eventos" target="_blank" rel="noopener">Ver la cartelera</a>
+            <button type="button" class="t-btn t-btn-pri" onclick="navTo('preventa')">Adquiere la suscripción <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+            <a class="t-btn t-btn-sec" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis</a>
           </div>
         </div>
-      </div>
-
-      <div class="t-demo t-entra t-entra-4" data-demo aria-label="Demostración de La Curaduría: La Terminal, su software de gestión, y la GuÍA en el teléfono" role="region">
-
-        <!-- El computador: La Terminal -->
-        <div class="t-pc">
-          <div class="t-pc-barra" aria-hidden="true"><span class="t-pc-luces"><i></i><i></i><i></i></span><span class="t-pc-url">lacuraduria.net/terminal</span></div>
-          <div class="t-pc-marco" data-pc-marco>
-            <div class="t-pc-lienzo" data-pc-lienzo>
-              <aside class="t-pro-lado">
-                <p class="t-pro-marca">La Terminal <b>Beta</b></p>
-                <div class="t-pro-nav" role="group" aria-label="Funciones de La Terminal">
-                  <button type="button" data-ir="perfiles" aria-current="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z"/></svg> Perfiles <em class="t-pro-tag t-pro-tag-ya">Ya</em></button>
-                  <button type="button" data-ir="eventos"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"/></svg> Eventos <em class="t-pro-tag t-pro-tag-ya">Ya</em></button>
-                  <button type="button" data-ir="convocatorias"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,16V152h-28.7A15.86,15.86,0,0,0,168,156.69L148.69,176H107.31L88,156.69A15.86,15.86,0,0,0,76.69,152H48V48Zm0,160H48V168H76.69L96,187.31A15.86,15.86,0,0,0,107.31,192h41.38A15.86,15.86,0,0,0,160,187.31L179.31,168H208v40Z"/></svg> Convocatorias <em class="t-pro-tag">Pronto</em></button>
-                  <button type="button" data-ir="mensajes"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M168,112a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Zm-8,24H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm72-8A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"/></svg> Mensajes <span class="t-pro-cuenta" data-cuenta hidden>1</span><em class="t-pro-tag">Pronto</em></button>
-                </div>
-                <p class="t-pro-org"><span aria-hidden="true">TC</span>Tu colectivo<small>Gestor</small></p>
-              </aside>
-
-              <div class="t-pro-main">
-                <!-- Eventos -->
-                <section class="t-pro-vista" data-vista="eventos" hidden>
-                  <header class="t-pro-cab"><div><p class="t-pro-miga">Eventos</p><h3>Tus eventos</h3></div><button type="button" class="t-pro-btn" data-accion="crear"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg> Crear evento</button></header>
-                  <div class="t-pro-tabla" role="table" aria-label="Eventos">
-                    <div class="t-pro-fila t-pro-fila-cab" role="row"><span role="columnheader">Evento</span><span role="columnheader">Fecha</span><span role="columnheader">Lugar</span><span role="columnheader">Estado</span><span role="columnheader"><span class="t-oculto">Acción</span></span></div>
-                    <div class="t-pro-fila" role="row"><span class="t-pro-ev" role="cell"><img src="/img/demo/ev-vuelo.jpg" alt="" width="319" height="420">El Vuelo Sinfónico</span><span role="cell">Vie 16 oct · 8:00 p.m.</span><span role="cell">Ojo de Tigre</span><span role="cell"><span class="t-pro-estado t-pro-estado-ok">Publicado</span></span><span role="cell"></span></div>
-                    <div class="t-pro-fila" role="row"><span class="t-pro-ev" role="cell"><img src="/img/demo/ev-colmillos.jpg" alt="" width="336" height="420">Colmillos, sangre y sudor</span><span role="cell">Vie 23 oct · 5:00 p.m.</span><span role="cell">A Seis Manos</span><span role="cell"><span class="t-pro-estado t-pro-estado-ok">Publicado</span></span><span role="cell"></span></div>
-                    <div class="t-pro-fila" role="row" data-ev-borrador><span class="t-pro-ev" role="cell"><img src="/img/demo/ev-edicion.jpg" alt="" width="420" height="420">Edición Ltda · lanzamiento EP</span><span role="cell">Sáb 7 nov · 6:30 p.m.</span><span role="cell">Ace of Spades</span><span role="cell"><span class="t-pro-estado" data-estado>Borrador</span></span><span role="cell"><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="publicar" data-ancla="eventos">Publicar</button></span></div>
-                  </div>
-                  <div class="t-pro-destinos">
-                    <p>Un evento publicado aparece en</p>
-                    <span style="--c: var(--p-coral);">Cartelera</span><span style="--c: var(--p-coral);">Mapa</span><span style="--c: var(--p-cyan);">Perfil de los artistas</span><span style="--c: var(--p-yellow-clara);">GuÍA</span>
-                  </div>
-                </section>
-
-                <!-- Convocatorias: como artista (postularse) y como organizador -->
-                <section class="t-pro-vista" data-vista="convocatorias" hidden>
-                  <header class="t-pro-cab"><div><p class="t-pro-miga">Convocatorias</p><h3 data-conv-titulo>Convocatorias abiertas</h3></div>
-                    <div class="t-pro-modo" role="group" aria-label="Ver como" data-ancla="convocatorias"><button type="button" data-modo="aplicar" aria-pressed="true">Me postulo</button><button type="button" data-modo="organizar" aria-pressed="false">Organizo</button></div></header>
-                  <div data-panel="aplicar">
-                    <p class="t-pro-sub">Te postulas con tu perfil y tu press kit: no llenas el mismo formulario cada vez.</p>
-                    <ul class="t-pro-convs">
-                      <li><span class="t-pro-conv-ic" style="--c: var(--p-coral);"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M228.54,86.66l-176.06-54A16,16,0,0,0,32,48V192a16,16,0,0,0,16,16,16,16,0,0,0,4.52-.65L136,181.73V192a16,16,0,0,0,16,16h32a16,16,0,0,0,16-16v-29.9l28.54-8.75A16.09,16.09,0,0,0,240,138V102A16.09,16.09,0,0,0,228.54,86.66ZM136,165,48,192V48l88,27Zm48,27H152V176.82L184,167Zm40-54-.11,0L152,160.08V79.92l71.89,22,.11,0v36Z"/></svg></span><div><b>Circuito de bandas emergentes</b><small>Tarima en vivo · Bogotá · con pago</small></div><span class="t-pro-cierra">Cierra 15 nov</span><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="postular">Postularme</button></li>
-                      <li><span class="t-pro-conv-ic" style="--c: var(--p-cyan);"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span><div><b>Residencia de creación sonora</b><small>Un mes en sala de ensayo · Bogotá</small></div><span class="t-pro-cierra">Cierra 22 nov</span><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="postular">Postularme</button></li>
-                      <li><span class="t-pro-conv-ic" style="--c: var(--p-yellow-clara);"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"/></svg></span><div><b>Noches de electrónica</b><small>Tu colectivo · 4 fechas en diciembre</small></div><span class="t-pro-cierra">Cierra 30 oct</span><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="postular">Postularme</button></li>
-                    </ul>
-                  </div>
-                  <div data-panel="organizar" hidden>
-                    <p class="t-pro-sub">3 postulaciones nuevas, cada una con su perfil y su press kit.</p>
-                  <div class="t-pro-postulaciones">
-                    <article class="t-pro-post"><img src="/img/demo/veronica-cian.jpg" alt="" width="388" height="560"><div><h4>Verónica Cian</h4><p>Ambient y drone que convierten memoria, bioelectricidad y paisaje en textura.</p><div class="t-pro-post-acc"><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="seleccionar">Seleccionar</button><button type="button" class="t-pro-btn" data-accion="pasar">Pasar</button></div></div></article>
-                    <article class="t-pro-post"><img src="/img/demo/js2600.jpg" alt="" width="560" height="374"><div><h4>JS2600</h4><p>Intersecciones sonoras entre luz y oscuridad.</p><div class="t-pro-post-acc"><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="seleccionar">Seleccionar</button><button type="button" class="t-pro-btn" data-accion="pasar">Pasar</button></div></div></article>
-                    <article class="t-pro-post"><img src="/img/demo/cata-p.jpg" alt="" width="560" height="550"><div><h4>Cata P</h4><p>Una deriva hacia el minimal desde el house.</p><div class="t-pro-post-acc"><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="seleccionar">Seleccionar</button><button type="button" class="t-pro-btn" data-accion="pasar">Pasar</button></div></div></article>
-                  </div>
-                  </div>
-                </section>
-
-                <!-- Perfiles: el press kit -->
-                <section class="t-pro-vista" data-vista="perfiles">
-                  <header class="t-pro-cab"><div><p class="t-pro-miga">Perfiles · press kit</p><h3>La Payara</h3></div><div class="t-pro-cab-acc"><button type="button" class="t-pro-btn" data-accion="copiar-kit"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"/></svg> Copiar enlace</button><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="ver-perfil" data-ancla="perfiles">Ver en la GuÍA</button></div></header>
-                  <div class="t-pro-dos t-pro-dos-perfil">
-                    <figure class="t-pro-foto"><img src="/img/demo/la-payara.jpg" alt="" width="560" height="300"><figcaption><span class="t-pro-barra" style="--v: 92%;"></span>Press kit completo al 92%</figcaption></figure>
-                    <div class="t-pro-form">
-                      <label>Frase<input type="text" value="Psicodelia amazónica de pulso plurirrítmico." maxlength="70" data-frase></label>
-                      <div class="t-pro-kit">
-                        <span>Recursos para promotores, bookers y prensa</span>
-                        <button type="button" class="t-pro-recurso" data-recurso><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H72A16,16,0,0,0,56,56V72H40A16,16,0,0,0,24,88V200a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V184h16a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM72,56H216v62.75l-10.07-10.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L72,109.37ZM184,200H40V88H56v80a16,16,0,0,0,16,16H184Zm32-32H72V132l36-36,49.66,49.66a8,8,0,0,0,11.31,0L194.63,120,216,141.38V168ZM160,84a12,12,0,1,1,12,12A12,12,0,0,1,160,84Z"/></svg><b>Fotos en alta</b><small>Con crédito</small></button>
-                        <button type="button" class="t-pro-recurso" data-recurso><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM184,96a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,96Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,128Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,160Z"/></svg><b>Bio y editorial</b><small>Textos listos</small></button>
-                        <button type="button" class="t-pro-recurso" data-recurso><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z"/></svg><b>Rider técnico</b><small>Para producción</small></button>
-                        <button type="button" class="t-pro-recurso" data-recurso><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M88,112a8,8,0,0,1,8-8h80a8,8,0,0,1,0,16H96A8,8,0,0,1,88,112Zm8,40h80a8,8,0,0,0,0-16H96a8,8,0,0,0,0,16ZM232,64V184a24,24,0,0,1-24,24H32A24,24,0,0,1,8,184.11V88a8,8,0,0,1,16,0v96a8,8,0,0,0,16,0V64A16,16,0,0,1,56,48H216A16,16,0,0,1,232,64Zm-16,0H56V184a23.84,23.84,0,0,1-1.37,8H208a8,8,0,0,0,8-8Z"/></svg><b>Prensa</b><small>Notas y entrevistas</small></button>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                <!-- Mensajes -->
-                <section class="t-pro-vista" data-vista="mensajes" hidden>
-                  <header class="t-pro-cab"><div><p class="t-pro-miga">Mensajes</p><h3>Bandeja</h3></div></header>
-                  <div class="t-pro-bandeja" data-ancla="mensajes">
-                    <ul class="t-pro-hilos" data-hilos>
-                      <li class="t-activo"><b>GATE CLUB</b><span>Booking · ¿Tienen fecha libre para La Payara en noviembre?</span></li>
-                      <li><b>Cata P</b><span>Booking · Te paso el rider actualizado.</span></li>
-                      <li><b>Revista Cartel</b><span>Prensa · Queremos entrevistar a los artistas.</span></li>
-                    </ul>
-                    <div class="t-pro-hilo">
-                      <p class="t-pro-msj">¿Tienen fecha libre para La Payara en noviembre? Sería un viernes.</p>
-                      <p class="t-pro-msj t-pro-msj-yo">Sí. Las fotos, la bio y el rider están en su press kit.</p>
-                    </div>
-                  </div>
-                </section>
-
-              </div>
-
-              <!-- La ventana que explica cada función -->
-              <span class="t-punto" data-punto aria-hidden="true"></span>
-              <div class="t-ventana" data-ventana role="note" aria-live="polite">
-                <p class="t-ventana-paso" data-v-paso>1 / 6</p>
-                <h4 data-v-titulo></h4>
-                <p data-v-texto></p>
-                <p class="t-ventana-prueba" data-v-prueba></p>
-                <div class="t-ventana-acc"><button type="button" class="t-pro-btn" data-v-cerrar>Cerrar</button><button type="button" class="t-pro-btn t-pro-btn-pri" data-v-siguiente>Siguiente <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
-              </div>
-              <p class="t-aviso" data-aviso-pc role="status"></p>
-            </div>
-          </div>
-        </div>
-
-        <!-- En el teléfono no cabe el lienzo: las funciones y su explicación van fuera -->
-        <div class="t-demo-funciones" role="group" aria-label="Funciones de La Terminal">
-          <button type="button" data-ir="perfiles">Perfiles</button><button type="button" data-ir="eventos">Eventos</button><button type="button" data-ir="convocatorias">Convocatorias</button><button type="button" data-ir="mensajes">Mensajes</button>
-        </div>
-        <p class="t-demo-nota" data-nota></p>
-
-        <!-- El teléfono: la GuÍA y el perfil de un artista -->
-        <div class="t-movil">
-          <div class="t-movil-pantalla">
-            <section class="t-mv" data-movil="guia">
-              <header class="t-mv-cab"><span class="t-mv-avatar"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></svg></span><div><b>GuÍA</b><small>Tu copiloto cultural</small></div></header>
-              <div class="t-mv-msgs" data-msgs aria-live="polite">
-                <p class="t-mv-burbuja">Hola. Cuéntame qué buscas y te recomiendo eventos, artistas y contenidos de la escena.</p>
-              </div>
-              <div class="t-mv-sug" data-sug>
-                <button type="button" data-preg="finde">¿Qué hay este fin de semana?</button>
-                <button type="button" data-preg="artistas">Recomiéndame artistas</button>
-                <button type="button" data-preg="escuchar">Algo para escuchar</button>
-              </div>
-              <form class="t-mv-form" data-form><label class="t-oculto" for="t-mv-pregunta">Pregúntale a la GuÍA</label><input id="t-mv-pregunta" type="text" placeholder="Pregúntale a la GuÍA" autocomplete="off" maxlength="80"><button type="submit" aria-label="Enviar"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M231.87,114l-168-95.89A16,16,0,0,0,40.92,37.34L71.55,128,40.92,218.67A16,16,0,0,0,56,240a16.15,16.15,0,0,0,7.93-2.1l167.92-96.05a16,16,0,0,0,.05-27.89ZM56,224a.56.56,0,0,0,0-.12L85.74,136H144a8,8,0,0,0,0-16H85.74L56.06,32.16A.46.46,0,0,0,56,32l168,95.83Z"/></svg></button></form>
-            </section>
-            <section class="t-mv t-mv-perfil" data-movil="perfil" hidden></section>
-            <p class="t-aviso t-aviso-movil" data-aviso-movil role="status"></p>
-          </div>
-        </div>
-        <template data-icono="volver"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></svg></template><template data-icono="verificado"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-11.55,39.29c-4.79,5-9.75,10.17-12.38,16.52-2.52,6.1-2.63,13.07-2.73,19.82-.1,7-.21,14.33-3.32,17.43s-10.39,3.22-17.43,3.32c-6.75.1-13.72.21-19.82,2.73-6.35,2.63-11.52,7.59-16.52,12.38S132,224,128,224s-9.15-4.92-14.11-9.69-10.17-9.75-16.52-12.38c-6.1-2.52-13.07-2.63-19.82-2.73-7-.1-14.33-.21-17.43-3.32s-3.22-10.39-3.32-17.43c-.1-6.75-.21-13.72-2.73-19.82-2.63-6.35-7.59-11.52-12.38-16.52S32,132,32,128s4.92-9.15,9.69-14.11,9.75-10.17,12.38-16.52c2.52-6.1,2.63-13.07,2.73-19.82.1-7,.21-14.33,3.32-17.43S70.51,56.9,77.55,56.8c6.75-.1,13.72-.21,19.82-2.73,6.35-2.63,11.52-7.59,16.52-12.38S124,32,128,32s9.15,4.92,14.11,9.69,10.17,9.75,16.52,12.38c6.1,2.52,13.07,2.63,19.82,2.73,7,.1,14.33.21,17.43,3.32s3.22,10.39,3.32,17.43c.1,6.75.21,13.72,2.73,19.82,2.63,6.35,7.59,11.52,12.38,16.52S224,124,224,128,219.08,137.15,214.31,142.11ZM173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"/></svg></template><template data-icono="corazon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z"/></svg></template><template data-icono="fotos"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H72A16,16,0,0,0,56,56V72H40A16,16,0,0,0,24,88V200a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V184h16a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM72,56H216v62.75l-10.07-10.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L72,109.37ZM184,200H40V88H56v80a16,16,0,0,0,16,16H184Zm32-32H72V132l36-36,49.66,49.66a8,8,0,0,0,11.31,0L194.63,120,216,141.38V168ZM160,84a12,12,0,1,1,12,12A12,12,0,0,1,160,84Z"/></svg></template><template data-icono="bio"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM184,96a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,96Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,128Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,160Z"/></svg></template><template data-icono="rider"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z"/></svg></template><template data-icono="prensa"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M88,112a8,8,0,0,1,8-8h80a8,8,0,0,1,0,16H96A8,8,0,0,1,88,112Zm8,40h80a8,8,0,0,0,0-16H96a8,8,0,0,0,0,16ZM232,64V184a24,24,0,0,1-24,24H32A24,24,0,0,1,8,184.11V88a8,8,0,0,1,16,0v96a8,8,0,0,0,16,0V64A16,16,0,0,1,56,48H216A16,16,0,0,1,232,64Zm-16,0H56V184a23.84,23.84,0,0,1-1.37,8H208a8,8,0,0,0,8-8Z"/></svg></template><template data-icono="descargar"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg></template>
       </div>
     </div>
   </section>
