@@ -1,9 +1,9 @@
 /* La Curaduría · la demo del hero.
-   El computador muestra Pro (la gestión) y el teléfono la GuÍA y el perfil de
+   El computador muestra La Terminal (la gestión) y el teléfono la GuÍA y el perfil de
    un artista. Las dos pantallas están conectadas, como en la plataforma:
-   - publicar el borrador en Pro lo anuncia la GuÍA;
-   - editar la frase del perfil en Pro cambia el perfil en el teléfono;
-   - pedir booking desde el perfil llega a Mensajes en Pro.
+   - publicar el borrador en La Terminal lo anuncia la GuÍA;
+   - editar la frase del perfil en La Terminal cambia el perfil en el teléfono;
+   - pedir booking desde el perfil llega a Mensajes en La Terminal.
    Todo es local: nada sale de la página. Los artistas y eventos son reales,
    tomados de lacuraduria.net (8 oct 2026). */
 (function () {
@@ -28,7 +28,7 @@
   else window.addEventListener('resize', escalar);
   escalar();
 
-  /* ── 2. Pro: las vistas y la ventana que explica cada una ─────────── */
+  /* ── 2. La Terminal: las vistas y la ventana que explica cada una ─────────── */
   // «Ya»: funciona hoy en lacuraduria.net. «Pronto»: se muestra como idea, sin fecha.
   var funciones = [
     { id: 'perfiles', titulo: 'Perfil y press kit', estado: 'Ya disponible',
@@ -114,7 +114,7 @@
     a._t = setTimeout(function () { a.classList.remove('t-visible'); }, 3200);
   }
 
-  // Acciones de Pro
+  // Acciones de La Terminal
   demo.addEventListener('click', function (e) {
     var b = e.target.closest('[data-accion]');
     if (!b) return;
@@ -167,7 +167,7 @@
     });
   });
 
-  // La frase del perfil: lo que se escribe en Pro es lo que sale en la GuÍA
+  // La frase del perfil: lo que se escribe en La Terminal es lo que sale en la GuÍA
   var frase = $('[data-frase]');
   frase.addEventListener('input', function () {
     ARTISTAS['la-payara'].frase = frase.value;
@@ -307,7 +307,7 @@
     $('[data-booking]').addEventListener('click', function (e) {
       var b = e.currentTarget;
       b.disabled = true; b.textContent = 'Solicitud enviada';
-      avisar('[data-aviso-movil]', 'Le llega a su equipo, en Pro.');
+      avisar('[data-aviso-movil]', 'Le llega a su equipo, en La Terminal.');
       llegaBooking(a.nombre);
     });
     mostrarMovil('perfil');

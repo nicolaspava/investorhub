@@ -50,15 +50,29 @@ En el pie: logo, «Media Tech Cultural» y la frase «Tecnología para la circul
 
 Se tomaron con Chrome sin ventana (puppeteer-core) a 390×844 y 1440×900, con pantalla de doble resolución. Si cambia el sitio, se repiten y se optimizan a JPEG con `sips`.
 
-## Suscripción (pantalla `#pg-preventa`, 8 oct 2026)
+## Suscripción (pantalla `#pg-preventa`): «Perfil fundador de La Terminal»
 
-Es la preventa fundadora que se cerró en el chat del pitch:
-- **Oferta:** 30 cupos y $200.000 COP en dos mitades: $100.000 hoy y $100.000 antes de marzo de 2027.
-- **Desde hoy:** perfil y press kit en la guía, difusión en redes, reseña e insignia de fundador.
-- **Desde el lanzamiento (marzo de 2027):** un año con todo lo que se habilite durante ese año, más las betas desde febrero para quien pagó la segunda mitad.
-- **Calendario:** de octubre de 2026 a después del lanzamiento.
+Desde el 8 oct es la página de venta de la preventa, en 9 bloques con una idea cada uno:
+1. **Barra de la página:** fija bajo la barra principal. Es un `div`, porque los `<nav>` heredan la barra vieja.
+2. **Hero:** con contador de cupos.
+3. **El problema.**
+4. **La Terminal:** 4 betas de febrero de 2027 que se abren al tocarlas, y «Después» sin fechas.
+5. **Lo que recibes desde hoy:** más la insignia.
+6. **Cómo funciona:** 4 pasos.
+7. **Precio:** con la ficha de la camiseta.
+8. **Preguntas:** 6.
+9. **Cierre:** con «Tecnología para la circulación de la cultura».
 
-El botón cobra la primera mitad: `api/crear-preferencia.js` crea la preferencia de Mercado Pago por $100.000. **Camiseta LC23** (8 oct): es una ficha de producto (`#camiseta`), aparte de Mercado Pago.
+La acción principal, «Reservar cupo», se repite en la barra, el hero, el precio y el cierre.
+
+**Editables:**
+- `CUPOS_DISPONIBLES`, en un `<script>` debajo de la página.
+- El texto de reembolso: `data-editable="reembolso"` en las preguntas.
+- El cobro: `api/crear-preferencia.js`, que cobra la primera mitad de $100.000 por Mercado Pago.
+
+La oferta: $200.000 COP en dos pagos de $100.000. Con la camiseta se paga $180.000 hoy y $100.000 después. No se mencionan «seguir» ni el contacto de bookers, porque todavía no existen.
+
+**Camiseta LC23** (8 oct): es una ficha de producto (`#camiseta`), aparte de Mercado Pago.
 - Se elige el precio: $80.000 con la suscripción, $90.000 sola en Bogotá o 35 € en Europa.
 - Se elige el color (blanca o negra) y la talla (M, L o XL).
 - «Comprar por WhatsApp» abre un mensaje con el pedido.
