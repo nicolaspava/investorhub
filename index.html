@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261008d">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261008e">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261008k">
 <script src="/estilo/demo.js?v=20261008k" defer></script>
 <script src="/estilo/landing.js?v=20261008b" defer></script>
@@ -821,6 +821,51 @@ footer.site-footer{}
       <div class="t-proximamente t-rv">
         <span class="t-etiqueta">Próximamente</span>
         <p><strong style="color:var(--t-text);font-weight:600;">Audiencias activas:</strong> acceso a preventas, información anticipada de eventos, invitaciones especiales, descuentos y beneficios, y descuentos en el marketplace cultural.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7b · ALIADOS EDITORIALES: socios de contenido, no patrocinio -->
+  <section id="aliados" class="t-bloque">
+    <div class="t-envoltura">
+      <div class="t-cabecera">
+        <h2 class="t-h2 t-rv">Aliados editoriales</h2>
+        <p class="t-lead t-rv t-rv-2">Organizaciones que contribuyen a construir un archivo vivo de la cultura.</p>
+      </div>
+      <!-- Logos: solo aliados confirmados que autorizaron publicar su logo, en monocromo y del mismo tamaño visual.
+           Cuando haya, se quita hidden y se agrega un <li><img></li> por aliado. -->
+      <ul class="t-aliados-logos" hidden></ul>
+      <div class="t-aliados">
+        <div class="t-aliados-modos t-rv">
+          <article class="t-aliado-modo" style="--c: var(--p-green);">
+            <span class="t-aliado-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM184,96a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,96Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,128Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,160Z"/></svg></span>
+            <div>
+              <h3 class="t-h3">Publican directamente</h3>
+              <p class="t-texto">Medios, espacios, festivales y colectivos crean su cuenta y publican sus artículos, eventos, entrevistas y lanzamientos. El contenido llega desde la fuente.</p>
+            </div>
+          </article>
+          <article class="t-aliado-modo" style="--c: var(--p-cyan);">
+            <span class="t-aliado-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M184,32H72A16,16,0,0,0,56,48V224a8,8,0,0,0,12.24,6.78L128,193.43l59.77,37.35A8,8,0,0,0,200,224V48A16,16,0,0,0,184,32Zm0,177.57-51.77-32.35a8,8,0,0,0-8.48,0L72,209.57V48H184Z"/></svg></span>
+            <div>
+              <h3 class="t-h3">Nos autorizan a curar</h3>
+              <p class="t-texto">Seleccionamos, organizamos y publicamos su contenido con atribución, enlace a la fuente y permisos acordados por escrito.</p>
+            </div>
+          </article>
+          <div class="t-aliados-devuelve">
+            <p>Qué reciben</p>
+            <ul>
+              <li>Distribución a públicos interesados</li>
+              <li>Contexto: sus contenidos conectados con artistas, eventos y lugares</li>
+              <li>Permanencia más allá de las redes</li>
+              <li>Tráfico a su sitio y a su boletería</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="t-aliados-cta t-rv t-rv-2">
+          <h3 class="t-bajada">¿Produces contenidos culturales?</h3>
+          <p class="t-texto">Conecta tu organización con La Curaduría. Puedes publicar directamente en la plataforma o explorar un acuerdo para que nuestro equipo seleccione y organice tus contenidos.</p>
+          <a class="t-btn t-btn-pri" href="mailto:nicolas.pava@lacuraduria.net?subject=Quiero%20ser%20aliado%20editorial">Quiero ser aliado editorial <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+        </aside>
       </div>
     </div>
   </section>

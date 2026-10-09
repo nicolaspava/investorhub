@@ -626,3 +626,38 @@ html[data-tema] .nav-links.open { background: var(--g-luz), rgba(14, 14, 13, .9)
 /* Pie: el logo, «Media Tech Cultural» y la frase. */
 html[data-tema] .sf-media { font-family: var(--lc-font-display); font-weight: 800; font-size: 1.35rem; letter-spacing: -.02em; color: var(--t-text); margin: 14px 0 6px; }
 html[data-tema] .sf-tagline { font-family: var(--lc-font-body); font-weight: 400; font-size: 14px; line-height: 1.5; color: var(--t-text-2); max-width: 24ch; }
+
+/* ══ 7b · ALIADOS EDITORIALES ═══════════════════════════════════ */
+.t-aliados { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; align-items: stretch; }
+.t-aliados-modos {
+  border-radius: var(--t-radio); overflow: hidden;
+  background: var(--g-luz), var(--g-tinte); border: 1px solid var(--g-borde);
+  box-shadow: var(--g-brillo), var(--g-sombra);
+  -webkit-backdrop-filter: var(--g-blur); backdrop-filter: var(--g-blur);
+}
+.t-aliado-modo { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 18px; padding: clamp(22px, 3vw, 32px); border-bottom: 1px solid var(--g-borde); }
+.t-aliado-modo .t-h3 { margin: 4px 0 8px; }
+.t-aliado-ic { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); box-shadow: 0 0 24px -8px var(--c); }
+.t-aliado-ic svg { width: 24px; height: 24px; }
+.t-aliados-devuelve { padding: clamp(20px, 3vw, 28px) clamp(22px, 3vw, 32px); }
+.t-aliados-devuelve p { margin: 0 0 12px; font-family: var(--lc-font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--t-text-3); }
+.t-aliados-devuelve ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.t-aliados-devuelve li { font-size: 14px; color: var(--t-text-2); padding: 7px 14px; border-radius: 999px; border: 1px solid var(--g-borde); background: rgba(255, 255, 255, .03); }
+.t-aliados-cta {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 16px;
+  padding: clamp(26px, 3.4vw, 40px); border-radius: var(--t-radio);
+  border: 1px solid rgba(255, 115, 108, .5);
+  background: linear-gradient(160deg, rgba(255, 115, 108, .2), rgba(255, 115, 108, .03) 60%), var(--g-luz), var(--g-tinte);
+  box-shadow: var(--g-brillo), var(--g-sombra);
+  -webkit-backdrop-filter: var(--g-blur); backdrop-filter: var(--g-blur);
+}
+.t-aliados-cta .t-bajada { margin: 0; }
+.t-aliados-cta .t-btn { margin-top: auto; }
+.t-aliados-logos { list-style: none; margin: 0 0 24px; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+.t-aliados-logos[hidden] { display: none; }
+.t-aliados-logos li { display: grid; place-items: center; height: 88px; padding: 18px; border-radius: 14px; border: 1px solid var(--g-borde); background: rgba(255, 255, 255, .03); }
+.t-aliados-logos img { max-width: 100%; max-height: 40px; filter: grayscale(1) brightness(1.6); opacity: .85; }
+@media (max-width: 900px) { .t-aliados { grid-template-columns: 1fr; } }
+@media (prefers-reduced-transparency: reduce) {
+  .t-aliados-modos, .t-aliados-cta { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--t-surf); }
+}

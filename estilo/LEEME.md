@@ -38,6 +38,7 @@ Rediseño de la portada de la landing (`index.html`, pantalla `#pg-home`) hecho 
 4. **Para quién** (`#dolor-solucion`): «El ruido de las redes sociales…» y pestañas por público.
 5. **GuÍA** (`#guia`): oculta con `hidden` hasta que exista; el HTML sigue ahí.
 6. **Crea tu perfil** (`#artistas`): usuarios, artistas y gestores.
+6b. **Aliados editoriales** (`#aliados`): socios de contenido, no patrocinadores. Muestra los dos modos (publican directamente o nos autorizan a curar), qué reciben y el botón «Quiero ser aliado editorial», que abre un correo. La lista de logos `.t-aliados-logos` está oculta: solo lleva aliados confirmados que hayan autorizado publicar su logo.
 7. **Planes** (`#membresias`): ocultos con `hidden` mientras no funcionen.
 8. **Cierre:** «¡Cambia el algoritmo por la curaduría!» y «Regístrate gratis».
 
