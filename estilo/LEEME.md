@@ -61,6 +61,6 @@ Es la preventa fundadora que se cerró en el chat del pitch:
 El botón cobra la primera mitad: `api/crear-preferencia.js` crea la preferencia de Mercado Pago por $100.000. **Camiseta LC23** (8 oct):
 - Con la suscripción vale $80.000: el paquete cobra $180.000 hoy y quedan $100.000 de la membresía.
 - Sola vale $90.000 en Bogotá y 35 € en Europa. Se pide por correo, porque no tiene cobro en línea.
-- En la ventana de pago hay una casilla y la talla (S a XL). La API suma la camiseta como un segundo ítem y guarda la talla en `metadata.camiseta` de Mercado Pago.
+- En la ventana de pago hay una casilla y la talla (M, L o XL; el stock por talla está pendiente). La API suma la camiseta como un segundo ítem y guarda la talla en `metadata.camiseta` de Mercado Pago.
 
 La política de reembolso todavía no está.

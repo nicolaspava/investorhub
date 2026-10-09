@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   const { nombre, email } = req.body;
   // Primera mitad de la suscripción fundadora ($100.000); la camiseta LC23 suma $80.000.
   const camiseta = req.body.camiseta === true;
-  const talla = ['S', 'M', 'L', 'XL'].includes(req.body.talla) ? req.body.talla : null;
+  const talla = ['M', 'L', 'XL'].includes(req.body.talla) ? req.body.talla : null;
   if (camiseta && !talla) return res.status(400).json({ error: 'Falta la talla de la camiseta' });
   const monto = 100000 + (camiseta ? 80000 : 0);
 
