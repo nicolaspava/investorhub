@@ -58,4 +58,9 @@ Es la preventa fundadora que se cerró en el chat del pitch:
 - **Desde el lanzamiento (marzo de 2027):** un año con todo lo que se habilite durante ese año, más las betas desde febrero para quien pagó la segunda mitad.
 - **Calendario:** de octubre de 2026 a después del lanzamiento.
 
-El botón cobra la primera mitad: `api/crear-preferencia.js` crea la preferencia de Mercado Pago por $100.000. La camiseta y la política de reembolso todavía no están.
+El botón cobra la primera mitad: `api/crear-preferencia.js` crea la preferencia de Mercado Pago por $100.000. **Camiseta LC23** (8 oct):
+- Con la suscripción vale $80.000: el paquete cobra $180.000 hoy y quedan $100.000 de la membresía.
+- Sola vale $90.000 en Bogotá y 35 € en Europa. Se pide por correo, porque no tiene cobro en línea.
+- En la ventana de pago hay una casilla y la talla (S a XL). La API suma la camiseta como un segundo ítem y guarda la talla en `metadata.camiseta` de Mercado Pago.
+
+La política de reembolso todavía no está.

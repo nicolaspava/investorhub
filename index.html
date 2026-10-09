@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261008g">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261008h">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261008k">
 <script src="/estilo/demo.js?v=20261008k" defer></script>
 <script src="/estilo/landing.js?v=20261008b" defer></script>
@@ -1385,7 +1385,10 @@ window.addEventListener('load', function(){
             </ul>
           </div>
         </div>
-        <button type="button" class="t-btn t-btn-pri t-btn-xl" onclick="prevSelectPlan('fundador')">Reservar mi cupo · $100.000 <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+        <div class="t-sus-ctas">
+          <button type="button" class="t-btn t-btn-pri t-btn-xl" onclick="prevSelectPlan('fundador')">Reservar mi cupo · $100.000 <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+          <button type="button" class="t-btn t-btn-sec t-btn-xl" onclick="prevSelectPlan('fundador', true)">Con camiseta · $180.000</button>
+        </div>
       </article>
 
       <article class="t-sus-plan">
@@ -1400,6 +1403,20 @@ window.addEventListener('load', function(){
         </ul>
         <a class="t-btn t-btn-sec" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis</a>
       </article>
+    </div>
+
+    <div class="t-sus-camiseta">
+      <div>
+        <p class="t-sus-tier">Camiseta LC23</p>
+        <h2 class="t-h3">Lleva la identidad del proyecto puesta</h2>
+        <p class="t-texto">Se produce por preventa, según los pedidos confirmados.</p>
+      </div>
+      <dl class="t-sus-camiseta-precios">
+        <div class="t-sus-camiseta-destacado"><dt>Con la suscripción fundadora</dt><dd>$80.000</dd></div>
+        <div><dt>Sola, en Bogotá</dt><dd>$90.000</dd></div>
+        <div><dt>En Europa</dt><dd>35 €</dd></div>
+      </dl>
+      <a class="t-btn t-btn-sec" href="mailto:nicolas.pava@lacuraduria.net?subject=Quiero%20la%20camiseta%20LC23">Pedir solo la camiseta</a>
     </div>
 
     <div class="t-sus-calendario">
@@ -1436,6 +1453,10 @@ window.addEventListener('load', function(){
         <div class="faq-item-p">
           <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Qué pasa cuando se llenan los 30 cupos?<span class="faq-q-icon-p">+</span></div>
           <div class="faq-a-p">Se cierra la preventa. También se cierra en enero de 2027 si todavía quedan cupos.</div>
+        </div>
+        <div class="faq-item-p">
+          <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Cuánto vale la camiseta?<span class="faq-q-icon-p">+</span></div>
+          <div class="faq-a-p">$80.000 si la llevas con la suscripción fundadora: pagas $180.000 hoy y quedan $100.000 de la suscripción. Sola cuesta $90.000 en Bogotá y 35 € en Europa.</div>
         </div>
         <div class="faq-item-p">
           <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Cómo se procesa el pago?<span class="faq-q-icon-p">+</span></div>
@@ -1634,7 +1655,7 @@ window.addEventListener('load', function(){
       </div>
       <div class="mprev-title">Reserva<br>tu cupo</div>
       <div class="mprev-price-row">
-        <div class="mprev-price-main">$100.000</div>
+        <div class="mprev-price-main" id="mprev-precio">$100.000</div>
         <div class="mprev-price-period">COP hoy · la otra mitad antes de marzo de 2027</div>
       </div>
     </div>
@@ -1644,10 +1665,22 @@ window.addEventListener('load', function(){
       <div id="mprev-form-view">
         <div class="mprev-summary">
           <div class="mprev-summary-text">
-            <b>Suscripción fundadora · primera mitad</b><br>
-            $200.000 COP en total, por un año desde el lanzamiento
+            <b id="mprev-resumen">Suscripción fundadora · primera mitad</b><br>
+            Quedan $100.000 de la suscripción antes de marzo de 2027
           </div>
-          <div class="mprev-summary-amount">$100k</div>
+          <div class="mprev-summary-amount" id="mprev-total">$100k</div>
+        </div>
+
+        <label class="mprev-camiseta">
+          <input type="checkbox" id="preg-camiseta" onchange="prevActualizarTotal()">
+          <span><b>Agregar la camiseta LC23</b> · $80.000 con tu suscripción</span>
+        </label>
+        <div class="mprev-field" id="preg-talla-campo" hidden>
+          <label class="mprev-label" for="preg-talla">Talla</label>
+          <select class="mprev-input" id="preg-talla">
+            <option value="">Elige tu talla</option><option>S</option><option>M</option><option>L</option><option>XL</option>
+          </select>
+          <div class="mprev-ferror" id="perr-talla">Elige tu talla.</div>
         </div>
 
         <div class="mprev-field">
@@ -1664,7 +1697,7 @@ window.addEventListener('load', function(){
 
         <button class="mprev-btn-pay" onclick="prevIniciarPago()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
-          Ir a pagar · $100.000 COP →
+          <span id="mprev-pagar">Ir a pagar · $100.000 COP →</span>
         </button>
 
         <div class="mprev-secure">
@@ -1694,11 +1727,22 @@ window.addEventListener('load', function(){
 </div>
 
 <script>
-function prevSelectPlan(plan) {
+function prevSelectPlan(plan, conCamiseta) {
   if (plan === 'basico') { navTo('proximamente'); return; }
   prevResetModal();
+  document.getElementById('preg-camiseta').checked = !!conCamiseta;
+  prevActualizarTotal();
   document.getElementById('prev-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+// Reserva: $100.000. Con la camiseta: $180.000 hoy (la camiseta vale $80.000 con la suscripción).
+function prevActualizarTotal() {
+  var con = document.getElementById('preg-camiseta').checked;
+  document.getElementById('preg-talla-campo').hidden = !con;
+  document.getElementById('mprev-precio').textContent = con ? '$180.000' : '$100.000';
+  document.getElementById('mprev-total').textContent = con ? '$180k' : '$100k';
+  document.getElementById('mprev-resumen').textContent = con ? 'Primera mitad + camiseta LC23' : 'Suscripción fundadora · primera mitad';
+  document.getElementById('mprev-pagar').textContent = 'Ir a pagar · ' + (con ? '$180.000' : '$100.000') + ' COP →';
 }
 function prevCloseModal() {
   document.getElementById('prev-modal').classList.remove('open');
@@ -1735,6 +1779,14 @@ async function prevIniciarPago() {
     document.getElementById('perr-email').classList.remove('show');
     document.getElementById('preg-email').classList.remove('error');
   }
+  var camiseta = document.getElementById('preg-camiseta').checked;
+  var talla = document.getElementById('preg-talla').value;
+  if (camiseta && !talla) {
+    document.getElementById('perr-talla').classList.add('show');
+    valid = false;
+  } else {
+    document.getElementById('perr-talla').classList.remove('show');
+  }
   if (!valid) return;
   document.getElementById('mprev-form-view').style.display    = 'none';
   document.getElementById('mprev-loading-view').style.display = 'block';
@@ -1742,7 +1794,7 @@ async function prevIniciarPago() {
     var res  = await fetch('/api/crear-preferencia', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nombre: nombre, email: email }),
+      body: JSON.stringify({ nombre: nombre, email: email, camiseta: camiseta, talla: talla }),
     });
     var data = await res.json();
     if (!res.ok || !data.checkout_url) throw new Error(data.error || 'Error');

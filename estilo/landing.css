@@ -719,3 +719,26 @@ html[data-tema] .t-sus-faq .faq-item-p.open .faq-a-p { max-height: 260px; paddin
 html[data-tema] .modal-p { background: var(--g-luz), rgba(18, 18, 17, .96); border-radius: var(--t-radio); }
 html[data-tema] .mprev-input { background: rgba(255, 255, 255, .05); }
 html[data-tema] .mprev-btn-pay { border-radius: 999px; }
+
+/* Camiseta LC23 en la suscripción */
+.t-sus-ctas { margin-top: auto; display: flex; flex-wrap: wrap; gap: 10px; }
+.t-sus-camiseta {
+  margin-top: 14px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr) auto; gap: 24px; align-items: center;
+  padding: clamp(22px, 3vw, 32px); border-radius: var(--t-radio); border: 1px solid var(--g-borde);
+  background: var(--g-luz), var(--g-tinte); box-shadow: var(--g-brillo), var(--g-sombra);
+  -webkit-backdrop-filter: var(--g-blur); backdrop-filter: var(--g-blur);
+}
+.t-sus-camiseta .t-h3 { margin: 8px 0 6px; }
+.t-sus-camiseta .t-texto { margin: 0; font-size: 14.5px; }
+.t-sus-camiseta-precios { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.t-sus-camiseta-precios div { padding: 12px 14px; border-radius: 14px; border: 1px solid var(--g-borde); background: rgba(255, 255, 255, .03); }
+.t-sus-camiseta-precios dt { font-size: 12.5px; color: var(--t-text-3); }
+.t-sus-camiseta-precios dd { margin: 4px 0 0; font-family: var(--lc-font-display); font-weight: 800; font-size: 1.35rem; color: var(--t-text); }
+.t-sus-camiseta-destacado { border-color: rgba(255, 115, 108, .5) !important; }
+.t-sus-camiseta-destacado dd { color: var(--t-accent); }
+html[data-tema] .mprev-camiseta { display: flex; gap: 10px; align-items: flex-start; margin: 0 0 18px; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--g-borde-2); background: rgba(255, 255, 255, .04); font-size: 13.5px; color: var(--t-text-2); cursor: pointer; }
+html[data-tema] .mprev-camiseta input { margin-top: 2px; width: 16px; height: 16px; accent-color: var(--t-accent); }
+html[data-tema] .mprev-camiseta b { color: var(--t-text); }
+#preg-talla-campo[hidden] { display: none; }
+@media (max-width: 900px) { .t-sus-camiseta { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .t-sus-camiseta-precios { grid-template-columns: 1fr; } .t-sus-ctas .t-btn { flex: 1 1 100%; } }
