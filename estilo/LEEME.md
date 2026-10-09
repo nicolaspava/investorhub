@@ -58,9 +58,11 @@ Es la preventa fundadora que se cerró en el chat del pitch:
 - **Desde el lanzamiento (marzo de 2027):** un año con todo lo que se habilite durante ese año, más las betas desde febrero para quien pagó la segunda mitad.
 - **Calendario:** de octubre de 2026 a después del lanzamiento.
 
-El botón cobra la primera mitad: `api/crear-preferencia.js` crea la preferencia de Mercado Pago por $100.000. **Camiseta LC23** (8 oct):
-- Con la suscripción vale $80.000: el paquete cobra $180.000 hoy y quedan $100.000 de la membresía.
-- Sola vale $90.000 en Bogotá y 35 € en Europa. Se pide por correo, porque no tiene cobro en línea.
-- En la ventana de pago hay una casilla y la talla (M, L o XL; el stock por talla está pendiente). La API suma la camiseta como un segundo ítem y guarda la talla en `metadata.camiseta` de Mercado Pago.
+El botón cobra la primera mitad: `api/crear-preferencia.js` crea la preferencia de Mercado Pago por $100.000. **Camiseta LC23** (8 oct): es una ficha de producto (`#camiseta`), aparte de Mercado Pago.
+- Se elige el precio: $80.000 con la suscripción, $90.000 sola en Bogotá o 35 € en Europa.
+- Se elige el color (blanca o negra) y la talla (M, L o XL).
+- «Comprar por WhatsApp» abre un mensaje con el pedido.
+- El stock está en `CAMISETA_STOCK`, en un `<script>` de `index.html`: 20 unidades del primer pedido. Cuando se vende, se resta ahí; con 0, la talla sale agotada.
+- El número va en `CAMISETA_WHATSAPP`. Mientras esté vacío, el pedido sale por correo.
 
 La política de reembolso todavía no está.

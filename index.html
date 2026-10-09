@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261008h">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261008i">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261008k">
 <script src="/estilo/demo.js?v=20261008k" defer></script>
 <script src="/estilo/landing.js?v=20261008b" defer></script>
@@ -1387,7 +1387,7 @@ window.addEventListener('load', function(){
         </div>
         <div class="t-sus-ctas">
           <button type="button" class="t-btn t-btn-pri t-btn-xl" onclick="prevSelectPlan('fundador')">Reservar mi cupo · $100.000 <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
-          <button type="button" class="t-btn t-btn-sec t-btn-xl" onclick="prevSelectPlan('fundador', true)">Con camiseta · $180.000</button>
+          <a class="t-btn t-btn-sec t-btn-xl" href="#camiseta" onclick="event.preventDefault();document.getElementById('camiseta').scrollIntoView({behavior:'smooth',block:'center'});">Agrega la camiseta · $80.000</a>
         </div>
       </article>
 
@@ -1405,18 +1405,47 @@ window.addEventListener('load', function(){
       </article>
     </div>
 
-    <div class="t-sus-camiseta">
-      <div>
+    <!-- Camiseta LC23: ficha de producto. Se elige precio, color y talla; «Comprar» abre WhatsApp con el pedido.
+         Stock del primer pedido (20 unidades); se actualiza en CAMISETA_STOCK, más abajo. -->
+    <div class="t-tienda" id="camiseta" data-tienda>
+      <div class="t-tienda-vista" data-color="negra">
+        <span class="t-tienda-prenda"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M247.59,61.22,195.83,33A8,8,0,0,0,192,32H160a8,8,0,0,0-8,8,24,24,0,0,1-48,0,8,8,0,0,0-8-8H64a8,8,0,0,0-3.84,1L8.41,61.22A15.76,15.76,0,0,0,1.82,82.48l19.27,36.81A16.37,16.37,0,0,0,35.67,128H56v80a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V128h20.34a16.37,16.37,0,0,0,14.58-8.71l19.27-36.81A15.76,15.76,0,0,0,247.59,61.22ZM35.67,112a.62.62,0,0,1-.41-.13L16.09,75.26,56,53.48V112Zm185.07-.14a.55.55,0,0,1-.41.14H200V53.48l39.92,21.78Z"/></svg></span>
+        <p>Logo vertical al pecho · diseño editorial a la espalda · estampado a dos tintas</p>
+      </div>
+      <div class="t-tienda-info">
         <p class="t-sus-tier">Camiseta LC23</p>
         <h2 class="t-h3">Lleva la identidad del proyecto puesta</h2>
-        <p class="t-texto">Se produce por preventa, según los pedidos confirmados.</p>
+        <p class="t-texto">Algodón, en blanca o negra. Primera edición de 20 unidades.</p>
+
+        <fieldset class="t-tienda-grupo">
+          <legend>Precio</legend>
+          <div class="t-tienda-opciones">
+            <label><input type="radio" name="cam-precio" value="Con la suscripción fundadora · $80.000" checked><span><b>$80.000</b>Con la suscripción fundadora</span></label>
+            <label><input type="radio" name="cam-precio" value="Sola, en Bogotá · $90.000"><span><b>$90.000</b>Sola, en Bogotá</span></label>
+            <label><input type="radio" name="cam-precio" value="En Europa · 35 €"><span><b>35 €</b>En Europa</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="t-tienda-grupo">
+          <legend>Color</legend>
+          <div class="t-tienda-opciones t-tienda-colores">
+            <label><input type="radio" name="cam-color" value="negra" checked><span><i style="background:#111110;"></i>Negra</span></label>
+            <label><input type="radio" name="cam-color" value="blanca"><span><i style="background:#F5F3EC;"></i>Blanca</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="t-tienda-grupo">
+          <legend>Talla</legend>
+          <div class="t-tienda-opciones t-tienda-tallas" data-tallas>
+            <label><input type="radio" name="cam-talla" value="M"><span><b>M</b><small data-quedan></small></span></label>
+            <label><input type="radio" name="cam-talla" value="L"><span><b>L</b><small data-quedan></small></span></label>
+            <label><input type="radio" name="cam-talla" value="XL"><span><b>XL</b><small data-quedan></small></span></label>
+          </div>
+        </fieldset>
+
+        <button type="button" class="t-btn t-btn-pri t-btn-xl" data-comprar disabled><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"/></svg> Elige tu talla</button>
+        <p class="t-tienda-nota">Te escribimos por WhatsApp para coordinar el pago y la entrega.</p>
       </div>
-      <dl class="t-sus-camiseta-precios">
-        <div class="t-sus-camiseta-destacado"><dt>Con la suscripción fundadora</dt><dd>$80.000</dd></div>
-        <div><dt>Sola, en Bogotá</dt><dd>$90.000</dd></div>
-        <div><dt>En Europa</dt><dd>35 €</dd></div>
-      </dl>
-      <a class="t-btn t-btn-sec" href="mailto:nicolas.pava@lacuraduria.net?subject=Quiero%20la%20camiseta%20LC23">Pedir solo la camiseta</a>
     </div>
 
     <div class="t-sus-calendario">
@@ -1456,7 +1485,7 @@ window.addEventListener('load', function(){
         </div>
         <div class="faq-item-p">
           <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Cuánto vale la camiseta?<span class="faq-q-icon-p">+</span></div>
-          <div class="faq-a-p">$80.000 si la llevas con la suscripción fundadora: pagas $180.000 hoy y quedan $100.000 de la suscripción. Sola cuesta $90.000 en Bogotá y 35 € en Europa.</div>
+          <div class="faq-a-p">$80.000 si la llevas con la suscripción fundadora, $90.000 sola en Bogotá y 35 € en Europa. Eliges color y talla en la ficha y la compra se coordina por WhatsApp.</div>
         </div>
         <div class="faq-item-p">
           <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Cómo se procesa el pago?<span class="faq-q-icon-p">+</span></div>
@@ -1655,7 +1684,7 @@ window.addEventListener('load', function(){
       </div>
       <div class="mprev-title">Reserva<br>tu cupo</div>
       <div class="mprev-price-row">
-        <div class="mprev-price-main" id="mprev-precio">$100.000</div>
+        <div class="mprev-price-main">$100.000</div>
         <div class="mprev-price-period">COP hoy · la otra mitad antes de marzo de 2027</div>
       </div>
     </div>
@@ -1665,22 +1694,10 @@ window.addEventListener('load', function(){
       <div id="mprev-form-view">
         <div class="mprev-summary">
           <div class="mprev-summary-text">
-            <b id="mprev-resumen">Suscripción fundadora · primera mitad</b><br>
+            <b>Suscripción fundadora · primera mitad</b><br>
             Quedan $100.000 de la suscripción antes de marzo de 2027
           </div>
-          <div class="mprev-summary-amount" id="mprev-total">$100k</div>
-        </div>
-
-        <label class="mprev-camiseta">
-          <input type="checkbox" id="preg-camiseta" onchange="prevActualizarTotal()">
-          <span><b>Agregar la camiseta LC23</b> · $80.000 con tu suscripción</span>
-        </label>
-        <div class="mprev-field" id="preg-talla-campo" hidden>
-          <label class="mprev-label" for="preg-talla">Talla</label>
-          <select class="mprev-input" id="preg-talla">
-            <option value="">Elige tu talla</option><option>M</option><option>L</option><option>XL</option>
-          </select>
-          <div class="mprev-ferror" id="perr-talla">Elige tu talla.</div>
+          <div class="mprev-summary-amount">$100k</div>
         </div>
 
         <div class="mprev-field">
@@ -1697,7 +1714,7 @@ window.addEventListener('load', function(){
 
         <button class="mprev-btn-pay" onclick="prevIniciarPago()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
-          <span id="mprev-pagar">Ir a pagar · $100.000 COP →</span>
+          Ir a pagar · $100.000 COP →
         </button>
 
         <div class="mprev-secure">
@@ -1727,22 +1744,12 @@ window.addEventListener('load', function(){
 </div>
 
 <script>
-function prevSelectPlan(plan, conCamiseta) {
+function prevSelectPlan(plan) {
   if (plan === 'basico') { navTo('proximamente'); return; }
   prevResetModal();
-  document.getElementById('preg-camiseta').checked = !!conCamiseta;
-  prevActualizarTotal();
+
   document.getElementById('prev-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
-}
-// Reserva: $100.000. Con la camiseta: $180.000 hoy (la camiseta vale $80.000 con la suscripción).
-function prevActualizarTotal() {
-  var con = document.getElementById('preg-camiseta').checked;
-  document.getElementById('preg-talla-campo').hidden = !con;
-  document.getElementById('mprev-precio').textContent = con ? '$180.000' : '$100.000';
-  document.getElementById('mprev-total').textContent = con ? '$180k' : '$100k';
-  document.getElementById('mprev-resumen').textContent = con ? 'Primera mitad + camiseta LC23' : 'Suscripción fundadora · primera mitad';
-  document.getElementById('mprev-pagar').textContent = 'Ir a pagar · ' + (con ? '$180.000' : '$100.000') + ' COP →';
 }
 function prevCloseModal() {
   document.getElementById('prev-modal').classList.remove('open');
@@ -1779,14 +1786,6 @@ async function prevIniciarPago() {
     document.getElementById('perr-email').classList.remove('show');
     document.getElementById('preg-email').classList.remove('error');
   }
-  var camiseta = document.getElementById('preg-camiseta').checked;
-  var talla = document.getElementById('preg-talla').value;
-  if (camiseta && !talla) {
-    document.getElementById('perr-talla').classList.add('show');
-    valid = false;
-  } else {
-    document.getElementById('perr-talla').classList.remove('show');
-  }
   if (!valid) return;
   document.getElementById('mprev-form-view').style.display    = 'none';
   document.getElementById('mprev-loading-view').style.display = 'block';
@@ -1794,7 +1793,7 @@ async function prevIniciarPago() {
     var res  = await fetch('/api/crear-preferencia', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nombre: nombre, email: email, camiseta: camiseta, talla: talla }),
+      body: JSON.stringify({ nombre: nombre, email: email }),
     });
     var data = await res.json();
     if (!res.ok || !data.checkout_url) throw new Error(data.error || 'Error');
@@ -1840,6 +1839,41 @@ if (document.getElementById('pg-preventa').classList.contains('active')) { prevT
 <!-- ══════════════════════════════════════════ -->
 <!-- PAGE: HUB (INVESTORS)                      -->
 <!-- ══════════════════════════════════════════ -->
+<script>
+// Camiseta LC23: stock por color y talla del primer pedido (20 unidades, 8 oct 2026).
+// Al vender, se resta aquí. Con 0 la talla se ve agotada.
+var CAMISETA_STOCK = { blanca: { M: 4, L: 3, XL: 3 }, negra: { M: 3, L: 4, XL: 3 } };
+var CAMISETA_WHATSAPP = ''; // número con indicativo, solo dígitos (ej. 57300…). Pendiente.
+(function () {
+  var t = document.querySelector('[data-tienda]');
+  if (!t) return;
+  var vista = t.querySelector('.t-tienda-vista'), btn = t.querySelector('[data-comprar]');
+  function valor(n) { var x = t.querySelector('input[name="' + n + '"]:checked'); return x ? x.value : ''; }
+  function pintar() {
+    var color = valor('cam-color'), stock = CAMISETA_STOCK[color];
+    vista.setAttribute('data-color', color);
+    t.querySelectorAll('input[name="cam-talla"]').forEach(function (r) {
+      var n = stock[r.value] || 0;
+      r.disabled = n === 0;
+      if (r.disabled) r.checked = false;
+      r.parentElement.querySelector('[data-quedan]').textContent = n === 0 ? 'Agotada' : (n === 1 ? 'Queda 1' : 'Quedan ' + n);
+    });
+    var talla = valor('cam-talla');
+    btn.disabled = !talla;
+    btn.lastChild.textContent = talla ? ' Comprar por WhatsApp' : ' Elige tu talla';
+  }
+  t.addEventListener('change', pintar);
+  btn.addEventListener('click', function () {
+    var color = valor('cam-color');
+    var texto = 'Hola, quiero la camiseta LC23.\nColor: ' + (color === 'negra' ? 'Negra' : 'Blanca') +
+      '\nTalla: ' + valor('cam-talla') + '\nPrecio: ' + valor('cam-precio');
+    // Sin número todavía, el mismo pedido sale por correo.
+    if (!CAMISETA_WHATSAPP) { location.href = 'mailto:nicolas.pava@lacuraduria.net?subject=' + encodeURIComponent('Camiseta LC23') + '&body=' + encodeURIComponent(texto); return; }
+    window.open('https://wa.me/' + CAMISETA_WHATSAPP + '?text=' + encodeURIComponent(texto), '_blank', 'noopener');
+  });
+  pintar();
+})();
+</script>
 <div class="pg" id="pg-hub">
 
 <style>

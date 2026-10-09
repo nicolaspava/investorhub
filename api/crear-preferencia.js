@@ -13,11 +13,8 @@ export default async function handler(req, res) {
   const SUPABASE_KEY     = process.env.SUPABASE_SERVICE_KEY;
 
   const { nombre, email } = req.body;
-  // Primera mitad de la suscripción fundadora ($100.000); la camiseta LC23 suma $80.000.
-  const camiseta = req.body.camiseta === true;
-  const talla = ['M', 'L', 'XL'].includes(req.body.talla) ? req.body.talla : null;
-  if (camiseta && !talla) return res.status(400).json({ error: 'Falta la talla de la camiseta' });
-  const monto = 100000 + (camiseta ? 80000 : 0);
+  // Primera mitad de la suscripción fundadora ($200.000). La camiseta se vende aparte, por WhatsApp.
+  const monto = 100000;
 
   if (!nombre || !email) {
     return res.status(400).json({ error: 'Nombre y correo son requeridos' });
@@ -54,7 +51,6 @@ export default async function handler(req, res) {
   const preferencia = {
     items: [
       { title: 'La Curaduría · Suscripción fundadora · Primera mitad', quantity: 1, unit_price: 100000, currency_id: 'COP' },
-      ...(camiseta ? [{ title: `Camiseta LC23 · talla ${talla}`, quantity: 1, unit_price: 80000, currency_id: 'COP' }] : []),
     ],
     payer: {
       name: nombre,
@@ -72,7 +68,6 @@ export default async function handler(req, res) {
     metadata: {
       registro_id: registroId,
       email: email,
-      camiseta: camiseta ? talla : 'no',
     },
   };
 
