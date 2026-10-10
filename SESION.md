@@ -59,7 +59,7 @@ Este documento es para seguir el trabajo en una sesión nueva (por ejemplo, Clau
 **El tablero completo del backlog está en `BACKLOG_ESTADO.md`.**
 
 1. **Correo de confirmación:** la vía elegida es **Gmail** (lacuraduria23@gmail.com) con el Google Apps Script de `google/aviso-correo.gs`; las instrucciones están en el mismo archivo. En Vercel van `GOOGLE_SCRIPT_URL` y `GOOGLE_SCRIPT_CLAVE`. Brevo (`BREVO_API_KEY` y `CORREO_REMITENTE`) y Resend siguen como alternativas (`La Curaduría <preventa@lacuraduria.com>`). Con cualquiera de las tres salen dos correos por cada pago aprobado: la confirmación al comprador y el aviso de compra al equipo. El aviso va a `CORREO_AVISOS` (uno o varios correos separados por comas); si no existe, a nicolas.pava@lacuraduria.net.
-2. **Política de reembolso:** es una propuesta; revisarla, idealmente con abogado. La condición de «60 días sin beneficios» la propuso Claude y está por confirmar.
+2. **Política de reembolso:** es una propuesta; revisarla, idealmente con abogado. Nicolás la simplificó el 10 oct: retracto de 5 días hábiles (ley), Fundadores sin reembolso salvo retraso del lanzamiento, camiseta solo por calidad (una semana, garantía de un año, devoluciones desde noviembre de 2026). Se quitó la condición de «60 días sin beneficios».
 3. **Compra de prueba:** ya existen las cuentas de prueba (vendedor 3754973974, comprador 3755179732). Falta:
    1. sacar el token del vendedor de prueba;
    2. ponerlo en `MP_ACCESS_TOKEN` solo para Preview;
