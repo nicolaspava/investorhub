@@ -310,7 +310,23 @@ function montarDemo(demo) {
   pintarListas();
 
   // La GuÍA (próximamente): responde a las sugerencias
+  // Lugares y planes de ejemplo para la conversación de la GuÍA (inventados: la GuÍA aún no existe).
+  var LUGARES = {
+    tunda: { tipo: 'Fiesta · House', c: 'var(--p-coral)', ini: 'T', nombre: 'Tunda', detalle: 'Sáb · 10 p.m. · colectivo que cambia de locación' },
+    discos: { tipo: 'Previa · Disquería y café', c: 'var(--p-green)', ini: 'DE', nombre: 'Discos del Espacio', detalle: 'Sáb · desde las 6 p.m. · discos, café, comida y house' }
+  };
+  function tarjetaLugar(id) {
+    var l = LUGARES[id], t = el('div', 't-mv-tarjeta t-mv-lugar');
+    t.innerHTML = '<span class="t-mv-ini" style="--c: ' + l.c + ';"></span><span><small style="--c: ' + l.c + ';"></small><b></b><em></em></span>';
+    t.querySelector('.t-mv-ini').textContent = l.ini;
+    t.querySelector('small').textContent = l.tipo;
+    t.querySelector('b').textContent = l.nombre;
+    t.querySelector('em').textContent = l.detalle;
+    return t;
+  }
   var RESPUESTAS = {
+    house: ['Si quieres una fiesta de house este fin de semana, el sábado está Tunda: un colectivo que hace fiestas en diferentes locaciones. Esta vez la dirección se revela el mismo día.', [{ lugar: 'tunda' }]],
+    previa: ['Para previar, ve a Discos del Espacio: escuchas algunos discos, te tomas un café, comes algo y oyes buen house antes de salir.', [{ lugar: 'discos' }]],
     finde: ['Este fin de semana en Bogotá:', [{ ev: 'nusar' }, { ev: 'mir' }]],
     artistas: ['Por lo que te gusta, te pueden interesar:', [{ a: 'la-payara' }, { a: 'veronica-cian' }, { a: 'guaricha' }]],
     escuchar: ['La Payara lanza su álbum «Colombia» a finales de octubre. Y si te gusta lo ambiental, Verónica Cian:', [{ a: 'la-payara' }, { a: 'veronica-cian' }]]
@@ -324,7 +340,7 @@ function montarDemo(demo) {
       esc.remove();
       var r = el('div', 't-mv-resp');
       r.appendChild(el('p', 't-mv-burbuja', texto));
-      (items || []).forEach(function (it) { r.appendChild(it.a ? tarjetaArtista(it.a) : tarjetaEvento(EVENTOS[it.ev])); });
+      (items || []).forEach(function (it) { r.appendChild(it.lugar ? tarjetaLugar(it.lugar) : it.a ? tarjetaArtista(it.a) : tarjetaEvento(EVENTOS[it.ev])); });
       msgs.appendChild(r); bajar(); ocupada = false;
     }, quieto ? 150 : 900);
   }
@@ -337,11 +353,24 @@ function montarDemo(demo) {
   }
   function adivinar(t) {
     t = t.toLowerCase();
+    if (/previa|previar|antes|café|cafe|comer/.test(t)) return 'previa';
+    if (/house|techno|electr|fiesta|rumba|sábado|sabado/.test(t)) return 'house';
     if (/fin de semana|finde|hoy|evento|plan|fiesta|concierto|salir/.test(t)) return 'finde';
     if (/artista|banda|dj|recomi|conocer|quién|quien/.test(t)) return 'artistas';
     if (/escuchar|música|musica|set|álbum|album|sonido/.test(t)) return 'escuchar';
     return null;
   }
+  // La conversación de ejemplo se escribe sola la primera vez que se abre la GuÍA.
+  var guionHecho = false;
+  function guion() {
+    mostrarMovil('guia');
+    if (guionHecho) return;
+    guionHecho = true;
+    var pasos = [['house', 'Estoy buscando una fiesta de house el sábado. ¿Qué me recomiendas?'], ['previa', 'Listo. ¿Y para previar? ¿A dónde puedo ir antes?']];
+    var espera = quieto ? 200 : 2600;
+    pasos.forEach(function (p, i) { setTimeout(function () { preguntar(p[0], p[1]); }, 500 + i * espera); });
+  }
+  demo.lcGuion = guion;
   sug.addEventListener('click', function (e) { var b = e.target.closest('[data-preg]'); if (b) preguntar(b.getAttribute('data-preg'), b.textContent); });
   form.addEventListener('submit', function (e) {
     e.preventDefault();

@@ -464,3 +464,9 @@
   .t-movil { background: var(--t-surf-2); }
   .t-ventana { background: var(--t-surf-2); }
 }
+
+/* Tarjetas de lugares en la conversación de la GuÍA (sin foto: iniciales en color) */
+.t-mv-ini { display: grid; place-items: center; width: 50px; height: 50px; flex: none; border-radius: 8px; font: 800 15px/1 var(--lc-font-display); color: #0C0C0B; background: var(--c); }
+.t-mv-lugar { cursor: default; }
+/* En La Guía, el teléfono del copiloto se ve como un chat: sin las pestañas de abajo */
+#demo-guia .t-movil-pantalla:has([data-movil="guia"]:not([hidden])) .t-mv-tabs { display: none; }

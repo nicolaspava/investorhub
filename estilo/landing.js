@@ -98,6 +98,7 @@
     var enVivo = cual !== 'guia';
     vivo.hidden = paginas.hidden = pie.hidden = !enVivo;
     demo.hidden = enVivo;
+    if (!enVivo && demo.lcGuion) demo.lcGuion();
     botones.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-guia-ver') === cual ? 'true' : 'false'); });
   }
   botones.forEach(function (b) { b.addEventListener('click', function () { ver(b.getAttribute('data-guia-ver')); }); });

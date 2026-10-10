@@ -25,13 +25,13 @@
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/estilo/landing.css?v=20261010j">
-<link rel="stylesheet" href="/estilo/demo.css?v=20261009a">
+<link rel="stylesheet" href="/estilo/demo.css?v=20261010b">
 <!-- Medición: pega aquí el ID de Google Analytics 4 (G-XXXX) y el de la conversión de Google Ads (AW-XXXX/etiqueta). Vacíos, no se carga nada de Google. -->
 <meta name="lc-ga4" content="">
 <meta name="lc-ads" content="">
 <script src="/estilo/medicion.js?v=20261010a"></script>
-<script src="/estilo/demo.js?v=20261009a" defer></script>
-<script src="/estilo/landing.js?v=20261010d" defer></script>
+<script src="/estilo/demo.js?v=20261010a" defer></script>
+<script src="/estilo/landing.js?v=20261010e" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 /* La paleta y las familias vienen de ds/tokens.css y ds/landing.css. */
@@ -762,7 +762,7 @@ footer.site-footer{}
       <div class="t-guia-tel" data-guia-tel>
       <div class="t-guia-conmutador" role="group" aria-label="Qué ver en el teléfono">
         <button type="button" data-guia-ver="vivo" aria-pressed="true">lacuraduria.net</button>
-        <button type="button" data-guia-ver="guia" aria-pressed="false">GuÍA · pronto</button>
+        <button type="button" data-guia-ver="guia" aria-pressed="false">Copiloto GuÍA · pronto</button>
       </div>
       <!-- El teléfono con lacuraduria.net: capturas reales del sitio (10 oct), con scroll y pestañas.
            El sitio no deja mostrarse dentro de otra página, por eso no es un iframe. -->
@@ -827,9 +827,9 @@ footer.site-footer{}
                 <p class="t-mv-burbuja">Hola. Cuéntame qué buscas y te recomiendo eventos, artistas y contenidos de la escena.</p>
               </div>
               <div class="t-mv-sug" data-sug>
-                <button type="button" data-preg="finde">¿Qué hay este fin de semana?</button>
+                <button type="button" data-preg="house">Una fiesta de house el sábado</button>
+                <button type="button" data-preg="previa">¿Dónde previar antes?</button>
                 <button type="button" data-preg="artistas">Recomiéndame artistas</button>
-                <button type="button" data-preg="escuchar">Algo para escuchar</button>
               </div>
               <form class="t-mv-form" data-form><label class="t-mv-campo"><span class="t-oculto">Pregúntale a la GuÍA</span><input data-pregunta type="text" placeholder="Pregúntale a la GuÍA" autocomplete="off" maxlength="80"></label><button type="submit" aria-label="Enviar"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M231.87,114l-168-95.89A16,16,0,0,0,40.92,37.34L71.55,128,40.92,218.67A16,16,0,0,0,56,240a16.15,16.15,0,0,0,7.93-2.1l167.92-96.05a16,16,0,0,0,.05-27.89ZM56,224a.56.56,0,0,0,0-.12L85.74,136H144a8,8,0,0,0,0-16H85.74L56.06,32.16A.46.46,0,0,0,56,32l168,95.83Z"/></svg></button></form>
             </section>
@@ -908,7 +908,7 @@ footer.site-footer{}
       </article>
       <article class="t-func t-rv">
         <div class="t-func-texto"><span class="t-estado-chip" data-estado="pronto">Próximamente</span><h3>Pregúntale a la GuÍA</h3><p>Una copiloto que te recomienda eventos, artistas y contenidos según lo que te gusta. Ya puedes probar una muestra en el teléfono de arriba.</p>
-          <button type="button" class="t-btn t-btn-sec" onclick="if (window.lcGuiaVer) window.lcGuiaVer('guia'); var t=document.querySelector('#pg-la-guia [data-abrir-guia]'); document.querySelector('[data-guia-tel]').scrollIntoView({behavior:'smooth', block:'center'}); if (t) t.click();">Probar la GuÍA</button></div>
+          <button type="button" class="t-btn t-btn-sec" onclick="if (window.lcGuiaVer) window.lcGuiaVer('guia'); document.querySelector('[data-guia-tel]').scrollIntoView({behavior:'smooth', block:'center'});">Probar la GuÍA</button></div>
         <figure class="t-func-img t-func-tel"><img src="/img/escena/guia.webp" alt="" loading="lazy" width="461" height="1000"></figure>
       </article>
       </div>
