@@ -1046,14 +1046,19 @@ html[data-tema] .mprev-btn-pay { border-radius: 999px; }
 .t-guia-conmutador button[aria-pressed="true"] { background: rgba(117, 230, 249, .16); color: var(--p-cyan); }
 .t-vivo .t-movil-pantalla { background: #000; }
 /* Arriba queda una franja negra, como la barra de estado de un teléfono, para que la muesca no tape el sitio */
-.t-vivo-poster, .t-vivo-marco { position: absolute; top: 34px; left: 0; width: 100%; height: calc(100% - 34px); }
+.t-vivo-scroll { position: absolute; top: 34px; left: 0; right: 0; bottom: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
+.t-vivo-scroll::-webkit-scrollbar { display: none; }
+.t-vivo-scroll a, .t-vivo-scroll img { display: block; width: 100%; height: auto; }
 .t-guia-tel .t-movil { order: 0; margin: 0; }
-.t-vivo-poster { object-fit: cover; object-position: top; }
-.t-vivo-marco { overflow: hidden; }
-.t-vivo-marco iframe { position: absolute; top: 0; left: 0; border: 0; background: #0F0F0E; transform-origin: 0 0; opacity: 0; transition: opacity .4s; }
-.t-vivo-cargado .t-vivo-marco iframe { opacity: 1; }
-.t-vivo-activar { position: absolute; z-index: 4; left: 50%; bottom: 76px; transform: translateX(-50%); white-space: nowrap; font: 600 13px/1 var(--lc-font-body); color: #0C0C0B; background: var(--p-cyan); border: 0; border-radius: 999px; padding: 12px 18px; cursor: pointer; box-shadow: 0 10px 30px -8px rgba(0, 0, 0, .7); }
-.t-vivo-activo .t-vivo-activar { display: none; }
+/* La barra de abajo del sitio, quieta; encima, zonas que se pueden tocar (cinco botones) */
+.t-vivo-barra { position: absolute; z-index: 4; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr); }
+.t-vivo-barra img { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.t-vivo-barra > :is(button, a) { position: relative; height: 100%; aspect-ratio: auto; min-height: 44px; background: none; border: 0; cursor: pointer; }
+.t-vivo-barra::before { content: ""; display: block; grid-column: 1 / -1; grid-row: 1; aspect-ratio: 585 / 141; }
+.t-vivo-barra > :is(button, a) { grid-row: 1; }
+.t-vivo-paginas { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.t-vivo-paginas button { font: 500 13px/1 var(--lc-font-body); color: var(--t-text-2); background: none; border: 1px solid var(--g-borde-2); border-radius: 999px; padding: 8px 12px; cursor: pointer; }
+.t-vivo-paginas button[aria-pressed="true"] { color: #0C0C0B; background: var(--p-cyan); border-color: var(--p-cyan); }
 .t-vivo-pie { margin: 0; font-size: 13px; color: var(--t-text-3); text-align: center; }
 .t-vivo-pie a { color: var(--p-cyan); }
 

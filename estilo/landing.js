@@ -2,7 +2,7 @@
    1. Revelado: .t-rv y el chat (.t-chat) reciben .t-dentro al entrar en pantalla.
    2. Logo de la barra: aparece cuando el del hero sale de la pantalla.
    3. Pestañas «Para quién», con teclado (flechas, Inicio, Fin).
-   4. El teléfono de La Guía: lacuraduria.net en vivo, dentro del teléfono. */
+   4. El teléfono de La Guía: lacuraduria.net con capturas reales que se recorren. */
 (function () {
   var raiz = document.documentElement;
 
@@ -55,46 +55,48 @@
   });
 })();
 
-// 4. El teléfono de La Guía en vivo. La página real se carga al tocarla, no antes:
-//    así no se gastan datos ni el scroll de la página queda atrapado en el teléfono.
-//    Se dibuja a 390 px de ancho, como un teléfono de verdad, y se escala al bisel.
+// 4. El teléfono de La Guía: capturas reales de lacuraduria.net que se recorren con scroll.
+//    Las pestañas (abajo en el teléfono y debajo de él) cambian de página; tocar la pantalla abre
+//    la misma página en el sitio real. No es un iframe porque el sitio no deja mostrarse en otra página.
 (function () {
   var tel = document.querySelector('[data-guia-tel]');
   if (!tel) return;
+  var PAGINAS = {
+    inicio: { img: 'guia-inicio.jpg', alto: 5064, url: 'https://lacuraduria.net/', nombre: 'Inicio' },
+    eventos: { img: 'guia-eventos.jpg', alto: 5064, url: 'https://lacuraduria.net/eventos', nombre: 'Eventos' },
+    perfiles: { img: 'guia-perfiles.jpg', alto: 5064, url: 'https://lacuraduria.net/perfiles', nombre: 'Páginas' },
+    contenidos: { img: 'guia-contenidos.jpg', alto: 3970, url: 'https://lacuraduria.net/contenidos', nombre: 'Publicaciones' }
+  };
   var vivo = tel.querySelector('[data-vivo]');
   var pie = tel.querySelector('[data-vivo-pie]');
+  var paginas = tel.querySelector('.t-vivo-paginas');
   var demo = tel.querySelector('[data-demo]');
-  var marco = tel.querySelector('[data-vivo-marco]');
-  var activar = tel.querySelector('[data-vivo-activar]');
-  var botones = tel.querySelectorAll('[data-guia-ver]');
-  var ANCHO = 390;
+  var scroll = tel.querySelector('[data-vivo-scroll]');
+  var img = tel.querySelector('[data-vivo-img]');
+  var enlace = tel.querySelector('[data-vivo-enlace]');
 
-  function ajustar() {
-    var f = marco.querySelector('iframe');
-    if (!f) return;
-    var escala = marco.clientWidth / ANCHO;
-    f.style.transform = 'scale(' + escala + ')';
-    f.style.height = (marco.clientHeight / escala) + 'px';
+  function ir(cual) {
+    var pg = PAGINAS[cual];
+    if (!pg) return;
+    img.src = '/img/producto/' + pg.img;
+    img.height = pg.alto;
+    img.alt = pg.nombre + ' de lacuraduria.net';
+    enlace.href = pg.url;
+    scroll.scrollTop = 0;
+    paginas.querySelectorAll('[data-vivo-ir]').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-vivo-ir') === cual ? 'true' : 'false');
+    });
   }
-
-  activar.addEventListener('click', function () {
-    var f = document.createElement('iframe');
-    f.src = 'https://lacuraduria.net/';
-    f.title = 'lacuraduria.net, la guía en vivo';
-    f.style.width = ANCHO + 'px';
-    f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-    f.addEventListener('load', function () { vivo.classList.add('t-vivo-cargado'); });
-    marco.appendChild(f);
-    vivo.classList.add('t-vivo-activo');
-    ajustar();
+  tel.querySelectorAll('[data-vivo-ir]').forEach(function (b) {
+    b.addEventListener('click', function () { ir(b.getAttribute('data-vivo-ir')); });
   });
-  if ('ResizeObserver' in window) new ResizeObserver(ajustar).observe(marco);
-  else window.addEventListener('resize', ajustar);
+  // Se cargan por adelantado las otras páginas, cuando el teléfono ya se ve
+  setTimeout(function () { Object.keys(PAGINAS).forEach(function (k) { new Image().src = '/img/producto/' + PAGINAS[k].img; }); }, 2500);
 
+  var botones = tel.querySelectorAll('[data-guia-ver]');
   function ver(cual) {
     var enVivo = cual !== 'guia';
-    vivo.hidden = !enVivo;
-    pie.hidden = !enVivo;
+    vivo.hidden = paginas.hidden = pie.hidden = !enVivo;
     demo.hidden = enVivo;
     botones.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-guia-ver') === cual ? 'true' : 'false'); });
   }

@@ -10,10 +10,10 @@
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261010e">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261010f">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261009a">
 <script src="/estilo/demo.js?v=20261009a" defer></script>
-<script src="/estilo/landing.js?v=20261010a" defer></script>
+<script src="/estilo/landing.js?v=20261010b" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 /* La paleta y las familias vienen de ds/tokens.css y ds/landing.css. */
@@ -684,18 +684,26 @@ footer.site-footer{}
       </div>
       <div class="t-guia-tel" data-guia-tel>
       <div class="t-guia-conmutador" role="group" aria-label="Qué ver en el teléfono">
-        <button type="button" data-guia-ver="vivo" aria-pressed="true">lacuraduria.net en vivo</button>
+        <button type="button" data-guia-ver="vivo" aria-pressed="true">lacuraduria.net</button>
         <button type="button" data-guia-ver="guia" aria-pressed="false">GuÍA · pronto</button>
       </div>
-      <!-- El teléfono en vivo: la guía real, lacuraduria.net, dentro del teléfono -->
+      <!-- El teléfono con lacuraduria.net: capturas reales del sitio (10 oct), con scroll y pestañas.
+           El sitio no deja mostrarse dentro de otra página, por eso no es un iframe. -->
       <div class="t-movil t-vivo" data-vivo>
         <div class="t-movil-pantalla">
-          <img class="t-vivo-poster" src="/img/producto/movil-inicio.jpg" alt="Inicio de lacuraduria.net en el teléfono" width="780" height="1688">
-          <div class="t-vivo-marco" data-vivo-marco></div>
-          <button type="button" class="t-vivo-activar" data-vivo-activar>Toca para navegar la guía aquí</button>
+          <div class="t-vivo-scroll" data-vivo-scroll tabindex="0" aria-label="lacuraduria.net en el teléfono. Desliza para recorrerla.">
+            <a data-vivo-enlace href="https://lacuraduria.net/" target="_blank" rel="noopener"><img data-vivo-img src="/img/producto/guia-inicio.jpg" alt="Inicio de lacuraduria.net" width="585" height="5064"></a>
+          </div>
+          <div class="t-vivo-barra">
+            <img src="/img/producto/guia-barra.png" alt="" width="585" height="141">
+            <button type="button" data-vivo-ir="inicio" aria-label="Inicio"></button><button type="button" data-vivo-ir="eventos" aria-label="Explorar"></button><a href="https://lacuraduria.net/login" target="_blank" rel="noopener" aria-label="Publicar en lacuraduria.net"></a><button type="button" data-vivo-ir="perfiles" aria-label="Buscar"></button><a href="https://lacuraduria.net/login" target="_blank" rel="noopener" aria-label="Tu perfil en lacuraduria.net"></a>
+          </div>
         </div>
       </div>
-      <p class="t-vivo-pie" data-vivo-pie>Es la guía real, en vivo. <a href="https://lacuraduria.net" target="_blank" rel="noopener">Abrir en otra pestaña</a></p>
+      <div class="t-vivo-paginas" role="group" aria-label="Páginas de la guía">
+        <button type="button" data-vivo-ir="inicio" aria-pressed="true">Inicio</button><button type="button" data-vivo-ir="eventos" aria-pressed="false">Eventos</button><button type="button" data-vivo-ir="perfiles" aria-pressed="false">Páginas</button><button type="button" data-vivo-ir="contenidos" aria-pressed="false">Publicaciones</button>
+      </div>
+      <p class="t-vivo-pie" data-vivo-pie>Así se ve hoy lacuraduria.net. Toca la pantalla para abrirla de verdad.</p>
       <div class="t-demo t-demo-solo" id="demo-guia" data-demo role="region" aria-label="Demostración de la GuÍA en el teléfono" hidden>
         <!-- El teléfono: La Guía -->
         <div class="t-movil">
