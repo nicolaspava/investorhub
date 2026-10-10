@@ -1264,3 +1264,18 @@ nav.t-barra .nav-burger span { background: var(--t-text); }
 .t-estados-lista a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--c) 45%, transparent); text-underline-offset: 3px; }
 .t-estados-lista a:hover { color: var(--t-text); }
 @media (max-width: 900px) { .t-estados { grid-template-columns: 1fr; } }
+
+/* ══ Nosotros (10 oct): presentación, botones y la historia como línea de tiempo ══ */
+.t-nos-hero .t-lead { max-width: 760px; margin: 0 0 18px; }
+.t-nos-hero .t-lead b { color: var(--t-text); }
+.t-nos-hero .t-ctas { margin-top: 28px; }
+.t-nos-medios { margin: 28px 0 0; font-size: 15px; color: var(--t-text-3); }
+.t-nos-medios b { color: var(--t-text-2); }
+.t-nos-linea { list-style: none; margin: clamp(28px, 4vw, 48px) 0 0; padding: 0; display: grid; gap: 0; border-left: 2px solid var(--g-borde-2); }
+.t-nos-hito { position: relative; display: grid; grid-template-columns: 150px 1fr; gap: 6px 28px; padding: 0 0 34px 32px; }
+.t-nos-hito::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--p-coral); box-shadow: 0 0 14px rgba(255, 115, 108, .6); }
+.t-nos-hito:last-child::before { background: var(--p-cyan); box-shadow: 0 0 14px rgba(117, 230, 249, .6); }
+.t-nos-anio { margin: 0; font-family: var(--lc-font-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--p-coral); padding-top: 3px; }
+.t-nos-hito h3 { margin: 0 0 6px; font-family: var(--lc-font-display); font-weight: 800; font-size: 1.35rem; letter-spacing: -.02em; color: var(--t-text); }
+.t-nos-hito p:not(.t-nos-anio) { margin: 0; max-width: 640px; color: var(--t-text-2); line-height: 1.55; }
+@media (max-width: 640px) { .t-nos-hito { grid-template-columns: 1fr; padding-left: 24px; } }
