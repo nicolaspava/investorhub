@@ -976,3 +976,142 @@ html[data-tema] .mprev-btn-pay { border-radius: 999px; }
   .t-reco-num { position: static; }
   .t-reco-anio ol { grid-template-columns: 1fr; }
 }
+
+/* ══ v6 (9 oct): tres páginas. Principal (pitch), La Guía (usuarios) y La Terminal (gestores) ══ */
+
+/* Estado de una función: ya, beta, pronto */
+.t-estado-chip { flex: none; display: inline-flex; align-items: center; gap: 6px; font: 500 10.5px/1 var(--lc-font-mono); letter-spacing: .06em; text-transform: uppercase; padding: 4px 8px; border-radius: 999px; color: var(--t-text-3); border: 1px solid var(--g-borde-2); white-space: nowrap; }
+.t-estado-chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.t-estado-chip[data-estado="ya"] { color: var(--p-cyan); border-color: rgba(117, 230, 249, .45); }
+.t-estado-chip[data-estado="beta"] { color: var(--p-yellow-clara); border-color: color-mix(in srgb, var(--p-yellow-clara) 45%, transparent); }
+
+/* Principal · hero: la marca y la escena con las dos caras */
+.t-portada { padding-top: calc(72px + clamp(32px, 6vh, 64px)); padding-bottom: clamp(48px, 8vh, 96px); }
+.t-portada::before { top: 62%; right: 0; left: 0; margin: auto; width: 90vw; background: radial-gradient(closest-side, rgba(117, 230, 249, .18), rgba(255, 115, 108, .14) 55%, rgba(255, 115, 108, 0)); }
+.t-portada-texto { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
+.t-portada-texto .t-hero-marca { margin: 0; }
+.t-portada-texto .t-hero-marca svg { width: 100%; max-width: 600px; }
+.t-portada .t-lead { margin-bottom: 28px; }
+.t-escena { position: relative; margin-top: clamp(48px, 7vh, 80px); padding-bottom: 40px; perspective: 1800px; }
+.t-escena button { display: block; padding: 0; border: 0; background: none; cursor: pointer; text-align: left; }
+.t-escena img { display: block; width: 100%; height: auto; }
+.t-escena-pc { width: 84%; transform: rotateX(14deg) rotateZ(-2deg); transform-origin: 50% 100%; border-radius: 18px; box-shadow: 0 70px 120px -40px rgba(0, 0, 0, .9), 0 30px 90px -40px rgba(117, 230, 249, .3); transition: transform .6s var(--t-ease); }
+.t-escena-tel { position: absolute; right: 2%; bottom: 0; width: 23%; transform: rotateZ(4deg); filter: drop-shadow(0 50px 50px rgba(0, 0, 0, .7)); transition: transform .6s var(--t-ease); }
+.t-escena-pc:hover, .t-escena-pc:focus-visible { transform: rotateX(8deg) rotateZ(-1deg); }
+.t-escena-tel:hover, .t-escena-tel:focus-visible { transform: rotateZ(1deg) translateY(-8px); }
+.t-escena button:focus-visible { outline: 2px solid var(--p-cyan); outline-offset: 6px; }
+.t-escena-rotulo { position: absolute; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; font: 500 13px/1 var(--lc-font-body); color: var(--t-text); background: rgba(12, 12, 11, .78); border: 1px solid color-mix(in srgb, var(--c) 55%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); white-space: nowrap; }
+.t-escena-rotulo::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); box-shadow: 0 0 10px var(--c); }
+.t-escena-pc .t-escena-rotulo { left: 24px; bottom: -18px; }
+.t-escena-tel .t-escena-rotulo { right: 0; top: -20px; }
+
+/* Principal · el problema */
+.t-problema { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: end; }
+.t-problema .t-h2 { margin: 0; max-width: 20ch; }
+.t-problema-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.t-problema-lista li { padding: 16px 0; border-top: 1px solid var(--t-line); font-family: var(--lc-font-display); font-weight: 700; font-size: clamp(1.1rem, 1.6vw, 1.35rem); line-height: 1.3; letter-spacing: -.015em; color: var(--t-text-2); }
+.t-problema-lista li:last-child { color: var(--t-text); }
+
+/* Principal · productos */
+.t-producto { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding: clamp(28px, 4vw, 56px); border-radius: 28px; border: 1px solid color-mix(in srgb, var(--c) 35%, transparent); background: linear-gradient(150deg, color-mix(in srgb, var(--c) 12%, transparent), transparent 55%), rgba(255, 255, 255, .02); }
+.t-producto-inv .t-producto-texto { order: 2; }
+.t-producto-texto .t-etiqueta { --c: inherit; }
+.t-producto .t-etiqueta { color: var(--c); }
+.t-producto .t-etiqueta::before { background: var(--c); box-shadow: 0 0 12px var(--c); }
+.t-producto .t-h2 { margin: 6px 0 14px; }
+.t-producto .t-lead { margin: 0 0 20px; }
+.t-producto-lista { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 10px; }
+.t-producto-lista li { display: flex; align-items: center; gap: 12px; font-size: 15.5px; color: var(--t-text); }
+.t-producto-lista .t-estado-chip { min-width: 64px; justify-content: center; }
+.t-producto-img { padding: 0; border: 0; background: none; cursor: pointer; }
+.t-producto-img img { display: block; width: 100%; height: auto; border-radius: 16px; box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .9); transition: transform .5s var(--t-ease); }
+.t-producto-img:hover img { transform: translateY(-6px); }
+.t-producto-tel { justify-self: center; width: min(300px, 70%); }
+.t-producto-tel img { border-radius: 0; box-shadow: none; filter: drop-shadow(0 40px 40px rgba(0, 0, 0, .7)); }
+
+/* La Guía · hero con el teléfono */
+.t-guia-hero { padding-top: calc(72px + clamp(32px, 6vh, 64px)); padding-bottom: clamp(48px, 7vh, 88px); }
+.t-guia-hero::before { top: 50%; right: -8vw; background: radial-gradient(closest-side, rgba(117, 230, 249, .28), rgba(117, 230, 249, 0)); }
+.t-guia-hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+.t-guia-titulo { margin: 0 0 20px; font-family: var(--lc-font-display); font-weight: 800; font-size: clamp(2.6rem, 5.6vw, 5rem); line-height: .98; letter-spacing: -.04em; color: var(--t-text); text-wrap: balance; }
+.t-guia-hero-texto .t-lead { margin: 0 0 28px; }
+.t-guia-hero-texto .t-demo-leyenda { margin-top: 32px; }
+.t-demo.t-demo-solo { display: flex; justify-content: center; grid-template-columns: none; }
+.t-demo-solo .t-movil { grid-column: auto; grid-row: auto; margin: 0; max-width: 320px; width: 100%; justify-self: auto; }
+
+/* La Guía · esta semana (como la fila de eventos de Shotgun) */
+.t-fila-cab { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
+.t-fila-cab .t-h2 { margin: 0; }
+.t-link { display: inline-flex; align-items: center; gap: 6px; color: var(--p-cyan); font-weight: 600; text-decoration: none; }
+.t-link svg { width: 16px; height: 16px; }
+.t-carteles { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(200px, 1fr); gap: 14px; overflow-x: auto; scrollbar-width: none; padding-bottom: 6px; scroll-snap-type: x mandatory; }
+.t-carteles::-webkit-scrollbar { display: none; }
+.t-cartel { display: grid; gap: 6px; color: inherit; text-decoration: none; scroll-snap-align: start; }
+.t-cartel img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 14px; transition: transform .4s var(--t-ease); }
+.t-cartel:hover img { transform: translateY(-4px); }
+.t-cartel b { font-family: var(--lc-font-display); font-size: 1.05rem; line-height: 1.2; letter-spacing: -.01em; }
+.t-cartel span { font-size: 13.5px; color: var(--t-text-3); }
+
+/* La Guía · categorías */
+.t-cats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.t-cat { display: flex; flex-direction: column; border-radius: var(--t-radio); overflow: hidden; color: inherit; text-decoration: none; border: 1px solid color-mix(in srgb, var(--c) 35%, transparent); background: var(--g-luz), var(--g-tinte); transition: border-color .25s, transform .3s var(--t-ease); }
+.t-cat:hover { border-color: var(--c); transform: translateY(-3px); }
+.t-cat-img { display: block; aspect-ratio: 16 / 10; overflow: hidden; }
+.t-cat-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.t-cat-cuerpo { display: grid; gap: 8px; padding: 18px 20px 22px; }
+.t-cat-cuerpo b { font-family: var(--lc-font-display); font-weight: 800; font-size: 1.6rem; letter-spacing: -.025em; color: var(--c); }
+.t-cat-cuerpo > span { font-size: 15px; color: var(--t-text-2); }
+.t-cat-cuerpo em { font-style: normal; display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; color: var(--t-text); }
+.t-cat-cuerpo em svg { width: 15px; height: 15px; }
+
+/* La Guía · funciones en filas alternas (texto y captura), como Shotgun */
+.t-funcs { display: grid; gap: clamp(48px, 7vw, 88px); margin-top: 40px; }
+.t-func { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+.t-func:nth-child(even) .t-func-texto { order: 2; }
+.t-func-texto { display: grid; gap: 14px; justify-items: start; }
+.t-func-texto h3 { margin: 0; font-family: var(--lc-font-display); font-weight: 800; font-size: clamp(1.6rem, 2.8vw, 2.3rem); line-height: 1.08; letter-spacing: -.03em; color: var(--t-text); }
+.t-func-texto p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--t-text-2); max-width: 46ch; }
+.t-func-img { margin: 0; border-radius: 18px; overflow: hidden; border: 1px solid var(--g-borde); box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .9); }
+.t-func-img img { display: block; width: 100%; height: auto; }
+.t-func-tel { justify-self: center; width: min(280px, 70%); border: 0; box-shadow: none; overflow: visible; }
+.t-func-tel img { filter: drop-shadow(0 40px 40px rgba(0, 0, 0, .7)); }
+
+/* La Terminal · la demo bajo el hero y las funciones por pilares */
+.t-fun-demo { padding-bottom: 24px; }
+.t-fun-demo .t-demo-leyenda { margin-top: 84px; }
+.t-pilares { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 28px; }
+.t-pilar { display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: var(--t-radio); border: 1px solid var(--g-borde); border-top: 3px solid var(--c); background: var(--g-luz), var(--g-tinte); }
+.t-pilar-ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); }
+.t-pilar-ic svg { width: 22px; height: 22px; }
+.t-pilar h3 { margin: 4px 0 0; font-family: var(--lc-font-display); font-weight: 800; font-size: 1.45rem; letter-spacing: -.02em; }
+.t-pilar > p { margin: 0 0 6px; font-size: 14.5px; color: var(--t-text-2); min-height: 44px; }
+.t-pilar ul { list-style: none; margin: auto 0 0; padding: 0; display: grid; gap: 6px; }
+.t-pilar button { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--g-borde); background: rgba(255, 255, 255, .03); color: var(--t-text); font: 600 14px/1.2 var(--lc-font-body); text-align: left; cursor: pointer; transition: background .2s, border-color .2s; }
+.t-pilar button:hover { background: rgba(255, 255, 255, .07); border-color: color-mix(in srgb, var(--c) 50%, transparent); }
+.t-pilar button:focus-visible { outline: 2px solid var(--p-cyan); outline-offset: 2px; }
+.t-fun-aliados { padding-inline: 0; }
+
+/* El campo de la GuÍA en el teléfono ya no lleva id */
+.t-mv-campo { flex: 1; min-width: 0; display: flex; }
+.t-mv-campo input { width: 100%; }
+
+@media (max-width: 1100px) {
+  .t-pilares { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .t-portada-texto, .t-problema, .t-producto, .t-guia-hero-grid, .t-func { grid-template-columns: 1fr; }
+  .t-portada-texto .t-hero-marca svg { max-width: 460px; }
+  .t-producto-inv .t-producto-texto, .t-func:nth-child(even) .t-func-texto { order: 0; }
+  .t-escena-pc { width: 100%; }
+  .t-escena-tel { width: 34%; right: -2%; bottom: -24px; }
+  .t-escena-tel .t-escena-rotulo { display: none; }
+  .t-cats { grid-template-columns: 1fr; }
+  .t-guia-hero-grid .t-demo-solo { order: -1; }
+}
+@media (max-width: 560px) {
+  .t-pilares { grid-template-columns: 1fr; }
+  .t-escena-pc .t-escena-rotulo { left: 12px; right: 12px; font-size: 12px; white-space: normal; line-height: 1.3; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .t-cat, .t-pilar, .t-escena-rotulo { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--t-surf); }
+}

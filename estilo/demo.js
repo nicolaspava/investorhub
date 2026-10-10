@@ -7,9 +7,8 @@
    - pedir booking desde el perfil llega al CRM.
    Todo es local: nada sale de la página. Artistas, eventos y contenidos son reales,
    tomados de lacuraduria.net (8 oct 2026). */
-(function () {
-  var demo = document.querySelector('[data-demo]');
-  if (!demo) return;
+// Puede haber varias demos: la completa (computador y teléfono) en La Terminal y la del teléfono solo en La Guía.
+function montarDemo(demo) {
   var $ = function (s, r) { return (r || demo).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || demo).querySelectorAll(s)); };
   var quieto = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -18,6 +17,16 @@
   $$('template[data-icono]').forEach(function (t) { ICONOS[t.getAttribute('data-icono')] = t.innerHTML.trim(); });
   var ESTADOS = { ya: 'Ya disponible', beta: 'Beta · febrero 2027', pronto: 'Próximamente' };
 
+  function avisar(sel, texto) {
+    var a = $(sel);
+    if (!a) return;
+    a.textContent = texto;
+    a.classList.add('t-visible');
+    clearTimeout(a._t);
+    a._t = setTimeout(function () { a.classList.remove('t-visible'); }, 3200);
+  }
+  var hayPC = !!$('[data-pc-marco]');
+  if (hayPC) {
   /* ── 1. El lienzo del computador: 1000 × 640, escalado al ancho ── */
   var marco = $('[data-pc-marco]'), lienzo = $('[data-pc-lienzo]'), escala = 1;
   function escalar() {
@@ -116,13 +125,6 @@
   punto.setAttribute('aria-label', 'Qué hace este módulo');
   punto.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); punto.click(); } });
 
-  function avisar(sel, texto) {
-    var a = $(sel);
-    a.textContent = texto;
-    a.classList.add('t-visible');
-    clearTimeout(a._t);
-    a._t = setTimeout(function () { a.classList.remove('t-visible'); }, 3200);
-  }
   function cerrarVentana() { ventanaAbierta = false; ventana.hidden = true; }
 
   // Acciones de La Terminal
@@ -208,6 +210,8 @@
     ARTISTAS['la-payara'].frase = frase.value;
     if (perfilAbierto === 'la-payara') $('[data-mp-frase]').textContent = frase.value;
   });
+
+  } // fin de lo que solo existe con el computador
 
   /* ── 3. El teléfono: La Guía ───────────────────────────────────── */
   var ARTISTAS = {
@@ -311,7 +315,7 @@
     artistas: ['Por lo que te gusta, te pueden interesar:', [{ a: 'la-payara' }, { a: 'veronica-cian' }, { a: 'guaricha' }]],
     escuchar: ['La Payara lanza su álbum «Colombia» a finales de octubre. Y si te gusta lo ambiental, Verónica Cian:', [{ a: 'la-payara' }, { a: 'veronica-cian' }]]
   };
-  var msgs = $('[data-msgs]'), sug = $('[data-sug]'), form = $('[data-form]'), entrada = $('#t-mv-pregunta'), ocupada = false;
+  var msgs = $('[data-msgs]'), sug = $('[data-sug]'), form = $('[data-form]'), entrada = $('[data-pregunta]'), ocupada = false;
   function bajar() { msgs.scrollTo({ top: msgs.scrollHeight, behavior: quieto ? 'auto' : 'smooth' }); }
   function responder(texto, items) {
     var esc = el('p', 't-mv-burbuja t-mv-escribe'); esc.innerHTML = '<i></i><i></i><i></i>';
@@ -383,6 +387,7 @@
   }
 
   function llegaBooking(nombre) {
+    if (!hayPC) return;
     var lista = $('[data-contactos]');
     var li = el('li', 't-nuevo'); li.setAttribute('data-tipo', 'booker');
     li.innerHTML = '<b>Nueva solicitud</b><i style="--c: var(--p-coral);">Booker</i><span></span><small>Ahora</small>';
@@ -393,9 +398,14 @@
   }
 
   /* ── 4. Arranque ───────────────────────────────────────────────── */
-  if ('ResizeObserver' in window) new ResizeObserver(escalar).observe(marco);
-  else window.addEventListener('resize', escalar);
-  escalar();
-  ir('perfiles');
+  if (hayPC) {
+    if ('ResizeObserver' in window) new ResizeObserver(escalar).observe(marco);
+    else window.addEventListener('resize', escalar);
+    escalar();
+    ir('perfiles');
+    // Para que otras secciones de la página abran un módulo: lcDemo.ir('crm')
+    window.lcDemo = { ir: function (id) { ir(id); } };
+  }
   mostrarMovil('inicio');
-})();
+}
+document.querySelectorAll('[data-demo]').forEach(montarDemo);

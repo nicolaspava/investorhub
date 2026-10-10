@@ -1,5 +1,19 @@
 # Landing · dirección «Cartel nocturno»
 
+> **Desde el 9 oct son tres páginas:**
+> - **Principal** (`#pg-home`, el pitch): hero con la escena de las dos pantallas (`img/escena/`), el problema, la solución, el producto 1 (La Guía), el producto 2 (La Terminal), los reconocimientos, la tienda y el cierre con «Regístrate gratis».
+> - **La Guía** (`#pg-la-guia`, `#la-guia`): la landing para usuarios.
+>   - Hero con la demo del teléfono.
+>   - «Esta semana en Bogotá».
+>   - Categorías (`#categorias`): eventos, páginas y contenidos.
+>   - Funciones en filas alternas con capturas, al estilo de Shotgun.
+> - **La Terminal** (`#pg-preventa`, `#terminal`): la landing para gestores, con la preventa adentro.
+>   - Hero, la demo completa (computador y teléfono conectados) y el respaldo.
+>   - Funciones en cuatro pilares (mostrarte, publicar, conectar y crecer): cada función abre su módulo en la demo con `lcDemo.ir()`.
+>   - Aliados, beneficios, cómo entrar, precio con la camiseta, preguntas y cierre.
+> - **Barra:** La Guía, La Terminal, Categorías, Preventa, Nosotros, Explorar la guía e Ingresar. `navTo(página, ancla)` ya acepta anclas en cualquier página.
+> - **`estilo/demo.js`** monta cada `[data-demo]`. La demo solo de teléfono no tiene el computador y lo que depende de él no corre.
+
 Rediseño de la portada de la landing (`index.html`, pantalla `#pg-home`) hecho con el *taste skill* el 7 oct 2026. Vive en la rama `diseno/taste-skill`. La versión que copia el sistema de la webapp, sin rediseño, está en la rama `diseno/sistema-webapp`.
 
 | Archivo | Qué es |
