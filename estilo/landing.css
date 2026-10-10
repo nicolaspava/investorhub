@@ -1115,3 +1115,43 @@ html[data-tema] .mprev-btn-pay { border-radius: 999px; }
 @media (prefers-reduced-transparency: reduce) {
   .t-cat, .t-pilar, .t-escena-rotulo { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--t-surf); }
 }
+
+/* La Terminal · calculadora de retorno */
+.t-roi { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 16px; margin-top: 28px; align-items: start; }
+.t-roi-datos { display: grid; gap: 14px; padding: clamp(20px, 3vw, 28px); border-radius: var(--t-radio); border: 1px solid var(--g-borde); background: var(--g-luz), var(--g-tinte); }
+.t-roi fieldset { margin: 0; padding: 0; border: 0; display: grid; gap: 12px; min-width: 0; }
+.t-roi legend { padding: 0; margin-bottom: 4px; font: 500 11px/1 var(--lc-font-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--t-text-3); }
+.t-roi-campo { display: grid; gap: 6px; font-size: 15px; font-weight: 600; color: var(--t-text); }
+.t-roi-campo small { font-weight: 400; font-size: 12.5px; color: var(--t-text-3); }
+.t-roi-input { display: flex; align-items: center; gap: 6px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--g-borde-2); background: rgba(255, 255, 255, .05); }
+.t-roi-input i { font-style: normal; color: var(--t-text-3); }
+.t-roi input { width: 100%; min-width: 0; padding: 11px 0; border: 0; background: none; color: var(--t-text); font: 600 17px/1 var(--lc-font-body); font-variant-numeric: tabular-nums; }
+.t-roi input:focus { outline: none; }
+.t-roi-input:focus-within, .t-roi-sup label:focus-within { border-color: var(--p-cyan); box-shadow: 0 0 0 1px var(--p-cyan); }
+.t-roi-sup { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 8px; align-items: center; }
+.t-roi-sup-nombre { font-size: 14.5px; font-weight: 600; }
+.t-roi-sup label { display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 4px; padding: 4px 10px 6px; border-radius: 12px; border: 1px solid var(--g-borde-2); background: rgba(255, 255, 255, .04); }
+.t-roi-sup label:last-child { border-color: rgba(117, 230, 249, .35); }
+.t-roi-sup small { grid-column: 1 / -1; font-size: 10.5px; color: var(--t-text-3); }
+.t-roi-sup input { padding: 2px 0; font-size: 16px; }
+.t-roi-sup em { font-style: normal; font-size: 12px; color: var(--t-text-3); }
+.t-roi-nota { margin: 0; font-size: 13.5px; color: var(--t-text-3); }
+.t-roi-res { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 12px; align-items: start; }
+.t-roi-esc { display: grid; gap: 12px; padding: 22px; border-radius: var(--t-radio); border: 1px solid color-mix(in srgb, var(--c) 40%, transparent); background: rgba(255, 255, 255, .03); }
+.t-roi-pro { background: linear-gradient(160deg, rgba(117, 230, 249, .14), transparent 60%), rgba(255, 255, 255, .03); }
+.t-roi-esc-tag { margin: 0; font: 500 11px/1.3 var(--lc-font-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--c); }
+.t-roi-esc dl { margin: 0; display: grid; gap: 10px; }
+.t-roi-esc dl div { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; padding-bottom: 8px; border-bottom: 1px solid var(--g-borde); }
+.t-roi-esc dt { font-size: 13.5px; color: var(--t-text-2); }
+.t-roi-esc dd { margin: 0; font-family: var(--lc-font-display); font-weight: 800; font-size: 1.15rem; font-variant-numeric: tabular-nums; color: var(--t-text); text-align: right; }
+.t-roi-pro dd { color: var(--p-cyan); }
+.t-roi-total p { margin: 0; }
+.t-roi-total > p:first-child { display: grid; gap: 2px; }
+.t-roi-total b { white-space: nowrap; line-height: 1; }
+.t-roi-total span { font-size: 14px; color: var(--t-text); font-weight: 600; }
+.t-roi-total b { font-family: var(--lc-font-display); font-weight: 800; font-size: clamp(2.2rem, 4vw, 3rem); letter-spacing: -.03em; color: var(--p-cyan); }
+.t-roi-frase { margin-top: 6px !important; font-size: 14px; line-height: 1.5; color: var(--t-text-2); }
+.t-roi-pro .t-btn { justify-self: start; }
+.t-roi-aviso { grid-column: 1 / -1; margin: 0; font-size: 12.5px; color: var(--t-text-3); }
+@media (max-width: 1000px) { .t-roi { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .t-roi-res { grid-template-columns: 1fr; } .t-roi-sup { grid-template-columns: 1fr 1fr; } .t-roi-sup-nombre { grid-column: 1 / -1; } }

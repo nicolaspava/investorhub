@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261009c">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261010b">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261009a">
 <script src="/estilo/demo.js?v=20261009a" defer></script>
 <script src="/estilo/landing.js?v=20261008b" defer></script>
@@ -1302,7 +1302,7 @@ window.addEventListener('load', function(){
 <div class="t-fun">
   <!-- 1 · Barra de la página -->
   <div class="t-fun-barra" role="navigation" aria-label="En esta página">
-    <button type="button" data-ir-a="t-fun-terminal">Funciones</button><button type="button" data-ir-a="t-fun-recibes">Beneficios</button><button type="button" data-ir-a="t-fun-como">Cómo entrar</button><button type="button" data-ir-a="t-fun-precio">Precio</button><button type="button" data-ir-a="t-fun-preguntas">Preguntas</button>
+    <button type="button" data-ir-a="t-fun-terminal">Funciones</button><button type="button" data-ir-a="t-fun-recibes">Beneficios</button><button type="button" data-ir-a="t-fun-roi">Calcula</button><button type="button" data-ir-a="t-fun-como">Cómo entrar</button><button type="button" data-ir-a="t-fun-precio">Precio</button><button type="button" data-ir-a="t-fun-preguntas">Preguntas</button>
     <button type="button" class="t-btn t-btn-pri" onclick="prevSelectPlan('fundador')">Reservar cupo</button>
   </div>
 
@@ -1685,6 +1685,64 @@ window.addEventListener('load', function(){
             <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M185.33,114.21l29.14-27.42.17-.17a32,32,0,0,0-45.26-45.26c0,.06-.11.11-.17.17L141.79,70.67l-83-30.2a8,8,0,0,0-8.39,1.86l-24,24a8,8,0,0,0,1.22,12.31l63.89,42.59L76.69,136H56a8,8,0,0,0-5.65,2.34l-24,24A8,8,0,0,0,29,175.42l36.82,14.73,14.7,36.75.06.16a8,8,0,0,0,13.18,2.47l23.87-23.88A8,8,0,0,0,120,200V179.31l14.76-14.76,42.59,63.89a8,8,0,0,0,12.31,1.22l24-24a8,8,0,0,0,1.86-8.39Zm-.07,97.23-42.59-63.88A8,8,0,0,0,136.8,144c-.27,0-.53,0-.79,0a8,8,0,0,0-5.66,2.35l-24,24A8,8,0,0,0,104,176v20.69L90.93,209.76,79.43,181A8,8,0,0,0,75,176.57l-28.74-11.5L59.32,152H80a8,8,0,0,0,5.66-2.34l24-24a8,8,0,0,0-1.22-12.32L44.56,70.74l13.5-13.49,83.22,30.26a8,8,0,0,0,8.56-2L180.78,52.6A16,16,0,0,1,203.4,75.23l-32.87,30.93a8,8,0,0,0-2,8.56l30.26,83.22Z"/></svg></span>Tu perfil forma parte del catálogo que presentamos a agentes europeos</li>
     </ul>
     <p class="t-fun-insignia"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-52.2,6.84-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Insignia de fundador.</b> Un distintivo en tu perfil, solo eso.</span></p>
+  </section>
+
+  <!-- 4b · Calculadora de retorno (10 oct): datos del último trimestre y supuestos que la persona ajusta. No promete resultados. -->
+  <section class="t-fun-bloque t-envoltura" id="t-fun-roi">
+    <p class="t-etiqueta" style="--c: var(--p-cyan);">Calcula tu retorno</p>
+    <h2 class="t-h2">¿Cuánto te puede devolver La Terminal?</h2>
+    <p class="t-lead">Pon tus números del último trimestre (julio, agosto y septiembre) y compara qué pasaría con tu perfil gratis y con La Terminal. Los supuestos son tuyos: muévelos hasta que se parezcan a tu proyecto.</p>
+    <div class="t-roi" data-roi>
+      <form class="t-roi-datos" data-roi-form>
+        <fieldset>
+          <legend>Tu último trimestre</legend>
+          <label class="t-roi-campo" for="roi-bookings"><span>Bookings que tuviste</span><span class="t-roi-input"><input id="roi-bookings" type="number" inputmode="numeric" min="0" step="1" value="6"></span><small>Fechas pagadas entre julio y septiembre.</small></label>
+          <label class="t-roi-campo" for="roi-precio"><span>Pago promedio por booking</span><span class="t-roi-input"><i>$</i><input id="roi-precio" type="number" inputmode="numeric" min="0" step="50000" value="800000"></span><small>En pesos colombianos.</small></label>
+        </fieldset>
+        <fieldset>
+          <legend>Supuestos por trimestre</legend>
+          <div class="t-roi-sup"><span class="t-roi-sup-nombre">Bookings nuevos</span>
+          <label for="roi-crec-g"><small>Perfil gratis</small><input id="roi-crec-g" type="number" min="0" max="300" step="1" value="5"><em>%</em></label>
+          <label for="roi-crec-p"><small>La Terminal</small><input id="roi-crec-p" type="number" min="0" max="300" step="1" value="20"><em>%</em></label></div>
+          <div class="t-roi-sup"><span class="t-roi-sup-nombre">Notas de prensa</span>
+          <label for="roi-prensa-g"><small>Perfil gratis</small><input id="roi-prensa-g" type="number" min="0" max="20" step="1" value="0"><em>notas</em></label>
+          <label for="roi-prensa-p"><small>La Terminal</small><input id="roi-prensa-p" type="number" min="0" max="20" step="1" value="2"><em>notas</em></label></div>
+          <div class="t-roi-sup"><span class="t-roi-sup-nombre">Publicaciones con venues</span>
+          <label for="roi-colab-g"><small>Perfil gratis</small><input id="roi-colab-g" type="number" min="0" max="30" step="1" value="1"><em>publ.</em></label>
+          <label for="roi-colab-p"><small>La Terminal</small><input id="roi-colab-p" type="number" min="0" max="30" step="1" value="3"><em>publ.</em></label></div>
+          <div class="t-roi-sup"><span class="t-roi-sup-nombre">Seguidores por publicación</span>
+          <label for="roi-seg-g"><small>Perfil gratis</small><input id="roi-seg-g" type="number" min="0" max="5000" step="10" value="100"><em>seg.</em></label>
+          <label for="roi-seg-p"><small>La Terminal</small><input id="roi-seg-p" type="number" min="0" max="5000" step="10" value="150"><em>seg.</em></label></div>
+        </fieldset>
+        <p class="t-roi-nota">La Terminal cuesta $200.000 al año como perfil fundador: $50.000 por trimestre. El perfil gratis no cuesta nada.</p>
+      </form>
+      <div class="t-roi-res" aria-live="polite">
+        <article class="t-roi-esc" style="--c: var(--t-text-3);">
+          <p class="t-roi-esc-tag">Perfil gratis</p>
+          <dl>
+            <div><dt>Bookings nuevos</dt><dd data-r="g-book">0</dd></div>
+            <div><dt>Ingreso adicional</dt><dd data-r="g-ing">$0</dd></div>
+            <div><dt>Notas de prensa</dt><dd data-r="g-prensa">0</dd></div>
+            <div><dt>Seguidores nuevos</dt><dd data-r="g-seg">0</dd></div>
+          </dl>
+        </article>
+        <article class="t-roi-esc t-roi-pro" style="--c: var(--p-cyan);">
+          <p class="t-roi-esc-tag">La Terminal · perfil fundador</p>
+          <dl>
+            <div><dt>Bookings nuevos</dt><dd data-r="p-book">0</dd></div>
+            <div><dt>Ingreso adicional</dt><dd data-r="p-ing">$0</dd></div>
+            <div><dt>Notas de prensa</dt><dd data-r="p-prensa">0</dd></div>
+            <div><dt>Seguidores nuevos</dt><dd data-r="p-seg">0</dd></div>
+          </dl>
+          <div class="t-roi-total">
+            <p><span>Retorno sobre lo que pagas en el trimestre</span><b data-r="p-roi">0×</b></p>
+            <p class="t-roi-frase" data-r="p-frase"></p>
+          </div>
+          <button type="button" class="t-btn t-btn-pri" onclick="prevSelectPlan('fundador')">Reservar cupo · $100.000</button>
+        </article>
+        <p class="t-roi-aviso">Es una estimación con tus propios supuestos, no una promesa de resultados. Los bookings nuevos se redondean a fechas completas.</p>
+      </div>
+    </div>
   </section>
 
   <!-- 5 · Cómo entrar -->
@@ -2228,6 +2286,49 @@ document.querySelectorAll('[data-tienda]').forEach(function (t) {
   });
   pintar();
 });
+</script>
+<script>
+// Calculadora de retorno de La Terminal: compara el perfil gratis con el perfil fundador ($50.000 por trimestre).
+(function () {
+  var r = document.querySelector('[data-roi]');
+  if (!r) return;
+  var COSTO_TRIMESTRE = 50000;
+  var cop = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 });
+  var num = new Intl.NumberFormat('es-CO');
+  function v(id) { var x = parseFloat(document.getElementById(id).value); return isFinite(x) && x > 0 ? x : 0; }
+  function poner(k, t) { r.querySelector('[data-r="' + k + '"]').textContent = t; }
+  function escenario(sufijo) {
+    var nuevos = Math.round(v('roi-bookings') * v('roi-crec-' + sufijo) / 100);
+    return {
+      book: nuevos,
+      ing: nuevos * v('roi-precio'),
+      prensa: Math.round(v('roi-prensa-' + sufijo)),
+      seg: Math.round(v('roi-colab-' + sufijo) * v('roi-seg-' + sufijo))
+    };
+  }
+  function calcular() {
+    ['g', 'p'].forEach(function (k) {
+      var e = escenario(k);
+      poner(k + '-book', '+' + num.format(e.book));
+      poner(k + '-ing', cop.format(e.ing));
+      poner(k + '-prensa', num.format(e.prensa));
+      poner(k + '-seg', '+' + num.format(e.seg));
+    });
+    var p = escenario('p'), g = escenario('g');
+    var extra = p.ing - g.ing;
+    var veces = extra / COSTO_TRIMESTRE;
+    poner('p-roi', (veces > 0 ? (Math.round(veces * 10) / 10).toLocaleString('es-CO') : '0') + '×');
+    var precio = v('roi-precio');
+    var frase = precio >= 200000
+      ? 'Con un solo booking de ' + cop.format(precio) + ' pagas el año completo de La Terminal.'
+      : 'Necesitas ' + Math.ceil(200000 / Math.max(precio, 1)) + ' bookings a este precio para pagar el año.';
+    if (extra > 0) frase += ' Frente al perfil gratis, la diferencia del trimestre es de ' + cop.format(extra) + '.';
+    poner('p-frase', frase);
+  }
+  r.addEventListener('input', calcular);
+  r.querySelector('[data-roi-form]').addEventListener('submit', function (e) { e.preventDefault(); });
+  calcular();
+})();
 </script>
 <div class="pg" id="pg-hub">
 

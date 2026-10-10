@@ -10,6 +10,7 @@
 > - **La Terminal** (`#pg-preventa`, `#terminal`): la landing para gestores, con la preventa adentro.
 >   - Hero, la demo completa (computador y teléfono conectados) y el respaldo.
 >   - Funciones en cuatro pilares (mostrarte, publicar, conectar y crecer): cada función abre su módulo en la demo con `lcDemo.ir()`.
+>   - Calculadora de retorno (`#t-fun-roi`): bookings y pago promedio del último trimestre, más supuestos por escenario (perfil gratis o La Terminal): % de bookings nuevos, notas de prensa, publicaciones con venues y seguidores por publicación. Compara contra $50.000 por trimestre. Es una estimación y lo dice.
 >   - Aliados, beneficios, cómo entrar, precio con la camiseta, preguntas y cierre.
 > - **Barra:** La Guía, La Terminal, Categorías, Preventa, Nosotros, Explorar la guía e Ingresar. `navTo(página, ancla)` ya acepta anclas en cualquier página.
 > - **`estilo/demo.js`** monta cada `[data-demo]`. La demo solo de teléfono no tiene el computador y lo que depende de él no corre.
