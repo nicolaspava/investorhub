@@ -53,7 +53,9 @@ export async function actualizarRegistro(id, cambios) {
 }
 
 // ── Correo ───────────────────────────────────────────────────────────────────
-// Se envía con Brevo (brevo.com) si está BREVO_API_KEY, o con Resend (resend.com) si está RESEND_API_KEY.
+// Se envía, en este orden, con lo que esté configurado:
+//   1. Gmail, por un Google Apps Script (google/aviso-correo.gs): GOOGLE_SCRIPT_URL y GOOGLE_SCRIPT_CLAVE.
+//   2. Brevo (brevo.com): BREVO_API_KEY.   3. Resend (resend.com): RESEND_API_KEY.
 // Sin ninguna no se envía nada y el pago sigue su curso: Mercado Pago ya le manda su comprobante a quien paga.
 // CORREO_REMITENTE debe ser un remitente o dominio verificado en el servicio, p. ej. «La Curaduría <preventa@lacuraduria.com>».
 function remitente() {
@@ -67,6 +69,18 @@ async function enviar({ para, asunto, html, texto, responderA }) {
   const de = remitente();
   const brevo = process.env.BREVO_API_KEY;
   const resend = process.env.RESEND_API_KEY;
+  const google = process.env.GOOGLE_SCRIPT_URL;
+  if (google) {
+    // El script responde con una redirección a googleusercontent.com; fetch la sigue sola.
+    const g = await fetch(google, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ clave: process.env.GOOGLE_SCRIPT_CLAVE, para: lista, asunto, html, texto, nombre: de.nombre, responderA: responderA || CORREO_CONTACTO }),
+    });
+    const res = await g.json().catch(() => ({}));
+    if (!g.ok || !res.ok) { console.error('Google Script', g.status, JSON.stringify(res)); return false; }
+    return true;
+  }
   let r;
   if (brevo) {
     r = await fetch('https://api.brevo.com/v3/smtp/email', {
@@ -95,7 +109,7 @@ async function enviar({ para, asunto, html, texto, responderA }) {
       }),
     });
   } else {
-    console.warn('Correo sin enviar: falta BREVO_API_KEY o RESEND_API_KEY');
+    console.warn('Correo sin enviar: falta GOOGLE_SCRIPT_URL, BREVO_API_KEY o RESEND_API_KEY');
     return false;
   }
   if (!r.ok) { console.error(brevo ? 'Brevo' : 'Resend', r.status, await r.text()); return false; }
