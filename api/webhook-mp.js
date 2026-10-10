@@ -111,7 +111,7 @@ export default async function handler(req, res) {
     try {
       const aprobados = await pagosAprobados(antes.email);
       const mitad = Math.max(1, aprobados.findIndex((r) => r.id === registroId) + 1 || aprobados.length);
-      await correosDeConfirmacion({ nombre: antes.nombre, email: antes.email, mitad: Math.min(mitad, 2), monto: transaction_amount || PRECIO_MITAD });
+      await correosDeConfirmacion({ nombre: antes.nombre, email: antes.email, mitad: Math.min(mitad, 2), monto: transaction_amount || PRECIO_MITAD, pagoId: paymentId });
     } catch (e) { console.error('Correo de confirmación:', e); }   // el pago ya quedó registrado; el correo no lo bloquea
   }
 

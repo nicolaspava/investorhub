@@ -50,7 +50,7 @@ Este documento es para seguir el trabajo en una sesión nueva (por ejemplo, Clau
 
 ## Pendientes
 
-1. **Correo de confirmación:** que Nicolás cree una cuenta en Resend, verifique el dominio lacuraduria.com y cargue en Vercel `RESEND_API_KEY` y `CORREO_REMITENTE` (`La Curaduría <preventa@lacuraduria.com>`).
+1. **Correo de confirmación:** que Nicolás cree una cuenta en Resend, verifique el dominio lacuraduria.com y cargue en Vercel `RESEND_API_KEY` y `CORREO_REMITENTE` (`La Curaduría <preventa@lacuraduria.com>`). Con eso salen dos correos por cada pago aprobado: la confirmación al comprador y el aviso de compra al equipo. El aviso va a `CORREO_AVISOS` (uno o varios correos separados por comas); si no existe, a nicolas.pava@lacuraduria.net.
 2. **Política de reembolso:** es una propuesta; revisarla, idealmente con abogado. La condición de «60 días sin beneficios» la propuso Claude y está por confirmar.
 3. **Compra de prueba:** ya existen las cuentas de prueba (vendedor 3754973974, comprador 3755179732). Falta:
    1. sacar el token del vendedor de prueba;

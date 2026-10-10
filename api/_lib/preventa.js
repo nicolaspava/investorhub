@@ -64,7 +64,7 @@ async function enviar({ para, asunto, html, texto, responderA }) {
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${clave}` },
     body: JSON.stringify({
       from: process.env.CORREO_REMITENTE || 'La Curaduría <preventa@lacuraduria.com>',
-      to: [para],
+      to: Array.isArray(para) ? para : [para],
       reply_to: responderA || CORREO_CONTACTO,
       subject: asunto,
       html,
@@ -79,7 +79,7 @@ const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 const pesos = (n) => '$' + Number(n).toLocaleString('es-CO');
 
 // Confirmación al comprador (primera o segunda mitad) y aviso al equipo.
-export async function correosDeConfirmacion({ nombre, email, mitad, monto }) {
+export async function correosDeConfirmacion({ nombre, email, mitad, monto, pagoId }) {
   const primera = mitad === 1;
   const asunto = primera ? 'Tu cupo de fundador en La Terminal está reservado' : 'Pagaste la segunda mitad: tu suscripción fundadora está completa';
   const cuerpo = primera
@@ -99,11 +99,18 @@ export async function correosDeConfirmacion({ nombre, email, mitad, monto }) {
   const texto = [...cuerpo, cierre, '', 'La Curaduría · Tecnología para la circulación de la cultura.'].join('\n\n');
 
   const alComprador = await enviar({ para: email, asunto, html, texto });
+  // Aviso al equipo. CORREO_AVISOS puede llevar varios correos separados por comas.
+  const resumen = `${nombre} (${email}) pagó ${pesos(monto)}: ${primera ? 'primera' : 'segunda'} mitad de la suscripción fundadora.`;
+  const detalle = [
+    `Pago de Mercado Pago: ${pagoId || 'sin número'}`,
+    `Correo al comprador: ${alComprador ? 'enviado' : 'no se envió (revisar Resend)'}`,
+    'Ver en Mercado Pago: https://www.mercadopago.com.co/activities',
+  ];
   await enviar({
-    para: process.env.CORREO_AVISOS || CORREO_CONTACTO,
-    asunto: `Preventa: ${nombre} pagó la ${primera ? 'primera' : 'segunda'} mitad`,
-    texto: `${nombre} (${email}) pagó ${pesos(monto)}: ${primera ? 'primera' : 'segunda'} mitad de la suscripción fundadora.`,
-    html: `<p>${esc(nombre)} (${esc(email)}) pagó ${pesos(monto)}: ${primera ? 'primera' : 'segunda'} mitad de la suscripción fundadora.</p>`,
+    para: String(process.env.CORREO_AVISOS || CORREO_CONTACTO).split(',').map((c) => c.trim()).filter(Boolean),
+    asunto: `Preventa: ${nombre} pagó la ${primera ? 'primera' : 'segunda'} mitad (${pesos(monto)})`,
+    texto: [resumen, ...detalle].join('\n'),
+    html: `<p>${esc(resumen)}</p>${detalle.map((d) => `<p style="color:#77746C">${esc(d)}</p>`).join('')}`,
     responderA: email,
   });
   return alComprador;
