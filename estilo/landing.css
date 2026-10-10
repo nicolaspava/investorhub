@@ -1251,3 +1251,16 @@ nav.t-barra .nav-burger span { background: var(--t-text); }
   .t-como .t-estacion-centro .t-parada { transform: none; }
   .t-como .t-estacion-centro .t-h3 { font-size: 1.6rem; }
 }
+
+/* ══ Hoy y lo que viene (backlog 2.1): disponible frente a próximamente ══ */
+.t-estados { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: clamp(24px, 3vw, 40px); }
+.t-estados-uno { grid-template-columns: minmax(0, 760px); }
+.t-estados-col { padding: clamp(22px, 3vw, 36px); border-radius: var(--t-radio); border: 1px solid var(--g-borde); border-top: 3px solid var(--c); background: var(--g-luz), var(--g-tinte); }
+.t-estados-col .t-h3 { margin: 0 0 18px; color: var(--c); }
+.t-estados-col .t-sus-sub { margin-top: 18px; }
+.t-estados-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.t-estados-lista li { display: flex; align-items: baseline; gap: 10px; font-size: 15px; line-height: 1.45; color: var(--t-text-2); }
+.t-estados-lista .t-estado-chip { flex: none; min-width: 64px; justify-content: center; }
+.t-estados-lista a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--c) 45%, transparent); text-underline-offset: 3px; }
+.t-estados-lista a:hover { color: var(--t-text); }
+@media (max-width: 900px) { .t-estados { grid-template-columns: 1fr; } }

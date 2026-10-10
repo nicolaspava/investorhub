@@ -3,17 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La Curaduría</title>
-<meta name="description" content="Una infraestructura de gestión y descubrimiento cultural. Tecnología para la circulación de la cultura.">
+<title>La Curaduría · Cambia el algoritmo por la curaduría</title>
+<meta name="description" content="Guía cultural colaborativa para descubrir música, arte y entretenimiento, alimentada por La Terminal: el software para gestionar y publicar tu proyecto cultural. Preventa Plan Fundadores, 50 cupos.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="La Curaduría">
+<meta property="og:title" content="La Curaduría · Cambia el algoritmo por la curaduría">
+<meta property="og:description" content="Descubre música, arte y entretenimiento en una guía construida por quienes hacen la cultura. Publica tu proyecto con La Terminal.">
+<meta property="og:image" content="https://lacuraduria.com/img/compartir.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://lacuraduria.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
 <!-- Sistema de diseño de la webapp (copia): ver ds/LEEME.md -->
 <link rel="stylesheet" href="/ds/tokens.css">
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261010i">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261010j">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261009a">
+<!-- Medición: pega aquí el ID de Google Analytics 4 (G-XXXX) y el de la conversión de Google Ads (AW-XXXX/etiqueta). Vacíos, no se carga nada de Google. -->
+<meta name="lc-ga4" content="">
+<meta name="lc-ads" content="">
+<script src="/estilo/medicion.js?v=20261010a"></script>
 <script src="/estilo/demo.js?v=20261009a" defer></script>
-<script src="/estilo/landing.js?v=20261010c" defer></script>
+<script src="/estilo/landing.js?v=20261010d" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 /* La paleta y las familias vienen de ds/tokens.css y ds/landing.css. */
@@ -387,7 +401,7 @@ footer.site-footer{}
   </div>
   <div class="t-barra-der">
     <a class="t-barra-buscar" href="https://lacuraduria.net" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg><span>Eventos, artistas, publicaciones</span></a>
-    <button type="button" class="t-barra-cta" onclick="navTo('preventa','t-fun-precio')">Ser Fundador</button>
+    <button data-evento="cta_fundadores" type="button" data-evento="cta_fundadores" class="t-barra-cta" onclick="navTo('preventa','t-fun-precio')">Ser Fundador</button>
     <a class="t-barra-ingresar" href="https://lacuraduria.net/login" target="_blank" rel="noopener" aria-label="Ingresar"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></svg></a>
   </div>
   </div>
@@ -421,8 +435,8 @@ footer.site-footer{}
           <p class="t-bajada t-entra t-entra-2">Cambia el algoritmo por la curaduría.</p>
           <p class="t-lead t-entra t-entra-3">Descubre música, arte y entretenimiento en una guía cultural construida por quienes hacen la cultura.</p>
           <div class="t-ctas t-entra t-entra-4">
-            <a class="t-btn t-btn-pri" href="https://lacuraduria.net" target="_blank" rel="noopener">Explorar la guía <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
-            <button type="button" class="t-btn t-btn-sec" onclick="navTo('preventa')">Conocer La Terminal</button>
+            <a data-evento="cta_explorar" class="t-btn t-btn-pri" href="https://lacuraduria.net" target="_blank" rel="noopener">Explorar la guía <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+            <button data-evento="cta_terminal" type="button" class="t-btn t-btn-sec" onclick="navTo('preventa')">Conocer La Terminal</button>
           </div>
         </div>
       </div>
@@ -488,7 +502,7 @@ footer.site-footer{}
         <ul class="t-producto-lista"><li><span class="t-estado-chip" data-estado="ya">Ya</span>Cartelera y mapa de la ciudad</li><li><span class="t-estado-chip" data-estado="ya">Ya</span>Directorio de artistas, espacios y colectivos</li><li><span class="t-estado-chip" data-estado="ya">Ya</span>Contenidos y reseñas</li><li><span class="t-estado-chip" data-estado="ya">Ya</span>Tu ruta cultural: guarda lo que te gusta</li><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>La GuÍA, una copiloto que recomienda</li></ul>
         <div class="t-ctas">
           <button type="button" class="t-btn t-btn-pri" onclick="navTo('la-guia')">Conoce La Guía <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
-          <a class="t-btn t-btn-sec" href="https://lacuraduria.net" target="_blank" rel="noopener">Explorar la guía</a>
+          <a data-evento="cta_explorar" class="t-btn t-btn-sec" href="https://lacuraduria.net" target="_blank" rel="noopener">Explorar la guía</a>
         </div>
       </div>
       <button type="button" class="t-producto-img t-producto-tel t-rv t-rv-2" onclick="navTo('la-guia')" aria-label="Ver La Guía"><img src="/img/escena/guia.webp" alt="" width="461" height="1000" loading="lazy"></button>
@@ -509,6 +523,26 @@ footer.site-footer{}
         </div>
       </div>
       <button type="button" class="t-producto-img t-rv t-rv-2" onclick="navTo('preventa')" aria-label="Ver La Terminal"><img src="/img/escena/terminal.webp" alt="" width="1400" height="948" loading="lazy"></button>
+    </div>
+  </section>
+
+    <!-- Qué hay hoy y qué viene (backlog 2.1): lo disponible, separado de lo que está en construcción -->
+  <section id="estados" class="t-bloque">
+    <div class="t-envoltura">
+      <p class="t-etiqueta t-rv">Hoy y lo que viene</p>
+      <h2 class="t-h2 t-rv">Lo que ya funciona y lo que estamos construyendo.</h2>
+      <div class="t-estados t-rv">
+        <div class="t-estados-col" style="--c: var(--p-cyan);">
+          <h3 class="t-h3">La Guía</h3>
+          <p class="t-sus-sub">Disponible ahora</p><ul class="t-estados-lista"><li><span class="t-estado-chip" data-estado="ya">Ya</span><a href="https://lacuraduria.net/eventos" target="_blank" rel="noopener">Cartelera de eventos</a></li><li><span class="t-estado-chip" data-estado="ya">Ya</span><a href="https://lacuraduria.net/perfiles" target="_blank" rel="noopener">Directorio de artistas, espacios, colectivos y medios</a></li><li><span class="t-estado-chip" data-estado="ya">Ya</span><a href="https://lacuraduria.net/contenidos" target="_blank" rel="noopener">Contenidos y reseñas</a></li><li><span class="t-estado-chip" data-estado="ya">Ya</span><a href="https://lacuraduria.net/" target="_blank" rel="noopener">Recomendaciones editoriales de La Curaduría</a></li><li><span class="t-estado-chip" data-estado="ya">Ya</span><a href="https://lacuraduria.net/radio" target="_blank" rel="noopener">Radio en línea</a></li><li><span class="t-estado-chip" data-estado="ya">Ya</span>Seguir, guardar e interactuar</li><li><span class="t-estado-chip" data-estado="ya">Ya</span><a href="https://lacuraduria.net/perfiles" target="_blank" rel="noopener">Perfiles con enlaces, contacto, YouTube y SoundCloud</a></li><li><span class="t-estado-chip" data-estado="ya">Ya</span><a href="https://lacuraduria.net/publicar" target="_blank" rel="noopener">Publicar eventos, perfiles, contenidos y reseñas</a></li></ul>
+          <p class="t-sus-sub">Próximamente</p><ul class="t-estados-lista"><li><span class="t-estado-chip" data-estado="pronto">En construcción</span>Perfil de usuario tipo Letterboxd: tu historial y tus colecciones</li><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Copiloto cultural: la GuÍA te recomienda según lo que buscas</li><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Mapa cultural</li><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Mensajes directos</li><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Marketplace y compra de entradas</li></ul>
+        </div>
+        <div class="t-estados-col" style="--c: var(--p-coral);">
+          <h3 class="t-h3">La Terminal</h3>
+          <p class="t-sus-sub">Disponible ahora</p><ul class="t-estados-lista"><li><span class="t-estado-chip" data-estado="ya">Ya</span>Administración de tus páginas y perfiles</li><li><span class="t-estado-chip" data-estado="ya">Ya</span>Publicación de eventos y contenidos, que alimenta La Guía</li></ul>
+          <p class="t-sus-sub">En desarrollo</p><ul class="t-estados-lista"><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Gestión de proyectos, agenda y comunidad</li><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Analítica para agentes culturales</li><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Oportunidades comerciales</li><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Suscripciones y facturación</li></ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -553,7 +587,7 @@ footer.site-footer{}
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Tu press kit en un enlace para compartir</span></li>
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Publica tus eventos en la cartelera</span></li>
           </ul>
-          <a class="t-btn t-btn-sec" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis</a>
+          <a data-evento="sign_up_click" class="t-btn t-btn-sec" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis</a>
         </article>
         <article class="t-sus-plan t-sus-fundador">
           <p class="t-sus-tier">Pro · Fundador <span class="t-planes-cupos"><b data-cupos>50</b> de 50 cupos</span></p>
@@ -566,7 +600,7 @@ footer.site-footer{}
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Beneficios desde hoy:</b> tu perfil compartido en nuestras redes, una reseña de tu proyecto y tu perfil en el catálogo que presentamos a agentes europeos</span></li>
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Parte del movimiento:</b> los primeros 50 proyectos que cambian el algoritmo por la curaduría</span></li>
           </ul>
-          <button type="button" class="t-btn t-btn-pri" onclick="prevSelectPlan('fundador')">Reservar cupo · $100.000 <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+          <button data-evento="cta_fundadores" type="button" class="t-btn t-btn-pri" onclick="prevSelectPlan('fundador')">Reservar cupo · $100.000 <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
           <p class="t-planes-mas"><button type="button" class="t-fun-enlace" onclick="navTo('preventa','t-fun-precio')">Conoce la preventa en La Terminal</button></p>
         </article>
       </div>
@@ -622,7 +656,7 @@ footer.site-footer{}
           </div>
         </fieldset>
 
-        <button type="button" class="t-btn t-btn-pri t-btn-xl" data-comprar disabled><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"/></svg> Elige tu talla</button>
+        <button data-evento="shirt_order_click" type="button" class="t-btn t-btn-pri t-btn-xl" data-comprar disabled><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"/></svg> Elige tu talla</button>
         <p class="t-tienda-nota">Te escribimos por WhatsApp para coordinar el pago y la entrega.</p>
       </div>
     </div>
@@ -635,8 +669,8 @@ footer.site-footer{}
       <h2 class="t-cierre-frase t-rv">¡Cambia el algoritmo <span class="t-coral">por la curaduría!</span></h2>
       <p class="t-lead t-rv t-rv-2" style="margin: 0 auto 32px;">Elige tu camino. Las dos cuentas son gratis.</p>
       <div class="t-ctas t-rv t-rv-2" style="justify-content:center;">
-        <a class="t-btn t-btn-pri t-btn-xl" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Quiero descubrir <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
-        <button type="button" class="t-btn t-btn-sec t-btn-xl" onclick="navTo('preventa')">Quiero publicar</button>
+        <a data-evento="sign_up_click" class="t-btn t-btn-pri t-btn-xl" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Quiero descubrir <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+        <button data-evento="cta_terminal" type="button" class="t-btn t-btn-sec t-btn-xl" onclick="navTo('preventa')">Quiero publicar</button>
       </div>
     </div>
   </section>
@@ -712,8 +746,8 @@ footer.site-footer{}
         <h1 class="t-guia-titulo">Encuentra algo que valga la pena vivir.</h1>
         <p class="t-lead">Eventos, artistas, espacios y contenidos de la escena en un solo lugar. Una guía para explorar más allá de lo que aparece en tu feed.</p>
         <div class="t-ctas">
-          <a class="t-btn t-btn-pri" href="https://lacuraduria.net" target="_blank" rel="noopener">Explorar la guía <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
-          <a class="t-btn t-btn-sec" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis</a>
+          <a data-evento="cta_explorar" class="t-btn t-btn-pri" href="https://lacuraduria.net" target="_blank" rel="noopener">Explorar la guía <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+          <a data-evento="sign_up_click" class="t-btn t-btn-sec" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis</a>
         </div>
       <ul class="t-demo-leyenda" aria-label="Qué significa cada estado">
         <li style="--c: var(--p-cyan);">Ya disponible</li>
@@ -853,8 +887,8 @@ footer.site-footer{}
       <h2 class="t-h2">Tu ruta cultural, en un solo lugar.</h2>
       <div class="t-funcs">
       <article class="t-func t-rv">
-        <div class="t-func-texto"><span class="t-estado-chip" data-estado="ya">Ya disponible</span><h3>Descubre lo que pasa en tu ciudad</h3><p>La cartelera y el mapa muestran qué hay hoy, este fin de semana y cerca de ti, sin depender de lo que te muestra el algoritmo.</p></div>
-        <figure class="t-func-img"><img src="/img/producto/mapa.jpg" alt="" loading="lazy" width="1400" height="875"></figure>
+        <div class="t-func-texto"><span class="t-estado-chip" data-estado="ya">Ya disponible</span><h3>Descubre lo que pasa en tu ciudad</h3><p>La cartelera muestra qué hay hoy y este fin de semana, con recomendaciones editoriales de La Curaduría, sin depender de lo que te muestra el algoritmo.</p></div>
+        <figure class="t-func-img"><img src="/img/producto/cartelera.jpg" alt="" loading="lazy" width="1600" height="1100"></figure>
       </article>
       <article class="t-func t-rv">
         <div class="t-func-texto"><span class="t-estado-chip" data-estado="ya">Ya disponible</span><h3>Conoce a los artistas</h3><p>Cada artista, espacio y colectivo tiene su perfil, con su música, sus fechas y su press kit.</p></div>
@@ -877,11 +911,25 @@ footer.site-footer{}
     </div>
   </section>
 
+    <section id="estados-guia" class="t-bloque">
+    <div class="t-envoltura">
+      <p class="t-etiqueta">Hoy y lo que viene</p>
+      <h2 class="t-h2">Lo que ya puedes hacer en La Guía.</h2>
+      <div class="t-estados t-estados-uno">
+        <div class="t-estados-col" style="--c: var(--p-cyan);">
+          <h3 class="t-h3">La Guía</h3>
+          <p class="t-sus-sub">Disponible ahora</p><ul class="t-estados-lista"><li><span class="t-estado-chip" data-estado="ya">Ya</span><a href="https://lacuraduria.net/eventos" target="_blank" rel="noopener">Cartelera de eventos</a></li><li><span class="t-estado-chip" data-estado="ya">Ya</span><a href="https://lacuraduria.net/perfiles" target="_blank" rel="noopener">Directorio de artistas, espacios, colectivos y medios</a></li><li><span class="t-estado-chip" data-estado="ya">Ya</span><a href="https://lacuraduria.net/contenidos" target="_blank" rel="noopener">Contenidos y reseñas</a></li><li><span class="t-estado-chip" data-estado="ya">Ya</span><a href="https://lacuraduria.net/" target="_blank" rel="noopener">Recomendaciones editoriales de La Curaduría</a></li><li><span class="t-estado-chip" data-estado="ya">Ya</span><a href="https://lacuraduria.net/radio" target="_blank" rel="noopener">Radio en línea</a></li><li><span class="t-estado-chip" data-estado="ya">Ya</span>Seguir, guardar e interactuar</li><li><span class="t-estado-chip" data-estado="ya">Ya</span><a href="https://lacuraduria.net/perfiles" target="_blank" rel="noopener">Perfiles con enlaces, contacto, YouTube y SoundCloud</a></li><li><span class="t-estado-chip" data-estado="ya">Ya</span><a href="https://lacuraduria.net/publicar" target="_blank" rel="noopener">Publicar eventos, perfiles, contenidos y reseñas</a></li></ul>
+          <p class="t-sus-sub">Próximamente</p><ul class="t-estados-lista"><li><span class="t-estado-chip" data-estado="pronto">En construcción</span>Perfil de usuario tipo Letterboxd: tu historial y tus colecciones</li><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Copiloto cultural: la GuÍA te recomienda según lo que buscas</li><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Mapa cultural</li><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Mensajes directos</li><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Marketplace y compra de entradas</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="t-bloque t-cierre">
     <div class="t-envoltura">
       <h2 class="t-cierre-frase">¡Cambia el algoritmo <span class="t-coral">por la curaduría!</span></h2>
       <div class="t-ctas" style="justify-content:center;">
-        <a class="t-btn t-btn-pri t-btn-xl" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+        <a data-evento="sign_up_click" class="t-btn t-btn-pri t-btn-xl" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
         <button type="button" class="t-btn t-btn-sec t-btn-xl" onclick="navTo('preventa')">¿Haces cultura? Conoce La Terminal</button>
       </div>
     </div>
@@ -971,10 +1019,7 @@ footer.site-footer{}
             <a href="mailto:nicolas.pava@lacuraduria.net" style="font-size:15px;color:var(--cream);text-decoration:none;display:block;">nicolas.pava@lacuraduria.net</a>
           </div>
 
-          <div style="padding:24px;background:var(--surf);border:1px solid var(--bord);border-left:3px solid var(--cyan);border-radius:0 var(--lc-radius-md) var(--lc-radius-md) 0;">
-            <div style="font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;">Teléfono</div>
-            <a href="tel:+573044138497" style="font-size:15px;color:var(--cream);text-decoration:none;display:block;">+57 304 413 8497</a>
-          </div>
+          
         </div>
       </div>
 
@@ -996,7 +1041,7 @@ footer.site-footer{}
               <option value="" disabled selected>Selecciona</option>
               <option>Alianza o colaboración</option>
               <option>Prensa y medios</option>
-              <option>Suscripción Profesional</option>
+              <option>Plan Fundadores</option>
               <option>Subir un perfil o evento</option>
               <option>Soporte técnico</option>
               <option>Otro</option>
@@ -1008,7 +1053,9 @@ footer.site-footer{}
           </div>
           <div id="cnt-error" style="display:none;font-family:var(--f-mono);font-size:10px;color:var(--coral);background:rgba(255,115,108,.08);border:1px solid rgba(255,115,108,.2);border-radius:var(--lc-radius-md);padding:10px 14px;"></div>
           <div id="cnt-ok" style="display:none;font-family:var(--f-mono);font-size:10px;color:var(--green);background:rgba(122,211,160,.08);border:1px solid rgba(122,211,160,.2);border-radius:var(--lc-radius-md);padding:10px 14px;">Mensaje enviado. Te respondemos pronto.</div>
-          <button class="form-submit" onclick="enviarContacto()">Enviar mensaje →</button>
+          <div class="cnt-trampa" aria-hidden="true" style="position:absolute;left:-9999px;"><label>Tu web<input type="text" id="cnt-web" tabindex="-1" autocomplete="off"></label></div>
+          <label style="display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.5;color:var(--t2);margin:4px 0 14px;cursor:pointer;"><input type="checkbox" id="cnt-consentimiento" style="margin-top:3px;flex:none;"> <span>Autorizo a La Curaduría a usar mis datos para responder este mensaje, según la <a href="#" onclick="event.preventDefault();navTo('privacidad')" style="color:var(--p-cyan);">política de privacidad</a> (Ley 1581 de 2012).</span></label>
+          <button class="form-submit" id="cnt-enviar" onclick="enviarContacto()">Enviar mensaje →</button>
           <div style="font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;color:var(--t4);line-height:1.7;">Ley 1581/2012 · Tus datos son privados. No los compartimos con terceros.</div>
         </div>
       </div>
@@ -1019,19 +1066,30 @@ footer.site-footer{}
 </div>
 
 <script>
-function enviarContacto(){
-  var nombre = document.getElementById('cnt-nombre').value.trim();
-  var email = document.getElementById('cnt-email').value.trim();
-  var mensaje = document.getElementById('cnt-mensaje').value.trim();
-  var err = document.getElementById('cnt-error');
-  var ok = document.getElementById('cnt-ok');
+// Contacto: se envía de verdad a /api/contacto (correo al equipo y, si existe, fila en la hoja de Google).
+var cntAbierto = Date.now();
+async function enviarContacto(){
+  var v = function(id){ return document.getElementById(id).value.trim(); };
+  var nombre = v('cnt-nombre'), email = v('cnt-email'), mensaje = v('cnt-mensaje'), tipo = v('cnt-asunto') || 'Otro';
+  var err = document.getElementById('cnt-error'), ok = document.getElementById('cnt-ok'), btn = document.getElementById('cnt-enviar');
   err.style.display='none'; ok.style.display='none';
-  if(!nombre || !email || !mensaje){ err.textContent='Por favor completa los campos obligatorios.'; err.style.display='block'; return; }
-  if(!/\S+@\S+\.\S+/.test(email)){ err.textContent='Ingresa un correo válido.'; err.style.display='block'; return; }
-  ok.style.display='block';
-  document.getElementById('cnt-nombre').value='';
-  document.getElementById('cnt-email').value='';
-  document.getElementById('cnt-mensaje').value='';
+  var falla = function(t){ err.textContent = t; err.style.display = 'block'; };
+  if(!nombre || !email || !mensaje) return falla('Por favor completa los campos obligatorios.');
+  if(!/\S+@\S+\.\S+/.test(email)) return falla('Ingresa un correo válido.');
+  if(!document.getElementById('cnt-consentimiento').checked) return falla('Marca la autorización de datos para poder responderte.');
+  btn.disabled = true; btn.textContent = 'Enviando…';
+  try {
+    var r = await fetch('/api/contacto', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nombre: nombre, email: email, tipo: tipo, mensaje: mensaje, consentimiento: true,
+        web: v('cnt-web'), ms: Date.now() - cntAbierto, origen: window.lcOrigen ? window.lcOrigen() : '' }) });
+    var d = await r.json().catch(function(){ return {}; });
+    if(!r.ok) throw new Error(d.error || 'No pudimos enviar tu mensaje. Escríbenos a nicolas.pava@lacuraduria.net.');
+    ok.style.display = 'block';
+    ['cnt-nombre','cnt-email','cnt-mensaje'].forEach(function(id){ document.getElementById(id).value=''; });
+    document.getElementById('cnt-consentimiento').checked = false;
+    if (window.lcEvento) window.lcEvento('lead_submit', { tipo: tipo });
+  } catch(e) { falla(e.message); }
+  btn.disabled = false; btn.textContent = 'Enviar mensaje →';
 }
 
 // Animación rebote redes en caja
@@ -1365,7 +1423,7 @@ window.addEventListener('load', function(){
   <!-- 1 · Barra de la página -->
   <div class="t-fun-barra" role="navigation" aria-label="En esta página">
     <button type="button" data-ir-a="t-fun-terminal">Beneficios</button><button type="button" data-ir-a="t-fun-precio">Planes</button><button type="button" data-ir-a="t-fun-como">Cómo entrar</button><button type="button" data-ir-a="t-fun-roi">Calcula</button><button type="button" data-ir-a="t-fun-preguntas">Preguntas</button>
-    <button type="button" class="t-btn t-btn-pri" onclick="prevSelectPlan('fundador')">Reservar cupo</button>
+    <button data-evento="cta_fundadores" type="button" class="t-btn t-btn-pri" onclick="prevSelectPlan('fundador')">Reservar cupo</button>
   </div>
 
   <!-- 2 · Hero -->
@@ -1374,8 +1432,8 @@ window.addEventListener('load', function(){
     <h1 class="t-fun-titulo">Tu proyecto cultural, en un solo lugar</h1>
     <p class="t-lead">Publica eventos, centraliza tu información y conecta con nuevas audiencias desde una plataforma especializada en música, arte y entretenimiento.</p>
     <div class="t-ctas">
-      <a class="t-btn t-btn-sec t-btn-xl" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Crear cuenta gratis</a>
-      <button type="button" class="t-btn t-btn-pri t-btn-xl" data-ir-a="t-fun-precio">Ser Fundador <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+      <a data-evento="sign_up_click" class="t-btn t-btn-sec t-btn-xl" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Crear cuenta gratis</a>
+      <button data-evento="cta_fundadores" type="button" class="t-btn t-btn-pri t-btn-xl" data-ir-a="t-fun-precio">Ser Fundador <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
     </div>
     <p class="t-fun-contador"><b data-cupos>50</b> de 50 cupos disponibles</p>
   </section>
@@ -1692,7 +1750,7 @@ window.addEventListener('load', function(){
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Tu press kit en un enlace para compartir</span></li>
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Publica tus eventos en la cartelera</span></li>
           </ul>
-          <a class="t-btn t-btn-sec" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Crear cuenta gratis</a>
+          <a data-evento="sign_up_click" class="t-btn t-btn-sec" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Crear cuenta gratis</a>
         </article>
         <article class="t-sus-plan t-sus-fundador">
           <p class="t-sus-tier">Pro · Fundador <span class="t-planes-cupos"><b data-cupos>50</b> de 50 cupos</span></p>
@@ -1705,7 +1763,7 @@ window.addEventListener('load', function(){
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Beneficios desde hoy:</b> tu perfil compartido en nuestras redes, una reseña de tu proyecto y tu perfil en el catálogo que presentamos a agentes europeos</span></li>
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Parte del movimiento:</b> los primeros 50 proyectos que cambian el algoritmo por la curaduría</span></li>
           </ul>
-          <button type="button" class="t-btn t-btn-pri" onclick="prevSelectPlan('fundador')">Quiero ser Fundador · $100.000 <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+          <button data-evento="cta_fundadores" type="button" class="t-btn t-btn-pri" onclick="prevSelectPlan('fundador')">Quiero ser Fundador · $100.000 <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
           <p class="t-planes-mas">¿Ya reservaste? <button type="button" class="t-fun-enlace" onclick="prevSelectPlan('segunda')">Paga la segunda mitad</button></p>
         </article>
       </div>
@@ -1755,7 +1813,7 @@ window.addEventListener('load', function(){
           </div>
         </fieldset>
 
-        <button type="button" class="t-btn t-btn-pri t-btn-xl" data-comprar disabled><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"/></svg> Elige tu talla</button>
+        <button data-evento="shirt_order_click" type="button" class="t-btn t-btn-pri t-btn-xl" data-comprar disabled><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"/></svg> Elige tu talla</button>
         <p class="t-tienda-nota">Te escribimos por WhatsApp para coordinar el pago y la entrega.</p>
       </div>
     </div>
@@ -1885,7 +1943,7 @@ window.addEventListener('load', function(){
             <p><span>Retorno sobre lo que pagas en el trimestre</span><b data-r="p-roi">0×</b></p>
             <p class="t-roi-frase" data-r="p-frase"></p>
           </div>
-          <button type="button" class="t-btn t-btn-pri" onclick="prevSelectPlan('fundador')">Reservar cupo · $100.000</button>
+          <button data-evento="cta_fundadores" type="button" class="t-btn t-btn-pri" onclick="prevSelectPlan('fundador')">Reservar cupo · $100.000</button>
         </article>
         <p class="t-roi-aviso">Es una estimación con tus propios supuestos, no una promesa de resultados. Los bookings nuevos se redondean a fechas completas.</p>
       </div>
@@ -1964,7 +2022,7 @@ window.addEventListener('load', function(){
   <section class="t-fun-cierre">
     <div class="t-envoltura">
       <h2 class="t-cierre-frase">Sé de los primeros 50.</h2>
-      <button type="button" class="t-btn t-btn-pri t-btn-xl" onclick="prevSelectPlan('fundador')">Reservar cupo <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+      <button data-evento="cta_fundadores" type="button" class="t-btn t-btn-pri t-btn-xl" onclick="prevSelectPlan('fundador')">Reservar cupo <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
       <a class="t-btn t-btn-sec t-btn-xl" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Sube tu perfil gratis</a>
       <p class="t-fun-somos">La Curaduría es un medio de comunicación y monetización para la cultura, hecho en Bogotá. <b>Tecnología para la circulación de la cultura.</b></p>
     </div>
@@ -2290,10 +2348,11 @@ async function prevIniciarPago() {
   document.getElementById('mprev-form-view').style.display    = 'none';
   document.getElementById('mprev-loading-view').style.display = 'block';
   try {
+    if (window.lcEvento) window.lcEvento('checkout_start', { plan: 'fundadores', mitad: mitad, value: 100000, currency: 'COP' });
     var res  = await fetch('/api/crear-preferencia', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nombre: nombre, email: email, mitad: mitad }),
+      body: JSON.stringify({ nombre: nombre, email: email, mitad: mitad, utm: window.lcOrigen ? window.lcOrigen() : '' }),
     });
     var data = await res.json();
     if (!res.ok || !data.checkout_url) { var e = new Error(data.error || 'Error'); e.paraMostrar = data.error; throw e; }
@@ -5196,7 +5255,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
   <p class="prox-sub">La plataforma estará disponible desde el <b style="color:var(--cream)">4 de mayo de 2026</b>. Regístrate en la preventa y asegura tu acceso desde el primer día.</p>
 
   <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;">
-    <button class="btn-primary" onclick="navTo('preventa')">Regístrate gratis →</button>
+    <button data-evento="sign_up_click" class="btn-primary" onclick="navTo('preventa')">Regístrate gratis →</button>
     <button class="btn-primary" onclick="navTo('preventa')">Unirme a la preventa →</button>
   </div>
 
@@ -5399,7 +5458,13 @@ async function submitRegistro(){
   }
 }
 
-function navTo(page, anchor) {
+// Rutas limpias (backlog E1–E7): cada página pública tiene su dirección, para anuncios y SEO.
+// vercel.json manda todas estas direcciones a index.html; aquí se elige la pantalla.
+var RUTAS = { '/terminal': ['preventa'], '/terminal/precios': ['preventa', 't-fun-precio'], '/terminal/fundadores': ['preventa', 't-fun-precio'],
+  '/guia': ['la-guia'], '/explorar': ['la-guia'], '/tienda': ['home', 'tienda'], '/camiseta': ['home', 'tienda'],
+  '/contacto': ['contacto'], '/nosotros': ['nosotros'], '/privacidad': ['privacidad'] };
+var CAMINOS = { home: '/', preventa: '/terminal', 'la-guia': '/guia', contacto: '/contacto', nosotros: '/nosotros', privacidad: '/privacidad' };
+function navTo(page, anchor, sinHistoria) {
   pages.forEach(function(p){
     var el = document.getElementById('pg-'+p);
     if(el) el.classList.remove('active');
@@ -5409,11 +5474,14 @@ function navTo(page, anchor) {
   target.classList.add('active');
   current = page;
   window.scrollTo({top:0, behavior:'smooth'});
-  // Update hash
-  // La página de Suscripción se llama La Terminal: su dirección es #terminal.
-  window.location.hash = page === 'home' ? '' : (page === 'preventa' ? 'terminal' : page);
+  // Dirección: /terminal, /guia… (las demás pantallas siguen con #). La pantalla de Suscripción es La Terminal.
+  if (!sinHistoria) {
+    var url = CAMINOS[page] || ('/#' + page);
+    if (location.pathname + location.hash !== url) history.pushState(null, '', url);
+  }
   // Update nav active state
   updateNavActive(page);
+  if (window.lcVista) window.lcVista(page);
   // Ancla dentro de la página (cualquier página)
   if(anchor){
     setTimeout(function(){
@@ -5435,10 +5503,13 @@ function updateNavActive(page) {
 
 // Hash routing on load
 function routeFromHash() {
+  var camino = location.pathname.replace(/\/+$/, '') || '/';
+  var r = RUTAS[camino];
+  if (r) return navTo(r[0], r[1], true);
   var hash = window.location.hash.replace('#','');
-  if(hash === 'terminal') hash = 'preventa';
-  if(hash && pages.indexOf(hash) > -1) navTo(hash);
-  else navTo('home');
+  if(hash === 'terminal' || hash === 'preventa') return navTo('preventa', null, true);
+  if(hash && pages.indexOf(hash) > -1) navTo(hash, null, true);
+  else navTo('home', hash && document.getElementById(hash) ? hash : null, true);
 }
 
 // -- REVEAL --
@@ -5471,6 +5542,7 @@ function openRegistro(){
 // -- INIT --
 routeFromHash();
 window.addEventListener('hashchange', routeFromHash);
+window.addEventListener('popstate', routeFromHash);
 triggerReveal();
 </script>
 <script>

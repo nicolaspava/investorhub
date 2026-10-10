@@ -64,7 +64,7 @@ function remitente() {
   return m ? { nombre: m[1] || 'La Curaduría', correo: m[2] } : { nombre: 'La Curaduría', correo: t.trim() };
 }
 
-async function enviar({ para, asunto, html, texto, responderA }) {
+export async function enviar({ para, asunto, html, texto, responderA, fila }) {
   const lista = Array.isArray(para) ? para : [para];
   const de = remitente();
   const brevo = process.env.BREVO_API_KEY;
@@ -75,7 +75,7 @@ async function enviar({ para, asunto, html, texto, responderA }) {
     const g = await fetch(google, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify({ clave: process.env.GOOGLE_SCRIPT_CLAVE, para: lista, asunto, html, texto, nombre: de.nombre, responderA: responderA || CORREO_CONTACTO }),
+      body: JSON.stringify({ clave: process.env.GOOGLE_SCRIPT_CLAVE, para: lista, asunto, html, texto, nombre: de.nombre, responderA: responderA || CORREO_CONTACTO, fila }),
     });
     const res = await g.json().catch(() => ({}));
     if (!g.ok || !res.ok) { console.error('Google Script', g.status, JSON.stringify(res)); return false; }
@@ -116,11 +116,11 @@ async function enviar({ para, asunto, html, texto, responderA }) {
   return true;
 }
 
-const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+export const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const pesos = (n) => '$' + Number(n).toLocaleString('es-CO');
 
 // Confirmación al comprador (primera o segunda mitad) y aviso al equipo.
-export async function correosDeConfirmacion({ nombre, email, mitad, monto, pagoId }) {
+export async function correosDeConfirmacion({ nombre, email, mitad, monto, pagoId, utm }) {
   const primera = mitad === 1;
   const asunto = primera ? 'Tu cupo de fundador en La Terminal está reservado' : 'Pagaste la segunda mitad: tu suscripción fundadora está completa';
   const cuerpo = primera
@@ -153,6 +153,7 @@ export async function correosDeConfirmacion({ nombre, email, mitad, monto, pagoI
     texto: [resumen, ...detalle].join('\n'),
     html: `<p>${esc(resumen)}</p>${detalle.map((d) => `<p style="color:#77746C">${esc(d)}</p>`).join('')}`,
     responderA: email,
+    fila: { hoja: 'Ventas', valores: [new Date().toISOString(), nombre, email, primera ? 'primera mitad' : 'segunda mitad', monto, String(pagoId || ''), utm || ''] },
   });
   return alComprador;
 }

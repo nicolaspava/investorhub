@@ -1,7 +1,53 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/", "destination": "/index.html" }
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/terminal",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/terminal/precios",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/terminal/fundadores",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/guia",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/explorar",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/tienda",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/camiseta",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/contacto",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/nosotros",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/privacidad",
+      "destination": "/index.html"
+    }
   ]
 }

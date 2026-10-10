@@ -76,7 +76,8 @@ export default async function handler(req, res) {
     // Los avisos van siempre al sitio publicado: las vistas previas de Vercel piden inicio de sesión y Mercado Pago no entra.
     notification_url: 'https://lacuraduria.com/api/webhook-mp',
     statement_descriptor: 'LA CURADURIA',
-    metadata: { registro_id: registroId, email, mitad },
+    // De dónde llegó (UTM de Google Ads u otra campaña), para medir qué campaña vende.
+    metadata: { registro_id: registroId, email, mitad, utm: String(req.body?.utm || '').slice(0, 300) },
   };
 
   const mpRes = await fetch('https://api.mercadopago.com/checkout/preferences', {
