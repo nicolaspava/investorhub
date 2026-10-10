@@ -10,10 +10,10 @@
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261010g">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261010h">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261009a">
 <script src="/estilo/demo.js?v=20261009a" defer></script>
-<script src="/estilo/landing.js?v=20261010b" defer></script>
+<script src="/estilo/landing.js?v=20261010c" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 /* La paleta y las familias vienen de ds/tokens.css y ds/landing.css. */
@@ -358,34 +358,38 @@ footer.site-footer{}
 <body>
 
 <!-- NAV -->
-<nav>
-  <!-- Logo: visible solo cuando el hero sale de pantalla -->
-  <div id="nav-wordmark" onclick="navTo('home')" style="cursor:pointer;display:flex;align-items:center;">
-    <svg height="22"  viewBox="0 0 1211 79" style="width:auto;" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M52.4747 78.825H0.00195312V0.107788H26.2276V52.5931H104.926C104.926 67.0852 93.1674 78.825 78.7003 78.825H52.4747Z" fill="#FFFFF6"/>
-<path d="M189.879 0.10771H216.105V78.825H189.879V52.593C189.879 67.0851 178.142 78.825 163.654 78.825H111.181V52.593C111.181 23.5444 134.72 0.0646973 163.697 0.0646973H189.922L189.858 0.129199L189.879 0.10771ZM189.944 52.593V26.3611H163.718C149.23 26.3611 137.493 38.101 137.493 52.593H189.965H189.944Z" fill="#FFFFF6"/>
-<path d="M273.093 52.5283H325.523V78.7602H273.093C244.116 78.7602 220.599 55.2375 220.599 26.2534C220.599 11.7398 232.357 0.0214844 246.824 0.0214844H325.48C325.48 14.535 313.721 26.2534 299.254 26.2534H246.824L246.889 26.3179C246.889 40.8315 258.648 52.5498 273.115 52.5498L273.093 52.5283Z" fill="#FFFFF6"/>
-<path d="M331.778 26.2749V0.0429741H358.003V26.2749C358.003 40.7669 369.74 52.5068 384.229 52.5068H410.455V0.0214844H436.68V78.7387H384.208L384.272 78.8032C355.295 78.8032 331.756 55.3235 331.756 26.2749H331.778Z" fill="#FFFFF6"/>
-<path d="M469.269 0.0859811H521.699C536.209 0.0859811 547.924 11.8473 547.924 26.3179C547.924 40.7884 536.166 52.5498 521.699 52.5498H495.473C480.963 52.5498 469.248 64.3111 469.248 78.7817H443.022C443.022 49.7976 466.539 26.2749 495.516 26.2749H443.086V0.0429688L443.022 0.107471H469.248L469.269 0.0859811ZM547.989 78.8247H521.763V52.5928C536.273 52.5928 547.989 64.3542 547.989 78.8247Z" fill="#FFFFF6"/>
-<path d="M632.92 0.0430123H659.146V78.7603H632.92V52.5283C632.92 67.0204 621.183 78.7603 606.695 78.7603H554.222V52.5283C554.222 23.4797 577.76 0 606.738 0H632.963L632.899 0.0645021L632.92 0.0430123ZM632.985 52.5283V26.2964H606.759C592.271 26.2964 580.533 38.0363 580.533 52.5283H633.006H632.985Z" fill="#FFFFF6"/>
-<path d="M691.628 0.0214844H717.854C746.852 0.0214844 770.348 23.5227 770.348 52.5283C770.348 67.0419 758.589 78.7602 744.122 78.7602H665.467V0.0859865L665.424 0.0429741H691.649L691.628 0.0214844ZM691.692 26.2534V52.4853H744.144C744.144 37.9502 732.385 26.2534 717.918 26.2534H691.692Z" fill="#FFFFF6"/>
-<path d="M772.389 26.2749V0.0429741H798.615V26.2749C798.615 40.7669 810.352 52.5068 824.84 52.5068H851.066V0.0214844H877.291V78.7387H824.819L824.883 78.8032C795.906 78.8032 772.367 55.3235 772.367 26.2749H772.389Z" fill="#FFFFF6"/>
-<path d="M909.795 0.0859811H962.225C976.735 0.0859811 988.451 11.8473 988.451 26.3179C988.451 40.7884 976.692 52.5498 962.225 52.5498H935.999C921.489 52.5498 909.774 64.3111 909.774 78.7817H883.548C883.548 49.7976 907.065 26.2749 936.042 26.2749H883.612V0.0429688L883.548 0.107471H909.774L909.795 0.0859811ZM988.515 78.8247H962.289V52.5928C976.799 52.5928 988.515 64.3542 988.515 78.8247Z" fill="#FFFFF6"/>
-<path d="M1021.08 78.7604H994.856V52.5285H1047.31V26.2966H1021.08C1006.61 26.2966 994.856 14.5998 994.856 0.0646973H1073.58V52.5285H1099.8V78.7604H1021.08Z" fill="#FFFFF6"/>
-<path d="M1184.73 0.0430123H1210.96V78.7603H1184.73V52.5283C1184.73 67.0204 1173 78.7603 1158.51 78.7603H1106.04V52.5283C1106.04 23.4797 1129.57 0 1158.55 0H1184.78L1184.71 0.0645021L1184.73 0.0430123ZM1184.8 52.5283V26.2964H1158.57C1144.08 26.2964 1132.35 38.0363 1132.35 52.5283H1184.82H1184.8Z" fill="#FFFFF6"/>
-</svg>
-  </div>
+<nav class="t-barra" aria-label="Principal">
+  <!-- Barra como la de lacuraduria.net: pegada arriba y de todo el ancho. Transparente sobre el hero;
+       se vuelve sólida cuando el logo grande del hero sale de la pantalla (estilo/landing.js). -->
+  <div class="t-barra-in">
+  <button type="button" class="nav-burger" aria-label="Abrir menú" aria-controls="nav-links" onclick="document.getElementById('nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
+  <a id="nav-wordmark" href="/" aria-label="La Curaduría · inicio" onclick="event.preventDefault(); navTo('home')"><svg class="t-barra-logo" aria-hidden="true" focusable="false" viewBox="0 0 1795 244" fill="none" xmlns="http://www.w3.org/2000/svg" >
+            <path d="M210.859 70.1488H84.9397C76.8361 70.1488 70.2807 76.7083 70.2807 84.7802V140.298H126.693C134.368 140.298 140.578 146.512 140.578 154.156V210.463H70.2972C31.4592 210.463 0 179.063 0 140.314V70.1652C0 31.4001 31.4756 0 70.2807 0H210.859C249.664 0 281.139 31.4165 281.139 70.1488H210.842H210.859ZM280.843 70.3132H281.156V140.462C242.351 140.462 210.875 171.878 210.875 210.611H140.43C140.43 133.13 203.233 70.4447 280.859 70.2967L280.843 70.3132Z" fill="#FF736C"/>
+            <path d="M276.495 244C297.499 244 314.526 227.005 314.526 206.04C314.526 185.076 297.499 168.081 276.495 168.081C255.491 168.081 238.464 185.076 238.464 206.04C238.464 227.005 255.491 244 276.495 244Z" fill="#FF736C"/>
+            <path d="M427.103 115.917H350.58V1.36438H388.842V77.7438H503.626C503.626 98.8361 486.497 115.934 465.365 115.934H427.103V115.917Z" fill="#FFFFF6"/>
+            <path d="M627.503 1.36443H665.765V115.934H627.503V77.7439C627.503 98.8362 610.373 115.934 589.241 115.934H512.718V77.7439C512.718 35.4606 547.06 1.28223 589.324 1.28223H627.585L627.503 1.38087V1.36443ZM627.602 77.7439V39.5542H589.34C568.208 39.5542 551.079 56.6516 551.079 77.7439H627.602Z" fill="#FFFFF6"/>
+            <path d="M427.153 204.446H503.626V242.619H427.153C384.889 242.619 350.58 208.391 350.58 166.19C350.58 145.065 367.726 128.017 388.825 128.017H503.544C503.544 149.142 486.398 166.19 465.299 166.19H388.825L388.908 166.272C388.908 187.398 406.054 204.446 427.153 204.446Z" fill="#FFFFF6"/>
+            <path d="M512.735 166.24V128.05H550.996V166.24C550.996 187.332 568.126 204.429 589.258 204.429H627.52V128.05H665.781V242.619H589.258L589.357 242.718C547.093 242.718 512.751 208.539 512.751 166.256L512.735 166.24Z" fill="#FFFFF6"/>
+            <path d="M713.283 128.116H789.756C810.921 128.116 828.001 145.229 828.001 166.289C828.001 187.348 810.855 204.462 789.756 204.462H751.511C730.346 204.462 713.266 221.576 713.266 242.635H675.021C675.021 200.451 709.313 166.207 751.594 166.207H675.12V128.033L675.037 128.116H713.283ZM828.067 242.701H789.822V204.528C810.987 204.528 828.067 221.642 828.067 242.701Z" fill="#FFFFF6"/>
+            <path d="M951.96 128.05H990.222V242.619H951.96V204.429C951.96 225.522 934.831 242.619 913.699 242.619H837.176V204.429C837.176 162.146 871.517 127.968 913.781 127.968H952.043L951.96 128.066V128.05ZM952.043 204.429V166.24H913.781C892.649 166.24 875.52 183.337 875.52 204.429H952.043Z" fill="#FFFFF6"/>
+            <path d="M1037.59 128.033H1075.84C1118.12 128.033 1152.41 162.245 1152.41 204.462C1152.41 225.604 1135.26 242.635 1114.16 242.635H999.429V128.116L999.347 128.033H1037.59ZM1037.66 166.207V204.38H1114.13C1114.13 183.238 1097 166.207 1075.89 166.207H1037.64H1037.66Z" fill="#FFFFF6"/>
+            <path d="M1155.37 166.24V128.05H1193.64V166.24C1193.64 187.332 1210.77 204.429 1231.9 204.429H1270.16V128.05H1308.42V242.619H1231.9L1232 242.718C1189.73 242.718 1155.39 208.539 1155.39 166.256L1155.37 166.24Z" fill="#FFFFF6"/>
+            <path d="M1355.76 128.116H1432.23C1453.4 128.116 1470.48 145.229 1470.48 166.289C1470.48 187.348 1453.33 204.462 1432.23 204.462H1393.99C1372.82 204.462 1355.74 221.576 1355.74 242.635H1317.5C1317.5 200.451 1351.79 166.207 1394.07 166.207H1317.59V128.033L1317.51 128.116H1355.76ZM1470.56 242.701H1432.31V204.528C1453.48 204.528 1470.56 221.642 1470.56 242.701Z" fill="#FFFFF6"/>
+            <path d="M1518.06 242.619H1479.82V204.446H1556.29V166.272H1518.04C1496.94 166.272 1479.8 149.241 1479.8 128.099H1594.6V204.429H1632.85V242.603H1518.04L1518.06 242.619Z" fill="#FFFFF6"/>
+            <path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/>
+          </svg></a>
   <div class="nav-links" id="nav-links">
-    <span class="na" onclick="navTo('la-guia')">La Guía</span>
-    <span class="na" onclick="navTo('preventa')">La Terminal</span>
-    <span class="na" onclick="navTo('la-guia','categorias')">Categorías</span>
-    <span class="na" onclick="navTo('preventa','t-fun-precio')">Preventa</span>
-    <span class="na" onclick="navTo('nosotros')">Nosotros</span>
-    <span class="na" onclick="window.open('https://lacuraduria.net','_blank')">Explorar la guía ↗</span>
-    <button class="nav-cta" onclick="window.open('https://lacuraduria.net/login','_blank')">Ingresar →</button>
+    <span class="na" role="link" tabindex="0" onclick="navTo('la-guia')"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,80,184a8.1,8.1,0,0,0,3.58-.84l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64a8,8,0,0,0-10.74-10.74ZM138,138,97.89,158.11,118,118l40.15-20.07Z"/></svg>La Guía</span>
+    <span class="na" role="link" tabindex="0" onclick="navTo('preventa')"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48Z"/></svg>La Terminal</span>
+    <span class="na" role="link" tabindex="0" onclick="navTo('nosotros')"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"/></svg>Nosotros</span>
+    <span class="na" role="link" tabindex="0" onclick="navTo('contacto')"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.18V181.82Z"/></svg>Contacto</span>
+    <a class="na t-barra-solo-menu" href="https://lacuraduria.net/login" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></svg>Ingresar</a>
   </div>
-  <div class="nav-burger" onclick="document.getElementById('nav-links').classList.toggle('open')">
-    <span></span><span></span><span></span>
+  <div class="t-barra-der">
+    <a class="t-barra-buscar" href="https://lacuraduria.net" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg><span>Eventos, artistas, publicaciones</span></a>
+    <button type="button" class="t-barra-cta" onclick="navTo('home','planes')">Reservar cupo</button>
+    <a class="t-barra-ingresar" href="https://lacuraduria.net/login" target="_blank" rel="noopener" aria-label="Ingresar"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></svg></a>
+  </div>
   </div>
 </nav>
 

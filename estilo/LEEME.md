@@ -12,7 +12,7 @@
 >   - Funciones en cuatro pilares (mostrarte, publicar, conectar y crecer): cada función abre su módulo en la demo con `lcDemo.ir()`.
 >   - Calculadora de retorno (`#t-fun-roi`): bookings y pago promedio del último trimestre, más supuestos por escenario (perfil gratis o La Terminal): % de bookings nuevos, notas de prensa, publicaciones con venues y seguidores por publicación. Compara contra $50.000 por trimestre. Es una estimación y lo dice.
 >   - Aliados, beneficios, cómo entrar, precio con la camiseta, preguntas y cierre.
-> - **Barra:** La Guía, La Terminal, Categorías, Preventa, Nosotros, Explorar la guía e Ingresar. `navTo(página, ancla)` ya acepta anclas en cualquier página.
+> - **Barra (10 oct, como la de lacuraduria.net):** pegada arriba y de todo el ancho, transparente sobre el hero y sólida al bajar. Logo de la .net (Q coral), La Guía · La Terminal · Nosotros · Contacto con íconos; a la derecha, el buscador (abre lacuraduria.net), «Reservar cupo» (lleva a `#planes` de la portada) e Ingresar. En el teléfono: menú, logo y «Reservar cupo». `navTo(página, ancla)` ya acepta anclas en cualquier página.
 > - **Cobro (10 oct):**
 >   - `api/crear-preferencia.js` cobra cada mitad ($100.000); la segunda solo con el correo de la primera.
 >   - `api/webhook-mp.js` valida la firma, marca `confirmado_at` y manda el correo de confirmación una sola vez (con Brevo si existe `BREVO_API_KEY`, o con Resend si existe `RESEND_API_KEY`), y el aviso de compra al equipo (`CORREO_AVISOS`).

@@ -26,7 +26,7 @@ Este documento es para seguir el trabajo en una sesión nueva (por ejemplo, Clau
 2. **La Guía** (`#la-guia`, para usuarios): demo del teléfono, «Esta semana en Bogotá», categorías (eventos, páginas, contenidos) y funciones en filas, al estilo de Shotgun.
 3. **La Terminal** (`#terminal`, para gestores; la pantalla se llama `pg-preventa`): la demo completa, funciones en cuatro pilares, aliados, beneficios, calculadora de retorno, cómo entrar, precio con camiseta, preguntas, política de reembolso y cierre.
 
-**Barra principal:** La Guía · La Terminal · Categorías · Preventa · Nosotros · Explorar la guía · Ingresar.
+**Barra principal (como la de lacuraduria.net):** La Guía · La Terminal · Nosotros · Contacto · buscador · Reservar cupo · Ingresar. La portada tiene planes (`#planes`): Gratis y Pro · Fundador.
 
 ## La oferta (decidida por Nicolás)
 

@@ -1200,3 +1200,44 @@ html[data-tema] .mprev-btn-pay { border-radius: 999px; }
 .t-politica li { font-size: 15px; line-height: 1.6; color: var(--t-text-2); }
 .t-politica li b { color: var(--t-text); }
 #preg-nombre-campo[hidden] { display: none; }
+
+/* ══ BARRA (10 oct): como la de lacuraduria.net, pegada arriba y de todo el ancho ══
+   Transparente sobre el hero, con una sombra que baja para que se lea; sólida cuando el logo
+   grande del hero sale de la pantalla (.t-marca-visible, de estilo/landing.js). */
+html[data-tema] nav.t-barra {
+  top: 0; left: 0; right: 0; max-width: none; margin: 0; height: 64px; padding: 0;
+  border: 0; border-bottom: 1px solid transparent; border-radius: 0; box-shadow: none;
+  background: linear-gradient(rgba(12, 12, 11, .72), rgba(12, 12, 11, 0));
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+  transition: background-color .3s var(--t-ease), border-color .3s var(--t-ease);
+}
+.t-marca-visible nav.t-barra { background: rgba(12, 12, 11, .9) !important; border-bottom-color: var(--t-line) !important; -webkit-backdrop-filter: blur(14px) saturate(140%) !important; backdrop-filter: blur(14px) saturate(140%) !important; }
+.t-barra-in { width: 100%; max-width: 1440px; height: 100%; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 12px; }
+nav.t-barra #nav-wordmark { opacity: 1; pointer-events: auto; display: flex; align-items: center; margin-right: 12px; color: var(--t-text); }
+.t-barra-logo { height: 28px; width: auto; display: block; }
+nav.t-barra .nav-links { gap: 4px; }
+html[data-tema] nav.t-barra .na { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; font-size: 15px; color: var(--t-text-2); cursor: pointer; text-decoration: none; }
+nav.t-barra .na svg { width: 18px; height: 18px; flex: none; }
+html[data-tema] nav.t-barra .na:hover { color: var(--t-text); background: rgba(255, 255, 255, .06); }
+.t-barra-solo-menu { display: none !important; }
+.t-barra-der { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.t-barra-buscar { display: flex; align-items: center; gap: 10px; width: 300px; height: 42px; padding: 0 16px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .14); background: rgba(12, 12, 11, .4); color: var(--t-text-3); font-size: 14px; text-decoration: none; white-space: nowrap; overflow: hidden; }
+.t-barra-buscar:hover { color: var(--t-text-2); border-color: rgba(255, 255, 255, .26); }
+.t-barra-buscar svg, .t-barra-ingresar svg { width: 18px; height: 18px; flex: none; color: var(--t-text); }
+.t-barra-cta { height: 42px; padding: 0 18px; border: 0; border-radius: 999px; background: var(--p-coral); color: #0C0C0B; font: 600 14px/1 var(--lc-font-body); cursor: pointer; white-space: nowrap; }
+.t-barra-cta:hover { filter: brightness(1.06); }
+.t-barra-ingresar { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .14); background: rgba(12, 12, 11, .4); }
+nav.t-barra .nav-burger { padding: 8px; margin-left: -8px; background: none; border: 0; }
+nav.t-barra .nav-burger span { background: var(--t-text); }
+.t-hero { padding-top: calc(64px + clamp(24px, 5vh, 56px)); }
+
+@media (max-width: 1180px) { .t-barra-buscar { width: 42px; padding: 0; justify-content: center; } .t-barra-buscar span { display: none; } }
+@media (max-width: 900px) {
+  .t-barra-in { padding: 0 14px; gap: 6px; }
+  .t-barra-logo { height: 22px; }
+  html[data-tema] nav.t-barra .nav-links.open { top: 64px; left: 0; right: 0; border-radius: 0 0 var(--t-radio) var(--t-radio); padding: 12px; align-items: stretch; background: #0C0C0B !important; -webkit-backdrop-filter: none; backdrop-filter: none; border: 0; border-bottom: 1px solid var(--t-line); }
+  html[data-tema] nav.t-barra .nav-links.open .na { padding: 14px 12px; font-size: 16px; }
+  .t-barra-solo-menu { display: inline-flex !important; }
+  .t-barra-ingresar, .t-barra-buscar { display: none; }
+}
+@media (max-width: 380px) { .t-barra-logo { height: 18px; } .t-barra-cta { padding: 0 14px; } }
