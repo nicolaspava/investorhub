@@ -13,6 +13,11 @@
 >   - Calculadora de retorno (`#t-fun-roi`): bookings y pago promedio del último trimestre, más supuestos por escenario (perfil gratis o La Terminal): % de bookings nuevos, notas de prensa, publicaciones con venues y seguidores por publicación. Compara contra $50.000 por trimestre. Es una estimación y lo dice.
 >   - Aliados, beneficios, cómo entrar, precio con la camiseta, preguntas y cierre.
 > - **Barra:** La Guía, La Terminal, Categorías, Preventa, Nosotros, Explorar la guía e Ingresar. `navTo(página, ancla)` ya acepta anclas en cualquier página.
+> - **Cobro (10 oct):**
+>   - `api/crear-preferencia.js` cobra cada mitad ($100.000); la segunda solo con el correo de la primera.
+>   - `api/webhook-mp.js` valida la firma, marca `confirmado_at` y manda el correo de confirmación una sola vez (Resend, si existe `RESEND_API_KEY`).
+>   - Lo compartido vive en `api/_lib/preventa.js`. La tabla real es `preventa_compradores`; `supabase-schema.sql` describe otra, vieja, que no existe.
+>   - La política de reembolso está en `#t-fun-reembolso`. Es una propuesta: hay que revisarla con abogado.
 > - **`estilo/demo.js`** monta cada `[data-demo]`. La demo solo de teléfono no tiene el computador y lo que depende de él no corre.
 
 Rediseño de la portada de la landing (`index.html`, pantalla `#pg-home`) hecho con el *taste skill* el 7 oct 2026. Vive en la rama `diseno/taste-skill`. La versión que copia el sistema de la webapp, sin rediseño, está en la rama `diseno/sistema-webapp`.

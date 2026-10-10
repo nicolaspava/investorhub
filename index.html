@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261010b">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261010d">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261009a">
 <script src="/estilo/demo.js?v=20261009a" defer></script>
 <script src="/estilo/landing.js?v=20261008b" defer></script>
@@ -1771,7 +1771,7 @@ window.addEventListener('load', function(){
       </ul>
       <button type="button" class="t-btn t-btn-pri t-btn-xl" onclick="prevSelectPlan('fundador')">Reservar cupo · $100.000 <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
       <p class="t-fun-contador"><b data-cupos>50</b> de 50 cupos disponibles</p>
-      <p class="t-fun-gratis">¿Todavía no? <a data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Empieza gratis: sube tu perfil</a></p>
+      <p class="t-fun-gratis">¿Ya reservaste? <button type="button" class="t-fun-enlace" onclick="prevSelectPlan('segunda')">Paga la segunda mitad</button> · ¿Todavía no? <a data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Empieza gratis: sube tu perfil</a></p>
     </div>
     <!-- Camiseta LC23: ficha de producto. Se elige precio, color y talla; «Comprar» abre WhatsApp con el pedido.
          Stock del primer pedido (20 unidades); se actualiza en CAMISETA_STOCK, más abajo. -->
@@ -1834,7 +1834,7 @@ window.addEventListener('load', function(){
         </div>
         <div class="faq-item-p">
           <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Cuándo y cómo pago la segunda mitad?<span class="faq-q-icon-p">+</span></div>
-          <div class="faq-a-p">Cuando quieras, entre hoy y marzo de 2027, con Mercado Pago. Si la pagas antes de febrero, pruebas las betas desde su primera salida.</div>
+          <div class="faq-a-p">Cuando quieras, entre hoy y marzo de 2027, con Mercado Pago: en esta página toca «Paga la segunda mitad», junto al precio, y usa el mismo correo con que reservaste. Si la pagas antes de febrero, pruebas las betas desde su primera salida.</div>
         </div>
         <div class="faq-item-p">
           <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Qué pasa si una función beta se retrasa?<span class="faq-q-icon-p">+</span></div>
@@ -1842,7 +1842,7 @@ window.addEventListener('load', function(){
         </div>
         <div class="faq-item-p">
           <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Puedo pedir reembolso?<span class="faq-q-icon-p">+</span></div>
-          <div class="faq-a-p" data-editable="reembolso">La política de reembolso se publica aquí antes de abrir los pagos.</div>
+          <div class="faq-a-p" data-editable="reembolso">Sí, en tres casos: dentro de los 5 días hábiles siguientes a tu pago, sin dar explicaciones; si La Terminal no se lanza antes del 30 de junio de 2027; o si no recibes los beneficios de hoy. Fuera de esos casos puedes ceder tu cupo a otro proyecto. <a href="#t-fun-reembolso" onclick="event.preventDefault();document.getElementById('t-fun-reembolso').scrollIntoView({behavior:'smooth'});">Ver la política completa</a>.</div>
         </div>
         <div class="faq-item-p">
           <div class="faq-q-p" onclick="prevToggleFaq(this)">¿Quién puede ser fundador?<span class="faq-q-icon-p">+</span></div>
@@ -1861,6 +1861,21 @@ window.addEventListener('load', function(){
           <div class="faq-a-p">El BIME es un encuentro de la industria musical en Bilbao. Con la beca de circulación internacional (segundo lugar nacional) viajamos a presentar La Curaduría y un catálogo de artistas colombianos a agentes de España. Que tu perfil se vea allá es un objetivo del viaje, no una garantía de contactos ni de resultados.</div>
         </div>
     </div>
+  </section>
+
+  <!-- 7b · Política de reembolso (10 oct). Propuesta: revisar con abogado antes de publicar. -->
+  <section class="t-fun-bloque t-envoltura" id="t-fun-reembolso">
+    <details class="t-politica">
+      <summary><span><b>Política de reembolso</b> del perfil fundador y de la camiseta</span><span class="t-fun-abrir" aria-hidden="true">+</span></summary>
+      <ol>
+        <li><b>Derecho de retracto.</b> Tienes 5 días hábiles desde cada pago para arrepentirte, sin dar explicaciones, y te devolvemos el 100 % (Ley 1480 de 2011, artículo 47).</li>
+        <li><b>Si el lanzamiento se retrasa.</b> Si La Terminal no se lanza antes del 30 de junio de 2027, puedes pedir la devolución total de lo que hayas pagado.</li>
+        <li><b>Si no recibes los beneficios de hoy.</b> Si en 60 días desde tu pago no hemos compartido tu perfil en redes ni publicado tu reseña, puedes pedir la devolución de la primera mitad.</li>
+        <li><b>Después del retracto.</b> Fuera de los casos anteriores la reserva no es reembolsable, pero puedes ceder tu cupo a otro artista o proyecto: escríbenos y lo pasamos a su nombre.</li>
+        <li><b>Cómo pedirlo.</b> Escribe a <b>nicolas.pava@lacuraduria.net</b> desde el correo de tu compra. Devolvemos por el mismo medio de pago, en máximo 30 días calendario.</li>
+        <li><b>Camiseta LC23.</b> Se produce bajo pedido. Puedes cambiar la talla dentro de los 5 días siguientes a la entrega, si hay existencias. Si llega con un defecto, la reponemos.</li>
+      </ol>
+    </details>
   </section>
 
   <!-- 8 · Cierre -->
@@ -2074,10 +2089,10 @@ var CUPOS_DISPONIBLES = 50;
         <div class="mprev-eyebrow-dot"></div>
         <span>50 cupos · Preventa fundadora</span>
       </div>
-      <div class="mprev-title">Reserva<br>tu cupo</div>
+      <div class="mprev-title" id="mprev-titulo">Reserva<br>tu cupo</div>
       <div class="mprev-price-row">
         <div class="mprev-price-main">$100.000</div>
-        <div class="mprev-price-period">COP hoy · la otra mitad antes de marzo de 2027</div>
+        <div class="mprev-price-period" id="mprev-periodo">COP hoy · la otra mitad antes de marzo de 2027</div>
       </div>
     </div>
 
@@ -2086,13 +2101,13 @@ var CUPOS_DISPONIBLES = 50;
       <div id="mprev-form-view">
         <div class="mprev-summary">
           <div class="mprev-summary-text">
-            <b>Suscripción fundadora · primera mitad</b><br>
-            Quedan $100.000 de la suscripción antes de marzo de 2027
+            <b id="mprev-resumen-t">Suscripción fundadora · primera mitad</b><br>
+            <span id="mprev-resumen-d">Quedan $100.000 de la suscripción antes de marzo de 2027</span>
           </div>
           <div class="mprev-summary-amount">$100k</div>
         </div>
 
-        <div class="mprev-field">
+        <div class="mprev-field" id="preg-nombre-campo">
           <label class="mprev-label">Nombre completo</label>
           <input type="text" class="mprev-input" id="preg-nombre" placeholder="Tu nombre" autocomplete="name">
           <div class="mprev-ferror" id="perr-nombre">Ingresa tu nombre.</div>
@@ -2139,6 +2154,14 @@ var CUPOS_DISPONIBLES = 50;
 function prevSelectPlan(plan) {
   if (plan === 'basico') { navTo('proximamente'); return; }
   prevResetModal();
+  // La segunda mitad solo pide el correo con que se pagó la primera.
+  var segunda = plan === 'segunda';
+  window.prevMitad = segunda ? 2 : 1;
+  document.getElementById('mprev-titulo').innerHTML = segunda ? 'Paga la<br>segunda mitad' : 'Reserva<br>tu cupo';
+  document.getElementById('mprev-periodo').textContent = segunda ? 'COP · con esto tu suscripción fundadora queda completa' : 'COP hoy · la otra mitad antes de marzo de 2027';
+  document.getElementById('mprev-resumen-t').textContent = segunda ? 'Suscripción fundadora · segunda mitad' : 'Suscripción fundadora · primera mitad';
+  document.getElementById('mprev-resumen-d').textContent = segunda ? 'Usa el mismo correo con que pagaste la primera mitad' : 'Quedan $100.000 de la suscripción antes de marzo de 2027';
+  document.getElementById('preg-nombre-campo').hidden = segunda;
 
   document.getElementById('prev-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -2159,10 +2182,11 @@ function prevResetModal() {
   document.getElementById('mprev-error-view').style.display   = 'none';
 }
 async function prevIniciarPago() {
+  var mitad  = window.prevMitad === 2 ? 2 : 1;
   var nombre = document.getElementById('preg-nombre').value.trim();
   var email  = document.getElementById('preg-email').value.trim();
   var valid  = true;
-  if (!nombre) {
+  if (!nombre && mitad === 1) {
     document.getElementById('perr-nombre').classList.add('show');
     document.getElementById('preg-nombre').classList.add('error');
     valid = false;
@@ -2185,16 +2209,18 @@ async function prevIniciarPago() {
     var res  = await fetch('/api/crear-preferencia', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nombre: nombre, email: email }),
+      body: JSON.stringify({ nombre: nombre, email: email, mitad: mitad }),
     });
     var data = await res.json();
-    if (!res.ok || !data.checkout_url) throw new Error(data.error || 'Error');
+    if (!res.ok || !data.checkout_url) { var e = new Error(data.error || 'Error'); e.paraMostrar = data.error; throw e; }
     window.location.href = data.checkout_url;
   } catch (err) {
     document.getElementById('mprev-loading-view').style.display = 'none';
     document.getElementById('mprev-error-view').style.display   = 'block';
-    document.getElementById('mprev-error-msg').innerHTML =
-      'No pudimos conectar con el sistema de pago.<br>Intenta de nuevo o escríbenos a hola@lacuraduria.com';
+    // El servidor explica los casos esperados (correo sin reserva, mitades ya pagadas); lo demás es un fallo de conexión.
+    var msg = document.getElementById('mprev-error-msg');
+    if (err.paraMostrar) msg.textContent = err.paraMostrar;
+    else msg.innerHTML = 'No pudimos conectar con el sistema de pago.<br>Intenta de nuevo o escríbenos a nicolas.pava@lacuraduria.net';
     console.error(err);
   }
 }

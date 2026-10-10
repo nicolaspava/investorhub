@@ -1,6 +1,7 @@
 // api/webhook-mp.js
 // Recibe notificaciones de Mercado Pago y actualiza Supabase
 import crypto from 'node:crypto';
+import { PRECIO_MITAD, leerRegistro, actualizarRegistro, pagosAprobados, correosDeConfirmacion } from './_lib/preventa.js';
 
 // Firma de Mercado Pago: x-signature = "ts=...,v1=..." y v1 es el HMAC-SHA256 de
 // "id:{data.id};request-id:{x-request-id};ts:{ts};" con la clave secreta del webhook
@@ -26,8 +27,6 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
   const MP_ACCESS_TOKEN = process.env.MP_ACCESS_TOKEN;
-  const SUPABASE_URL    = process.env.SUPABASE_URL;
-  const SUPABASE_KEY    = process.env.SUPABASE_SERVICE_KEY;
 
   // Sin firma válida no se toca nada. Si la clave aún no está configurada se sigue, porque el
   // estado del pago siempre se consulta a Mercado Pago con nuestro token y no se cree lo que dice el aviso.
@@ -76,35 +75,44 @@ export default async function handler(req, res) {
   }
 
   const estadoMap = {
-    approved:   'aprobado',
-    pending:    'pendiente',
-    in_process: 'pendiente',
-    rejected:   'rechazado',
-    cancelled:  'cancelado',
+    approved:     'aprobado',
+    pending:      'pendiente',
+    in_process:   'pendiente',
+    rejected:     'rechazado',
+    cancelled:    'cancelado',
+    refunded:     'cancelado',   // devuelto: el detalle queda en mp_status
+    charged_back: 'cancelado',
   };
 
   const nuevoEstado = estadoMap[status] || 'desconocido';
 
+  // El mismo aviso puede llegar varias veces: el correo sale solo la primera vez que el pago queda aprobado.
+  let antes;
+  try { antes = await leerRegistro(registroId); }
+  catch (e) { console.error(e); return res.status(500).json({ error: 'Error leyendo registro' }); }
+  if (!antes) return res.status(200).json({ ok: true, ignorado: 'registro inexistente' });
+  const recienAprobado = nuevoEstado === 'aprobado' && !antes.confirmado_at;
+
   // Actualizar en Supabase
-  const supaRes = await fetch(`${SUPABASE_URL}/rest/v1/preventa_compradores?id=eq.${registroId}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
-    },
-    body: JSON.stringify({
+  try {
+    await actualizarRegistro(registroId, {
       estado: nuevoEstado,
       mp_payment_id: String(paymentId),
       mp_status: status,
-      updated_at: new Date().toISOString(),
-    }),
-  });
-
-  if (!supaRes.ok) {
-    const err = await supaRes.json();
-    console.error('Error actualizando Supabase:', err);
+      ...(recienAprobado ? { confirmado_at: date_approved || new Date().toISOString() } : {}),
+    });
+  } catch (e) {
+    console.error('Error actualizando Supabase:', e);
     return res.status(500).json({ error: 'Error actualizando registro' });
+  }
+
+  if (recienAprobado) {
+    // Primera o segunda mitad según cuántos pagos aprobados tenga ya este correo.
+    try {
+      const aprobados = await pagosAprobados(antes.email);
+      const mitad = Math.max(1, aprobados.findIndex((r) => r.id === registroId) + 1 || aprobados.length);
+      await correosDeConfirmacion({ nombre: antes.nombre, email: antes.email, mitad: Math.min(mitad, 2), monto: transaction_amount || PRECIO_MITAD });
+    } catch (e) { console.error('Correo de confirmación:', e); }   // el pago ya quedó registrado; el correo no lo bloquea
   }
 
   console.log(`Pago ${paymentId} → ${nuevoEstado} · registro ${registroId}`);

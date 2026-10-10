@@ -1155,3 +1155,17 @@ html[data-tema] .mprev-btn-pay { border-radius: 999px; }
 .t-roi-aviso { grid-column: 1 / -1; margin: 0; font-size: 12.5px; color: var(--t-text-3); }
 @media (max-width: 1000px) { .t-roi { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .t-roi-res { grid-template-columns: 1fr; } .t-roi-sup { grid-template-columns: 1fr 1fr; } .t-roi-sup-nombre { grid-column: 1 / -1; } }
+
+/* La Terminal · segunda mitad y política de reembolso */
+.t-fun-enlace { padding: 0; border: 0; background: none; color: var(--p-cyan); font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.t-fun-enlace:focus-visible { outline: 2px solid var(--p-cyan); outline-offset: 2px; }
+.t-politica { border-radius: var(--t-radio); border: 1px solid var(--g-borde); background: rgba(255, 255, 255, .02); }
+.t-politica summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 22px; font-size: 15.5px; color: var(--t-text-2); }
+.t-politica summary::-webkit-details-marker { display: none; }
+.t-politica summary b { color: var(--t-text); }
+.t-politica summary:focus-visible { outline: 2px solid var(--p-cyan); outline-offset: 2px; border-radius: var(--t-radio); }
+.t-politica[open] .t-fun-abrir { transform: rotate(45deg); }
+.t-politica ol { margin: 0; padding: 0 22px 22px 44px; display: grid; gap: 12px; }
+.t-politica li { font-size: 15px; line-height: 1.6; color: var(--t-text-2); }
+.t-politica li b { color: var(--t-text); }
+#preg-nombre-campo[hidden] { display: none; }
