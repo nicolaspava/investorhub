@@ -1,7 +1,8 @@
 /* La Curaduría · landing «Cartel nocturno». Tres cosas, ninguna escucha el scroll:
    1. Revelado: .t-rv y el chat (.t-chat) reciben .t-dentro al entrar en pantalla.
    2. Logo de la barra: aparece cuando el del hero sale de la pantalla.
-   3. Pestañas «Para quién», con teclado (flechas, Inicio, Fin). */
+   3. Pestañas «Para quién», con teclado (flechas, Inicio, Fin).
+   4. El teléfono de La Guía: lacuraduria.net en vivo, dentro del teléfono. */
 (function () {
   var raiz = document.documentElement;
 
@@ -52,4 +53,51 @@
       if (destino) { ev.preventDefault(); elegir(destino, true); }
     });
   });
+})();
+
+// 4. El teléfono de La Guía en vivo. La página real se carga al tocarla, no antes:
+//    así no se gastan datos ni el scroll de la página queda atrapado en el teléfono.
+//    Se dibuja a 390 px de ancho, como un teléfono de verdad, y se escala al bisel.
+(function () {
+  var tel = document.querySelector('[data-guia-tel]');
+  if (!tel) return;
+  var vivo = tel.querySelector('[data-vivo]');
+  var pie = tel.querySelector('[data-vivo-pie]');
+  var demo = tel.querySelector('[data-demo]');
+  var marco = tel.querySelector('[data-vivo-marco]');
+  var activar = tel.querySelector('[data-vivo-activar]');
+  var botones = tel.querySelectorAll('[data-guia-ver]');
+  var ANCHO = 390;
+
+  function ajustar() {
+    var f = marco.querySelector('iframe');
+    if (!f) return;
+    var escala = marco.clientWidth / ANCHO;
+    f.style.transform = 'scale(' + escala + ')';
+    f.style.height = (marco.clientHeight / escala) + 'px';
+  }
+
+  activar.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = 'https://lacuraduria.net/';
+    f.title = 'lacuraduria.net, la guía en vivo';
+    f.style.width = ANCHO + 'px';
+    f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    f.addEventListener('load', function () { vivo.classList.add('t-vivo-cargado'); });
+    marco.appendChild(f);
+    vivo.classList.add('t-vivo-activo');
+    ajustar();
+  });
+  if ('ResizeObserver' in window) new ResizeObserver(ajustar).observe(marco);
+  else window.addEventListener('resize', ajustar);
+
+  function ver(cual) {
+    var enVivo = cual !== 'guia';
+    vivo.hidden = !enVivo;
+    pie.hidden = !enVivo;
+    demo.hidden = enVivo;
+    botones.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-guia-ver') === cual ? 'true' : 'false'); });
+  }
+  botones.forEach(function (b) { b.addEventListener('click', function () { ver(b.getAttribute('data-guia-ver')); }); });
+  window.lcGuiaVer = ver;
 })();

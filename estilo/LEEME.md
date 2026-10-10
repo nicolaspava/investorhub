@@ -18,6 +18,7 @@
 >   - `api/webhook-mp.js` valida la firma, marca `confirmado_at` y manda el correo de confirmación una sola vez (Resend, si existe `RESEND_API_KEY`).
 >   - Lo compartido vive en `api/_lib/preventa.js`. La tabla real es `preventa_compradores`; `supabase-schema.sql` describe otra, vieja, que no existe.
 >   - La política de reembolso está en `#t-fun-reembolso`. Es una propuesta: hay que revisarla con abogado.
+> - **Teléfono de La Guía en vivo (10 oct):** el hero de `#pg-la-guia` muestra lacuraduria.net de verdad dentro del teléfono (`[data-guia-tel]`, código en `estilo/landing.js`, parte 4). Primero se ve la captura `img/producto/movil-inicio.jpg`; al tocar «Toca para navegar la guía aquí» se carga el sitio real a 390 px y se escala al bisel. El botón «GuÍA · pronto» cambia a la demo inventada del chat, que sigue ahí porque la GuÍA todavía no existe. Si lacuraduria.net prohíbe que lo muestren dentro de otra página (encabezados `X-Frame-Options` o `frame-ancestors`), el teléfono queda en blanco: hay que permitir lacuraduria.com en la webapp.
 > - **`estilo/demo.js`** monta cada `[data-demo]`. La demo solo de teléfono no tiene el computador y lo que depende de él no corre.
 
 Rediseño de la portada de la landing (`index.html`, pantalla `#pg-home`) hecho con el *taste skill* el 7 oct 2026. Vive en la rama `diseno/taste-skill`. La versión que copia el sistema de la webapp, sin rediseño, está en la rama `diseno/sistema-webapp`.
