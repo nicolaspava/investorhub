@@ -691,6 +691,13 @@ html[data-tema] .sf-tagline { font-family: var(--lc-font-body); font-weight: 400
 .t-sus-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .t-sus-lista li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; font-size: 15px; line-height: 1.45; color: var(--t-text-2); }
 .t-sus-lista svg { width: 18px; height: 18px; margin-top: 2px; color: var(--p-green); }
+/* Planes en la portada: Gratis y Pro fundador */
+.t-planes-home { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); margin-top: clamp(28px, 4vw, 44px); }
+.t-planes-home .t-texto { margin: 0; }
+.t-planes-home .t-sus-lista b { color: var(--t-text); font-weight: 600; }
+.t-planes-cupos { margin-left: 10px; padding: 3px 8px; border-radius: 999px; border: 1px solid rgba(255, 115, 108, .5); color: var(--t-accent); }
+.t-planes-mas { margin: -6px 0 0; font-size: 14px; }
+@media (max-width: 900px) { .t-planes-home { grid-template-columns: 1fr; } }
 .t-sus-calendario, .t-sus-faq { margin-top: clamp(56px, 7vw, 96px); }
 .t-sus-calendario ol { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
 .t-sus-calendario li { display: grid; align-content: start; gap: 6px; padding: 18px 16px; border-radius: 16px; border: 1px solid var(--g-borde); background: rgba(255, 255, 255, .03); border-top: 3px solid var(--c); }
