@@ -1279,3 +1279,13 @@ nav.t-barra .nav-burger span { background: var(--t-text); }
 .t-nos-hito h3 { margin: 0 0 6px; font-family: var(--lc-font-display); font-weight: 800; font-size: 1.35rem; letter-spacing: -.02em; color: var(--t-text); }
 .t-nos-hito p:not(.t-nos-anio) { margin: 0; max-width: 640px; color: var(--t-text-2); line-height: 1.55; }
 @media (max-width: 640px) { .t-nos-hito { grid-template-columns: 1fr; padding-left: 24px; } }
+
+/* ══ Camiseta (10 oct): Mercado Pago o WhatsApp, entrega en El Virrey o Servientrega ══ */
+.t-tienda [hidden] { display: none !important; }
+.t-cam-datos { display: grid; gap: 8px; margin: 4px 0 14px; }
+.t-cam-datos-tit { margin: 0 0 2px; font-family: var(--lc-font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--t-text-3); }
+.t-cam-datos input { width: 100%; height: 46px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--g-borde-2); background: rgba(255, 255, 255, .04); color: var(--t-text); font: 15px var(--lc-font-body); }
+.t-cam-datos input:focus { outline: 2px solid var(--p-coral); outline-offset: 1px; }
+.t-cam-error { margin: 0; min-height: 1em; font-size: 13px; color: var(--p-coral); }
+.t-cam-botones { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.t-cam-botones .t-btn svg { width: 20px; height: 20px; }

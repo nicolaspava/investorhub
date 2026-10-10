@@ -1,7 +1,7 @@
 // api/webhook-mp.js
 // Recibe notificaciones de Mercado Pago y actualiza Supabase
 import crypto from 'node:crypto';
-import { PRECIO_MITAD, leerRegistro, actualizarRegistro, pagosAprobados, correosDeConfirmacion } from './_lib/preventa.js';
+import { PRECIO_MITAD, leerRegistro, actualizarRegistro, pagosAprobados, correosDeConfirmacion, avisoCamiseta } from './_lib/preventa.js';
 
 // Firma de Mercado Pago: x-signature = "ts=...,v1=..." y v1 es el HMAC-SHA256 de
 // "id:{data.id};request-id:{x-request-id};ts:{ts};" con la clave secreta del webhook
@@ -66,6 +66,18 @@ export default async function handler(req, res) {
     transaction_amount,
     date_approved,
   } = pago;
+
+  // Camiseta: no tiene registro en Supabase; el pedido viene en los metadatos del pago.
+  // Para no avisar dos veces, solo cuenta el aviso en que el pago queda aprobado (aprobación y última
+  // actualización casi al mismo tiempo); los avisos posteriores del mismo pago se ignoran.
+  if (pago.metadata?.producto === 'camiseta') {
+    const reciente = date_approved && Math.abs(new Date(pago.date_last_updated) - new Date(date_approved)) < 120000;
+    if (status === 'approved' && reciente) {
+      try { await avisoCamiseta({ ...pago.metadata, monto: transaction_amount, pagoId: paymentId }); }
+      catch (e) { console.error('Aviso camiseta:', e); }
+    }
+    return res.status(200).json({ ok: true, producto: 'camiseta', estado: status });
+  }
 
   const registroId = external_reference;
 

@@ -24,12 +24,12 @@
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261010k">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261010l">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261010b">
 <!-- Medición: pega aquí el ID de Google Analytics 4 (G-XXXX) y el de la conversión de Google Ads (AW-XXXX/etiqueta). Vacíos, no se carga nada de Google. -->
 <meta name="lc-ga4" content="">
 <meta name="lc-ads" content="">
-<script src="/estilo/medicion.js?v=20261010a"></script>
+<script src="/estilo/medicion.js?v=20261010b"></script>
 <script src="/estilo/demo.js?v=20261010b" defer></script>
 <script src="/estilo/landing.js?v=20261010e" defer></script>
 <style>
@@ -632,14 +632,21 @@ footer.site-footer{}
       <div class="t-tienda-info">
         <p class="t-sus-tier">Camiseta LC23</p>
         <h2 class="t-h3">Lleva la identidad del proyecto puesta</h2>
-        <p class="t-texto">Algodón, en blanca o negra. Primera edición de 20 unidades.</p>
+        <p class="t-texto">Algodón, en blanca o negra. Primera edición de 20 unidades. Garantía de un año en tintas, estampado y algodón.</p>
 
         <fieldset class="t-tienda-grupo">
-          <legend>Precio</legend>
+          <legend>Dónde estás</legend>
           <div class="t-tienda-opciones">
-            <label><input type="radio" name="cam-precio-h" value="Con la suscripción fundadora · $80.000" checked><span><b>$80.000</b>Con la suscripción fundadora</span></label>
-            <label><input type="radio" name="cam-precio-h" value="Sola, en Bogotá · $90.000"><span><b>$90.000</b>Sola, en Bogotá</span></label>
-            <label><input type="radio" name="cam-precio-h" value="En Europa · 35 €"><span><b>35 €</b>En Europa</span></label>
+            <label><input type="radio" name="cam-region-h" value="col" checked><span><b>$90.000</b>Colombia</span></label>
+            <label><input type="radio" name="cam-region-h" value="eu"><span><b>35 USD</b>Europa · por WhatsApp</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="t-tienda-grupo" data-cam-entrega>
+          <legend>Entrega</legend>
+          <div class="t-tienda-opciones">
+            <label><input type="radio" name="cam-entrega-h" value="virrey" checked><span><b>Gratis</b>Recoges en el Parque El Virrey, Bogotá</span></label>
+            <label><input type="radio" name="cam-entrega-h" value="servientrega"><span><b>Servientrega</b>Envío a todo el país, lo pagas aparte</span></label>
           </div>
         </fieldset>
 
@@ -660,8 +667,19 @@ footer.site-footer{}
           </div>
         </fieldset>
 
-        <button data-evento="shirt_order_click" type="button" class="t-btn t-btn-pri t-btn-xl" data-comprar disabled><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"/></svg> Elige tu talla</button>
-        <p class="t-tienda-nota">Te escribimos por WhatsApp para coordinar el pago y la entrega.</p>
+        <div class="t-cam-datos" data-cam-datos hidden>
+          <p class="t-cam-datos-tit">Tus datos para el pedido</p>
+          <input type="text" data-cam="nombre" placeholder="Nombre" autocomplete="name">
+          <input type="email" data-cam="email" placeholder="Correo" autocomplete="email">
+          <input type="tel" data-cam="celular" placeholder="Celular (WhatsApp)" autocomplete="tel">
+          <input type="text" data-cam="direccion" placeholder="Dirección y ciudad para Servientrega" autocomplete="street-address" data-solo-envio hidden>
+          <p class="t-cam-error" data-cam-error role="alert"></p>
+        </div>
+        <div class="t-cam-botones">
+          <button data-evento="shirt_checkout_start" type="button" class="t-btn t-btn-pri t-btn-xl" data-comprar-mp disabled>Elige tu talla</button>
+          <button data-evento="shirt_order_click" type="button" class="t-btn t-btn-sec" data-comprar disabled><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"/></svg> Comprar por WhatsApp</button>
+        </div>
+        <p class="t-tienda-nota" data-cam-nota>Paga con Mercado Pago o cuadra tu compra por WhatsApp. Recoges gratis en el Parque El Virrey o la enviamos por Servientrega a todo el país.</p>
       </div>
     </div>
     </div>
@@ -1761,14 +1779,21 @@ window.addEventListener('load', function(){
       <div class="t-tienda-info">
         <p class="t-sus-tier">Camiseta LC23</p>
         <h2 class="t-h3">Lleva la identidad del proyecto puesta</h2>
-        <p class="t-texto">Algodón, en blanca o negra. Primera edición de 20 unidades.</p>
+        <p class="t-texto">Algodón, en blanca o negra. Primera edición de 20 unidades. Garantía de un año en tintas, estampado y algodón.</p>
 
         <fieldset class="t-tienda-grupo">
-          <legend>Precio</legend>
+          <legend>Dónde estás</legend>
           <div class="t-tienda-opciones">
-            <label><input type="radio" name="cam-precio-s" value="Con la suscripción fundadora · $80.000" checked><span><b>$80.000</b>Con la suscripción fundadora</span></label>
-            <label><input type="radio" name="cam-precio-s" value="Sola, en Bogotá · $90.000"><span><b>$90.000</b>Sola, en Bogotá</span></label>
-            <label><input type="radio" name="cam-precio-s" value="En Europa · 35 €"><span><b>35 €</b>En Europa</span></label>
+            <label><input type="radio" name="cam-region-s" value="col" checked><span><b>$90.000</b>Colombia</span></label>
+            <label><input type="radio" name="cam-region-s" value="eu"><span><b>35 USD</b>Europa · por WhatsApp</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="t-tienda-grupo" data-cam-entrega>
+          <legend>Entrega</legend>
+          <div class="t-tienda-opciones">
+            <label><input type="radio" name="cam-entrega-s" value="virrey" checked><span><b>Gratis</b>Recoges en el Parque El Virrey, Bogotá</span></label>
+            <label><input type="radio" name="cam-entrega-s" value="servientrega"><span><b>Servientrega</b>Envío a todo el país, lo pagas aparte</span></label>
           </div>
         </fieldset>
 
@@ -1789,8 +1814,19 @@ window.addEventListener('load', function(){
           </div>
         </fieldset>
 
-        <button data-evento="shirt_order_click" type="button" class="t-btn t-btn-pri t-btn-xl" data-comprar disabled><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"/></svg> Elige tu talla</button>
-        <p class="t-tienda-nota">Te escribimos por WhatsApp para coordinar el pago y la entrega.</p>
+        <div class="t-cam-datos" data-cam-datos hidden>
+          <p class="t-cam-datos-tit">Tus datos para el pedido</p>
+          <input type="text" data-cam="nombre" placeholder="Nombre" autocomplete="name">
+          <input type="email" data-cam="email" placeholder="Correo" autocomplete="email">
+          <input type="tel" data-cam="celular" placeholder="Celular (WhatsApp)" autocomplete="tel">
+          <input type="text" data-cam="direccion" placeholder="Dirección y ciudad para Servientrega" autocomplete="street-address" data-solo-envio hidden>
+          <p class="t-cam-error" data-cam-error role="alert"></p>
+        </div>
+        <div class="t-cam-botones">
+          <button data-evento="shirt_checkout_start" type="button" class="t-btn t-btn-pri t-btn-xl" data-comprar-mp disabled>Elige tu talla</button>
+          <button data-evento="shirt_order_click" type="button" class="t-btn t-btn-sec" data-comprar disabled><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"/></svg> Comprar por WhatsApp</button>
+        </div>
+        <p class="t-tienda-nota" data-cam-nota>Paga con Mercado Pago o cuadra tu compra por WhatsApp. Recoges gratis en el Parque El Virrey o la enviamos por Servientrega a todo el país.</p>
       </div>
     </div>
   </section>
@@ -2351,12 +2387,13 @@ function prevToggleFaq(el) {
   var params = new URLSearchParams(window.location.search);
   var pago = params.get('pago');
   if (!pago) return;
+  var esCamiseta = params.get('producto') === 'camiseta';
   setTimeout(function() {
-    navTo('preventa');
+    if (esCamiseta) navTo('home', 'tienda', true); else navTo('preventa');
     var isOk = pago === 'ok';
     var banner = document.createElement('div');
     banner.style.cssText = 'position:fixed;top:72px;left:50%;transform:translateX(-50%);background:' + (isOk ? 'var(--lc-success)' : 'var(--lc-surface-raised)') + ';border:1px solid ' + (isOk ? 'rgba(0,111,77,.4)' : 'rgba(255,115,108,.3)') + ';color:' + (isOk ? '#F4F1E8' : '#FF736C') + ';font-family:DM Mono,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:12px 24px;border-radius:14px;z-index:999;font-weight:700;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.4);';
-    banner.textContent = isOk ? 'Pago recibido. Bienvenido a La Curaduría' : pago === 'pendiente' ? 'Pago en proceso. Te avisamos cuando se confirme' : 'Pago no procesado. Puedes intentarlo de nuevo';
+    banner.textContent = isOk && esCamiseta ? 'Pago recibido. Te escribimos por WhatsApp para la entrega' : isOk ? 'Pago recibido. Bienvenido a La Curaduría' : pago === 'pendiente' ? 'Pago en proceso. Te avisamos cuando se confirme' : 'Pago no procesado. Puedes intentarlo de nuevo';
     document.body.appendChild(banner);
     setTimeout(function() { banner.style.transition = 'opacity .4s'; banner.style.opacity = '0'; setTimeout(function() { banner.remove(); }, 400); }, 6000);
   }, 300);
@@ -2404,8 +2441,10 @@ document.querySelectorAll('[data-tienda]').forEach(function (t) {
       prenda(valor('cam-color'));
     });
   });
+  var btnMp = t.querySelector('[data-comprar-mp]'), datos = t.querySelector('[data-cam-datos]'), errorCam = t.querySelector('[data-cam-error]');
+  var campo = function (n) { return t.querySelector('[data-cam="' + n + '"]'); };
   function pintar() {
-    var color = valor('cam-color'), stock = CAMISETA_STOCK[color];
+    var color = valor('cam-color'), stock = CAMISETA_STOCK[color], eu = valor('cam-region') === 'eu', envio = valor('cam-entrega') === 'servientrega';
     vista.setAttribute('data-color', color);
     prenda(color);
     t.querySelectorAll('input[name^="cam-talla-"]').forEach(function (r) {
@@ -2415,17 +2454,43 @@ document.querySelectorAll('[data-tienda]').forEach(function (t) {
       r.parentElement.querySelector('[data-quedan]').textContent = n === 0 ? 'Agotada' : (n === 1 ? 'Queda 1' : 'Quedan ' + n);
     });
     var talla = valor('cam-talla');
-    btn.disabled = !talla;
-    btn.lastChild.textContent = talla ? ' Comprar por WhatsApp' : ' Elige tu talla';
+    // Europa: solo por WhatsApp (35 USD). Colombia: Mercado Pago o WhatsApp.
+    t.querySelector('[data-cam-entrega]').hidden = eu;
+    btnMp.hidden = eu;
+    if (eu) datos.hidden = true;
+    t.querySelector('[data-solo-envio]').hidden = !envio;
+    btn.disabled = btnMp.disabled = !talla;
+    btnMp.textContent = talla ? 'Pagar $90.000 con Mercado Pago' : 'Elige tu talla';
+    btn.classList.toggle('t-btn-pri', eu); btn.classList.toggle('t-btn-sec', !eu); btn.classList.toggle('t-btn-xl', eu);
+  }
+  function pedido() {
+    var eu = valor('cam-region') === 'eu', entrega = valor('cam-entrega');
+    return 'Hola, quiero la camiseta LC23.\nColor: ' + (valor('cam-color') === 'negra' ? 'Negra' : 'Blanca') + '\nTalla: ' + valor('cam-talla') +
+      (eu ? '\nPrecio: 35 USD (Europa)' : '\nPrecio: $90.000\nEntrega: ' + (entrega === 'servientrega' ? 'envío por Servientrega (pago el envío aparte)' : 'recojo en el Parque El Virrey'));
   }
   t.addEventListener('change', pintar);
   btn.addEventListener('click', function () {
-    var color = valor('cam-color');
-    var texto = 'Hola, quiero la camiseta LC23.\nColor: ' + (color === 'negra' ? 'Negra' : 'Blanca') +
-      '\nTalla: ' + valor('cam-talla') + '\nPrecio: ' + valor('cam-precio');
+    var texto = pedido();
     // Sin número, el mismo pedido sale por correo.
     if (!CAMISETA_WHATSAPP) { location.href = 'mailto:nicolas.pava@lacuraduria.net?subject=' + encodeURIComponent('Camiseta LC23') + '&body=' + encodeURIComponent(texto); return; }
     window.open('https://wa.me/' + CAMISETA_WHATSAPP + '?text=' + encodeURIComponent(texto), '_blank', 'noopener');
+  });
+  // Mercado Pago: el primer clic pide los datos; el segundo crea el pago.
+  btnMp.addEventListener('click', async function () {
+    if (datos.hidden) { datos.hidden = false; campo('nombre').focus(); btnMp.textContent = 'Continuar al pago · $90.000'; return; }
+    var envio = valor('cam-entrega') === 'servientrega';
+    var d = { nombre: campo('nombre').value.trim(), email: campo('email').value.trim(), celular: campo('celular').value.trim(), direccion: envio ? campo('direccion').value.trim() : '' };
+    errorCam.textContent = '';
+    if (!d.nombre || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email) || d.celular.replace(/\D/g, '').length < 7) { errorCam.textContent = 'Escribe tu nombre, un correo válido y tu celular.'; return; }
+    if (envio && !d.direccion) { errorCam.textContent = 'Escribe la dirección y la ciudad para el envío.'; return; }
+    btnMp.disabled = true; btnMp.textContent = 'Abriendo Mercado Pago…';
+    try {
+      var r = await fetch('/api/comprar-camiseta', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.assign(d, { color: valor('cam-color'), talla: valor('cam-talla'), entrega: valor('cam-entrega'), utm: window.lcOrigen ? window.lcOrigen() : '' })) });
+      var j = await r.json().catch(function () { return {}; });
+      if (!r.ok || !j.checkout_url) throw new Error(j.error || 'No pudimos abrir Mercado Pago. Intenta de nuevo o compra por WhatsApp.');
+      location.href = j.checkout_url;
+    } catch (e) { errorCam.textContent = e.message; btnMp.disabled = false; btnMp.textContent = 'Continuar al pago · $90.000'; }
   });
   pintar();
 });

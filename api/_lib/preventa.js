@@ -157,3 +157,18 @@ export async function correosDeConfirmacion({ nombre, email, mitad, monto, pagoI
   });
   return alComprador;
 }
+
+// Aviso al equipo de una camiseta pagada con Mercado Pago (el comprador recibe el comprobante de Mercado Pago).
+export async function avisoCamiseta({ nombre, email, celular, color, talla, entrega, direccion, monto, pagoId, utm }) {
+  const lugar = entrega === 'servientrega' ? `Envío por Servientrega (el envío se cobra aparte): ${direccion}` : 'Recoge en el Parque El Virrey';
+  const lineas = [`${nombre} pagó ${pesos(monto)} por la camiseta LC23.`, `Color: ${color} · Talla: ${talla}`, `Entrega: ${lugar}`,
+    `Correo: ${email} · Celular: ${celular}`, `Pago de Mercado Pago: ${pagoId}`, 'Recuerda restar la unidad en CAMISETA_STOCK y escribirle por WhatsApp para la entrega.'];
+  return enviar({
+    para: String(process.env.CORREO_AVISOS || CORREO_CONTACTO).split(',').map((c) => c.trim()).filter(Boolean),
+    asunto: `Camiseta: ${nombre} · ${color} ${talla} (${pesos(monto)})`,
+    texto: lineas.join('\n'),
+    html: lineas.map((l) => `<p>${esc(l)}</p>`).join(''),
+    responderA: email,
+    fila: { hoja: 'Ventas', valores: [new Date().toISOString(), nombre, email, `camiseta ${color} ${talla} · ${entrega}`, monto, String(pagoId || ''), utm || ''] },
+  });
+}

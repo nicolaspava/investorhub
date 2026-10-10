@@ -4,7 +4,7 @@
    2. lcEvento(nombre, datos) manda el evento a Google Analytics 4 / Google Ads si están configurados
       (las etiquetas <meta name="lc-ga4"> y <meta name="lc-ads"> en index.html) y siempre a window.dataLayer.
    3. Eventos automáticos: landing_view (cada pantalla), cta_click (botones con data-evento),
-      purchase_founders (al volver de Mercado Pago con el pago aprobado, una sola vez por pago).
+      purchase_founders y purchase_shirt (al volver de Mercado Pago con el pago aprobado, una sola vez por pago).
    Visitas de prueba: abrir el sitio con ?prueba=1 marca este navegador como de prueba y no cuenta. */
 (function () {
   var guardar = function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} };
@@ -63,7 +63,8 @@
     var hechos = leer('lc_compras') || '';
     if (id && hechos.indexOf(id) < 0 && (q.get('status') || q.get('collection_status')) === 'approved') {
       guardar('lc_compras', hechos + ',' + id);
-      window.lcEvento('purchase_founders', { transaction_id: id, value: 100000, currency: 'COP' });
+      if (q.get('producto') === 'camiseta') window.lcEvento('purchase_shirt', { transaction_id: id, value: 90000, currency: 'COP' });
+      else window.lcEvento('purchase_founders', { transaction_id: id, value: 100000, currency: 'COP' });
     }
   }
 })();
