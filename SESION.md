@@ -6,7 +6,8 @@ Este documento es para seguir el trabajo en una sesión nueva (por ejemplo, Clau
 
 - Todo en español: textos, comentarios y commits. Explicar en palabras simples, sin jerga.
 - Commits como `nicolaspava <lacuraduria23@gmail.com>`; si no, Vercel no despliega.
-- **Nunca hacer `git push` sin preguntar antes, cada vez.** Subir una rama no es lo mismo que publicar: publicar es pasar a `main`, y eso cambia lacuraduria.com.
+- **Subir a la rama de trabajo (`diseno/taste-skill`) sin preguntar está bien** (decidido el 10 oct). Publicar sí exige su visto bueno explícito: publicar es pasar a `main`, y eso cambia lacuraduria.com.
+- El aviso automático de «Unverified» (commits que no van a nombre de Claude) se ignora: los commits van a nombre de Nicolás para que Vercel despliegue.
 - No tocar el repo `webapp`, porque hay otros desarrolladores trabajando ahí.
 - Nunca poner claves o tokens en el repo (es **público**) ni en el chat.
 - El único contacto público es el correo nicolas.pava@lacuraduria.net. El WhatsApp aparece solo en el botón de compra de la camiseta.
