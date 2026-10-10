@@ -392,7 +392,7 @@ html[data-tema] .guia-chip { font-family: var(--lc-font-body); font-size: 13px; 
 html[data-tema] .guia-chip:hover { color: var(--t-text); border-color: var(--t-text-3); }
 html[data-tema] .guia-dot { background: var(--t-text-3); }
 /* La conversación se escribe sola cuando el chat entra en pantalla:
-   cuenta en tres pasos lo que hace la GuÍA. */
+   cuenta en tres pasos lo que hace el Copiloto. */
 @media (prefers-reduced-motion: no-preference) {
   .t-chat .guia-msgs > * { opacity: 0; transform: translateY(10px); }
   .t-chat.t-dentro .guia-msgs > * { animation: t-sube .6s var(--t-ease) forwards; }
@@ -1045,7 +1045,7 @@ html[data-tema] .mprev-btn-pay { border-radius: 999px; }
 .t-guia-hero-texto .t-demo-leyenda { margin-top: 32px; }
 .t-demo.t-demo-solo { display: flex; justify-content: center; grid-template-columns: none; }
 .t-demo-solo .t-movil, .t-movil.t-vivo { grid-column: auto; grid-row: auto; margin: 0; max-width: 320px; width: 100%; justify-self: auto; }
-/* El teléfono de La Guía: lacuraduria.net en vivo, con la GuÍA (pronto) al lado */
+/* El teléfono de La Guía: lacuraduria.net en vivo, con el Copiloto (pronto) al lado */
 .t-guia-tel { display: flex; flex-direction: column; align-items: center; gap: 16px; }
 .t-guia-tel [hidden] { display: none !important; }
 .t-guia-conmutador { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; border: 1px solid var(--g-borde-2); background: var(--g-luz), rgba(28, 28, 26, .6); -webkit-backdrop-filter: var(--g-blur); backdrop-filter: var(--g-blur); }
@@ -1121,7 +1121,7 @@ html[data-tema] .mprev-btn-pay { border-radius: 999px; }
 .t-pilar button:focus-visible { outline: 2px solid var(--p-cyan); outline-offset: 2px; }
 .t-fun-aliados { padding-inline: 0; }
 
-/* El campo de la GuÍA en el teléfono ya no lleva id */
+/* El campo de el Copiloto en el teléfono ya no lleva id */
 .t-mv-campo { flex: 1; min-width: 0; display: flex; }
 .t-mv-campo input { width: 100%; }
 

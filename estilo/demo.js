@@ -1,6 +1,6 @@
 /* La Curaduría · la demo del hero (v4, 8 oct 2026).
    Computador: La Terminal con sus diez módulos y su estado (ya, beta, próximamente).
-   Teléfono: La Guía (inicio, eventos, perfiles, contenidos), la GuÍA y el perfil de un artista.
+   Teléfono: La Guía (inicio, eventos, perfiles, contenidos), el Copiloto y el perfil de un artista.
    Las pantallas están conectadas, como en la plataforma:
    - publicar un evento o un contenido en La Terminal lo muestra La Guía;
    - la frase del perfil que se edita en La Terminal cambia el perfil del teléfono;
@@ -237,7 +237,7 @@ function montarDemo(demo) {
     { titulo: 'Klande Beats: el dancehall como memoria de la pista bogotana', tipo: 'Crónica sonora', img: 'co-klande.jpg', w: 457, h: 480, slug: 'klande-beats-el-dancehall-como-memoria-de-la-pista-bogotana-7bzkyc' },
     { titulo: 'Hard Trance Vol. 1 by paradoxx.raw', tipo: 'Audio', img: 'co-trance.jpg', w: 270, h: 480, slug: 'hard-trance-vol-1-by-paradoxx-raw-902ucb' }
   ];
-  // Qué de La Guía ya existe: todo menos la GuÍA (el chat).
+  // Qué de La Guía ya existe: todo menos el Copiloto (el chat).
   var ESTADO_MOVIL = { inicio: 'ya', eventos: 'ya', perfiles: 'ya', contenidos: 'ya', perfil: 'ya', guia: 'pronto' };
 
   var chip = $('[data-mv-chip]'), vistaPerfil = $('[data-movil="perfil"]'), perfilAbierto = null;
@@ -309,8 +309,8 @@ function montarDemo(demo) {
   })();
   pintarListas();
 
-  // La GuÍA (próximamente): responde a las sugerencias
-  // Lugares y planes de ejemplo para la conversación de la GuÍA (inventados: la GuÍA aún no existe).
+  // El Copiloto (próximamente): responde a las sugerencias
+  // Lugares y planes de ejemplo para la conversación de el Copiloto (inventados: el Copiloto aún no existe).
   var LUGARES = {
     tunda: { tipo: 'Fiesta · House', c: 'var(--p-coral)', ini: 'T', nombre: 'Tunda', detalle: 'Sáb · 10 p.m. · colectivo que cambia de locación' },
     discos: { tipo: 'Previa · Disquería y café', c: 'var(--p-green)', ini: 'DE', nombre: 'Discos del Espacio', detalle: 'Sáb · desde las 6 p.m. · discos, café, comida y house' }
@@ -349,7 +349,7 @@ function montarDemo(demo) {
     msgs.appendChild(el('p', 't-mv-burbuja t-mv-yo', texto)); bajar();
     var r = RESPUESTAS[clave];
     if (r) responder(r[0], r[1]);
-    else responder('En esta demo respondo a las sugerencias de abajo. Cuando salga, la GuÍA buscará en toda la cartelera, el directorio y los contenidos.');
+    else responder('En esta demo respondo a las sugerencias de abajo. Cuando salga, el Copiloto buscará en toda la cartelera, el directorio y los contenidos.');
   }
   function adivinar(t) {
     t = t.toLowerCase();
@@ -360,7 +360,7 @@ function montarDemo(demo) {
     if (/escuchar|música|musica|set|álbum|album|sonido/.test(t)) return 'escuchar';
     return null;
   }
-  // La conversación de ejemplo se escribe sola la primera vez que se abre la GuÍA.
+  // La conversación de ejemplo se escribe sola la primera vez que se abre el Copiloto.
   var guionHecho = false;
   function guion() {
     mostrarMovil('guia');

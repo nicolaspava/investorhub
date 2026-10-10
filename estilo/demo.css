@@ -1,6 +1,6 @@
 /* ============================================================
    La Curaduría · la demo del hero (8 oct 2026)
-   El computador muestra La Terminal y el teléfono la GuÍA y un perfil.
+   El computador muestra La Terminal y el teléfono el Copiloto y un perfil.
    Va después de landing.css y usa sus variables (--t-*, --g-*).
 
    El computador se dibuja en un lienzo fijo de 1000 × 640 que
@@ -433,7 +433,7 @@
   .t-demo-leyenda { margin-top: 24px; }
 }
 
-/* ── Teléfonos: primero la GuÍA; Pro se ve en pequeño, con sus funciones afuera ── */
+/* ── Teléfonos: primero el Copiloto; Pro se ve en pequeño, con sus funciones afuera ── */
 @media (max-width: 900px) {
   .t-demo { display: flex; flex-direction: column; align-items: stretch; gap: 14px; }
   .t-movil { order: -1; align-self: center; max-width: 300px; margin: 0 0 22px; }
@@ -465,7 +465,7 @@
   .t-ventana { background: var(--t-surf-2); }
 }
 
-/* Tarjetas de lugares en la conversación de la GuÍA (sin foto: iniciales en color) */
+/* Tarjetas de lugares en la conversación de el Copiloto (sin foto: iniciales en color) */
 .t-mv-ini { display: grid; place-items: center; width: 50px; height: 50px; flex: none; border-radius: 8px; font: 800 15px/1 var(--lc-font-display); color: #0C0C0B; background: var(--c); }
 .t-mv-lugar { cursor: default; }
 /* En La Guía, el teléfono del copiloto se ve como un chat: sin las pestañas de abajo */
