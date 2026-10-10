@@ -15,7 +15,7 @@
 > - **Barra:** La Guía, La Terminal, Categorías, Preventa, Nosotros, Explorar la guía e Ingresar. `navTo(página, ancla)` ya acepta anclas en cualquier página.
 > - **Cobro (10 oct):**
 >   - `api/crear-preferencia.js` cobra cada mitad ($100.000); la segunda solo con el correo de la primera.
->   - `api/webhook-mp.js` valida la firma, marca `confirmado_at` y manda el correo de confirmación una sola vez (Resend, si existe `RESEND_API_KEY`).
+>   - `api/webhook-mp.js` valida la firma, marca `confirmado_at` y manda el correo de confirmación una sola vez (con Brevo si existe `BREVO_API_KEY`, o con Resend si existe `RESEND_API_KEY`), y el aviso de compra al equipo (`CORREO_AVISOS`).
 >   - Lo compartido vive en `api/_lib/preventa.js`. La tabla real es `preventa_compradores`; `supabase-schema.sql` describe otra, vieja, que no existe.
 >   - La política de reembolso está en `#t-fun-reembolso`. Es una propuesta: hay que revisarla con abogado.
 > - **Teléfono de La Guía (10 oct):** el hero de `#pg-la-guia` muestra lacuraduria.net con capturas reales y largas (`img/producto/guia-*.jpg`, 390 px de ancho), que se recorren con scroll dentro del teléfono. La barra de abajo (`guia-barra.png`) y los botones Inicio · Eventos · Páginas · Publicaciones cambian de página; tocar la pantalla abre esa página en el sitio real. No es un iframe porque lacuraduria.net lo prohíbe (`frame-ancestors 'none'` y `X-Frame-Options: SAMEORIGIN`); si la webapp permite `frame-ancestors https://lacuraduria.com`, se puede volver a un iframe navegable. «GuÍA · pronto» muestra la demo inventada del chat. Para repetir las capturas: Chrome sin ventana a 390×844, pantalla por pantalla (cuatro de alto), ocultando lo fijo, y se unen.

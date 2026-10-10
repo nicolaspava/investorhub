@@ -53,25 +53,52 @@ export async function actualizarRegistro(id, cambios) {
 }
 
 // ── Correo ───────────────────────────────────────────────────────────────────
-// Se envía con Resend (resend.com) si está configurada RESEND_API_KEY. Sin ella no se envía nada
-// y el pago sigue su curso: Mercado Pago ya le manda su propio comprobante a quien paga.
-// CORREO_REMITENTE debe ser de un dominio verificado en Resend, p. ej. «La Curaduría <preventa@lacuraduria.com>».
+// Se envía con Brevo (brevo.com) si está BREVO_API_KEY, o con Resend (resend.com) si está RESEND_API_KEY.
+// Sin ninguna no se envía nada y el pago sigue su curso: Mercado Pago ya le manda su comprobante a quien paga.
+// CORREO_REMITENTE debe ser un remitente o dominio verificado en el servicio, p. ej. «La Curaduría <preventa@lacuraduria.com>».
+function remitente() {
+  const t = process.env.CORREO_REMITENTE || 'La Curaduría <preventa@lacuraduria.com>';
+  const m = t.match(/^\s*(.*?)\s*<([^>]+)>\s*$/);
+  return m ? { nombre: m[1] || 'La Curaduría', correo: m[2] } : { nombre: 'La Curaduría', correo: t.trim() };
+}
+
 async function enviar({ para, asunto, html, texto, responderA }) {
-  const clave = process.env.RESEND_API_KEY;
-  if (!clave) { console.warn('Correo sin enviar: falta RESEND_API_KEY'); return false; }
-  const r = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${clave}` },
-    body: JSON.stringify({
-      from: process.env.CORREO_REMITENTE || 'La Curaduría <preventa@lacuraduria.com>',
-      to: Array.isArray(para) ? para : [para],
-      reply_to: responderA || CORREO_CONTACTO,
-      subject: asunto,
-      html,
-      text: texto,
-    }),
-  });
-  if (!r.ok) { console.error('Resend', r.status, await r.text()); return false; }
+  const lista = Array.isArray(para) ? para : [para];
+  const de = remitente();
+  const brevo = process.env.BREVO_API_KEY;
+  const resend = process.env.RESEND_API_KEY;
+  let r;
+  if (brevo) {
+    r = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', accept: 'application/json', 'api-key': brevo },
+      body: JSON.stringify({
+        sender: { name: de.nombre, email: de.correo },
+        to: lista.map((email) => ({ email })),
+        replyTo: { email: responderA || CORREO_CONTACTO },
+        subject: asunto,
+        htmlContent: html,
+        textContent: texto,
+      }),
+    });
+  } else if (resend) {
+    r = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${resend}` },
+      body: JSON.stringify({
+        from: `${de.nombre} <${de.correo}>`,
+        to: lista,
+        reply_to: responderA || CORREO_CONTACTO,
+        subject: asunto,
+        html,
+        text: texto,
+      }),
+    });
+  } else {
+    console.warn('Correo sin enviar: falta BREVO_API_KEY o RESEND_API_KEY');
+    return false;
+  }
+  if (!r.ok) { console.error(brevo ? 'Brevo' : 'Resend', r.status, await r.text()); return false; }
   return true;
 }
 
@@ -103,7 +130,7 @@ export async function correosDeConfirmacion({ nombre, email, mitad, monto, pagoI
   const resumen = `${nombre} (${email}) pagó ${pesos(monto)}: ${primera ? 'primera' : 'segunda'} mitad de la suscripción fundadora.`;
   const detalle = [
     `Pago de Mercado Pago: ${pagoId || 'sin número'}`,
-    `Correo al comprador: ${alComprador ? 'enviado' : 'no se envió (revisar Resend)'}`,
+    `Correo al comprador: ${alComprador ? 'enviado' : 'no se envió (revisar el servicio de correo)'}`,
     'Ver en Mercado Pago: https://www.mercadopago.com.co/activities',
   ];
   await enviar({
