@@ -47,6 +47,11 @@ export default async function handler(req, res) {
 
   const registroId = supaData[0]?.id;
 
+  // A dónde vuelve la persona después de pagar: el mismo sitio desde donde pagó, si es uno nuestro.
+  const host = String(req.headers['x-forwarded-host'] || req.headers.host || '');
+  const nuestro = /^(lacuraduria\.com|www\.lacuraduria\.com|[a-z0-9-]+-la-curaduria\.vercel\.app|investor-hub-rust\.vercel\.app|localhost(:\d+)?)$/i.test(host);
+  const base = nuestro ? (host.startsWith('localhost') ? 'http://' : 'https://') + host : 'https://lacuraduria.com';
+
   // 2. Crear preferencia en Mercado Pago
   const preferencia = {
     items: [
@@ -60,11 +65,12 @@ export default async function handler(req, res) {
     back_urls: {
       // El parámetro va en la búsqueda (?pago=), no en el #: la página lo lee de location.search
       // y Mercado Pago agrega sus propios parámetros detrás.
-      success: 'https://lacuraduria.com/?pago=ok',
-      failure: 'https://lacuraduria.com/?pago=error',
-      pending: 'https://lacuraduria.com/?pago=pendiente',
+      success: `${base}/?pago=ok`,
+      failure: `${base}/?pago=error`,
+      pending: `${base}/?pago=pendiente`,
     },
     auto_return: 'approved',
+    // Los avisos van siempre al sitio publicado: las vistas previas de Vercel piden inicio de sesión y Mercado Pago no entra.
     notification_url: 'https://lacuraduria.com/api/webhook-mp',
     statement_descriptor: 'LA CURADURIA',
     metadata: {
