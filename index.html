@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261010h">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261010i">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261009a">
 <script src="/estilo/demo.js?v=20261009a" defer></script>
 <script src="/estilo/landing.js?v=20261010c" defer></script>
@@ -387,7 +387,7 @@ footer.site-footer{}
   </div>
   <div class="t-barra-der">
     <a class="t-barra-buscar" href="https://lacuraduria.net" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg><span>Eventos, artistas, publicaciones</span></a>
-    <button type="button" class="t-barra-cta" onclick="navTo('home','planes')">Reservar cupo</button>
+    <button type="button" class="t-barra-cta" onclick="navTo('preventa','t-fun-precio')">Ser Fundador</button>
     <a class="t-barra-ingresar" href="https://lacuraduria.net/login" target="_blank" rel="noopener" aria-label="Ingresar"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></svg></a>
   </div>
   </div>
@@ -418,11 +418,11 @@ footer.site-footer{}
             <path d="M1756.74 128.05H1795V242.619H1756.74V204.429C1756.74 225.522 1739.61 242.619 1718.48 242.619H1641.95V204.429C1641.95 162.146 1676.3 127.968 1718.56 127.968H1756.82L1756.74 128.066V128.05ZM1756.84 204.429V166.24H1718.58C1697.44 166.24 1680.31 183.337 1680.31 204.429H1756.84Z" fill="#FFFFF6"/>
           </svg></h1>
         <div>
-          <p class="t-bajada t-entra t-entra-2">Una infraestructura de gestión y descubrimiento cultural.</p>
-          <p class="t-lead t-entra t-entra-3">Una guía cultural colaborativa, alimentada por un software de gestión especializado en música, arte y entretenimiento.</p>
+          <p class="t-bajada t-entra t-entra-2">Cambia el algoritmo por la curaduría.</p>
+          <p class="t-lead t-entra t-entra-3">Descubre música, arte y entretenimiento en una guía cultural construida por quienes hacen la cultura.</p>
           <div class="t-ctas t-entra t-entra-4">
-            <a class="t-btn t-btn-pri" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
-            <button type="button" class="t-btn t-btn-sec" onclick="navTo('preventa')">Conoce La Terminal</button>
+            <a class="t-btn t-btn-pri" href="https://lacuraduria.net" target="_blank" rel="noopener">Explorar la guía <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+            <button type="button" class="t-btn t-btn-sec" onclick="navTo('preventa')">Conocer La Terminal</button>
           </div>
         </div>
       </div>
@@ -440,7 +440,7 @@ footer.site-footer{}
   </section>
 
   <!-- 2 · EL PROBLEMA -->
-  <section id="problema" class="t-bloque">
+  <section id="problema" class="t-bloque" hidden>
     <div class="t-envoltura t-problema">
       <div>
         <p class="t-etiqueta t-rv" style="--c: var(--p-coral);">El problema</p>
@@ -454,32 +454,32 @@ footer.site-footer{}
   <section id="solucion" class="t-bloque">
     <div class="t-envoltura">
       <div class="t-cabecera">
-        <p class="t-etiqueta t-rv">La solución</p>
-        <h2 class="t-h2 t-rv">La cultura se descubre. La cultura se gestiona.</h2>
-        <p class="t-lead t-rv t-rv-2">Una plataforma con dos caras: La Guía, donde el público descubre, y La Terminal, donde quienes hacen la cultura la publican y la gestionan. Lo que se publica una vez aparece en todas partes.</p>
+        <p class="t-etiqueta t-rv">Qué es</p>
+        <h2 class="t-h2 t-rv">Una guía cultural colaborativa.</h2>
+        <p class="t-lead t-rv t-rv-2">Alimentada por La Terminal, un software de gestión de proyectos especializado en música, arte y entretenimiento.</p>
       </div>
-      <ol class="t-estaciones t-estaciones-3 t-rv">
+      <ol class="t-estaciones t-estaciones-3 t-como t-rv" aria-label="Cómo funciona">
         <li class="t-estacion" style="--c: var(--p-coral);">
           <span class="t-parada"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M227.32,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H216a8,8,0,0,0,0-16H115.32l112-112A16,16,0,0,0,227.32,73.37ZM92.69,208H48V163.31l88-88L180.69,120ZM192,108.69,147.32,64l24-24L216,84.69Z"/></svg></span>
-          <h3 class="t-h3">Publica</h3>
-          <p>Los proyectos comparten su oferta desde La Terminal.</p>
+          <p class="t-estacion-quien">Quienes hacen la cultura</p><h3 class="t-h3">Publicar</h3>
+          <p>Artistas, espacios y gestores crean su perfil y publican eventos y contenidos desde La Terminal.</p>
+        </li>
+        <li class="t-estacion t-estacion-centro" style="--c: var(--p-yellow-clara);">
+          <span class="t-parada"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></svg></span>
+          <p class="t-estacion-quien">La Curaduría</p><h3 class="t-h3">Conectar</h3>
+          <p>La Curaduría une la oferta cultural con las personas que la buscan.</p>
         </li>
         <li class="t-estacion" style="--c: var(--p-cyan);">
           <span class="t-parada"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,80,184a8.1,8.1,0,0,0,3.58-.84l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64a8,8,0,0,0-10.74-10.74ZM138,138,97.89,158.11,118,118l40.15-20.07Z"/></svg></span>
-          <h3 class="t-h3">Descubre</h3>
-          <p>Las personas la exploran en La Guía.</p>
-        </li>
-        <li class="t-estacion" style="--c: var(--p-yellow-clara);">
-          <span class="t-parada"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></svg></span>
-          <h3 class="t-h3">Conecta</h3>
-          <p>El encuentro genera comunidad y oportunidades.</p>
+          <p class="t-estacion-quien">Quienes viven la cultura</p><h3 class="t-h3">Descubrir</h3>
+          <p>Las personas exploran artistas, eventos, espacios, contenidos editoriales y radio en línea.</p>
         </li>
       </ol>
     </div>
   </section>
 
   <!-- 4 · PRODUCTO 1: LA GUÍA -->
-  <section id="producto-guia" class="t-bloque">
+  <section id="producto-guia" class="t-bloque" hidden>
     <div class="t-envoltura t-producto" style="--c: var(--p-cyan);">
       <div class="t-producto-texto t-rv">
         <p class="t-etiqueta">Producto 1 · La Guía</p>
@@ -496,7 +496,7 @@ footer.site-footer{}
   </section>
 
   <!-- 5 · PRODUCTO 2: LA TERMINAL -->
-  <section id="producto-terminal" class="t-bloque">
+  <section id="producto-terminal" class="t-bloque" hidden>
     <div class="t-envoltura t-producto t-producto-inv" style="--c: var(--p-coral);">
       <div class="t-producto-texto t-rv">
         <p class="t-etiqueta">Producto 2 · La Terminal</p>
@@ -541,8 +541,8 @@ footer.site-footer{}
   <!-- Planes: Gratis y Pro fundador (50 cupos). «Reservar cupo» abre el mismo cobro que La Terminal. -->
   <section id="planes" class="t-bloque">
     <div class="t-envoltura">
-      <p class="t-etiqueta t-rv" style="--c: var(--p-coral);">Planes · para quienes hacen la cultura</p>
-      <h2 class="t-h2 t-rv">Empieza gratis. Crece como fundador.</h2>
+      <p class="t-etiqueta t-rv" style="--c: var(--p-coral);">Preventa · Plan Fundadores</p>
+      <h2 class="t-h2 t-rv">Sé parte de quienes construyen La Curaduría.</h2>
       <div class="t-sus-planes t-planes-home t-rv">
         <article class="t-sus-plan">
           <p class="t-sus-tier">Gratis</p>
@@ -567,7 +567,7 @@ footer.site-footer{}
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Parte del movimiento:</b> los primeros 50 proyectos que cambian el algoritmo por la curaduría</span></li>
           </ul>
           <button type="button" class="t-btn t-btn-pri" onclick="prevSelectPlan('fundador')">Reservar cupo · $100.000 <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
-          <p class="t-planes-mas"><button type="button" class="t-fun-enlace" onclick="navTo('preventa')">Conoce todo La Terminal</button></p>
+          <p class="t-planes-mas"><button type="button" class="t-fun-enlace" onclick="navTo('preventa','t-fun-precio')">Conoce la preventa en La Terminal</button></p>
         </article>
       </div>
     </div>
@@ -633,10 +633,10 @@ footer.site-footer{}
   <section id="cierre" class="t-bloque t-cierre">
     <div class="t-envoltura">
       <h2 class="t-cierre-frase t-rv">¡Cambia el algoritmo <span class="t-coral">por la curaduría!</span></h2>
-      <p class="t-lead t-rv t-rv-2" style="margin: 0 auto 32px;">Crea tu perfil gratis y empieza a construir tu ruta cultural o la presencia de tu proyecto.</p>
+      <p class="t-lead t-rv t-rv-2" style="margin: 0 auto 32px;">Elige tu camino. Las dos cuentas son gratis.</p>
       <div class="t-ctas t-rv t-rv-2" style="justify-content:center;">
-        <a class="t-btn t-btn-pri t-btn-xl" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Regístrate gratis <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
-        <button type="button" class="t-btn t-btn-sec t-btn-xl" onclick="navTo('preventa')">¿Haces cultura? Conoce La Terminal</button>
+        <a class="t-btn t-btn-pri t-btn-xl" href="https://lacuraduria.net/login" target="_blank" rel="noopener">Quiero descubrir <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+        <button type="button" class="t-btn t-btn-sec t-btn-xl" onclick="navTo('preventa')">Quiero publicar</button>
       </div>
     </div>
   </section>
@@ -1364,24 +1364,24 @@ window.addEventListener('load', function(){
 <div class="t-fun">
   <!-- 1 · Barra de la página -->
   <div class="t-fun-barra" role="navigation" aria-label="En esta página">
-    <button type="button" data-ir-a="t-fun-terminal">Funciones</button><button type="button" data-ir-a="t-fun-recibes">Beneficios</button><button type="button" data-ir-a="t-fun-roi">Calcula</button><button type="button" data-ir-a="t-fun-como">Cómo entrar</button><button type="button" data-ir-a="t-fun-precio">Precio</button><button type="button" data-ir-a="t-fun-preguntas">Preguntas</button>
+    <button type="button" data-ir-a="t-fun-terminal">Beneficios</button><button type="button" data-ir-a="t-fun-precio">Planes</button><button type="button" data-ir-a="t-fun-como">Cómo entrar</button><button type="button" data-ir-a="t-fun-roi">Calcula</button><button type="button" data-ir-a="t-fun-preguntas">Preguntas</button>
     <button type="button" class="t-btn t-btn-pri" onclick="prevSelectPlan('fundador')">Reservar cupo</button>
   </div>
 
   <!-- 2 · Hero -->
   <section class="t-fun-hero t-envoltura">
-    <p class="t-sus-cupos"><span aria-hidden="true"></span>La Terminal · perfil fundador · 50 cupos</p>
-    <h1 class="t-fun-titulo">El centro de operaciones de tu proyecto cultural</h1>
-    <p class="t-fun-gancho">¿Sabías que existe un LinkedIn para artistas colombianos?</p>
-    <p class="t-lead">La Terminal reúne las herramientas para gestionar, mostrar y hacer crecer tu proyecto. Entra como fundador antes del lanzamiento.</p>
+    <p class="t-sus-cupos"><span aria-hidden="true"></span>La Terminal · de La Curaduría</p>
+    <h1 class="t-fun-titulo">Tu proyecto cultural, en un solo lugar</h1>
+    <p class="t-lead">Publica eventos, centraliza tu información y conecta con nuevas audiencias desde una plataforma especializada en música, arte y entretenimiento.</p>
     <div class="t-ctas">
-      <button type="button" class="t-btn t-btn-pri t-btn-xl" onclick="prevSelectPlan('fundador')">Reservar cupo <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
-      <button type="button" class="t-btn t-btn-sec t-btn-xl" data-ir-a="t-fun-recibes">Ver qué incluye</button>
+      <a class="t-btn t-btn-sec t-btn-xl" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Crear cuenta gratis</a>
+      <button type="button" class="t-btn t-btn-pri t-btn-xl" data-ir-a="t-fun-precio">Ser Fundador <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
     </div>
     <p class="t-fun-contador"><b data-cupos>50</b> de 50 cupos disponibles</p>
   </section>
 
   <!-- 2a · La demo de La Terminal (con el teléfono de La Guía conectado) -->
+  </section>
   <section class="t-envoltura t-fun-demo" id="demo-terminal">
       <div class="t-demo" data-demo aria-label="Demostración de La Curaduría: La Terminal en el computador y La Guía en el teléfono" role="region">
 
@@ -1645,23 +1645,10 @@ window.addEventListener('load', function(){
 
 
   <!-- 2b · Respaldo (campaña BIME). Logos: solo autorizados; van en .t-fun-logos, hoy oculto. -->
-  <section class="t-fun-bloque t-envoltura t-fun-respaldo-wrap">
-    <div class="t-fun-respaldo">
-      <ul>
-        <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,64H208V48a8,8,0,0,0-8-8H56a8,8,0,0,0-8,8V64H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120A24,24,0,0,1,24,96V80H48v32q0,4,.39,8Zm144-8.9c0,35.52-29,64.64-64,64.9a64,64,0,0,1-64-64V56H192ZM232,96a24,24,0,0,1-24,24h-.5a81.81,81.81,0,0,0,.5-8.9V80h24Z"/></svg><span>Beca de circulación internacional: segundo lugar nacional</span></li>
-        <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M240,208H224V96a16,16,0,0,0-16-16H144V32a16,16,0,0,0-24.88-13.32L39.12,72A16,16,0,0,0,32,85.34V208H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM208,96V208H144V96ZM48,85.34,128,32V208H48ZM112,112v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm-32,0v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm0,56v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Zm32,0v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Z"/></svg><span>Aceleración BIME con la Cámara de Comercio de Bogotá</span></li>
-        <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M185.33,114.21l29.14-27.42.17-.17a32,32,0,0,0-45.26-45.26c0,.06-.11.11-.17.17L141.79,70.67l-83-30.2a8,8,0,0,0-8.39,1.86l-24,24a8,8,0,0,0,1.22,12.31l63.89,42.59L76.69,136H56a8,8,0,0,0-5.65,2.34l-24,24A8,8,0,0,0,29,175.42l36.82,14.73,14.7,36.75.06.16a8,8,0,0,0,13.18,2.47l23.87-23.88A8,8,0,0,0,120,200V179.31l14.76-14.76,42.59,63.89a8,8,0,0,0,12.31,1.22l24-24a8,8,0,0,0,1.86-8.39Zm-.07,97.23-42.59-63.88A8,8,0,0,0,136.8,144c-.27,0-.53,0-.79,0a8,8,0,0,0-5.66,2.35l-24,24A8,8,0,0,0,104,176v20.69L90.93,209.76,79.43,181A8,8,0,0,0,75,176.57l-28.74-11.5L59.32,152H80a8,8,0,0,0,5.66-2.34l24-24a8,8,0,0,0-1.22-12.32L44.56,70.74l13.5-13.49,83.22,30.26a8,8,0,0,0,8.56-2L180.78,52.6A16,16,0,0,1,203.4,75.23l-32.87,30.93a8,8,0,0,0-2,8.56l30.26,83.22Z"/></svg><span>Rumbo al BIME de Bilbao</span></li>
-      </ul>
-      <p>Llevamos el catálogo de artistas de Colombia a la industria europea.</p>
-      <ul class="t-fun-logos" hidden><!-- <li><img src="/img/aliados/…" alt="…"></li> --></ul>
-      <div class="t-ctas"><a class="t-btn t-btn-sec" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Subir mi perfil</a><button type="button" class="t-btn t-btn-sec" onclick="navTo('home','reconocimientos')">Ver los reconocimientos</button></div>
-    </div>
-  </section>
 
-  <!-- 4 · Funciones: cuatro pilares; cada función abre su módulo en la demo -->
   <section class="t-fun-bloque t-envoltura" id="t-fun-terminal">
-    <p class="t-etiqueta" style="--c: var(--p-coral);">Funciones</p>
-    <h2 class="t-h2">Todo tu proyecto, en un solo lugar</h2>
+    <p class="t-etiqueta" style="--c: var(--p-coral);">Beneficios</p>
+    <h2 class="t-h2">Muéstrate, publica, conecta y crece</h2>
     <p class="t-lead">Cuatro frentes. Cada función dice si ya está, si llega en la beta de febrero o si viene después. Tócala para verla en la demo.</p>
     <div class="t-pilares">
       <article class="t-pilar" style="--c: var(--p-cyan);">
@@ -1692,6 +1679,117 @@ window.addEventListener('load', function(){
   </section>
 
   <!-- 7b · ALIADOS EDITORIALES: socios de contenido, no patrocinio -->
+  <section class="t-fun-bloque t-envoltura" id="t-fun-precio">
+    <p class="t-etiqueta" style="--c: var(--p-coral);">Planes</p>
+    <h2 class="t-h2">Empieza gratis o entra como fundador</h2>
+    <div class="t-sus-planes t-planes-home">
+        <article class="t-sus-plan">
+          <p class="t-sus-tier">Gratis</p>
+          <p class="t-sus-precio">$0</p>
+          <p class="t-texto">Tu proyecto en La Guía, para que el público te encuentre.</p>
+          <ul class="t-sus-lista">
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Tu perfil de artista, espacio o colectivo</span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Tu press kit en un enlace para compartir</span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Publica tus eventos en la cartelera</span></li>
+          </ul>
+          <a class="t-btn t-btn-sec" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Crear cuenta gratis</a>
+        </article>
+        <article class="t-sus-plan t-sus-fundador">
+          <p class="t-sus-tier">Pro · Fundador <span class="t-planes-cupos"><b data-cupos>50</b> de 50 cupos</span></p>
+          <p class="t-sus-precio">$200.000 <small>COP · un año</small></p>
+          <p class="t-texto">En dos pagos de $100.000: uno hoy y otro antes de marzo de 2027. El año empieza con el lanzamiento, en marzo de 2027.</p>
+          <ul class="t-sus-lista">
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Todo lo del plan gratis</b></span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Insignia de fundador</b> en tu perfil</span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Acceso a las betas antes que nadie</b>, desde febrero de 2027: gestor de contenidos, entrenamiento SEO, ENLACE academia y CRM</span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Beneficios desde hoy:</b> tu perfil compartido en nuestras redes, una reseña de tu proyecto y tu perfil en el catálogo que presentamos a agentes europeos</span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Parte del movimiento:</b> los primeros 50 proyectos que cambian el algoritmo por la curaduría</span></li>
+          </ul>
+          <button type="button" class="t-btn t-btn-pri" onclick="prevSelectPlan('fundador')">Quiero ser Fundador · $100.000 <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+          <p class="t-planes-mas">¿Ya reservaste? <button type="button" class="t-fun-enlace" onclick="prevSelectPlan('segunda')">Paga la segunda mitad</button></p>
+        </article>
+      </div>
+    <p class="t-fun-contador"><b data-cupos>50</b> de 50 cupos fundadores disponibles</p>
+    <!-- Camiseta LC23: ficha de producto. Se elige precio, color y talla; «Comprar» abre WhatsApp con el pedido.
+         Stock del primer pedido (20 unidades); se actualiza en CAMISETA_STOCK, más abajo. -->
+    <div class="t-tienda" id="camiseta" data-tienda>
+      <div class="t-tienda-vista" data-color="negra">
+        <svg class="t-tienda-prenda" viewBox="0 0 256 256" role="img" aria-label="Camiseta LC23" data-prenda>
+          <path class="t-prenda" data-silueta d=""/>
+          <image data-estampa href="" preserveAspectRatio="xMidYMin meet"/>
+        </svg>
+        <div class="t-tienda-lados" role="group" aria-label="Vista">
+          <button type="button" data-lado="frente" aria-pressed="true">Frente</button>
+          <button type="button" data-lado="espalda" aria-pressed="false">Espalda</button>
+        </div>
+        <p data-lado-nota>Logo vertical al pecho, centrado · 10 cm de ancho</p>
+      </div>
+      <div class="t-tienda-info">
+        <p class="t-sus-tier">Camiseta LC23</p>
+        <h2 class="t-h3">Lleva la identidad del proyecto puesta</h2>
+        <p class="t-texto">Algodón, en blanca o negra. Primera edición de 20 unidades.</p>
+
+        <fieldset class="t-tienda-grupo">
+          <legend>Precio</legend>
+          <div class="t-tienda-opciones">
+            <label><input type="radio" name="cam-precio-s" value="Con la suscripción fundadora · $80.000" checked><span><b>$80.000</b>Con la suscripción fundadora</span></label>
+            <label><input type="radio" name="cam-precio-s" value="Sola, en Bogotá · $90.000"><span><b>$90.000</b>Sola, en Bogotá</span></label>
+            <label><input type="radio" name="cam-precio-s" value="En Europa · 35 €"><span><b>35 €</b>En Europa</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="t-tienda-grupo">
+          <legend>Color</legend>
+          <div class="t-tienda-opciones t-tienda-colores">
+            <label><input type="radio" name="cam-color-s" value="negra" checked><span><i style="background:#111110;"></i>Negra</span></label>
+            <label><input type="radio" name="cam-color-s" value="blanca"><span><i style="background:#F5F3EC;"></i>Blanca</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="t-tienda-grupo">
+          <legend>Talla</legend>
+          <div class="t-tienda-opciones t-tienda-tallas" data-tallas>
+            <label><input type="radio" name="cam-talla-s" value="M"><span><b>M</b><small data-quedan></small></span></label>
+            <label><input type="radio" name="cam-talla-s" value="L"><span><b>L</b><small data-quedan></small></span></label>
+            <label><input type="radio" name="cam-talla-s" value="XL"><span><b>XL</b><small data-quedan></small></span></label>
+          </div>
+        </fieldset>
+
+        <button type="button" class="t-btn t-btn-pri t-btn-xl" data-comprar disabled><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"/></svg> Elige tu talla</button>
+        <p class="t-tienda-nota">Te escribimos por WhatsApp para coordinar el pago y la entrega.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · Preguntas -->
+  <section class="t-fun-bloque t-envoltura" id="t-fun-como">
+    <p class="t-etiqueta">Cómo entrar</p>
+    <h2 class="t-h2">Del perfil gratis al año completo</h2>
+    <ol class="t-fun-pasos">
+        <li style="--c: var(--t-text-2);" class="t-fun-paso0"><span class="t-fun-punto"></span><b>Hoy <em>Gratis</em></b><span>Sube tu perfil al catálogo de La Curaduría.</span><a class="t-btn t-btn-sec" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Subir mi perfil</a></li>
+        <li style="--c: var(--p-coral);"><span class="t-fun-punto"></span><b>Siguiente paso</b><span>Reservas tu cupo con el primer pago.</span></li>
+        <li style="--c: var(--p-cyan);"><span class="t-fun-punto"></span><b>Febrero 2027</b><span>Pruebas las versiones beta.</span></li>
+        <li style="--c: var(--p-green);"><span class="t-fun-punto"></span><b>Marzo 2027</b><span>Se activa tu plataforma.</span></li>
+        <li style="--c: var(--p-yellow-clara);"><span class="t-fun-punto"></span><b>Un año completo</b><span>Con todo lo que se habilite durante tu año.</span></li>
+    </ol>
+    <p class="t-texto">El segundo pago lo haces cuando quieras, entre hoy y marzo de 2027.</p>
+  </section>
+
+  <!-- 6 · Precio y registro -->
+  <section class="t-fun-bloque t-envoltura t-fun-respaldo-wrap">
+    <div class="t-fun-respaldo">
+      <ul>
+        <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,64H208V48a8,8,0,0,0-8-8H56a8,8,0,0,0-8,8V64H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120A24,24,0,0,1,24,96V80H48v32q0,4,.39,8Zm144-8.9c0,35.52-29,64.64-64,64.9a64,64,0,0,1-64-64V56H192ZM232,96a24,24,0,0,1-24,24h-.5a81.81,81.81,0,0,0,.5-8.9V80h24Z"/></svg><span>Beca de circulación internacional: segundo lugar nacional</span></li>
+        <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M240,208H224V96a16,16,0,0,0-16-16H144V32a16,16,0,0,0-24.88-13.32L39.12,72A16,16,0,0,0,32,85.34V208H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM208,96V208H144V96ZM48,85.34,128,32V208H48ZM112,112v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm-32,0v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm0,56v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Zm32,0v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Z"/></svg><span>Aceleración BIME con la Cámara de Comercio de Bogotá</span></li>
+        <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M185.33,114.21l29.14-27.42.17-.17a32,32,0,0,0-45.26-45.26c0,.06-.11.11-.17.17L141.79,70.67l-83-30.2a8,8,0,0,0-8.39,1.86l-24,24a8,8,0,0,0,1.22,12.31l63.89,42.59L76.69,136H56a8,8,0,0,0-5.65,2.34l-24,24A8,8,0,0,0,29,175.42l36.82,14.73,14.7,36.75.06.16a8,8,0,0,0,13.18,2.47l23.87-23.88A8,8,0,0,0,120,200V179.31l14.76-14.76,42.59,63.89a8,8,0,0,0,12.31,1.22l24-24a8,8,0,0,0,1.86-8.39Zm-.07,97.23-42.59-63.88A8,8,0,0,0,136.8,144c-.27,0-.53,0-.79,0a8,8,0,0,0-5.66,2.35l-24,24A8,8,0,0,0,104,176v20.69L90.93,209.76,79.43,181A8,8,0,0,0,75,176.57l-28.74-11.5L59.32,152H80a8,8,0,0,0,5.66-2.34l24-24a8,8,0,0,0-1.22-12.32L44.56,70.74l13.5-13.49,83.22,30.26a8,8,0,0,0,8.56-2L180.78,52.6A16,16,0,0,1,203.4,75.23l-32.87,30.93a8,8,0,0,0-2,8.56l30.26,83.22Z"/></svg><span>Rumbo al BIME de Bilbao</span></li>
+      </ul>
+      <p>Llevamos el catálogo de artistas de Colombia a la industria europea.</p>
+      <ul class="t-fun-logos" hidden><!-- <li><img src="/img/aliados/…" alt="…"></li> --></ul>
+      <div class="t-ctas"><a class="t-btn t-btn-sec" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Subir mi perfil</a><button type="button" class="t-btn t-btn-sec" onclick="navTo('home','reconocimientos')">Ver los reconocimientos</button></div>
+    </div>
+  </section>
+
+  <!-- 4 · Funciones: cuatro pilares; cada función abre su módulo en la demo -->
   <section id="aliados" class="t-bloque t-fun-aliados">
     <div class="t-envoltura">
       <div class="t-cabecera">
@@ -1737,19 +1835,6 @@ window.addEventListener('load', function(){
   </section>
 
   <!-- 3 · Beneficios: lo que recibes desde hoy -->
-  <section class="t-fun-bloque t-envoltura" id="t-fun-recibes">
-    <p class="t-etiqueta">Beneficios</p>
-    <h2 class="t-h2">Lo que recibes desde hoy</h2>
-    <ul class="t-fun-hoy">
-        <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176,160a39.89,39.89,0,0,0-28.62,12.09l-46.1-29.63a39.8,39.8,0,0,0,0-28.92l46.1-29.63a40,40,0,1,0-8.66-13.45l-46.1,29.63a40,40,0,1,0,0,55.82l46.1,29.63A40,40,0,1,0,176,160Zm0-128a24,24,0,1,1-24,24A24,24,0,0,1,176,32ZM64,152a24,24,0,1,1,24-24A24,24,0,0,1,64,152Zm112,72a24,24,0,1,1,24-24A24,24,0,0,1,176,224Z"/></svg></span>Tu perfil, compartido en nuestras redes</li>
-        <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM184,96a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,96Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,128Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,160Z"/></svg></span>Una reseña de tu proyecto en la plataforma, sin estrellas</li>
-        <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,80,184a8.1,8.1,0,0,0,3.58-.84l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64a8,8,0,0,0-10.74-10.74ZM138,138,97.89,158.11,118,118l40.15-20.07Z"/></svg></span>Tu perfil y tu press kit, visibles en La Guía</li>
-            <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M185.33,114.21l29.14-27.42.17-.17a32,32,0,0,0-45.26-45.26c0,.06-.11.11-.17.17L141.79,70.67l-83-30.2a8,8,0,0,0-8.39,1.86l-24,24a8,8,0,0,0,1.22,12.31l63.89,42.59L76.69,136H56a8,8,0,0,0-5.65,2.34l-24,24A8,8,0,0,0,29,175.42l36.82,14.73,14.7,36.75.06.16a8,8,0,0,0,13.18,2.47l23.87-23.88A8,8,0,0,0,120,200V179.31l14.76-14.76,42.59,63.89a8,8,0,0,0,12.31,1.22l24-24a8,8,0,0,0,1.86-8.39Zm-.07,97.23-42.59-63.88A8,8,0,0,0,136.8,144c-.27,0-.53,0-.79,0a8,8,0,0,0-5.66,2.35l-24,24A8,8,0,0,0,104,176v20.69L90.93,209.76,79.43,181A8,8,0,0,0,75,176.57l-28.74-11.5L59.32,152H80a8,8,0,0,0,5.66-2.34l24-24a8,8,0,0,0-1.22-12.32L44.56,70.74l13.5-13.49,83.22,30.26a8,8,0,0,0,8.56-2L180.78,52.6A16,16,0,0,1,203.4,75.23l-32.87,30.93a8,8,0,0,0-2,8.56l30.26,83.22Z"/></svg></span>Tu perfil forma parte del catálogo que presentamos a agentes europeos</li>
-    </ul>
-    <p class="t-fun-insignia"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-52.2,6.84-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Insignia de fundador.</b> Un distintivo en tu perfil, solo eso.</span></p>
-  </section>
-
-  <!-- 4b · Calculadora de retorno (10 oct): datos del último trimestre y supuestos que la persona ajusta. No promete resultados. -->
   <section class="t-fun-bloque t-envoltura" id="t-fun-roi">
     <p class="t-etiqueta" style="--c: var(--p-cyan);">Calcula tu retorno</p>
     <h2 class="t-h2">¿Cuánto te puede devolver La Terminal?</h2>
@@ -1808,85 +1893,6 @@ window.addEventListener('load', function(){
   </section>
 
   <!-- 5 · Cómo entrar -->
-  <section class="t-fun-bloque t-envoltura" id="t-fun-como">
-    <p class="t-etiqueta">Cómo entrar</p>
-    <h2 class="t-h2">Del perfil gratis al año completo</h2>
-    <ol class="t-fun-pasos">
-        <li style="--c: var(--t-text-2);" class="t-fun-paso0"><span class="t-fun-punto"></span><b>Hoy <em>Gratis</em></b><span>Sube tu perfil al catálogo de La Curaduría.</span><a class="t-btn t-btn-sec" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Subir mi perfil</a></li>
-        <li style="--c: var(--p-coral);"><span class="t-fun-punto"></span><b>Siguiente paso</b><span>Reservas tu cupo con el primer pago.</span></li>
-        <li style="--c: var(--p-cyan);"><span class="t-fun-punto"></span><b>Febrero 2027</b><span>Pruebas las versiones beta.</span></li>
-        <li style="--c: var(--p-green);"><span class="t-fun-punto"></span><b>Marzo 2027</b><span>Se activa tu plataforma.</span></li>
-        <li style="--c: var(--p-yellow-clara);"><span class="t-fun-punto"></span><b>Un año completo</b><span>Con todo lo que se habilite durante tu año.</span></li>
-    </ol>
-    <p class="t-texto">El segundo pago lo haces cuando quieras, entre hoy y marzo de 2027.</p>
-  </section>
-
-  <!-- 6 · Precio y registro -->
-  <section class="t-fun-bloque t-envoltura" id="t-fun-precio">
-    <p class="t-etiqueta" style="--c: var(--p-coral);">Precio</p>
-    <div class="t-fun-precio">
-      <p class="t-sus-tier">Perfil fundador</p>
-      <p class="t-sus-precio">$200.000 <small>COP</small></p>
-      <p class="t-texto">En dos pagos de $100.000: uno hoy y otro antes de marzo de 2027.</p>
-      <ul class="t-sus-lista">
-        <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Con camiseta LC23: <b>$180.000 hoy</b> y $100.000 después</span></li>
-      </ul>
-      <button type="button" class="t-btn t-btn-pri t-btn-xl" onclick="prevSelectPlan('fundador')">Reservar cupo · $100.000 <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
-      <p class="t-fun-contador"><b data-cupos>50</b> de 50 cupos disponibles</p>
-      <p class="t-fun-gratis">¿Ya reservaste? <button type="button" class="t-fun-enlace" onclick="prevSelectPlan('segunda')">Paga la segunda mitad</button> · ¿Todavía no? <a data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Empieza gratis: sube tu perfil</a></p>
-    </div>
-    <!-- Camiseta LC23: ficha de producto. Se elige precio, color y talla; «Comprar» abre WhatsApp con el pedido.
-         Stock del primer pedido (20 unidades); se actualiza en CAMISETA_STOCK, más abajo. -->
-    <div class="t-tienda" id="camiseta" data-tienda>
-      <div class="t-tienda-vista" data-color="negra">
-        <svg class="t-tienda-prenda" viewBox="0 0 256 256" role="img" aria-label="Camiseta LC23" data-prenda>
-          <path class="t-prenda" data-silueta d=""/>
-          <image data-estampa href="" preserveAspectRatio="xMidYMin meet"/>
-        </svg>
-        <div class="t-tienda-lados" role="group" aria-label="Vista">
-          <button type="button" data-lado="frente" aria-pressed="true">Frente</button>
-          <button type="button" data-lado="espalda" aria-pressed="false">Espalda</button>
-        </div>
-        <p data-lado-nota>Logo vertical al pecho, centrado · 10 cm de ancho</p>
-      </div>
-      <div class="t-tienda-info">
-        <p class="t-sus-tier">Camiseta LC23</p>
-        <h2 class="t-h3">Lleva la identidad del proyecto puesta</h2>
-        <p class="t-texto">Algodón, en blanca o negra. Primera edición de 20 unidades.</p>
-
-        <fieldset class="t-tienda-grupo">
-          <legend>Precio</legend>
-          <div class="t-tienda-opciones">
-            <label><input type="radio" name="cam-precio-s" value="Con la suscripción fundadora · $80.000" checked><span><b>$80.000</b>Con la suscripción fundadora</span></label>
-            <label><input type="radio" name="cam-precio-s" value="Sola, en Bogotá · $90.000"><span><b>$90.000</b>Sola, en Bogotá</span></label>
-            <label><input type="radio" name="cam-precio-s" value="En Europa · 35 €"><span><b>35 €</b>En Europa</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="t-tienda-grupo">
-          <legend>Color</legend>
-          <div class="t-tienda-opciones t-tienda-colores">
-            <label><input type="radio" name="cam-color-s" value="negra" checked><span><i style="background:#111110;"></i>Negra</span></label>
-            <label><input type="radio" name="cam-color-s" value="blanca"><span><i style="background:#F5F3EC;"></i>Blanca</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="t-tienda-grupo">
-          <legend>Talla</legend>
-          <div class="t-tienda-opciones t-tienda-tallas" data-tallas>
-            <label><input type="radio" name="cam-talla-s" value="M"><span><b>M</b><small data-quedan></small></span></label>
-            <label><input type="radio" name="cam-talla-s" value="L"><span><b>L</b><small data-quedan></small></span></label>
-            <label><input type="radio" name="cam-talla-s" value="XL"><span><b>XL</b><small data-quedan></small></span></label>
-          </div>
-        </fieldset>
-
-        <button type="button" class="t-btn t-btn-pri t-btn-xl" data-comprar disabled><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"/></svg> Elige tu talla</button>
-        <p class="t-tienda-nota">Te escribimos por WhatsApp para coordinar el pago y la entrega.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7 · Preguntas -->
   <section class="t-fun-bloque t-envoltura t-sus-faq" id="t-fun-preguntas">
     <h2 class="t-h2">Preguntas</h2>
     <div class="faq-list-p">
@@ -1926,6 +1932,7 @@ window.addEventListener('load', function(){
   </section>
 
   <!-- 7b · Política de reembolso (10 oct). Propuesta: revisar con abogado antes de publicar. -->
+
   <section class="t-fun-bloque t-envoltura" id="t-fun-reembolso">
     <details class="t-politica">
       <summary><span><b>Política de reembolso</b> del perfil fundador y de la camiseta</span><span class="t-fun-abrir" aria-hidden="true">+</span></summary>
@@ -1941,6 +1948,19 @@ window.addEventListener('load', function(){
   </section>
 
   <!-- 8 · Cierre -->
+  <section class="t-fun-bloque t-envoltura" id="t-fun-recibes" hidden>
+    <p class="t-etiqueta">Beneficios</p>
+    <h2 class="t-h2">Lo que recibes desde hoy</h2>
+    <ul class="t-fun-hoy">
+        <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M176,160a39.89,39.89,0,0,0-28.62,12.09l-46.1-29.63a39.8,39.8,0,0,0,0-28.92l46.1-29.63a40,40,0,1,0-8.66-13.45l-46.1,29.63a40,40,0,1,0,0,55.82l46.1,29.63A40,40,0,1,0,176,160Zm0-128a24,24,0,1,1-24,24A24,24,0,0,1,176,32ZM64,152a24,24,0,1,1,24-24A24,24,0,0,1,64,152Zm112,72a24,24,0,1,1,24-24A24,24,0,0,1,176,224Z"/></svg></span>Tu perfil, compartido en nuestras redes</li>
+        <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM184,96a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,96Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,128Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,160Z"/></svg></span>Una reseña de tu proyecto en la plataforma, sin estrellas</li>
+        <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,80,184a8.1,8.1,0,0,0,3.58-.84l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64a8,8,0,0,0-10.74-10.74ZM138,138,97.89,158.11,118,118l40.15-20.07Z"/></svg></span>Tu perfil y tu press kit, visibles en La Guía</li>
+            <li><span class="t-fun-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M185.33,114.21l29.14-27.42.17-.17a32,32,0,0,0-45.26-45.26c0,.06-.11.11-.17.17L141.79,70.67l-83-30.2a8,8,0,0,0-8.39,1.86l-24,24a8,8,0,0,0,1.22,12.31l63.89,42.59L76.69,136H56a8,8,0,0,0-5.65,2.34l-24,24A8,8,0,0,0,29,175.42l36.82,14.73,14.7,36.75.06.16a8,8,0,0,0,13.18,2.47l23.87-23.88A8,8,0,0,0,120,200V179.31l14.76-14.76,42.59,63.89a8,8,0,0,0,12.31,1.22l24-24a8,8,0,0,0,1.86-8.39Zm-.07,97.23-42.59-63.88A8,8,0,0,0,136.8,144c-.27,0-.53,0-.79,0a8,8,0,0,0-5.66,2.35l-24,24A8,8,0,0,0,104,176v20.69L90.93,209.76,79.43,181A8,8,0,0,0,75,176.57l-28.74-11.5L59.32,152H80a8,8,0,0,0,5.66-2.34l24-24a8,8,0,0,0-1.22-12.32L44.56,70.74l13.5-13.49,83.22,30.26a8,8,0,0,0,8.56-2L180.78,52.6A16,16,0,0,1,203.4,75.23l-32.87,30.93a8,8,0,0,0-2,8.56l30.26,83.22Z"/></svg></span>Tu perfil forma parte del catálogo que presentamos a agentes europeos</li>
+    </ul>
+    <p class="t-fun-insignia"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-52.2,6.84-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Insignia de fundador.</b> Un distintivo en tu perfil, solo eso.</span></p>
+  </section>
+
+  <!-- 4b · Calculadora de retorno (10 oct): datos del último trimestre y supuestos que la persona ajusta. No promete resultados. -->
   <section class="t-fun-cierre">
     <div class="t-envoltura">
       <h2 class="t-cierre-frase">Sé de los primeros 50.</h2>
@@ -1948,7 +1968,6 @@ window.addEventListener('load', function(){
       <a class="t-btn t-btn-sec t-btn-xl" data-subir-perfil href="https://lacuraduria.net/login" target="_blank" rel="noopener">Sube tu perfil gratis</a>
       <p class="t-fun-somos">La Curaduría es un medio de comunicación y monetización para la cultura, hecho en Bogotá. <b>Tecnología para la circulación de la cultura.</b></p>
     </div>
-  </section>
 </div>
 <script>
 // Cupos disponibles de la preventa fundadora: se cambia aquí a mano.

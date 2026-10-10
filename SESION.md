@@ -28,6 +28,12 @@ Este documento es para seguir el trabajo en una sesión nueva (por ejemplo, Clau
 
 **Barra principal (como la de lacuraduria.net):** La Guía · La Terminal · Nosotros · Contacto · buscador · Reservar cupo · Ingresar. La portada tiene planes (`#planes`): Gratis y Pro · Fundador.
 
+## Orden según el brief (10 oct, «Brief_Landings_La_Curaduria_La_Terminal.docx»)
+
+- **Portada:** Hero («Cambia el algoritmo por la curaduría»; Explorar la guía / Conocer La Terminal) → Qué es + Cómo funciona (Publicar · CONECTAR al centro · Descubrir) → Reconocimientos → Preventa (planes Gratis y Fundador) → Tienda → Registro en dos caminos (Quiero descubrir / Quiero publicar). Problema, Producto 1 y Producto 2 quedan ocultos con `hidden`.
+- **La Terminal:** Hero («Tu proyecto cultural, en un solo lugar»; Crear cuenta gratis / Ser Fundador) → demo → Beneficios (los cuatro pilares) → Planes (Gratis frente a Fundador, con la camiseta) → Cómo entrar → Respaldo → Aliados → Calculadora → Preguntas → Reembolso → Cierre. «Lo que recibes desde hoy» queda oculto: ya está en la tarjeta Fundador.
+- El botón coral de la barra dice «Ser Fundador» y lleva a los planes de La Terminal.
+
 ## La oferta (decidida por Nicolás)
 
 - **Precio y cupos:** 50 cupos fundadores; $200.000 COP en dos mitades de $100.000. La primera es la reserva y la segunda se paga antes de marzo de 2027.
