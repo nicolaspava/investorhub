@@ -58,9 +58,11 @@ export default async function handler(req, res) {
     },
     external_reference: `${registroId}`,
     back_urls: {
-      success: 'https://lacuraduria.com/#preventa?pago=ok',
-      failure: 'https://lacuraduria.com/#preventa?pago=error',
-      pending: 'https://lacuraduria.com/#preventa?pago=pendiente',
+      // El parámetro va en la búsqueda (?pago=), no en el #: la página lo lee de location.search
+      // y Mercado Pago agrega sus propios parámetros detrás.
+      success: 'https://lacuraduria.com/?pago=ok',
+      failure: 'https://lacuraduria.com/?pago=error',
+      pending: 'https://lacuraduria.com/?pago=pendiente',
     },
     auto_return: 'approved',
     notification_url: 'https://lacuraduria.com/api/webhook-mp',

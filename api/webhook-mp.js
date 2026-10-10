@@ -1,5 +1,26 @@
 // api/webhook-mp.js
 // Recibe notificaciones de Mercado Pago y actualiza Supabase
+import crypto from 'node:crypto';
+
+// Firma de Mercado Pago: x-signature = "ts=...,v1=..." y v1 es el HMAC-SHA256 de
+// "id:{data.id};request-id:{x-request-id};ts:{ts};" con la clave secreta del webhook
+// (panel de Mercado Pago → Webhooks → Clave secreta), guardada en la variable MP_WEBHOOK_SECRET.
+function firmaValida(req, clave) {
+  const firma = req.headers['x-signature'] || '';
+  const requestId = req.headers['x-request-id'] || '';
+  const partes = Object.fromEntries(
+    String(firma).split(',').map((p) => p.split('=').map((x) => x.trim()))
+  );
+  // data.id viene en la dirección del aviso; si no, en el cuerpo. Los ids alfanuméricos van en minúscula.
+  let dataId = (req.query && (req.query['data.id'] || req.query.id)) || req.body?.data?.id;
+  if (!partes.ts || !partes.v1 || !dataId || !requestId) return false;
+  dataId = String(dataId);
+  if (/[a-z]/i.test(dataId)) dataId = dataId.toLowerCase();
+  const canonica = `id:${dataId};request-id:${requestId};ts:${partes.ts};`;
+  const esperada = crypto.createHmac('sha256', clave).update(canonica).digest('hex');
+  return esperada.length === partes.v1.length &&
+    crypto.timingSafeEqual(Buffer.from(esperada), Buffer.from(partes.v1));
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
@@ -8,7 +29,16 @@ export default async function handler(req, res) {
   const SUPABASE_URL    = process.env.SUPABASE_URL;
   const SUPABASE_KEY    = process.env.SUPABASE_SERVICE_KEY;
 
-  const { type, data } = req.body;
+  // Sin firma válida no se toca nada. Si la clave aún no está configurada se sigue, porque el
+  // estado del pago siempre se consulta a Mercado Pago con nuestro token y no se cree lo que dice el aviso.
+  const claveFirma = process.env.MP_WEBHOOK_SECRET;
+  if (claveFirma) {
+    if (!firmaValida(req, claveFirma)) return res.status(401).json({ error: 'Firma inválida' });
+  } else {
+    console.warn('Falta la clave de firma del webhook: el aviso no se verificó');
+  }
+
+  const { type, data } = req.body || {};
 
   // Solo procesar notificaciones de pago
   if (type !== 'payment') {
