@@ -5,7 +5,7 @@
    Lectura del encargo: rediseño completo de la landing de una
    plataforma cultural de Bogotá para artistas, gestores,
    promotores y público de la escena. Lenguaje editorial nocturno
-   (cartel de fiesta + revista), CSS nativo, Bricolage como display
+   (cartel de fiesta + revista), CSS nativo, Space Grotesk como display
    de marca, un solo acento: el coral.
    Diales: asimetría 7 · movimiento 6 · densidad 3.
 
@@ -16,7 +16,7 @@
    - Formas: superficies e imágenes rectas (0); lo que se pulsa
      (botones, pestañas, campos) en píldora; los teléfonos con la
      curva de un teléfono, porque representan uno.
-   - Tipografías alojadas aquí (fuentes/): Bricolage Grotesque en
+   - Tipografías alojadas aquí (fuentes/): Space Grotesk en
      titulares, Geist en texto, Geist Mono solo en etiquetas.
 
    Va después de ds/tokens.css: redefine sus valores para que las
@@ -25,10 +25,11 @@
    ============================================================ */
 
 /* ── Tipografías ─────────────────────────────────────────────── */
+/* Títulos: Space Grotesk (11 oct 2026, decisión de Nicolás; antes Bricolage Grotesque). Va hasta 700. */
 @font-face {
-  font-family: 'Bricolage Grotesque';
-  src: url('/fuentes/bricolage-grotesque.woff2') format('woff2-variations');
-  font-weight: 200 800;
+  font-family: 'Space Grotesk';
+  src: url('/fuentes/space-grotesk.woff2') format('woff2-variations'), url('/fuentes/space-grotesk.woff2') format('woff2');
+  font-weight: 300 700;
   font-display: swap;
 }
 @font-face {
@@ -74,7 +75,7 @@
   --lc-accent: var(--t-accent);
   /* Superficies rectas también en las pantallas internas. */
   --lc-radius-sm: 0; --lc-radius-md: 0; --lc-radius-lg: 0; --lc-radius-tarjeta: 0;
-  --lc-font-display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+  --lc-font-display: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --lc-font-body:    'Geist', 'Helvetica Neue', Arial, sans-serif;
   --lc-font-mono:    'Geist Mono', ui-monospace, Menlo, monospace;
 
