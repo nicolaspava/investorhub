@@ -1318,3 +1318,11 @@ nav.t-barra .nav-burger span { background: var(--t-text); }
   .t-planes-home .t-sus-fundador { gap: 12px; padding: 20px; }
   .t-planes-home .t-sus-fundador .t-sus-lista li { font-size: 14px; }
 }
+
+/* ══ Barra sin línea ni sombra (11 oct): se funde con la página ══
+   Sin borde inferior; al bajar, el fondo de la barra se desvanece hacia el contenido en vez de cortarse. */
+html[data-tema] nav.t-barra, .t-marca-visible nav.t-barra { border: 0 !important; border-bottom: 0 !important; box-shadow: none !important; }
+.t-marca-visible nav.t-barra { background: rgba(12, 12, 11, .82) !important; }
+nav.t-barra::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 28px; pointer-events: none; background: linear-gradient(rgba(12, 12, 11, .82), rgba(12, 12, 11, 0)); opacity: 0; transition: opacity .3s var(--t-ease); }
+.t-marca-visible nav.t-barra::after { opacity: 1; }
+html[data-tema] nav.t-barra .nav-links.open { border: 0 !important; box-shadow: none !important; }
