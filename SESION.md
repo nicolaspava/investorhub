@@ -56,7 +56,7 @@ Este documento es para seguir el trabajo en una sesión nueva (por ejemplo, Clau
 
 ## Pendientes
 
-**El tablero completo del backlog está en `BACKLOG_ESTADO.md`.**
+**Lo que queda está en `BACKLOG_ESTADO.md` (corto).** Desde el 11 oct: las subpáginas no tienen segunda barra; la barra principal cambia a «← Inicio · nombre · secciones» (`SUBBARRAS` en `index.html`). El equipo de Nosotros está oculto. Los mockups del hero son el teléfono real de lacuraduria.net y La Terminal actual.
 
 1. **Correo de confirmación:** la vía elegida es **Gmail** (lacuraduria23@gmail.com) con el Google Apps Script de `google/aviso-correo.gs`; las instrucciones están en el mismo archivo. En Vercel van `GOOGLE_SCRIPT_URL` y `GOOGLE_SCRIPT_CLAVE`. Brevo (`BREVO_API_KEY` y `CORREO_REMITENTE`) y Resend siguen como alternativas (`La Curaduría <preventa@lacuraduria.com>`). Con cualquiera de las tres salen dos correos por cada pago aprobado: la confirmación al comprador y el aviso de compra al equipo. El aviso va a `CORREO_AVISOS` (uno o varios correos separados por comas); si no existe, a nicolas.pava@lacuraduria.net.
 2. **Política de reembolso:** es una propuesta; revisarla, idealmente con abogado. Nicolás la simplificó el 10 oct: retracto de 5 días hábiles (ley), Fundadores sin reembolso salvo retraso del lanzamiento, camiseta solo por calidad (una semana, garantía de un año, devoluciones desde noviembre de 2026). Se quitó la condición de «60 días sin beneficios».

@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261011a">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261011c">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261010b">
 <!-- Medición: pega aquí el ID de Google Analytics 4 (G-XXXX) y el de la conversión de Google Ads (AW-XXXX/etiqueta). Vacíos, no se carga nada de Google. -->
 <meta name="lc-ga4" content="">
@@ -403,6 +403,12 @@ footer.site-footer{}
     <span class="na" role="link" tabindex="0" onclick="navTo('contacto')"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.18V181.82Z"/></svg>Contacto</span>
     <a class="na t-barra-solo-menu" href="https://lacuraduria.net/login" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></svg>Ingresar</a>
   </div>
+  <!-- En las subpáginas la barra cambia: «← Inicio», el nombre de la página y sus secciones. -->
+  <div class="t-barra-sub" data-barra-sub hidden>
+    <button type="button" class="t-barra-volver" onclick="navTo('home')" aria-label="Volver al inicio"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg><span>Inicio</span></button>
+    <b class="t-barra-titulo" data-barra-titulo></b>
+    <div class="t-barra-anclas" data-barra-anclas></div>
+  </div>
   <div class="t-barra-der">
     <a class="t-barra-buscar" href="https://lacuraduria.net" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg><span>Eventos, artistas, publicaciones</span></a>
     <button data-evento="cta_fundadores" type="button" data-evento="cta_fundadores" class="t-barra-cta" onclick="navTo('preventa','t-fun-precio')">Ser Fundador</button>
@@ -446,11 +452,11 @@ footer.site-footer{}
       </div>
       <div class="t-escena t-entra t-entra-3">
         <button type="button" class="t-escena-pc" onclick="navTo('preventa')" aria-label="La Terminal: ver la página para quienes hacen la cultura">
-          <img src="/img/escena/terminal.webp" alt="La Terminal: el panel de gestión con el perfil y press kit de un artista" width="1400" height="948" fetchpriority="high">
+          <img src="/img/escena/terminal.webp?v=3" alt="La Terminal: el panel de gestión con el perfil y press kit de un artista" width="1400" height="948" fetchpriority="high">
           <span class="t-escena-rotulo" style="--c: var(--p-coral);">La Terminal · para quienes hacen la cultura</span>
         </button>
         <button type="button" class="t-escena-tel" onclick="navTo('la-guia')" aria-label="La Guía: ver la página para quienes viven la cultura">
-          <img src="/img/escena/guia.webp?v=2" alt="La Guía en el teléfono: eventos de la semana y artistas para descubrir" width="461" height="1000">
+          <img src="/img/escena/guia.webp?v=4" alt="La Guía en el teléfono: eventos de la semana y artistas para descubrir" width="461" height="1000">
           <span class="t-escena-rotulo" style="--c: var(--p-cyan);">La Guía · para quienes viven la cultura</span>
         </button>
       </div>
@@ -509,7 +515,7 @@ footer.site-footer{}
           <a data-evento="cta_explorar" class="t-btn t-btn-sec" href="https://lacuraduria.net" target="_blank" rel="noopener">Explorar la guía</a>
         </div>
       </div>
-      <button type="button" class="t-producto-img t-producto-tel t-rv t-rv-2" onclick="navTo('la-guia')" aria-label="Ver La Guía"><img src="/img/escena/guia.webp?v=2" alt="" width="461" height="1000" loading="lazy"></button>
+      <button type="button" class="t-producto-img t-producto-tel t-rv t-rv-2" onclick="navTo('la-guia')" aria-label="Ver La Guía"><img src="/img/escena/guia.webp?v=4" alt="" width="461" height="1000" loading="lazy"></button>
     </div>
   </section>
 
@@ -526,7 +532,7 @@ footer.site-footer{}
           <button type="button" class="t-btn t-btn-sec" onclick="navTo('preventa','t-fun-precio')">Ver la preventa</button>
         </div>
       </div>
-      <button type="button" class="t-producto-img t-rv t-rv-2" onclick="navTo('preventa')" aria-label="Ver La Terminal"><img src="/img/escena/terminal.webp" alt="" width="1400" height="948" loading="lazy"></button>
+      <button type="button" class="t-producto-img t-rv t-rv-2" onclick="navTo('preventa')" aria-label="Ver La Terminal"><img src="/img/escena/terminal.webp?v=3" alt="" width="1400" height="948" loading="lazy"></button>
     </div>
   </section>
 
@@ -1180,7 +1186,8 @@ window.addEventListener('load', function(){
     </div>
   </section>
 
-  <section class="sec-full" style="">
+  <!-- Equipo: oculto por ahora (11 oct), hasta tener fotos. -->
+  <section class="sec-full" hidden style="">
     <div class="sec" style="padding-top:0;padding-bottom:0">
       <h2 class="h2 rv d1">Equipo</h2>
       <div class="nos-founders rv d2">
@@ -1415,7 +1422,7 @@ window.addEventListener('load', function(){
      y el cobro (api/crear-preferencia.js, Mercado Pago). -->
 <div class="t-fun">
   <!-- 1 · Barra de la página -->
-  <div class="t-fun-barra" role="navigation" aria-label="En esta página">
+  <div class="t-fun-barra" role="navigation" aria-label="En esta página" hidden>
     <button type="button" data-ir-a="t-fun-terminal">Beneficios</button><button type="button" data-ir-a="t-fun-precio">Planes</button><button type="button" data-ir-a="t-fun-como">Cómo entrar</button><button type="button" data-ir-a="t-fun-roi">Calcula</button><button type="button" data-ir-a="t-fun-preguntas">Preguntas</button>
     <button data-evento="cta_fundadores" type="button" class="t-btn t-btn-pri" onclick="prevSelectPlan('fundador')">Reservar cupo</button>
   </div>
@@ -5503,6 +5510,27 @@ var RUTAS = { '/terminal': ['preventa'], '/terminal/precios': ['preventa', 't-fu
   '/guia': ['la-guia'], '/explorar': ['la-guia'], '/tienda': ['home', 'tienda'], '/camiseta': ['home', 'tienda'],
   '/contacto': ['contacto'], '/nosotros': ['nosotros'], '/privacidad': ['privacidad'] };
 var CAMINOS = { home: '/', preventa: '/terminal', 'la-guia': '/guia', contacto: '/contacto', nosotros: '/nosotros', privacidad: '/privacidad' };
+// Barra de las subpáginas: título y secciones propias; «Inicio» vuelve a la barra general.
+var SUBBARRAS = {
+  preventa: { titulo: 'La Terminal', anclas: [['Beneficios', 't-fun-terminal'], ['Planes', 't-fun-precio'], ['Cómo entrar', 't-fun-como'], ['Preguntas', 't-fun-preguntas']] },
+  'la-guia': { titulo: 'La Guía', anclas: [['Esta semana', 'esta-semana'], ['Categorías', 'categorias'], ['Funciones', 'funciones-guia']] },
+  nosotros: { titulo: 'Nosotros', anclas: [] },
+  contacto: { titulo: 'Contacto', anclas: [] },
+  privacidad: { titulo: 'Privacidad', anclas: [] }
+};
+function pintarBarra(page) {
+  var sub = document.querySelector('[data-barra-sub]'), conf = SUBBARRAS[page];
+  document.documentElement.classList.toggle('t-en-sub', !!conf);
+  sub.hidden = !conf;
+  if (!conf) return;
+  sub.querySelector('[data-barra-titulo]').textContent = conf.titulo;
+  var a = sub.querySelector('[data-barra-anclas]'); a.innerHTML = '';
+  conf.anclas.forEach(function (x) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'na'; b.textContent = x[0];
+    b.addEventListener('click', function () { var el = document.getElementById(x[1]); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    a.appendChild(b);
+  });
+}
 function navTo(page, anchor, sinHistoria) {
   pages.forEach(function(p){
     var el = document.getElementById('pg-'+p);
@@ -5520,6 +5548,7 @@ function navTo(page, anchor, sinHistoria) {
   }
   // Update nav active state
   updateNavActive(page);
+  pintarBarra(page);
   if (window.lcVista) window.lcVista(page);
   // Ancla dentro de la página (cualquier página)
   if(anchor){

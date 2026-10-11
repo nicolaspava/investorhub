@@ -1290,3 +1290,22 @@ nav.t-barra .nav-burger span { background: var(--t-text); }
 .t-cam-error { margin: 0; min-height: 1em; font-size: 13px; color: var(--p-coral); }
 .t-cam-botones { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .t-cam-botones .t-btn svg { width: 20px; height: 20px; }
+
+/* ══ Barra de las subpáginas (11 oct): «← Inicio», nombre y secciones, en vez de una segunda barra ══ */
+.t-barra-sub { display: flex; align-items: center; gap: 6px; min-width: 0; flex: 1; }
+.t-barra-sub[hidden] { display: none; }
+.t-en-sub nav.t-barra .nav-links, .t-en-sub nav.t-barra .nav-burger { display: none !important; }
+.t-barra-volver { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px 0 10px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .14); background: rgba(12, 12, 11, .4); color: var(--t-text); font: 500 14px/1 var(--lc-font-body); cursor: pointer; }
+.t-barra-volver svg { width: 18px; height: 18px; }
+.t-barra-volver:hover { border-color: rgba(255, 255, 255, .3); }
+.t-barra-titulo { margin: 0 10px 0 8px; font-family: var(--lc-font-display); font-weight: 700; font-size: 17px; color: var(--t-text); white-space: nowrap; }
+.t-barra-anclas { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+.t-barra-anclas::-webkit-scrollbar { display: none; }
+@media (max-width: 900px) {
+  .t-en-sub nav.t-barra #nav-wordmark { display: none; }
+  .t-barra-anclas { display: none; }
+  .t-barra-volver span { display: none; }
+  .t-barra-volver { width: 40px; padding: 0; justify-content: center; }
+}
+.t-fun-barra[hidden] { display: none !important; }
+.t-barra-anclas .na { appearance: none; -webkit-appearance: none; background: none; border: 0; box-shadow: none; font-size: 14px !important; }
