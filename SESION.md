@@ -37,7 +37,7 @@ Este documento es para seguir el trabajo en una sesión nueva (por ejemplo, Clau
 ## La oferta (decidida por Nicolás)
 
 - **Precio y cupos:** 50 cupos fundadores; $200.000 COP en dos mitades de $100.000. La primera es la reserva y la segunda se paga antes de marzo de 2027.
-- **Cuándo rige:** el año de suscripción empieza con el lanzamiento, en marzo de 2027. Las betas salen en febrero de 2027: gestor de contenidos, entrenamiento SEO, ENLACE academia y CRM.
+- **Cuándo rige:** el año de suscripción empieza con el lanzamiento, en marzo de 2027. Las betas salen en febrero de 2027: entrenamiento SEO, ENLACE academia y CRM. Ya disponible (11 oct): **Administrar** = Páginas, Eventos, Publicaciones y Tienda.
 - **Camiseta LC23:**
   - Precio (10 oct): $90.000 en Colombia; 35 USD en Europa, que se cuadra por WhatsApp.
   - Pago: Mercado Pago (`api/comprar-camiseta.js`, aviso al equipo desde el webhook) o WhatsApp. Entrega: recoger gratis en el Parque El Virrey o envío por Servientrega a todo el país, que se paga aparte.

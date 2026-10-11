@@ -37,15 +37,18 @@ function montarDemo(demo) {
 
   /* ── 2. La Terminal: módulos y ventana ─────────────────────────── */
   var modulos = [
-    { id: 'perfiles', estado: 'ya', titulo: 'Perfil y press kit',
-      texto: 'Reúne en tu perfil fotos, bio, editorial, rider y prensa. Promotores, bookers y periodistas encuentran ahí todo para programarte y hacer contenido.',
+    { id: 'perfiles', estado: 'ya', titulo: 'Páginas',
+      texto: 'Administra la página de tu proyecto: fotos, bio, editorial, rider y prensa. Promotores, bookers y periodistas encuentran ahí todo para programarte y hacer contenido.',
       prueba: 'Pruébalo: cambia la frase y toca «Ver en La Guía».' },
     { id: 'eventos', estado: 'ya', titulo: 'Eventos',
       texto: 'Creas el evento una vez y aparece en la cartelera, en el mapa y en el perfil de los artistas.',
       prueba: 'Pruébalo: publica el borrador y mira el teléfono.' },
-    { id: 'contenidos', estado: 'beta', titulo: 'Gestor de contenidos',
+    { id: 'contenidos', estado: 'ya', titulo: 'Publicaciones',
       texto: 'Publica reseñas, crónicas, sets y entrevistas, conectados con tus eventos y con los artistas protagonistas.',
       prueba: 'Pruébalo: publica la reseña y mira Contenidos en el teléfono.' },
+    { id: 'tienda', estado: 'ya', titulo: 'Tienda',
+      texto: 'Vende merch, discos y ediciones desde tu página. Tus productos aparecen en la tienda de La Curaduría.',
+      prueba: 'Así se ven tus productos, con su precio y su estado.' },
     { id: 'seo', estado: 'beta', titulo: 'Entrenamiento SEO',
       texto: 'Lecciones cortas para que tu perfil y tus contenidos aparezcan en los buscadores, sin depender de las redes.',
       prueba: 'Pruébalo: marca las lecciones que ya hiciste.' },

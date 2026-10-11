@@ -24,13 +24,13 @@
 <link rel="stylesheet" href="/ds/componentes.css">
 <link rel="preload" href="/fuentes/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/estilo/landing.css?v=20261011c">
+<link rel="stylesheet" href="/estilo/landing.css?v=20261011d">
 <link rel="stylesheet" href="/estilo/demo.css?v=20261010b">
 <!-- Medición: pega aquí el ID de Google Analytics 4 (G-XXXX) y el de la conversión de Google Ads (AW-XXXX/etiqueta). Vacíos, no se carga nada de Google. -->
 <meta name="lc-ga4" content="">
 <meta name="lc-ads" content="">
 <script src="/estilo/medicion.js?v=20261010b"></script>
-<script src="/estilo/demo.js?v=20261010b" defer></script>
+<script src="/estilo/demo.js?v=20261011a" defer></script>
 <script src="/estilo/landing.js?v=20261010e" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
@@ -549,7 +549,7 @@ footer.site-footer{}
         </div>
         <div class="t-estados-col" style="--c: var(--p-coral);">
           <h3 class="t-h3">La Terminal</h3>
-          <p class="t-sus-sub">Disponible ahora</p><ul class="t-estados-lista"><li><span class="t-estado-chip" data-estado="ya">Ya</span>Administración de tus páginas y perfiles</li><li><span class="t-estado-chip" data-estado="ya">Ya</span>Publicación de eventos y contenidos, que alimenta La Guía</li></ul>
+          <p class="t-sus-sub">Disponible ahora</p><ul class="t-estados-lista"><li><span class="t-estado-chip" data-estado="ya">Ya</span>Administrar: tus páginas, eventos, publicaciones y tienda</li><li><span class="t-estado-chip" data-estado="ya">Ya</span>Lo que publicas aparece en La Guía</li></ul>
           <p class="t-sus-sub">En desarrollo</p><ul class="t-estados-lista"><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Gestión de proyectos, agenda y comunidad</li><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Analítica para agentes culturales</li><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Oportunidades comerciales</li><li><span class="t-estado-chip" data-estado="pronto">Pronto</span>Suscripciones y facturación</li></ul>
         </div>
       </div>
@@ -606,7 +606,7 @@ footer.site-footer{}
           <ul class="t-sus-lista">
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Todo lo del plan gratis</b></span></li>
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Insignia de fundador</b> en tu perfil</span></li>
-            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Acceso a las betas antes que nadie</b>, desde febrero de 2027: gestor de contenidos, entrenamiento SEO, ENLACE academia y CRM</span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Acceso a las betas antes que nadie</b>, desde febrero de 2027: entrenamiento SEO, ENLACE academia y CRM</span></li>
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Beneficios desde hoy:</b> tu perfil compartido en nuestras redes, una reseña de tu proyecto y tu perfil en el catálogo que presentamos a agentes europeos</span></li>
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Parte del movimiento:</b> los primeros 50 proyectos que cambian el algoritmo por la curaduría</span></li>
           </ul>
@@ -1452,11 +1452,12 @@ window.addEventListener('load', function(){
               <aside class="t-pro-lado">
                 <p class="t-pro-marca">La Terminal</p>
                 <div class="t-pro-nav" role="group" aria-label="Módulos de La Terminal">
-                  <p class="t-pro-grupo" style="--c: var(--p-cyan);">Ya disponible</p>
-                  <button type="button" data-ir="perfiles" data-estado="ya" aria-current="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z"/></svg> Perfil y press kit</button>
+                  <p class="t-pro-grupo" style="--c: var(--p-cyan);">Administrar · ya disponible</p>
+                  <button type="button" data-ir="perfiles" data-estado="ya" aria-current="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z"/></svg> Páginas</button>
                   <button type="button" data-ir="eventos" data-estado="ya"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"/></svg> Eventos</button>
+                  <button type="button" data-ir="contenidos" data-estado="ya"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M227.32,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H216a8,8,0,0,0,0-16H115.32l112-112A16,16,0,0,0,227.32,73.37ZM92.69,208H48V163.31l88-88L180.69,120ZM192,108.69,147.32,64l24-24L216,84.69Z"/></svg> Publicaciones</button>
+                  <button type="button" data-ir="tienda" data-estado="ya"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96h0v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-48,0v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm-8-72a24,24,0,0,1-24-24v-8h48v8A24,24,0,0,1,192,136Z"/></svg> Tienda</button>
                   <p class="t-pro-grupo" style="--c: var(--p-yellow-clara);">Beta · feb 2027</p>
-                  <button type="button" data-ir="contenidos" data-estado="beta"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M227.32,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H216a8,8,0,0,0,0-16H115.32l112-112A16,16,0,0,0,227.32,73.37ZM92.69,208H48V163.31l88-88L180.69,120ZM192,108.69,147.32,64l24-24L216,84.69Z"/></svg> Gestor de contenidos</button>
                   <button type="button" data-ir="seo" data-estado="beta"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg> Entrenamiento SEO</button>
                   <button type="button" data-ir="enlace" data-estado="beta"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z"/></svg> ENLACE academia</button>
                   <button type="button" data-ir="crm" data-estado="beta"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M83.19,174.4a8,8,0,0,0,11.21-1.6,52,52,0,0,1,83.2,0,8,8,0,1,0,12.8-9.6A67.88,67.88,0,0,0,163,141.51a40,40,0,1,0-53.94,0A67.88,67.88,0,0,0,81.6,163.2,8,8,0,0,0,83.19,174.4ZM112,112a24,24,0,1,1,24,24A24,24,0,0,1,112,112Zm96-88H64A16,16,0,0,0,48,40V64H32a8,8,0,0,0,0,16H48v40H32a8,8,0,0,0,0,16H48v40H32a8,8,0,0,0,0,16H48v24a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V40A16,16,0,0,0,208,24Zm0,192H64V40H208Z"/></svg> CRM <span class="t-pro-cuenta" data-cuenta hidden>1</span></button>
@@ -1472,7 +1473,7 @@ window.addEventListener('load', function(){
               <div class="t-pro-main">
                 <!-- Perfil y press kit (ya) -->
                 <section class="t-pro-vista" data-vista="perfiles">
-                  <header class="t-pro-cab"><div><p class="t-pro-miga">Perfil y press kit</p><h3>La Payara</h3></div><div class="t-pro-cab-acc"><button type="button" class="t-pro-btn" data-accion="copiar-kit"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"/></svg> Copiar enlace</button><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="ver-perfil" data-ancla="perfiles">Ver en La Guía</button></div></header>
+                  <header class="t-pro-cab"><div><p class="t-pro-miga">Páginas</p><h3>La Payara</h3></div><div class="t-pro-cab-acc"><button type="button" class="t-pro-btn" data-accion="copiar-kit"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"/></svg> Copiar enlace</button><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="ver-perfil" data-ancla="perfiles">Ver en La Guía</button></div></header>
                   <div class="t-pro-dos t-pro-dos-perfil">
                     <figure class="t-pro-foto"><img src="/img/demo/la-payara.jpg" alt="" width="560" height="300"><figcaption><span class="t-pro-barra" style="--v: 92%;"></span>Press kit completo al 92%</figcaption></figure>
                     <div class="t-pro-form">
@@ -1499,14 +1500,25 @@ window.addEventListener('load', function(){
                   </div>
                 </section>
 
-                <!-- Gestor de contenidos (beta) -->
+                <!-- Publicaciones (ya) -->
                 <section class="t-pro-vista" data-vista="contenidos" hidden>
-                  <header class="t-pro-cab"><div><p class="t-pro-miga">Gestor de contenidos</p><h3>Tus contenidos</h3></div><button type="button" class="t-pro-btn" data-accion="crear-contenido"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg> Nuevo contenido</button></header>
+                  <header class="t-pro-cab"><div><p class="t-pro-miga">Publicaciones</p><h3>Tus publicaciones</h3></div><button type="button" class="t-pro-btn" data-accion="crear-contenido"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg> Nuevo contenido</button></header>
                   <div class="t-pro-tabla" role="table" aria-label="Contenidos">
                     <div class="t-pro-fila t-pro-fila-co t-pro-fila-cab" role="row"><span role="columnheader">Contenido</span><span role="columnheader">Tipo</span><span role="columnheader">Conectado con</span><span role="columnheader">Estado</span></div>
                     <div class="t-pro-fila t-pro-fila-co" role="row"><span class="t-pro-ev" role="cell"><img src="/img/demo/co-vuelo.jpg" alt="" width="364" height="480">El Vuelo Sinfónico</span><span role="cell">Artículo</span><span role="cell"><i class="t-pro-con" style="--c: var(--p-coral);">Evento</i></span><span role="cell"><span class="t-pro-estado t-pro-estado-ok">Publicado</span></span></div>
                     <div class="t-pro-fila t-pro-fila-co" role="row"><span class="t-pro-ev" role="cell"><img src="/img/demo/co-klande.jpg" alt="" width="457" height="480">Klande Beats: el dancehall como memoria de la pista</span><span role="cell">Crónica sonora</span><span role="cell"><i class="t-pro-con" style="--c: var(--p-cyan);">Artista</i></span><span role="cell"><span class="t-pro-estado t-pro-estado-ok">Publicado</span></span></div>
                     <div class="t-pro-fila t-pro-fila-co" role="row" data-co-borrador><span class="t-pro-ev" role="cell"><img src="/img/demo/co-tison.jpg" alt="" width="480" height="360">«La muerte» del Grupo TiSón</span><span role="cell">Reseña</span><span role="cell"><i class="t-pro-con" style="--c: var(--p-cyan);">Artista</i></span><span role="cell"><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="publicar-contenido" data-ancla="contenidos">Publicar</button></span></div>
+                  </div>
+                </section>
+
+                <!-- Tienda (ya) -->
+                <section class="t-pro-vista" data-vista="tienda" hidden>
+                  <header class="t-pro-cab"><div><p class="t-pro-miga">Tienda</p><h3>Tus productos</h3></div><button type="button" class="t-pro-btn"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96h0v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-48,0v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm-8-72a24,24,0,0,1-24-24v-8h48v8A24,24,0,0,1,192,136Z"/></svg> Nuevo producto</button></header>
+                  <div class="t-pro-tabla" role="table" aria-label="Productos">
+                    <div class="t-pro-fila t-pro-fila-co t-pro-fila-cab" role="row"><span role="columnheader">Producto</span><span role="columnheader">Tipo</span><span role="columnheader">Precio</span><span role="columnheader">Estado</span></div>
+                    <div class="t-pro-fila t-pro-fila-co" role="row"><span class="t-pro-ev" role="cell">Camiseta La Payara</span><span role="cell">Merch</span><span role="cell">$80.000</span><span role="cell"><span class="t-pro-estado t-pro-estado-ok">12 en existencia</span></span></div>
+                    <div class="t-pro-fila t-pro-fila-co" role="row"><span class="t-pro-ev" role="cell">Vinilo «Colombia»</span><span role="cell">Disco</span><span role="cell">$140.000</span><span role="cell"><span class="t-pro-estado t-pro-estado-ok">Preventa</span></span></div>
+                    <div class="t-pro-fila t-pro-fila-co" role="row"><span class="t-pro-ev" role="cell">Afiche serigrafía</span><span role="cell">Edición</span><span role="cell">$40.000</span><span role="cell"><span class="t-pro-estado">Borrador</span></span></div>
                   </div>
                 </section>
 
@@ -1626,7 +1638,7 @@ window.addEventListener('load', function(){
 
         <!-- En pantallas pequeñas el lienzo no se lee: los módulos y su explicación van fuera -->
         <div class="t-demo-funciones" role="group" aria-label="Módulos de La Terminal">
-          <button type="button" data-ir="perfiles" data-estado="ya">Perfil y press kit</button><button type="button" data-ir="eventos" data-estado="ya">Eventos</button><button type="button" data-ir="contenidos" data-estado="beta">Contenidos</button><button type="button" data-ir="seo" data-estado="beta">SEO</button><button type="button" data-ir="enlace" data-estado="beta">ENLACE</button><button type="button" data-ir="crm" data-estado="beta">CRM</button><button type="button" data-ir="convocatorias" data-estado="pronto">Convocatorias</button><button type="button" data-ir="pro" data-estado="pronto">Perfil PRO</button><button type="button" data-ir="cobro" data-estado="pronto">Cobro</button><button type="button" data-ir="analitica" data-estado="pronto">Analítica</button>
+          <button type="button" data-ir="perfiles" data-estado="ya">Páginas</button><button type="button" data-ir="eventos" data-estado="ya">Eventos</button><button type="button" data-ir="contenidos" data-estado="ya">Publicaciones</button><button type="button" data-ir="tienda" data-estado="ya">Tienda</button><button type="button" data-ir="seo" data-estado="beta">SEO</button><button type="button" data-ir="enlace" data-estado="beta">ENLACE</button><button type="button" data-ir="crm" data-estado="beta">CRM</button><button type="button" data-ir="convocatorias" data-estado="pronto">Convocatorias</button><button type="button" data-ir="pro" data-estado="pronto">Perfil PRO</button><button type="button" data-ir="cobro" data-estado="pronto">Cobro</button><button type="button" data-ir="analitica" data-estado="pronto">Analítica</button>
         </div>
         <p class="t-demo-nota" data-nota></p>
 
@@ -1714,13 +1726,13 @@ window.addEventListener('load', function(){
         <span class="t-pilar-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z"/></svg></span>
         <h3>Mostrarte</h3>
         <p>Que te encuentren y te programen.</p>
-        <ul><li><button type="button" data-demo-ir="perfiles">Perfil y press kit<span class="t-estado-chip" data-estado="ya">Ya</span></button></li><li><button type="button" data-demo-ir="seo">Entrenamiento SEO<span class="t-estado-chip" data-estado="beta">Beta feb 2027</span></button></li><li><button type="button" data-demo-ir="pro">Perfil PRO<span class="t-estado-chip" data-estado="pronto">Pronto</span></button></li></ul>
+        <ul><li><button type="button" data-demo-ir="perfiles">Páginas<span class="t-estado-chip" data-estado="ya">Ya</span></button></li><li><button type="button" data-demo-ir="seo">Entrenamiento SEO<span class="t-estado-chip" data-estado="beta">Beta feb 2027</span></button></li><li><button type="button" data-demo-ir="pro">Perfil PRO<span class="t-estado-chip" data-estado="pronto">Pronto</span></button></li></ul>
       </article>
       <article class="t-pilar" style="--c: var(--p-coral);">
         <span class="t-pilar-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M227.32,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H216a8,8,0,0,0,0-16H115.32l112-112A16,16,0,0,0,227.32,73.37ZM92.69,208H48V163.31l88-88L180.69,120ZM192,108.69,147.32,64l24-24L216,84.69Z"/></svg></span>
         <h3>Publicar</h3>
         <p>Lo publicas una vez y aparece en La Guía.</p>
-        <ul><li><button type="button" data-demo-ir="eventos">Eventos<span class="t-estado-chip" data-estado="ya">Ya</span></button></li><li><button type="button" data-demo-ir="contenidos">Gestor de contenidos<span class="t-estado-chip" data-estado="beta">Beta feb 2027</span></button></li></ul>
+        <ul><li><button type="button" data-demo-ir="eventos">Eventos<span class="t-estado-chip" data-estado="ya">Ya</span></button></li><li><button type="button" data-demo-ir="contenidos">Publicaciones<span class="t-estado-chip" data-estado="ya">Ya</span></button></li></ul>
       </article>
       <article class="t-pilar" style="--c: var(--p-yellow-clara);">
         <span class="t-pilar-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M83.19,174.4a8,8,0,0,0,11.21-1.6,52,52,0,0,1,83.2,0,8,8,0,1,0,12.8-9.6A67.88,67.88,0,0,0,163,141.51a40,40,0,1,0-53.94,0A67.88,67.88,0,0,0,81.6,163.2,8,8,0,0,0,83.19,174.4ZM112,112a24,24,0,1,1,24,24A24,24,0,0,1,112,112Zm96-88H64A16,16,0,0,0,48,40V64H32a8,8,0,0,0,0,16H48v40H32a8,8,0,0,0,0,16H48v40H32a8,8,0,0,0,0,16H48v24a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V40A16,16,0,0,0,208,24Zm0,192H64V40H208Z"/></svg></span>
@@ -1732,7 +1744,7 @@ window.addEventListener('load', function(){
         <span class="t-pilar-ic"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"/></svg></span>
         <h3>Crecer</h3>
         <p>Formación, ventas y datos para sostener tu proyecto.</p>
-        <ul><li><button type="button" data-demo-ir="enlace">ENLACE academia<span class="t-estado-chip" data-estado="beta">Beta feb 2027</span></button></li><li><button type="button" data-demo-ir="cobro">Cobro<span class="t-estado-chip" data-estado="pronto">Pronto</span></button></li><li><button type="button" data-demo-ir="analitica">Analítica<span class="t-estado-chip" data-estado="pronto">Pronto</span></button></li></ul>
+        <ul><li><button type="button" data-demo-ir="tienda">Tienda<span class="t-estado-chip" data-estado="ya">Ya</span></button></li><li><button type="button" data-demo-ir="enlace">ENLACE academia<span class="t-estado-chip" data-estado="beta">Beta feb 2027</span></button></li><li><button type="button" data-demo-ir="cobro">Cobro<span class="t-estado-chip" data-estado="pronto">Pronto</span></button></li><li><button type="button" data-demo-ir="analitica">Analítica<span class="t-estado-chip" data-estado="pronto">Pronto</span></button></li></ul>
       </article>
     </div>
   </section>
@@ -1760,7 +1772,7 @@ window.addEventListener('load', function(){
           <ul class="t-sus-lista">
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Todo lo del plan gratis</b></span></li>
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Insignia de fundador</b> en tu perfil</span></li>
-            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Acceso a las betas antes que nadie</b>, desde febrero de 2027: gestor de contenidos, entrenamiento SEO, ENLACE academia y CRM</span></li>
+            <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Acceso a las betas antes que nadie</b>, desde febrero de 2027: entrenamiento SEO, ENLACE academia y CRM</span></li>
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Beneficios desde hoy:</b> tu perfil compartido en nuestras redes, una reseña de tu proyecto y tu perfil en el catálogo que presentamos a agentes europeos</span></li>
             <li><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Parte del movimiento:</b> los primeros 50 proyectos que cambian el algoritmo por la curaduría</span></li>
           </ul>
@@ -2057,8 +2069,7 @@ var CUPOS_DISPONIBLES = 50;
   });
   document.querySelectorAll('[data-ir-a]').forEach(function (b) {
     b.addEventListener('click', function () {
-      var d = document.getElementById(b.getAttribute('data-ir-a'));
-      if (d) d.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      if (window.lcIrA) window.lcIrA(b.getAttribute('data-ir-a'));
     });
   });
 })();
@@ -5518,6 +5529,23 @@ var SUBBARRAS = {
   contacto: { titulo: 'Contacto', anclas: [] },
   privacidad: { titulo: 'Privacidad', anclas: [] }
 };
+function irA(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Los planes: se centra el bloque de las dos tarjetas (o se pega bajo la barra si no cabe).
+  var objetivo = id === 't-fun-precio' ? (el.querySelector('.t-sus-planes') || el) : el;
+  function mover(suave) {
+    var barra = 72, r = objetivo.getBoundingClientRect(), alto = innerHeight - barra;
+    var y = scrollY + r.top - barra - (r.height < alto ? (alto - r.height) / 2 : 12);
+    if (objetivo === el) y = scrollY + r.top - barra - 12;
+    window.scrollTo({ top: Math.max(0, y), behavior: suave && !quieto ? 'smooth' : 'auto' });
+  }
+  mover(true);
+  // Las imágenes que cargan tarde mueven la página: se corrige al llegar.
+  setTimeout(function () { mover(false); }, quieto ? 50 : 900);
+}
+window.lcIrA = irA;
 function pintarBarra(page) {
   var sub = document.querySelector('[data-barra-sub]'), conf = SUBBARRAS[page];
   document.documentElement.classList.toggle('t-en-sub', !!conf);
@@ -5527,7 +5555,7 @@ function pintarBarra(page) {
   var a = sub.querySelector('[data-barra-anclas]'); a.innerHTML = '';
   conf.anclas.forEach(function (x) {
     var b = document.createElement('button'); b.type = 'button'; b.className = 'na'; b.textContent = x[0];
-    b.addEventListener('click', function () { var el = document.getElementById(x[1]); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    b.addEventListener('click', function () { irA(x[1]); });
     a.appendChild(b);
   });
 }
@@ -5540,7 +5568,7 @@ function navTo(page, anchor, sinHistoria) {
   if(!target) return;
   target.classList.add('active');
   current = page;
-  window.scrollTo({top:0, behavior:'smooth'});
+  if (!anchor) window.scrollTo({top:0, behavior:'smooth'}); else window.scrollTo({top:0});
   // Dirección: /terminal, /guia… (las demás pantallas siguen con #). La pantalla de Suscripción es La Terminal.
   if (!sinHistoria) {
     var url = CAMINOS[page] || ('/#' + page);
@@ -5552,10 +5580,7 @@ function navTo(page, anchor, sinHistoria) {
   if (window.lcVista) window.lcVista(page);
   // Ancla dentro de la página (cualquier página)
   if(anchor){
-    setTimeout(function(){
-      var el = target.querySelector('#' + anchor) || document.getElementById(anchor);
-      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-    }, 100);
+    setTimeout(function(){ irA(anchor); }, 100);
   }
   // Close mobile menu
   document.getElementById('nav-links').classList.remove('open');

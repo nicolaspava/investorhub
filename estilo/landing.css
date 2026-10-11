@@ -1309,3 +1309,12 @@ nav.t-barra .nav-burger span { background: var(--t-text); }
 }
 .t-fun-barra[hidden] { display: none !important; }
 .t-barra-anclas .na { appearance: none; -webkit-appearance: none; background: none; border: 0; box-shadow: none; font-size: 14px !important; }
+/* Teléfono: la tarjeta Gratis va compacta para que, al tocar «Ser Fundador», se vean las dos opciones */
+@media (max-width: 640px) {
+  .t-planes-home .t-sus-plan:not(.t-sus-fundador) { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 12px; padding: 18px 20px; }
+  .t-planes-home .t-sus-plan:not(.t-sus-fundador) .t-texto, .t-planes-home .t-sus-plan:not(.t-sus-fundador) .t-sus-lista { display: none; }
+  .t-planes-home .t-sus-plan:not(.t-sus-fundador) .t-sus-precio { font-size: 2rem; grid-column: 1; }
+  .t-planes-home .t-sus-plan:not(.t-sus-fundador) > .t-btn { grid-column: 2; grid-row: 1 / 3; margin: 0; }
+  .t-planes-home .t-sus-fundador { gap: 12px; padding: 20px; }
+  .t-planes-home .t-sus-fundador .t-sus-lista li { font-size: 14px; }
+}
