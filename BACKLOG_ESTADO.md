@@ -10,7 +10,7 @@ Todo lo demás del backlog está hecho en la rama `diseno/taste-skill` (vista pr
 
 ## Después del lanzamiento
 - [ ] Fotos reales de la camiseta y del equipo (el equipo está oculto en Nosotros).
-- [ ] Captura real del panel de administración de La Terminal.
+- [ ] Captura real del panel de administración de Studio Q.
 - [ ] Confirmar textos: «El Enegmigo», «free YouTube», horarios del Copiloto.
 - [ ] Revisión de abogado de la política de reembolso.
 

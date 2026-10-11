@@ -1,13 +1,13 @@
 /* La Curaduría · la demo del hero (v4, 8 oct 2026).
-   Computador: La Terminal con sus diez módulos y su estado (ya, beta, próximamente).
+   Computador: Studio Q con sus diez módulos y su estado (ya, beta, próximamente).
    Teléfono: La Guía (inicio, eventos, perfiles, contenidos), el Copiloto y el perfil de un artista.
    Las pantallas están conectadas, como en la plataforma:
-   - publicar un evento o un contenido en La Terminal lo muestra La Guía;
-   - la frase del perfil que se edita en La Terminal cambia el perfil del teléfono;
+   - publicar un evento o un contenido en Studio Q lo muestra La Guía;
+   - la frase del perfil que se edita en Studio Q cambia el perfil del teléfono;
    - pedir booking desde el perfil llega al CRM.
    Todo es local: nada sale de la página. Artistas, eventos y contenidos son reales,
    tomados de lacuraduria.net (8 oct 2026). */
-// Puede haber varias demos: la completa (computador y teléfono) en La Terminal y la del teléfono solo en La Guía.
+// Puede haber varias demos: la completa (computador y teléfono) en Studio Q y la del teléfono solo en La Guía.
 function montarDemo(demo) {
   var $ = function (s, r) { return (r || demo).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || demo).querySelectorAll(s)); };
@@ -35,7 +35,7 @@ function montarDemo(demo) {
     if (ventanaAbierta) ubicarVentana();
   }
 
-  /* ── 2. La Terminal: módulos y ventana ─────────────────────────── */
+  /* ── 2. Studio Q: módulos y ventana ─────────────────────────── */
   var modulos = [
     { id: 'perfiles', estado: 'ya', titulo: 'Páginas',
       texto: 'Administra la página de tu proyecto: fotos, bio, editorial, rider y prensa. Promotores, bookers y periodistas encuentran ahí todo para programarte y hacer contenido.',
@@ -53,7 +53,7 @@ function montarDemo(demo) {
       texto: 'Lecciones cortas para que tu perfil y tus contenidos aparezcan en los buscadores, sin depender de las redes.',
       prueba: 'Pruébalo: marca las lecciones que ya hiciste.' },
     { id: 'enlace', estado: 'beta', titulo: 'ENLACE academia',
-      texto: 'La ruta de formación en gestión cultural de ENLACE, dentro de La Terminal.',
+      texto: 'La ruta de formación en gestión cultural de ENLACE, dentro de Studio Q.',
       prueba: 'Pruébalo: continúa un curso.' },
     { id: 'crm', estado: 'beta', titulo: 'CRM',
       texto: 'Bookers, prensa y público en un solo lugar, no regados entre WhatsApp y el correo.',
@@ -130,7 +130,7 @@ function montarDemo(demo) {
 
   function cerrarVentana() { ventanaAbierta = false; ventana.hidden = true; }
 
-  // Acciones de La Terminal
+  // Acciones de Studio Q
   demo.addEventListener('click', function (e) {
     var b = e.target.closest('[data-accion]');
     if (!b) return;
@@ -207,7 +207,7 @@ function montarDemo(demo) {
     });
   });
 
-  // La frase del perfil: lo que se escribe en La Terminal es lo que sale en La Guía
+  // La frase del perfil: lo que se escribe en Studio Q es lo que sale en La Guía
   var frase = $('[data-frase]');
   frase.addEventListener('input', function () {
     ARTISTAS['la-payara'].frase = frase.value;
@@ -410,7 +410,7 @@ function montarDemo(demo) {
     $('[data-descargar]').addEventListener('click', function () { avisar('[data-aviso-movil]', 'Fotos, bio, rider y prensa, listos para tu nota o tu cartel.'); });
     $('[data-booking]').addEventListener('click', function (e) {
       var b = e.currentTarget; b.disabled = true; b.textContent = 'Solicitud enviada';
-      avisar('[data-aviso-movil]', 'Le llega a su CRM, en La Terminal.');
+      avisar('[data-aviso-movil]', 'Le llega a su CRM, en Studio Q.');
       llegaBooking(a.nombre);
     });
     mostrarMovil('perfil');

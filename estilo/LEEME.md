@@ -1,18 +1,18 @@
 # Landing · dirección «Cartel nocturno»
 
 > **Desde el 9 oct son tres páginas:**
-> - **Principal** (`#pg-home`, el pitch): hero con la escena de las dos pantallas (`img/escena/`), el problema, la solución, el producto 1 (La Guía), el producto 2 (La Terminal), los reconocimientos, la tienda y el cierre con «Regístrate gratis».
+> - **Principal** (`#pg-home`, el pitch): hero con la escena de las dos pantallas (`img/escena/`), el problema, la solución, el producto 1 (La Guía), el producto 2 (Studio Q), los reconocimientos, la tienda y el cierre con «Regístrate gratis».
 > - **La Guía** (`#pg-la-guia`, `#la-guia`): la landing para usuarios.
 >   - Hero con la demo del teléfono.
 >   - «Esta semana en Bogotá».
 >   - Categorías (`#categorias`): eventos, páginas y contenidos.
 >   - Funciones en filas alternas con capturas, al estilo de Shotgun.
-> - **La Terminal** (`#pg-preventa`, `#terminal`): la landing para gestores, con la preventa adentro.
+> - **Studio Q** (`#pg-preventa`, `#terminal`): la landing para gestores, con la preventa adentro.
 >   - Hero, la demo completa (computador y teléfono conectados) y el respaldo.
 >   - Funciones en cuatro pilares (mostrarte, publicar, conectar y crecer): cada función abre su módulo en la demo con `lcDemo.ir()`.
->   - Calculadora de retorno (`#t-fun-roi`): bookings y pago promedio del último trimestre, más supuestos por escenario (perfil gratis o La Terminal): % de bookings nuevos, notas de prensa, publicaciones con venues y seguidores por publicación. Compara contra $50.000 por trimestre. Es una estimación y lo dice.
+>   - Calculadora de retorno (`#t-fun-roi`): bookings y pago promedio del último trimestre, más supuestos por escenario (perfil gratis o Studio Q): % de bookings nuevos, notas de prensa, publicaciones con venues y seguidores por publicación. Compara contra $50.000 por trimestre. Es una estimación y lo dice.
 >   - Aliados, beneficios, cómo entrar, precio con la camiseta, preguntas y cierre.
-> - **Barra (10 oct, como la de lacuraduria.net):** pegada arriba y de todo el ancho, transparente sobre el hero y sólida al bajar. Logo de la .net (Q coral), La Guía · La Terminal · Nosotros · Contacto con íconos; a la derecha, el buscador (abre lacuraduria.net), «Reservar cupo» (lleva a `#planes` de la portada) e Ingresar. En el teléfono: menú, logo y «Reservar cupo». `navTo(página, ancla)` ya acepta anclas en cualquier página.
+> - **Barra (10 oct, como la de lacuraduria.net):** pegada arriba y de todo el ancho, transparente sobre el hero y sólida al bajar. Logo de la .net (Q coral), La Guía · Studio Q · Nosotros · Contacto con íconos; a la derecha, el buscador (abre lacuraduria.net), «Reservar cupo» (lleva a `#planes` de la portada) e Ingresar. En el teléfono: menú, logo y «Reservar cupo». `navTo(página, ancla)` ya acepta anclas en cualquier página.
 > - **Cobro (10 oct):**
 >   - `api/crear-preferencia.js` cobra cada mitad ($100.000); la segunda solo con el correo de la primera.
 >   - `api/webhook-mp.js` valida la firma, marca `confirmado_at` y manda el correo de confirmación una sola vez (con Brevo si existe `BREVO_API_KEY`, o con Resend si existe `RESEND_API_KEY`), y el aviso de compra al equipo (`CORREO_AVISOS`).
@@ -47,7 +47,7 @@ Rediseño de la portada de la landing (`index.html`, pantalla `#pg-home`) hecho 
 ## La portada (versión del 8 oct)
 
 1. **Hero (v4, 8 oct):** primero las pantallas; debajo, la leyenda de estados y luego el logo, la frase y los botones «Adquiere la suscripción» (lleva a Suscripción) y «Regístrate gratis».
-   - **Computador, La Terminal:** diez módulos agrupados por estado.
+   - **Computador, Studio Q:** diez módulos agrupados por estado.
      - **Ya disponible:** perfil y press kit, eventos.
      - **Beta, febrero de 2027:** gestor de contenidos, entrenamiento SEO, ENLACE academia, CRM.
      - **Próximamente:** convocatorias, perfil PRO, cobro, analítica.
@@ -56,26 +56,26 @@ Rediseño de la portada de la landing (`index.html`, pantalla `#pg-home`) hecho 
    - **Conexiones entre las pantallas:** publicar un evento o un contenido cambia La Guía; la frase del perfil se ve en el teléfono; pedir booking llega al CRM.
    - **Colores de estado:** cian para lo disponible (el segundo color de la marca), amarillo para las betas y gris para lo que viene.
    - **Datos reales** de lacuraduria.net en `img/demo/`, incluidos cuatro contenidos (`co-*.jpg`). En Analítica los datos son de ejemplo y la vista lo dice.
-Desde el 8 oct la portada sigue la arquitectura «una plataforma, dos experiencias»: La Curaduría es la guía donde se descubre la cultura y La Terminal es el software con que la alimentan quienes la hacen.
+Desde el 8 oct la portada sigue la arquitectura «una plataforma, dos experiencias»: La Curaduría es la guía donde se descubre la cultura y Studio Q es el software con que la alimentan quienes la hacen.
 
 2. **Qué es** (`#que-es`): «La cultura se descubre. La cultura se gestiona.» Dos tarjetas:
    - **La Guía** (cian): para quienes viven la cultura.
-   - **La Terminal** (coral): para quienes hacen la cultura.
+   - **Studio Q** (coral): para quienes hacen la cultura.
 3. **La Guía** (`#la-guia`): «Encuentra algo que valga la pena vivir.» Mosaico con capturas: catálogo, directorio y contenidos.
-4. **La Terminal** (`#la-terminal`): «Tu proyecto cultural, en un solo lugar.» Módulos por estado y «Adquiere la suscripción».
+4. **Studio Q** (`#la-terminal`): «Tu proyecto cultural, en un solo lugar.» Módulos por estado y «Adquiere la suscripción».
 5. **Cómo funciona** (`#como-funciona`): publica, descubre, conecta, en una línea de metro de tres paradas.
 6. **Visión** (`#vision`): «Menos ruido. Más cultura.»
 6b. **Reconocimientos** (`#reconocimientos`): línea de tiempo.
    - **2025:** incubación con la Cámara de Comercio de Bogotá y selección para presentarse en el GoFest con uno de los pitch ganadores (sin cifras).
    - **2026:** aceleración BIME, Chapinero en Red y la beca de circulación internacional (segundo lugar nacional, 98 puntos; Bilbao, con el catálogo de artistas colombianos para agentes de España).
-   - El respaldo salió de la visión. En La Terminal, la franja de respaldo resume esto y enlaza aquí.
+   - El respaldo salió de la visión. En Studio Q, la franja de respaldo resume esto y enlaza aquí.
 7. **Aliados editoriales** (`#aliados`).
 8. **Tienda** (`#tienda`): solo la camiseta. Es la misma ficha que en Suscripción; `CAMISETA_STOCK` vale para las dos.
 9. **Cierre:** «¡Cambia el algoritmo por la curaduría!» y dos caminos: ¿Buscas cultura? / ¿Haces cultura?
 
 Ocultas con `hidden`: el Copiloto como sección propia y los planes viejos. «Para quién» (pestañas) y «Crea tu perfil» salieron; sus textos quedaron en las tarjetas de «Qué es».
 
-**Barra principal:** Explorar (lacuraduria.net), La Terminal (Suscripción), Tienda, Nosotros, Contacto e Ingresar.
+**Barra principal:** Explorar (lacuraduria.net), Studio Q (Suscripción), Tienda, Nosotros, Contacto e Ingresar.
 
 En el pie: logo, «Media Tech Cultural» y la frase «Tecnología para la circulación de la cultura».
 
@@ -85,7 +85,7 @@ En el pie: logo, «Media Tech Cultural» y la frase «Tecnología para la circul
 
 Se tomaron con Chrome sin ventana (puppeteer-core) a 390×844 y 1440×900, con pantalla de doble resolución. Si cambia el sitio, se repiten y se optimizan a JPEG con `sips`.
 
-## La Terminal (`#terminal`; la pantalla sigue siendo `#pg-preventa`)
+## Studio Q (`#terminal`; la pantalla sigue siendo `#pg-preventa`)
 
 Desde el 8 oct es la página comercial del software. `#preventa` sigue funcionando por los enlaces de vuelta de Mercado Pago.
 
@@ -94,13 +94,13 @@ Sus bloques: hero → respaldo → beneficios (lo que recibes desde hoy) → mó
 - **Cómo entrar:** del perfil gratis al año completo.
 - **Precio y registro:** incluye la camiseta y «Empieza gratis».
 
-### Antes: «Perfil fundador de La Terminal»
+### Antes: «Perfil fundador de Studio Q»
 
 Desde el 8 oct es la página de venta de la preventa, en 9 bloques con una idea cada uno:
 1. **Barra de la página:** fija bajo la barra principal. Es un `div`, porque los `<nav>` heredan la barra vieja.
 2. **Hero:** con contador de cupos.
 3. **El problema.**
-4. **La Terminal:** 4 betas de febrero de 2027 que se abren al tocarlas, y «Después» sin fechas.
+4. **Studio Q:** 4 betas de febrero de 2027 que se abren al tocarlas, y «Después» sin fechas.
 5. **Lo que recibes desde hoy:** más la insignia.
 6. **Cómo funciona:** 4 pasos.
 7. **Precio:** con la ficha de la camiseta.

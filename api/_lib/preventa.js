@@ -122,15 +122,15 @@ const pesos = (n) => '$' + Number(n).toLocaleString('es-CO');
 // Confirmación al comprador (primera o segunda mitad) y aviso al equipo.
 export async function correosDeConfirmacion({ nombre, email, mitad, monto, pagoId, utm }) {
   const primera = mitad === 1;
-  const asunto = primera ? 'Tu cupo de fundador en La Terminal está reservado' : 'Pagaste la segunda mitad: tu suscripción fundadora está completa';
+  const asunto = primera ? 'Tu cupo de fundador en Studio Q está reservado' : 'Pagaste la segunda mitad: tu suscripción fundadora está completa';
   const cuerpo = primera
     ? [`Hola ${nombre}:`,
-       `Recibimos tu pago de ${pesos(monto)}. Tu cupo de perfil fundador en La Terminal quedó reservado.`,
+       `Recibimos tu pago de ${pesos(monto)}. Tu cupo de perfil fundador en Studio Q quedó reservado.`,
        'Desde hoy: tu perfil compartido en nuestras redes, una reseña de tu proyecto en la plataforma, tu perfil y tu press kit en La Guía y la insignia de fundador.',
-       `Te falta la segunda mitad (${pesos(PRECIO_MITAD)}). Puedes pagarla cuando quieras antes de marzo de 2027 en lacuraduria.com/#terminal, con este mismo correo. Si la pagas antes de febrero, pruebas las betas desde su primera salida.`,
+       `Te falta la segunda mitad (${pesos(PRECIO_MITAD)}). Puedes pagarla cuando quieras antes de marzo de 2027 en lacuraduria.com/studio, con este mismo correo. Si la pagas antes de febrero, pruebas las betas desde su primera salida.`,
        'Tienes 5 días hábiles desde hoy para arrepentirte y pedir la devolución completa.']
     : [`Hola ${nombre}:`,
-       `Recibimos tu pago de ${pesos(monto)}. Con esto tu suscripción fundadora está completa: un año de La Terminal desde el lanzamiento, en marzo de 2027, con todo lo que se habilite durante tu año.`,
+       `Recibimos tu pago de ${pesos(monto)}. Con esto tu suscripción fundadora está completa: un año de Studio Q desde el lanzamiento, en marzo de 2027, con todo lo que se habilite durante tu año.`,
        'Te avisaremos por este correo cuando salga cada beta.'];
   const cierre = `Si tienes cualquier pregunta, responde este correo o escríbenos a ${CORREO_CONTACTO}.`;
   const html = `<div style="font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.55;color:#141413;max-width:560px">

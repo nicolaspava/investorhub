@@ -10,6 +10,14 @@
       "destination": "/index.html"
     },
     {
+      "source": "/studio/precios",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/studio",
+      "destination": "/index.html"
+    },
+    {
       "source": "/terminal",
       "destination": "/index.html"
     },

@@ -22,17 +22,17 @@ Este documento es para seguir el trabajo en una sesión nueva (por ejemplo, Clau
 
 ## Qué hay hoy (tres páginas en `index.html`)
 
-1. **Principal** (`#pg-home`, el pitch): hero con la escena de las dos pantallas → problema → solución → La Guía → La Terminal → reconocimientos 2025-2026 → tienda (camiseta) → «Regístrate gratis».
+1. **Principal** (`#pg-home`, el pitch): hero con la escena de las dos pantallas → problema → solución → La Guía → Studio Q → reconocimientos 2025-2026 → tienda (camiseta) → «Regístrate gratis».
 2. **La Guía** (`#la-guia`, para usuarios): demo del teléfono, «Esta semana en Bogotá», categorías (eventos, páginas, contenidos) y funciones en filas, al estilo de Shotgun.
-3. **La Terminal** (`#terminal`, para gestores; la pantalla se llama `pg-preventa`): la demo completa, funciones en cuatro pilares, aliados, beneficios, calculadora de retorno, cómo entrar, precio con camiseta, preguntas, política de reembolso y cierre.
+3. **Studio Q** (`#terminal`, para gestores; la pantalla se llama `pg-preventa`): la demo completa, funciones en cuatro pilares, aliados, beneficios, calculadora de retorno, cómo entrar, precio con camiseta, preguntas, política de reembolso y cierre.
 
-**Barra principal (como la de lacuraduria.net):** La Guía · La Terminal · Nosotros · Contacto · buscador · Reservar cupo · Ingresar. La portada tiene planes (`#planes`): Gratis y Pro · Fundador.
+**Barra principal (como la de lacuraduria.net):** La Guía · Studio Q · Nosotros · Contacto · buscador · Reservar cupo · Ingresar. La portada tiene planes (`#planes`): Gratis y Pro · Fundador.
 
 ## Orden según el brief (10 oct, «Brief_Landings_La_Curaduria_La_Terminal.docx»)
 
-- **Portada:** Hero («Cambia el algoritmo por la curaduría»; Explorar la guía / Conocer La Terminal) → Qué es + Cómo funciona (Publicar · CONECTAR al centro · Descubrir) → Reconocimientos → Preventa (planes Gratis y Fundador) → Tienda → Registro en dos caminos (Quiero descubrir / Quiero publicar). Problema, Producto 1 y Producto 2 quedan ocultos con `hidden`.
-- **La Terminal:** Hero («Tu proyecto cultural, en un solo lugar»; Crear cuenta gratis / Ser Fundador) → demo → Beneficios (los cuatro pilares) → Planes (Gratis frente a Fundador, con la camiseta) → Cómo entrar → Respaldo → Aliados → Calculadora → Preguntas → Reembolso → Cierre. «Lo que recibes desde hoy» queda oculto: ya está en la tarjeta Fundador.
-- El botón coral de la barra dice «Ser Fundador» y lleva a los planes de La Terminal.
+- **Portada:** Hero («Cambia el algoritmo por la curaduría»; Explorar la guía / Conocer Studio Q) → Qué es + Cómo funciona (Publicar · CONECTAR al centro · Descubrir) → Reconocimientos → Preventa (planes Gratis y Fundador) → Tienda → Registro en dos caminos (Quiero descubrir / Quiero publicar). Problema, Producto 1 y Producto 2 quedan ocultos con `hidden`.
+- **Studio Q:** Hero («Tu proyecto cultural, en un solo lugar»; Crear cuenta gratis / Ser Fundador) → demo → Beneficios (los cuatro pilares) → Planes (Gratis frente a Fundador, con la camiseta) → Cómo entrar → Respaldo → Aliados → Calculadora → Preguntas → Reembolso → Cierre. «Lo que recibes desde hoy» queda oculto: ya está en la tarjeta Fundador.
+- El botón coral de la barra dice «Ser Fundador» y lleva a los planes de Studio Q.
 
 ## La oferta (decidida por Nicolás)
 
@@ -56,7 +56,7 @@ Este documento es para seguir el trabajo en una sesión nueva (por ejemplo, Clau
 
 ## Pendientes
 
-**Lo que queda está en `BACKLOG_ESTADO.md` (corto).** Desde el 11 oct: las subpáginas no tienen segunda barra; la barra principal cambia a «← Inicio · nombre · secciones» (`SUBBARRAS` en `index.html`). El equipo de Nosotros está oculto. Los mockups del hero son el teléfono real de lacuraduria.net y La Terminal actual.
+**Lo que queda está en `BACKLOG_ESTADO.md` (corto).** Desde el 11 oct: las subpáginas no tienen segunda barra; la barra principal cambia a «← Inicio · nombre · secciones» (`SUBBARRAS` en `index.html`). El equipo de Nosotros está oculto. Los mockups del hero son el teléfono real de lacuraduria.net y Studio Q actual.
 
 1. **Correo de confirmación:** la vía elegida es **Gmail** (lacuraduria23@gmail.com) con el Google Apps Script de `google/aviso-correo.gs`; las instrucciones están en el mismo archivo. En Vercel van `GOOGLE_SCRIPT_URL` y `GOOGLE_SCRIPT_CLAVE`. Brevo (`BREVO_API_KEY` y `CORREO_REMITENTE`) y Resend siguen como alternativas (`La Curaduría <preventa@lacuraduria.com>`). Con cualquiera de las tres salen dos correos por cada pago aprobado: la confirmación al comprador y el aviso de compra al equipo. El aviso va a `CORREO_AVISOS` (uno o varios correos separados por comas); si no existe, a nicolas.pava@lacuraduria.net.
 2. **Política de reembolso:** es una propuesta; revisarla, idealmente con abogado. Nicolás la simplificó el 10 oct: retracto de 5 días hábiles (ley), Fundadores sin reembolso salvo retraso del lanzamiento, camiseta solo por calidad (una semana, garantía de un año, devoluciones desde noviembre de 2026). Se quitó la condición de «60 días sin beneficios».
