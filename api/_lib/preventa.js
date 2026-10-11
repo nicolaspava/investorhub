@@ -126,7 +126,7 @@ export async function correosDeConfirmacion({ nombre, email, mitad, monto, pagoI
   const cuerpo = primera
     ? [`Hola ${nombre}:`,
        `Recibimos tu pago de ${pesos(monto)}. Tu cupo de perfil fundador en Studio Q quedó reservado.`,
-       'Desde hoy: tu perfil compartido en nuestras redes, una reseña de tu proyecto en la plataforma, tu perfil y tu press kit en La Guía y la insignia de fundador.',
+       'Desde hoy: tu perfil compartido en nuestras redes, una reseña de tu proyecto en la plataforma, tu perfil y tu press kit en Catálogo Q y la insignia de fundador.',
        `Te falta la segunda mitad (${pesos(PRECIO_MITAD)}). Puedes pagarla cuando quieras antes de marzo de 2027 en lacuraduria.com/studio, con este mismo correo. Si la pagas antes de febrero, pruebas las betas desde su primera salida.`,
        'Tienes 5 días hábiles desde hoy para arrepentirte y pedir la devolución completa.']
     : [`Hola ${nombre}:`,

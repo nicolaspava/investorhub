@@ -1,13 +1,13 @@
 /* La Curaduría · la demo del hero (v4, 8 oct 2026).
    Computador: Studio Q con sus diez módulos y su estado (ya, beta, próximamente).
-   Teléfono: La Guía (inicio, eventos, perfiles, contenidos), el Copiloto y el perfil de un artista.
+   Teléfono: Catálogo Q (inicio, eventos, perfiles, contenidos), SONAR y el perfil de un artista.
    Las pantallas están conectadas, como en la plataforma:
-   - publicar un evento o un contenido en Studio Q lo muestra La Guía;
+   - publicar un evento o un contenido en Studio Q lo muestra Catálogo Q;
    - la frase del perfil que se edita en Studio Q cambia el perfil del teléfono;
    - pedir booking desde el perfil llega al CRM.
    Todo es local: nada sale de la página. Artistas, eventos y contenidos son reales,
    tomados de lacuraduria.net (8 oct 2026). */
-// Puede haber varias demos: la completa (computador y teléfono) en Studio Q y la del teléfono solo en La Guía.
+// Puede haber varias demos: la completa (computador y teléfono) en Studio Q y la del teléfono solo en Catálogo Q.
 function montarDemo(demo) {
   var $ = function (s, r) { return (r || demo).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || demo).querySelectorAll(s)); };
@@ -39,7 +39,7 @@ function montarDemo(demo) {
   var modulos = [
     { id: 'perfiles', estado: 'ya', titulo: 'Páginas',
       texto: 'Administra la página de tu proyecto: fotos, bio, editorial, rider y prensa. Promotores, bookers y periodistas encuentran ahí todo para programarte y hacer contenido.',
-      prueba: 'Pruébalo: cambia la frase y toca «Ver en La Guía».' },
+      prueba: 'Pruébalo: cambia la frase y toca «Ver en Catálogo Q».' },
     { id: 'eventos', estado: 'ya', titulo: 'Eventos',
       texto: 'Creas el evento una vez y aparece en la cartelera, en el mapa y en el perfil de los artistas.',
       prueba: 'Pruébalo: publica el borrador y mira el teléfono.' },
@@ -62,7 +62,7 @@ function montarDemo(demo) {
       texto: 'Como artista, te postulas con tu perfil y tu press kit. Como organizador, recibes postulaciones completas y eliges.',
       prueba: 'Pruébalo: postúlate y luego cambia a «Organizo».' },
     { id: 'pro', estado: 'pronto', titulo: 'Perfil PRO',
-      texto: 'Más alcance para tu perfil: impulso de visibilidad en La Guía, kit de booking e insignia PRO.',
+      texto: 'Más alcance para tu perfil: impulso de visibilidad en Catálogo Q, kit de booking e insignia PRO.',
       prueba: 'Pruébalo: activa y desactiva cada opción.' },
     { id: 'cobro', estado: 'pronto', titulo: 'Cobro',
       texto: 'Vende entradas, productos y servicios desde tu perfil.',
@@ -137,7 +137,7 @@ function montarDemo(demo) {
     var accion = b.getAttribute('data-accion');
     if (accion === 'crear' || accion === 'crear-contenido' || accion === 'crear-producto') avisar('[data-aviso-pc]', 'En la demo puedes publicar el borrador de la lista.');
     if (accion === 'copiar-kit') avisar('[data-aviso-pc]', 'Enlace copiado: lacuraduria.net/perfil/la-payara');
-    if (accion === 'ver-perfil') { abrirPerfil('la-payara'); avisar('[data-aviso-movil]', 'Así se ve en La Guía.'); }
+    if (accion === 'ver-perfil') { abrirPerfil('la-payara'); avisar('[data-aviso-movil]', 'Así se ve en Catálogo Q.'); }
     if (accion === 'publicar') {
       var est = $('[data-estado]', b.closest('[data-ev-borrador]'));
       est.textContent = 'Publicado'; est.classList.add('t-pro-estado-ok');
@@ -207,7 +207,7 @@ function montarDemo(demo) {
     });
   });
 
-  // La frase del perfil: lo que se escribe en Studio Q es lo que sale en La Guía
+  // La frase del perfil: lo que se escribe en Studio Q es lo que sale en Catálogo Q
   var frase = $('[data-frase]');
   frase.addEventListener('input', function () {
     ARTISTAS['la-payara'].frase = frase.value;
@@ -216,7 +216,7 @@ function montarDemo(demo) {
 
   } // fin de lo que solo existe con el computador
 
-  /* ── 3. El teléfono: La Guía ───────────────────────────────────── */
+  /* ── 3. El teléfono: Catálogo Q ───────────────────────────────────── */
   var ARTISTAS = {
     'la-payara': { nombre: 'La Payara', img: 'la-payara.jpg', w: 560, h: 300, frase: 'Psicodelia amazónica de pulso plurirrítmico.',
       bio: 'Proyecto de exploración sonora que nace de un viaje antropológico por Colombia. Lleva los saberes musicales y ancestrales a la pista, en diálogo con la cultura club. Prepara su álbum «Colombia», que sale a finales de octubre.',
@@ -240,7 +240,7 @@ function montarDemo(demo) {
     { titulo: 'Klande Beats: el dancehall como memoria de la pista bogotana', tipo: 'Crónica sonora', img: 'co-klande.jpg', w: 457, h: 480, slug: 'klande-beats-el-dancehall-como-memoria-de-la-pista-bogotana-7bzkyc' },
     { titulo: 'Hard Trance Vol. 1 by paradoxx.raw', tipo: 'Audio', img: 'co-trance.jpg', w: 270, h: 480, slug: 'hard-trance-vol-1-by-paradoxx-raw-902ucb' }
   ];
-  // Qué de La Guía ya existe: todo menos el Copiloto (el chat).
+  // Qué de Catálogo Q ya existe: todo menos SONAR (el chat).
   var ESTADO_MOVIL = { inicio: 'ya', eventos: 'ya', perfiles: 'ya', contenidos: 'ya', perfil: 'ya', guia: 'pronto' };
 
   var chip = $('[data-mv-chip]'), vistaPerfil = $('[data-movil="perfil"]'), perfilAbierto = null;
@@ -312,8 +312,8 @@ function montarDemo(demo) {
   })();
   pintarListas();
 
-  // El Copiloto (próximamente): responde a las sugerencias
-  // Lugares y planes de ejemplo para la conversación de el Copiloto (inventados: el Copiloto aún no existe).
+  // SONAR (próximamente): responde a las sugerencias
+  // Lugares y planes de ejemplo para la conversación de SONAR (inventados: SONAR aún no existe).
   var LUGARES = {
     tunda: { tipo: 'Fiesta · House', c: 'var(--p-coral)', ini: 'T', nombre: 'Tunda', detalle: 'Sáb · 10 p.m. · colectivo que cambia de locación' },
     discos: { tipo: 'Previa · Disquería y café', c: 'var(--p-green)', ini: 'DE', nombre: 'Discos del Espacio', detalle: 'Sáb · desde las 6 p.m. · discos, café, comida y house' }
@@ -352,7 +352,7 @@ function montarDemo(demo) {
     msgs.appendChild(el('p', 't-mv-burbuja t-mv-yo', texto)); bajar();
     var r = RESPUESTAS[clave];
     if (r) responder(r[0], r[1]);
-    else responder('En esta demo respondo a las sugerencias de abajo. Cuando salga, el Copiloto buscará en toda la cartelera, el directorio y los contenidos.');
+    else responder('En esta demo respondo a las sugerencias de abajo. Cuando salga, SONAR buscará en toda la cartelera, el directorio y los contenidos.');
   }
   function adivinar(t) {
     t = t.toLowerCase();
@@ -363,7 +363,7 @@ function montarDemo(demo) {
     if (/escuchar|música|musica|set|álbum|album|sonido/.test(t)) return 'escuchar';
     return null;
   }
-  // La conversación de ejemplo se escribe sola la primera vez que se abre el Copiloto.
+  // La conversación de ejemplo se escribe sola la primera vez que se abre SONAR.
   var guionHecho = false;
   function guion() {
     mostrarMovil('guia');

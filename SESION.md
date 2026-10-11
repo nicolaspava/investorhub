@@ -22,15 +22,15 @@ Este documento es para seguir el trabajo en una sesión nueva (por ejemplo, Clau
 
 ## Qué hay hoy (tres páginas en `index.html`)
 
-1. **Principal** (`#pg-home`, el pitch): hero con la escena de las dos pantallas → problema → solución → La Guía → Studio Q → reconocimientos 2025-2026 → tienda (camiseta) → «Regístrate gratis».
-2. **La Guía** (`#la-guia`, para usuarios): demo del teléfono, «Esta semana en Bogotá», categorías (eventos, páginas, contenidos) y funciones en filas, al estilo de Shotgun.
+1. **Principal** (`#pg-home`, el pitch): hero con la escena de las dos pantallas → problema → solución → Catálogo Q → Studio Q → reconocimientos 2025-2026 → tienda (camiseta) → «Regístrate gratis».
+2. **Catálogo Q** (`#la-guia`, para usuarios): demo del teléfono, «Esta semana en Bogotá», categorías (eventos, páginas, contenidos) y funciones en filas, al estilo de Shotgun.
 3. **Studio Q** (`#terminal`, para gestores; la pantalla se llama `pg-preventa`): la demo completa, funciones en cuatro pilares, aliados, beneficios, calculadora de retorno, cómo entrar, precio con camiseta, preguntas, política de reembolso y cierre.
 
-**Barra principal (como la de lacuraduria.net):** La Guía · Studio Q · Nosotros · Contacto · buscador · Reservar cupo · Ingresar. La portada tiene planes (`#planes`): Gratis y Pro · Fundador.
+**Barra principal (como la de lacuraduria.net):** Catálogo Q · Studio Q · Nosotros · Contacto · buscador · Reservar cupo · Ingresar. La portada tiene planes (`#planes`): Gratis y Pro · Fundador.
 
 ## Orden según el brief (10 oct, «Brief_Landings_La_Curaduria_La_Terminal.docx»)
 
-- **Portada:** Hero («Cambia el algoritmo por la curaduría»; Explorar la guía / Conocer Studio Q) → Qué es + Cómo funciona (Publicar · CONECTAR al centro · Descubrir) → Reconocimientos → Preventa (planes Gratis y Fundador) → Tienda → Registro en dos caminos (Quiero descubrir / Quiero publicar). Problema, Producto 1 y Producto 2 quedan ocultos con `hidden`.
+- **Portada:** Hero («Cambia el algoritmo por la curaduría»; Explorar el catálogo / Conocer Studio Q) → Qué es + Cómo funciona (Publicar · CONECTAR al centro · Descubrir) → Reconocimientos → Preventa (planes Gratis y Fundador) → Tienda → Registro en dos caminos (Quiero descubrir / Quiero publicar). Problema, Producto 1 y Producto 2 quedan ocultos con `hidden`.
 - **Studio Q:** Hero («Tu proyecto cultural, en un solo lugar»; Crear cuenta gratis / Ser Fundador) → demo → Beneficios (los cuatro pilares) → Planes (Gratis frente a Fundador, con la camiseta) → Cómo entrar → Respaldo → Aliados → Calculadora → Preguntas → Reembolso → Cierre. «Lo que recibes desde hoy» queda oculto: ya está en la tarjeta Fundador.
 - El botón coral de la barra dice «Ser Fundador» y lleva a los planes de Studio Q.
 

@@ -10,6 +10,10 @@
       "destination": "/index.html"
     },
     {
+      "source": "/catalogo",
+      "destination": "/index.html"
+    },
+    {
       "source": "/studio/precios",
       "destination": "/index.html"
     },

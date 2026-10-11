@@ -1,8 +1,8 @@
 # Landing · dirección «Cartel nocturno»
 
 > **Desde el 9 oct son tres páginas:**
-> - **Principal** (`#pg-home`, el pitch): hero con la escena de las dos pantallas (`img/escena/`), el problema, la solución, el producto 1 (La Guía), el producto 2 (Studio Q), los reconocimientos, la tienda y el cierre con «Regístrate gratis».
-> - **La Guía** (`#pg-la-guia`, `#la-guia`): la landing para usuarios.
+> - **Principal** (`#pg-home`, el pitch): hero con la escena de las dos pantallas (`img/escena/`), el problema, la solución, el producto 1 (Catálogo Q), el producto 2 (Studio Q), los reconocimientos, la tienda y el cierre con «Regístrate gratis».
+> - **Catálogo Q** (`#pg-la-guia`, `#la-guia`): la landing para usuarios.
 >   - Hero con la demo del teléfono.
 >   - «Esta semana en Bogotá».
 >   - Categorías (`#categorias`): eventos, páginas y contenidos.
@@ -12,13 +12,13 @@
 >   - Funciones en cuatro pilares (mostrarte, publicar, conectar y crecer): cada función abre su módulo en la demo con `lcDemo.ir()`.
 >   - Calculadora de retorno (`#t-fun-roi`): bookings y pago promedio del último trimestre, más supuestos por escenario (perfil gratis o Studio Q): % de bookings nuevos, notas de prensa, publicaciones con venues y seguidores por publicación. Compara contra $50.000 por trimestre. Es una estimación y lo dice.
 >   - Aliados, beneficios, cómo entrar, precio con la camiseta, preguntas y cierre.
-> - **Barra (10 oct, como la de lacuraduria.net):** pegada arriba y de todo el ancho, transparente sobre el hero y sólida al bajar. Logo de la .net (Q coral), La Guía · Studio Q · Nosotros · Contacto con íconos; a la derecha, el buscador (abre lacuraduria.net), «Reservar cupo» (lleva a `#planes` de la portada) e Ingresar. En el teléfono: menú, logo y «Reservar cupo». `navTo(página, ancla)` ya acepta anclas en cualquier página.
+> - **Barra (10 oct, como la de lacuraduria.net):** pegada arriba y de todo el ancho, transparente sobre el hero y sólida al bajar. Logo de la .net (Q coral), Catálogo Q · Studio Q · Nosotros · Contacto con íconos; a la derecha, el buscador (abre lacuraduria.net), «Reservar cupo» (lleva a `#planes` de la portada) e Ingresar. En el teléfono: menú, logo y «Reservar cupo». `navTo(página, ancla)` ya acepta anclas en cualquier página.
 > - **Cobro (10 oct):**
 >   - `api/crear-preferencia.js` cobra cada mitad ($100.000); la segunda solo con el correo de la primera.
 >   - `api/webhook-mp.js` valida la firma, marca `confirmado_at` y manda el correo de confirmación una sola vez (con Brevo si existe `BREVO_API_KEY`, o con Resend si existe `RESEND_API_KEY`), y el aviso de compra al equipo (`CORREO_AVISOS`).
 >   - Lo compartido vive en `api/_lib/preventa.js`. La tabla real es `preventa_compradores`; `supabase-schema.sql` describe otra, vieja, que no existe.
 >   - La política de reembolso está en `#t-fun-reembolso`. Es una propuesta: hay que revisarla con abogado.
-> - **Teléfono de La Guía (10 oct):** el hero de `#pg-la-guia` muestra lacuraduria.net con capturas reales y largas (`img/producto/guia-*.jpg`, 390 px de ancho), que se recorren con scroll dentro del teléfono. La barra de abajo (`guia-barra.png`) y los botones Inicio · Eventos · Páginas · Publicaciones cambian de página; tocar la pantalla abre esa página en el sitio real. No es un iframe porque lacuraduria.net lo prohíbe (`frame-ancestors 'none'` y `X-Frame-Options: SAMEORIGIN`); si la webapp permite `frame-ancestors https://lacuraduria.com`, se puede volver a un iframe navegable. «Copiloto · pronto» muestra la demo inventada del chat. Para repetir las capturas: Chrome sin ventana a 390×844, pantalla por pantalla (cuatro de alto), ocultando lo fijo, y se unen.
+> - **Teléfono de Catálogo Q (10 oct):** el hero de `#pg-la-guia` muestra lacuraduria.net con capturas reales y largas (`img/producto/guia-*.jpg`, 390 px de ancho), que se recorren con scroll dentro del teléfono. La barra de abajo (`guia-barra.png`) y los botones Inicio · Eventos · Páginas · Publicaciones cambian de página; tocar la pantalla abre esa página en el sitio real. No es un iframe porque lacuraduria.net lo prohíbe (`frame-ancestors 'none'` y `X-Frame-Options: SAMEORIGIN`); si la webapp permite `frame-ancestors https://lacuraduria.com`, se puede volver a un iframe navegable. «SONAR · pronto» muestra la demo inventada del chat. Para repetir las capturas: Chrome sin ventana a 390×844, pantalla por pantalla (cuatro de alto), ocultando lo fijo, y se unen.
 > - **Planes en la portada (10 oct):** `#planes`, antes de la tienda: Gratis ($0) y Pro · Fundador ($200.000, 50 cupos) con insignia, betas antes que nadie, beneficios desde hoy y «parte del movimiento». «Reservar cupo» abre el mismo cobro (`prevSelectPlan('fundador')`); el modal se mueve al `body` para abrir desde cualquier pantalla.
 > - **`estilo/demo.js`** monta cada `[data-demo]`. La demo solo de teléfono no tiene el computador y lo que depende de él no corre.
 
@@ -27,7 +27,7 @@ Rediseño de la portada de la landing (`index.html`, pantalla `#pg-home`) hecho 
 | Archivo | Qué es |
 |---|---|
 | `estilo/landing.css` | Toda la dirección: paleta, tipografías, botones, barra y las ocho secciones. También redefine los valores de `ds/tokens.css`, para que las pantallas internas hereden lo mismo sin tocar su HTML. |
-| `estilo/demo.css`, `estilo/demo.js` | La demo del hero (8 oct): Pro en el computador y el Copiloto con un perfil en el teléfono, conectados. |
+| `estilo/demo.css`, `estilo/demo.js` | La demo del hero (8 oct): Pro en el computador y SONAR con un perfil en el teléfono, conectados. |
 | `img/demo/` | Fotos de artistas y flyers de eventos reales de lacuraduria.net que usa la demo. |
 | `estilo/landing.js` | Revelado al entrar en pantalla, logo de la barra y pestañas de «Para quién». No escucha el scroll. |
 | `fuentes/` | Space Grotesk, Geist y Geist Mono (Bricolage queda por si se vuelve) (variables, subconjunto latino), alojadas aquí y no en Google Fonts. |
@@ -52,16 +52,16 @@ Rediseño de la portada de la landing (`index.html`, pantalla `#pg-home`) hecho 
      - **Beta, febrero de 2027:** gestor de contenidos, entrenamiento SEO, ENLACE academia, CRM.
      - **Próximamente:** convocatorias, perfil PRO, cobro, analítica.
      - Cada módulo abre una ventana con su estado, qué hace y algo para probar.
-   - **Teléfono, La Guía:** pestañas de inicio, eventos, perfiles y contenidos (ya disponibles), más la entrada a el Copiloto (próximamente) y el perfil del artista con su press kit.
-   - **Conexiones entre las pantallas:** publicar un evento o un contenido cambia La Guía; la frase del perfil se ve en el teléfono; pedir booking llega al CRM.
+   - **Teléfono, Catálogo Q:** pestañas de inicio, eventos, perfiles y contenidos (ya disponibles), más la entrada a SONAR (próximamente) y el perfil del artista con su press kit.
+   - **Conexiones entre las pantallas:** publicar un evento o un contenido cambia Catálogo Q; la frase del perfil se ve en el teléfono; pedir booking llega al CRM.
    - **Colores de estado:** cian para lo disponible (el segundo color de la marca), amarillo para las betas y gris para lo que viene.
    - **Datos reales** de lacuraduria.net en `img/demo/`, incluidos cuatro contenidos (`co-*.jpg`). En Analítica los datos son de ejemplo y la vista lo dice.
 Desde el 8 oct la portada sigue la arquitectura «una plataforma, dos experiencias»: La Curaduría es la guía donde se descubre la cultura y Studio Q es el software con que la alimentan quienes la hacen.
 
 2. **Qué es** (`#que-es`): «La cultura se descubre. La cultura se gestiona.» Dos tarjetas:
-   - **La Guía** (cian): para quienes viven la cultura.
+   - **Catálogo Q** (cian): para quienes viven la cultura.
    - **Studio Q** (coral): para quienes hacen la cultura.
-3. **La Guía** (`#la-guia`): «Encuentra algo que valga la pena vivir.» Mosaico con capturas: catálogo, directorio y contenidos.
+3. **Catálogo Q** (`#la-guia`): «Encuentra algo que valga la pena vivir.» Mosaico con capturas: catálogo, directorio y contenidos.
 4. **Studio Q** (`#la-terminal`): «Tu proyecto cultural, en un solo lugar.» Módulos por estado y «Adquiere la suscripción».
 5. **Cómo funciona** (`#como-funciona`): publica, descubre, conecta, en una línea de metro de tres paradas.
 6. **Visión** (`#vision`): «Menos ruido. Más cultura.»
@@ -73,7 +73,7 @@ Desde el 8 oct la portada sigue la arquitectura «una plataforma, dos experienci
 8. **Tienda** (`#tienda`): solo la camiseta. Es la misma ficha que en Suscripción; `CAMISETA_STOCK` vale para las dos.
 9. **Cierre:** «¡Cambia el algoritmo por la curaduría!» y dos caminos: ¿Buscas cultura? / ¿Haces cultura?
 
-Ocultas con `hidden`: el Copiloto como sección propia y los planes viejos. «Para quién» (pestañas) y «Crea tu perfil» salieron; sus textos quedaron en las tarjetas de «Qué es».
+Ocultas con `hidden`: SONAR como sección propia y los planes viejos. «Para quién» (pestañas) y «Crea tu perfil» salieron; sus textos quedaron en las tarjetas de «Qué es».
 
 **Barra principal:** Explorar (lacuraduria.net), Studio Q (Suscripción), Tienda, Nosotros, Contacto e Ingresar.
 

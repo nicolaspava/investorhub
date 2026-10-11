@@ -2,7 +2,7 @@
    1. Revelado: .t-rv y el chat (.t-chat) reciben .t-dentro al entrar en pantalla.
    2. Logo de la barra: aparece cuando el del hero sale de la pantalla.
    3. Pestañas «Para quién», con teclado (flechas, Inicio, Fin).
-   4. El teléfono de La Guía: lacuraduria.net con capturas reales que se recorren. */
+   4. El teléfono de Catálogo Q: lacuraduria.net con capturas reales que se recorren. */
 (function () {
   var raiz = document.documentElement;
 
@@ -55,7 +55,7 @@
   });
 })();
 
-// 4. El teléfono de La Guía: capturas reales de lacuraduria.net que se recorren con scroll.
+// 4. El teléfono de Catálogo Q: capturas reales de lacuraduria.net que se recorren con scroll.
 //    Las pestañas (abajo en el teléfono y debajo de él) cambian de página; tocar la pantalla abre
 //    la misma página en el sitio real. No es un iframe porque el sitio no deja mostrarse en otra página.
 (function () {
