@@ -1,6 +1,6 @@
 /* La Curaduría · la demo del hero (v4, 8 oct 2026).
    Computador: Studio Q con sus diez módulos y su estado (ya, beta, próximamente).
-   Teléfono: Catálogo Q (inicio, eventos, perfiles, contenidos), SONAR y el perfil de un artista.
+   Teléfono: Catálogo Q (inicio, eventos, perfiles, contenidos), Sonar y el perfil de un artista.
    Las pantallas están conectadas, como en la plataforma:
    - publicar un evento o un contenido en Studio Q lo muestra Catálogo Q;
    - la frase del perfil que se edita en Studio Q cambia el perfil del teléfono;
@@ -240,7 +240,7 @@ function montarDemo(demo) {
     { titulo: 'Klande Beats: el dancehall como memoria de la pista bogotana', tipo: 'Crónica sonora', img: 'co-klande.jpg', w: 457, h: 480, slug: 'klande-beats-el-dancehall-como-memoria-de-la-pista-bogotana-7bzkyc' },
     { titulo: 'Hard Trance Vol. 1 by paradoxx.raw', tipo: 'Audio', img: 'co-trance.jpg', w: 270, h: 480, slug: 'hard-trance-vol-1-by-paradoxx-raw-902ucb' }
   ];
-  // Qué de Catálogo Q ya existe: todo menos SONAR (el chat).
+  // Qué de Catálogo Q ya existe: todo menos Sonar (el chat).
   var ESTADO_MOVIL = { inicio: 'ya', eventos: 'ya', perfiles: 'ya', contenidos: 'ya', perfil: 'ya', guia: 'pronto' };
 
   var chip = $('[data-mv-chip]'), vistaPerfil = $('[data-movil="perfil"]'), perfilAbierto = null;
@@ -312,8 +312,8 @@ function montarDemo(demo) {
   })();
   pintarListas();
 
-  // SONAR (próximamente): responde a las sugerencias
-  // Lugares y planes de ejemplo para la conversación de SONAR (inventados: SONAR aún no existe).
+  // Sonar (próximamente): responde a las sugerencias
+  // Lugares y planes de ejemplo para la conversación de Sonar (inventados: Sonar aún no existe).
   var LUGARES = {
     tunda: { tipo: 'Fiesta · House', c: 'var(--p-coral)', ini: 'T', nombre: 'Tunda', detalle: 'Sáb · 10 p.m. · colectivo que cambia de locación' },
     discos: { tipo: 'Previa · Disquería y café', c: 'var(--p-green)', ini: 'DE', nombre: 'Discos del Espacio', detalle: 'Sáb · desde las 6 p.m. · discos, café, comida y house' }
@@ -352,7 +352,7 @@ function montarDemo(demo) {
     msgs.appendChild(el('p', 't-mv-burbuja t-mv-yo', texto)); bajar();
     var r = RESPUESTAS[clave];
     if (r) responder(r[0], r[1]);
-    else responder('En esta demo respondo a las sugerencias de abajo. Cuando salga, SONAR buscará en toda la cartelera, el directorio y los contenidos.');
+    else responder('En esta demo respondo a las sugerencias de abajo. Cuando salga, Sonar buscará en toda la cartelera, el directorio y los contenidos.');
   }
   function adivinar(t) {
     t = t.toLowerCase();
@@ -363,7 +363,7 @@ function montarDemo(demo) {
     if (/escuchar|música|musica|set|álbum|album|sonido/.test(t)) return 'escuchar';
     return null;
   }
-  // La conversación de ejemplo se escribe sola la primera vez que se abre SONAR.
+  // La conversación de ejemplo se escribe sola la primera vez que se abre Sonar.
   var guionHecho = false;
   function guion() {
     mostrarMovil('guia');

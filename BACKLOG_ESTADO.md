@@ -11,7 +11,7 @@ Todo lo demás del backlog está hecho en la rama `diseno/taste-skill` (vista pr
 ## Después del lanzamiento
 - [ ] Fotos reales de la camiseta y del equipo (el equipo está oculto en Nosotros).
 - [ ] Captura real del panel de administración de Studio Q.
-- [ ] Confirmar textos: «El Enegmigo», «free YouTube», horarios de SONAR.
+- [ ] Confirmar textos: «El Enegmigo», «free YouTube», horarios de Sonar.
 - [ ] Revisión de abogado de la política de reembolso.
 
 Detalle de lo hecho: historial de commits de la rama y `SESION.md`.
