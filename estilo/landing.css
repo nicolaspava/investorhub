@@ -1326,3 +1326,15 @@ html[data-tema] nav.t-barra, .t-marca-visible nav.t-barra { border: 0 !important
 nav.t-barra::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 28px; pointer-events: none; background: linear-gradient(rgba(12, 12, 11, .82), rgba(12, 12, 11, 0)); opacity: 0; transition: opacity .3s var(--t-ease); }
 .t-marca-visible nav.t-barra::after { opacity: 1; }
 html[data-tema] nav.t-barra .nav-links.open { border: 0 !important; box-shadow: none !important; }
+
+/* ══ Colores de la marca en vez de secciones de un solo color (12 oct) ══ */
+.t-reco { --c: var(--p-cyan); }
+.t-reco-ic { color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); }
+.t-reco { border-top: 2px solid color-mix(in srgb, var(--c) 70%, transparent); }
+.t-reco-anio:nth-child(1) .t-reco-num { color: var(--p-coral); }
+.t-reco-anio:nth-child(2) .t-reco-num { color: var(--p-yellow-clara); }
+.t-reco-destacado { border-color: color-mix(in srgb, var(--c) 45%, transparent); background: linear-gradient(135deg, rgba(255, 115, 108, .16), rgba(117, 230, 249, .12) 45%, rgba(122, 211, 160, .10) 75%, rgba(255, 214, 102, .08)), rgba(255, 255, 255, .03); }
+.t-nos-hito::before { background: var(--c, var(--p-coral)); box-shadow: 0 0 14px color-mix(in srgb, var(--c, var(--p-coral)) 60%, transparent); }
+.t-nos-anio { color: var(--c, var(--p-coral)); }
+/* «Ser Fundador» de la barra, en cian */
+.t-barra-cta { background: var(--p-cyan); color: #0C0C0B; }
