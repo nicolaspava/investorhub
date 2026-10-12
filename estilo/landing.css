@@ -1396,3 +1396,27 @@ html[data-tema] nav.t-barra .nav-links.open { border: 0 !important; box-shadow: 
 @media (min-width: 901px) { .t-portada > .t-envoltura { max-width: 1320px; } }
 @media (max-width: 900px) { .t-portada-grid .t-escena-rotulo { display: none; } }
 .t-portada-texto .t-portada-titulo { margin: 0 0 22px; }
+
+/* ══ Arreglos de responsive (12 oct) ══ */
+/* Hero: dos columnas solo en pantallas anchas; en tablet y teléfono, una debajo de otra */
+@media (max-width: 1023px) {
+  .t-portada-grid { grid-template-columns: 1fr !important; }
+  .t-portada { min-height: 0; }
+  .t-portada-grid .t-escena { max-width: 720px; margin: 8px auto 0; }
+}
+/* Cómo funciona en columna: el ícono a la izquierda y todo el texto a la derecha */
+@media (max-width: 900px) {
+  .t-como .t-estacion { grid-template-columns: 64px minmax(0, 1fr); }
+  .t-como .t-estacion > .t-parada { grid-column: 1; grid-row: 1 / span 3; }
+  .t-como .t-estacion > :not(.t-parada) { grid-column: 2; }
+  .t-como .t-estacion p { max-width: none; }
+}
+/* Barra de las subpáginas en pantallas medianas: sin el logo largo ni las secciones, para que no se apriete */
+@media (max-width: 1240px) {
+  .t-en-sub nav.t-barra #nav-wordmark .t-barra-logo { height: 22px; }
+  .t-barra-anclas { display: none; }
+}
+@media (max-width: 1100px) {
+  .t-en-sub nav.t-barra #nav-wordmark { display: none; }
+  html[data-tema] nav.t-barra .na { padding: 8px 9px; }
+}
