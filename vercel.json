@@ -11,59 +11,59 @@
     },
     {
       "source": "/catalogo",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/studio/precios",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/studio",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/terminal",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/terminal/precios",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/terminal/fundadores",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/guia",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/explorar",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/tienda",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/camiseta",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/contacto",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/nosotros",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/privacidad",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/terminos",
-      "destination": "/index.html"
+      "destination": "/"
     }
   ]
 }
