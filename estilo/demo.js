@@ -37,6 +37,9 @@ function montarDemo(demo) {
 
   /* ── 2. Studio Q: módulos y ventana ─────────────────────────── */
   var modulos = [
+    { id: 'inicio', estado: 'ya', titulo: 'Inicio',
+      texto: 'Tu panel: lo que llega para revisar, lo que ya está en línea y lo que se ve en Catálogo Q.',
+      prueba: 'Pruébalo: toca una tarjeta de «Por revisar».' },
     { id: 'perfiles', estado: 'ya', titulo: 'Páginas',
       texto: 'Administra la página de tu proyecto: fotos, bio, editorial, rider y prensa. Promotores, bookers y periodistas encuentran ahí todo para programarte y hacer contenido.',
       prueba: 'Pruébalo: cambia la frase y toca «Ver en Catálogo Q».' },
@@ -71,7 +74,7 @@ function montarDemo(demo) {
       texto: 'Quién visita tu perfil, desde dónde y qué guarda. Los datos de esta vista son de ejemplo.',
       prueba: '' }
   ];
-  var actual = 0, ventanaAbierta = true;
+  var actual = 0, ventanaAbierta = false; // la ventana se abre al tocar un módulo, no al cargar
   var ventana = $('[data-ventana]'), punto = $('[data-punto]'), nota = $('[data-nota]');
 
   function ir(id, abrirVentana) {
@@ -434,7 +437,7 @@ function montarDemo(demo) {
     if ('ResizeObserver' in window) new ResizeObserver(escalar).observe(marco);
     else window.addEventListener('resize', escalar);
     escalar();
-    ir('perfiles');
+    ir('inicio', false);
     // Para que otras secciones de la página abran un módulo: lcDemo.ir('crm')
     window.lcDemo = { ir: function (id) { ir(id); } };
   }

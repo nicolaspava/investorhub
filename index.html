@@ -25,12 +25,12 @@
 <link rel="preload" href="/fuentes/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fuentes/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/estilo/landing.css?v=20261011e">
-<link rel="stylesheet" href="/estilo/demo.css?v=20261010b">
+<link rel="stylesheet" href="/estilo/demo.css?v=20261012a">
 <!-- Medición: pega aquí el ID de Google Analytics 4 (G-XXXX) y el de la conversión de Google Ads (AW-XXXX/etiqueta). Vacíos, no se carga nada de Google. -->
 <meta name="lc-ga4" content="">
 <meta name="lc-ads" content="">
 <script src="/estilo/medicion.js?v=20261010b"></script>
-<script src="/estilo/demo.js?v=20261011d" defer></script>
+<script src="/estilo/demo.js?v=20261012b" defer></script>
 <script src="/estilo/landing.js?v=20261011b" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
@@ -452,7 +452,7 @@ footer.site-footer{}
       </div>
       <div class="t-escena t-entra t-entra-3">
         <button type="button" class="t-escena-pc" onclick="navTo('preventa')" aria-label="Studio Q: ver la página para quienes hacen la cultura">
-          <img src="/img/escena/terminal.webp?v=5" alt="Studio Q: el panel de gestión con el perfil y press kit de un artista" width="1400" height="948" fetchpriority="high">
+          <img src="/img/escena/terminal.webp?v=6" alt="Studio Q: el panel de gestión con el perfil y press kit de un artista" width="1400" height="948" fetchpriority="high">
           <span class="t-escena-rotulo" style="--c: var(--p-coral);">Studio Q · para quienes hacen la cultura</span>
         </button>
         <button type="button" class="t-escena-tel" onclick="navTo('la-guia')" aria-label="Catálogo Q: ver la página para quienes viven la cultura">
@@ -532,7 +532,7 @@ footer.site-footer{}
           <button type="button" class="t-btn t-btn-sec" onclick="navTo('preventa','t-fun-precio')">Ver la preventa</button>
         </div>
       </div>
-      <button type="button" class="t-producto-img t-rv t-rv-2" onclick="navTo('preventa')" aria-label="Ver Studio Q"><img src="/img/escena/terminal.webp?v=5" alt="" width="1400" height="948" loading="lazy"></button>
+      <button type="button" class="t-producto-img t-rv t-rv-2" onclick="navTo('preventa')" aria-label="Ver Studio Q"><img src="/img/escena/terminal.webp?v=6" alt="" width="1400" height="948" loading="lazy"></button>
     </div>
   </section>
 
@@ -1450,17 +1450,18 @@ window.addEventListener('load', function(){
           <div class="t-pc-marco" data-pc-marco>
             <div class="t-pc-lienzo" data-pc-lienzo>
               <aside class="t-pro-lado">
-                <p class="t-pro-marca">Studio Q</p>
+                <p class="t-pro-marca"><small>La Curaduría</small>Studio Q</p>
                 <div class="t-pro-nav" role="group" aria-label="Módulos de Studio Q">
-                  <p class="t-pro-grupo" style="--c: var(--p-cyan);">Administrar · ya disponible</p>
-                  <button type="button" data-ir="perfiles" data-estado="ya" aria-current="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z"/></svg> Páginas</button>
+                  <p class="t-pro-grupo" style="--c: var(--p-cyan);">Administrar · CMS · ya</p>
+                  <button type="button" data-ir="inicio" data-estado="ya" aria-current="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48Z"/></svg> Inicio</button>
+                  <button type="button" data-ir="perfiles" data-estado="ya"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z"/></svg> Páginas</button>
                   <button type="button" data-ir="eventos" data-estado="ya"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"/></svg> Eventos</button>
                   <button type="button" data-ir="contenidos" data-estado="ya"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M227.32,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H216a8,8,0,0,0,0-16H115.32l112-112A16,16,0,0,0,227.32,73.37ZM92.69,208H48V163.31l88-88L180.69,120ZM192,108.69,147.32,64l24-24L216,84.69Z"/></svg> Publicaciones</button>
                   <button type="button" data-ir="tienda" data-estado="ya"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96h0v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-48,0v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm-8-72a24,24,0,0,1-24-24v-8h48v8A24,24,0,0,1,192,136Z"/></svg> Tienda</button>
                   <p class="t-pro-grupo" style="--c: var(--p-yellow-clara);">Beta · feb 2027</p>
-                  <button type="button" data-ir="seo" data-estado="beta"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg> Entrenamiento SEO</button>
-                  <button type="button" data-ir="enlace" data-estado="beta"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z"/></svg> ENLACE academia</button>
                   <button type="button" data-ir="crm" data-estado="beta"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M83.19,174.4a8,8,0,0,0,11.21-1.6,52,52,0,0,1,83.2,0,8,8,0,1,0,12.8-9.6A67.88,67.88,0,0,0,163,141.51a40,40,0,1,0-53.94,0A67.88,67.88,0,0,0,81.6,163.2,8,8,0,0,0,83.19,174.4ZM112,112a24,24,0,1,1,24,24A24,24,0,0,1,112,112Zm96-88H64A16,16,0,0,0,48,40V64H32a8,8,0,0,0,0,16H48v40H32a8,8,0,0,0,0,16H48v40H32a8,8,0,0,0,0,16H48v24a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V40A16,16,0,0,0,208,24Zm0,192H64V40H208Z"/></svg> CRM <span class="t-pro-cuenta" data-cuenta hidden>1</span></button>
+                  <button type="button" data-ir="enlace" data-estado="beta"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z"/></svg> ENLACE academia</button>
+                  <button type="button" data-ir="seo" data-estado="beta"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg> Entrenamiento SEO</button>
                   <p class="t-pro-grupo" style="--c: var(--t-text-3);">Próximamente</p>
                   <button type="button" data-ir="convocatorias" data-estado="pronto"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,16V152h-28.7A15.86,15.86,0,0,0,168,156.69L148.69,176H107.31L88,156.69A15.86,15.86,0,0,0,76.69,152H48V48Zm0,160H48V168H76.69L96,187.31A15.86,15.86,0,0,0,107.31,192h41.38A15.86,15.86,0,0,0,160,187.31L179.31,168H208v40Z"/></svg> Convocatorias</button>
                   <button type="button" data-ir="pro" data-estado="pronto"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg> Perfil PRO</button>
@@ -1471,8 +1472,19 @@ window.addEventListener('load', function(){
               </aside>
 
               <div class="t-pro-main">
+                <!-- Inicio (ya): el panel de Studio Q, como el real -->
+                <section class="t-pro-vista t-pro-inicio" data-vista="inicio">
+                  <header class="t-pro-cab"><div><h3>Inicio</h3><p class="t-pro-sub">Revisa lo que llega, publica lo que está listo y ordena lo que se ve en Catálogo Q.</p></div></header>
+                  <div class="t-pro-h4"><b>Por revisar</b><small>3 cosas esperan una decisión</small></div>
+                  <div class="t-pro-kpis"><button type="button" class="t-pro-kpi" data-ir="eventos" style="--c: var(--p-coral);"><small>Eventos</small><b>0</b><span>Al día →</span></button><button type="button" class="t-pro-kpi" data-ir="contenidos" style="--c: var(--p-green);"><small>Publicaciones</small><b>1</b><span>Revisar →</span></button><button type="button" class="t-pro-kpi" data-ir="perfiles" style="--c: var(--p-cyan);"><small>Páginas</small><b>2</b><span>Revisar →</span></button><button type="button" class="t-pro-kpi" data-ir="tienda" style="--c: var(--p-yellow-clara);"><small>Tienda</small><b>0</b><span>Al día →</span></button></div>
+                  <div class="t-pro-dos">
+                    <div><div class="t-pro-h4"><b>Lo último que llegó</b></div><div class="t-pro-lista-llego"><button type="button" class="t-pro-llego" data-ir="perfiles"><img src="/img/demo/co-tison.jpg" alt="" width="48" height="48"><span><small>Banda · llegó el 12 de oct</small><b>Grupo TiSón</b><em>Bogotá</em></span><i aria-hidden="true">→</i></button><button type="button" class="t-pro-llego" data-ir="perfiles"><img src="/img/demo/js2600.jpg" alt="" width="48" height="48"><span><small>Artista · llegó el 11 de oct</small><b>JS2600</b><em>Bogotá</em></span><i aria-hidden="true">→</i></button><button type="button" class="t-pro-llego" data-ir="contenidos"><img src="/img/demo/co-klande.jpg" alt="" width="48" height="48"><span><small>Publicación · llegó el 10 de oct</small><b>Klande Beats</b><em>Crónica sonora</em></span><i aria-hidden="true">→</i></button></div></div>
+                    <div><div class="t-pro-h4"><b>En línea</b></div><div class="t-pro-cifras"><p><b>180</b>Eventos</p><p><b>64</b>Páginas</p><p><b>4</b>Publicaciones</p></div></div>
+                  </div>
+                </section>
+
                 <!-- Perfil y press kit (ya) -->
-                <section class="t-pro-vista" data-vista="perfiles">
+                <section class="t-pro-vista" data-vista="perfiles" hidden>
                   <header class="t-pro-cab"><div><p class="t-pro-miga">Páginas</p><h3>La Payara</h3></div><div class="t-pro-cab-acc"><button type="button" class="t-pro-btn" data-accion="copiar-kit"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"/></svg> Copiar enlace</button><button type="button" class="t-pro-btn t-pro-btn-pri" data-accion="ver-perfil" data-ancla="perfiles">Ver en Catálogo Q</button></div></header>
                   <div class="t-pro-dos t-pro-dos-perfil">
                     <figure class="t-pro-foto"><img src="/img/demo/la-payara.jpg" alt="" width="560" height="300"><figcaption><span class="t-pro-barra" style="--v: 92%;"></span>Press kit completo al 92%</figcaption></figure>
@@ -1638,7 +1650,7 @@ window.addEventListener('load', function(){
 
         <!-- En pantallas pequeñas el lienzo no se lee: los módulos y su explicación van fuera -->
         <div class="t-demo-funciones" role="group" aria-label="Módulos de Studio Q">
-          <button type="button" data-ir="perfiles" data-estado="ya">Páginas</button><button type="button" data-ir="eventos" data-estado="ya">Eventos</button><button type="button" data-ir="contenidos" data-estado="ya">Publicaciones</button><button type="button" data-ir="tienda" data-estado="ya">Tienda</button><button type="button" data-ir="seo" data-estado="beta">SEO</button><button type="button" data-ir="enlace" data-estado="beta">ENLACE</button><button type="button" data-ir="crm" data-estado="beta">CRM</button><button type="button" data-ir="convocatorias" data-estado="pronto">Convocatorias</button><button type="button" data-ir="pro" data-estado="pronto">Perfil PRO</button><button type="button" data-ir="cobro" data-estado="pronto">Cobro</button><button type="button" data-ir="analitica" data-estado="pronto">Analítica</button>
+          <button type="button" data-ir="inicio" data-estado="ya">Inicio</button><button type="button" data-ir="perfiles" data-estado="ya">Páginas</button><button type="button" data-ir="eventos" data-estado="ya">Eventos</button><button type="button" data-ir="contenidos" data-estado="ya">Publicaciones</button><button type="button" data-ir="tienda" data-estado="ya">Tienda</button><button type="button" data-ir="seo" data-estado="beta">SEO</button><button type="button" data-ir="enlace" data-estado="beta">ENLACE</button><button type="button" data-ir="crm" data-estado="beta">CRM</button><button type="button" data-ir="convocatorias" data-estado="pronto">Convocatorias</button><button type="button" data-ir="pro" data-estado="pronto">Perfil PRO</button><button type="button" data-ir="cobro" data-estado="pronto">Cobro</button><button type="button" data-ir="analitica" data-estado="pronto">Analítica</button>
         </div>
         <p class="t-demo-nota" data-nota></p>
 
