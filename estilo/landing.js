@@ -16,7 +16,7 @@
     document.querySelectorAll('.t-rv, .t-chat').forEach(function (el) { revelar.observe(el); });
 
     // 2. Logo de la barra
-    var marca = document.querySelector('.t-hero-marca');
+    var marca = document.querySelector('.t-portada-titulo, .t-hero-marca');
     if (marca) {
       new IntersectionObserver(function (entradas) {
         raiz.classList.toggle('t-marca-visible', !entradas[0].isIntersecting);

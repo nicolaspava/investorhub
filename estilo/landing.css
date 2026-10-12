@@ -1374,3 +1374,25 @@ html[data-tema] nav.t-barra .nav-links.open { border: 0 !important; box-shadow: 
 .t-legal .t-h3 { margin: 28px 0 8px; }
 .t-legal p { color: var(--t-text-2); line-height: 1.65; }
 .t-roi-dialogo { margin: auto; inset: 0; }
+
+/* ══ Hero de la portada (12 oct): sin logo; título y los dos mockups en la misma pantalla ══ */
+.t-portada { padding-top: calc(64px + clamp(20px, 4vh, 48px)); padding-bottom: clamp(32px, 5vh, 64px); min-height: 100svh; display: flex; align-items: center; }
+.t-portada > .t-envoltura { width: 100%; }
+.t-portada-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+.t-portada-texto { display: block; }
+.t-portada-titulo { margin: 0 0 18px; font-family: var(--lc-font-display); font-weight: 700; font-size: clamp(2.4rem, 4.6vw, 4.4rem); line-height: 1; letter-spacing: -.04em; color: var(--t-text); text-wrap: balance; }
+.t-portada .t-lead { margin-bottom: 24px; }
+.t-portada-grid .t-escena { margin-top: 0; padding-bottom: 28px; }
+.t-portada-grid .t-escena-pc { width: 88%; }
+.t-portada-grid .t-escena-tel { width: 26%; right: 0; }
+.t-portada-grid .t-escena-rotulo { font-size: 12px; }
+@media (max-width: 900px) {
+  .t-portada { min-height: 0; }
+  .t-portada-grid { grid-template-columns: 1fr; }
+  .t-portada-grid .t-escena { margin-top: 12px; }
+}
+.t-portada-grid { grid-template-columns: minmax(0, .95fr) minmax(0, 1.25fr); }
+.t-portada-titulo { font-size: clamp(2.4rem, 3.9vw, 3.7rem); margin-bottom: 22px; }
+@media (min-width: 901px) { .t-portada > .t-envoltura { max-width: 1320px; } }
+@media (max-width: 900px) { .t-portada-grid .t-escena-rotulo { display: none; } }
+.t-portada-texto .t-portada-titulo { margin: 0 0 22px; }
