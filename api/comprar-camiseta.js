@@ -1,5 +1,5 @@
 // api/comprar-camiseta.js
-// Cobra la camiseta LC26 ($90.000, Colombia) con Mercado Pago. Europa (35 USD) se cuadra por WhatsApp.
+// Cobra la camiseta LC26 ($90.000, Colombia) con Mercado Pago. Europa (30 euros) se cuadra por WhatsApp.
 // No escribe en Supabase: el pedido viaja en los metadatos del pago y el aviso de pago aprobado
 // (api/webhook-mp.js) lo manda por correo al equipo y, si hay hoja configurada, a la pestaña «Ventas».
 // El stock se descuenta a mano en CAMISETA_STOCK (index.html).

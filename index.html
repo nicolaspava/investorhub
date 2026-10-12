@@ -620,7 +620,7 @@ footer.site-footer{}
           <legend>Dónde estás</legend>
           <div class="t-tienda-opciones">
             <label><input type="radio" name="cam-region-h" value="col" checked><span><b>$90.000</b>Colombia</span></label>
-            <label><input type="radio" name="cam-region-h" value="eu"><span><b>35 USD</b>Europa · por WhatsApp</span></label>
+            <label><input type="radio" name="cam-region-h" value="eu"><span><b>30 €</b>Europa · por WhatsApp</span></label>
           </div>
         </fieldset>
 
@@ -767,7 +767,7 @@ footer.site-footer{}
           <legend>Dónde estás</legend>
           <div class="t-tienda-opciones">
             <label><input type="radio" name="cam-region-c" value="col" checked><span><b>$90.000</b>Colombia</span></label>
-            <label><input type="radio" name="cam-region-c" value="eu"><span><b>35 USD</b>Europa · por WhatsApp</span></label>
+            <label><input type="radio" name="cam-region-c" value="eu"><span><b>30 €</b>Europa · por WhatsApp</span></label>
           </div>
         </fieldset>
 
@@ -812,7 +812,7 @@ footer.site-footer{}
       </div>
     </div>
       <div class="t-camiseta-detalles">
-        <div><h2 class="t-h3">Precio</h2><p class="t-texto">$90.000 COP en Colombia (Mercado Pago o WhatsApp). 35 USD en Europa, por WhatsApp.</p></div>
+        <div><h2 class="t-h3">Precio</h2><p class="t-texto">$90.000 COP en Colombia (Mercado Pago o WhatsApp). 30 euros en Europa, por WhatsApp.</p></div>
         <div><h2 class="t-h3">Entrega</h2><p class="t-texto">Recoges gratis en el Parque El Virrey (Bogotá) o la enviamos por Servientrega; el envío lo paga quien compra.</p></div>
         <div><h2 class="t-h3">Garantía</h2><p class="t-texto">Un año en tintas, estampado y algodón. Si no cumple nuestros estándares, tienes una semana desde que la recibes para pedir el reembolso.</p></div>
       </div>
@@ -2473,7 +2473,7 @@ document.querySelectorAll('[data-tienda]').forEach(function (t) {
       r.parentElement.querySelector('[data-quedan]').textContent = n === 0 ? 'Agotada' : (n === 1 ? 'Queda 1' : 'Quedan ' + n);
     });
     var talla = valor('cam-talla');
-    // Europa: solo por WhatsApp (35 USD). Colombia: Mercado Pago o WhatsApp.
+    // Europa: solo por WhatsApp (30 euros). Colombia: Mercado Pago o WhatsApp.
     t.querySelector('[data-cam-entrega]').hidden = eu;
     btnMp.hidden = eu;
     if (eu) datos.hidden = true;
@@ -2485,7 +2485,7 @@ document.querySelectorAll('[data-tienda]').forEach(function (t) {
   function pedido() {
     var eu = valor('cam-region') === 'eu', entrega = valor('cam-entrega');
     return 'Hola, quiero la camiseta LC26.\nColor: ' + (valor('cam-color') === 'negra' ? 'Negra' : 'Blanca') + '\nTalla: ' + valor('cam-talla') +
-      (eu ? '\nPrecio: 35 USD (Europa)' : '\nPrecio: $90.000\nEntrega: ' + (entrega === 'servientrega' ? 'envío por Servientrega (pago el envío aparte)' : 'recojo en el Parque El Virrey'));
+      (eu ? '\nPrecio: 30 euros (Europa)' : '\nPrecio: $90.000\nEntrega: ' + (entrega === 'servientrega' ? 'envío por Servientrega (pago el envío aparte)' : 'recojo en el Parque El Virrey'));
   }
   t.addEventListener('change', pintar);
   btn.addEventListener('click', function () {
@@ -5337,7 +5337,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape'){closeModa
       <h2 class="t-h3">3. Plan Founders (preventa de Studio Q)</h2>
       <p>El Plan Founders cuesta $200.000 COP en dos pagos de $100.000. El año de suscripción empieza con el lanzamiento de Studio Q, previsto para marzo de 2027. Las funciones beta se habilitan según la hoja de ruta publicada y sus fechas pueden moverse. Los beneficios de hoy son los que se describen en la página de Studio Q.</p>
       <h2 class="t-h3">4. Tienda</h2>
-      <p>La camiseta LC26 cuesta $90.000 COP en Colombia y 35 USD en Europa. Se recoge en el Parque El Virrey (Bogotá) o se envía por Servientrega, con el envío a cargo del comprador.</p>
+      <p>La camiseta LC26 cuesta $90.000 COP en Colombia y 30 euros en Europa. Se recoge en el Parque El Virrey (Bogotá) o se envía por Servientrega, con el envío a cargo del comprador.</p>
       <h2 class="t-h3">5. Pagos y reembolsos</h2>
       <p>Los pagos se procesan con Mercado Pago. Tienes 5 días hábiles de retracto desde cada pago (Ley 1480 de 2011, artículo 47). El resto de condiciones está en la política de reembolso de la página de Studio Q.</p>
       <h2 class="t-h3">6. Datos personales</h2>
