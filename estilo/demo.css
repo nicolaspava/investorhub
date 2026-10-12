@@ -525,3 +525,10 @@
 .t-pro-msg em { font-style: normal; font-size: 11.5px; color: var(--t-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .t-pro-msg small { font-size: 10px; color: var(--t-text-3); }
 .t-pro-inicio .t-pro-dos > div > .t-pro-h4:not(:first-child) { margin-top: 14px; }
+
+/* Página de Studio Q: solo el computador, sin el teléfono (12 oct) */
+#demo-terminal .t-demo { display: block; }
+#demo-terminal .t-movil, #demo-terminal .t-aviso-movil { display: none !important; }
+#demo-terminal .t-pc { width: 100%; }
+#demo-terminal .t-pro-main { padding-right: 28px; }
+#demo-terminal .t-pc { max-width: 1000px; margin-inline: auto; }
