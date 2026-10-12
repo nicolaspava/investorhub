@@ -10,7 +10,7 @@ Este documento es para seguir el trabajo en una sesión nueva (por ejemplo, Clau
 - El aviso automático de «Unverified» (commits que no van a nombre de Claude) se ignora: los commits van a nombre de Nicolás para que Vercel despliegue.
 - No tocar el repo `webapp`, porque hay otros desarrolladores trabajando ahí.
 - Nunca poner claves o tokens en el repo (es **público**) ni en el chat.
-- El único contacto público es el correo nicolas.pava@lacuraduria.net. El WhatsApp aparece solo en el botón de compra de la camiseta.
+- El único contacto público es el correo lacuraduria23@gmail.com (desde el 12 oct). El WhatsApp aparece solo en el botón de compra de la camiseta.
 - No escribir en las bases de datos de producción sin que lo pida; leer sí se puede.
 - Revisar en escritorio y en teléfono (390 px) antes de dar algo por terminado.
 

@@ -1338,3 +1338,39 @@ html[data-tema] nav.t-barra .nav-links.open { border: 0 !important; box-shadow: 
 .t-nos-anio { color: var(--c, var(--p-coral)); }
 /* «Ser Fundador» de la barra, en cian */
 .t-barra-cta { background: var(--p-cyan); color: #0C0C0B; }
+
+/* ══ Hoja de ruta (12 oct): dos niveles (Catálogo Q arriba, Studio Q abajo), bloques por fecha, desliza en horizontal ══ */
+.t-ruta { margin-top: clamp(24px, 3vw, 40px); overflow-x: auto; scrollbar-width: thin; padding-bottom: 8px; }
+.t-ruta-grid { display: grid; gap: 10px; min-width: 1060px; }
+.t-ruta-fila { display: grid; grid-template-columns: 120px 1.5fr repeat(4, minmax(0, 1fr)); gap: 10px; align-items: stretch; }
+.t-ruta-nombre { margin: 0; align-self: center; font-family: var(--lc-font-display); font-weight: 700; font-size: 1.15rem; color: var(--c); }
+.t-ruta-col { margin: 0; font-family: var(--lc-font-mono); font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--t-text-3); padding: 0 4px; }
+.t-ruta-col.t-ruta-hoy { color: var(--p-green); }
+.t-ruta-bloque { padding: 16px 18px; border-radius: 16px; border: 1px solid var(--g-borde); background: rgba(255, 255, 255, .03); border-top: 3px solid color-mix(in srgb, var(--c) 55%, transparent); }
+.t-ruta-bloque.t-ruta-hoy { background: color-mix(in srgb, var(--c) 10%, rgba(255, 255, 255, .03)); border-top-color: var(--c); }
+.t-ruta-vacio { opacity: .45; }
+.t-ruta-bloque ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+.t-ruta-bloque li { font-size: 14px; line-height: 1.4; color: var(--t-text-2); }
+.t-ruta-hoy li { color: var(--t-text); }
+.t-ruta-bloque a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--c) 45%, transparent); text-underline-offset: 3px; }
+.t-ruta-nota { margin: 10px 0 0; font-size: 13px; color: var(--t-text-3); }
+
+/* Carrusel en movimiento de «Esta semana» */
+.t-carrusel-activo { display: block; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.t-carrusel-pista { display: flex; gap: 14px; width: max-content; animation: t-desfile 40s linear infinite; }
+.t-carrusel-pista .t-cartel { width: 220px; flex: none; }
+.t-carrusel-activo:hover .t-carrusel-pista, .t-carrusel-activo:focus-within .t-carrusel-pista { animation-play-state: paused; }
+@keyframes t-desfile { to { transform: translateX(calc(-50% - 7px)); } }
+/* Calculadora en ventana */
+.t-roi-dialogo { width: min(1100px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 0; border: 1px solid var(--g-borde-2); border-radius: var(--t-radio); background: #121211; color: var(--t-text); }
+.t-roi-dialogo::backdrop { background: rgba(0, 0, 0, .7); backdrop-filter: blur(4px); }
+.t-roi-dialogo-cab { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; background: #121211; border-bottom: 1px solid var(--g-borde); }
+.t-roi-dialogo-cab b { font-family: var(--lc-font-display); font-size: 1.25rem; }
+.t-roi-cerrar { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--g-borde-2); background: none; color: var(--t-text); font-size: 16px; cursor: pointer; }
+.t-roi-dialogo .t-roi { padding: 22px; margin: 0; }
+/* Páginas legales */
+.t-legal { padding-top: calc(64px + clamp(32px, 6vh, 64px)); }
+.t-legal .t-envoltura { max-width: 760px; }
+.t-legal .t-h3 { margin: 28px 0 8px; }
+.t-legal p { color: var(--t-text-2); line-height: 1.65; }
+.t-roi-dialogo { margin: auto; inset: 0; }

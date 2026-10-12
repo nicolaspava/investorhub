@@ -4,7 +4,7 @@
 // Los archivos con «_» delante no son rutas públicas en Vercel.
 
 export const PRECIO_MITAD = 100000;     // cada mitad de la suscripción fundadora ($200.000 en total)
-export const CORREO_CONTACTO = 'nicolas.pava@lacuraduria.net';
+export const CORREO_CONTACTO = 'lacuraduria23@gmail.com';
 
 function cabeceras() {
   const key = process.env.SUPABASE_SERVICE_KEY;

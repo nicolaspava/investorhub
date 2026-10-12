@@ -60,6 +60,10 @@
     {
       "source": "/privacidad",
       "destination": "/index.html"
+    },
+    {
+      "source": "/terminos",
+      "destination": "/index.html"
     }
   ]
 }

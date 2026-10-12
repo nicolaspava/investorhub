@@ -104,3 +104,24 @@
   botones.forEach(function (b) { b.addEventListener('click', function () { ver(b.getAttribute('data-guia-ver')); }); });
   window.lcGuiaVer = ver;
 })();
+
+// 5. «Esta semana» como carrusel en movimiento (se duplican las tarjetas para que gire sin cortes).
+//    Se detiene al pasar el cursor o al tocar, y no se mueve si la persona pidió menos movimiento.
+(function () {
+  document.querySelectorAll('[data-carrusel]').forEach(function (c) {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var pista = document.createElement('div'); pista.className = 't-carrusel-pista';
+    while (c.firstChild) pista.appendChild(c.firstChild);
+    Array.prototype.slice.call(pista.children).forEach(function (n) { var k = n.cloneNode(true); k.setAttribute('aria-hidden', 'true'); k.tabIndex = -1; pista.appendChild(k); });
+    c.appendChild(pista); c.classList.add('t-carrusel-activo');
+  });
+})();
+
+// 6. Calculadora de retorno en una ventana.
+(function () {
+  var d = document.querySelector('[data-roi-dialogo]'), b = document.querySelector('[data-abrir-roi]');
+  if (!d || !b) return;
+  b.addEventListener('click', function () { if (d.showModal) d.showModal(); else d.setAttribute('open', ''); });
+  d.querySelector('[data-cerrar-roi]').addEventListener('click', function () { d.close ? d.close() : d.removeAttribute('open'); });
+  d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+})();
