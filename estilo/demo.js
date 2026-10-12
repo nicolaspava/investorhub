@@ -38,8 +38,8 @@ function montarDemo(demo) {
   /* ── 2. Studio Q: módulos y ventana ─────────────────────────── */
   var modulos = [
     { id: 'inicio', estado: 'ya', titulo: 'Inicio',
-      texto: 'Tu panel: lo que llega para revisar, lo que ya está en línea y lo que se ve en Catálogo Q.',
-      prueba: 'Pruébalo: toca una tarjeta de «Por revisar».' },
+      texto: 'Tu panel de gestión: eventos, ingresos, audiencia y mensajes de tu proyecto en un solo lugar. Los ingresos, la analítica y los mensajes llegan con las próximas versiones.',
+      prueba: 'Pruébalo: toca un evento o un mensaje.' },
     { id: 'perfiles', estado: 'ya', titulo: 'Páginas',
       texto: 'Administra la página de tu proyecto: fotos, bio, editorial, rider y prensa. Promotores, bookers y periodistas encuentran ahí todo para programarte y hacer contenido.',
       prueba: 'Pruébalo: cambia la frase y toca «Ver en Catálogo Q».' },

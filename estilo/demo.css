@@ -504,3 +504,24 @@
 .t-pro-cifras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 16px; border-radius: 8px; background: rgba(255, 255, 255, .03); }
 .t-pro-cifras p { margin: 0; display: grid; gap: 4px; font-size: 12px; color: var(--t-text-2); }
 .t-pro-cifras b { font-family: var(--lc-font-display); font-size: 24px; color: var(--t-text); }
+
+/* Inicio como panel de gestión de un proyecto cultural (12 oct) */
+.t-pro-ejemplo { margin-left: 6px; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--g-borde-2); font-family: var(--lc-font-mono); font-size: 9px; letter-spacing: .06em; text-transform: uppercase; color: var(--t-text-3); }
+.t-pro-inicio .t-pro-kpi { cursor: default; }
+.t-pro-inicio .t-pro-kpi b { font-size: 30px; }
+.t-pro-fecha { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 6px; background: color-mix(in srgb, var(--c) 18%, transparent); color: var(--c); font-family: var(--lc-font-mono); font-size: 9px; text-transform: uppercase; line-height: 1; }
+.t-pro-fecha b { font-family: var(--lc-font-display); font-size: 16px; }
+.t-pro-aforo { position: relative; width: 74px; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, .08); font-style: normal; }
+.t-pro-aforo::before { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--v); border-radius: 3px; background: var(--p-green); }
+.t-pro-aforo small { position: absolute; right: 0; top: -15px; font-size: 10px; color: var(--t-text-3); }
+.t-pro-grafica { display: grid; grid-template-columns: repeat(7, 1fr); align-items: end; gap: 6px; height: 86px; padding: 12px 14px 22px; border-radius: 8px; background: rgba(255, 255, 255, .03); }
+.t-pro-grafica i { position: relative; height: var(--v); border-radius: 3px 3px 0 0; background: linear-gradient(var(--p-cyan), color-mix(in srgb, var(--p-cyan) 35%, transparent)); }
+.t-pro-grafica small { position: absolute; bottom: -16px; left: 0; right: 0; text-align: center; font-size: 9px; color: var(--t-text-3); }
+.t-pro-msg { display: grid; grid-template-columns: 30px 1fr auto; gap: 10px; align-items: center; padding: 8px 12px; border: 0; background: none; color: var(--t-text); text-align: left; cursor: pointer; font: inherit; }
+.t-pro-msg:hover { background: rgba(255, 255, 255, .04); }
+.t-pro-av { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; font-size: 10px; font-weight: 700; color: var(--c); background: color-mix(in srgb, var(--c) 20%, transparent); }
+.t-pro-msg span:nth-child(2) { display: grid; min-width: 0; }
+.t-pro-msg b { font-size: 12.5px; }
+.t-pro-msg em { font-style: normal; font-size: 11.5px; color: var(--t-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.t-pro-msg small { font-size: 10px; color: var(--t-text-3); }
+.t-pro-inicio .t-pro-dos > div > .t-pro-h4:not(:first-child) { margin-top: 14px; }
