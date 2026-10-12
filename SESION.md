@@ -16,7 +16,8 @@ Este documento es para seguir el trabajo en una sesión nueva (por ejemplo, Clau
 
 ## Dónde está todo
 
-- **Rama:** `diseno/taste-skill`. Producción (`main`, lacuraduria.com) **todavía tiene la versión vieja**, que cobra $230.000.
+- **Rama:** `diseno/taste-skill`. **Publicada en producción (`main`, lacuraduria.com) el 12 oct 2026** con el visto bueno de Nicolás. Cada cambio nuevo se sube a la rama y, cuando Nicolás lo pide, se pasa a `main`.
+- **Vercel:** con `cleanUrls`, las reescrituras de `vercel.json` apuntan a `/` (no a `/index.html`, que da 404).
 - **Vista previa de Vercel** (pide iniciar sesión en Vercel): https://investor-hub-git-diseno-taste-skill-la-curaduria.vercel.app
 - **Para verla en local:** `python3 -m http.server 8400` en la raíz del repo, y abrir http://localhost:8400
 
