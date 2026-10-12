@@ -1,5 +1,5 @@
 // api/comprar-camiseta.js
-// Cobra la camiseta LC23 ($90.000, Colombia) con Mercado Pago. Europa (35 USD) se cuadra por WhatsApp.
+// Cobra la camiseta LC26 ($90.000, Colombia) con Mercado Pago. Europa (35 USD) se cuadra por WhatsApp.
 // No escribe en Supabase: el pedido viaja en los metadatos del pago y el aviso de pago aprobado
 // (api/webhook-mp.js) lo manda por correo al equipo y, si hay hoja configurada, a la pestaña «Ventas».
 // El stock se descuenta a mano en CAMISETA_STOCK (index.html).
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
   const base = nuestro ? (host.startsWith('localhost') ? 'http://' : 'https://') + host : 'https://lacuraduria.com';
 
   const preferencia = {
-    items: [{ title: `Camiseta LC23 · ${color} · talla ${talla}`, quantity: 1, unit_price: PRECIO_CAMISETA, currency_id: 'COP' }],
+    items: [{ title: `Camiseta LC26 · ${color} · talla ${talla}`, quantity: 1, unit_price: PRECIO_CAMISETA, currency_id: 'COP' }],
     payer: { name: nombre, email },
     external_reference: `camiseta-${Date.now()}`,
     back_urls: {

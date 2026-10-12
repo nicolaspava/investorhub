@@ -39,10 +39,11 @@ Este documento es para seguir el trabajo en una sesión nueva (por ejemplo, Clau
 
 - **Precio y cupos:** 50 cupos fundadores; $200.000 COP en dos mitades de $100.000. La primera es la reserva y la segunda se paga antes de marzo de 2027.
 - **Cuándo rige:** el año de suscripción empieza con el lanzamiento, en marzo de 2027. Las betas salen en febrero de 2027: entrenamiento SEO, ENLACE academia y CRM. Ya disponible (11 oct): **Administrar** = Páginas, Eventos, Publicaciones y Tienda.
-- **Camiseta LC23:**
+- **Camiseta LC26:**
   - Precio (10 oct): $90.000 en Colombia; 35 USD en Europa, que se cuadra por WhatsApp.
   - Pago: Mercado Pago (`api/comprar-camiseta.js`, aviso al equipo desde el webhook) o WhatsApp. Entrega: recoger gratis en el Parque El Virrey o envío por Servientrega a todo el país, que se paga aparte.
-  - Tallas M, L y XL; stock en `CAMISETA_STOCK` (20 unidades).
+  - Página propia: lacuraduria.com/camiseta (12 oct).
+  - Tallas M, L y XL; stock en `CAMISETA_STOCK` por lugar (19 unidades, 12 oct): Bogotá 9 (negra M1 L2 XL1 · blanca M2 L1 XL2) y Europa 10 (negra M2 L1 XL2 · blanca M2 L2 XL1; en la maleta de mano van 1 negra XL y 1 blanca XL).
 - **Lo que no se promete:** «seguir perfiles» ni el contacto directo de bookers, porque no existen todavía.
 
 ## Cobro con Mercado Pago

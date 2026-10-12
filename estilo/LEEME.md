@@ -123,7 +123,7 @@ La acción principal, «Reservar cupo», se repite en la barra, el hero, el prec
 
 La oferta: $200.000 COP en dos pagos de $100.000. Con la camiseta se paga $180.000 hoy y $100.000 después. No se mencionan «seguir» ni el contacto de bookers, porque todavía no existen.
 
-**Camiseta LC23** (8 oct): es una ficha de producto (`#camiseta`), aparte de Mercado Pago.
+**Camiseta LC26** (8 oct): es una ficha de producto (`#camiseta`), aparte de Mercado Pago.
 - Se elige el precio: $80.000 con la suscripción, $90.000 sola en Bogotá o 35 € en Europa.
 - Se elige el color (blanca o negra) y la talla (M, L o XL).
 - «Comprar por WhatsApp» abre un mensaje con el pedido.

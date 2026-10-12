@@ -161,7 +161,7 @@ export async function correosDeConfirmacion({ nombre, email, mitad, monto, pagoI
 // Aviso al equipo de una camiseta pagada con Mercado Pago (el comprador recibe el comprobante de Mercado Pago).
 export async function avisoCamiseta({ nombre, email, celular, color, talla, entrega, direccion, monto, pagoId, utm }) {
   const lugar = entrega === 'servientrega' ? `Envío por Servientrega (el envío se cobra aparte): ${direccion}` : 'Recoge en el Parque El Virrey';
-  const lineas = [`${nombre} pagó ${pesos(monto)} por la camiseta LC23.`, `Color: ${color} · Talla: ${talla}`, `Entrega: ${lugar}`,
+  const lineas = [`${nombre} pagó ${pesos(monto)} por la camiseta LC26.`, `Color: ${color} · Talla: ${talla}`, `Entrega: ${lugar}`,
     `Correo: ${email} · Celular: ${celular}`, `Pago de Mercado Pago: ${pagoId}`, 'Recuerda restar la unidad en CAMISETA_STOCK y escribirle por WhatsApp para la entrega.'];
   return enviar({
     para: String(process.env.CORREO_AVISOS || CORREO_CONTACTO).split(',').map((c) => c.trim()).filter(Boolean),

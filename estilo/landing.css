@@ -1420,3 +1420,10 @@ html[data-tema] nav.t-barra .nav-links.open { border: 0 !important; box-shadow: 
   .t-en-sub nav.t-barra #nav-wordmark { display: none; }
   html[data-tema] nav.t-barra .na { padding: 8px 9px; }
 }
+
+/* Página propia de la camiseta LC26 (/camiseta) */
+.t-camiseta-pg { padding-top: clamp(96px, 12vw, 132px); }
+.t-camiseta-detalles { margin-top: 28px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.t-camiseta-detalles > div { padding: 18px; border-radius: var(--t-radio); border: 1px solid var(--g-borde); background: var(--g-tinte); }
+.t-camiseta-detalles .t-h3 { margin: 0 0 6px; }
+@media (max-width: 760px) { .t-camiseta-detalles { grid-template-columns: 1fr; } }
