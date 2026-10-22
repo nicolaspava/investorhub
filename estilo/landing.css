@@ -1427,3 +1427,39 @@ html[data-tema] nav.t-barra .nav-links.open { border: 0 !important; box-shadow: 
 .t-camiseta-detalles > div { padding: 18px; border-radius: var(--t-radio); border: 1px solid var(--g-borde); background: var(--g-tinte); }
 .t-camiseta-detalles .t-h3 { margin: 0 0 6px; }
 @media (max-width: 760px) { .t-camiseta-detalles { grid-template-columns: 1fr; } }
+
+/* Página de precios de la preventa (/precios) */
+.t-pre { padding-top: clamp(96px, 12vw, 132px); }
+.t-pre-cab { max-width: 760px; }
+.t-pre-cab .t-lead { margin: 0; }
+.t-pre-planes { margin-top: clamp(24px, 3vw, 36px); }
+.t-pre-bloque { margin-top: clamp(56px, 8vw, 96px); scroll-margin-top: 90px; }
+.t-pre-bloque .t-h3 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); margin: 0 0 22px; }
+.t-pre-pagos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.t-pre-pagos li { padding: 20px; border-radius: var(--t-radio); border: 1px solid var(--g-borde); border-top: 3px solid var(--c); background: var(--g-tinte); }
+.t-pre-pagos span { display: block; font-family: var(--lc-font-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c); }
+.t-pre-pagos b { display: block; margin: 10px 0 6px; font-family: var(--lc-font-display); font-weight: 700; font-size: clamp(1.8rem, 3vw, 2.4rem); letter-spacing: -.03em; color: var(--t-text); }
+.t-pre-pagos p { margin: 0; color: var(--t-text-2); font-size: .95rem; line-height: 1.5; }
+.t-pre-equivale { margin: 18px 0 0; color: var(--t-text-2); }
+.t-pre-equivale b { color: var(--t-text); }
+.t-pre-tabla-wrap { border-radius: var(--t-radio); border: 1px solid var(--g-borde); background: var(--g-tinte); overflow: hidden; }
+.t-pre-tabla { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.t-pre-tabla th, .t-pre-tabla td { padding: 14px 18px; border-bottom: 1px solid var(--t-line, rgba(255,255,255,.08)); text-align: center; }
+.t-pre-tabla tbody tr:last-child th, .t-pre-tabla tbody tr:last-child td { border-bottom: 0; }
+.t-pre-tabla tbody th { text-align: left; font-weight: 400; color: var(--t-text-2); }
+.t-pre-tabla thead th { font-family: var(--lc-font-display); font-weight: 700; font-size: 1.05rem; color: var(--t-text); width: 22%; }
+.t-pre-tabla thead th:first-child { width: auto; }
+.t-pre-tabla thead small { display: block; margin-top: 2px; font-family: var(--lc-font-mono); font-weight: 400; font-size: .72rem; color: var(--t-text-3); }
+.t-pre-col-fun, .t-pre-tabla td:last-child { background: rgba(255, 115, 108, .06); }
+.t-pre-col-fun { color: var(--p-coral, #FF736C) !important; }
+.t-pre-si svg { width: 18px; height: 18px; color: var(--p-cyan, #75E6F9); vertical-align: middle; }
+.t-pre-no { color: var(--t-text-3); }
+.t-pre-cierre { margin-top: clamp(64px, 9vw, 110px); text-align: center; }
+.t-pre-cierre .t-texto { margin: 18px auto 0; max-width: 60ch; color: var(--t-text-3); font-size: .9rem; }
+@media (max-width: 760px) {
+  .t-pre-pagos { grid-template-columns: 1fr; }
+  .t-pre-tabla { font-size: .88rem; }
+  .t-pre-tabla th, .t-pre-tabla td { padding: 12px 10px; }
+  .t-pre-tabla thead th { font-size: .9rem; width: 26%; }
+}
+.t-pre-cab .t-h2 { margin-bottom: 14px; }

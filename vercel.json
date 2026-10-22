@@ -50,6 +50,10 @@
       "destination": "/"
     },
     {
+      "source": "/precios",
+      "destination": "/"
+    },
+    {
       "source": "/contacto",
       "destination": "/"
     },

@@ -42,7 +42,7 @@ Este documento es para seguir el trabajo en una sesión nueva (por ejemplo, Clau
 - **Camiseta LC26:**
   - Precio (10 oct): $90.000 en Colombia; 30 euros en Europa, que se cuadra por WhatsApp.
   - Pago: Mercado Pago (`api/comprar-camiseta.js`, aviso al equipo desde el webhook) o WhatsApp. Entrega: recoger gratis en el Parque El Virrey o envío por Servientrega a todo el país, que se paga aparte.
-  - Página propia: lacuraduria.com/camiseta (12 oct).
+  - Página propia: lacuraduria.com/camiseta (12 oct). Precios de la preventa: lacuraduria.com/precios (22 oct; el botón «Plan Founder» de la barra lleva ahí).
   - Tallas M, L y XL; stock en `CAMISETA_STOCK` por lugar (19 unidades, 12 oct): Bogotá 9 (negra M1 L2 XL1 · blanca M2 L1 XL2) y Europa 10 (negra M2 L1 XL2 · blanca M2 L2 XL1; en la maleta de mano van 1 negra XL y 1 blanca XL).
 - **Lo que no se promete:** «seguir perfiles» ni el contacto directo de bookers, porque no existen todavía.
 
