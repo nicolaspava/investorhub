@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="es" data-tema="oscuro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Curaduría · Navega y gestiona la oferta cultural</title>
+<meta name="description" content="Un catálogo cultural 360° y el software para gestionar tu proyecto. Descubre eventos, artistas y espacios, o crea tu página gratis y publica. Plan Founder: 50 cupos.">
+<!-- Borrador en revisión: quitar esta línea cuando reemplace a la portada. -->
+<meta name="robots" content="noindex">
+<meta name="lc-ga4" content="">
+<meta name="lc-ads" content="">
+<meta property="og:title" content="La Curaduría · Navega y gestiona la oferta cultural">
+<meta property="og:description" content="Catálogo cultural 360° y software de gestión para proyectos culturales.">
+<meta property="og:image" content="/img/compartir.jpg">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/img/icono-180.png">
+<!-- El tema se aplica antes de pintar, para que no parpadee. -->
+<script>
+  (function () {
+    var d = document.documentElement;
+    d.classList.add('js');
+    try { if (localStorage.getItem('lc-tema') === 'claro') d.setAttribute('data-tema', 'claro'); } catch (e) {}
+  })();
+</script>
+<link rel="preload" href="/fuentes/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/estilo/reticula.css?v=20261116">
+</head>
+<body>
+
+<header class="barra" id="barra">
+  <div class="barra-int">
+    <a class="barra-logo" href="#inicio" aria-label="La Curaduría · inicio"><img src="/img/logo-lc.svg" alt="La Curaduría" width="162" height="22"></a>
+    <nav class="barra-nav" id="barra-nav" aria-label="Secciones">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#catalogo">Catálogo Q</a>
+      <a href="#studio">Studio Q</a>
+      <a href="#funciones">Funciones</a>
+      <a href="#implica">Qué implica</a>
+      <a href="#planes">Planes</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <div class="barra-acciones">
+      <button class="tema" id="tema" type="button" aria-label="Cambiar entre tema oscuro y claro"><i aria-hidden="true"></i></button>
+      <a class="boton ocultar-movil" href="https://lacuraduria.net/login" data-evento="sign_up_click">Ingresar</a>
+      <a class="boton boton-coral" href="#planes" data-evento="cta_click">Ser Founder</a>
+      <button class="menu-boton" id="menu-boton" type="button" aria-expanded="false" aria-controls="barra-nav" aria-label="Abrir el menú">≡</button>
+    </div>
+  </div>
+</header>
+
+<main class="marco" id="inicio">
+
+  <!-- 00 · HERO -->
+  <section class="seccion">
+    <div class="cab mono"><span class="dato">00 / Empresa de medios y tecnología para la cultura</span><span>Bogotá · 4.6097° N · 74.0817° W</span></div>
+    <div class="hero">
+      <div class="hero-texto">
+        <h1 class="titulo t-xl">Navega y gestiona la oferta cultural.</h1>
+        <p class="bajada">La Curaduría es un catálogo cultural 360° y el software que lo alimenta. El público descubre eventos, artistas, espacios e historias. Los proyectos culturales publican, construyen audiencia y abren oportunidades.</p>
+        <div class="hero-botones">
+          <a class="boton boton-coral" href="https://lacuraduria.net/login" data-evento="sign_up_click">Crear cuenta gratis <span class="flecha" aria-hidden="true">→</span></a>
+          <a class="boton" href="#implica" data-evento="cta_click">Qué implica cada paso</a>
+        </div>
+        <p class="mono hero-nota">Registrarte y publicar es gratis · Plan Founder: 50 cupos</p>
+      </div>
+
+      <div class="hero-vista">
+        <figure class="ventana aparece" aria-label="Ejemplo de la plataforma: el tablero de eventos, el copiloto Sonar y la radio">
+          <div class="v-barra">
+            <img src="/img/logo-lc.svg" alt="" width="96" height="13">
+            <span class="v-busca">Eventos, artistas, publicaciones…</span>
+            <span class="v-url">lacuraduria.net</span>
+          </div>
+          <div class="v-cuerpo">
+            <div class="v-menu" aria-hidden="true"><span class="activo">Inicio</span><span>Feed</span><span>Mapa</span><span>Panel</span><span>Perfil</span></div>
+            <div class="v-centro">
+              <div class="v-tipos" aria-hidden="true">
+                <span><i class="circulo c-verde"></i>Eventos</span>
+                <span><i class="circulo c-cyan"></i>Perfiles</span>
+                <span><i class="circulo c-coral"></i>Publicaciones</span>
+                <span><i class="circulo c-rosado"></i>Tienda</span>
+              </div>
+              <div class="v-tarjetas">
+                <div class="v-tarjeta"><img src="/img/demo/ev-nusar.jpg" alt="Flyer de Nusar 3000" width="315" height="420"><div><b>Nusar 3000</b><small>Fiesta · Gate Club</small><i>Comprar</i></div></div>
+                <div class="v-tarjeta"><img src="/img/demo/ev-vuelo.jpg" alt="Flyer de El Vuelo Sinfónico" width="319" height="420"><div><b>El Vuelo Sinfónico</b><small>Concierto · Ojo de Tigre</small><i>Comprar</i></div></div>
+                <div class="v-tarjeta"><img src="/img/demo/ev-colmillos.jpg" alt="Flyer de Colmillos, sangre y sudor" width="336" height="420"><div><b>Colmillos, sangre y sudor</b><small>En vivo · A Seis Manos</small><i>Comprar</i></div></div>
+              </div>
+            </div>
+            <div class="v-lado" aria-hidden="true">
+              <div class="v-pestanas"><span>Recomendados</span><b>Copiloto</b></div>
+              <div class="v-sonar">
+                <strong>¿Qué hacemos hoy?</strong>
+                <div class="v-globo mio"><span id="sonar-texto" class="v-cursor">Un plan con música en vivo en Chapinero</span></div>
+                <div class="v-globo">Sonar busca en el catálogo y te propone eventos y lugares para hoy.</div>
+              </div>
+            </div>
+          </div>
+          <div class="v-radio" aria-hidden="true">
+            <span class="v-play"></span>
+            <span><b>Al aire</b> · La Curaduría Radio</span>
+            <span class="onda"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          </div>
+        </figure>
+      </div>
+    </div>
+
+    <div class="pilares">
+      <a class="pilar" href="#catalogo"><span class="pilar-cab mono"><i class="circulo c-cyan"></i>01</span><span class="titulo t-m">Perfiles</span><p>Artistas, espacios, colectivos, promotores y medios, cada uno con su página.</p></a>
+      <a class="pilar" href="#catalogo"><span class="pilar-cab mono"><i class="circulo c-coral"></i>02</span><span class="titulo t-m">Publicaciones</span><p>Reseñas, crónicas, entrevistas y sets que cuentan la escena.</p></a>
+      <a class="pilar" href="#catalogo"><span class="pilar-cab mono"><i class="circulo c-verde"></i>03</span><span class="titulo t-m">Eventos</span><p>La cartelera de la ciudad, en lista y en mapa.</p></a>
+      <a class="pilar" href="#catalogo"><span class="pilar-cab mono"><i class="circulo c-amarillo"></i>04</span><span class="titulo t-m">Marketplace</span><p>Una tienda para la obra y el merch de los proyectos.</p></a>
+    </div>
+  </section>
+
+  <!-- 01 · CÓMO FUNCIONA -->
+  <section class="seccion" id="como-funciona">
+    <div class="cab mono"><span class="dato">01 / Cómo funciona</span><span>Publicar → Conectar → Descubrir</span></div>
+    <div class="cuerpo">
+      <div class="intro">
+        <h2 class="titulo t-l">El ruido de las redes aleja a las audiencias de los proyectos culturales. Nosotros los conectamos.</h2>
+        <p class="bajada">Ayudamos a los proyectos culturales a construir audiencias y abrir oportunidades, con una plataforma que reúne su portafolio y su información en un solo lugar.</p>
+      </div>
+    </div>
+    <ul class="problema">
+      <li><span class="mono coral">El problema · 1</span><p>Las redes miden cuánto te retienen, no lo que vives.</p></li>
+      <li><span class="mono coral">El problema · 2</span><p>La cultura necesita que la gente salga y asista.</p></li>
+      <li><span class="mono coral">El problema · 3</span><p>Tu proyecto merece que lo encuentren.</p></li>
+    </ul>
+
+    <div class="flujo">
+      <div class="flujo-dibujo aparece" aria-hidden="true">
+        <svg viewBox="0 0 1200 310" role="presentation">
+          <line class="l" x1="0" y1="150" x2="1200" y2="150"/>
+          <line class="l" x1="600" y1="0" x2="600" y2="290"/>
+          <circle class="l" cx="600" cy="150" r="40"/>
+          <circle class="l" cx="600" cy="150" r="80"/>
+          <circle class="lf" cx="600" cy="150" r="120"/>
+          <g class="barrido"><line x1="600" y1="150" x2="600" y2="30" stroke="var(--coral)" stroke-width="1.5"/></g>
+          <circle cx="600" cy="150" r="7" fill="var(--coral)"/>
+          <circle cx="566" cy="126" r="5" fill="var(--p-cyan)"/>
+          <circle cx="655" cy="92" r="5" fill="var(--p-green)"/>
+          <circle cx="528" cy="202" r="5" fill="var(--p-coral)"/>
+          <circle cx="676" cy="186" r="5" fill="var(--p-yellow)"/>
+          <circle cx="612" cy="242" r="5" fill="var(--p-pink)"/>
+          <circle cx="520" cy="96" r="5" fill="var(--p-green)"/>
+          <path class="ld" d="M300 150 H480"/>
+          <path class="ld" d="M720 150 H900"/>
+          <rect class="caja" x="40" y="106" width="260" height="88" rx="4"/>
+          <rect class="caja" x="900" y="106" width="260" height="88" rx="4"/>
+          <text class="rot" x="170" y="158" text-anchor="middle">Publicar</text>
+          <text class="rot" x="1030" y="158" text-anchor="middle">Descubrir</text>
+          <text class="d" x="40" y="92">GESTORES · STUDIO Q</text>
+          <text class="d" x="1160" y="92" text-anchor="end">AUDIENCIAS · CATÁLOGO Q</text>
+          <text x="600" y="306" text-anchor="middle">LA CURADURÍA · CONECTAR</text>
+          <text x="40" y="222">PÁGINAS · EVENTOS · CONTENIDOS · PRODUCTOS</text>
+          <text x="1160" y="222" text-anchor="end">CARTELERA · MAPA · RADIO · SONAR</text>
+        </svg>
+      </div>
+      <ol class="pasos">
+        <li class="paso"><span class="mono dato">Paso 1 · Quienes gestionan la cultura</span><h3 class="titulo t-m">Publicar</h3><p>Artistas, espacios y gestores crean su página y publican eventos, contenidos y productos desde Studio Q.</p></li>
+        <li class="paso"><span class="mono dato">Paso 2 · La Curaduría</span><h3 class="titulo t-m">Conectar</h3><p>Todo lo publicado entra al catálogo: sale en la cartelera, en el mapa, en la radio y en las recomendaciones de Sonar.</p></li>
+        <li class="paso"><span class="mono dato">Paso 3 · Quienes viven la cultura</span><h3 class="titulo t-m">Descubrir</h3><p>Las personas exploran, guardan lo que les interesa y salen a vivirlo.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 02 · CATÁLOGO Q -->
+  <section class="seccion" id="catalogo">
+    <div class="cab mono"><span class="dato">02 / Catálogo Q · para quienes viven la cultura</span><span>lacuraduria.net · gratis</span></div>
+    <div class="producto">
+      <div class="producto-texto">
+        <h2 class="titulo t-l">Encuentra algo que valga la pena vivir.</h2>
+        <p class="bajada">Eventos, artistas, espacios y contenidos de la escena en un solo lugar, para explorar más allá de lo que aparece en tu feed. Funciona en el computador y en el teléfono, sin instalar nada.</p>
+        <div class="producto-botones">
+          <a class="boton boton-coral" href="https://lacuraduria.net" target="_blank" rel="noopener" data-evento="cta_click">Explorar el catálogo <span class="flecha" aria-hidden="true">↗</span></a>
+          <a class="boton" href="https://lacuraduria.net/login" data-evento="sign_up_click">Crear cuenta</a>
+        </div>
+      </div>
+      <div class="producto-vista">
+        <figure class="ventana aparece" aria-label="Ejemplo del directorio de perfiles del catálogo">
+          <div class="v-barra"><img src="/img/logo-lc.svg" alt="" width="96" height="13"><span class="v-busca">Buscar en perfiles…</span><span class="v-url">lacuraduria.net/perfiles</span></div>
+          <div class="v-centro">
+            <div class="v-tipos" aria-hidden="true">
+              <span><i class="circulo c-cyan"></i>Artistas</span><span><i class="circulo c-verde"></i>Espacios</span><span><i class="circulo c-amarillo"></i>Colectivos</span><span><i class="circulo c-coral"></i>Promotores</span><span><i class="circulo c-rosado"></i>Medios</span>
+            </div>
+            <div class="v-tarjetas">
+              <div class="v-tarjeta"><img src="/img/demo/veronica-cian.jpg" alt="Verónica Cian" width="388" height="560"><div><b>Verónica Cian</b><small>Artista · Bogotá</small></div></div>
+              <div class="v-tarjeta"><img src="/img/demo/cata-p.jpg" alt="Cata P" width="560" height="550"><div><b>Cata P</b><small>Artista · Bogotá</small></div></div>
+              <div class="v-tarjeta"><img src="/img/demo/maria-manuela.jpg" alt="María Manuela" width="560" height="373"><div><b>María Manuela</b><small>Artista · Bogotá</small></div></div>
+            </div>
+          </div>
+          <div class="v-radio" aria-hidden="true"><span class="v-play"></span><span><b>Al aire</b> · La Curaduría Radio</span><span class="onda"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+        </figure>
+      </div>
+    </div>
+    <ul class="funciones">
+      <li class="funcion"><div class="funcion-cab"><h3 class="titulo t-s">Cartelera y mapa</h3><span class="estado estado-ya">Ya</span></div><p>Los eventos por fecha y los lugares en el mapa, con «Cerca de mí» y cómo llegar.</p></li>
+      <li class="funcion"><div class="funcion-cab"><h3 class="titulo t-s">Directorio</h3><span class="estado estado-ya">Ya</span></div><p>La ficha de cada artista, espacio, colectivo, promotor y medio, con su música, videos y fechas.</p></li>
+      <li class="funcion"><div class="funcion-cab"><h3 class="titulo t-s">Publicaciones</h3><span class="estado estado-ya">Ya</span></div><p>Reseñas, crónicas, entrevistas y sets escritos por la escena y por aliados editoriales.</p></li>
+      <li class="funcion"><div class="funcion-cab"><h3 class="titulo t-s">Radio en línea</h3><span class="estado estado-ya">Ya</span></div><p>Suena mientras navegas y te muestra qué canción y qué artista está al aire.</p></li>
+      <li class="funcion"><div class="funcion-cab"><h3 class="titulo t-s">Sonar, tu copiloto</h3><span class="estado estado-ya">Ya</span></div><p>Le preguntas «¿Qué hacemos hoy?» y te recomienda planes sacados del catálogo.</p></li>
+      <li class="funcion"><div class="funcion-cab"><h3 class="titulo t-s">Guardar, seguir y reseñar</h3><span class="estado estado-ya">Ya</span></div><p>Con tu cuenta guardas eventos, sigues páginas, escribes reseñas y armas tu perfil.</p></li>
+    </ul>
+  </section>
+
+  <!-- 03 · STUDIO Q -->
+  <section class="seccion" id="studio">
+    <div class="cab mono"><span class="dato">03 / Studio Q · para quienes gestionan la cultura</span><span>Gratis para empezar · Pro desde marzo de 2027</span></div>
+    <div class="producto al-reves">
+      <div class="producto-texto">
+        <h2 class="titulo t-l">Tu proyecto cultural, en un solo lugar.</h2>
+        <p class="bajada">El software para artistas, espacios y gestores. Organizas tu presencia, publicas tu oferta y la gente te encuentra en el catálogo. Lo que publicas aquí es lo que el público ve allá.</p>
+        <div class="producto-botones">
+          <a class="boton boton-coral" href="https://lacuraduria.net/publicar" data-evento="sign_up_click">Crear mi página gratis <span class="flecha" aria-hidden="true">→</span></a>
+          <a class="boton" href="#planes" data-evento="cta_click">Ver el Plan Founder</a>
+        </div>
+      </div>
+      <div class="producto-vista">
+        <figure class="ventana aparece" aria-label="Ejemplo del panel Administrar de Studio Q, con datos de muestra">
+          <div class="v-barra"><img src="/img/logo-lc.svg" alt="" width="96" height="13"><span class="v-url">Studio Q · Administrar</span></div>
+          <div class="p-cuerpo">
+            <div class="v-menu" aria-hidden="true"><span>Inicio</span><span>Páginas</span><span class="activo">Eventos</span><span>Publicaciones</span><span>Tienda</span></div>
+            <div class="p-centro">
+              <div class="p-cab"><span>Tus eventos · datos de ejemplo</span><i>+ Nuevo evento</i></div>
+              <div class="p-cifras" aria-hidden="true">
+                <div><b>3</b><small>Eventos</small></div>
+                <div><b>2</b><small>Publicados</small></div>
+                <div><b>1</b><small>Borrador</small></div>
+              </div>
+              <div class="p-tabla">
+                <div class="p-fila"><span class="p-ev"><img src="/img/demo/ev-vuelo.jpg" alt="" width="319" height="420"><span><b>El Vuelo Sinfónico</b><small>Ojo de Tigre · 8:00 p.m.</small></span></span><span class="estado estado-ya">Publicado</span></div>
+                <div class="p-fila"><span class="p-ev"><img src="/img/demo/ev-colmillos.jpg" alt="" width="336" height="420"><span><b>Colmillos, sangre y sudor</b><small>A Seis Manos · 5:00 p.m.</small></span></span><span class="estado estado-ya">Publicado</span></div>
+                <div class="p-fila"><span class="p-ev"><img src="/img/demo/ev-edicion.jpg" alt="" width="420" height="420"><span><b>Edición Ltda · lanzamiento EP</b><small>Ace of Spades · 6:30 p.m.</small></span></span><span class="estado">Borrador</span></div>
+              </div>
+            </div>
+          </div>
+        </figure>
+      </div>
+    </div>
+    <ul class="funciones">
+      <li class="funcion"><div class="funcion-cab"><h3 class="titulo t-s">Página y press kit</h3><span class="estado estado-ya">Ya</span></div><p>Tu ficha pública con fotos, bio, música, videos y prensa, en un enlace para bookers y periodistas.</p></li>
+      <li class="funcion"><div class="funcion-cab"><h3 class="titulo t-s">Eventos</h3><span class="estado estado-ya">Ya</span></div><p>Subes tu fecha con foto y nombre, y sale de una vez en la cartelera y en el mapa.</p></li>
+      <li class="funcion"><div class="funcion-cab"><h3 class="titulo t-s">Publicaciones y tienda</h3><span class="estado estado-ya">Ya</span></div><p>Publicas tus contenidos y muestras tus productos desde el mismo panel.</p></li>
+      <li class="funcion"><div class="funcion-cab"><h3 class="titulo t-s">Tu música en la radio</h3><span class="estado estado-ya">Ya</span></div><p>Envías tu canción y, si pasa la curaduría, suena en la radio con tu nombre en pantalla.</p></li>
+      <li class="funcion"><div class="funcion-cab"><h3 class="titulo t-s">Campañas y academia</h3><span class="estado estado-beta">Beta</span></div><p>Campañas de contenido con tu equipo y ENLACE academia, para quienes entran como Founder.</p></li>
+      <li class="funcion"><div class="funcion-cab"><h3 class="titulo t-s">CRM, SEO y modo gira</h3><span class="estado">2027</span></div><p>Las herramientas del plan Pro llegan entre febrero y marzo de 2027.</p></li>
+    </ul>
+  </section>
+
+  <!-- 04 · TODAS LAS FUNCIONES -->
+  <section class="seccion" id="funciones">
+    <div class="cab mono"><span class="dato">04 / Todas las funciones</span><span>Qué existe hoy y qué viene</span></div>
+    <div class="cuerpo">
+      <div class="intro">
+        <h2 class="titulo t-l">Todo lo que hace la plataforma, con su estado real.</h2>
+        <p class="bajada">Marcamos cada función como disponible, en beta o por venir, para que sepas exactamente qué recibes hoy. Filtra según lo que te interesa.</p>
+      </div>
+    </div>
+    <div class="filtros" id="filtros">
+      <div class="filtro" role="group" aria-label="Para quién">
+        <span class="mono">Para quién</span>
+        <button class="chip" type="button" data-para="todos" aria-pressed="true">Todos</button>
+        <button class="chip" type="button" data-para="publico" aria-pressed="false">Vivo la cultura</button>
+        <button class="chip" type="button" data-para="gestores" aria-pressed="false">Gestiono un proyecto</button>
+      </div>
+      <div class="filtro" role="group" aria-label="Estado">
+        <span class="mono">Estado</span>
+        <button class="chip" type="button" data-estado="todos" aria-pressed="true">Todo</button>
+        <button class="chip" type="button" data-estado="ya" aria-pressed="false">Ya</button>
+        <button class="chip" type="button" data-estado="beta" aria-pressed="false">Beta</button>
+        <button class="chip" type="button" data-estado="viene" aria-pressed="false">Viene</button>
+      </div>
+      <span class="mono cuenta" id="cuenta" aria-live="polite">28 funciones</span>
+    </div>
+    <table class="tabla" id="tabla">
+      <thead><tr><th scope="col">Función</th><th scope="col">Qué hace</th><th scope="col">Para</th><th scope="col">Plan</th><th scope="col">Estado</th></tr></thead>
+      <tbody>
+        <tr data-para="publico" data-estado="ya"><td><b>Cartelera de eventos</b></td><td>Conciertos, fiestas, exposiciones y más, con fecha, lugar y enlace de compra.</td><td><span class="mono">Público</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="publico" data-estado="ya"><td><b>Mapa cultural</b></td><td>Los lugares de la ciudad por tipo, con sus próximas fechas y «Cerca de mí».</td><td><span class="mono">Público</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="publico" data-estado="ya"><td><b>Directorio de perfiles</b></td><td>Artistas, espacios, colectivos, promotores y medios, cada uno con su ficha.</td><td><span class="mono">Público</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="publico" data-estado="ya"><td><b>Publicaciones y reseñas</b></td><td>Crónicas, entrevistas, sets y reseñas de la escena.</td><td><span class="mono">Público</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="publico" data-estado="ya"><td><b>Radio en línea</b></td><td>Música de la escena que suena mientras navegas, con canción y artista en pantalla.</td><td><span class="mono">Público</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="publico" data-estado="ya"><td><b>Sonar, copiloto cultural</b></td><td>Un chat que responde «¿Qué hacemos hoy?» con eventos y lugares del catálogo.</td><td><span class="mono">Público</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="publico" data-estado="ya"><td><b>Guardar y seguir</b></td><td>Guardas eventos y sigues las páginas que te interesan. Necesita cuenta.</td><td><span class="mono">Público</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="publico" data-estado="ya"><td><b>Tu perfil</b></td><td>Nombre, foto, ciudad y bio, con lo que guardas y reseñas.</td><td><span class="mono">Público</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="publico" data-estado="ya"><td><b>Tienda</b></td><td>Productos de La Curaduría y de los proyectos del catálogo.</td><td><span class="mono">Público</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="publico" data-estado="viene"><td><b>Entradas dentro de la plataforma</b></td><td>Hoy el botón «Comprar» te lleva al enlace que pone cada organizador. La tiquetera propia viene después.</td><td><span class="mono">Público</span></td><td><span class="mono">Por anunciar</span></td><td><span class="estado">Viene</span></td></tr>
+        <tr data-para="publico" data-estado="viene"><td><b>Mensajes y chat</b></td><td>Conversar con otras personas y con los proyectos.</td><td><span class="mono">Público</span></td><td><span class="mono">Por anunciar</span></td><td><span class="estado">Viene</span></td></tr>
+
+        <tr data-para="gestores" data-estado="ya"><td><b>Página de tu proyecto</b></td><td>La ficha pública de tu proyecto: artista, espacio, colectivo, promotor o medio.</td><td><span class="mono">Gestores</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="gestores" data-estado="ya"><td><b>Press kit en un enlace</b></td><td>Fotos, bio, música, videos y prensa listos para compartir con bookers y periodistas.</td><td><span class="mono">Gestores</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="gestores" data-estado="ya"><td><b>Publicar eventos</b></td><td>Con foto y nombre basta. Salen de una vez en la cartelera y en el mapa.</td><td><span class="mono">Gestores</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="gestores" data-estado="ya"><td><b>Publicar contenidos</b></td><td>Reseñas, crónicas, entrevistas y lanzamientos de música con su ficha.</td><td><span class="mono">Gestores</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="gestores" data-estado="ya"><td><b>Tienda de tu proyecto</b></td><td>Muestras tus productos junto a tu página.</td><td><span class="mono">Gestores</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="gestores" data-estado="ya"><td><b>Tu música en la radio</b></td><td>Envías el archivo de tu canción. Si pasa la curaduría, entra a la programación.</td><td><span class="mono">Gestores</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="gestores" data-estado="ya"><td><b>Conectar tus canales</b></td><td>Tu canal de YouTube, tu Bandcamp y tu SoundCloud se ven dentro de tu ficha.</td><td><span class="mono">Gestores</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="gestores" data-estado="ya"><td><b>Reclamar una página o evento</b></td><td>Si tu proyecto ya aparece en el catálogo, pides administrarlo. Lo revisamos a mano.</td><td><span class="mono">Gestores</span></td><td><span class="mono">Gratis</span></td><td><span class="estado estado-ya">Ya</span></td></tr>
+        <tr data-para="gestores" data-estado="ya"><td><b>Beneficios Founder</b></td><td>Insignia en tu perfil, tu perfil compartido en nuestras redes, una reseña de tu proyecto y un lugar en el catálogo que presentamos a agentes europeos.</td><td><span class="mono">Gestores</span></td><td><span class="mono coral">Founder</span></td><td><span class="estado estado-ya">Desde hoy</span></td></tr>
+        <tr data-para="gestores" data-estado="beta"><td><b>Campañas colaborativas</b></td><td>Planeas las piezas de una campaña con tu equipo y los artistas aprueban las suyas. En prueba privada.</td><td><span class="mono">Gestores</span></td><td><span class="mono coral">Founder</span></td><td><span class="estado estado-beta">Beta</span></td></tr>
+        <tr data-para="gestores" data-estado="beta"><td><b>ENLACE academia</b></td><td>Formación para usar datos, construir audiencias y sostener una comunidad.</td><td><span class="mono">Gestores</span></td><td><span class="mono coral">Founder</span></td><td><span class="estado estado-beta">Beta · nov 2026</span></td></tr>
+        <tr data-para="gestores" data-estado="viene"><td><b>CRM</b></td><td>Tus contactos, prospectos y oportunidades en un solo tablero.</td><td><span class="mono">Gestores</span></td><td><span class="mono coral">Founder</span></td><td><span class="estado">Feb 2027</span></td></tr>
+        <tr data-para="gestores" data-estado="viene"><td><b>Entrenamiento SEO</b></td><td>Guía paso a paso para que tu proyecto aparezca cuando lo buscan.</td><td><span class="mono">Gestores</span></td><td><span class="mono coral">Founder</span></td><td><span class="estado">Feb 2027</span></td></tr>
+        <tr data-para="gestores" data-estado="viene"><td><b>Almacenamiento de recursos</b></td><td>Fotografías, documentos y archivos de gestión de tu proyecto.</td><td><span class="mono">Gestores</span></td><td><span class="mono coral">Founder</span></td><td><span class="estado">Mar 2027</span></td></tr>
+        <tr data-para="gestores" data-estado="viene"><td><b>Automatización de contratos</b></td><td>Contratos armados con los datos que ya están en tu panel.</td><td><span class="mono">Gestores</span></td><td><span class="mono coral">Founder</span></td><td><span class="estado">Mar 2027</span></td></tr>
+        <tr data-para="gestores" data-estado="viene"><td><b>Modo gira</b></td><td>Fechas, ciudades y logística de una gira en una sola vista.</td><td><span class="mono">Gestores</span></td><td><span class="mono coral">Founder</span></td><td><span class="estado">Mar 2027</span></td></tr>
+        <tr data-para="gestores" data-estado="viene"><td><b>Tiquetera, convocatorias, cobro y analítica</b></td><td>Lo que sigue en la hoja de ruta después del lanzamiento. Las fechas pueden moverse.</td><td><span class="mono">Gestores</span></td><td><span class="mono">Por anunciar</span></td><td><span class="estado">2027</span></td></tr>
+      </tbody>
+    </table>
+    <p class="vacio" id="vacio" hidden>No hay funciones con esa combinación. Prueba con otro filtro.</p>
+  </section>
+
+  <!-- 05 · QUÉ IMPLICA -->
+  <section class="seccion" id="implica">
+    <div class="cab mono"><span class="dato">05 / Qué implica cada paso</span><span>Registrarte · Publicar · Suscribirte · Comprar</span></div>
+    <div class="cuerpo">
+      <div class="intro">
+        <h2 class="titulo t-l">Cuatro cosas que puedes hacer, y qué pasa en cada una.</h2>
+        <p class="bajada">Sin letra pequeña escondida: cuánto cuesta, qué haces tú, qué recibes y a qué te comprometes.</p>
+      </div>
+    </div>
+    <div class="implica">
+      <article class="paso-compra">
+        <div class="pc-cab"><span class="mono dato">A · Para todos</span><h3 class="titulo t-m">Registrarte</h3><p class="pc-precio">$0</p></div>
+        <div class="pc-bloque"><span class="mono">Qué haces</span><p>Entras con tu correo, que recibe un enlace para ingresar, o con tu cuenta de Google.</p></div>
+        <div class="pc-bloque"><span class="mono">Qué recibes</span><ul><li>Guardar eventos y seguir páginas</li><li>Escribir reseñas</li><li>Tu perfil con nombre, foto, ciudad y bio</li></ul></div>
+        <div class="pc-bloque"><span class="mono">Qué implica</span><p>No pedimos tarjeta ni hay cobros. Aceptas los términos y la política de privacidad.</p></div>
+        <div class="pc-pie"><a class="boton boton-ancho" href="https://lacuraduria.net/login" data-evento="sign_up_click">Crear cuenta</a></div>
+      </article>
+      <article class="paso-compra">
+        <div class="pc-cab"><span class="mono dato">B · Para proyectos</span><h3 class="titulo t-m">Publicar</h3><p class="pc-precio">$0</p></div>
+        <div class="pc-bloque"><span class="mono">Qué haces</span><p>Con tu cuenta creas la página de tu proyecto y subes eventos, publicaciones, productos o tu música.</p></div>
+        <div class="pc-bloque"><span class="mono">Qué recibes</span><ul><li>Tu ficha pública y tu press kit</li><li>Tus eventos en la cartelera y el mapa</li><li>El panel Administrar de Studio Q</li></ul></div>
+        <div class="pc-bloque"><span class="mono">Qué implica</span><p>Lo que publicas sale de inmediato y eres responsable de su contenido. Reclamar una página que ya existe sí pasa por revisión.</p></div>
+        <div class="pc-pie"><a class="boton boton-ancho" href="https://lacuraduria.net/publicar" data-evento="sign_up_click">Publicar</a></div>
+      </article>
+      <article class="paso-compra destacado">
+        <div class="pc-cab"><span class="mono coral">C · Plan Founder · 50 cupos</span><h3 class="titulo t-m">Suscribirte</h3><p class="pc-precio">$200.000<small>COP · un año</small></p></div>
+        <div class="pc-bloque"><span class="mono">Qué haces</span><p>Reservas con $100.000 por Mercado Pago y pagas los otros $100.000 antes de marzo de 2027.</p></div>
+        <div class="pc-bloque"><span class="mono">Qué recibes</span><ul><li>Beneficios de fundador desde hoy</li><li>Las betas antes que nadie</li><li>Un año de Studio Q Pro desde el lanzamiento</li></ul></div>
+        <div class="pc-bloque"><span class="mono">Qué implica</span><p>No hay cobro automático: tú haces cada pago. Tienes 5 días hábiles de retracto y reembolso total si Studio Q no se lanza antes del 30 de junio de 2027.</p></div>
+        <div class="pc-pie"><a class="boton boton-coral boton-ancho" href="/precios" data-evento="checkout_start">Reservar cupo · $100.000</a></div>
+      </article>
+      <article class="paso-compra">
+        <div class="pc-cab"><span class="mono dato">D · Tienda</span><h3 class="titulo t-m">Comprar</h3><p class="pc-precio">$90.000<small>Camiseta LC26</small></p></div>
+        <div class="pc-bloque"><span class="mono">Qué haces</span><p>Pagas con Mercado Pago o cuadras tu compra por WhatsApp.</p></div>
+        <div class="pc-bloque"><span class="mono">Qué recibes</span><ul><li>Recoges gratis en el Parque El Virrey, Bogotá</li><li>O envío por Servientrega, que pagas aparte</li><li>Garantía de un año</li></ul></div>
+        <div class="pc-bloque"><span class="mono">Qué implica</span><p>Es una compra única, sin suscripción. Las entradas a eventos se compran en el enlace de cada organizador.</p></div>
+        <div class="pc-pie"><a class="boton boton-ancho" href="/camiseta" data-evento="cta_click">Ver la camiseta</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 06 · PLANES -->
+  <section class="seccion" id="planes">
+    <div class="cab mono"><span class="dato">06 / Planes · Preventa Studio Q</span><span>Lanzamiento: marzo de 2027</span></div>
+    <div class="cuerpo">
+      <div class="intro">
+        <h2 class="titulo t-l">Empieza gratis o entra como fundador.</h2>
+        <p class="bajada">El catálogo es gratis para el público y para publicar. El Plan Founder es la preventa del plan Pro: 50 cupos, un año completo y beneficios desde hoy.</p>
+      </div>
+    </div>
+    <div class="planes">
+      <article class="plan">
+        <div class="plan-cab"><span class="mono dato">Gratis</span></div>
+        <p class="plan-precio">$0<small>Para siempre</small></p>
+        <p class="suave">Tu proyecto en Catálogo Q, para que el público te encuentre.</p>
+        <ul class="plan-lista">
+          <li>Tu página de artista, espacio, colectivo o promotor</li>
+          <li>Tu press kit en un enlace para compartir</li>
+          <li>Administrar: páginas, eventos, publicaciones y tienda</li>
+          <li>Tu música en la radio, si pasa la curaduría</li>
+        </ul>
+        <div class="plan-pie"><a class="boton boton-ancho" href="https://lacuraduria.net/login" data-evento="sign_up_click">Crear cuenta gratis</a></div>
+      </article>
+      <article class="plan plan-founder">
+        <div class="plan-cab"><span class="mono coral">Pro · Founder</span><span class="mono cupos">50 cupos</span></div>
+        <p class="plan-precio">$200.000<small>COP · un año · dos pagos de $100.000</small></p>
+        <p class="suave">Unos $16.700 al mes. El año empieza con el lanzamiento, en marzo de 2027.</p>
+        <ul class="plan-lista">
+          <li><b>Todo lo del plan gratis</b></li>
+          <li><b>Todo lo del plan Pro:</b> <span>almacenamiento de recursos, automatización de contratos, campañas colaborativas, modo gira y más</span></li>
+          <li><b>Las betas antes que nadie:</b> <span>ENLACE academia desde noviembre de 2026; CRM y entrenamiento SEO desde febrero de 2027</span></li>
+          <li><b>Beneficios desde hoy:</b> <span>tu perfil compartido en nuestras redes, una reseña de tu proyecto y tu perfil en el catálogo que presentamos a agentes europeos</span></li>
+          <li><b>Insignia Founder</b> <span>en tu perfil</span></li>
+        </ul>
+        <div class="plan-pie">
+          <a class="boton boton-coral boton-ancho" href="/precios" data-evento="checkout_start">Reservar cupo · $100.000 <span class="flecha" aria-hidden="true">→</span></a>
+          <span class="mono">Pago seguro con Mercado Pago · Necesitas una cuenta gratis</span>
+        </div>
+      </article>
+    </div>
+    <ol class="pagos">
+      <li class="pago"><span class="mono pago-punto">Pago 1 · Hoy</span><b>$100.000</b><p>Reservas tu cupo y recibes desde ya los beneficios de fundador. Te llega la confirmación al correo.</p></li>
+      <li class="pago"><span class="mono pago-punto">Pago 2 · Antes de marzo de 2027</span><b>$100.000</b><p>Completas tu año con el mismo correo. Si pagas antes de febrero, pruebas las betas desde su primera salida.</p></li>
+      <li class="pago"><span class="mono pago-punto">Marzo de 2027 · Lanzamiento</span><b>12 meses</b><p>Se activa tu año completo de Studio Q, con todo lo que se habilite en ese tiempo.</p></li>
+    </ol>
+    <div class="planes-nota">
+      <span class="mono">5 días hábiles de retracto · Reembolso total si no se lanza antes del 30 de junio de 2027</span>
+      <a class="enlace" href="/precios">Comparación completa y pagos →</a>
+    </div>
+  </section>
+
+  <!-- 07 · TRAYECTORIA -->
+  <section class="seccion" id="trayectoria">
+    <div class="cab mono"><span class="dato">07 / Trayectoria</span><span>2025 — 2026</span></div>
+    <div class="cuerpo">
+      <div class="intro"><h2 class="titulo t-l">Dos años construyendo con respaldo institucional.</h2></div>
+    </div>
+    <ol class="trayectoria">
+      <li class="hito"><span class="anio">2025</span><h3 class="titulo t-s">Incubación · Cámara de Comercio de Bogotá</h3><p>Pitch ganador en el proceso de incubación.</p></li>
+      <li class="hito"><span class="anio">2025</span><h3 class="titulo t-s">GoFest</h3><p>Seleccionados entre las empresas en incubación. Ahí presentamos nuestro primer prototipo.</p></li>
+      <li class="hito"><span class="anio">2026</span><h3 class="titulo t-s">Aceleración BIME Bogotá</h3><p>Seleccionados para el proceso de aceleración, con la Cámara de Comercio de Bogotá.</p></li>
+      <li class="hito"><span class="anio">2026</span><h3 class="titulo t-s">Chapinero en Red</h3><p>Ganadores de la invitación cultural de la Secretaría de Cultura: piloto en vivo de nuestro marketplace.</p></li>
+      <li class="hito"><span class="anio">2026</span><h3 class="titulo t-s">Beca de circulación internacional</h3><p>Segundo lugar nacional, con 98 puntos. Llevamos a Bilbao un catálogo de artistas colombianos para agentes de España.</p></li>
+    </ol>
+  </section>
+
+  <!-- 08 · TIENDA -->
+  <section class="seccion" id="tienda">
+    <div class="cab mono"><span class="dato">08 / Tienda</span><span>Primera edición · 19 unidades</span></div>
+    <div class="tienda">
+      <div class="tienda-foto">
+        <div class="tela-negra"><img src="/img/camiseta/espalda-negra.png" alt="Estampado de la espalda de la camiseta LC26 negra" width="1090" height="1212" loading="lazy"></div>
+        <div class="tela-blanca"><img src="/img/camiseta/espalda-blanca.png" alt="Estampado de la espalda de la camiseta LC26 blanca" width="1090" height="1212" loading="lazy"></div>
+      </div>
+      <div class="tienda-texto">
+        <h2 class="titulo t-l">Camiseta LC26</h2>
+        <p class="bajada">La camiseta de La Curaduría con el manifiesto Europa 2026: Bogotá – Berlín – Bilbao. Algodón, en blanca o negra, tallas M, L y XL.</p>
+        <div class="tienda-datos">
+          <div><span class="mono dato">Colombia</span><b>$90.000</b></div>
+          <div><span class="mono dato">Europa</span><b>30 €</b></div>
+          <div><span class="mono dato">Garantía</span><b>1 año</b></div>
+        </div>
+        <div><a class="boton" href="/camiseta" data-evento="cta_click">Comprar la camiseta <span class="flecha" aria-hidden="true">→</span></a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 · PREGUNTAS -->
+  <section class="seccion" id="preguntas">
+    <div class="cab mono"><span class="dato">09 / Preguntas</span><span>Lo que más nos preguntan</span></div>
+    <div class="preguntas">
+      <div class="preguntas-lado">
+        <h2 class="titulo t-l">Antes de entrar.</h2>
+        <p class="bajada">¿No encuentras tu respuesta? Escríbenos y te contestamos.</p>
+        <div><a class="enlace" href="/contacto">Ir a contacto →</a></div>
+      </div>
+      <div>
+        <details class="pregunta" open><summary>¿Cuesta algo usar el catálogo?</summary><p>No. Explorar, crear tu cuenta, guardar eventos, seguir páginas y escribir reseñas es gratis. Tampoco cuesta crear la página de tu proyecto ni publicar.</p></details>
+        <details class="pregunta"><summary>¿Qué diferencia hay entre Catálogo Q y Studio Q?</summary><p>Son las dos caras de la misma plataforma. Catálogo Q es lo que ve el público: cartelera, mapa, perfiles, publicaciones, radio y Sonar. Studio Q es el panel desde donde los proyectos publican todo eso.</p></details>
+        <details class="pregunta"><summary>¿Quién puede publicar?</summary><p>Cualquier proyecto cultural: artistas, espacios, colectivos, promotores, medios y gestores. Creas tu cuenta, creas tu página y publicas. Lo que subes sale de inmediato.</p></details>
+        <details class="pregunta"><summary>Mi proyecto ya aparece en el catálogo. ¿Cómo lo administro?</summary><p>En la ficha hay un botón para reclamarla. Revisamos a mano que seas parte del proyecto y te damos el control de la página y de sus eventos.</p></details>
+        <details class="pregunta"><summary>¿Qué compro exactamente con el Plan Founder?</summary><p>Un año completo de Studio Q Pro por $200.000 COP, que empieza con el lanzamiento en marzo de 2027. Incluye todo lo que se habilite durante ese año, el acceso a las betas y los beneficios de fundador desde hoy.</p></details>
+        <details class="pregunta"><summary>¿Por qué en dos pagos? ¿Me cobran solos?</summary><p>Para que reservar sea fácil: con $100.000 aseguras tu cupo hoy y pagas la otra mitad cuando quieras, antes de marzo de 2027. No guardamos tu tarjeta ni hacemos cobros automáticos: cada pago lo haces tú por Mercado Pago, con el mismo correo.</p></details>
+        <details class="pregunta"><summary>¿Puedo pedir reembolso?</summary><p>Sí, en dos casos: dentro de los 5 días hábiles siguientes a cada pago, sin dar explicaciones, o si Studio Q no se lanza antes del 30 de junio de 2027. Fuera de esos casos puedes ceder tu cupo a otro proyecto. <a href="/terminos">Ver términos</a>.</p></details>
+        <details class="pregunta"><summary>¿Qué pasa cuando se acaben los 50 cupos?</summary><p>Se cierra la preventa. El precio de Studio Q después del lanzamiento se anunciará en marzo de 2027.</p></details>
+        <details class="pregunta"><summary>¿Qué hacen con mis datos?</summary><p>Los usamos para que tu cuenta funcione y para mostrar lo que tú decides publicar. El detalle está en la <a href="/privacidad">política de privacidad</a>.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · CIERRE -->
+  <section id="cierre">
+    <div class="cab mono"><span class="dato">10 / Elige tu camino</span><span>Media Tech Cultural</span></div>
+    <div class="cierre-titulo"><h2 class="titulo t-xl">¡Cambia el algoritmo por la curaduría!</h2></div>
+    <div class="caminos">
+      <a class="camino" href="https://lacuraduria.net" target="_blank" rel="noopener" data-evento="cta_click"><span class="mono dato">Catálogo Q</span><span class="titulo t-l">Quiero descubrir <span aria-hidden="true">↗</span></span><p>Explora la cartelera, el mapa y la radio. Gratis.</p></a>
+      <a class="camino" href="https://lacuraduria.net/publicar" data-evento="sign_up_click"><span class="mono dato">Studio Q</span><span class="titulo t-l">Quiero gestionar <span aria-hidden="true">→</span></span><p>Crea la página de tu proyecto y empieza a publicar. Gratis.</p></a>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="pie-bloque pie-coral">
+    <div class="pie-logo" role="img" aria-label="La Curaduría"></div>
+    <div>
+      <p class="pie-lema">Tecnología para la circulación de la cultura.</p>
+      <small>© 2026 La Curaduría · Bogotá, Colombia · lacuraduria23@gmail.com</small>
+    </div>
+  </div>
+  <div class="pie-bloque pie-cyan">
+    <span class="mono">Descubrir</span>
+    <ul>
+      <li><a href="https://lacuraduria.net/eventos">Eventos</a></li>
+      <li><a href="https://lacuraduria.net/perfiles">Perfiles</a></li>
+      <li><a href="https://lacuraduria.net/contenidos">Publicaciones</a></li>
+      <li><a href="https://lacuraduria.net/radio">Radio</a></li>
+    </ul>
+  </div>
+  <div class="pie-apilado">
+    <div class="pie-bloque pie-verde">
+      <span class="mono">Plataforma</span>
+      <ul>
+        <li><a href="https://lacuraduria.net/login">Crear cuenta</a></li>
+        <li><a href="https://lacuraduria.net/publicar">Publicar</a></li>
+        <li><a href="/precios">Plan Founder</a></li>
+      </ul>
+    </div>
+    <div class="pie-bloque pie-amarillo">
+      <span class="mono">La empresa</span>
+      <ul>
+        <li><a href="/nosotros">Quiénes somos</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+        <li><a href="/camiseta">Tienda</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="pie-bloque pie-rosado">
+    <span class="mono">Legal</span>
+    <ul>
+      <li><a href="/terminos">Términos</a></li>
+      <li><a href="/privacidad">Privacidad</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="/estilo/medicion.js?v=20261116"></script>
+<script src="/estilo/reticula.js?v=20261116"></script>
+</body>
+</html>
